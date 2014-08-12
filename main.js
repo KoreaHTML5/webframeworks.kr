@@ -5,7 +5,7 @@
  * Time: 오전 11:54
  * To change this template use File | Settings | File Templates.
  */
-var WEB_SERVER_PORT = 8088;
+var WEB_SERVER_PORT = 80;
 
 var express = require('express');
 var fs = require('fs');
