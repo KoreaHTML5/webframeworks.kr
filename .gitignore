@@ -1,2 +1,5 @@
 .idea
+.DS_Store
 node_modules
+pages
+bower_components

@@ -11,26 +11,52 @@ var express = require('express');
 var fs = require('fs');
 var app = express();
 
-setRoute('/');
-setRoute('/getstarted');
-setRoute('/search');
-setRoute('/tutorials');
-setRoute('/updates');
-
-var headers = {};
-headers['Content-Type'] = 'text/html';
+parseRoute('/');
 
 function setRoute(path_){
-	var filePath = "pages/"+path_+"/index.html";
-	app.get(path_, function(req_, res_){
-		fs.readFile(filePath, function(err_, data_){
-			if(err_){
-				res_.send("error!"+err_);
-			}else{
-				res_.writeHead(200, headers);
-				res_.end(""+data_);
+	console.log('setRoute['+path_+']');
+
+	if(path_ == '/'){
+		path_ = '';
+	}
+
+	app.use(path_, express.static(__dirname+'/pages'+path_));
+	app.use(path_+'/js', express.static(__dirname+'/pages'+path_+'/static/js'));
+	app.use(path_+'/css', express.static(__dirname+'/pages'+path_+'/static/css'));
+	app.use(path_+'/fonts', express.static(__dirname+'/pages'+path_+'/static/fonts'));
+	app.use(path_+'/img', express.static(__dirname+'/pages'+path_+'/static/img'));
+
+}
+
+function parseRoute(rootDir_){
+	//console.log('parseRoute['+rootDir_+']');
+
+	fs.readdir(__dirname+'/pages/'+rootDir_,function(err_, files_){
+		if(files_){
+			for(var file in files_){
+				var name = files_[file];
+				if(name == 'index.html'){
+					setRoute(rootDir_);
+				}else{
+					checkIsDir(__dirname+'/pages', rootDir_+name, function(isDir_, name_){
+						if(isDir_){
+							parseRoute(name_+'/');
+						}
+					});
+				}
+
 			}
-		});
+		}
+	});
+}
+
+function checkIsDir(rootDir_, name_,  callback_){
+//	console.log('checkIsDir['+rootDir_+name_+']');
+
+	fs.stat(rootDir_+name_, function(err_, stats_){
+		if(stats_){
+			callback_(!stats_.isFile(), name_);
+		}
 	});
 }
 
