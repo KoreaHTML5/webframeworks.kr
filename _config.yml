@@ -1,2 +1,12 @@
 source : contents
 destination : pages
+
+markdown_ext : "markdown,mkdown,mkdn,mkd,md"
+
+markdown :    kramdown
+highlighter : pygments
+lsi :         false
+excerpt_separator : "\n\n"
+
+kramdown :
+  input : GFM
