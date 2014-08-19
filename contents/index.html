@@ -1,41 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dev Html5Korea Home</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-</head>
-<body>
-<nav class="navbar navbar-default top_menu" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Brand</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/getstarted">Get Started</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/updates">Update</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/tutorials">Tutorials</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/kit">Starter Kit</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+---
+    layout : default
+    title : Home
+---
 
 <div id="carousel-example-generic" class="carousel slide main_banner" data-ride="carousel">
     <!-- Indicators -->
@@ -47,7 +13,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active" style="height:350px;background-color: #d58512;">
-            <div class="jumbotron slide_item">
+            <div class="jumbotron slide_item" style="background: url(/img/webrtc.png) no-repeat center;color:#333333;">
                 <h1>WebRTC</h1>
                 <p>WebRTC is the best solution for Video Conference on Web.</p>
                 <p>
@@ -59,7 +25,7 @@
             </div>
         </div>
         <div class="item" style="height:350px;background-color: #d43f3a;">
-            <div class="slide_item jumbotron">
+            <div class="jumbotron slide_item" style="background: url(/img/AngularJS-large.png) no-repeat center;">
                 <h1>AngularJS</h1>
                 <p>AngularJS를 사용하여 보다 효율적인 개발 프로세스를 만들어 보세요.</p>
                 <p>
@@ -112,65 +78,22 @@
                 <td>W3C</td>
             </tr>
         </table>
-    </div>
-    <div class="col-md-3">
-        <table width="100%" class="table table-striped shadow_panel">
-            <tr>
-                <th colspan="2">
-                    Contributors
-                </th>
-            </tr>
-            <tr>
-                <td><img src="/img/profile.jpg" class="img-circle profile_img"></td>
-                <td>nurinamu</td>
-            </tr>
-            <tr>
-                <td><img src="/img/profile.jpg" class="img-circle profile_img"></td>
-                <td>nurinamu</td>
-            </tr>
-            <tr>
-                <td><img src="/img/profile.jpg" class="img-circle profile_img"></td>
-                <td>nurinamu</td>
-            </tr>
-        </table>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-3 col-md-offset-1">
+
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
                 <th colspan="3">
                     Get Started
                 </th>
             </tr>
+            {% for post in site.categories.getstarted %}
             <tr>
-                <td>AngularJS</td>
-                <td>고재도</td>
-                <td>2014.8.13</td>
+                <td><a href="{{post.url}}">{{ post.title }}</a></td>
+                <td>{{ site.data.authors[post.author].name }}</td>
+                <td>{{ post.date | date:"%Y.%m.%d" }}</td>
             </tr>
-            <tr>
-                <td>ExtJS</td>
-                <td>곽옥석</td>
-                <td>2014.8.13</td>
-            </tr>
-            <tr>
-                <td>BackboneJS</td>
-                <td>조규태</td>
-                <td>2014.8.13</td>
-            </tr>
-            <tr>
-                <td>Yeoman</td>
-                <td>문현경</td>
-                <td>2014.8.13</td>
-            </tr>
-            <tr>
-                <td>Foundation</td>
-                <td>이원제</td>
-                <td>2014.8.13</td>
-            </tr>
+            {% endfor %}
         </table>
-    </div>
-    <div class="col-md-4">
+
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
                 <th colspan="3">
@@ -208,6 +131,27 @@
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
                 <th colspan="2">
+                    Contributors
+                </th>
+            </tr>
+{% for author in site.data.authors %}
+            <tr>
+                <td width="55" rowspan="2"><img src="{{ author[1].img }}" class="img-circle profile_img"></td>
+                <td><table>
+                    <tr>
+                        <td>{{ author[1].name }}</td>
+
+                    </tr>
+                    <tr><td>[{{ author[1].github }}]</td></tr>
+                </table>
+
+            </tr>
+{% endfor %}
+        </table>
+
+        <table width="100%" class="table table-striped shadow_panel">
+            <tr>
+                <th colspan="2">
                     Starter Kit
                 </th>
             </tr>
@@ -223,8 +167,3 @@
         </table>
     </div>
 </div>
-<nav class>
-
-</nav>
-</body>
-</html>
