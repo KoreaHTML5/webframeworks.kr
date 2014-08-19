@@ -11,22 +11,29 @@ module Jekyll
       self.basename = 'index'
       self.content = <<-EOS
 {% for post in page.posts %}
-<h3>{{ post.date | date: "%A %d.%m." }} &mdash; <a href="{{ post.url }}">{{ post.title }}</a></h3>
+<div class="shadow_panel media_content media_item">
+<span class="list_item_title"><a href="{{ post.url }}">{{ post.title }}</a></span>
 
-<p>{{ post.content | truncatewords: 20 }}</p>
+<p>{{ post.summary }}</p>
 
 <p>
+{% if post.author != empty %}
+<img src="{{ site.data.authors[post.author].img }}" class="img-circle profile_img_small">
+{{ site.data.authors[post.author].name }}
+가 {{ post.date | date: "%y.%m.%d" }}에 작성.
+{% endif %}
 {% if post.categories != empty %}
-In {{ post.categories | array_to_sentence_string }}.
+In <a href="/{{ post.categories | array_to_sentence_string }}">{{ post.categories | array_to_sentence_string }}</a>.
 {% endif %}
 {% if post.tags != empty %}
 Tagged {{ post.tags | array_to_sentence_string }}.
 </p>
 {% endif %}
+</div>
 {% endfor %}
 EOS
       self.data = {
-        'layout' => 'default',
+        'layout' => 'tag_list',
         'type' => 'tag',
         'title' => "Posts tagged #{@tag}",
         'posts' => posts
