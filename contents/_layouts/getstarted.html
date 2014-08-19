@@ -2,14 +2,16 @@
 <html>
 <head>
     {% include header.html %}
+    <link rel="stylesheet" href="/css/toc.css">
+    <script type="text/javascript" src="/js/jquery.toc.js"></script>
 </head>
 <body>
 {% include nav.html %}
 
-<div class="row content_bg">
-    <div class="col-md-10 col-md-offset-1 jumbotron title_header">
-        {{ page.title }}
-        {{ page.subTitle }}
+<div class="row content_bg" {% if page.title_background_color != empty %} style="background-color: #{{page.title_background_color}}" {% endif %}>
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron" {% if page.title_background_img != empty %} style="background:url({{page.title_background_img}}) no-repeat center" {% endif %} >
+        <h1 class="title_header_title">{{ page.title }}</h1>
+        <p class="title_header_summary">{{ page.summary }}</p>
     </div>
 </div>
 
@@ -36,17 +38,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">색인</h3>
-            </div>
-
-            <ul class="list-group">
-                <li class="list-group-item">ExtJS 란?</li>
-                <li class="list-group-item">설치방</li>
-            </ul>
-
-        </div>
+        <div id="toc_location"></div>
 
         {% include gs_menu.html %}
 
@@ -54,11 +46,18 @@
     </div>
 
     <div class="col-sm-7 col-md-8">
-        {{ content }}
+        <div class="media_content media_item shadow_panel" id="main_content">
+            {{ content }}
+        </div>
 
-        {% include disqus.html %}
+        <div class="media_content media_item shadow_panel">
+            {% include disqus.html %}
+        </div>
+
     </div>
-
+    <script>
+        $('#main_content').toc();
+    </script>
 </div>
 
 </body>
