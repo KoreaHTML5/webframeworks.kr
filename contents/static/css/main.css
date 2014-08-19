@@ -37,6 +37,10 @@
     padding-top:15px !important;
 }
 
+.title_header_title{
+    color : #EFEFEF;
+}
+
 .list_header{
     background-color:inherit;
     height:100px;
@@ -82,7 +86,7 @@
 }
 
 body{
-    background-color: #eeeeee;
+    background-color: #fefefe;
 }
 
 .media_item{
@@ -90,5 +94,14 @@ body{
 }
 .media_content{
     padding:10px;
+}
+
+.footer{
+    background-color: #f0f0f0;
+    margin-top:20px;
+}
+
+.footer_content{
+    color:#cecece;
 }
 

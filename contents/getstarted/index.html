@@ -19,29 +19,13 @@
             <li class="media_item">
                 <div class="media media_content shadow_panel">
                     <a class="pull-left" href="#">
-                        <img class="media-object profile_img_large img-thumbnail" src="/img/profile.jpg" alt="nurinamu">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
                     </a>
                     <div class="media-body">
                         <div class="page-headermedia-heading">
-                            <h4><a href="{{ post.url }}">{{ post.title }}</a>&nbsp;&nbsp;<small>{% tag_cloud %}</small></h4>
+                            <h4><a href="{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
                         </div>
-                        <a href="{{ post.url }}">여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다
-                        여기에는 엄청 많은 이야기가 적힐겁니다</a>
+                        <p>{{ post.summary }}</p>
                     </div>
                 </div>
             </li>
@@ -50,5 +34,3 @@
 
     </div>
 </div>
-</body>
-</html>
