@@ -54,7 +54,7 @@ tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습�
 {% endhighlight %}
 
 {% highlight javascript linos %}
-#기존 javascript를 이용한 DOM 접근
+//기존 javascript를 이용한 DOM 접근
 var bodyObj = document.getElementsByTagName('body');
 var divObj = document.getElementsByID('first');
 var inputObjs = document.getElementsByTagName('input');
@@ -68,7 +68,7 @@ for(var i=0;i<inputObjs.length;i++){
   }
 }
 
-#jQuery를 이용한 DOM 접근
+//jQuery를 이용한 DOM 접근
 var bodyObj = jQuery('body')[0];
 var divObj = jQuery('#first')[0];
 var inputJObjs = jQuery('input');
