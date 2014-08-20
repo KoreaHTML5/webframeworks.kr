@@ -51,10 +51,17 @@
         </div>
 
         <div class="media_content media_item shadow_panel">
+            <p>Tags : {% for tag in page.tags %}<a href="/tags/{{tag}}">{{tag}}</a>&nbsp;{% endfor %}</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
             {% include disqus.html %}
         </div>
 
     </div>
+
+    {% include footer.html %}
     <script>
         $('#main_content').toc();
     </script>
