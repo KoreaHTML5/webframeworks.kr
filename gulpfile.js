@@ -11,7 +11,6 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var nodemon = require('gulp-nodemon');
 var runSequence = require('run-sequence');
-var port = 7001;
 
 // Nodemon, execute node application. It will be refreshed if node files has
 // been changed
@@ -20,7 +19,7 @@ gulp.task('nodemon', function (cb) {
 	nodemon({
 		script: 'bin/main.js',
 		watch: ['bin/main.js'],
-		env: { 'NODE_ENV': 'development', 'PORT': port }
+		env: { 'NODE_ENV': 'development'}
 	})
 	.on('start', function () {
 		if (!init) {
@@ -61,7 +60,7 @@ gulp.task('watch', function() {
 // Browser-sync for preview
 gulp.task('browser-sync', function() {
 	browserSync.init(null, {
-		proxy: 'http://localhost:' + port,
+		proxy: 'http://localhost:' + 8888,
 		port: 7000
 	});
 });
