@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include header.html %}
+</head>
+<body>
+{% include nav.html %}
+
+<div class="row list_bg">
+    <div class="col-md-10 col-md-offset-1 jumbotron list_header">
+        <h1>Tag List</h1>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1">
+        {% include tags.html %}
+    </div>
+
+    <div class="col-sm-7 col-md-8">
+        {{ content }}
+    </div>
+
+    {% include footer.html %}
+</div>
+
+</body>
+</html>
