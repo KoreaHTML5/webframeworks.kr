@@ -1,5 +1,5 @@
 source : contents
-destination : pages
+destination : publish
 
 markdown_ext : "markdown,mkdown,mkdn,mkd,md"
 
