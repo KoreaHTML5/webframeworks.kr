@@ -1,1 +1,0 @@
-sudo node main.js
