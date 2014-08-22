@@ -34,7 +34,7 @@ $ NODE_ENV=development node bin/main.js
 or
 
 # 배포용으로 실행된 경우에는 80 포트로 실행이되어 http://localhost 또는 http://domain 으로 웹사이트가 열립니다. 웹서버를 배포용으로 실행합니다. 경웅 따라 super user 권한이 필요합니다.
-$ NODE_ENV=development node bin/main.js
+$ node bin/main.js
 ```
 
 ## gulp serve 명령을 통한 개발
