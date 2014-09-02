@@ -87,6 +87,7 @@
 
 body{
     background-color: #fefefe;
+    font-family: '나눔고딕','Nanum Gothic',NanumGothic;
 }
 
 .media_item{
@@ -105,3 +106,15 @@ body{
     color:#cecece;
 }
 
+
+#main_content>h1 {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #cccccc;
+    font-weight: bolder;
+}
+
+#main_content>h2 {
+    padding-bottom: 4px;
+    border-bottom: 1px solid #eeeeee;
+    font-weight: bolder;
+}
