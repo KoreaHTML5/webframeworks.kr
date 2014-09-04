@@ -30,6 +30,13 @@ gulp.task('nodemon', function (cb) {
 });
 
 // Jekyll task, build with jekyll
+gulp.task('jekyll-gh', function(cb){
+	return exec('jekyll build --config _config_gh.yml', function(error, stdout, stderr){
+		console.log(stdout);
+		cb();
+	});
+});
+
 gulp.task('jekyll', function(cb){
 	return exec('jekyll build', function(error, stdout, stderr){
 		console.log(stdout);
@@ -38,7 +45,7 @@ gulp.task('jekyll', function(cb){
 });
 
 // Github io page task, makes github.io page version
-gulp.task('gh', ['default'], function () {
+gulp.task('gh', ['clean', 'jekyll-gh'], function () {
 	return gulp.src('publish/**/*')
 			.pipe(deploy({
 	  	remoteUrl:'https://github.com/KoreaHTML5/dev.koreahtml5.kr.git'
