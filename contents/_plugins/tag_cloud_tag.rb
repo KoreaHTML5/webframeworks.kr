@@ -13,7 +13,7 @@ module Jekyll
       weights = Hash.new
       tags.each {|tag| weights[tag[0]] = tag[1].length/avg}
       tags.each do |tag, posts|
-        html << "<span style='font-size: #{sprintf("%d", weights[tag] * 100)}%'><a href='/tags/#{tag}/'>#{tag}</a></span>\n"
+        html << "<span style='font-size: #{sprintf("%d", weights[tag] * 100)}%'><a href='#{context.registers[:site].baseurl}/tags/#{tag}/'>#{tag}</a></span>\n"
       end
       html
     end
