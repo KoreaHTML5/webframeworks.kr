@@ -1,9 +1,12 @@
 ---
-layout : getstarted title : Grunt and Gulp, Build your project category :
-getstarted summary : 프론트엔드 프로젝트에서 사용되는 빌드시스템인 Grunt 와 Gulp 에 대한 소개와 사용법에 대해서 알아봅니다. 현재 개발중인 프로젝트에 빌드 시스템을 적용하여 여러가지 빌드에 관련된 작업을 간단하게 처리 할 수 있습니다.
-permalink : /getstarted/grunt-and-gulp title_background_img :
-imgs/logo-jquery@2x.png title_background_color : 0769AD tags : grunt
-gulp build yeoman author : ragingwind
+layout : getstarted
+title : Grunt and Gulp
+category : getstarted
+summary : 빌드시스템인 Grunt 와 Gulp 에 대한 소개와 사용법에 대해서 알아봅니다. 현재 개발중인 프로젝트에 빌드 시스템을 적용하여 여러가지 빌드에 관련된 작업을 간단하게 처리 할 수 있습니다.
+permalink : /getstarted/grunt-and-gulp
+title_background_color : FEFEFE
+tags : grunt gulp build yeoman
+author : ragingwind
 ---
 
 # Grunt and Gulp, Build your project
