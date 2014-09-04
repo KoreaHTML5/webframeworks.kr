@@ -53,7 +53,7 @@ tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습�
 </body>
 {% endhighlight %}
 
-{% highlight javascript %}
+``` javascript
 //기존 javascript를 이용한 DOM 접근
 var bodyObj = document.getElementsByTagName('body');
 var divObj = document.getElementsByID('first');
@@ -74,7 +74,7 @@ var divObj = jQuery('#first')[0];  //id 값으로
 var inputJObjs = jQuery('input');  // 해당 tag가 모두 접근된다.
 var titleObj = jQuery('input[name=title]')[0]; // input tag이면서 name속성값이 title인 DOM에 접근
 var buttonObj = $('input[type=button]')[0]; // tag와 type값으로 접근, $는 jQuery의 축약지시자이다.
-{% endhighlight %}
+```
 
 ### Event 처리
 JQuery에서는 Web page에서 발생하는 각종 Event Handler들을 제공합니다.
@@ -124,3 +124,7 @@ $('#button').on('click', callback); //이런 방식도 .click()함수와 동일�
 {% endhighlight %}
 
 보다 많은 Event 관련 함수들을 확인하려면 [여기](http://api.jquery.com/category/events/)에서 확인하면 됩니다.
+=======
+
+
+
