@@ -13,3 +13,5 @@ kramdown :
 
 redcarpet :
   extensions : []
+
+baseurl : "/dev.koreahtml5.kr"
