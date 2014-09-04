@@ -4,7 +4,7 @@
     <style>
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
 </style>
-<title>Dev Html5Korea Home - Im a test page name2.</title>
+<title>Dev Html5Korea Home - jQuery 시작하기</title>
 <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/main.css">
 <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/syntax.css">
@@ -47,10 +47,10 @@
     </div>
 </nav>
 
-<div class="row content_bg"  style="background-color: #" >
-    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
-        <h1 class="title_header_title">Im a test page name2.</h1>
-        <p class="title_header_summary"></p>
+<div class="row content_bg"  style="background-color: #0769AD" >
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url(imgs/logo-jquery@2x.png) no-repeat center"  >
+        <h1 class="title_header_title">jQuery 시작하기</h1>
+        <p class="title_header_summary">jQuery란 무엇이고 설치방법과 기본적인 사용법에 대해서 알아봅니다. 최근 웹 어플리케이션 개발할때 필수적으로 사용하는 라이브러리이니 만큼 익숙해지는 것이 좋습니다.</p>
     </div>
 </div>
 
@@ -166,20 +166,69 @@
 
     <div class="col-sm-7 col-md-8">
         <div class="media_content media_item shadow_panel" id="main_content">
-            <p>This is the test pages.</p>
+            <h1 id="jquery-">jQuery 시작하기</h1>
 
-<p>Contents!</p>
+<h2 id="jquery">jQuery란?</h2>
+<p>jQuery는 기본적으로 DOM manipulator 기능이 강력합니다. 보다 편하고 쉽게 DOM 객체에 접근 가능하게 해주며 추가적인 Wrapper 함수들을 통해 다양한 이벤트 처리, 속성 접근이 가능합니다.<br />
+jQuery는 또한 ajax 처리와 animation 처리를 간편하게 할 수 있도록 제공하고 있으며 브라우저 호환성이 우수합니다. jQuery는 다양한 Javascript Library / Framework에서 활용되고 있어 근래의 웹 기술 학습을 위해서는 거의 필수적으로 선수 학습을 해야합니다.</p>
 
-<pre><code class="language-javascript">function init(){
-    var a = new Array();
-    return a;
-}
-</code></pre>
+<h2 id="section">설치방법</h2>
+
+<p>jQuery는 홈페이지를 통해 download 받아서 사용하는 방법과 CDN을 통한 직접 사용 방법을 제공합니다.</p>
+
+<h3 id="download---">Download 받아서 사용하는 경우</h3>
+
+<p><a href="http://jquery.com/download/">http://jquery.com/download/</a> 에서 최신 버전의 jquery를 받을 수 있다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 아래 tag를 필요한 위치에 삽입한다. 일반적으로 head 안에 위치한다. --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">”text/javascript”</span> <span class="na">src=</span><span class="s">”/path/to/jquery.js”</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+<h3 id="cdn--">CDN을 이용하는 경우</h3>
+
+<p>CDN경로는 아래와 같고 해당 경로를 이용해서 script tag를 삽입하면 된다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 아래 tag를 필요한 위치에 삽입한다. 일반적으로 head 안에 위치한다. --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">”text/javascript”</span> <span class="na">src=</span><span class="s">”/path/to/jquery.js”</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+<h2 id="section-1">사용방법</h2>
+
+<h3 id="dom-">DOM 접근</h3>
+<p>가장 기본적인 jQuery의 사용 예로 DOM Object에 접근하는 방법입니다.<br />
+tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습니다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">name=</span><span class="s">&quot;sendBtn&quot;</span> <span class="na">value=</span><span class="s">&quot;SEND&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//기존 javascript를 이용한 DOM 접근</span>
+<span class="kd">var</span> <span class="nx">bodyObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByID</span><span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">inputObjs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">titleObj</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">buttonObj</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">inputObjs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">inputObjs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">name</span> <span class="o">==</span> <span class="s1">&#39;title&#39;</span><span class="p">){</span>
+    <span class="nx">titleObj</span> <span class="o">=</span> <span class="nx">inputObjs</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">inputObjs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;button&#39;</span><span class="p">){</span>
+    <span class="nx">buttonObj</span> <span class="o">=</span> <span class="nx">inputObjs</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//jQuery를 이용한 DOM 접근</span>
+<span class="kd">var</span> <span class="nx">bodyObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#first&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">inputJObjs</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">titleObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[name=title]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">buttonObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[type=button]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span></code></pre></div>
+
 
         </div>
 
         <div class="media_content media_item shadow_panel">
-            <p>Tags : <a href="/tags/test">test</a>&nbsp;<a href="/tags/html">html</a>&nbsp;</p>
+            <p>Tags : <a href="/tags/jquery">jquery</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/html">html</a>&nbsp;</p>
         </div>
 
 

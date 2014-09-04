@@ -8,6 +8,11 @@
     box-shadow : 0 1px 1px rgba(0,0,0,0.3);
 }
 
+.profile_img_small{
+    width : 24px;
+    height: 24px;
+}
+
 .profile_img{
     width : 40px;
     height: 40px;
@@ -32,6 +37,23 @@
     padding-top:15px !important;
 }
 
+.title_header_title{
+    color : #EFEFEF;
+}
+
+.list_header{
+    background-color:inherit;
+    height:100px;
+    padding-left: 100px;
+    padding-top:0px !important;
+}
+
+.list_item_title{
+    font-size : 20pt;
+    color : #428bca;
+    font-weight: bold;
+}
+
 .cate_bg{
     background-color: #d43f3a;
     color:white;
@@ -46,6 +68,13 @@
     box-shadow : 0 2px 3px rgba(0,0,0,0.3);
 }
 
+.list_bg{
+    background-color: #e1edf7;
+    color:#353535;
+    height:100px;
+    box-shadow : 0 2px 3px rgba(0,0,0,0.3);
+}
+
 .cate_item{
     width:100%;
     line-height: 30px;
@@ -57,7 +86,8 @@
 }
 
 body{
-    background-color: #eeeeee;
+    background-color: #fefefe;
+    font-family: '나눔고딕','Nanum Gothic',NanumGothic;
 }
 
 .media_item{
@@ -67,3 +97,24 @@ body{
     padding:10px;
 }
 
+.footer{
+    background-color: #f0f0f0;
+    margin-top:20px;
+}
+
+.footer_content{
+    color:#cecece;
+}
+
+
+#main_content>h1 {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #cccccc;
+    font-weight: bolder;
+}
+
+#main_content>h2 {
+    padding-bottom: 4px;
+    border-bottom: 1px solid #eeeeee;
+    font-weight: bolder;
+}

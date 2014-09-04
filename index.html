@@ -1,14 +1,18 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Dev Html5Korea Home</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-</head>
-<body>
-<nav class="navbar navbar-default top_menu" role="navigation">
+    <head>
+        <style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>Dev Html5Korea Home - Home</title>
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/main.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/syntax.css">
+<script src="/dev.koreahtml5.kr/static/js/jquery.min.js"></script>
+<script src="/dev.koreahtml5.kr/static/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-default top_menu" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -17,7 +21,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Brand</a>
+            <a class="navbar-brand" href="/">로고</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -33,11 +37,13 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="/kit">Starter Kit</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/dev.koreahtml5.kr" target="_blank">참여하기</a></li>
+            </ul>
         </div>
     </div>
 </nav>
-
-<div id="carousel-example-generic" class="carousel slide main_banner" data-ride="carousel">
+        <div id="carousel-example-generic" class="carousel slide main_banner" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -47,11 +53,11 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active" style="height:350px;background-color: #d58512;">
-            <div class="jumbotron slide_item">
+            <div class="jumbotron slide_item" style="background: url(/img/webrtc.png) no-repeat center;color:#333333;">
                 <h1>WebRTC</h1>
                 <p>WebRTC is the best solution for Video Conference on Web.</p>
                 <p>
-                    <button type="button" class="btn btn-primary">Learn more</button>
+                    <button type="button" class="btn btn-primary">알아보기</button>
                 </p>
             </div>
             <div class="carousel-caption">
@@ -59,11 +65,11 @@
             </div>
         </div>
         <div class="item" style="height:350px;background-color: #d43f3a;">
-            <div class="slide_item jumbotron">
+            <div class="jumbotron slide_item" style="background: url(/img/AngularJS-large.png) no-repeat center;">
                 <h1>AngularJS</h1>
                 <p>AngularJS를 사용하여 보다 효율적인 개발 프로세스를 만들어 보세요.</p>
                 <p>
-                    <button type="button" class="btn btn-primary">Learn more</button>
+                    <button type="button" class="btn btn-primary">알아보기</button>
                 </p>
             </div>
 
@@ -87,100 +93,101 @@
     <div class="col-md-7 col-md-offset-1">
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
-                <th colspan="3">
+                <th colspan="2">
                     Updates
                 </th>
-            </tr>
-            <tr>
-                <td>2014.8.11</td>
-                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td>W3C</td>
-            </tr>
-            <tr>
-                <td>2014.8.11</td>
-                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td>W3C</td>
-            </tr>
-            <tr>
-                <td>2014.8.11</td>
-                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td>W3C</td>
-            </tr>
-            <tr>
-                <td>2014.8.11</td>
-                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td>W3C</td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-3">
-        <table width="100%" class="table table-striped shadow_panel">
-            <tr>
-                <th colspan="2">
-                    Contributors
+                <th align="right">
+                    <a href="/updates">더보기</a>
                 </th>
             </tr>
             <tr>
-                <td><img src="/img/profile.jpg" class="img-circle profile_img"></td>
-                <td>nurinamu</td>
+                <td width="70%">W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
+                <td width="15%">2014.8.11</td>
+                <td width="15%">W3C</td>
             </tr>
             <tr>
-                <td><img src="/img/profile.jpg" class="img-circle profile_img"></td>
-                <td>nurinamu</td>
+                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
+                <td>2014.8.11</td>
+                <td>W3C</td>
             </tr>
             <tr>
-                <td><img src="/img/profile.jpg" class="img-circle profile_img"></td>
-                <td>nurinamu</td>
+                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
+                <td>2014.8.11</td>
+                <td>W3C</td>
+            </tr>
+            <tr>
+                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
+                <td>2014.8.11</td>
+                <td>W3C</td>
+            </tr>
+            <tr>
+                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
+                <td>2014.8.11</td>
+                <td>W3C</td>
             </tr>
         </table>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-3 col-md-offset-1">
+
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
-                <th colspan="3">
+                <th colspan="2">
                     Get Started
                 </th>
+                <th align="right">
+                    <a href="/getstarted">더보기</a>
+                </th>
             </tr>
+            
             <tr>
-                <td>AngularJS</td>
-                <td>고재도</td>
-                <td>2014.8.13</td>
+                <td width="70%"><a href="/getstarted/jquery">jQuery 시작하기</a></td>
+                <td width="15%">이원제</td>
+                <td width="15%">2014.08.13</td>
             </tr>
+            
             <tr>
-                <td>ExtJS</td>
-                <td>곽옥석</td>
-                <td>2014.8.13</td>
+                <td width="70%"><a href="/getstarted/test4">This is test4 page.</a></td>
+                <td width="15%">이원제</td>
+                <td width="15%">2014.08.13</td>
             </tr>
+            
             <tr>
-                <td>BackboneJS</td>
-                <td>조규태</td>
-                <td>2014.8.13</td>
+                <td width="70%"><a href="/getstarted/test3">This is test3 page.</a></td>
+                <td width="15%">이원제</td>
+                <td width="15%">2014.08.13</td>
             </tr>
+            
             <tr>
-                <td>Yeoman</td>
-                <td>문현경</td>
-                <td>2014.8.13</td>
+                <td width="70%"><a href="/getstarted/test">Im a test page file입니다.</a></td>
+                <td width="15%">이원제</td>
+                <td width="15%">2014.08.12</td>
             </tr>
+            
             <tr>
-                <td>Foundation</td>
-                <td>이원제</td>
-                <td>2014.8.13</td>
+                <td width="70%"><a href="/getstarted/name2">Im a test page name2.</a></td>
+                <td width="15%">이원제</td>
+                <td width="15%">2014.08.12</td>
             </tr>
+            
+            <tr>
+                <td width="70%"><a href="/getstarted/test2">Im a test page2.</a></td>
+                <td width="15%">이원제</td>
+                <td width="15%">2014.08.12</td>
+            </tr>
+            
         </table>
-    </div>
-    <div class="col-md-4">
+
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
-                <th colspan="3">
+                <th colspan="2">
                     Tutorials
+                </th>
+                <th align="right">
+                    <a href="/tutorials">더보기</a>
                 </th>
             </tr>
             <tr>
-                <td>AngularJS를 이용한 </td>
-                <td>고재도</td>
-                <td>2014.8.13</td>
+                <td width="70%">AngularJS를 이용한 </td>
+                <td width="15%">고재도</td>
+                <td width="15%">2014.8.13</td>
             </tr>
             <tr>
                 <td>ExtJS</td>
@@ -207,8 +214,34 @@
     <div class="col-md-3">
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
-                <th colspan="2">
+                <th colspan="1" width="70%">
+                    Contributors
+                </th>
+                <th align="right" width="30%">
+                    <a href="https://github.com/KoreaHTML5/dev.koreahtml5.kr/graphs/contributors" target="_blank">더보기</a>
+                </th>
+            </tr>
+
+            <tr>
+                <td colspan="2"><table width="100%">
+                    <tr>
+                        <td rowspan="2" width="55"><img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xap1/t1.0-9/10455759_756319334390618_9098829359137199788_n.jpg" class="img-circle profile_img"></td>
+                        <td>이원제</td>
+
+                    </tr>
+                    <tr><td>[nurinamu]</td></tr>
+                </table>
+            </tr>
+
+        </table>
+
+        <table width="100%" class="table table-striped shadow_panel">
+            <tr>
+                <th colspan="1" width="70%">
                     Starter Kit
+                </th>
+                <th align="right" width="30%">
+                    <a href="/getstarted">더보기</a>
                 </th>
             </tr>
             <tr>
@@ -223,8 +256,13 @@
         </table>
     </div>
 </div>
-<nav class>
 
-</nav>
-</body>
+        <table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            @since 2014
+        </td>
+    </tr>
+</table>
+    </body>
 </html>
