@@ -3,12 +3,15 @@ destination : publish
 
 markdown_ext : "markdown,mkdown,mkdn,mkd,md"
 
-markdown :    kramdown
+markdown :    redcarpet
 highlighter : pygments
 lsi :         false
 excerpt_separator : "\n\n"
 
 kramdown :
   input : GFM
+
+redcarpet :
+  extensions : []
 
 baseurl : "/dev.koreahtml5.kr"

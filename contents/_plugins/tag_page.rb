@@ -12,7 +12,7 @@ module Jekyll
       self.content = <<-EOS
 {% for post in page.posts %}
 <div class="shadow_panel media_content media_item">
-<span class="list_item_title"><a href="{{ post.url }}">{{ post.title }}</a></span>
+<span class="list_item_title"><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></span>
 
 <p>{{ post.summary }}</p>
 
@@ -23,7 +23,7 @@ module Jekyll
 가 {{ post.date | date: "%y.%m.%d" }}에 작성.
 {% endif %}
 {% if post.categories != empty %}
-In <a href="/{{ post.categories | array_to_sentence_string }}">{{ post.categories | array_to_sentence_string }}</a>.
+In <a href="{{site.baseurl}}/{{ post.categories | array_to_sentence_string }}">{{ post.categories | array_to_sentence_string }}</a>.
 {% endif %}
 {% if post.tags != empty %}
 Tagged {{ post.tags | array_to_sentence_string }}.
