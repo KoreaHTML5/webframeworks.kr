@@ -24,19 +24,19 @@ jQuery는 홈페이지를 통해 download 받아서 사용하는 방법과 CDN�
 
 [http://jquery.com/download/](http://jquery.com/download/) 에서 최신 버전의 jquery를 받을 수 있다.
 
-{% highlight html %}
+``` html
 <!-- 아래 tag를 필요한 위치에 삽입한다. 일반적으로 head 안에 위치한다. -->
 <script type=”text/javascript” src=”/path/to/jquery.js”></script>
-{% endhighlight %}
+```
 
 ### CDN을 이용하는 경우
 
 CDN경로는 아래와 같고 해당 경로를 이용해서 script tag를 삽입하면 된다.
 
-{% highlight html %}
+``` html
 <!-- 아래 tag를 필요한 위치에 삽입한다. 일반적으로 head 안에 위치한다. -->
 <script type=”text/javascript” src=”/path/to/jquery.js”></script>
-{% endhighlight %}
+```
 
 ## 사용방법
 
@@ -44,14 +44,14 @@ CDN경로는 아래와 같고 해당 경로를 이용해서 script tag를 삽입
 가장 기본적인 jQuery의 사용 예로 DOM(Document Object Model)에 접근하는 방법입니다.
 tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습니다.
 
-{% highlight html %}
+``` html
 <body>
     <div id="first">
         <input type="text" name="title">
         <input type="button" name="sendBtn" value="SEND">
     </div>
 </body>
-{% endhighlight %}
+```
 
 ``` javascript
 //기존 javascript를 이용한 DOM 접근
@@ -69,6 +69,12 @@ for(var i=0;i<inputObjs.length;i++){
 }
 
 //jQuery를 이용한 DOM 접근
+var bodyObj = jQuery('body')[0];
+var divObj = jQuery('#first')[0];
+var inputJObjs = jQuery('input');
+var titleObj = jQuery('input[name=title]')[0];
+var buttonObj = jQuery('input[type=button]')[0];
+
 var bodyObj = jQuery('body')[0];  //tag로
 var divObj = jQuery('#first')[0];  //id 값으로
 var inputJObjs = jQuery('input');  // 해당 tag가 모두 접근된다.
@@ -80,51 +86,47 @@ var buttonObj = $('input[type=button]')[0]; // tag와 type값으로 접근, $는
 JQuery에서는 Web page에서 발생하는 각종 Event Handler들을 제공합니다.
 해당 이벤트들을 callback을 통해서 처리할 수 있습니다. 사용 방법은 기본적으로 아래와 같은 패턴입니다.
 
-{% highlight javascript %}
+``` javascript
+>>>>>>> Stashed changes
 function callback(evt){
   if(evt)console.log(evt);
 }
 
 $(obj).mouseover(callback);  //obj에서 mouseover 이벤트가 발생하면 callback함수가 호출됩니다.
 $(obj).on('mouseover', callback); //위와 동일한 코드이지만 on 함수를 통해서 event 명을 문자열로 처리할 수 있습니다.
-{% endhighlight %}
+```
 
 몇 가지 중요한 Event 함수들을 확인해보면 아래와 같습니다.
 
 ##### [.ready()](http://api.jquery.com/ready/)
 해당 DOM이 로드가 완료되면 설정된 callback함수가 호출이 됩니다. 예를 들어 document에 ready함수를 호출하면 HTML DOM 전체가 로드가 되면 호출이됩니다.
 
-{% highlight javascript %}
+``` javascript
 $(document).ready(function(){
     //HTML 페이지가 모두 로딩되었을때 수행될 코드를 입력하면 됩니다.
 });
-{% endhighlight %}
+```
 
 ##### [.on()](http://api.jquery.com/on/)
 이 함수를 통해 DOM에서 발생하는 DOM event 또는 custom event에 대해 callback을 추가할 수 있습니다.
 
-{% highlight html %}
+``` html
 <div>
   <span class="title">제목</span>
   <p>단락글</p>
 </div>
-{% endhighlight %}
 
-{% highlight javascript %}
+``` javascript
 $('div').on('click', callback); //div 어디든 click을 하면 callback이 호출된다.
 $('div').on('click','p', callback); //div 내의 'p' tag 영역을 click하면 callback이 호출된다.
-{% endhighlight %}
+```
 
 ##### [.click()](http://api.jquery.com/click/)
 해당 DOM을 클릭한 경우에 설정된 callback이 호출됩니다.
 
-{% highlight javascript %}
+``` javascript
 $('#button').click(callback); // id가 button인 영역을 click하면 callback함수가 호출된다.
 $('#button').on('click', callback); //이런 방식도 .click()함수와 동일하게 동작한다.
-{% endhighlight %}
+```
 
 보다 많은 Event 관련 함수들을 확인하려면 [여기](http://api.jquery.com/category/events/)에서 확인하면 됩니다.
-=======
-
-
-
