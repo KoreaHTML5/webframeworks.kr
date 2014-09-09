@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include header.html %}
+    <link rel="stylesheet" href="/css/toc.css">
+    <script type="text/javascript" src="/js/jquery.toc.js"></script>
+</head>
+<body>
+{% include nav.html %}
+
+<div class="row content_bg" {% if page.title_background_color != empty %} style="background-color: #{{page.title_background_color}}" {% endif %}>
+<div class="col-md-10 col-md-offset-1 title_header jumbotron" {% if page.title_background_img != empty %} style="background:url({{page.title_background_img}}) no-repeat center" {% endif %} >
+<h1 class="title_header_title">{{ page.title }}</h1>
+<p class="title_header_summary">{{ page.summary }}</p>
+</div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="{{ site.data.authors[page.author].img }}" alt="{{ site.data.authors[page.author].name }}">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            {{ site.data.authors[page.author].name }}
+
+                        </h4>
+                        {{ site.data.authors[page.author].github }}<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+\
+        {% include tags.html %}
+    </div>
+
+    <div class="col-sm-7 col-md-8">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            {{ content }}
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : {% for tag in page.tags %}<a href="{{site.baseurl}}/tags/{{tag}}">{{tag}}</a>&nbsp;{% endfor %}</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            {% include disqus.html %}
+        </div>
+
+    </div>
+
+    {% include footer.html %}
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+
+</body>
+</html>
