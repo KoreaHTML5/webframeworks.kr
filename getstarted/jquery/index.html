@@ -152,23 +152,19 @@
         <h3 class="panel-title">Tags</h3>
     </div>
     <div class="panel-body">
-        <span style='font-size: 265%'><a href='/dev.koreahtml5.kr/tags/test/'>test</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/html5/'>html5</a></span>
-<span style='font-size: 265%'><a href='/dev.koreahtml5.kr/tags/html/'>html</a></span>
-<span style='font-size: 106%'><a href='/dev.koreahtml5.kr/tags/test4/'>test4</a></span>
-<span style='font-size: 106%'><a href='/dev.koreahtml5.kr/tags/markdown/'>markdown</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/jquery/'>jquery</a></span>
-<span style='font-size: 106%'><a href='/dev.koreahtml5.kr/tags/javascript/'>javascript</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/grunt/'>grunt</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/gulp/'>gulp</a></span>
-<span style='font-size: 159%'><a href='/dev.koreahtml5.kr/tags/build/'>build</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/yeoman/'>yeoman</a></span>
-<span style='font-size: 106%'><a href='/dev.koreahtml5.kr/tags/bower/'>bower</a></span>
-<span style='font-size: 106%'><a href='/dev.koreahtml5.kr/tags/twitter/'>twitter</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/backbone/'>backbone</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/framework/'>framework</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/angularjs/'>angularjs</a></span>
-<span style='font-size: 53%'><a href='/dev.koreahtml5.kr/tags/getstarted/'>getstarted</a></span>
+        <span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/jquery/'>jquery</a></span>
+<span style='font-size: 144%'><a href='/dev.koreahtml5.kr/tags/javascript/'>javascript</a></span>
+<span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/html/'>html</a></span>
+<span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/grunt/'>grunt</a></span>
+<span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/gulp/'>gulp</a></span>
+<span style='font-size: 216%'><a href='/dev.koreahtml5.kr/tags/build/'>build</a></span>
+<span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/yeoman/'>yeoman</a></span>
+<span style='font-size: 144%'><a href='/dev.koreahtml5.kr/tags/bower/'>bower</a></span>
+<span style='font-size: 144%'><a href='/dev.koreahtml5.kr/tags/twitter/'>twitter</a></span>
+<span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/backbone/'>backbone</a></span>
+<span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/framework/'>framework</a></span>
+<span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/angularjs/'>angularjs</a></span>
+<span style='font-size: 72%'><a href='/dev.koreahtml5.kr/tags/getstarted/'>getstarted</a></span>
 
     </div>
 </div>
@@ -190,28 +186,32 @@ jQuery는 또한 ajax 처리와 animation 처리를 간편하게 할 수 있도�
 <h3>Download 받아서 사용하는 경우</h3>
 
 <p><a href="http://jquery.com/download/">http://jquery.com/download/</a> 에서 최신 버전의 jquery를 받을 수 있다.</p>
+
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 아래 tag를 필요한 위치에 삽입한다. 일반적으로 head 안에 위치한다. --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">”text/javascript”</span> <span class="na">src=</span><span class="s">”/path/to/jquery.js”</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">”text/javascript”</span> <span class="na">src=</span><span class="s">”/path/to/jquery.js”</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
 <h3>CDN을 이용하는 경우</h3>
 
 <p>CDN경로는 아래와 같고 해당 경로를 이용해서 script tag를 삽입하면 된다.</p>
+
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 아래 tag를 필요한 위치에 삽입한다. 일반적으로 head 안에 위치한다. --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">”text/javascript”</span> <span class="na">src=</span><span class="s">”/path/to/jquery.js”</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">”text/javascript”</span> <span class="na">src=</span><span class="s">”/path/to/jquery.js”</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
 <h2>사용방법</h2>
 
 <h3>DOM 접근</h3>
 
-<p>가장 기본적인 jQuery의 사용 예로 DOM(Document Object Model)에 접근하는 방법입니다.
+<p>가장 기본적인 jQuery의 사용 예로 DOM Object에 접근하는 방법입니다.
 tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습니다.</p>
+
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">name=</span><span class="s">&quot;sendBtn&quot;</span> <span class="na">value=</span><span class="s">&quot;SEND&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//기존 javascript를 이용한 DOM 접근</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//기존 javascript를 이용한 DOM 접근</span>
 <span class="kd">var</span> <span class="nx">bodyObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByID</span><span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">inputObjs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
@@ -230,54 +230,7 @@ tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습�
 <span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#first&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">inputJObjs</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">titleObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[name=title]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">buttonObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[type=button]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-
-<span class="kd">var</span> <span class="nx">bodyObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>  <span class="c1">//tag로</span>
-<span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#first&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>  <span class="c1">//id 값으로</span>
-<span class="kd">var</span> <span class="nx">inputJObjs</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>  <span class="c1">// 해당 tag가 모두 접근된다.</span>
-<span class="kd">var</span> <span class="nx">titleObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[name=title]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// input tag이면서 name속성값이 title인 DOM에 접근</span>
-<span class="kd">var</span> <span class="nx">buttonObj</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input[type=button]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// tag와 type값으로 접근, $는 jQuery의 축약지시자이다.</span>
-</code></pre></div>
-<h3>Event 처리</h3>
-
-<p>JQuery에서는 Web page에서 발생하는 각종 Event Handler들을 제공합니다.
-해당 이벤트들을 callback을 통해서 처리할 수 있습니다. 사용 방법은 기본적으로 아래와 같은 패턴입니다.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="nx">Stashed</span> <span class="nx">changes</span>
-<span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
-  <span class="k">if</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">evt</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">$</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">mouseover</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>  <span class="c1">//obj에서 mouseover 이벤트가 발생하면 callback함수가 호출됩니다.</span>
-<span class="nx">$</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;mouseover&#39;</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span> <span class="c1">//위와 동일한 코드이지만 on 함수를 통해서 event 명을 문자열로 처리할 수 있습니다.</span>
-</code></pre></div>
-<p>몇 가지 중요한 Event 함수들을 확인해보면 아래와 같습니다.</p>
-
-<h5><a href="http://api.jquery.com/ready/">.ready()</a></h5>
-
-<p>해당 DOM이 로드가 완료되면 설정된 callback함수가 호출이 됩니다. 예를 들어 document에 ready함수를 호출하면 HTML DOM 전체가 로드가 되면 호출이됩니다.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="c1">//HTML 페이지가 모두 로딩되었을때 수행될 코드를 입력하면 됩니다.</span>
-<span class="p">});</span>
-</code></pre></div>
-<h5><a href="http://api.jquery.com/on/">.on()</a></h5>
-
-<p>이 함수를 통해 DOM에서 발생하는 DOM event 또는 custom event에 대해 callback을 추가할 수 있습니다.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;p&gt;</span>단락글<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-``` javascript
-$(&#39;div&#39;).on(&#39;click&#39;, callback); //div 어디든 click을 하면 callback이 호출된다.
-$(&#39;div&#39;).on(&#39;click&#39;,&#39;p&#39;, callback); //div 내의 &#39;p&#39; tag 영역을 click하면 callback이 호출된다.
-</code></pre></div>
-<h5><a href="http://api.jquery.com/click/">.click()</a></h5>
-
-<p>해당 DOM을 클릭한 경우에 설정된 callback이 호출됩니다.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#button&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span> <span class="c1">// id가 button인 영역을 click하면 callback함수가 호출된다.</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#button&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span> <span class="c1">//이런 방식도 .click()함수와 동일하게 동작한다.</span>
-</code></pre></div>
-<p>보다 많은 Event 관련 함수들을 확인하려면 <a href="http://api.jquery.com/category/events/">여기</a>에서 확인하면 됩니다.</p>
+<span class="kd">var</span> <span class="nx">buttonObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[type=button]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span></code></pre></div>
 
         </div>
 
