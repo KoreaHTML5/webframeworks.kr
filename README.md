@@ -51,7 +51,7 @@ gulp serve
 ```gulp dist``` 명령은 빌드/복사된 ```publish``` 파일과 ```node.js``` 기반의 어플리케이션 파일을 ```dist``` 아래에 복사하여 서버에서 바로 구동될 수 있는 패키지로 만들어 주는 명령입니다. 복사된 파일을 서버에서 실제 서비스에 바로 사용될 수 있습니다.
 
 # 글 작성 방법
-TBD
+[확인하기](CONTRIBUTE.md)
 
 # 라이센스
-TBD
+[MIT license](LICENSE)
