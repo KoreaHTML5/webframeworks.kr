@@ -4,7 +4,7 @@
     <style>
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
 </style>
-<title>Dev Html5Korea Home - jQuery 시작하기</title>
+<title>Dev Html5Korea Home - Backbone.js Part 1 - 살펴보기</title>
 <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/main.css">
 <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/syntax.css">
@@ -47,10 +47,10 @@
     </div>
 </nav>
 
-<div class="row content_bg"  style="background-color: #0769AD" >
-    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url(imgs/logo-jquery@2x.png) no-repeat center"  >
-        <h1 class="title_header_title">jQuery 시작하기</h1>
-        <p class="title_header_summary">jQuery란 무엇이고 설치방법과 기본적인 사용법에 대해서 알아봅니다. 최근 웹 어플리케이션 개발할때 필수적으로 사용하는 라이브러리이니 만큼 익숙해지는 것이 좋습니다.</p>
+<div class="row content_bg"  style="background-color: #AED5E6" >
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+        <h1 class="title_header_title">Backbone.js Part 1 - 살펴보기</h1>
+        <p class="title_header_summary"></p>
     </div>
 </div>
 
@@ -64,14 +64,14 @@
             <div class="panel-body">
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object profile_img" src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xap1/t1.0-9/10455759_756319334390618_9098829359137199788_n.jpg" alt="이원제">
+                        <img class="media-object profile_img" src="http://www.gravatar.com/avatar/f239e8d5f5351899d09fffe4d78e2d88?s=200" alt="조규태">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            이원제
+                            조규태
 
                         </h4>
-                        nurinamu<br>
+                        oigil<br>
                     </div>
                 </div>
             </div>
@@ -172,70 +172,83 @@
 
     <div class="col-sm-7 col-md-8">
         <div class="media_content media_item shadow_panel" id="main_content">
-            <h1>jQuery 시작하기</h1>
+            <h1>Backbone.js의 구성</h1>
 
-<h2>jQuery란?</h2>
+<p>이번 포스팅에서는 본격적인 진행에 앞서 Backbone.js의 각 요소에 대해 간략한 소개를 하도록 하겠습니다.
+Backbone.js는 Event, Model, Collection, Router, History, Sync, View 등의 하위모듈로 구성되어 있으며 이들 모두가 웹애플리케이션 개발에 큰 도움을 줍니다.
+하지만 이 중에서도 웹애플리케이션 개발의 뼈대 역할을 하는 3가지가 바로 Model, Collection, View 입니다. (Event는 이 세가지를 접하면서 자연스럽게 활용하게 될 것입니다.)</p>
 
-<p>jQuery는 기본적으로 DOM manipulator 기능이 강력합니다. 보다 편하고 쉽게 DOM 객체에 접근 가능하게 해주며 추가적인 Wrapper 함수들을 통해 다양한 이벤트 처리, 속성 접근이 가능합니다.
-jQuery는 또한 ajax 처리와 animation 처리를 간편하게 할 수 있도록 제공하고 있으며 브라우저 호환성이 우수합니다. jQuery는 다양한 Javascript Library / Framework에서 활용되고 있어 근래의 웹 기술 학습을 위해서는 거의 필수적으로 선수 학습을 해야합니다.</p>
+<h2>Backbone.Collection</h2>
 
-<h2>설치방법</h2>
+<p>Backbone.Collection은 일종의 목록 데이터라고 보면 되겠습니다. 서버로부터는 Array형태의 JSON 객체 집합을 받아서 구성하게 되며, 
+이 데이터들에 대해 루프를 돌며 각 데이터를 자신에게 지정된 Model 형태에 맞는 인스턴스로 만들어냅니다.</p>
 
-<p>jQuery는 홈페이지를 통해 download 받아서 사용하는 방법과 CDN을 통한 직접 사용 방법을 제공합니다.</p>
+<p><img src="/static/img/backbone_1.png" alt="alt Collection" title="Title"></p>
 
-<h3>Download 받아서 사용하는 경우</h3>
+<p>Model 입장에서는 일종의 부모 역할을 하는 셈입니다. 그리고 이 역할에 맞게 Collection은 자신과 자신의 Model을 관리하는 여러 Method가 있고 또 Model의 상태 변화를
+감지하는 Built-in 이벤트도 있습니다.</p>
 
-<p><a href="http://jquery.com/download/">http://jquery.com/download/</a> 에서 최신 버전의 jquery를 받을 수 있다.</p>
+<h2>Backbone.Model</h2>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 아래 tag를 필요한 위치에 삽입한다. 일반적으로 head 안에 위치한다. --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">”text/javascript”</span> <span class="na">src=</span><span class="s">”/path/to/jquery.js”</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+<p>세가지 요소 중에서도 Backbone.js를 스마트하다고 느끼게 해주는 요소가 바로 Backbone.Model입니다. 
+일반적으로 Model은 Collection에 포함되는 개별 단위의 Data 객체가 되며, 어떻게 활용하느냐에 따라 Collection 없이 단독으로 불러와서 사용할 수도 있습니다. 
+설령 어떠한 개인의 정보를 Model화 한다면 다음처럼 정리할 수 있겠습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">{
+    name: &quot;Cavin Jo&quot;,
+    age: 32,
+    job: &quot;S/W engineer&quot;,
+    color: &quot;yellow&quot;,
+    height: 175
+}
+</code></pre></div>
+<p>이렇게 구성한 Model은 자신과 연결된 View에 대해 일종의 영혼과도 같은 역할을 하게 되므로, 사실상 유저 인터페이스와 Data sync 모두를 아우르는 핵심 요소라고 봐도 과언이 아닙니다.</p>
 
-<h3>CDN을 이용하는 경우</h3>
+<h2>Backbone.View</h2>
 
-<p>CDN경로는 아래와 같고 해당 경로를 이용해서 script tag를 삽입하면 된다.</p>
+<p>View는 Backbone.js 애플리케이션의 시작이자 끝이라고 볼 수 있습니다.
+애플리케이션을 시작할 때 new 생성자를 통해 Backbone.View 객체 인스턴스를 만들어내며, 데이터 변화에 대한 표현도 Backbone.View 객체를 통해 드러냅니다.
+그리고 View는 어떻게 구성하느냐에 따라 정말 다양하게 표현할 수 있는데, N개의 아이템을 지니고 있는 List단위의 View를 만들고 그 안의 각 아이템에 대해 Child 단위의 새로운 View를 만들 수 있으며,
+원하면 하나의 Element에 대해 여러개의 View로 만들어 관리할 수도 있습니다.</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 아래 tag를 필요한 위치에 삽입한다. 일반적으로 head 안에 위치한다. --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">”text/javascript”</span> <span class="na">src=</span><span class="s">”/path/to/jquery.js”</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+<p>이렇게 DOM Element를 Backbone.View 인스턴스로 감싸는 이점은 분명합니다. 
+그 중에서도 가장 큰 것은 Backbone.Model과 연동을 통해 Model의 변화에 대해 View의 변화를 자동적으로 적용시킬 있다는 점입니다.
+하지만 Model을 연동시키지 않더라도 Backbone.View가 주는 편리한 Event, Method 관리 방식을 적용시킬 수 있는 것도 큰 장점입니다. </p>
 
-<h2>사용방법</h2>
+<p>앞으로의 포스팅에서 자주 언급이 되겠지만 Model을 결합한 View를 다루다보면, 마치 살아있는 객체를 다루는 느낌을 받게 될 것입니다.</p>
 
-<h3>DOM 접근</h3>
+<h2>Backbone.Event</h2>
 
-<p>가장 기본적인 jQuery의 사용 예로 DOM Object에 접근하는 방법입니다.
-tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습니다.</p>
+<p>Backbone.js에서는 Model과 Collection에 다양한 Built-in 이벤트를 제공하고 있습니다. 
+많이 쓰이는 것들을 정리해 보면 다음과 같습니다.</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">name=</span><span class="s">&quot;sendBtn&quot;</span> <span class="na">value=</span><span class="s">&quot;SEND&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span></code></pre></div>
+<ul>
+<li><em>add</em> : Model이 새로 생성되었을 때 발생합니다. Model 자신과 부모 Collection에 전달됩니다.</li>
+<li><em>remove</em> : Model이 부모 Collection에서 제외되었을 때 발생합니다.</li>
+<li><em>reset</em> : Collection의 전체데이터가 리셋되었을 때 발생합니다.</li>
+<li><em>change</em> : Model의 속성 일부가 바뀌었을 때 발생합니다.</li>
+<li><em>change:attribute</em> : 특정 속성이 바뀌었을 때 발생하는 이벤트입니다. 설령 <code>model.on(&quot;change:title&quot;, callback)</code> 이라고 바인드 시켜놓았을 경우에는, 해당 Model의 <code>title</code> 속성이 바뀌었을 때만 callback이 실행될 것입니다. </li>
+<li><em>destroy</em> : Model이 <code>destroy</code> 되어 DELETE 되었을 때 발생합니다.</li>
+<li><em>all</em> : Model 또는 Collection에 발생하는 모든 종류의 이벤트에 대응합니다.</li>
+</ul>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//기존 javascript를 이용한 DOM 접근</span>
-<span class="kd">var</span> <span class="nx">bodyObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByID</span><span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">inputObjs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">titleObj</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">buttonObj</span><span class="p">;</span>
-<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">inputObjs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-  <span class="k">if</span><span class="p">(</span><span class="nx">inputObjs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">name</span> <span class="o">==</span> <span class="s1">&#39;title&#39;</span><span class="p">){</span>
-    <span class="nx">titleObj</span> <span class="o">=</span> <span class="nx">inputObjs</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-  <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">inputObjs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;button&#39;</span><span class="p">){</span>
-    <span class="nx">buttonObj</span> <span class="o">=</span> <span class="nx">inputObjs</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<p>Backbone.Event는 사용하기가 매우 간단합니다. 위의 <code>change:attribute</code>에서 보았던 것처럼, Model이나 Collection에 <code>on</code> 메소드를 이용해서 손쉽게 바인딩할 수 있으며 원하는 경우 <code>off</code>로 unbind할 수도 있습니다.
+그리고 Built-in 이벤트가 아닌 자신만의 이벤트를 만들어 사용하기도 쉽습니다. 특별한 사전작업 없이 다음과 같이 직접 만든 이벤트명을 바인드를 시켜두고 </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">model.on(&quot;customEvent&quot;, callback)
+</code></pre></div>
+<p>필요할 때마다 해당 Model에 다음처럼 이벤트를 호출하면 끝입니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">model.trigger(&quot;customEvent&quot;)
+</code></pre></div>
+<h2>정리하며..</h2>
 
-<span class="c1">//jQuery를 이용한 DOM 접근</span>
-<span class="kd">var</span> <span class="nx">bodyObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#first&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">inputJObjs</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">titleObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[name=title]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">buttonObj</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[type=button]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span></code></pre></div>
+<p>이 외에도 Router, History, Sync 등 몇가지 모듈이 더 있습니다. 하지만 단언하자면 이들은 절대 Backbone.js의 핵심요소가 아닙니다.
+때문에 처음 접하시는 분이라면 아직 이 모듈들에 대해 마음 편히 가지셔도 되며 일단 Model, Collection, View를 숙지하신 후 에 확인해보시길 권해드립니다.</p>
+
+<p>다음 post 부터는 Backbone.js와 jQuery-ui의 드래그 기능을 이용하여 &#39;스티커 메모&#39; 웹앱을 만드는 튜토리얼을 중심으로 진행하도록 하겠습니다.</p>
 
         </div>
 
         <div class="media_content media_item shadow_panel">
-            <p>Tags : <a href="/dev.koreahtml5.kr/tags/jquery">jquery</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/javascript">javascript</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/html">html</a>&nbsp;</p>
+            <p>Tags : <a href="/dev.koreahtml5.kr/tags/backbone">backbone</a>&nbsp;</p>
         </div>
 
 
