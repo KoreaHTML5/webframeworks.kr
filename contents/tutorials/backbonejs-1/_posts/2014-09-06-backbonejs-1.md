@@ -1,5 +1,5 @@
 ---
-layout : getstarted
+layout : tutorials
 title : Backbone.js Part 1 - 살펴보기
 category : tutorials
 permalink : /tutorials/backbonejs-1
@@ -19,7 +19,7 @@ Backbone.js는 Event, Model, Collection, Router, History, Sync, View 등의 하�
 Backbone.Collection은 일종의 목록 데이터라고 보면 되겠습니다. 서버로부터는 Array형태의 JSON 객체 집합을 받아서 구성하게 되며, 
 이 데이터들에 대해 루프를 돌며 각 데이터를 자신에게 지정된 Model 형태에 맞는 인스턴스로 만들어냅니다.
 
-![alt Collection](/static/img/backbone_1.png "Title")
+![alt Collection](img/backbone_1.png "Title")
  
 Model 입장에서는 일종의 부모 역할을 하는 셈입니다. 그리고 이 역할에 맞게 Collection은 자신과 자신의 Model을 관리하는 여러 Method가 있고 또 Model의 상태 변화를
 감지하는 Built-in 이벤트도 있습니다.
