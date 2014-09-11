@@ -82,12 +82,99 @@ var titleObj = jQuery('input[name=title]')[0]; // input tag이면서 name속성�
 var buttonObj = $('input[type=button]')[0]; // tag와 type값으로 접근, $는 jQuery의 축약지시자이다.
 ```
 
+### DOM 삽입
+JQuery에서는 기존의 DOM 요소들 사이에 새 객체 또는 Text/Html을 삽입할 수 있는 다양한 함수들을 제공합니다.
+
+##### [.append()](http://api.jquery.com/append)
+Parameter로 넘겨 받은 객체를 해당 객체의 맨 마지막에 추가합니다.
+
+``` javascript
+$('#mockup').append($('<span>new span</span>'));
+```
+
+``` html
+<div id="mockup">
+  <p>나는 누구인가</p>
+  <!-- span tag가 이곳에 삽입될 것입니다. <span>new span></span> -->
+</div>
+```
+
+##### [.appendTo()](http://api.jquery.com/appendTo)
+Parameter로 넘겨 받은 객체의 맨 마지막에 해당 객체를 추가합니다.
+
+``` javascript
+$('<span>new span</span>').append('#mockup');
+```
+
+``` html
+<div id="mockup">
+  <p>나는 누구인가</p>
+  <!-- span tag가 이곳에 삽입될 것입니다. <span>new span></span> -->
+</div>
+```
+
+
+##### [.prepend()](http://api.jquery.com/prepend)
+append()와는 반대로 Parameter로 넘겨 받은 객체를 해당 객체의 맨 앞에 추가합니다.
+
+``` javascript
+$('#mockup').append($('<span>new span</span>'));
+```
+
+``` html
+<div id="mockup">
+  <!-- span tag가 이곳에 삽입될 것입니다. <span>new span></span> -->
+  <p>나는 누구인가</p>  
+</div>
+```
+
+##### [.prependTo()](http://api.jquery.com/prependTo)
+appendTo()와는 반대로 Parameter로 넘겨 받은 객체의 맨 앞에 해당 객체를 추가합니다.
+
+``` javascript
+$('<span>new span</span>').append('#mockup');
+```
+
+``` html
+<div id="mockup">
+  <!-- span tag가 이곳에 삽입될 것입니다. <span>new span></span> -->
+  <p>나는 누구인가</p>
+</div>
+```
+
+##### [.text()](http://api.jquery.com/text)
+Parameter로 넘겨 받은 문자열을 해당 객체의 하위에 삽입합니다. 만약 기존의 문자열이 존재하였다면 대치됩니다.
+Parameter가 빈상태로 호출이 되면 해당 객체의 하위 문자열을 반환합니다.
+
+``` javascript
+$('#mockup').text('<p>테스트입니다.</p>');
+```
+
+``` html
+<div id="mockup">
+  &lt;p&gt;테스트입니다.&lt;/p&gt;
+</div>
+```
+
+##### [.html()](http://api.jquery.com/html)
+Parameter로 넘겨 받은 HTML 문자열을 해당 객체의 하위에 삽입합니다. 만약 하위에 HTML이 존재하였다면 대치됩니다.
+Parameter가 빈상태로 호출이 되면 해당 객체의 하위 HTML을 반환합니다.
+
+``` javascript
+$('#mockup').html('<p>테스트입니다.</p>');
+```
+
+``` html
+<div id="mockup">
+  <p>테스트입니다.</p>
+</div>
+```
+
 ### Event 처리
 JQuery에서는 Web page에서 발생하는 각종 Event Handler들을 제공합니다.
 해당 이벤트들을 callback을 통해서 처리할 수 있습니다. 사용 방법은 기본적으로 아래와 같은 패턴입니다.
 
 ``` javascript
->>>>>>> Stashed changes
 function callback(evt){
   if(evt)console.log(evt);
 }
@@ -98,7 +185,7 @@ $(obj).on('mouseover', callback); //위와 동일한 코드이지만 on 함수�
 
 몇 가지 중요한 Event 함수들을 확인해보면 아래와 같습니다.
 
-##### [.ready()](http://api.jquery.com/ready/)
+#### [.ready()](http://api.jquery.com/ready/)
 해당 DOM이 로드가 완료되면 설정된 callback함수가 호출이 됩니다. 예를 들어 document에 ready함수를 호출하면 HTML DOM 전체가 로드가 되면 호출이됩니다.
 
 ``` javascript
@@ -107,7 +194,7 @@ $(document).ready(function(){
 });
 ```
 
-##### [.on()](http://api.jquery.com/on/)
+#### [.on()](http://api.jquery.com/on/)
 이 함수를 통해 DOM에서 발생하는 DOM event 또는 custom event에 대해 callback을 추가할 수 있습니다.
 
 ``` html
@@ -121,7 +208,7 @@ $('div').on('click', callback); //div 어디든 click을 하면 callback이 호�
 $('div').on('click','p', callback); //div 내의 'p' tag 영역을 click하면 callback이 호출된다.
 ```
 
-##### [.click()](http://api.jquery.com/click/)
+#### [.click()](http://api.jquery.com/click/)
 해당 DOM을 클릭한 경우에 설정된 callback이 호출됩니다.
 
 ``` javascript
