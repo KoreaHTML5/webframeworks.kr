@@ -240,44 +240,36 @@ tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습�
 
 <h5><a href="http://api.jquery.com/append">.append()</a></h5>
 
-<p>Parameter로 넘겨 받은 객체를 해당 객체의 맨 마지막에 추가합니다.
-<code>javascript
-$(&#39;#mockup&#39;).append($(&#39;&lt;span&gt;new span&lt;/span&gt;&#39;));
-</code></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
+<p>Parameter로 넘겨 받은 객체를 해당 객체의 맨 마지막에 추가합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#mockup&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;new span&lt;/span&gt;&#39;</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;p&gt;</span>나는 누구인가<span class="nt">&lt;/p&gt;</span>
   <span class="c">&lt;!-- span tag가 이곳에 삽입될 것입니다. &lt;span&gt;new span&gt;&lt;/span&gt; --&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <h5><a href="http://api.jquery.com/appendTo">.appendTo()</a></h5>
 
-<p>Parameter로 넘겨 받은 객체의 맨 마지막에 해당 객체를 추가합니다.
-<code>javascript
-$(&#39;&lt;span&gt;new span&lt;/span&gt;&#39;).append(&#39;#mockup&#39;);
-</code></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
+<p>Parameter로 넘겨 받은 객체의 맨 마지막에 해당 객체를 추가합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;new span&lt;/span&gt;&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;#mockup&#39;</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;p&gt;</span>나는 누구인가<span class="nt">&lt;/p&gt;</span>
   <span class="c">&lt;!-- span tag가 이곳에 삽입될 것입니다. &lt;span&gt;new span&gt;&lt;/span&gt; --&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <h5><a href="http://api.jquery.com/prepend">.prepend()</a></h5>
 
-<p>append()와는 반대로 Parameter로 넘겨 받은 객체를 해당 객체의 맨 앞에 추가합니다.
-<code>javascript
-$(&#39;#mockup&#39;).append($(&#39;&lt;span&gt;new span&lt;/span&gt;&#39;));
-</code></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
+<p>append()와는 반대로 Parameter로 넘겨 받은 객체를 해당 객체의 맨 앞에 추가합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#mockup&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;new span&lt;/span&gt;&#39;</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- span tag가 이곳에 삽입될 것입니다. &lt;span&gt;new span&gt;&lt;/span&gt; --&gt;</span>
   <span class="nt">&lt;p&gt;</span>나는 누구인가<span class="nt">&lt;/p&gt;</span>  
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <h5><a href="http://api.jquery.com/prependTo">.prependTo()</a></h5>
 
-<p>appendTo()와는 반대로 Parameter로 넘겨 받은 객체의 맨 앞에 해당 객체를 추가합니다.
-<code>javascript
-$(&#39;&lt;span&gt;new span&lt;/span&gt;&#39;).append(&#39;#mockup&#39;);
-</code></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
+<p>appendTo()와는 반대로 Parameter로 넘겨 받은 객체의 맨 앞에 해당 객체를 추가합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;new span&lt;/span&gt;&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;#mockup&#39;</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- span tag가 이곳에 삽입될 것입니다. &lt;span&gt;new span&gt;&lt;/span&gt; --&gt;</span>
   <span class="nt">&lt;p&gt;</span>나는 누구인가<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
@@ -285,22 +277,18 @@ $(&#39;&lt;span&gt;new span&lt;/span&gt;&#39;).append(&#39;#mockup&#39;);
 <h5><a href="http://api.jquery.com/text">.text()</a></h5>
 
 <p>Parameter로 넘겨 받은 문자열을 해당 객체의 하위에 삽입합니다. 만약 기존의 문자열이 존재하였다면 대치됩니다.
-Parameter가 빈상태로 호출이 되면 해당 객체의 하위 문자열을 반환합니다.
-<code>javascript
-$(&#39;#mockup&#39;).text(&#39;&lt;p&gt;테스트입니다.&lt;/p&gt;&#39;);
-</code></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
+Parameter가 빈상태로 호출이 되면 해당 객체의 하위 문자열을 반환합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#mockup&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;테스트입니다.&lt;/p&gt;&#39;</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
   <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>테스트입니다.<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <h5><a href="http://api.jquery.com/html">.html()</a></h5>
 
 <p>Parameter로 넘겨 받은 HTML 문자열을 해당 객체의 하위에 삽입합니다. 만약 하위에 HTML이 존재하였다면 대치됩니다.
-Parameter가 빈상태로 호출이 되면 해당 객체의 하위 HTML을 반환합니다.
-<code>javascript
-$(&#39;#mockup&#39;).html(&#39;&lt;p&gt;테스트입니다.&lt;/p&gt;&#39;);
-</code></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
+Parameter가 빈상태로 호출이 되면 해당 객체의 하위 HTML을 반환합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#mockup&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;테스트입니다.&lt;/p&gt;&#39;</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mockup&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;p&gt;</span>테스트입니다.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
@@ -308,8 +296,7 @@ $(&#39;#mockup&#39;).html(&#39;&lt;p&gt;테스트입니다.&lt;/p&gt;&#39;);
 
 <p>JQuery에서는 Web page에서 발생하는 각종 Event Handler들을 제공합니다.
 해당 이벤트들을 callback을 통해서 처리할 수 있습니다. 사용 방법은 기본적으로 아래와 같은 패턴입니다.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="nx">Stashed</span> <span class="nx">changes</span>
-<span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">evt</span><span class="p">);</span>
 <span class="p">}</span>
 
