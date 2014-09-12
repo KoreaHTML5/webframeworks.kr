@@ -9,25 +9,7 @@ var del = require('del');
 var deploy = require("gulp-gh-pages");
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
-var nodemon = require('gulp-nodemon');
 var runSequence = require('run-sequence');
-
-// Nodemon, execute node application. It will be refreshed if node files has
-// been changed
-gulp.task('nodemon', function (cb) {
-	var init = false;
-	nodemon({
-		script: 'bin/main.js',
-		watch: ['bin/main.js'],
-		env: { 'NODE_ENV': 'development'}
-	})
-	.on('start', function () {
-		if (!init) {
-			cb();
-			init = true;
-		}
-	})
-});
 
 // Jekyll task, build with jekyll
 gulp.task('jekyll-gh', function(cb){
@@ -54,27 +36,31 @@ gulp.task('gh', ['clean', 'jekyll-gh'], function () {
 
 // Dist task, make distribution version with node application
 gulp.task('dist', ['default'], function () {
-	return gulp.src(['publish/**/*', 'bin/**'], {base: '.'})
+	return gulp.src(['publish/**/*'], {base: '.'})
 			.pipe(gulp.dest('dist'))
 });
 
 // Watch files changes
 gulp.task('watch', function() {
 	gulp.watch(['contents/**/*.html'], ['jekyll', reload]);
-	gulp.watch(['contents/_posts/**/*.md'], ['jekyll', reload]);
+	gulp.watch(['contents/getstarted/**/*.md'], ['jekyll', reload]);
+	gulp.watch(['contents/tutorials/**/*.md'], ['jekyll', reload]);
 });
 
 // Browser-sync for preview
 gulp.task('browser-sync', function() {
 	browserSync.init(null, {
-		proxy: 'http://localhost:' + 8888,
-		port: 7000
+		notify: false,
+		server: {
+			baseDir: 'publish'
+		},
+		port: 8888
 	});
 });
 
 // Watch files for changes & reload
-gulp.task('serve', ['default'], function (cb) {
-	runSequence('nodemon', 'browser-sync', 'watch', cb);
+gulp.task('serve', function (cb) {
+	runSequence('browser-sync', 'watch', cb);
 });
 
 // Clean task
