@@ -138,7 +138,7 @@ grunt bowerInstall
 
   - 모든 제네레이터가 bower install 기능을 지원하지 않을 수 있습니다. 만약 관련된 내용을 더 알고 싶다면 다음 grunt 태스크(task) 를 찾아보세요. `grunt-bower-requirejs`,  `grunt-bower-install`
 
-Bower 에 대해서 더 자세히 알고 싶으시면 [Get started Bower](/getstarted/bower) 를 참고하세요.
+Bower 에 대해서 더 자세히 알고 싶으시면 [Get started Bower]({{site.baseurl}}/getstarted/bower) 를 참고하세요.
 
 ## Grunt
 
@@ -163,7 +163,7 @@ grunt test
 grunt
 ```
 
-Grunt 에 대해서 저 자세히 알고 싶으시면 [Get started Grunt and Gulp](/getstarted/grunt-and-gulp/) 를 참고하세요
+Grunt 에 대해서 저 자세히 알고 싶으시면 [Get started Grunt and Gulp]({{site.baseurl}}/getstarted/grunt-and-gulp/) 를 참고하세요
 
 ## References
 
