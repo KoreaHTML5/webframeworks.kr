@@ -83,6 +83,11 @@
 
 .top_menu{
     margin-bottom: 0 !important;
+    background-color : #FFFFFF;
+    border-bottom : 4px solid #1F1F1F;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
 }
 
 body{
