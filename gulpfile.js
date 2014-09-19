@@ -42,7 +42,7 @@ gulp.task('dist', ['default'], function () {
 
 // Watch files changes
 gulp.task('watch', function() {
-	gulp.watch(['contents/**/*.html'], ['jekyll', reload]);
+	gulp.watch(['contents/**/*.html', 'contents/**/*.css', 'contents/**/*.js'], ['jekyll', reload]);
 	gulp.watch(['contents/getstarted/**/*.md'], ['jekyll', reload]);
 	gulp.watch(['contents/tutorials/**/*.md'], ['jekyll', reload]);
 });
@@ -59,7 +59,7 @@ gulp.task('browser-sync', function() {
 });
 
 // Watch files for changes & reload
-gulp.task('serve', function (cb) {
+gulp.task('serve', ['default'], function (cb) {
 	runSequence('browser-sync', 'watch', cb);
 });
 
