@@ -1,17 +1,1 @@
-source : contents
-destination : publish
-
-markdown_ext : "markdown,mkdown,mkdn,mkd,md"
-
-markdown :    redcarpet
-highlighter : pygments
-lsi :         false
-excerpt_separator : "\n\n"
-
-kramdown :
-  input : GFM
-
-redcarpet :
-  extensions : []
-
 baseurl : "/dev.koreahtml5.kr"
