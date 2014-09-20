@@ -50,11 +50,12 @@
 
 		var tocContainer = $(this);
 
-		tocContainer.find('h1').each(function() {
+		tocContainer.find('h2').each(function() {
 			var levelHTML = '';
 			var innerSection = 0;
 			var h1 = $(this);
 
+			/*
 			h1.nextUntil('h1').filter('h2').each(function() {
 				++innerSection;
 				var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection + '-' +  + innerSection;
@@ -65,6 +66,7 @@
 					itemNumber + '.' + innerSection,
 					$(this).text());
 			});
+			*/
 			if (levelHTML) {
 				levelHTML = '<ul class="list-group">' + levelHTML + '</ul>\n';
 			}
