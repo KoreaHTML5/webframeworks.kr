@@ -43,7 +43,7 @@ Getting started에서 소개한 Underscore, jQuery, Backbone.js 이외에 필요
 
 그럼 이제 튜토리얼을 시작해보겠습니다.
 
-# 스티커메모 웹앱 만들기
+# 스티커메모 웹앱 만들기 part.1
 
 ## Model
 이 웹앱에서 개별 메모 데이터는 Backbone.Model에 대응될 수 있습니다.
@@ -60,7 +60,7 @@ var MemoModel = Backbone.Model.extend({
 
 Model에서는 보통 `idAttribute`와 `defaults`를 지정하는 선에서 마무리합니다. 하지만 별도의 Collection 없이 단독으로 활동하는 Model 인 경우에는 Model이 직접 스스로 fetch되어야 하므로 `url` 값을 지정할 수 있습니다.
 
-### idAttribute
+### model.idAttribute
 `idAttribute`는 Collection 속의 모델 데이터가 갖는 Primary key에 해당됩니다. 사람으로 치면 주민번호에 해당하는 값이라고 볼 수 있습니다. 해당 값을 기준으로 Model이 서버와 통신할 수 있는 URL이 만들어지기 때문에 idAttribute는 하나의 Collection 내에서 다른 Model과 중복이 되어서는 안됩니다. 이 튜토리얼에서는 DB의 메모 테이블에서 auto\_increment 속성을 가지는 PK값인 'mem\_idx' 컬럼을 idAttribute로 사용할 것입니다. 
 
 #### idAttribute가 URL을 만드는 방식
@@ -74,7 +74,7 @@ Backbone.js에서 일반적인 경우 Model의 URL은 부모 역할을 하는 Co
 
 그리고 이렇게 자동으로 부여된 URL에 따라 각각의 편집, 삭제를 비동기로 처리하게 되는 것입니다.
 
-### defaults
+### model.defaults
 다음으로 `defaults`를 살펴보겠습니다. `defaults`는 Model을 구성하는 각 속성과 속성별 기본값을 key-value 형태의 object로 지정하게 됩니다. 이렇게 지정된 기본 값들은 차후에 new 생성자를 통해 개별 Model instance를 생성할 때, 별다른 값이 없는 경우, 자동으로 값을 채우는데 사용됩니다. DB에서의 컬럼별 DEFAULT 지정과 정확히 같은 기능을 수행하는 것입니다. 하지만 형 변환이 자유로운 Javascript 특성 상 이미 지정된 기본값의 형태와 다르다고 해서 예외를 발생시키지는 않으며 어떠한 형태로도 Override될 수 있습니다. 그리고 기본값으로 지정되지 않은 항목일지라도 필요에 따라 얼마든지 추가해낼 수 있습니다.
 (물론 기본값으로 지정된 타입에 대해 새로운 값을 지정할 때 가급적이면 그 타입을 같게 매치시켜 주는 것이 보다 안전하고 단순한 코드를 만드는 방법이겠죠!)
 
