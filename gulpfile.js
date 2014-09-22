@@ -45,6 +45,7 @@ gulp.task('watch', function() {
 	gulp.watch(['contents/**/*.html', 'contents/**/*.css', 'contents/**/*.js'], ['jekyll', reload]);
 	gulp.watch(['contents/getstarted/**/*.md'], ['jekyll', reload]);
 	gulp.watch(['contents/tutorials/**/*.md'], ['jekyll', reload]);
+	gulp.watch(['contents/quickstart/**/*.md'], ['jekyll', reload]);
 });
 
 // Browser-sync for preview
