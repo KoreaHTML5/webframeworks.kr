@@ -83,11 +83,16 @@
 
 .top_menu{
     margin-bottom: 0 !important;
+    background-color : #FFFFFF;
+    border-bottom : 4px solid #1F1F1F;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
 }
 
 body{
     background-color: #fefefe;
-    font-family: '나눔고딕','Nanum Gothic',NanumGothic;
+    /*font-family: '나눔고딕','Nanum Gothic',NanumGothic;*/
 }
 
 .media_item{
@@ -108,13 +113,32 @@ body{
 
 
 #main_content>h1 {
-    padding-bottom: 8px;
+    margin-top: 36px;
+    margin-bottom: 16px;
+    padding-bottom: 11px;
     border-bottom: 1px solid #cccccc;
     font-weight: bolder;
+    line-height: 1.2;
 }
 
 #main_content>h2 {
-    padding-bottom: 4px;
+    margin-top: 28px;
+    margin-bottom: 16px;
+    padding-bottom: 8.4px;
     border-bottom: 1px solid #eeeeee;
+    font-size:28px;
     font-weight: bolder;
+    line-height: 1.225;
+}
+
+#main_content>h3 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    line-height: 1.43;
+}
+
+#main_content>p {
+    font-size : 16px;
+    line-height: 1.6;
+    margin-bottom: 16px;
 }
