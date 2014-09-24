@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>Dev Html5Korea Home - Bootstrap 시작하기</title>
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/main.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/syntax.css">
+<script src="/dev.koreahtml5.kr/static/js/jquery.min.js"></script>
+<script src="/dev.koreahtml5.kr/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/toc.css">
+    <script type="text/javascript" src="/dev.koreahtml5.kr/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/dev.koreahtml5.kr/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/kit">Starter Kit</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/dev.koreahtml5.kr" target="_blank">참여하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="row content_bg"  style="background-color: #0769AD" >
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+        <h1 class="title_header_title">Bootstrap 시작하기</h1>
+        <p class="title_header_summary">가장 보편적으로 사용되는 UI Framework인 Bootstrap에 대하여 알아본다.</p>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-3 col-sm-offset-2 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xap1/t1.0-9/10455759_756319334390618_9098829359137199788_n.jpg" alt="이원제">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            이원제
+
+                        </h4>
+                        nurinamu<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <table width="100%" class="table table-striped shadow_panel">
+    <tr>
+        <th colspan="1">
+            Index
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="panel-group" id="gs_menu">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#gs_menu" href="#menu1">
+                                Library
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="menu1" class="panel-collapse collapse list-group">
+                        <a href="/dev.koreahtml5.kr/getstarted/jquery" class="list-group-item">jQuery</a>
+                        <a href="/dev.koreahtml5.kr/getstarted/underscore" class="list-group-item">underscore.js</a>
+                        <a href="/dev.koreahtml5.kr/getstarted/modernizr" class="list-group-item">modernizr.js</a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#gs_menu" href="#menu2">
+                                UI Framework
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="menu2" class="panel-collapse collapse list-group">
+                        <a href="/dev.koreahtml5.kr/getstarted/bootstrap" class="list-group-item">Bootstrap</a>
+                        <a href="/dev.koreahtml5.kr/getstarted/foundation" class="list-group-item">Foundation</a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#gs_menu" href="#menu3">
+                                JS Framework
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="menu3" class="panel-collapse collapse list-group">
+                        <a href="/dev.koreahtml5.kr/getstarted/angularjs" class="list-group-item">AngularJS</a>
+                        <a href="/dev.koreahtml5.kr/getstarted/backbonejs" class="list-group-item">BackboneJS</a>
+                        <a href="/dev.koreahtml5.kr/getstarted/extjs" class="list-group-item">ExtJS</a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#gs_menu" href="#menu4">
+                                Tools
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="menu4" class="panel-collapse collapse list-group">
+                        <a href="/dev.koreahtml5.kr/getstarted/bower" class="list-group-item">Bower</a>
+                        <a href="/dev.koreahtml5.kr/getstarted/grunt" class="list-group-item">Grunt</a>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <span style='font-size: 40%'><a href='/dev.koreahtml5.kr/tags/jquery/'>jquery</a></span>
+<span style='font-size: 280%'><a href='/dev.koreahtml5.kr/tags/javascript/'>javascript</a></span>
+<span style='font-size: 40%'><a href='/dev.koreahtml5.kr/tags/html/'>html</a></span>
+<span style='font-size: 40%'><a href='/dev.koreahtml5.kr/tags/grunt/'>grunt</a></span>
+<span style='font-size: 40%'><a href='/dev.koreahtml5.kr/tags/gulp/'>gulp</a></span>
+<span style='font-size: 120%'><a href='/dev.koreahtml5.kr/tags/build/'>build</a></span>
+<span style='font-size: 40%'><a href='/dev.koreahtml5.kr/tags/yeoman/'>yeoman</a></span>
+<span style='font-size: 80%'><a href='/dev.koreahtml5.kr/tags/bower/'>bower</a></span>
+<span style='font-size: 80%'><a href='/dev.koreahtml5.kr/tags/twitter/'>twitter</a></span>
+<span style='font-size: 240%'><a href='/dev.koreahtml5.kr/tags/framework/'>framework</a></span>
+<span style='font-size: 80%'><a href='/dev.koreahtml5.kr/tags/angularjs/'>angularjs</a></span>
+<span style='font-size: 40%'><a href='/dev.koreahtml5.kr/tags/tutorials/'>tutorials</a></span>
+<span style='font-size: 120%'><a href='/dev.koreahtml5.kr/tags/backbone/'>backbone</a></span>
+<span style='font-size: 80%'><a href='/dev.koreahtml5.kr/tags/getstarted/'>getstarted</a></span>
+<span style='font-size: 160%'><a href='/dev.koreahtml5.kr/tags/Ext/'>Ext</a></span>
+<span style='font-size: 160%'><a href='/dev.koreahtml5.kr/tags/JS/'>JS</a></span>
+<span style='font-size: 120%'><a href='/dev.koreahtml5.kr/tags/tutorial/'>tutorial</a></span>
+<span style='font-size: 40%'><a href='/dev.koreahtml5.kr/tags/bootstrap/'>bootstrap</a></span>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-6 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>Bootstrap</h2>
+
+<h2>Bootstrap이란?</h2>
+
+<p>Twitter 내부에서 개발하던 라이브러리로 각종 UI Component들을 모아 놓은 종합선물셋트이다.
+Bootstrap을 이용하면 간단한 스크립트와 CSS/HTML 만으로 깔끔한 형태의 UI/UX를 구성할 수 있다. 디자인에 익숙하지 않은 개발자들이
+데모 또는 프로토타입을 만들기에 아주 유용하며, 구현하기 까다로운 여러 Javascript action들도 간단하게 라이브러리로 제공하고 있어 쉽게 사용할 수 있다.</p>
+
+<h2>Bootstrap의 구성</h2>
+
+<p>Bootstrap은 사용방법에 따라 크게 3가지로 구분이 가능하다.</p>
+
+<ul>
+<li><a href="#css_style">CSS stylesheet</a></li>
+<li><a href="#html_tag">HTML tag component</a></li>
+<li><a href="#js_comp">Javascript component</a></li>
+</ul>
+
+<h3><a name="css_style"></a>CSS stylesheet</h3>
+
+<p>Bootstrap의 UI 요소중 가장 간단하게 사용할 수 있는 방법으로 Boostrap의 css에 정의된 class들을 tag에 적용하여 사용하는 방법이다.</p>
+
+<p>예를들어 간단한 버튼을 만들기 위해서는 일일이 마우스 이벤트들을 처리해줘야하지만 이미 Bootstrap에 정의된 버튼 css를 사용하면 간단하게 버튼을 생성할 수 있다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span> <span class="nt">&gt;</span>link with bootstrap<span class="nt">&lt;/a&gt;</span>
+
+<span class="nt">&lt;a</span> <span class="nt">&gt;</span>link without bootstrap<span class="nt">&lt;/a&gt;</span>
+</code></pre></div>
+<p><img src="imgs/css_1.png" style=""></p>
+
+<p><a href="http://jsfiddle.net/3d8sgg0k/4/">확인하기</a></p>
+
+<h3><a name="html_tag"></a>HTML tag component</h3>
+
+<h3><a name="js_comp"></a>Javascript component</h3>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/dev.koreahtml5.kr/tags/bootstrap">bootstrap</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            @since 2014
+        </td>
+    </tr>
+</table>
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+
+</body>
+</html>
