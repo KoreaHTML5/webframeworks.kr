@@ -82,12 +82,7 @@ Bower 에 대해서 더 자세히 알고 싶으시면 [Get started Bower]({{site
 퀵스타트는 현재 아래 목록과
  같은 프레임워크, 라이브러리별 프로젝트를 지원하고 있습니다. 최신 버전은 해당 github 저장소의 master 브랜치(branch) 이며 각 프로젝트별로 tag/release 된 버전을 다운받은후에 작업 경로에 압축을 푸시고 사용하시면 됩니다.
 
-- [AngularJs Quick Start Project](https://github.com/KoreaHTML5/dev.koreahtml5.kr/releases)
-- [BackboneJs Quick Start Project](https://github.com/KoreaHTML5/dev.koreahtml5.kr/releases)
-- [ExtJs Quick Start Project](https://github.com/KoreaHTML5/dev.koreahtml5.kr/releases)
-- [Bootstrap Quick Start Project](https://github.com/KoreaHTML5/dev.koreahtml5.kr/releases)
-- [Foundation Quick Start Project](https://github.com/KoreaHTML5/dev.koreahtml5.kr/releases)
-- [jQuery Quick Start Project](https://github.com/KoreaHTML5/dev.koreahtml5.kr/releases)
+- [jQuery Quick Start Project](https://github.com/KoreaHTML5/quickstart-jquery/releases)
 
 압축을 푼 다음 아래 명령을 사용해서 필요한 파일을 다운로드, 설치 합니다.
 
