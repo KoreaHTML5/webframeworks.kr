@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include header.html %}
+    <link rel="stylesheet" href="{{site.baseurl}}/static/css/toc.css">
+    <script type="text/javascript" src="{{site.baseurl}}/static/js/jquery.toc.js"></script>
+</head>
+<body>
+{% include nav.html %}
+
+<div class="row cate_bg" {% if page.title_background_color != empty %} style="background-color: #{{page.title_background_color}}" {% endif %}>
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron" {% if page.title_background_img != empty %} style="background:url({{page.title_background_img}}) no-repeat center" {% endif %} >
+        <h1 class="title_header_title">{{ page.title }}</h1>
+        <p class="title_header_summary">{{ page.summary }}</p>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-3 col-sm-offset-2 col-md-2 col-md-offset-2">
+        <div id="toc_location"></div>
+        {% include qs_menu.html %}
+    </div>
+
+    <div class="col-sm-6 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            {{ content }}
+        </div>
+    </div>
+
+    {% include footer.html %}
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+
+</body>
+</html>
