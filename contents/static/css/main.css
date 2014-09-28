@@ -39,6 +39,7 @@
 
 .title_header_title{
     color : #EFEFEF;
+    font-size:45px !important;
 }
 
 .list_header{
@@ -92,7 +93,7 @@
 
 body{
     background-color: #fefefe;
-    /*font-family: '나눔고딕','Nanum Gothic',NanumGothic;*/
+    font-family: '나눔고딕','Nanum Gothic',NanumGothic;
 }
 
 .media_item{
@@ -142,3 +143,5 @@ body{
     line-height: 1.6;
     margin-bottom: 16px;
 }
+
+
