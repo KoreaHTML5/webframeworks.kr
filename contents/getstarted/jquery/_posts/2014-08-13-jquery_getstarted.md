@@ -2,6 +2,7 @@
 layout : getstarted
 title : jQuery 시작하기
 category : getstarted
+subcategory : library
 summary : jQuery란 무엇이고 설치방법과 기본적인 사용법에 대해서 알아봅니다. 최근 웹 어플리케이션 개발할때 필수적으로 사용하는 라이브러리이니 만큼 익숙해지는 것이 좋습니다.
 permalink : /getstarted/jquery
 title_background_img : imgs/logo-jquery@2x.png

@@ -2,6 +2,7 @@
 layout : getstarted
 title : Yeoman, Kickstart your project
 category : getstarted
+subcategory : tool
 summary : 웹프론트엔드는 각각의 프로젝트별로 다양한 기술을 사용하는 환경을 가지고 있습니다. 그중에서 대표적인 각 기술별로 베스트 프렉틱스(Best Practices) 와 툴이 포함된 프로젝트를 빠르게 생성해주는 도구입니다.
 permalink : /getstarted/yeoman
 title_background_color : FFCC2F

@@ -2,6 +2,7 @@
 layout : getstarted
 title : Bootstrap 시작하기
 category : getstarted
+subcategory : ui
 summary : 가장 보편적으로 사용되는 UI Framework인 Bootstrap에 대하여 알아본다.
 permalink : /getstarted/bootstrap
 title_background_color : 0769AD

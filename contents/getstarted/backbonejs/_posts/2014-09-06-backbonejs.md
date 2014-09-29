@@ -2,6 +2,7 @@
 layout : getstarted
 title : Backbone.js 시작하기
 category : getstarted
+subcategory : js
 summary : Model-Collection-View 기반으로 구현하는 Javascript 웹 애플리케이션 프레임웍
 permalink : /getstarted/backbonejs
 title_background_color : AED5E6

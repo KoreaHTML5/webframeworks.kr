@@ -2,6 +2,7 @@
 layout : getstarted
 title : ExtJS5 Getting Start
 category : getstarted
+subcategory : js
 summary : ExtJS는 기업환경 적합한 최적의 성능과 수많은 컴포넌트를 내장하고 있는 JS프레임웍이다. CS애플리케이션의 모든 컴포넌트를 웹브라우저로 옮겨왔고 자체 클래스 시스템과 개발, 빌드, 실행 등을 도와주는 도구들을 모두 갖춘 토탈프레임웍으로 각광 받고 있다
 permalink : /getstarted/extjs
 title_background_color : DD1B16

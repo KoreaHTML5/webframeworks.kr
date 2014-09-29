@@ -5,19 +5,40 @@
 <div class="row cate_bg">
     <div class="col-md-10 col-md-offset-1 jumbotron title_header">
         <h1>Get Started</h1>
-        <p>기초의 내용을 다룹니다.</p>
+        <p>공개 웹프레임워크, 라이브러리, 툴의 사용법을 쉽게 알아보고 따라해보세요.</p>
+        <p>자신에게 필요한 것이 무엇인지 알아가는 것이 첫 걸음.</p>
     </div>
 
 </div>
 <div class="row">
-    <div class="col-md-2 col-md-offset-1">
+    <div class="col-md-2 col-md-offset-2">
         {% include gs_menu.html %}
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6 media_content">
+        <p>
+            이 페이지에서는 공개 프레임워크와 라이브러리, 툴들의 학습을 위해서 기초 정보들을 제공합니다. 여러 웹 기술들에 대한 폭넓은 이해는 웹 프로젝트 진행시에 여러분의 선택의 폭을 넓혀주며 자신의 프로젝트
+            진행 방향에도 큰 영향을 줍니다. 하나의 방법만을 고집하기 보다는 다양한 학습을 해보시기 바랍니다.
+        </p>
+
+        <h2>
+            웹 기술의 구분
+        </h2>
+        <p>
+            많은 웹기술들에 대한 정보 접근을 용이하게 하기위해 본 사이트에서는 아래와 같은 구조로 웹기술들을 구분하였습니다. 현재 다루고 있는 기술들 이외에도 많은 기술들이 존재하며 차후에 계속 추가될 예정입니다.
+        </p>
+
+        <img class="center-block" src="{{site.baseurl}}/static/img/frameworks_map.png">
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>Libraries</b>
+        </h2>
+        <p style="margin-bottom:20px;">Web Front-end 전반에 걸쳐 사용되는 각종 Javascript Library 입니다.</p>
+
         <ul class="media-list">
             {% for post in site.categories.getstarted %}
+            {% if post.subcategory == "library" %}
             <li class="media_item">
-                <div class="media media_content shadow_panel">
+                <div class="media media_content">
                     <a class="pull-left" href="#">
                         <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
                     </a>
@@ -29,6 +50,89 @@
                     </div>
                 </div>
             </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h2><b>Web Frameworks</b></h2>
+
+        <h3 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>UI Frameworks</b>
+        </h3>
+        <p style="margin-bottom:20px;">
+            화면을 구성하는 UI/UX 를 개발하기 위해 만들어진 Framework들 입니다. 대부분 CSS 와 Javascript의 복합적인 구조로 이루어져 있습니다.
+        </p>
+
+        <ul class="media-list">
+            {% for post in site.categories.getstarted %}
+            {% if post.subcategory == "ui" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h3 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>Javascript Frameworks</b>
+        </h3>
+        <p style="margin-bottom:20px;">
+            웹서비스의 중추적인 역할을 하는 Business Logic들과 Back-end와의 처리를 할 수 있도록 제공되는 Framework들입니다. 일부 프레임워크들은 Back-end logic까지 포함하여 Full-stack JS Framework를 구성하는 경우도 있습니다.
+        </p>
+
+        <ul class="media-list">
+            {% for post in site.categories.getstarted %}
+            {% if post.subcategory == "js" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>Tools</b>
+        </h2>
+
+        <p style="margin-bottom:20px;">웹 프로젝트들을 보다 쉽고 빠르게 설치/관리할 수 있게 도와주는 도구들입니다.</p>
+
+        <ul class="media-list">
+            {% for post in site.categories.getstarted %}
+            {% if post.subcategory == "tool" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
             {% endfor %}
         </ul>
 
