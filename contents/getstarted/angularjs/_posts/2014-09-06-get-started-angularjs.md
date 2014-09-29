@@ -6,6 +6,7 @@ subcategory : js
 summary : 구글이 만든 자바스크립트 프레임워크인 AngularJS를 시작해본다. 간단한 사용자 목록을 확인하는 프로그램을 통하여 AngularJS의 기본 기능을 이용해 보면서 AngularJS에 대하여 간단히 살펴보겠다.
 permalink : /getstarted/angularjs
 title_background_color : DD1B16
+title_color : FFFFFF
 tags : javascript framework angularjs getstarted
 author : jeadoko
 ---

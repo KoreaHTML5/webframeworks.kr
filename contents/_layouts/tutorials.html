@@ -8,7 +8,7 @@
 <body>
 {% include nav.html %}
 
-<div class="row content_bg" {% if page.title_background_color != empty %} style="background-color: #{{page.title_background_color}}" {% endif %}>
+<div class="row content_bg"  style="{% if page.title_background_color != empty %}background-color: #{{page.title_background_color}};{% endif %}{% if page.title_color != empty %}color: #{{page.title_color}};{% endif %}" >
 <div class="col-md-10 col-md-offset-1 title_header jumbotron" {% if page.title_background_img != empty %} style="background:url({{page.title_background_img}}) no-repeat center" {% endif %} >
 <h1 class="title_header_title">{{ page.title }}</h1>
 <p class="title_header_summary">{{ page.summary }}</p>

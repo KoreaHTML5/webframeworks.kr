@@ -6,6 +6,7 @@ subcategory : angularjs
 summary : 서비스 개발을 위한 의존관계 주입 알아보기
 permalink : /tutorials/angularjs/dependency_injection_with_angularjs
 title_background_color : DD1B16
+title_color : FFFFFF
 tags : javascript framework angularjs tutorials
 author : jeadoko
 ---

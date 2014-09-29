@@ -6,6 +6,7 @@ subcategory : angularjs
 summary : AngularJS의 모듈 API에 대하여 살펴본다. 그리고 AngularJS가 제공하는 모듈과 외부 모듈을 사용하는 방법도 살펴보겠다.
 permalink : /tutorials/angularjs/app_structure_with_module
 title_background_color : DD1B16
+title_color : FFFFFF
 tags : javascript framework angularjs tutorials
 author : jeadoko
 ---
