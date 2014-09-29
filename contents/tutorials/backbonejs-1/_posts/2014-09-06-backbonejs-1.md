@@ -2,6 +2,7 @@
 layout : tutorials
 title : Backbone.js Tutorial Part 1
 category : tutorials
+subcategory : backbonejs
 permalink : /tutorials/backbonejs-1
 title_background_color : AED5E6
 tags : backbone

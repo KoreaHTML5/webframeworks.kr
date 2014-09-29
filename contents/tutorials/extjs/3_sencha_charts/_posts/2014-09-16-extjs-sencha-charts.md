@@ -2,6 +2,7 @@
 layout : tutorials
 title : Sencha Chart따라하기.
 category : tutorials
+subcategory : extjs
 summary : 차트는 Ext JS5에 들어와 향상된 센차터치의  차트를 사용하기 시작했다. 기존 레거시 차트를 ext-chart라 부르고 sencha-charts를 새로운 차트라 부르며 사용한다. 이는 모바일 디바이스에 대응하기 위함이기도 하다.
 permalink : /tutorials/extjs/3_sencha_charts
 title_background_color : RGB(8, 78, 119)

@@ -2,6 +2,7 @@
 layout : tutorials
 title : UI 컴포넌트를 위한 지시자 알아보기
 category : tutorials
+subcategory : angularjs
 summary : 서비스 개발을 위한 의존관계 주입 알아보기
 permalink : /tutorials/angularjs/directive_for_ui_component
 title_background_color : DD1B16

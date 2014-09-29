@@ -5,17 +5,22 @@ layout : default
 <div class="row cate_bg">
     <div class="col-md-10 col-md-offset-1 jumbotron title_header">
         <h1>Tutorials</h1>
-        <p>학습을 통해 좀 더 자세한 사항을 알아봅니다.</p>
+        <p>여러분에게 필요한 웹기술들을 선택하면 학습을 통해 좀 더 자세한 사항을 알아보세요.</p>
     </div>
 
 </div>
 <div class="row">
-    <div class="col-md-2 col-md-offset-1">
+    <div class="col-md-2 col-md-offset-2">
         {% include tags.html %}
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
+        <h3 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>AngularJS</b>
+        </h3>
+
         <ul class="media-list">
             {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "angularjs" %}
             <li class="media_item">
                 <div class="media media_content shadow_panel">
                     <a class="pull-left" href="#">
@@ -29,8 +34,59 @@ layout : default
                     </div>
                 </div>
             </li>
+            {% endif %}
             {% endfor %}
         </ul>
+
+        <h3 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>BackboneJS</b>
+        </h3>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "backbonejs" %}
+            <li class="media_item">
+                <div class="media media_content shadow_panel">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h3 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>ExtJS</b>
+        </h3>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "extjs" %}
+            <li class="media_item">
+                <div class="media media_content shadow_panel">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+
 
     </div>
 </div>
