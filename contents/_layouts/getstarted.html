@@ -4,6 +4,11 @@
     {% include header.html %}
     <link rel="stylesheet" href="{{site.baseurl}}/static/css/toc.css">
     <script type="text/javascript" src="{{site.baseurl}}/static/js/jquery.toc.js"></script>
+    <style>
+        #toc_location.affix {
+            top:50px;
+        }
+    </style>
 </head>
 <body>
 {% include nav.html %}
@@ -17,7 +22,7 @@
 
 <div class="row">
 
-    <div class="col-sm-3 col-sm-offset-2 col-md-2 col-md-offset-2">
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">작성자</h3>
@@ -38,14 +43,13 @@
             </div>
         </div>
 
-        <div id="toc_location"></div>
-
-        {% include gs_menu.html %}
-
         {% include tags.html %}
+
+        <div id="toc_location" style="z-index:99999;"></div>
+
     </div>
 
-    <div class="col-sm-6 col-md-6">
+    <div class="col-sm-9 col-md-6">
         <div class="media_content media_item shadow_panel" id="main_content">
             {{ content }}
         </div>
@@ -64,6 +68,16 @@
 
     <script>
         $('#main_content').toc();
+
+        $(document).ready(function(){
+            $('#toc_location').affix({
+                offset:{
+                    top: function(){
+                        return 550;
+                    }
+                }
+            });
+        })
     </script>
 </div>
 {% include footer.html %}
