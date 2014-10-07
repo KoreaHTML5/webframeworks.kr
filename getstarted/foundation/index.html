@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>Dev Html5Korea Home - Foundation 시작하기</title>
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/main.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/syntax.css">
+<script src="/dev.koreahtml5.kr/static/js/jquery.min.js"></script>
+<script src="/dev.koreahtml5.kr/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/toc.css">
+    <script type="text/javascript" src="/dev.koreahtml5.kr/static/js/jquery.toc.js"></script>
+    <style>
+        #toc_location.affix {
+            top:50px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/dev.koreahtml5.kr/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/dev.koreahtml5.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="row content_bg"  style="background-color: #008cba;color: #FFFFFF;" >
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+        <h1 class="title_header_title">Foundation 시작하기</h1>
+        <p class="title_header_summary"></p>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xap1/t1.0-9/10455759_756319334390618_9098829359137199788_n.jpg" alt="이원제">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            이원제
+
+                        </h4>
+                        nurinamu<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/dev.koreahtml5.kr/tags/jquery/' style='color: rgba(0,0,0,0.107143)'>jquery</a>
+<a href='/dev.koreahtml5.kr/tags/javascript/' style='color: rgba(0,0,0,0.964286)'>javascript</a>
+<a href='/dev.koreahtml5.kr/tags/html/' style='color: rgba(0,0,0,0.107143)'>html</a>
+<a href='/dev.koreahtml5.kr/tags/grunt/' style='color: rgba(0,0,0,0.107143)'>grunt</a>
+<a href='/dev.koreahtml5.kr/tags/gulp/' style='color: rgba(0,0,0,0.107143)'>gulp</a>
+<a href='/dev.koreahtml5.kr/tags/build/' style='color: rgba(0,0,0,0.321429)'>build</a>
+<a href='/dev.koreahtml5.kr/tags/yeoman/' style='color: rgba(0,0,0,0.107143)'>yeoman</a>
+<a href='/dev.koreahtml5.kr/tags/bootstrap/' style='color: rgba(0,0,0,0.214286)'>bootstrap</a>
+<a href='/dev.koreahtml5.kr/tags/bower/' style='color: rgba(0,0,0,0.214286)'>bower</a>
+<a href='/dev.koreahtml5.kr/tags/twitter/' style='color: rgba(0,0,0,0.214286)'>twitter</a>
+<a href='/dev.koreahtml5.kr/tags/framework/' style='color: rgba(0,0,0,0.857143)'>framework</a>
+<a href='/dev.koreahtml5.kr/tags/angularjs/' style='color: rgba(0,0,0,0.428571)'>angularjs</a>
+<a href='/dev.koreahtml5.kr/tags/tutorials/' style='color: rgba(0,0,0,0.321429)'>tutorials</a>
+<a href='/dev.koreahtml5.kr/tags/backbone/' style='color: rgba(0,0,0,0.321429)'>backbone</a>
+<a href='/dev.koreahtml5.kr/tags/getstarted/' style='color: rgba(0,0,0,0.214286)'>getstarted</a>
+<a href='/dev.koreahtml5.kr/tags/Ext/' style='color: rgba(0,0,0,0.428571)'>Ext</a>
+<a href='/dev.koreahtml5.kr/tags/JS/' style='color: rgba(0,0,0,0.428571)'>JS</a>
+<a href='/dev.koreahtml5.kr/tags/tutorial/' style='color: rgba(0,0,0,0.321429)'>tutorial</a>
+<a href='/dev.koreahtml5.kr/tags/quickstart/' style='color: rgba(0,0,0,0.107143)'>quickstart</a>
+<a href='/dev.koreahtml5.kr/tags/angular-di/' style='color: rgba(0,0,0,0.107143)'>angular-di</a>
+
+    </div>
+</div>
+
+        <div id="toc_location" style="z-index:99999;"></div>
+
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>Foundation 특징</h2>
+
+<p>Foundation은 반응형 웹 페이지를 제작하기 위한 가장 빠르고 효율적인 방법을 제공합니다. 기본적으로는 Bootstrap과 마찬가지로 각종 UI/UX 컴포넌트를 제공하고 
+있지만 Foundation은 빠른 프로토 타이핑을 위한 여러 장치들을 제공하고 있습니다.</p>
+
+<ul>
+<li>HTML Templates : 웹페이지에 자주 사용되는 기본 HTML Template을 제공하여 불필요한 반복 코드 생산을 줄일 수 있게 하였습니다.</li>
+<li>Stencils : Foundation 컴포넌트들의 스텐실을 제공함으로써 웹디자이너가 개발자에게 보다 정확한 시안을 제공하여 보다 빠른 프로토타이핑이 가능하게 하였습니다.</li>
+<li>Icon packs : 프로토타이핑시 자주 사용하는 icon을 기본적으로 제공하여 보다 빠른 프로토타이핑이 될 수 있도록 도와줍니다.<br></li>
+</ul>
+
+<p>Foundation <a href="http://foundation.zurb.com/">홈페이지</a>에서는 Learn 항목을 따로 내놓고 Foundation을 처음 접하는 개발자와 디자이너들을 위한 강좌들
+이 개설되어있습니다.</p>
+
+<h2>Foundation 구성 요소</h2>
+
+<h3>Structure</h3>
+
+<p>반응형 웹 페이지 구성을 위한 각종 레이아웃 구성을 위한 기능들을 제공합니다.</p>
+
+<ul>
+<li><a href="http://foundation.zurb.com/docs/media-queries.html">Media Quries</a> : CSS Media Query를 이용한 화면 크기별 CSS 적용법입니다.</li>
+<li><a href="http://foundation.zurb.com/docs/components/visibility.html">Visibility</a> : 화면 크기 또는 화면 방향에 따른 표시 여부를 설정할 수 있는 기능입니다.</li>
+<li><a href="http://foundation.zurb.com/docs/components/grid.html">Grid</a> : 다양한 레이아웃을 화면 크기에 따라 적용할 수 있는 영역 설정법입니다.</li>
+<li><a href="http://foundation.zurb.com/docs/components/block_grid.html">Block Grid</a> : 화면 크기에 따라 컨텐츠 블럭의 배열을 조정할 수 있는 영역 설정법입니다.</li>
+<li><a href="http://foundation.zurb.com/docs/components/interchange.html">Interchange Responsive Content</a> : 화면 크기의 변경에 따라 javascript 이벤트가 발생하여 상황에 맞추어 처리할 수 있습니다.</li>
+</ul>
+
+<h3>Navigation</h3>
+
+<p>화면 이동 / 선택 등의 기능들을 제공합니다.</p>
+
+<ul>
+<li><a href="http://foundation.zurb.com/docs/components/offcanvas.html">Offcanvas</a> : 좌/우 슬라이딩 메뉴를 통한 이동기능을 제공합니다.</li>
+<li><a href="http://foundation.zurb.com/docs/components/topbar.html">Top Bar</a> : 다양한 상단 메뉴 바 기능을 제공합니다.</li>
+<li><a href="http://foundation.zurb.com/docs/components/icon-bar.html">Icon Bar</a> : 아이콘 메뉴 기능을 제공합니다.</li>
+<li><a href="http://foundation.zurb.com/docs/components/sidenav.html">Side Nav</a> : Foundation에서 제공하는 기본 메뉴 링크 컴포넌트 입니다. </li>
+<li><a href="http://foundation.zurb.com/docs/components/magellan.html">Magellan Sticky Nav</a> : 화면에 고정되어 제공되는 메뉴로 현재 페이지의 위치를 트래킹할 수 있는 컴포넌트 입니다.</li>
+</ul>
+
+<h3>Media</h3>
+
+<h3>Forms</h3>
+
+<h3>Buttons</h3>
+
+<h3>Typography</h3>
+
+<h2>설정 방법</h2>
+
+<p>Foundation은 3가지 설치 방법을 제공합니다.</p>
+
+<ul>
+<li>CSS 설치 : 가장 단순한 설치로 기본 CSS / JS를 사용할 페이지에서 바로 로드해서 사용하는 방법입니다.</li>
+<li>Sass 설치 : Ruby / Grunt 를 통하여 Foundation Web Project를 생성하고 Sass Compile하여 CSS / JS를 사용하는 방법입니다.</li>
+<li>App 생성 : Ruby on Rails 를 이용하여 Foundation Web Project를 생성하는 방법입니다. 보다 세밀한 부분을 사용자의 입맛에 맞추어 변경하여 사용할 수 있습니다.</li>
+</ul>
+
+<h3>CSS 설치</h3>
+
+<p>미리 Download한 Foundation CSS/JS 파일과 Foundation과 종속관계를 가지는 ModernizrJS를 페이지에 로드하도록 link/script TAG를 삽입합니다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;head&gt;</span>
+    <span class="c">&lt;!-- css와 modernizr 로딩은 head에 삽입합니다.--&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/foundation.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/vendor/modernizr.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>    
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- jquery와 Foundation JS 로딩은 body 맨 마지막에 삽입합니다.--&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/vendor/jquery.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/foundation.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">foundation</span><span class="p">();</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>    
+</code></pre></div>
+<h3>Sass 설치</h3>
+
+<p>Foundation에서는 SCSS를 통하여 CSS를 생성하는 Sass를 지원합니다. 대표적인 Sass 컴파일러인 Compass를 통해서 생성할 수도 있고 Foundation 에서 
+제공하는 libsass와 grunt를 통하여 생성할 수 있습니다. 두가지 구분을 나누게 되는 경우는 Ruby의 설치 여부 입니다.</p>
+
+<p><img src="imgs/scssflow-med.svg" style=""></p>
+
+<h4><strong>Compass 프로젝트 생성 방법</strong></h4>
+
+<ol>
+<li>Compass를 설치합니다.</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ gem install compass
+</code></pre></div>
+<ol>
+<li>Foundation Client를 통해서 프로젝트를 생성합니다.</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ foundation new MY_PROJECT
+</code></pre></div>
+<ol>
+<li>생성된 프로젝트 디렉토리로 이동합니다.</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd MY_PROJECT
+</code></pre></div>
+<ol>
+<li>변경사항이 생길때는 반드시 <code>bundle</code> 명령어를 수행하고 프로젝트를 실행하기 위해 아래의 명령어를 사용합니다.</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ bundle exec compass watch
+</code></pre></div>
+<h4><strong>Libsass 프로젝트 생성 방법</strong></h4>
+
+<ol>
+<li>프로젝트를 생성할 위치로 이동합니다.</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd path/to/sites
+</code></pre></div>
+<ol>
+<li>Foundation Client를 통해서 프로젝트를 생성합니다.</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ foundation new project_name --libsass
+</code></pre></div>
+<ol>
+<li>프로젝트가 생성되었고 프로젝트를 시작하기 전에 컴파일을 수행한다.</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd project_name
+$ grunt build
+</code></pre></div>
+<ol>
+<li>변경사항이 생기면 매번 <code>grunt</code>를 수행한다.</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ grunt
+</code></pre></div>
+<h2>자세히 알아보기</h2>
+
+<p>Foundation에 대한 더 자세한 정보는 위에서 언급한 것처럼 Foundation <a href="http://foundation.zurb.com/">홈페이지</a>의 <a href="http://foundation.zurb.com/learn/training.html">Training 사이트</a>를 참고하면 됩니다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/dev.koreahtml5.kr/tags/bootstrap">bootstrap</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+
+    <script>
+        $('#main_content').toc();
+
+        $(document).ready(function(){
+            $('#toc_location').affix({
+                offset:{
+                    top: function(){
+                        return 550;
+                    }
+                }
+            });
+        })
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            @since 2014
+        </td>
+    </tr>
+</table>
+</footer>
+</body>
+</html>

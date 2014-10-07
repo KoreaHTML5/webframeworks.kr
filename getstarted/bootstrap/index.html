@@ -13,6 +13,11 @@
 
     <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/toc.css">
     <script type="text/javascript" src="/dev.koreahtml5.kr/static/js/jquery.toc.js"></script>
+    <style>
+        #toc_location.affix {
+            top:50px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-default top_menu" role="navigation">
@@ -51,13 +56,13 @@
 <div class="row content_bg"  style="background-color: #0769AD;color: #;" >
     <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
         <h1 class="title_header_title">Bootstrap 시작하기</h1>
-        <p class="title_header_summary">가장 보편적으로 사용되는 UI Framework인 Bootstrap에 대하여 알아본다.</p>
+        <p class="title_header_summary">가장 보편적으로 사용되는 UI Framework인 Bootstrap에 대하여 알아봅니다.</p>
     </div>
 </div>
 
 <div class="row">
 
-    <div class="col-sm-3 col-sm-offset-2 col-md-2 col-md-offset-2">
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">작성자</h3>
@@ -78,120 +83,52 @@
             </div>
         </div>
 
-        <div id="toc_location"></div>
-
-        <table width="100%" class="table table-striped shadow_panel">
-    <tr>
-        <th colspan="1">
-            Index
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <div class="panel-group" id="gs_menu">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color: #f0e924">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#gs_menu" href="#menu1">
-                                Library
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="menu1" class="panel-collapse list-group">
-                        <a href="/dev.koreahtml5.kr/getstarted/jquery" class="list-group-item">jQuery</a>
-                        <a href="/dev.koreahtml5.kr/getstarted/underscore" class="list-group-item">underscore.js</a>
-                        <a href="/dev.koreahtml5.kr/getstarted/modernizr" class="list-group-item">modernizr.js</a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color:#4492bf;">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#gs_menu" href="#menu2">
-                                UI Framework
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="menu2" class="panel-collapse  list-group">
-                        <a href="/dev.koreahtml5.kr/getstarted/bootstrap" class="list-group-item">Bootstrap</a>
-                        <a href="/dev.koreahtml5.kr/getstarted/foundation" class="list-group-item">Foundation</a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color: #43a648">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#gs_menu" href="#menu3">
-                                JS Framework
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="menu3" class="panel-collapse list-group">
-                        <a href="/dev.koreahtml5.kr/getstarted/angularjs" class="list-group-item">AngularJS</a>
-                        <a href="/dev.koreahtml5.kr/getstarted/backbonejs" class="list-group-item">BackboneJS</a>
-                        <a href="/dev.koreahtml5.kr/getstarted/extjs" class="list-group-item">ExtJS</a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color: #e6813c;">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#gs_menu" href="#menu4">
-                                Tools
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="menu4" class="panel-collapse  list-group">
-                        <a href="/dev.koreahtml5.kr/getstarted/yeoman" class="list-group-item">Yeoman</a>
-                        <a href="/dev.koreahtml5.kr/getstarted/bower" class="list-group-item">Bower</a>
-                        <a href="/dev.koreahtml5.kr/getstarted/grunt-and-gulp" class="list-group-item">Grunt / Gulp</a>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-
         <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Tags</h3>
     </div>
     <div class="panel-body">
-        <a href='/dev.koreahtml5.kr/tags/jquery/' style='color: rgba(0,0,0,0.109091)'>jquery</a>
-<a href='/dev.koreahtml5.kr/tags/javascript/' style='color: rgba(0,0,0,0.981818)'>javascript</a>
-<a href='/dev.koreahtml5.kr/tags/html/' style='color: rgba(0,0,0,0.109091)'>html</a>
-<a href='/dev.koreahtml5.kr/tags/grunt/' style='color: rgba(0,0,0,0.109091)'>grunt</a>
-<a href='/dev.koreahtml5.kr/tags/gulp/' style='color: rgba(0,0,0,0.109091)'>gulp</a>
-<a href='/dev.koreahtml5.kr/tags/build/' style='color: rgba(0,0,0,0.327273)'>build</a>
-<a href='/dev.koreahtml5.kr/tags/yeoman/' style='color: rgba(0,0,0,0.109091)'>yeoman</a>
-<a href='/dev.koreahtml5.kr/tags/bower/' style='color: rgba(0,0,0,0.218182)'>bower</a>
-<a href='/dev.koreahtml5.kr/tags/twitter/' style='color: rgba(0,0,0,0.218182)'>twitter</a>
-<a href='/dev.koreahtml5.kr/tags/framework/' style='color: rgba(0,0,0,0.872727)'>framework</a>
-<a href='/dev.koreahtml5.kr/tags/angularjs/' style='color: rgba(0,0,0,0.436364)'>angularjs</a>
-<a href='/dev.koreahtml5.kr/tags/tutorials/' style='color: rgba(0,0,0,0.327273)'>tutorials</a>
-<a href='/dev.koreahtml5.kr/tags/backbone/' style='color: rgba(0,0,0,0.327273)'>backbone</a>
-<a href='/dev.koreahtml5.kr/tags/getstarted/' style='color: rgba(0,0,0,0.218182)'>getstarted</a>
-<a href='/dev.koreahtml5.kr/tags/Ext/' style='color: rgba(0,0,0,0.436364)'>Ext</a>
-<a href='/dev.koreahtml5.kr/tags/JS/' style='color: rgba(0,0,0,0.436364)'>JS</a>
-<a href='/dev.koreahtml5.kr/tags/tutorial/' style='color: rgba(0,0,0,0.327273)'>tutorial</a>
-<a href='/dev.koreahtml5.kr/tags/bootstrap/' style='color: rgba(0,0,0,0.109091)'>bootstrap</a>
-<a href='/dev.koreahtml5.kr/tags/quickstart/' style='color: rgba(0,0,0,0.109091)'>quickstart</a>
-<a href='/dev.koreahtml5.kr/tags/angular-di/' style='color: rgba(0,0,0,0.109091)'>angular-di</a>
+        <a href='/dev.koreahtml5.kr/tags/jquery/' style='color: rgba(0,0,0,0.107143)'>jquery</a>
+<a href='/dev.koreahtml5.kr/tags/javascript/' style='color: rgba(0,0,0,0.964286)'>javascript</a>
+<a href='/dev.koreahtml5.kr/tags/html/' style='color: rgba(0,0,0,0.107143)'>html</a>
+<a href='/dev.koreahtml5.kr/tags/grunt/' style='color: rgba(0,0,0,0.107143)'>grunt</a>
+<a href='/dev.koreahtml5.kr/tags/gulp/' style='color: rgba(0,0,0,0.107143)'>gulp</a>
+<a href='/dev.koreahtml5.kr/tags/build/' style='color: rgba(0,0,0,0.321429)'>build</a>
+<a href='/dev.koreahtml5.kr/tags/yeoman/' style='color: rgba(0,0,0,0.107143)'>yeoman</a>
+<a href='/dev.koreahtml5.kr/tags/bootstrap/' style='color: rgba(0,0,0,0.214286)'>bootstrap</a>
+<a href='/dev.koreahtml5.kr/tags/bower/' style='color: rgba(0,0,0,0.214286)'>bower</a>
+<a href='/dev.koreahtml5.kr/tags/twitter/' style='color: rgba(0,0,0,0.214286)'>twitter</a>
+<a href='/dev.koreahtml5.kr/tags/framework/' style='color: rgba(0,0,0,0.857143)'>framework</a>
+<a href='/dev.koreahtml5.kr/tags/angularjs/' style='color: rgba(0,0,0,0.428571)'>angularjs</a>
+<a href='/dev.koreahtml5.kr/tags/tutorials/' style='color: rgba(0,0,0,0.321429)'>tutorials</a>
+<a href='/dev.koreahtml5.kr/tags/backbone/' style='color: rgba(0,0,0,0.321429)'>backbone</a>
+<a href='/dev.koreahtml5.kr/tags/getstarted/' style='color: rgba(0,0,0,0.214286)'>getstarted</a>
+<a href='/dev.koreahtml5.kr/tags/Ext/' style='color: rgba(0,0,0,0.428571)'>Ext</a>
+<a href='/dev.koreahtml5.kr/tags/JS/' style='color: rgba(0,0,0,0.428571)'>JS</a>
+<a href='/dev.koreahtml5.kr/tags/tutorial/' style='color: rgba(0,0,0,0.321429)'>tutorial</a>
+<a href='/dev.koreahtml5.kr/tags/quickstart/' style='color: rgba(0,0,0,0.107143)'>quickstart</a>
+<a href='/dev.koreahtml5.kr/tags/angular-di/' style='color: rgba(0,0,0,0.107143)'>angular-di</a>
 
     </div>
 </div>
+
+        <div id="toc_location" style="z-index:99999;"></div>
+
     </div>
 
-    <div class="col-sm-6 col-md-6">
+    <div class="col-sm-9 col-md-6">
         <div class="media_content media_item shadow_panel" id="main_content">
             <h2>Bootstrap</h2>
 
 <h2>Bootstrap이란?</h2>
 
-<p>Twitter 내부에서 개발하던 라이브러리로 각종 UI Component들을 모아 놓은 종합선물셋트이다.
-Bootstrap을 이용하면 간단한 스크립트와 CSS/HTML 만으로 깔끔한 형태의 UI/UX를 구성할 수 있다. 디자인에 익숙하지 않은 개발자들이
-데모 또는 프로토타입을 만들기에 아주 유용하며, 구현하기 까다로운 여러 Javascript action들도 간단하게 라이브러리로 제공하고 있어 쉽게 사용할 수 있다.</p>
+<p>Twitter 내부에서 개발하던 라이브러리로 각종 UI Component들을 모아 놓은 종합선물셋트입니다.
+Bootstrap을 이용하면 간단한 스크립트와 CSS/HTML 만으로 깔끔한 형태의 UI/UX를 구성할 수 있습니다. 디자인에 익숙하지 않은 개발자들이
+데모 또는 프로토타입을 만들기에 아주 유용하며, 구현하기 까다로운 여러 Javascript action들도 간단하게 라이브러리로 제공하고 있어 쉽게 사용할 수 있습니다.</p>
 
 <h2>Bootstrap의 구성</h2>
 
-<p>Bootstrap은 사용방법에 따라 크게 3가지로 구분이 가능하다.</p>
+<p>Bootstrap은 사용방법에 따라 크게 3가지로 구분이 가능합니다.</p>
 
 <ul>
 <li><a href="#css_style">CSS stylesheet</a></li>
@@ -201,10 +138,10 @@ Bootstrap을 이용하면 간단한 스크립트와 CSS/HTML 만으로 깔끔한
 
 <h3><a name="css_style"></a>CSS stylesheet</h3>
 
-<p>HTML 자체의 기능을 확장하고 강화할 수 있게 해주는 css들이다.
-Bootstrap의 UI 요소중 가장 간단하게 사용할 수 있는 방법으로 Boostrap의 css에 정의된 class들을 tag에 적용하여 사용하는 방법이다.</p>
+<p>HTML 자체의 기능을 확장하고 강화할 수 있게 해주는 css들입니다.
+Bootstrap의 UI 요소중 가장 간단하게 사용할 수 있는 방법으로 Boostrap의 css에 정의된 class들을 tag에 적용하여 사용하는 방법입니다.</p>
 
-<p>예를들어 간단한 버튼을 만들기 위해서는 일일이 마우스 이벤트들을 처리해줘야하지만 이미 Bootstrap에 정의된 버튼 css를 사용하면 간단하게 버튼을 생성할 수 있다.</p>
+<p>예를들어 간단한 버튼을 만들기 위해서는 일일이 마우스 이벤트들을 처리해줘야하지만 이미 Bootstrap에 정의된 버튼 css를 사용하면 간단하게 버튼을 생성할 수 있습니다.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span> <span class="nt">&gt;</span>link with bootstrap<span class="nt">&lt;/a&gt;</span>
 
 <span class="nt">&lt;a</span> <span class="nt">&gt;</span>link without bootstrap<span class="nt">&lt;/a&gt;</span>
@@ -213,7 +150,7 @@ Bootstrap의 UI 요소중 가장 간단하게 사용할 수 있는 방법으로 
 
 <p><a href="http://jsfiddle.net/3d8sgg0k/4/">확인하기</a></p>
 
-<p>아래는 Bootstrap에서 제공하는 CSS들을 기능별로 구분해 놓은 목록이다. 각 카테고리 별로 자세한 내용은 링크를 통해 확인할 수 있다.</p>
+<p>아래는 Bootstrap에서 제공하는 CSS들을 기능별로 구분해 놓은 목록입니다. 각 카테고리 별로 자세한 내용은 링크를 통해 확인할 수 있습니다.</p>
 
 <ul>
 <li><a href="http://getbootstrap.com/css/#grid">Grid system</a> : Grid 형태의 영역구분을 가능하게 해주는 Layout 체계</li>
@@ -229,11 +166,11 @@ Bootstrap의 UI 요소중 가장 간단하게 사용할 수 있는 방법으로 
 
 <h3><a name="reuse_tag"></a>Reusable component</h3>
 
-<p>HTML만으로는 표현할 수 없었던 화면 구성 요소들을 Bootstrap에서 css와 javascript의 조합을 통해 다양하게 제공한다.
+<p>HTML만으로는 표현할 수 없었던 화면 구성 요소들을 Bootstrap에서 css와 javascript의 조합을 통해 다양하게 제공합니다.
 버튼 묶음을 예로 들자면 HTML에서는 버튼을 단순하게 나열하는 것만으로 표시할 수 밖에 없었지만 Bootstrap을 통하면 시작적으로나 기능적으로 묶음으로서의
-동작을 구현할 수 있다.</p>
+동작을 구현할 수 있습니다.</p>
 
-<p>이런 Bootstrap 컴포넌트들을 사용할 때는 단순하게 tag안 class 입력만으로 가능하다.</p>
+<p>이런 Bootstrap 컴포넌트들을 사용할 때는 단순하게 tag안 class 입력만으로 가능합니다.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Left<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Middle<span class="nt">&lt;/button&gt;</span>
@@ -244,7 +181,7 @@ Bootstrap의 UI 요소중 가장 간단하게 사용할 수 있는 방법으로 
 
 <p><a href="http://jsfiddle.net/3d8sgg0k/5/">확인하기</a></p>
 
-<p>Bootstrap에서 제공되는 Reusable component는 아래와 같다.</p>
+<p>Bootstrap에서 제공되는 Reusable component는 아래와 같습니다.</p>
 
 <ul>
 <li><a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> : 아이콘 컴포넌트</li>
@@ -272,6 +209,59 @@ Bootstrap의 UI 요소중 가장 간단하게 사용할 수 있는 방법으로 
 
 <h3><a name="js_comp"></a>Javascript component</h3>
 
+<p>jQuery를 이용하여 보다 다양한 Bootstrap의 기능들을 사용할 수 있습니다. </p>
+
+<ul>
+<li><a href="http://getbootstrap.com/javascript/#transitions">Transitions</a> : 전환 효과 플러그인</li>
+<li><a href="http://getbootstrap.com/javascript/#modal">Modal</a> : 모달 팝업 플러그인</li>
+<li><a href="http://getbootstrap.com/javascript/#dropdown">Dropdown</a> : 드랍다운 메뉴 플러그인 </li>
+<li><a href="hhttp://getbootstrap.com/javascript/#scrollspy">Scrollspy</a> : 스크롤 스파이 플러그인 </li>
+<li><a href="hhttp://getbootstrap.com/javascript/#tab">Tab</a> : 탭 메뉴 플러그인</li>
+<li><a href="hhttp://getbootstrap.com/javascript/#tooltip">Tooltip</a> : 툴팁 플러그인</li>
+<li><a href="hhttp://getbootstrap.com/javascript/#popover">Popover</a> : 풍선 도움말 플러그인</li>
+<li><a href="hhttp://getbootstrap.com/javascript/#alert">Alert</a> : 알람 메세지 플러그인 </li>
+<li><a href="hhttp://getbootstrap.com/javascript/#button">Button</a> : 버튼전환 플러그인 </li>
+<li><a href="hhttp://getbootstrap.com/javascript/#collapse">Collapse</a> : 아코디언 패널 플러그인</li>
+<li><a href="hhttp://getbootstrap.com/javascript/#carousel">Carousel</a> : 슬라이드 화면 플러그인</li>
+<li><a href="hhttp://getbootstrap.com/javascript/#affix">Affix</a> : 스크롤 고정하게 해주는 플러그인 </li>
+</ul>
+
+<h3>Customize Bootstrap</h3>
+
+<p>모든 웹페이지들이 Bootstrap의 모든 기능을 필요로 하지는 않기 때문에 필요한 기능만을 담은 Bootstrap file을 생성하는 기능을 제공합니다.
+불필요한 기능들을 로딩하는 부하를 줄이기 위해서 제공되는 서비스 입니다. 이외에도 각종 옵션들을 자신의 의도에 맞게 수정가능합니다. 색상, 폰트, 각종 사이즈 등등.</p>
+
+<h2>설치/사용방법</h2>
+
+<p>Bootstrap은 설치를 위한 다양한 방법을 제공하고 있으면 각 방법들은 난이도와 용도의 차이가 있습니다. 자신이 원하는 형태에 맞추어 설치하시면 됩니다.</p>
+
+<h3>Download 받아서 사용합니다.</h3>
+
+<p>압축된 CSS, Javascript, Font 들이 묶인 파일을 다운 받습니다.
+<code>
+https://github.com/twbs/bootstrap/releases/download/v3.2.0/bootstrap-3.2.0-dist.zip
+</code></p>
+
+<h3>Compile하여 사용합니다.</h3>
+
+<p>Less, Javascript, Font 들이 묶인 파일을 다운 받습니다. Less를 위해서는 Less 컴파일러와 몇 가지 설정이 필요합니다.
+<code>
+https://github.com/twbs/bootstrap/archive/v3.2.0.zip
+</code></p>
+
+<h3>CDN을 이용하여 바로 사용할 수 도 있습니다.</h3>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Latest compiled and minified CSS --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- Optional theme --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css&quot;</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- Latest compiled and minified JavaScript --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<h3>Bower를 통해서 Bootstrap을 설치할 수 있습니다.</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ bower install bootstrap
+</code></pre></div>
         </div>
 
         <div class="media_content media_item shadow_panel">
@@ -302,6 +292,16 @@ Bootstrap의 UI 요소중 가장 간단하게 사용할 수 있는 방법으로 
 
     <script>
         $('#main_content').toc();
+
+        $(document).ready(function(){
+            $('#toc_location').affix({
+                offset:{
+                    top: function(){
+                        return 550;
+                    }
+                }
+            });
+        })
     </script>
 </div>
 <footer>
