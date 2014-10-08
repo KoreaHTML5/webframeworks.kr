@@ -10,28 +10,11 @@ layout : default
 
 </div>
 <div class="row">
-    <div class="col-md-2 col-md-offset-2">
-        {% include tags.html %}
-    </div>
-
-    <div class="col-md-6">
+    <div class="col-md-offset-3 col-md-6">
         <ul class="media-list">
-
-            <!--li class="media_item">
-                <div class="media media_content shadow_panel">
-                    <div class="media-body">
-                        <div class="page-headermedia-heading">
-                            <h4><a href=""></a>&nbsp;<small></small></h4>
-                        </div>
-                        <p></p>
-                    </div>
-                </div>
-            </li-->
-
         </ul>
 
     </div>
-
 </div>
 
 <script>
@@ -60,7 +43,7 @@ layout : default
                 var dataList = resp.list;
                 for(var key in dataList){
                     console.log(dataList[key]);
-                    var titleDiv = $('<div><h4>'+dataList[key].title+'</h4></div>').addClass('page-header media-heading');
+                    var titleDiv = $('<div><h4><a href=\"/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></h4></div>').addClass('page-header media-heading');
                     var contentDiv = $('<div></div>').addClass('media media_content shadow_panel');
                     var bodyDiv = $('<div></div>').addClass('media-body');
                     var li = $('<li></li>').addClass('media_item').appendTo($('.media-list'));
