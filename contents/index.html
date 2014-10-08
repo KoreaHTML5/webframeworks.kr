@@ -83,7 +83,7 @@
             {% endfor %}
         </table>
 
-        <table width="100%" class="table table-striped shadow_panel">
+        <table width="100%" class="table table-striped shadow_panel" id="updatesTab">
             <tr>
                 <th colspan="2">
                     Updates
@@ -91,31 +91,6 @@
                 <th align="right">
                     <a href="{{site.baseurl}}/updates">더보기</a>
                 </th>
-            </tr>
-            <tr>
-                <td width="70%">W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td width="15%">2014.8.11</td>
-                <td width="15%">W3C</td>
-            </tr>
-            <tr>
-                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td>2014.8.11</td>
-                <td>W3C</td>
-            </tr>
-            <tr>
-                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td>2014.8.11</td>
-                <td>W3C</td>
-            </tr>
-            <tr>
-                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td>2014.8.11</td>
-                <td>W3C</td>
-            </tr>
-            <tr>
-                <td>W3C에서 Veckon을 최우수 표준 준수 업체로 선정.</td>
-                <td>2014.8.11</td>
-                <td>W3C</td>
             </tr>
         </table>
 
@@ -159,3 +134,47 @@
         </table>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        fetch();
+
+    });
+
+    function fetch(page_){
+        jQuery.support.cors = true;
+        var pageNumber = page_;
+        if(!pageNumber){
+            pageNumber = 1;
+        }
+        $.ajax({
+            url : 'http://www.koreahtml5.kr/rest/weekly',
+            type : 'GET',
+            dataType : 'json',
+            crossDomain : true,
+            data:{
+                bbs_no : 'BBS0000005',
+                pageIndex : pageNumber,
+                pageRow : 5
+            },
+            success:function(resp){
+                var dataList = resp.list;
+                for(var key in dataList){
+                    console.log(dataList[key]);
+                    var rowObj = $('<tr><td width=\"70%\"><a href=\"/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></td><td width=\"15%\">'+printDate(dataList[key].reg_date)+'</td><td width=\"15%\">W3C</td></tr>');
+                    $('#updatesTab').append(rowObj);
+                }
+            },
+            error:function(err_){
+                console.error(err_);
+            }
+        });
+    }
+
+    function printDate(date_){
+        return date_.substr(0,4)+'.'+date_.substr(4,2)+'.'+date_.substr(6,2);
+    }
+
+
+
+</script>
