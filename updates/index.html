@@ -85,7 +85,7 @@
                 var dataList = resp.list;
                 for(var key in dataList){
                     console.log(dataList[key]);
-                    var titleDiv = $('<div><h4><a href=\"/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></h4></div>').addClass('page-header media-heading');
+                    var titleDiv = $('<div><h4><a href=\"/dev.koreahtml5.kr/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></h4></div>').addClass('page-header media-heading');
                     var contentDiv = $('<div></div>').addClass('media media_content shadow_panel');
                     var bodyDiv = $('<div></div>').addClass('media-body');
                     var li = $('<li></li>').addClass('media_item').appendTo($('.media-list'));

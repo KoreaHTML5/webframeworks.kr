@@ -82,12 +82,12 @@
             getDetail(parseInt(keys[1])+1, function(resp_){
                 console.log(resp_);
                 if(resp_.result == '성공'){
-                    addMediaItem('다음 소식 : <a href=\"/updates/detail#'+resp_.data.seq+'\">'+resp_.data.title+'</a>');
+                    addMediaItem('다음 소식 : <a href=\"/dev.koreahtml5.kr/updates/detail#'+resp_.data.seq+'\">'+resp_.data.title+'</a>');
                 }
             });
             getDetail(keys[1]-1, function(resp_){
                 if(resp_.result == '성공'){
-                    addMediaItem('이전 소식 : <a href=\"/updates/detail#'+resp_.data.seq+'\">'+resp_.data.title+'</a>');
+                    addMediaItem('이전 소식 : <a href=\"/dev.koreahtml5.kr/updates/detail#'+resp_.data.seq+'\">'+resp_.data.title+'</a>');
                 }
             });
             
