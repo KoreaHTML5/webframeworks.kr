@@ -83,7 +83,74 @@
 </div>
     </div>
 
+    <div class="col-md-6">
+        <ul class="media-list">
+
+            <!--li class="media_item">
+                <div class="media media_content shadow_panel">
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href=""></a>&nbsp;<small></small></h4>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+            </li-->
+
+        </ul>
+
+    </div>
+
 </div>
+
+<script>
+    $(document).ready(function(){
+        fetch();
+
+    });
+
+    function fetch(page_){
+        jQuery.support.cors = true;
+        var pageNumber = page_;
+        if(!pageNumber){
+            pageNumber = 1;
+        }
+        $.ajax({
+            url : 'http://www.koreahtml5.kr/rest/weekly',
+            type : 'GET',
+            dataType : 'json',
+            crossDomain : true,
+            data:{
+                bbs_no : 'BBS0000005',
+                pageIndex : pageNumber,
+                pageRow : 10
+            },
+            success:function(resp){
+                var dataList = resp.list;
+                for(var key in dataList){
+                    console.log(dataList[key]);
+                    var titleDiv = $('<div><h4>'+dataList[key].title+'</h4></div>').addClass('page-header media-heading');
+                    var contentDiv = $('<div></div>').addClass('media media_content shadow_panel');
+                    var bodyDiv = $('<div></div>').addClass('media-body');
+                    var li = $('<li></li>').addClass('media_item').appendTo($('.media-list'));
+                    bodyDiv.append(titleDiv);
+                    contentDiv.append(bodyDiv);
+                    li.append(contentDiv);
+                }
+            },
+            error:function(err_){
+                console.error(err_);
+            }
+        }).done(function(resp){
+            //console.log(resp);
+        });
+    }
+
+    function handleResult(resp_){
+        console.log(resp);
+    }
+
+</script>
 
         <footer>
 <table width="100%" height="80" class="footer">
