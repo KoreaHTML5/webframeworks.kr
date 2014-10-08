@@ -7,7 +7,7 @@ summary :
 permalink : /getstarted/foundation
 title_background_color : 008cba
 title_color : FFFFFF
-tags : bootstrap
+tags : foundation
 author : nurinamu
 ---
 
