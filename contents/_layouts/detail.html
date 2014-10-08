@@ -11,8 +11,11 @@ layout : default
 </div>
 <div class="row">
     <div class="col-md-offset-3 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_summary" style="background-color: #EFEFEF;">
+
+        </div><br>
         <div class="media_content media_item shadow_panel" id="main_content">
-            
+
         </div>
     </div>
 
@@ -30,7 +33,8 @@ layout : default
         if(keys.length > 1){
             getDetail(keys[1], function (resp) {
                 console.log(resp);
-                $('#main_content').html('<h2>'+resp.data.title+'</h2>'+makeHTML(resp.data.introduction)+makeHTML(resp.data.contents));
+                $('#main_summary').html('<h3>'+resp.data.title+'</h3><br>'+makeHTML(resp.data.introduction));
+                $('#main_content').html(makeHTML(resp.data.contents));
             });
 
             getDetail(parseInt(keys[1])+1, function(resp_){
@@ -49,7 +53,7 @@ layout : default
     });
     
     function makeHTML(text_){
-        return '<p>'+text_.replace(/\n/gi,'</p><p>')+'</p>';
+    return '<p>'+text_.replace(/\n/gi,'</p><p>')+'</p>';
     }
     
     function getDetail(seq_, success_){
