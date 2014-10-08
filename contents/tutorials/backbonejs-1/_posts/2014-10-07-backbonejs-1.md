@@ -5,6 +5,7 @@ category : tutorials
 subcategory : backbonejs
 permalink : /tutorials/backbonejs-1
 title_background_color : AED5E6
+summary : Backbone.Events에 대해 살펴보고 간단한 예제를 통해 확인해보기
 tags : backbone
 author : oigil
 ---
