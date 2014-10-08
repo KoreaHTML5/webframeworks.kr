@@ -161,7 +161,7 @@
                 var dataList = resp.list;
                 for(var key in dataList){
                     console.log(dataList[key]);
-                    var rowObj = $('<tr><td width=\"70%\"><a href=\"/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></td><td width=\"15%\">'+printDate(dataList[key].reg_date)+'</td><td width=\"15%\">W3C</td></tr>');
+                    var rowObj = $('<tr><td width=\"70%\"><a href=\"{{site.baseurl}}/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></td><td width=\"15%\">'+printDate(dataList[key].reg_date)+'</td><td width=\"15%\">W3C</td></tr>');
                     $('#updatesTab').append(rowObj);
                 }
             },
