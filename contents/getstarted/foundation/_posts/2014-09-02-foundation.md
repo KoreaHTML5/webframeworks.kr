@@ -6,6 +6,7 @@ subcategory : ui
 summary : 
 permalink : /getstarted/foundation
 title_background_color : 008cba
+title_color : FFFFFF
 tags : bootstrap
 author : nurinamu
 ---
@@ -23,17 +24,80 @@ Foundation [홈페이지](http://foundation.zurb.com/)에서는 Learn 항목을 
 
 ## Foundation 구성 요소
  
+ 
 ### Structure
+반응형 웹 페이지 구성을 위한 각종 레이아웃 구성을 위한 기능들을 제공합니다.
+
+- [Media Quries](http://foundation.zurb.com/docs/media-queries.html) : CSS Media Query를 이용한 화면 크기별 CSS 적용법입니다.
+- [Visibility](http://foundation.zurb.com/docs/components/visibility.html) : 화면 크기 또는 화면 방향에 따른 표시 여부를 설정할 수 있는 기능입니다.
+- [Grid](http://foundation.zurb.com/docs/components/grid.html) : 다양한 레이아웃을 화면 크기에 따라 적용할 수 있는 영역 설정법입니다.
+- [Block Grid](http://foundation.zurb.com/docs/components/block_grid.html) : 화면 크기에 따라 컨텐츠 블럭의 배열을 조정할 수 있는 영역 설정법입니다.
+- [Interchange Responsive Content](http://foundation.zurb.com/docs/components/interchange.html) : 화면 크기의 변경에 따라 javascript 이벤트가 발생하여 상황에 맞추어 처리할 수 있습니다.
 
 ### Navigation
+화면 이동 / 선택 등의 기능들을 제공합니다.
+
+- [Offcanvas](http://foundation.zurb.com/docs/components/offcanvas.html) : 메인 컨텐츠의 좌우에 메뉴를 숨겼다 열 수 있습니다. 안드로이드의 Drawer와 비슷한 기능.
+- [Top Bar](http://foundation.zurb.com/docs/components/topbar.html) : 웹페이지 상단에 다양한 형태의 메뉴를 표시할 수 있는 Navigation 바를 만드는 기능.
+- [Icon Bar](http://foundation.zurb.com/docs/components/icon-bar.html) : Navigation Bar에 Icon을 넣은 메뉴를 만드는 기능.
+- [Side Nav](http://foundation.zurb.com/docs/components/sidenav.html) : 화면 양 옆에 표시할 수 있는 Navigation 바를 만드는 기능. 
+- [Magellan Sticky Nav](http://foundation.zurb.com/docs/components/magellan.html) : 스크롤시에 상단에 따라오는 Navigation 바를 만드는 기능.
+- [Sub Nav](http://foundation.zurb.com/docs/components/subnav.html) : 간단한 Navigation 메뉴를 만드는 기능.
+- [Breadcrumbs](http://foundation.zurb.com/docs/components/breadcrumbs.html) : 단계가 있는 메뉴를 따라 이동시에 현재 단계를 나타내는 기능.
+- [Pagination](http://foundation.zurb.com/docs/components/pagination.html) : 페이지 구분을 기능을 간편하게 제공하는 컴포넌트. 
+
 
 ### Media
+컨텐츠 사용되는 미디어를 표시하기 위한 기능들을 제공합니다.
+
+- [Orbit Slider](http://foundation.zurb.com/docs/components/orbit.html) : 이미지 슬라이더를 만드는 기능. 모바일의 경우 Swipe도 지원.
+- [Thumbnails](http://foundation.zurb.com/docs/components/thumbnails.html) : Thumbnail 이미지를 테두리와 함께 표시하는 기능.
+- [Clearing Lightbox](http://foundation.zurb.com/docs/components/clearing.html) : 화면의 크기에 따라 내부 컨텐츠의 표시 위치를 자동으로 변경해주는 기능.
+- [Flex Video](http://foundation.zurb.com/docs/components/flex_video.html) : 화면의 크기에 따라 Youtube, vimeo 등의 embed 된 Video의 크기를 자동으로 변경해주는 기능.
 
 ### Forms
+사용자 입력 데이터를 처리하기 위한 UI 기능들입니다.
+
+- [Forms]() : Form layout을 구성할 수 있는 기능.
+- [Switches]() : checkbox, radiobutton을 switch 형태로 표시하는 기능.
+- [Range Sliders]() : Slider를 구현할 수 있는 기능.
+- [Abide Validation]() : 입력 값의 형태가 유효한지 확인할 수 있는 기능.
 
 ### Buttons
+입력 버튼을 다양하게 구현할 수 있는 기능들입니다.
+
+- [Buttons]() : Button을 구현할 수 있는 기능.
+- [Button Groups]() : Button을 묶음으로 구현할 수 있는 기능.
+- [Split Buttons]() : Dropdown Button과 유사하지만 Dropdown 메뉴 표시 영역이 차이가 있습니다.
+- [Dropdown Buttons]() : Dropdown Menu가 포함된 Button을 구현할 수 있는 기능.
 
 ### Typography
+문자를 목적에 맞게 표현하기 위한 기능들입니다.
+  
+- [Type]() : 각 표시 목적별로 Style이 정의 되어있음.
+- [Inline Lists]() : List를 가로로 표시할 수 있는 기능.
+- [Labels]() : 다양한 형태의 Label을 구현할 수 있는 기능.
+- [Keystrokes]() : 키 입력을 표시할 수 있는 기능.
+
+### Callouts & Prompts
+특정 조건이나 시점에 알려줘야하는 알림이나 팝업에 관한 기능들입니다.
+
+- [Reveal Modal]() : Modal을 구현할 수 있는 기능.
+- [Alerts]() : 알림 메세지를 표현하는 기능.
+- [Panels]() : 여러 컴포넌트를 묶어서 표현할 수 있는 기능.
+- [Tooltips]() : 풍선 도움말을 표시하는 기능.
+- [Joyride]() : Step by Step 설명을 동적 화면 이동과 함께 표현할 수 있는 기능.
+
+### Content
+내용을 목적에 맞추어 가독성을 높이는 등 다양하게 표현하는 기능들입니다.
+
+- [Dropdowns]() : Dropdown을 구현할 수 있는 기능.
+- [Pricing Tables]() : 가격 테이블을 표현할 수 있는 기능.
+- [Progress Bars]() : 진행 상태 표시바를 구현할 수 있는 기능.
+- [Tables]() : Table 화면을 구성할 수 있는 기능.
+- [Accordion]() : Accordion 화면을 구성할 수 있는 기능.
+- [Tabs]() : Tab 화면을 구성할 수 있는 기능.
+- [Equalizer]() : 다양한 화면 크기에도 동일한 크기의 Panel을 구성해주는 기능.
 
 ## 설정 방법
 Foundation은 3가지 설치 방법을 제공합니다.
@@ -69,25 +133,25 @@ Foundation에서는 SCSS를 통하여 CSS를 생성하는 Sass를 지원합니�
 {% img imgs/scssflow-med.svg %}
 
 #### **Compass 프로젝트 생성 방법**
-1. Compass를 설치합니다.
+1) Compass를 설치합니다.
 
 ```
 $ gem install compass
 ```
 
-2. Foundation Client를 통해서 프로젝트를 생성합니다.
+2) Foundation Client를 통해서 프로젝트를 생성합니다.
  
 ```
 $ foundation new MY_PROJECT
 ```
 
-3. 생성된 프로젝트 디렉토리로 이동합니다.
+3) 생성된 프로젝트 디렉토리로 이동합니다.
 
 ```
 $ cd MY_PROJECT
 ```
 
-4. 변경사항이 생길때는 반드시 `bundle` 명령어를 수행하고 프로젝트를 실행하기 위해 아래의 명령어를 사용합니다.
+4) 변경사항이 생길때는 반드시 `bundle` 명령어를 수행하고 프로젝트를 실행하기 위해 아래의 명령어를 사용합니다.
 
 ```
 $ bundle exec compass watch
@@ -95,26 +159,26 @@ $ bundle exec compass watch
 
 
 #### **Libsass 프로젝트 생성 방법**
-1. 프로젝트를 생성할 위치로 이동합니다.
+1) 프로젝트를 생성할 위치로 이동합니다.
 
 ```
 $ cd path/to/sites
 ```
 
-2. Foundation Client를 통해서 프로젝트를 생성합니다.
+2) Foundation Client를 통해서 프로젝트를 생성합니다.
 
 ```
 $ foundation new project_name --libsass
 ```
 
-3. 프로젝트가 생성되었고 프로젝트를 시작하기 전에 컴파일을 수행한다.
+3) 프로젝트가 생성되었고 프로젝트를 시작하기 전에 컴파일을 수행한다.
 
 ```
 $ cd project_name
 $ grunt build
 ```
 
-4. 변경사항이 생기면 매번 `grunt`를 수행한다.
+4) 변경사항이 생기면 매번 `grunt`를 수행한다.
 
 ```
 $ grunt
