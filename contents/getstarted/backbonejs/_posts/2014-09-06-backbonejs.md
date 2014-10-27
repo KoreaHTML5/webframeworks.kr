@@ -327,13 +327,7 @@ Backbone.js에서는 개별 모델에 `destroy`를 실행시킴으로써 호출�
 ## 정리하며
 Backbone.js 를 시작하기 위한 여러가지 내용을 살펴보았습니다. 헌데 Backbone.js보다는 RESTful API 설계 방식에 대한 내용이 더 많았던 것 같습니다.
 Backbone.js의 스마트하고 능동적인 Model/View 컨트롤에 대한 내용 대부분 이와 관계된 것이어서 꼭 필요했던 사항이었습니다.
-그리고 RESTful 개발 관련 내용으로는 위와 같은 HTTP method 활용 말고도 Addressable URI, Stateless, Layerd system 등 더욱 깊고 다양한 내용들이 많이 있기 때문에
-Backbone.js에 관심이 있고, 최근 클라우드 중심의 환경에서 더욱 각광받고 지지받는 REST API 설계에 관심이 많으시다면 보다 자세히 살펴보시길 권해드립니다. 
-
-그리고 앞으로 진행될 Backbone.js Tutorial 에서는 앞서 설명드린 비동기통신이 동작하는 환경에서 설명을 진행할 예정입니다.
-따라서 아직 관련 내용이 낯설거나 뭔가 실행할만한 예제가 필요하신 분은 [예제 소스](https://github.com/oigil/backbone_tutorial) 를 내려받아서 세팅하시면 되겠습니다.
-해당 예제 소스는 Node 기반 Express 서버로 구성되어 있으며 Backbone.js가 포함된 static한 HTML페이지와 GET/POST/PATCH/DELETE 실행을 처리하는 간단한 API/route 그리고 이에 대응하기 위한 DB로 SQLite가 설정되어 있습니다.
-Node환경에서 바로 `npm install`만 실행하면 실행준비가 완료되며 이에 대한 자세한 내용은 앞으로 진행할 Tutorial에서 다시 설명드리겠습니다.
+그리고 RESTful 개발 관련 내용으로는 위와 같은 HTTP method 활용 말고도 Addressable URI, Stateless, Layerd system, 보안과 인증처리 등 더욱 깊고 다양한 내용들이 많이 있으므로 관심있으신 분들은 더 자세히 살펴보시길 권해드립니다.
 
 ## References
 
