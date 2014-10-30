@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>Dev Html5Korea Home - Google Map을 위한 AngularJS 지시자 만들어 보기</title>
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/main.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/syntax.css">
+<script src="/dev.koreahtml5.kr/static/js/jquery.min.js"></script>
+<script src="/dev.koreahtml5.kr/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/toc.css">
+    <script type="text/javascript" src="/dev.koreahtml5.kr/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/dev.koreahtml5.kr/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/dev.koreahtml5.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="row content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Google Map을 위한 AngularJS 지시자 만들어 보기</h1>
+<p class="title_header_summary">AngularJS 지시자를 이용하여 재사용 가능한 구글 Map의 지시자를 만들어 본다.</p>
+</div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/dev.koreahtml5.kr/tags/jquery/' style='color: rgba(0,0,0,0.078049)'>jquery</a>
+<a href='/dev.koreahtml5.kr/tags/javascript/' style='color: rgba(0,0,0,1.717073)'>javascript</a>
+<a href='/dev.koreahtml5.kr/tags/html/' style='color: rgba(0,0,0,0.078049)'>html</a>
+<a href='/dev.koreahtml5.kr/tags/grunt/' style='color: rgba(0,0,0,0.078049)'>grunt</a>
+<a href='/dev.koreahtml5.kr/tags/gulp/' style='color: rgba(0,0,0,0.078049)'>gulp</a>
+<a href='/dev.koreahtml5.kr/tags/build/' style='color: rgba(0,0,0,0.234146)'>build</a>
+<a href='/dev.koreahtml5.kr/tags/yeoman/' style='color: rgba(0,0,0,0.078049)'>yeoman</a>
+<a href='/dev.koreahtml5.kr/tags/foundation/' style='color: rgba(0,0,0,0.078049)'>foundation</a>
+<a href='/dev.koreahtml5.kr/tags/bower/' style='color: rgba(0,0,0,0.156098)'>bower</a>
+<a href='/dev.koreahtml5.kr/tags/twitter/' style='color: rgba(0,0,0,0.156098)'>twitter</a>
+<a href='/dev.koreahtml5.kr/tags/framework/' style='color: rgba(0,0,0,1.482927)'>framework</a>
+<a href='/dev.koreahtml5.kr/tags/angularjs/' style='color: rgba(0,0,0,0.780488)'>angularjs</a>
+<a href='/dev.koreahtml5.kr/tags/tutorials/' style='color: rgba(0,0,0,0.702439)'>tutorials</a>
+<a href='/dev.koreahtml5.kr/tags/backbone/' style='color: rgba(0,0,0,0.312195)'>backbone</a>
+<a href='/dev.koreahtml5.kr/tags/getstarted/' style='color: rgba(0,0,0,0.156098)'>getstarted</a>
+<a href='/dev.koreahtml5.kr/tags/underscore/' style='color: rgba(0,0,0,0.078049)'>underscore</a>
+<a href='/dev.koreahtml5.kr/tags/library/' style='color: rgba(0,0,0,0.078049)'>library</a>
+<a href='/dev.koreahtml5.kr/tags/Ext/' style='color: rgba(0,0,0,0.702439)'>Ext</a>
+<a href='/dev.koreahtml5.kr/tags/JS/' style='color: rgba(0,0,0,0.702439)'>JS</a>
+<a href='/dev.koreahtml5.kr/tags/tutorial/' style='color: rgba(0,0,0,0.624390)'>tutorial</a>
+<a href='/dev.koreahtml5.kr/tags/modernizr/' style='color: rgba(0,0,0,0.078049)'>modernizr</a>
+<a href='/dev.koreahtml5.kr/tags/bootstrap/' style='color: rgba(0,0,0,0.156098)'>bootstrap</a>
+<a href='/dev.koreahtml5.kr/tags/quickstart/' style='color: rgba(0,0,0,0.078049)'>quickstart</a>
+<a href='/dev.koreahtml5.kr/tags/angular-di/' style='color: rgba(0,0,0,0.078049)'>angular-di</a>
+<a href='/dev.koreahtml5.kr/tags/animation/' style='color: rgba(0,0,0,0.156098)'>animation</a>
+<a href='/dev.koreahtml5.kr/tags/router/' style='color: rgba(0,0,0,0.078049)'>router</a>
+<a href='/dev.koreahtml5.kr/tags/promise/' style='color: rgba(0,0,0,0.078049)'>promise</a>
+<a href='/dev.koreahtml5.kr/tags/responsive/' style='color: rgba(0,0,0,0.078049)'>responsive</a>
+<a href='/dev.koreahtml5.kr/tags/form/' style='color: rgba(0,0,0,0.156098)'>form</a>
+<a href='/dev.koreahtml5.kr/tags/validation/' style='color: rgba(0,0,0,0.156098)'>validation</a>
+<a href='/dev.koreahtml5.kr/tags/map/' style='color: rgba(0,0,0,0.078049)'>map</a>
+<a href='/dev.koreahtml5.kr/tags/direcitve/' style='color: rgba(0,0,0,0.078049)'>direcitve</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>Google Map을 위한 AngularJS 지시자 만들어 보기</h1>
+
+<p>이전에 <a href="/tutorials/angularjs/directive_for_ui_component">UI 컴포넌트를 위한 지시자 알아보기</a>에서 우리는 지시자를 만드는 법을 간단히 알아 보았다면 이번 튜토리얼은 좀 다른 시각으로 지시자로 UI 컴포넌트를 만드는 법에 대하여 살펴보겠다.</p>
+
+<h2>외부 라이브러리를 이용한 지시자 개발</h2>
+
+<p>AngualrJS의 지시자를 이용하여 UI 컴포넌트 개발 방식은 크게 2가지로 볼 수 있다. 하나는 이전 튜토리얼에서 한 방법과 같이 템플릿을 이용하여 처음부터 끝까지 직접 개발하는 방식이고 다른 하나는 바퀴를 맨땅에서부터 다시 발명할 필요 없이<sup>Don&#39;t reinvent the wheel</sup> 이미 만들어진 라이브러리를 활용하여 AngularJS 프레임워크와 잘 맞춰 돌아가게 만드는 것이다.</p>
+
+<h2>Google Map 지시자 만들기</h2>
+
+<p>Google Map은 자바스크립트를 이용하여 특정 좌표를 중심으로 지도를 보여주거나 다음 그리과 같이 지도안에 별도의 윈도우창을 만들어 정보를 보여줄 수 있다. 우리보고 이런 지도를 만들라면...... 할 말이 없다.</p>
+
+<p><img src="imgs/google_map_tutorial_01.png" style="width:600px;height:300px;" alt="구글지도 그림" title="구글지도 그림"></p>
+
+<p>다음 코드는 자바스크립트로 google map을 초기화하고 지도에 서울을 표시하는 코드이다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mapOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">center</span><span class="o">:</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="mf">37.561192</span><span class="p">,</span> <span class="mf">127.030487</span><span class="p">),</span>
+  <span class="nx">zoom</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="nx">mapTypeId</span><span class="o">:</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">MapTypeId</span><span class="p">.</span><span class="nx">ROADMAP</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;map_canvas&quot;</span><span class="p">),</span><span class="nx">mapOptions</span><span class="p">);</span></code></pre></div>
+
+<p>그럼 우선 지시자를 설계해보자. 지시자의 이름은 gMap으로하고 지도의 중심점은 center 그리고 줌레벨은 zoom으로하겠다. 그리고 각 이름을 태그 속성명으로 하고 속성값을 통하여 값을 받겠다. 그러면 다음과 같이 구글맵 지시자를 정의할 수 있을 것이다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;g-map</span> <span class="na">center=</span><span class="s">&quot;[37.561192, 127.030487]&quot;</span> <span class="na">zoom=</span><span class="s">&quot;8&quot;</span><span class="nt">&gt;&lt;/g-map&gt;</span></code></pre></div>
+
+<p>이제 실제 지시자를 구현해보자. google-map.js라는 파일을 만들어 다음 코드와 같이 작성한다. 전체 코드는 <a href="https://github.com/jeado/web-angular-sample/tree/google-map">GitHub web-angular-sample 프로젝트의 google-map Branch</a>에서 google-map.html과 gmap 폴더를 확인하면 된다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ngGMap&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;gMap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$timeout&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$timeout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;EA&#39;</span><span class="p">,</span>
+      <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">iElement</span><span class="p">,</span> <span class="nx">iAttrs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//지도를 담고 있는 div요소 생성과 스타일 지정</span>
+        <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+        <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="s2">&quot;100%&quot;</span><span class="p">;</span>
+        <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="s2">&quot;100%&quot;</span><span class="p">;</span>
+        <span class="nx">iElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span>
+        
+        <span class="c1">//구글 맵을 만든다.</span>
+        <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="p">{});</span>
+        <span class="c1">//옵션을 정의</span>
+        <span class="kd">var</span> <span class="nx">mapOptions</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="nx">center</span><span class="o">:</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="mf">37.561192</span><span class="p">,</span> <span class="mf">127.030487</span><span class="p">),</span>
+          <span class="nx">zoom</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+          <span class="nx">mapTypeId</span><span class="o">:</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">MapTypeId</span><span class="p">.</span><span class="nx">ROADMAP</span>
+        <span class="p">};</span>
+
+        <span class="c1">//부분적으로만 그려지는 것을 방지하기 위한 코드</span>
+        <span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">map</span><span class="p">,</span> <span class="s2">&quot;resize&quot;</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">//옵션 적용</span>
+        <span class="nx">map</span><span class="p">.</span><span class="nx">setOptions</span><span class="p">(</span><span class="nx">mapOptions</span><span class="p">);</span>
+
+      <span class="p">}</span>
+    <span class="p">};</span>
+  <span class="p">}]);</span></code></pre></div>
+
+<p>이제 위 코드를 사용할 html 파일을 다음과 같이 만든다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;demoApp&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>AngualrJS Google Map Directive 데모 엡<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+      <span class="nc">.map-container</span> <span class="p">{</span> <span class="k">height</span><span class="o">:</span> <span class="m">300px</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span> <span class="m">300px</span><span class="p">;</span> <span class="k">margin</span><span class="o">:</span> <span class="m">20px</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#000</span><span class="p">;</span> <span class="p">}</span>    
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=weather,visualization,panoramio&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;libs/angular/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;gmap/directive/google-map.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;demoApp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngGMap&#39;</span><span class="p">]);</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;map-container&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;g-map&gt;&lt;/g-map&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<p>브라우저에서 확인하면 확인을 하면 서울을 나타내는 구글 지도가 잘 보일 것이다. 하지만 위 지시자는 앞에서 설계한 것과는 다르게 특정 위치와 줌래밸에 소스에 밖혀있다. 그럼 외부에서 위치와 줌래밸을 받을 수 있도록 아래와 같이 지시자 코드를 수정하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ngGMap&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;gMap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$timeout&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$timeout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;EA&#39;</span><span class="p">,</span>
+      <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">iElement</span><span class="p">,</span> <span class="nx">iAttrs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+        <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="s2">&quot;100%&quot;</span><span class="p">;</span>
+        <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="s2">&quot;100%&quot;</span><span class="p">;</span>
+        <span class="nx">iElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span>
+
+        <span class="c1">//iAttrs.center를 이용하여 지시자가 적용된 DOM의 center 속성값을 가지고 온다. 하지만 해당 값이 문자열이라서 JSON.parse를 이용해 배열로 변환한다. zoom은 숫자여야 하기에 Number를 이용하여 숫자로 변환한다.</span>
+        <span class="kd">var</span> <span class="nx">cordi</span> <span class="o">=</span> <span class="p">(</span><span class="nx">iAttrs</span><span class="p">.</span><span class="nx">center</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="o">?</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">iAttrs</span><span class="p">.</span><span class="nx">center</span><span class="p">)</span> <span class="o">:</span> <span class="p">[</span><span class="mf">37.561192</span><span class="p">,</span> <span class="mf">127.030487</span><span class="p">],</span>
+            <span class="nx">zoom</span> <span class="o">=</span> <span class="p">(</span><span class="nx">iAttrs</span><span class="p">.</span><span class="nx">zoom</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="o">?</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">iAttrs</span><span class="p">.</span><span class="nx">zoom</span><span class="p">)</span> <span class="o">:</span> <span class="mi">8</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="p">{}),</span>
+            <span class="nx">mapOptions</span> <span class="o">=</span> <span class="p">{</span>
+              <span class="nx">center</span><span class="o">:</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="nx">cordi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">cordi</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+              <span class="nx">zoom</span><span class="o">:</span> <span class="nx">zoom</span><span class="p">,</span>
+              <span class="nx">mapTypeId</span><span class="o">:</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">MapTypeId</span><span class="p">.</span><span class="nx">ROADMAP</span>
+            <span class="p">};</span>
+      
+      <span class="c1">//생략...</span>
+
+      <span class="p">}</span>
+    <span class="p">};</span>
+  <span class="p">}]);</span></code></pre></div>
+
+<p>이제 지시자 사용하는 코드를 아래와 같이 부산의 좌표로 변경하고 줌래밸값을 더 높게하여 수정하고 브라우저에서 확인하자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;g-map</span> <span class="na">center=</span><span class="s">&quot;[35.178202, 129.078666]&quot;</span> <span class="na">zoom=</span><span class="s">&quot;12&quot;</span><span class="nt">&gt;&lt;/g-map&gt;</span></code></pre></div>
+
+<p>그럼 아래 부산이 더 줌인되서 보이는 구글지도를 확인할 수 있을 것이다.</p>
+
+<p><img src="imgs/google_map_tutorial_02.png" style="width:300px;height:300px;" alt="부산 구글지도 그림" title="부산 구글지도 그림"></p>
+
+<h2>속성 Observe 기능 추가</h2>
+
+<p>우리가 만든 gMap 지시자를 좀 더 동적으로 사용되는 시나리오를 생각해보자. 여러 좌표정보를 포함하는 배열이 있고 이를 콤보박스로 표현했다. 해당 콤보박스를 선택하면 선택한 좌표로 지도의 중심점이 변경되는 것이다. </p>
+
+<p>단순히 제이쿼리를 이용해 구현한다고 생각하면 컨트롤 요소에 변경 이벤트 리스너를 구현하고 그때마다 지도의 중심 위치를 변경하는 코드를 작성할 것이다. 하지만 AngularJS의 데이터 바인딩 기능과 지시자 기능이 있기 때문에 쉽게 사용할 수 있는 gMap 지시자를 만들 수 있다. 그럼 google-map.js 파일을 다음과 같이 수정한다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//생략</span>
+  <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="p">{}),</span>
+      <span class="nx">mapOptions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">center</span><span class="o">:</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="nx">cordi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">cordi</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="nx">zoom</span><span class="o">:</span> <span class="nx">zoom</span><span class="p">,</span>
+        <span class="nx">mapTypeId</span><span class="o">:</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">MapTypeId</span><span class="p">.</span><span class="nx">ROADMAP</span>
+      <span class="p">};</span>
+
+  <span class="c1">//center 속성을 감시하고 있다 값이 변경하면 해당 콜백함수를 호출한다. 이때 바뀐 값이 전달된다.</span>
+  <span class="nx">iAttrs</span><span class="p">.</span><span class="nx">$observe</span><span class="p">(</span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">latlng</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="c1">//구글 맵의 setCenter 메소드로 바뀐 값으로 맵의 중앙위치를 변경한다.</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">setCenter</span><span class="p">({</span><span class="nx">lat</span><span class="o">:</span><span class="nx">latlng</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">lng</span><span class="o">:</span><span class="nx">latlng</span><span class="p">[</span><span class="mi">1</span><span class="p">]});</span>
+  <span class="p">});</span>
+  <span class="c1">//위와 마찬가지로 zoom 속성을 감시한다.</span>
+  <span class="nx">iAttrs</span><span class="p">.</span><span class="nx">$observe</span><span class="p">(</span><span class="s2">&quot;zoom&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">setZoom</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+  <span class="p">});</span>
+<span class="c1">//생략</span></code></pre></div>
+
+<p>이제 콤보박스와 zoom을 제어하는 요소들을 추가한 구글맵지시자 데모페이지를 아래와 같이 수정한다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 생략 --&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;demoApp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngGMap&#39;</span><span class="p">]).</span>
+  <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;demoCtrl&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//서울과 부산의 좌표를 가지고 있는 목록이다.</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">cordiList</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">name</span> <span class="o">:</span> <span class="s1">&#39;서울&#39;</span><span class="p">,</span>
+        <span class="nx">center</span> <span class="o">:</span> <span class="p">[</span><span class="mf">37.561192</span><span class="p">,</span> <span class="mf">127.030487</span><span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nx">name</span> <span class="o">:</span> <span class="s1">&#39;부산&#39;</span><span class="p">,</span>
+        <span class="nx">center</span> <span class="o">:</span> <span class="p">[</span><span class="mf">35.178202</span><span class="p">,</span> <span class="mf">129.078666</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">];</span>
+    <span class="c1">//콤보박스에서 선택한 좌표 정보이다.</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">selectedCord</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">cordiList</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="c1">//지도의 줌래밸이다.</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">zoom</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+  <span class="p">}]);</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">&quot;demoCtrl&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-inline search-container&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;select</span> <span class="na">ng-model=</span><span class="s">&quot;selectedCord&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">ng-options=</span><span class="s">&quot;cord.name for cord in cordiList&quot;</span> <span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;number&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;zoom&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;map-container&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- {{  }} 를 이용하여 데이터 바인딩 처리를 한다. --&gt;</span>
+    <span class="nt">&lt;g-map</span> <span class="na">center=</span><span class="s">&quot;{{ selectedCord.center }}&quot;</span> <span class="na">zoom=</span><span class="s">&quot;{{ zoom }}&quot;</span><span class="nt">&gt;&lt;/g-map&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="c">&lt;!-- 생략 --&gt;</span></code></pre></div>
+
+<p>브라우저에서 데모 페이지를 읽으면 아래 그림과 같은 화면을 볼 수 있다.</p>
+
+<p><img src="imgs/google_map_tutorial_03.png" style="width:300px;height:300px;" alt="변경된 구글지도 그림" title="변경된 구글지도 그림"></p>
+
+<p>지금까지 구글 지도 지시자를 만들어 보았는데 사실 더 많은 기능을 추가해야 된다. 이벤트 처리와 인포메이션 윈도우 처리 등... 정말 많은 기능이 필요로 한다. 우리가 원하는 데로 만들수도 있지만 벌써 훌륭한 오픈소스 개발자들이 만들어 공개하고있다. 그래서 몇 가지 지시자를 추천하며 튜토리얼을 맞추겠다.</p>
+
+<ul>
+<li><p><a href="http://ngmap.github.io/">Angularjs-Google-Maps</a></p></li>
+<li><p><a href="https://angular-ui.github.io/angular-google-maps/">Angular UI팀의 Google Maps</a></p></li>
+</ul>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+<li><a href="http://wikibook.co.kr/beginning-angularjs/">시작하세요 angularjs 프로그래밍</a></li>
+<li><a href="https://developers.google.com/maps/documentation/javascript/">Google Maps JavaScript API v3</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/dev.koreahtml5.kr/tags/javascript">javascript</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/framework">framework</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/angularjs">angularjs</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/tutorials">tutorials</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/map">map</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/direcitve">direcitve</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            @since 2014
+        </td>
+    </tr>
+</table>
+</footer>
+</body>
+</html>
