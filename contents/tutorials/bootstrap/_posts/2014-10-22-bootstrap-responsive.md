@@ -4,7 +4,7 @@ title : Bootstrap을 이용한 반응형 웹 디자인 적용하기
 category : tutorials
 subcategory : bootstrap
 summary : 웹사이트에 Bootstrap을 통하여 반응형 웹 디자인을 적용할때 고려해야할 것들에 대하여 배워봅시다.
-permalink : /tutorials/bootstrap/responsive
+permalink : /tutorials/bootstrap
 title_background_color : RGB(8, 78, 119)
 tags : javascript bootstrap responsive
 author : nurinamu
@@ -34,7 +34,7 @@ author : nurinamu
 Grid system의 적용은 container tag에 CSS class 삽입하여 동작합니다.
 [Bootstrap 페이지](http://getbootstrap.com/css/#grid-options)에서 제공되는 class에 대한 spec은 아래와 같습니다.
 
-{% img /tutorials/bootstrap/imgs/resp_class_table.png %}
+{% img imgs/resp_class_table.png %}
 
 일반적인 사용방법은 아래와 같습니다. 
 **아래 예제의 동작을 확인해보려면 현재 화면의 창의 넓이를 조절해보면 확인해볼 수 있습니다.** 
@@ -87,7 +87,7 @@ Grid system의 적용은 container tag에 CSS class 삽입하여 동작합니다
 추가적으로 Bootstrap에서는 해당 container 또는 column을 특정 크기에서만 표시하거나 숨기는 class를 지원합니다. 
 [Bootstrap 페이지](http://getbootstrap.com/css/#responsive-utilities)에서는 아래와 같은 형태로 예시를 보여줍니다.
 
-{% img /tutorials/bootstrap/imgs/resp_util_table.png %}
+{% img imgs/resp_util_table.png %}
 
 ```.visible-*-*``` prefix의 경우에는 해당 크기의 경우에만 화면에 표시되게 됩니다. 첫번쨰 (*)는 사이즈를 나타내고 두번째 (*)는 ```display``` 값을 나타냅니다.
 ```display```값은 block, inline, inline-block이 있습니다.
