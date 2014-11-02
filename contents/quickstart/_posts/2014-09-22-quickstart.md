@@ -82,7 +82,11 @@ Bower 에 대해서 더 자세히 알고 싶으시면 [Get started Bower]({{site
 퀵스타트는 현재 아래 목록과
  같은 프레임워크, 라이브러리별 프로젝트를 지원하고 있습니다. 최신 버전은 해당 github 저장소의 master 브랜치(branch) 이며 각 프로젝트별로 tag/release 된 버전을 다운받은후에 작업 경로에 압축을 푸시고 사용하시면 됩니다.
 
-- [jQuery Quick Start Project](https://github.com/KoreaHTML5/quickstart-jquery/releases)
+- [Angularjs Quick Start](https://github.com/KoreaHTML5/quickstart-angularjs/releases)
+- [Backbonejs Quick Start](https://github.com/KoreaHTML5/quickstart-backbonejs/releases)
+- [Bootstrap Quick Start](https://github.com/KoreaHTML5/quickstart-bootstrap/releases)
+- [ExtJs Quick Start](https://github.com/KoreaHTML5/quickstart-extjs/releases)
+- [jQuery Quick Start](https://github.com/KoreaHTML5/quickstart-jquery/releases)
 
 압축을 푼 다음 아래 명령을 사용해서 필요한 파일을 다운로드, 설치 합니다.
 
@@ -121,7 +125,7 @@ npm install && bower install
 
 ### 퀵스타트 워크플로우 명령들
 
-퀵스타터에 사용되는 기본적인 개발 워크플로우 명령에 대해서 설명합니다. 퀵스타터에서 제공되는 명령은 모두 터미널 기반으로 `gulp.js` 를 사용하여 동작하도록 구성되어 있습니다. 각 명령들은 gulpfile.js 에 이미 구현되어 있으며 언제든지 개발자 스스로 자신만의 명령을 추가하거나 변경할 수 있습니다. 아래는 내장되어 있는 명령들에 대한 상세한 셜명입니다.
+퀵스타터에 사용되는 기본적인 개발 워크플로우 명령에 대해서 설명합니다. 퀵스타터에서 제공되는 명령은 모두 터미널 기반으로 `gulp.js` 를 사용하여 동작하도록 구성되어 있습니다. 각 명령들은 gulpfile.js 에 이미 구현되어 있으며 언제든지 개발자 스스로 자신만의 명령을 추가하거나 변경할 수 있습니다. (개발 프레임워크에 따라서 별도의 개발환경을 사용해야 하는 경우도 있습니다.) 아래는 내장되어 있는 명령들에 대한 상세한 셜명입니다.
 
 #### 내장 서버(Built-in server) 구동하기
 
