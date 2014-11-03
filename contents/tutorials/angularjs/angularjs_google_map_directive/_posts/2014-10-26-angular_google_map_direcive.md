@@ -2,7 +2,7 @@
 layout : tutorials
 title : Google Map을 위한 AngularJS 지시자 만들어 보기
 category : tutorials
-subcategory : angularjs
+subcategory : data-display
 summary : AngularJS 지시자를 이용하여 재사용 가능한 구글 Map의 지시자를 만들어 본다.
 permalink : /tutorials/angularjs/angularjs_google_map_directive
 title_background_color : DD1B16

@@ -2,7 +2,7 @@
 layout : tutorials
 title : 싱글 페이지를 위한 AngularJS Router 알아보기
 category : tutorials
-subcategory : angularjs
+subcategory : pageloading
 summary : 싱글 페이지 웹어플리케이션 개발을 위해 AngularJS에서 제공하는 ngRoute 모듈을 살펴보도록 하겠다.
 permalink : /tutorials/angularjs/angularjs_router
 title_background_color : DD1B16

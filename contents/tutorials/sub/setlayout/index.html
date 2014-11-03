@@ -1,0 +1,94 @@
+---
+layout : default
+---
+
+<div class="row cate_bg">
+    <div class="col-md-10 col-md-offset-1 jumbotron title_header">
+        <h1>화면 구성</h1>
+        <p>웹서비스 개발시 고려해야할 레이아웃 구성과 내용의 적절한 표현을 위한 기능들을 알아봅니다.</p>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-2">
+        {% include tags.html %}
+    </div>
+    <div class="col-md-6 media_content">
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>레이아웃 구성</b>
+        </h2>
+        <p style="margin-bottom:20px;">반응형 웹디자인등의 화면을 구성하기위한 방법을 알아봅니다..</p>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "setlayout" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>페이지 동적 로딩</b>
+        </h2>
+        <p style="margin-bottom:20px;">페이지 로딩을 동적으로 진행하는 방법에 대하여 알아봅니다.</p>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "pageloading" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>화면 효과</b>
+        </h2>
+        <p style="margin-bottom:20px;">사용자의 눈길을 사로 잡을 수 있는 방법에 대하여 알아봅니다.</p>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "screeneffect" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+    </div>
+</div>

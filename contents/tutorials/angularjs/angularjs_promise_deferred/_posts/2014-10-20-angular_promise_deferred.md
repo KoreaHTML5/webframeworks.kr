@@ -2,7 +2,7 @@
 layout : tutorials
 title : 비동기 프로그래밍을 위한 Promise와 Deferred 알아보기
 category : tutorials
-subcategory : angularjs
+subcategory : tips
 summary : AngularJS는 비동기 프로그래밍을 위해 $q 서비스를 제공하는데 이 $q 서비스가 무슨 기능을 제공하는지 살펴보겠다.
 permalink : /tutorials/angularjs/angularjs_promise_deferred
 title_background_color : DD1B16

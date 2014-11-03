@@ -2,7 +2,7 @@
 layout : tutorials
 title :  Grid로 대용량 데이터 다루기
 category : tutorials
-subcategory : extjs
+subcategory : data-query
 summary : 이장에서는 ExtJS 그리드를 통해 대량의 데이터를 다루는 방법에 대해 배워본다. 
 permalink : /tutorials/extjs/7_bigdata_grid
 title_background_color : RGB(8, 78, 119)

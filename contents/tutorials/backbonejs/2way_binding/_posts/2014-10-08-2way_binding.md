@@ -2,7 +2,7 @@
 layout : tutorials
 title : Model과 View의 2 Way Binding 구현하기
 category : tutorials
-subcategory : backbonejs
+subcategory : data-binding
 permalink : /tutorials/backbonejs/2way_binding
 title_background_color : AED5E6
 summary : Backbone.js에서의 Model-View 간 2 way binding

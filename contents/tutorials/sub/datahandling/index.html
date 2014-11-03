@@ -1,0 +1,119 @@
+---
+layout : default
+---
+
+<div class="row cate_bg">
+    <div class="col-md-10 col-md-offset-1 jumbotron title_header">
+        <h1>데이터 처리</h1>
+        <p>웹서비스에서 가장 중요한 데이터를 처리하는 방법을 알아봅니다.</p>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-2">
+        {% include tags.html %}
+    </div>
+    <div class="col-md-6 media_content">
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>데이터 바인딩</b>
+        </h2>
+        <p style="margin-bottom:20px;">뷰와 모델간의 데이터를 간편하게 연결해주는 바인딩 방법을 알아봅니다.</p>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "data-binding" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>데이터 입력</b>
+        </h2>
+        <p style="margin-bottom:20px;">사용자가 입력한 데이터를 처리하는 방법을 알아봅니다.</p>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "data-input" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>데이터 조회</b>
+        </h2>
+        <p style="margin-bottom:20px;">필요로하는 데이터를 보다 효율적으로 가져올 수 있는 방법을 알아봅니다.</p>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "data-query" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>데이터 표현</b>
+        </h2>
+        <p style="margin-bottom:20px;">데이터를 사용자에게 보다 편하게 화면으로 전달하는 방법을 알아봅니다.</p>
+
+        <ul class="media-list">
+            {% for post in site.categories.tutorials %}
+            {% if post.subcategory == "data-display" %}
+            <li class="media_item">
+                <div class="media media_content">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img_large img-thumbnail" src="{{ site.data.authors[post.author].img }}" alt="{{ post.author }}">
+                    </a>
+                    <div class="media-body">
+                        <div class="page-headermedia-heading">
+                            <h4><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<small>{{ post.date | date:"%Y.%m.%d" }}</small></h4>
+                        </div>
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+    </div>
+</div>

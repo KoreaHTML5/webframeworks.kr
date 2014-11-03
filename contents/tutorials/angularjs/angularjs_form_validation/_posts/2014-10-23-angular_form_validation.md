@@ -2,7 +2,7 @@
 layout : tutorials
 title : AngularJS에서 폼 데이터 벨리데이션 처리하기
 category : tutorials
-subcategory : angularjs
+subcategory : data-input
 summary : 폼을 작성할 때 사용자의 입력 값의 유효성 체크를 할 때 AngularJS를 어떻게 활용할 수 있는지 살펴본다.
 permalink : /tutorials/angularjs/angularjs_form_validation
 title_background_color : DD1B16

@@ -2,7 +2,7 @@
 layout : tutorials
 title : Border Layout을 활용한 반응형 시스템 레이아웃 구성하기
 category : tutorials
-subcategory : extjs
+subcategory : setlayout
 summary : 웹시스템이 사용자의 요구에 반응하도록 한다. Border레이아웃 구성을 사용해 고정 영역과 확장영역이 어떻게 반응하는지 알아본다.  
 permalink : /tutorials/extjs/4_responsive_layout
 title_background_color : RGB(8, 78, 119)

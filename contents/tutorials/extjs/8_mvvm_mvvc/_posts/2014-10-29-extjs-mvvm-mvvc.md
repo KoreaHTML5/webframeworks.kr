@@ -2,7 +2,7 @@
 layout : tutorials
 title :  데이터 바인딩과 MVVM, MVVC 알아보기 
 category : tutorials
-subcategory : extjs
+subcategory : data-binding
 summary : Ext JS5에서 새롭게 선보인 데이터 바인딩과 ModelView, ModelController에 대해 알아보자.
 permalink : /tutorials/extjs/8_mvvm_mvvc
 title_background_color : RGB(8, 78, 119)

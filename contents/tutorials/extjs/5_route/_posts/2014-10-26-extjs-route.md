@@ -2,7 +2,7 @@
 layout : tutorials
 title :  ExtJS Route를 활용하기
 category : tutorials
-subcategory : extjs
+subcategory : pageloading
 summary : 브라우저의 해시정보를 활용해 ExtJS는 라우터를 지원하게 한다. 이 라우터를 활용하는 방법에 대해 알아본다.  
 permalink : /tutorials/extjs/5_route
 title_background_color : RGB(8, 78, 119)

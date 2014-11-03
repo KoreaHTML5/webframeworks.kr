@@ -2,7 +2,7 @@
 layout : tutorials
 title : Bootstrap을 이용한 반응형 웹 디자인 적용하기
 category : tutorials
-subcategory : bootstrap
+subcategory : setlayout
 summary : 웹사이트에 Bootstrap을 통하여 반응형 웹 디자인을 적용할때 고려해야할 것들에 대하여 배워봅시다.
 permalink : /tutorials/bootstrap
 title_background_color : RGB(8, 78, 119)
