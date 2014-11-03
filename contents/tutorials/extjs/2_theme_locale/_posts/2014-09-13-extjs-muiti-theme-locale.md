@@ -2,7 +2,7 @@
 layout : tutorials
 title : ExtJS 멀티 테마와 로케일 설정하기
 category : tutorials
-subcategory : extjs
+subcategory : data-display
 summary : 앱내부에서 여러 테마를 탑재하고 변경하는 방법과 다중언어 선택을 위한 로케일 설정에 대해 알아보자.
 permalink : /tutorials/extjs/2_theme_locale
 title_background_color : RGB(8, 78, 119)

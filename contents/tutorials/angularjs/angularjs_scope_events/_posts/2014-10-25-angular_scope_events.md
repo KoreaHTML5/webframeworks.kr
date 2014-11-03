@@ -2,7 +2,7 @@
 layout : tutorials
 title : 채팅창 클라이언트를 통해 Scope 이벤트 처리 이용하기
 category : tutorials
-subcategory : angularjs
+subcategory : data-binding
 summary : AngularJS의 Scope의 이벤트 처리를 채팅창 클라이언트를 만들어 보면서 알아본다.
 permalink : /tutorials/angularjs/angularjs_scope_events
 title_background_color : DD1B16

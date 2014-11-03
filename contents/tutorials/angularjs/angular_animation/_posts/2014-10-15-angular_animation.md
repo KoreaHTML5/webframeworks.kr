@@ -2,7 +2,7 @@
 layout : tutorials
 title : 화려한 UI를 위한 Animiation 처리 알아보기
 category : tutorials
-subcategory : angularjs
+subcategory : screeneffect
 summary : 웹 어플리케이션을 개발하기 위한 주요 기능은 아니지만 웹 어플리케이션을 좀 더 화려하고 더욱 생명력이 넘치게 보이는 애니메이션 처리에 대하여 살펴 보도록 하겠다.
 permalink : /tutorials/angularjs/angular_animation
 title_background_color : DD1B16

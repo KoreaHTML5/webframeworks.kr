@@ -2,7 +2,7 @@
 layout : tutorials
 title :  Model을 통한 데이터 입출력 다루기
 category : tutorials
-subcategory : extjs
+subcategory : data-input
 summary : 모델클래스는 데이터 패키지 핵심이다. 모델은 컴포넌트가 데이터를 가지기 위한 최소 단위로 RDB(관계형데이터베이스) 테이블과 같은 개념이다. 모델은 데이터를 읽기, 입력, 수정, 삭제 등의 기능을 가지며, 모델간의 관계, 데이터 검증 등을 지원한다.  
 permalink : /tutorials/extjs/6_model_crud
 title_background_color : RGB(8, 78, 119)

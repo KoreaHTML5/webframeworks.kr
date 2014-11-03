@@ -2,7 +2,7 @@
 layout : tutorials
 title : Backbone.Events의 개념
 category : tutorials
-subcategory : backbonejs
+subcategory : data-binding
 permalink : /tutorials/backbonejs/backbone_events
 title_background_color : AED5E6
 summary : Backbone.Events에 대해 살펴보고 간단한 예제를 통해 확인해보기
