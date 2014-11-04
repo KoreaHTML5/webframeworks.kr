@@ -43,7 +43,7 @@ layout : default
                 var dataList = resp.list;
                 for(var key in dataList){
                     console.log(dataList[key]);
-                    var titleDiv = $('<div><h4><a href=\"{{site.baseurl}}/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></h4></div>').addClass('page-header media-heading');
+                    var titleDiv = $('<div><h4><a href=\"{{site.baseurl}}/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></h4><p>'+printDate(dataList[key].reg_date)+'</p></div>').addClass('media-heading');
                     var contentDiv = $('<div></div>').addClass('media media_content shadow_panel');
                     var bodyDiv = $('<div></div>').addClass('media-body');
                     var li = $('<li></li>').addClass('media_item').appendTo($('.media-list'));
@@ -62,6 +62,10 @@ layout : default
 
     function handleResult(resp_){
         console.log(resp);
+    }
+
+    function printDate(date_){
+        return date_.substr(0,4)+'.'+date_.substr(4,2)+'.'+date_.substr(6,2);
     }
 
 </script>
