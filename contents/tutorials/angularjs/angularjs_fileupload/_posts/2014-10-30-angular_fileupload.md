@@ -2,7 +2,7 @@
 layout : tutorials
 title : AngularJS 파일 업로드 지시자를 이용하여 비동기 파일 업로드 처리하기
 category : tutorials
-subcategory : angularjs
+subcategory : data-input
 summary : 서버에 파일을 업로드할때 사용하는 별도 업로드 지시자를 소개하고 간단한 사용법을 익혀봅니다.
 permalink : /tutorials/angularjs/angularjs_fileupload
 title_background_color : DD1B16
