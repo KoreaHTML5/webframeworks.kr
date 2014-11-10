@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - AngularJS에서 테스트 만들기</title>
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/main.css">
+<link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/syntax.css">
+<script src="/dev.koreahtml5.kr/static/js/jquery.min.js"></script>
+<script src="/dev.koreahtml5.kr/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/dev.koreahtml5.kr/static/css/toc.css">
+    <script type="text/javascript" src="/dev.koreahtml5.kr/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/dev.koreahtml5.kr/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/dev.koreahtml5.kr/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/dev.koreahtml5.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="row content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">AngularJS에서 테스트 만들기</h1>
+<p class="title_header_summary">AngularJS의 각 컴포넌트들을 테스트하는 방법을 알아본다.</p>
+</div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/dev.koreahtml5.kr/tags/jquery/' style='color: rgba(0,0,0,0.076692)'>jquery</a>
+<a href='/dev.koreahtml5.kr/tags/javascript/' style='color: rgba(0,0,0,1.840602)'>javascript</a>
+<a href='/dev.koreahtml5.kr/tags/html/' style='color: rgba(0,0,0,0.076692)'>html</a>
+<a href='/dev.koreahtml5.kr/tags/grunt/' style='color: rgba(0,0,0,0.076692)'>grunt</a>
+<a href='/dev.koreahtml5.kr/tags/gulp/' style='color: rgba(0,0,0,0.076692)'>gulp</a>
+<a href='/dev.koreahtml5.kr/tags/build/' style='color: rgba(0,0,0,0.230075)'>build</a>
+<a href='/dev.koreahtml5.kr/tags/yeoman/' style='color: rgba(0,0,0,0.076692)'>yeoman</a>
+<a href='/dev.koreahtml5.kr/tags/foundation/' style='color: rgba(0,0,0,0.076692)'>foundation</a>
+<a href='/dev.koreahtml5.kr/tags/bower/' style='color: rgba(0,0,0,0.153383)'>bower</a>
+<a href='/dev.koreahtml5.kr/tags/twitter/' style='color: rgba(0,0,0,0.153383)'>twitter</a>
+<a href='/dev.koreahtml5.kr/tags/framework/' style='color: rgba(0,0,0,1.610526)'>framework</a>
+<a href='/dev.koreahtml5.kr/tags/angularjs/' style='color: rgba(0,0,0,0.920301)'>angularjs</a>
+<a href='/dev.koreahtml5.kr/tags/tutorials/' style='color: rgba(0,0,0,0.843609)'>tutorials</a>
+<a href='/dev.koreahtml5.kr/tags/backbone/' style='color: rgba(0,0,0,0.306767)'>backbone</a>
+<a href='/dev.koreahtml5.kr/tags/getstarted/' style='color: rgba(0,0,0,0.153383)'>getstarted</a>
+<a href='/dev.koreahtml5.kr/tags/underscore/' style='color: rgba(0,0,0,0.076692)'>underscore</a>
+<a href='/dev.koreahtml5.kr/tags/library/' style='color: rgba(0,0,0,0.076692)'>library</a>
+<a href='/dev.koreahtml5.kr/tags/Ext/' style='color: rgba(0,0,0,0.690226)'>Ext</a>
+<a href='/dev.koreahtml5.kr/tags/JS/' style='color: rgba(0,0,0,0.690226)'>JS</a>
+<a href='/dev.koreahtml5.kr/tags/tutorial/' style='color: rgba(0,0,0,0.613534)'>tutorial</a>
+<a href='/dev.koreahtml5.kr/tags/modernizr/' style='color: rgba(0,0,0,0.076692)'>modernizr</a>
+<a href='/dev.koreahtml5.kr/tags/bootstrap/' style='color: rgba(0,0,0,0.153383)'>bootstrap</a>
+<a href='/dev.koreahtml5.kr/tags/quickstart/' style='color: rgba(0,0,0,0.076692)'>quickstart</a>
+<a href='/dev.koreahtml5.kr/tags/angular-di/' style='color: rgba(0,0,0,0.076692)'>angular-di</a>
+<a href='/dev.koreahtml5.kr/tags/animation/' style='color: rgba(0,0,0,0.153383)'>animation</a>
+<a href='/dev.koreahtml5.kr/tags/router/' style='color: rgba(0,0,0,0.076692)'>router</a>
+<a href='/dev.koreahtml5.kr/tags/promise/' style='color: rgba(0,0,0,0.076692)'>promise</a>
+<a href='/dev.koreahtml5.kr/tags/responsive/' style='color: rgba(0,0,0,0.076692)'>responsive</a>
+<a href='/dev.koreahtml5.kr/tags/form/' style='color: rgba(0,0,0,0.153383)'>form</a>
+<a href='/dev.koreahtml5.kr/tags/validation/' style='color: rgba(0,0,0,0.153383)'>validation</a>
+<a href='/dev.koreahtml5.kr/tags/map/' style='color: rgba(0,0,0,0.076692)'>map</a>
+<a href='/dev.koreahtml5.kr/tags/direcitve/' style='color: rgba(0,0,0,0.076692)'>direcitve</a>
+<a href='/dev.koreahtml5.kr/tags/file/' style='color: rgba(0,0,0,0.076692)'>file</a>
+<a href='/dev.koreahtml5.kr/tags/test/' style='color: rgba(0,0,0,0.076692)'>test</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>AngularJS에서 테스트 만들기</h1>
+
+<p>AngularJS는 각 컴포넌트들을 단위 테스트를 할 수 있게 지원해 준다. 사실 이는 모두 의존관계 주입 기반하에 만들어진 프레임워크라 가능하다. 그리고 <a href="http://karma-runner.github.io/">karma</a>라는 테스트 러너를 별도 프로젝트로 만들어 테스트를 쉽게 돌려볼 수 있는 툴도 제공하고 있다.</p>
+
+<h2>karma 설치하기</h2>
+
+<p>카르마는 카르마 커맨드라인 인터페이스를 설치해야 카르마를 구동할 수 있다. 먼저 다음과 같이 카르마 커맨드라인 인터페이스를 설치한다. (카르마는 node.js 기반이다.)</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm install -g karma-cli
+</code></pre></div>
+<p>그리고 카르마를 적용할 프로젝트에 위치하여 다음과같이 입력한다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install karma --save-dev
+# 프로젝트에서 필요로하는 플러그인을 설치한다.
+$ npm install karma-jasmine karma-chrome-launcher --save-dev
+</code></pre></div>
+<p>카르마를 실행하려면 커맨드창에 다음과 같이 입력한다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">./node_modules/karma/bin/karma start
+</code></pre></div>
+<h2>karma 설정하기</h2>
+
+<p>카르마로 테스트를 돌릴려면 카르마 설정파일이 필요하다. 카르마 설정파일은 커맨드라인 인터페이스를 통해서 생성할 수 있는데 다음과 같이 커맨드창에 입력하여 보자.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/node_modules/karma/bin/karma init karma.conf.js
+</code></pre></div>
+<p>그러면 다음과 같이 질문이 나타나고 그에 대한 대답에 따라 설정파일이 만들어진다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">hich testing framework do you want to use ?
+(어떠한 테스팅 프레임워크를 사용할지 묻는다.)
+Press tab to list possible options. Enter to move to the next question.
+&gt; jasmine
+
+Do you want to use Require.js ?
+(Require.js 를 사용하는지 묻는다.)
+This will add Require.js plugin.
+Press tab to list possible options. Enter to move to the next question.
+&gt; no
+
+Do you want to capture any browsers automatically ?
+(어떠한 브라우저 환경에서 테스트할지 묻는다.)
+Press tab to list possible options. Enter empty string to move to the next     question.
+&gt; Chrome
+&gt;
+
+What is the location of your source and test files ?
+(테스트 대상과 테스트 스펙 파일에 대한 위치를 묻는다. AngularJS 어플리케이션은 angular.js 와 angular-mocks.js이 필요하다.)
+You can use glob patterns, eg. &quot;js/*.js&quot; or &quot;test/**/*Spec.js&quot;.
+Enter empty string to move to the next question.
+&gt; libs/angular/angular.js
+&gt; libs/angular/angular-mocks.js
+&gt; demoTestApp.js
+&gt; test/*Spec.js
+
+Should any of the files included by the previous patterns be excluded ?
+You can use glob patterns, eg. &quot;**/*.swp&quot;.
+(테스트할 파일들중 제외할 파일들에 대한 패턴을 묻는다.)
+Enter empty string to move to the next question.
+&gt;
+
+Do you want Karma to watch all the files and run the tests on change ?
+(파일이 변경되었을 때 자동으로 테스트를 실행할지 묻는다.)
+Press tab to list possible options.
+&gt; yes
+</code></pre></div>
+<p>그러면 karma.conf.js파일이 생성된다. 위 설정은 test/*Spec.js 대상으로 Chrome기반으로 테스트를 돌린다.</p>
+
+<h2>단위 테스트 작성</h2>
+
+<p>앞의 카르마설정에서 태스트 대상 어플리케이션을 demoTestApp.js로 하였다. 우리는 간단한 사용자 목록을 조회하는 기능을 구현해야 하는데 단위 테스트를 작성하면서 demoTestApp.js 파일에 구현 코드를 추가하겠다. 기본적으로 컨트롤러와 서비스를 정의만 해놓자. 전체 소스코드는 <a href="https://github.com/jeado/web-angular-sample/tree/unit-test">GitHub web-angular-sample 프로젝트의 unit-test Branch</a>에서 demoTestApp.js 파일과 test폴더 안에 spec 파일들로 확인할 수 있다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;demoTestApp&#39;</span><span class="p">,</span> <span class="p">[]).</span>
+  <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;UserListCtrl&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+        
+  <span class="p">}]).</span>
+  <span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;UserService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    
+  
+    <span class="k">return</span> <span class="p">{</span>
+  
+    <span class="p">};</span>
+  <span class="p">}]);</span></code></pre></div>
+ 
+
+<h3>컨트롤러 단위 테스트 작성</h3>
+
+<p>앞에서 설정하였듯이 테스트 코드는 <a href="http://jasmine.github.io/">Jasmine</a>을 이용하여 작성한다. test폴더밑에 controllerSpec.js 파일을 만들고 다음과 같이 작성한다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;컨트롤러를 테스트한다.&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">UserListCtrl</span><span class="p">,</span> <span class="nx">scope</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//테스트할 모듈을 로드한다.</span>
+    <span class="nx">module</span><span class="p">(</span><span class="s1">&#39;demoTestApp&#39;</span><span class="p">);</span>
+
+    <span class="nx">inject</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$rootScope</span><span class="p">,</span> <span class="nx">$controller</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">scope</span> <span class="o">=</span> <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$new</span><span class="p">();</span>
+      <span class="c1">//테스트 대상 컨트롤러에 의존관계를 주입하면서 가지고온다.</span>
+      <span class="nx">UserListCtrl</span> <span class="o">=</span> <span class="nx">$controller</span><span class="p">(</span><span class="s1">&#39;UserListCtrl&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">$scope</span> <span class="o">:</span> <span class="nx">scope</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;UserListCtrl가 정의되어 있다.&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//UserListCtrl 컨트롤러가 정의되어있는지 테스트한다.</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">UserListCtrl</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+  <span class="p">});</span>
+
+<span class="p">});</span></code></pre></div>
+
+<p>이제 카르마를 실행하면 커맨드 창에 다음 그림과 같은 내용을 볼 수 있다.</p>
+
+<p><img src="imgs/unit_test_tutorial_01.png" style="width:500px;height:100px;" alt="카르마 실행 결과화" title="카르마 실행 결과화"></p>
+
+<p>다음으로 사용자 목록 모델을 정의하는 테스트를 추가하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;UserList에 userList가 배열로 정의되어 있다.&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">scope</span><span class="p">.</span><span class="nx">userList</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+  <span class="p">});</span></code></pre></div>
+
+<p>그러면 커맨드창에 테스트 실패를 확인할 수 있을 것이다. 그럼 이제 테스트를 성공하도록 demoTestApp.js를 수정하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;demoTestApp&#39;</span><span class="p">,</span> <span class="p">[]).</span>
+  <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;UserListCtrl&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">}]).</span>
+  <span class="c1">//생략</span></code></pre></div>
+
+<p>마지막으로 UserService를 사용하여 사용자목록을 조회하는 메소드를 테스트한다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;컨트롤러를 테스트한다.&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">UserListCtrl</span><span class="p">,</span> <span class="nx">scope</span><span class="p">,</span> <span class="nx">mockService</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="p">(</span><span class="s1">&#39;demoTestApp&#39;</span><span class="p">);</span>
+
+    <span class="nx">inject</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$rootScope</span><span class="p">,</span> <span class="nx">$controller</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">scope</span> <span class="o">=</span> <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$new</span><span class="p">();</span>
+      <span class="c1">//가짜 사용자 조회 서비스를 만든다.</span>
+      <span class="nx">mockService</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">getUserList</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+          <span class="nx">callback</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="kc">null</span><span class="p">,[{</span><span class="nx">name</span> <span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">}]);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+      <span class="c1">//가짜 사용자 조회 서비스를 주입한다.</span>
+      <span class="nx">UserListCtrl</span> <span class="o">=</span> <span class="nx">$controller</span><span class="p">(</span><span class="s1">&#39;UserListCtrl&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">$scope</span> <span class="o">:</span> <span class="nx">scope</span><span class="p">,</span>
+        <span class="nx">UserService</span> <span class="o">:</span> <span class="nx">mockService</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="c1">//생략</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;사용자목록을 조회한다.&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">scope</span><span class="p">.</span><span class="nx">searchUsers</span><span class="p">();</span>
+    <span class="c1">//사용자를 조회 메소드를 사용하면 1건의 데이타가 있음을 예상한다. (위에서 1건만 준다.)</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">scope</span><span class="p">.</span><span class="nx">userList</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+<p>새로운 스펙을 추가하면 에러가 날 것이다. 왜냐면 우리는 사용자 목록 조회 기능을 구현하지 않았다. 그럼 사용자 목록 조회 기능을 demoTestApp.js에 추가해보자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;demoTestApp&#39;</span><span class="p">,</span> <span class="p">[]).</span>
+    <span class="c1">//UserService 디펜던시를 추가한다.</span>
+    <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;UserListCtrl&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span><span class="s1">&#39;UserService&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">UserService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span> <span class="o">=</span> <span class="p">[];</span>
+        
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">searchUsers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">UserService</span><span class="p">.</span><span class="nx">getUserList</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//UserService의 getUserList를 사용하여 사용자 목록을 조회한다.</span>
+                <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+            <span class="p">});</span>
+        <span class="p">};</span>
+    <span class="p">}])</span>
+    <span class="c1">//생략</span></code></pre></div>
+
+<h3>서비스 단위 테스트 작성</h3>
+
+<p>다음으로 UserService 단위 테스트를 작성해 보자. UserService는 앞에서 컨트롤러 테스트 작성할 때 보았듯이 getUserList 메소드를 통하여 주어진 사용자 목록을 조회한다. 그럼 다음과 같이 serviceSpec.js 파일을 작성한다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;서비스를 테스트한다.&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">UserListCtrl</span><span class="p">,</span> <span class="nx">scope</span><span class="p">,</span> <span class="nx">mockService</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="p">(</span><span class="s1">&#39;demoTestApp&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;UserService가 정의되어 있다.&#39;</span><span class="p">,</span> <span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">UserService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">UserService</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+  <span class="p">}));</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;UserService는 사용자 목록을 조회한다.&#39;</span><span class="p">,</span> <span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">UserService</span><span class="p">,</span> <span class="nx">$httpBackend</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//$httpBackend 서비스를 이용하여 가짜 HTTP에 대한 응답을 해주도록 한다. </span>
+    <span class="nx">$httpBackend</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span><span class="s1">&#39;sample.json&#39;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">respond</span><span class="p">([{</span> <span class="nx">name</span> <span class="o">:</span> <span class="s2">&quot;test&quot;</span> <span class="p">}]);</span>
+
+    <span class="c1">//서비스를 호출하고 콜백함수를 넣어준다.</span>
+    <span class="nx">UserService</span><span class="p">.</span><span class="nx">getUserList</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">d</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="c1">//요청에대하여 응답을 준다.</span>
+    <span class="nx">$httpBackend</span><span class="p">.</span><span class="nx">flush</span><span class="p">();</span>
+
+    <span class="c1">//위에서 1건을 주도록 하였으니 1건이 되기를 기대한다.</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}));</span>
+<span class="p">});</span></code></pre></div>
+
+<p>이제 위 테스트를 만족하기 위해 서비스 코드를 작성하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//생략</span>
+    <span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;UserService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$http&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">getUserList</span> <span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;sample.json&#39;</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}]);</span></code></pre></div>
+
+<p>이제 테스트 결과를 커맨드창에서 보면 5건의 테스트에 대하여 성공을 확인할 수 있을 것이다.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+<li><a href="http://karma-runner.github.io/">karma official site</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/dev.koreahtml5.kr/tags/javascript">javascript</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/framework">framework</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/angularjs">angularjs</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/tutorials">tutorials</a>&nbsp;<a href="/dev.koreahtml5.kr/tags/test">test</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2014
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
