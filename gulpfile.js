@@ -30,7 +30,7 @@ gulp.task('jekyll', function(cb){
 gulp.task('gh', ['clean', 'jekyll-gh'], function () {
 	return gulp.src('publish/**/*')
 			.pipe(deploy({
-	  	remoteUrl:'https://github.com/KoreaHTML5/dev.koreahtml5.kr.git'
+	  	remoteUrl:'https://github.com/KoreaHTML5/webframeworks.kr.git'
 		}));
 });
 
