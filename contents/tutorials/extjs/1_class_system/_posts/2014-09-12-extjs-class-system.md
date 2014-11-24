@@ -2,7 +2,7 @@
 layout : tutorials
 title : ExtJS5 Class System
 category : tutorials
-subcategory : extjs
+subcategory : tips
 summary : ExtJS는 300여개 이상의 클래스와 이를 기반으로 하는 아키텍쳐를 가졌다. 객체지향 언어를 표방해 상속, 다중 상속, 이벤트를 통한 접근 등 고급 언어에서 볼 수 있는 거의 모든 개념을 탑재해 다양하고 복잡한 애플리케이션을 구현할 수 있다.
 permalink : /tutorials/extjs/1_class_system
 title_background_color : RGB(8, 78, 119)

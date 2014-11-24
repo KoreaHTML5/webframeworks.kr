@@ -2,7 +2,7 @@
 layout : tutorials
 title : AngularJS에서 테스트 만들기
 category : tutorials
-subcategory : angularjs
+subcategory : test
 summary : AngularJS의 각 컴포넌트들을 테스트하는 방법을 알아본다.
 permalink : /tutorials/angularjs/angularjs_unit_test
 title_background_color : DD1B16
