@@ -4,11 +4,11 @@
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
 </style>
 <title>WebFrameworks.kr - Update Detail</title>
-<link rel="stylesheet" href="/webframeworks.kr/static/css/bootstrap.min.css">
-<link rel="stylesheet" href="/webframeworks.kr/static/css/main.css">
-<link rel="stylesheet" href="/webframeworks.kr/static/css/syntax.css">
-<script src="/webframeworks.kr/static/js/jquery.min.js"></script>
-<script src="/webframeworks.kr/static/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
 
     </head>
     <body>
@@ -21,21 +21,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/webframeworks.kr/">웹Frameworks</a>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="/webframeworks.kr/getstarted">Get Started</a></li>
+                <li><a href="/getstarted">Get Started</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="/webframeworks.kr/updates">Update</a></li>
+                <li><a href="/updates">Update</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="/webframeworks.kr/tutorials">Tutorials</a></li>
+                <li><a href="/tutorials">Tutorials</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="/webframeworks.kr/quickstart">Quick Start</a></li>
+                <li><a href="/quickstart">Quick Start</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
@@ -82,12 +82,12 @@
             getDetail(parseInt(keys[1])+1, function(resp_){
                 console.log(resp_);
                 if(resp_.result == '성공'){
-                    addMediaItem('다음 소식 : <a href=\"/webframeworks.kr/updates/detail#'+resp_.data.seq+'\">'+resp_.data.title+'</a>');
+                    addMediaItem('다음 소식 : <a href=\"/updates/detail#'+resp_.data.seq+'\">'+resp_.data.title+'</a>');
                 }
             });
             getDetail(keys[1]-1, function(resp_){
                 if(resp_.result == '성공'){
-                    addMediaItem('이전 소식 : <a href=\"/webframeworks.kr/updates/detail#'+resp_.data.seq+'\">'+resp_.data.title+'</a>');
+                    addMediaItem('이전 소식 : <a href=\"/updates/detail#'+resp_.data.seq+'\">'+resp_.data.title+'</a>');
                 }
             });
             
