@@ -75,7 +75,7 @@ HTML만으로는 표현할 수 없었던 화면 구성 요소들을 Bootstrap에
 Bootstrap에서 제공되는 Reusable component는 아래와 같습니다.
 
 - [Glyphicons](http://getbootstrap.com/components/#glyphicons) : 아이콘 컴포넌트
-- [Dropdowns](http://getbootstrap.com/components/#dropdowns) : 드랍다운 형태를 만들어주는 컨테이너 컴퓨넌트
+- [Dropdowns](http://getbootstrap.com/components/#dropdowns) : 드랍다운 형태를 만들어주는 컨테이너 컴포넌트
 - [Button groups](http://getbootstrap.com/components/#btn-groups) : 버튼 그룹 컴포넌트
 - [Button dropdowns](http://getbootstrap.com/components/#btn-dropdowns) : 버튼 액션에 드랍다운이 추가된 컴포넌트
 - [Input groups](http://getbootstrap.com/components/#input-groups) : 입력폼 묶음 컴포넌트

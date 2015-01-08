@@ -57,7 +57,7 @@ tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습�
 ``` javascript
 //기존 javascript를 이용한 DOM 접근
 var bodyObj = document.getElementsByTagName('body');
-var divObj = document.getElementsByID('first');
+var divObj = document.getElementByID('first');
 var inputObjs = document.getElementsByTagName('input');
 var titleObj;
 var buttonObj;
