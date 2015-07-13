@@ -169,7 +169,7 @@ tag명, id, 속성들을 이용해 다양한 방식으로 접근할 수 있습�
 <span class="nt">&lt;/body&gt;</span>
 </code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//기존 javascript를 이용한 DOM 접근</span>
 <span class="kd">var</span> <span class="nx">bodyObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByID</span><span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">divObj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementByID</span><span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">inputObjs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">titleObj</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">buttonObj</span><span class="p">;</span>
@@ -338,7 +338,7 @@ $(&#39;div&#39;).on(&#39;click&#39;,&#39;p&#39;, callback); //div 내의 &#39;p&
 <table width="100%" height="80" class="footer">
     <tr>
         <td align="center" class="footer_content">
-            WebFrameworks.kr @since 2014
+            WebFrameworks.kr @since 2015
         </td>
     </tr>
 </table>
