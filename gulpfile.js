@@ -27,10 +27,19 @@ gulp.task('jekyll', function(cb){
 });
 
 // Github io page task, makes github.io page version
-gulp.task('gh', ['clean', 'jekyll-gh'], function () {
+gulp.task('gh', function () {
+	runSequence('clean', 'jekyll-gh', 'cname', 'publish');
+});
+
+gulp.task('cname', function(){
+	return gulp.src('CNAME')
+		.pipe(gulp.dest('publish/'))
+});
+
+gulp.task('publish', function(){
 	return gulp.src('publish/**/*')
-			.pipe(deploy({
-	  	remoteUrl:'https://github.com/KoreaHTML5/webframeworks.kr.git'
+		.pipe(deploy({
+			remoteUrl: 'https://github.com/KoreaHTML5/webframeworks.kr.git'
 		}));
 });
 
@@ -71,3 +80,4 @@ gulp.task('clean', del.bind(null, ['publish', 'dist']));
 gulp.task('default', ['clean'], function(cb) {
 	runSequence('jekyll', cb);
 });
+

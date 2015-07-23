@@ -1,0 +1,99 @@
+---
+layout : default
+---
+
+<div class="cate_bg">
+    <div class="col-md-10 col-md-offset-1 jumbotron title_header">
+        <h1>Archives</h1>
+        <p>웹프레임워크 세미나와 코드랩, 컨퍼런스 자료들을 공유합니다.</p>
+    </div>
+
+</div>
+<div>
+    <div class="col-md-offset-2 col-md-8">
+        <ul class="media-list">
+        </ul>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        fetch();
+    });
+
+    function fetch(){
+        jQuery.support.cors = true;
+        $.ajax({
+            url : 'https://spreadsheets.google.com/feeds/list/13olOD-Yg321Fmy-hchp6g33m9sXysG9Y7v1y0f8m5kY/od6/public/values?alt=json-in-script',
+            type : 'GET',
+            dataType : 'jsonp',
+            crossDomain : true,
+            data:{
+                alt : 'json-in-script'
+            },
+            success:function(resp){
+                var archiveList = resp.feed.entry;
+                var mediaList = [];
+
+                archiveList.forEach(function (archive){
+                    if(mediaList[archive.gsx$eventseq.$t] instanceof Object === false){
+                        mediaList[archive.gsx$eventseq.$t] = {
+                            name: archive.gsx$event.$t,
+                            contents: []
+                        };
+                    }
+
+                    mediaList[archive.gsx$eventseq.$t].contents[archive.gsx$sessionseq.$t] = {
+                        title: archive.gsx$title.$t,
+                        author: archive.gsx$author.$t,
+                        description: archive.gsx$description.$t,
+                        youtube: archive.gsx$youtube.$t,
+                        slideshare: archive.gsx$slideshare.$t
+                    };
+                });
+
+                mediaList.forEach(function (media){
+                    var mediaItem = $("<li></li>").addClass('media_item'),
+                            mediaBodyDiv = $("<div></div>").addClass("media-body"),
+                            mediaContentDiv = $("<div></div>").addClass('media media_content shadow_panel');
+
+                    if (typeof media != 'undefined'){
+
+                        var titleDiv = $("<div><h4>" + media.name + "</h4></div>").addClass('media-heading'),
+                                contentDiv = $("<ul></ul>");
+
+                        media.contents.forEach(function (content){
+                            var contentHtml = "<li><strong> " + content.title + " (" + content.author + ") </strong> " +
+                                    content.description;
+                            if(content.slideshare.length > 0) {
+                                contentHtml += " <a href link=\'" + content.slideshare + "\'> " +
+                                "&nbsp;<i class=\'fa fa-slideshare\'></i> </a> ";
+                            }
+                            if(content.youtube.length > 0) {
+                                contentHtml += " <a href link=\'" + content.youtube + "\'> " +
+                                "&nbsp;<i class=\'fa fa-youtube-play\'></i> </a> ";
+                            }
+                            contentHtml += "</li>";
+                            $(contentHtml).prependTo(contentDiv);
+
+                        });
+
+                        mediaBodyDiv.append(titleDiv).append(contentDiv);
+                        mediaContentDiv.append(mediaBodyDiv);
+                        mediaItem.append(mediaContentDiv);
+                        mediaItem.prependTo('.media-list');
+
+                    }
+                });
+            },
+            error:function(err_){
+                console.error(err_);
+            }
+        }).done(function(resp){
+            //console.log(resp);
+        });
+
+    }
+
+</script>
