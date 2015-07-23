@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="/static/css/main.css">
 <link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
 
@@ -40,11 +41,15 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
         </div>
     </div>
 </nav>
 
-        <div id="carousel-example-generic" class="carousel slide main_banner" data-ride="carousel">
+        <!-- Carousel on Main -->
+<div id="carousel-example-generic" class="carousel slide main_banner" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -53,6 +58,7 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
+        <!-- First Slide -->
         <div class="item active" style="height:350px;background-color: #3b99d4;">
             <div class="jumbotron slide_item" style="background: url(/static/img/gear.png) no-repeat center;color:#fcfcfc;">
                 <h1>Web Framework !?</h1>
@@ -61,8 +67,9 @@
                     <a href="/getstarted" class="btn btn-info">알아보기</a>
                 </p>
             </div>
-
         </div>
+
+        <!-- Second Slide -->
         <div class="item" style="height:350px;background-color: #d43f3a;">
             <div class="jumbotron slide_item" style="background: url(/static/img/flash.png) no-repeat center;">
                 <h1>Quick Start</h1>
@@ -71,9 +78,7 @@
                     <a class="btn btn-warning" href="/quickstart">알아보기</a>
                 </p>
             </div>
-
         </div>
-
     </div>
 
     <!-- Controls -->
@@ -85,8 +90,11 @@
     </a>
 </div>
 
+<!-- Contents -->
 <div>
     <div class="col-md-7 col-md-offset-1">
+        <!-- Top on left side : tutorials 5 contents
+            data from Jekyll (site.categories.tutorials) -->
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
                 <th colspan="2">
@@ -127,9 +135,10 @@
                 <td width="15%">2014.10.27</td>
             </tr>
             
-
         </table>
 
+        <!-- medium on left side : get started 5 contents
+            data from Jekyll (site.categories.getstarted) -->
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
                 <th colspan="2">
@@ -172,6 +181,8 @@
             
         </table>
 
+        <!-- bottom on left side : updates 5 contents
+            data from koreahtml5.kr by Ajax -->
         <table width="100%" class="table table-striped shadow_panel" id="updatesTab">
             <tr>
                 <th >
@@ -182,53 +193,37 @@
                 </th>
             </tr>
         </table>
-
     </div>
+
     <div class="col-md-3">
-        <table width="100%" class="table table-striped shadow_panel">
+        <!-- top on right side : Event
+            data from googleSheet by Ajax. -->
+        <table width="100%" class="table table-striped shadow_panel" id="eventsTab">
             <tr>
                 <th>
                     Events
                 </th>
             </tr>
-
             <tr>
                 <td>
-                    <table>
-                        <tr>
-                            <td>
-                                * 웹프레임워크 세미나 일정 * <br/>
-                                <small>
-                                    06월 23일 오후7시 (D.Camp 5층) : 완료 <br/>
-                                    <strong>07월 29일 오후7시 (토즈교대점) : <a href="http://onoffmix.com/event/50371">신청</a></strong> <br/>
-                                    08월 초 (시간 및 장소 미정) : 예정   <br/>
-                                    08월 중 (시간 및 장소 미정) : 예정   <br/>
-                                    08월 말 (시간 및 장소 미정) : 예정  <br/>
-                                    09월 초 (시간 및 장소 미정) : 예정  <br/>
-                                    09월 말 (시간 및 장소 미정) : 예정  <br/>
-                                    10월 중 (시간 및 장소 미정) : 예정  <br/>
-                                    10월 말 (시간 및 장소 미정) : 예정  <br/>
-                                    11월 초 (시간 및 장소 미정) : 예정  <br/>
-                                    <br/>
-                                </small>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                * 코드랩 및 컨퍼런스 일정 * <br/>
-                                <small>
-                                    08월 중 (KISA본원) Angular 퀵스타트 코드랩 : 예정 <br/>
-                                    09월 중 (KISA본원) Meteor 퀵스타트 코드랩 : 예정 <br/>
-                                    10월 말 (KISA본원) Express 퀵스타트 코드랩 : 예정 <br/>
-                                    12월 초 (COEX) 웹프레임워크 컨퍼런스 : 예정 <br/>
-                                </small>
-                            </td>
-                        </tr>
-                    </table>
+                    * 웹프레임워크 세미나 일정 *<br/>
+                    <span class="small" id="seminarTab">
+                        <!-- seminar Info-->
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    * 코드랩 및 컨퍼런스 일정 * <br/>
+                    <span class="small" id="codeLabTab">
+                        <!-- codeLab Info-->
+                    </span>
                 </td>
             </tr>
         </table>
 
+        <!-- medium on right side : Contributor
+            data from Jekyll (site.data.authors) -->
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
                 <th colspan="1" width="70%">
@@ -238,31 +233,39 @@
                     <a href="https://github.com/KoreaHTML5/webframeworks.kr/graphs/contributors" target="_blank">더보기</a>
                 </th>
             </tr>
-
+            
             <tr>
-                <td colspan="2"><table width="100%">
-                    <tr>
-                        <td rowspan="2" width="55"><img src="https://avatars0.githubusercontent.com/u/8764297?v=3&s=400" class="img-circle profile_img"></td>
-                        <td>곽옥석</td>
-
-                    </tr>
-                    <tr><td>[<a href="https://github.com/benneykwag" target="_blank">benneykwag</a>]</td></tr>
-                </table>
+                <td colspan="2">
+                    <table width="100%">
+                        <tr>
+                            <td rowspan="2" width="55"><img src="https://avatars0.githubusercontent.com/u/8764297?v=3&s=400" class="img-circle profile_img"></td>
+                            <td>곽옥석</td>
+                        </tr>
+                        <tr>
+                            <td>[<a href="https://github.com/benneykwag" target="_blank">benneykwag</a>]</td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
-
+            
             <tr>
-                <td colspan="2"><table width="100%">
-                    <tr>
-                        <td rowspan="2" width="55"><img src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" class="img-circle profile_img"></td>
-                        <td>고재도</td>
-
-                    </tr>
-                    <tr><td>[<a href="https://github.com/jeado" target="_blank">jeado</a>]</td></tr>
-                </table>
+                <td colspan="2">
+                    <table width="100%">
+                        <tr>
+                            <td rowspan="2" width="55"><img src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" class="img-circle profile_img"></td>
+                            <td>고재도</td>
+                        </tr>
+                        <tr>
+                            <td>[<a href="https://github.com/jeado" target="_blank">jeado</a>]</td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
-
+            
         </table>
 
+        <!-- bottom on right side : Quick Start
+            data from Jekyll (site.data.authors) -->
         <table width="100%" class="table table-striped shadow_panel">
             <tr>
                 <th colspan="1" width="70%">
@@ -293,11 +296,11 @@
 
 <script>
     $(document).ready(function(){
-        fetch();
-
+        fetchUpdates();
+        fetchEvents();
     });
 
-    function fetch(page_){
+    function fetchUpdates(page_){
         jQuery.support.cors = true;
         var pageNumber = page_;
         if(!pageNumber){
@@ -316,8 +319,14 @@
             success:function(resp){
                 var dataList = resp.list;
                 for(var key in dataList){
-                    console.log(dataList[key]);
-                    var rowObj = $('<tr><td width=\"85%\"><a href=\"/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a></td><td width=\"15%\">'+printDate(dataList[key].reg_date)+'</td></tr>');
+                    //console.log(dataList[key]);
+                    var rowObj =
+                            $('<tr>' +
+                                '<td width=\"85%\">' +
+                                    '<a href=\"/updates/detail#'+dataList[key].seq+'\">'+dataList[key].title+'</a>' +
+                                '</td>' +
+                                '<td width=\"15%\">'+printDate(dataList[key].reg_date)+'</td>' +
+                            '</tr>');
                     $('#updatesTab').append(rowObj);
                 }
             },
@@ -325,6 +334,42 @@
                 console.error(err_);
             }
         });
+    }
+
+    function fetchEvents(){
+        jQuery.support.cors = true;
+        $.ajax({
+            url : 'https://spreadsheets.google.com/feeds/list/1Zt_v_yKAekA9Zf8lHc8LNIRtSw5jMVgguwJpzfK-PP0/od6/public/values',
+            type : 'GET',
+            dataType : 'jsonp',
+            crossDomain : true,
+            data:{
+                alt : 'json-in-script'
+            },
+            success:function(resp){
+                var eventList = resp.feed.entry;
+                eventList.forEach(function(event){
+                    var strHtml = '';
+                    if (event.gsx$reservation.$t==='0') {
+                        strHtml =event.gsx$title.$t + ' : 예정' + '<br/>';
+                    } else if (event.gsx$reservation.$t==='1') {
+                        strHtml = '<strong>' + event.gsx$title.$t + ' : <a href=\"' + event.gsx$url.$t + '\">신청</a> ' +
+                        '<br/></strong>'
+                    } else {
+                        strHtml =event.gsx$title.$t + ' : 완료' + '<br/>';
+                    }
+                    if (event.gsx$type.$t==='s') {
+                        $('#seminarTab').append(strHtml);
+                    } else {
+                        $('#codeLabTab').append(strHtml);
+                    }
+                });
+
+            },
+            error:function(err_){
+                console.error(err_);
+            }
+        })
     }
 
     function printDate(date_){
@@ -339,7 +384,7 @@
 <table width="100%" height="80" class="footer">
     <tr>
         <td align="center" class="footer_content">
-            WebFrameworks.kr @since 2014
+            WebFrameworks.kr @since 2015
         </td>
     </tr>
 </table>
