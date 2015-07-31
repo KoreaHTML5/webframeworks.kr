@@ -67,12 +67,12 @@ layout : default
                             var contentHtml = "<li><strong> " + content.title + " (" + content.author + ") </strong> " +
                                     content.description;
                             if(content.slideshare.length > 0) {
-                                contentHtml += " <a href link=\'" + content.slideshare + "\'> " +
-                                "&nbsp;<i class=\'fa fa-slideshare\'></i> </a> ";
+                                contentHtml += " &nbsp;<a target=_blank href =\'" + content.slideshare + "\'> " +
+                                "<i class=\'fa fa-slideshare\'></i> </a> ";
                             }
                             if(content.youtube.length > 0) {
-                                contentHtml += " <a href link=\'" + content.youtube + "\'> " +
-                                "&nbsp;<i class=\'fa fa-youtube-play\'></i> </a> ";
+                                contentHtml += " &nbsp;<a target=_blank href =\'" + content.youtube + "\'> " +
+                                "<i class=\'fa fa-youtube-play\'></i> </a> ";
                             }
                             contentHtml += "</li>";
                             $(contentHtml).appendTo(contentDiv);
