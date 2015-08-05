@@ -3,7 +3,7 @@ layout : getstarted
 title : UI Bootstrap
 category : getstarted
 subcategory : library
-summary : AngularJS 스타일로 트위터 부트스트랩을 사용하는 방법에 대해서 알아보니다. UI Bootstrap은 부트스트랩 컴포넌트를 디렉티브롤 구현한 라이브러리입니다.  
+summary : AngularJS 스타일로 트위터 부트스트랩을 사용하는 방법에 대해서 알아봅니다. UI Bootstrap은 부트스트랩 컴포넌트를 디렉티브로 구현한 라이브러리입니다.  
 permalink : /getstarted/ui-bootstrap
 title_background_color : 563D7C
 title_color : FFFFFF
@@ -24,7 +24,7 @@ UI 작업시 가장 인기있는 라이브러리 중 하나이다. 앵귤러 UI 
 
 트위터 부트스트랩 컴포넌트 중 자바스크립트 연동이 필요한 컴포넌트를 앵귤러 디렉티브로 모듈화하였다. 
 UI-Bootstrap을 사용하면 템플릿 코드에서 디렉티브 선언만으로 부트스트랩 컴포넌트를 구현할 수 있다. 
-이러한 특징은 코드를 간결하게 유지할 뿐만 앵귤러의 선언형 프로그래밍의 특징을 활용하여 로직을 모듈화 할 수 
+이러한 특징은 코드를 간결하게 유지할 뿐만아니라 선언형 프로그래밍의 특징을 활용하여 로직을 모듈화 할 수 
 있다는 장점이 있다.
 
 본 글에서는 트위터 부트스트랩을 앵귤러 스타일에 맞게 구성한 구성한 UI-Bootstrap 라이브러리의 구성을 
@@ -38,7 +38,7 @@ UI Bootstrap은 트위터 부트스트랩의 컴포넌트 구성과 매우 유�
 - **Accordion**: 아코디언 디렉티브
 - **Alert**: 알럿 메세지 디렉티브 
 - **Carousel**: 캐러셀(슬라이드) 디렉티브 
-- **Callapse**: 컬랩스 디렉티브. 엘레맨트 요소를 숨기거나 보일수 있다.
+- **Callapse**: 컬랩스 디렉티브. 엘러맨트 요소를 숨기거나 보일수 있다.
 - **Dropdown**: 드랍다운 메뉴 디렉티브 
 - **Modal**: 모달(팝업창) 디렉티브 
 - **Pagination**: 페이지네이션 디렉티브 
@@ -52,7 +52,7 @@ UI Bootstrap은 트위터 부트스트랩의 컴포넌트 구성과 매우 유�
 - **Buttons**: 버튼그룹 디렉티브. 라디오박스, 체크박스 기능을 제공한다.
 - **Datepicker**: 데이트 픽커(날짜 선택) 디렉티브 
 - **Timepicker**: 타임픽커(시간 선택) 디렉티브
-- **Rating**: 레이팅 디렉티브. 별점 주는 용도로 활용할 수 있다.
+- **Rating**: 래이팅 디렉티브. 별점 주는 용도로 활용할 수 있다.
 - **Typeahead**: 타입어헤드 디렉티브. 자동완성 필드에 활용할 수 있다.
 
 ## 설치
@@ -61,7 +61,7 @@ UI-Bootstrap을 사용하기 위해 앵귤러 라이브러리 로딩을 선행�
 범위에 벗어난 것이므로 
 [GetStarted의 AngularJS](/getstarted/angularjs)를 참고하기 바란다. 
 
-UI-Bootstrap은 세가지 방법으로 설치할수 있다.
+UI-Bootstrap은 세 가지 방법으로 설치할수 있다.
 
 ### 방법1. 직접 다운로드 
 [UI-Bootstrap 사이트](https://angular-ui.github.io/bootstrap/)에 접속하여 상단 
@@ -98,8 +98,7 @@ $ bower install --save angular-bootstrap
 angular.module('demo', ['ui-bootstrap']);
 ```
 
-이제 demo 앵귤러 모듈을 사용하는 범위에서는 UI-Bootstrap에서 제공하는 모듈을 사용하기위한 준비를
-마쳤다.
+이것으로 UI-Bootstrap에서 제공하는 모듈을 사용하기위한 준비를 마쳤다.
 
 ## 사용법 
 
@@ -228,8 +227,8 @@ $scope.closeAlert = function(index) {
 </form>
 ```
 
-폼을 정의하고 type필드와 msg필드 값을 가지고 alert을 생성한다. 폼이 제출될때 `addAlert()` 함수가 
-동작하게 바인딩하였다. 컨트롤러에서 정의한 `Addalert()` 함수가 동작하면 `$scope.alerts` 배열에 
+폼을 정의하고 type 필드와 msg 필드 값을 가지고 alert을 생성한다. 폼이 제출될때 `addAlert()` 함수가 
+동작하게 바인딩 하였다. 컨트롤러에서 정의한 `Addalert()` 함수가 동작하면 `$scope.alerts` 배열에 
 사용자가 입력한 값이 추가된다. `ng-repeat`은 이를 감지하여 다시 추가된 alert을 생성한다.
 
 ![Adding Alert](imgs/adding-alert.png)
@@ -239,7 +238,7 @@ $scope.closeAlert = function(index) {
 
 ## 마치며
 
-트위터 부트스트랩은 서비스 프로토타입뿐만 아니라 상용 서비스에서도 종종 활용되고 있다. 앵귤러 
+트위터 부트스트랩은 서비스 프로토타입 뿐만 아니라 상용 서비스에서도 종종 활용되고 있다. 앵귤러 
 프레임웍에서도 부트스트랩 라이브러리를 직접 가져다 사용할 수도 있다. 그러나 선언형 프로그래밍, 모듈화 등 
 앵귤러의 장점을 유지하고 싶다면 앵귤러 스타일의 프로그래밍이 필요하다. UI-Bootstrap은 이러한 점에서 
 개발자에게 유용하다. 트위터 부트스트랩 라이브러를 필요에 따라 개선하여 사용할 수도 있지만 바퀴를 다시 만들 
