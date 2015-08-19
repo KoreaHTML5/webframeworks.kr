@@ -205,6 +205,7 @@ grunt.registerTask('css', ['less', 'autoprefixer']);
 ```
 
 다음은 Gulp 에서 사용하는 gulpfile.js 입니다. Nodejs 코드와 동일한 것을 알 수 있습니다.
+
 ```
 var gulp = require('gulp'),
 var less = require('gulp-less'),
