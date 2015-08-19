@@ -2,7 +2,7 @@
 layout : getstarted
 title : UI Bootstrap
 category : getstarted
-subcategory : library
+subcategory : ui
 summary : AngularJS 스타일로 트위터 부트스트랩을 사용하는 방법에 대해서 알아봅니다. UI Bootstrap은 부트스트랩 컴포넌트를 디렉티브로 구현한 라이브러리입니다.  
 permalink : /getstarted/ui-bootstrap
 title_background_color : 563D7C
