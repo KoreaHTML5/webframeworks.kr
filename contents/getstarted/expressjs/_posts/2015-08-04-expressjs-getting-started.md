@@ -2,7 +2,7 @@
 layout : getstarted
 title : Express.js
 category : getstarted
-subcategory : library
+subcategory : js
 summary : Express.js는 노드로 구현한 웹서버 라이브러리 입니다. Express.js의 구조와 사용법에 대해 알아봅니다.  
 permalink : /getstarted/expressjs
 title_background_color : eeeeee
