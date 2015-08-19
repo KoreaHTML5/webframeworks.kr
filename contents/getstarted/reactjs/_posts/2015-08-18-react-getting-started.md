@@ -361,8 +361,8 @@ getInitialState() 는 컴포넌트의 생명주기동안 한 번만 실행되며
 {% endhighlight %}
 
 서버에 비동기 요청을 위해 jQuery를 사용합니다.
-주의: 우리의 앱이 AJAX 애플리케이션으로 변화하고 있기 때문에, 이제 파일 시스템의 파일을 참조하는 대신 웹서버를 사용하도록 앱을 개발해야 합니다.
-React의 GitHub을 참고해주세요.
+주의: 우리의 앱이 AJAX 애플리케이션으로 변화하고 있기 때문에, 이제 파일 시스템의 파일을 참조하는 대신 웹서버를 사용하도록 어플리케이을 개발해야 합니다.
+[React의 GitHub](https://github.com/reactjs/react-tutorial)을 참고해주세요.
 
 {% highlight javascript %}
 // tutorial1.js
@@ -667,7 +667,8 @@ React.render(
 </html>
 {% endhighlight %}
 
-
+* 본 Get Started는 [React tutorials](https://facebook.github.io/react/)과
+[ReactKR tutorials](http://reactkr.github.io/react/docs/tutorial-ko-KR.html)을 참고하여 작성되었습니다.
 
 
 
