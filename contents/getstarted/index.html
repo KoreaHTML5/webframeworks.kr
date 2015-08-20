@@ -29,14 +29,21 @@
 
         <img class="center-block" src="{{site.baseurl}}/static/img/frameworks_map.png">
 
-        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
-            <b>Libraries</b>
+
+        <h2>
+            <b>Web Frameworks</b>
         </h2>
-        <p style="margin-bottom:20px;">Web Front-end 전반에 걸쳐 사용되는 각종 Javascript Library 입니다.</p>
+
+        <h3 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>Javascript Frameworks</b>
+        </h3>
+        <p style="margin-bottom:20px;">
+            웹서비스의 중추적인 역할을 하는 Business Logic들과 Back-end와의 처리를 할 수 있도록 제공되는 Framework들입니다. 일부 프레임워크들은 Back-end logic까지 포함하여 Full-stack JS Framework를 구성하는 경우도 있습니다.
+        </p>
 
         <ul class="media-list">
             {% for post in site.categories.getstarted %}
-            {% if post.subcategory == "library" %}
+            {% if post.subcategory == "js" %}
             <li class="media_item">
                 <div class="media media_content">
                     <a class="pull-left" href="#">
@@ -53,8 +60,6 @@
             {% endif %}
             {% endfor %}
         </ul>
-
-        <h2><b>Web Frameworks</b></h2>
 
         <h3 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
             <b>UI Frameworks</b>
@@ -83,16 +88,14 @@
             {% endfor %}
         </ul>
 
-        <h3 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
-            <b>Javascript Frameworks</b>
-        </h3>
-        <p style="margin-bottom:20px;">
-            웹서비스의 중추적인 역할을 하는 Business Logic들과 Back-end와의 처리를 할 수 있도록 제공되는 Framework들입니다. 일부 프레임워크들은 Back-end logic까지 포함하여 Full-stack JS Framework를 구성하는 경우도 있습니다.
-        </p>
+        <h2 style="border-bottom: 2px solid #cccccc;padding-bottom: 10px;">
+            <b>Libraries</b>
+        </h2>
+        <p style="margin-bottom:20px;">Web Front-end 전반에 걸쳐 사용되는 각종 Javascript Library 입니다.</p>
 
         <ul class="media-list">
             {% for post in site.categories.getstarted %}
-            {% if post.subcategory == "js" %}
+            {% if post.subcategory == "library" %}
             <li class="media_item">
                 <div class="media media_content">
                     <a class="pull-left" href="#">
