@@ -28,7 +28,7 @@ React는 사용자 인터페이스를 만들기위해 페이스북과 인스타�
  데이터가 변할 때, React는 개념적으로 ‘새로고침’ 버튼을 눌러서, 변화된 부분을 알아채 업데이트하게 됩니다.
 - **구성적인 컴포넌트 개발**
  React는 재사용가능한 컴포넌트들을 개발하기 위한 모든 것입니다. 사실, React로 당신이 할 수 있는 오직 한가지는 컴포넌트를 개발하는 것 입니다.
-그것들은 캡슐화 되어있기 때문에, 컴포넌트들은 재사용될 수 있고, 테스트될 수 있으며, 관심의 분리(sepration of concerns)를 지키게 해줍니다.
+그것들은 캡슐화 되어있기 때문에, 컴포넌트들은 재사용될 수 있고, 테스트될 수 있으며, 관심의 분리(seperation of concerns)를 지키게 해줍니다.
 
 
 ## 설치하기
@@ -153,7 +153,7 @@ React의 컴포넌트들은 props와 state를 받아 HTML을 렌더 하는 단�
 만약 여러개의 노드를 리턴하고 싶다면, 여러개의 노드를 단 하나의 루트 노트드로 조합해야 합니다.컴포넌트의 조합에 대해서는 아래에서 더 살펴보도록 하겠습니다.
 위 예제를 보면 새로운 React 컴포넌트를 만들기 위해 React.createClass()로 Javascript 객체를 만들어 render메소드를 담아 넘겼습니다.
 render메소드는 React 컴포넌트 트리를 리턴해서 최종적으로 실제 HTML을 그리는 역할을 하는데, 개발된 컴포넌트들의 트리를 리턴할 수 도 있기 때문에,
-React이 컴포넌트는 보다 조합가능(Compsable)하게 됩니다.
+React이 컴포넌트는 보다 조합가능(Composable)하게 됩니다.
 이를 통해 최상위 컴포넌트의 인스턴스를 만들고, 두번째 인수로 전달받은 DOM 엘리먼트에 마크업을 삽입합니다. \<div> 태그는 실제 DOM 노드는 아니고,
 React div 컴포넌트의 인스턴스로서, React가 다룰 수 있는 데이터의 표시자나 조각이라고 생각하시면 됩니다.
 React는 Raw HTML 문자열을 생성하는 것이 아니기 떄문에 XSS를 기본적으로 방지할 수 있습니다.
@@ -669,20 +669,3 @@ React.render(
 
 * 본 Get Started는 [React tutorials](https://facebook.github.io/react/)과
 [ReactKR tutorials](http://reactkr.github.io/react/docs/tutorial-ko-KR.html)을 참고하여 작성되었습니다.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
