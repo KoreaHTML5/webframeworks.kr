@@ -3,9 +3,10 @@ layout : tutorials
 title :  SEO 제대로 처리하기
 category : tutorials
 subcategory : data-binding
-summary : facebook/google 등 외부 서비스들이 접근하는 페이지 요청을 서버사이드 렌더링 없이 필요한 부분만 WebApp package를 사용하여 효율적으로 구현한다.는
+summary : facebook/google 등 외부 서비스들이 접근하는 페이지 요청을 서버사이드 렌더링 없이 필요한 부분만 WebApp package를 사용하여 효율적으로 구현한다.
 permalink : /tutorials/core_meteor/1_meteor_seo
-title_background_color : RGB(8, 78, 119)
+title_background_color : 1C1C1F
+title_color : E4E4E4
 tags : javascript meteor SEO
 author : acidsound
 ---
