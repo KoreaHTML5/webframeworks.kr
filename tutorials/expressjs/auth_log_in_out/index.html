@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - ExpressJS 에서 로그인/로그아웃 구현하기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">ExpressJS 에서 로그인/로그아웃 구현하기</h1>
+<p class="title_header_summary">ExpressJS에서 보다 효율적으로 로그인과 로그아웃, 즉 인증을 구현하는 방법에 대해서 알아보겠습니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" alt="김정환">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            김정환
+
+                        </h4>
+                        jeonghwan-kim<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.080328)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,2.891803)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.080328)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.080328)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.080328)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.240984)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.080328)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.080328)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.160656)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.160656)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.008197)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.044262)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.124590)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.321311)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.240984)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.080328)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.401639)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.722951)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.722951)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.642623)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.080328)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.240984)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.080328)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.080328)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.160656)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.080328)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.080328)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.080328)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.160656)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.160656)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.080328)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.080328)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.160656)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.160656)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.080328)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.080328)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.080328)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.080328)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.160656)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.160656)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.080328)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.080328)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.080328)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.240984)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.240984)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.080328)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.160656)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.080328)'>SEO</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.080328)'>meteor.js</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>ExpressJS 에서 로그인/로그아웃 구현하기</h1>
+
+<p>익스프레스의 Session 미들웨어와 cookieParser 미들웨어를 이용해 로그인, 로그아웃 기능을 구현해 보도록하겠습니다. 
+또한 세션 저장소로 레디스 서버를 사용하는 방법에 대해 알아보겠습니다.</p>
+
+<h2>세션 저장</h2>
+
+<p>우선 아래와 같이 세션 설정에 대한 코드를 작성합니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">cookieParser</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">session</span><span class="p">({</span>
+  <span class="nx">key</span><span class="o">:</span> <span class="err">‘</span><span class="nx">sid</span><span class="err">’</span><span class="p">,</span> <span class="c1">// 세션키</span>
+  <span class="nx">secret</span><span class="o">:</span> <span class="err">‘</span><span class="nx">secret</span><span class="err">’</span><span class="p">,</span> <span class="c1">// 비밀키</span>
+  <span class="nx">cookie</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">maxAge</span><span class="o">:</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="c1">// 쿠키 유효기간 1시간</span>
+  <span class="p">}</span>
+<span class="p">}));</span></code></pre></div>
+
+<p>위와 같이 설정하고 나면 Request 객체에서 session 프로퍼티를 가지고 세션을 핸들링할 수 있게 됩니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">user_id</span> <span class="o">=</span> <span class="mi">1234</span><span class="p">,</span> <span class="c1">// 아이디</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="err">‘</span><span class="nx">chris</span><span class="err">’</span> <span class="c1">// 이름</span>
+<span class="p">}</span></code></pre></div>
+
+<h2>세션 삭제</h2>
+
+<p>로그인시에 세션을 저장을 했다면, 로그 아웃시에는 세션 삭제가 이루어져야합니다.
+세션 정보를 완전히 삭제하려면 세션과 쿠키를 함께 삭제해야 하는데, 쿠키를 삭제하지 않을 경우 쿠기에 저장된 세션 정보로 인해 
+맞지 않은 세션정보가 호출되는 문제가 때문입니다. 세션을 삭제하기 위해서는, 세션 객체에서 제공하는 destory() 메소드로 세션을 삭제하며, 
+쿠키는 Response 개체의 clearCookie() 메소드에 세션 생성시 사용한 키값을 파라매터로 전달하여 삭제할 수 있습니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">logout</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">destory</span><span class="p">();</span>  <span class="c1">// 세션 삭제</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">clearCookie</span><span class="p">(</span><span class="err">‘</span><span class="nx">sid</span><span class="err">’</span><span class="p">);</span> <span class="c1">// 세션 쿠키 삭제</span>
+<span class="p">};</span></code></pre></div>
+
+<h2>레디스 (Redis)와 연동</h2>
+
+<p>로그인 프로토콜과 로그아웃프로토콜에 세션 저장과 세션삭제 코드를 추가함으로써, 손 쉽게 세션의 사용이 가능합니다.
+하지만 메모리 세션을 사용하면 익스프레스에서 아래와 같은 경고 메세지를 뿌립니다. </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Warning: connection.session() MemoryStore is not designed for a production environment, 
+as it will leak memory, and obviously only work within a single process.
+</code></pre></div>
+<p>이 내용은 Production 모드에서는 사용하지 말라. 실제 서버에서는 메모리 용량 제한으로 세션 정보를 유실할 수 있다는 내용입니다.
+이뿐만 아니라 오토스케일링으로 인한 서버 인스턴스 증가로 세션 정보 공유에 대한 문제가 발생 할 수 있기때문에, 실제 프로덕션에서는 세션을 별도의 저장소로 
+레디스, 몽고디비 등을 사용하는데, 이번 튜토리얼에서는 <a href="http://redis.io">레디스</a>를 사용해 보도록하겠습니다. 우선 노드에서 레디스 서버 연결을 위해 <a href="https://github.com/tj/connect-redis">connect-redis</a>를 설치합니다. </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install connect-redis 
+</code></pre></div>
+<p>익스프레스 버전에 따라 세션과 레디스 서버를 연결하지 못하는 경우가 있기 때문에, 
+익스프레스에서 제공하는 기본 세션 미들웨어를 사용하기보다는, <a href="https://github.com/expressjs/session">express-seesion</a>을 사용하는게 편합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install express-session 
+</code></pre></div>
+<p>express-session 와 레디 와 익스프레스를 세팅하는 코드는 아래와 같다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-session’),</span>
+<span class="s1">  RedisStore = require(&#39;</span><span class="nx">connect</span><span class="o">-</span><span class="nx">redis</span><span class="err">&#39;</span><span class="p">)(</span><span class="nx">session</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">cookieParser</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">session</span><span class="p">({</span>
+  <span class="nx">store</span><span class="o">:</span> <span class="k">new</span> <span class="nx">RedisStore</span><span class="p">(</span><span class="cm">/*redis config: host, port 등*/</span><span class="p">),</span> <span class="c1">// 세션 저장소를 레디스 서버로 설정</span>
+  <span class="cm">/* 이하 express.session 코드와 동일 */</span>
+<span class="p">}));</span></code></pre></div>
+
+<p>세션 설정하는 부분에서만 레디스 정보를 추가하고 나머지 부분은 express.session과 동일합니다.</p>
+
+<h2>passport 사용하여 구현하기</h2>
+
+<p>위에서는 간단한 코딩으로 세션을 구현해보았는데, 노드플랫폼의 익스프레스 엔진으로 API서버의 인증부분을 구축할때는 <a href="http://passportjs.org/">패스포트(passport)</a> 
+모듈을 많이 사용합니다. 인증을 학위해서, 클라이언트에서 이메일, 비밀번호를 리퀘스트 바디에 담아 서버로 인증요청을 하면 서버는 이를 확인해 인증된 클라이언트 정보를 세션에 저장을 하게 되는데 
+패스포트가 그 역할을 하는 것입니다. 즉 패스포트는 노드플랫폼을 위한 인증 미들웨어로써, 매우 유연하며, 모듈형태를 가지고 있어서 어떤 익스프레스기반의 웹어플리케이션에도 적용이 될수 있습니다. 
+또한 여러 구현방법의 인증에 대해 지원한다는 장점을 가지고 있습니다. 구현 방법에 대해서는 <a href="http://passport.org">패스포트 홈페이지</a>에서 검색이 가능합니다.
+위에서 구현한 방법은 한번 인증된 클라이언트는 서버에서 받은 세션 아이디를 쿠키 등에 저장해 놓고 있다가, 인증이 필요한 API를 호출할때 세션 아이디 정보를 함께 담아 요청하는 것이죠. 
+그럼 서버에서는 이전에 인증한 클라이언트로 보고 API 응답을 보내 주는 구조였지만, 이번에는 패스포트를 사용하여 OAuth 2.0방식으로 구현해보도록 하겠습니다.</p>
+
+<p>OAuth 2.0은 인증정보를 담은 엑서스 토큰(Access Token)을 사용함으로써, 세션에 인증정보를 저장할 필요가 없습니다. 
+서버에서는 엑서스토큰을 디코딩하여 확인할 수 있습니다. 이렇기 때문에 OAuth2.0은 개발시 테스트도 편리합니다. 
+개발중 서버가 재구동되면 그 때마다 다시 로그인 프로토콜을 호출해야 하는 번거로움이 있었지만, OAuth 2.0을 사용하면 인증 후 획득한 엑세스 토큰을 헤더에 넣어서 호출하면 되기 때문이죠.</p>
+
+<p>우선 인증을 위한 passport 코드를 살펴 보겠습니다. passport.js는 패스포트 설정을 위한 코드입니다. 
+email과 password를 받아 인증을 처리하고 그 결과로 인증한 사용자의 아이디를 넘겨주는 역할입니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm"> * passport.js</span>
+<span class="cm">*/</span>
+
+<span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">passport</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;passport&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">LocalStrategy</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;passport-local&#39;</span><span class="p">).</span><span class="nx">Strategy</span><span class="p">;</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">passport</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">LocalStrategy</span><span class="p">({</span>
+        <span class="nx">usernameField</span><span class="o">:</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span>
+        <span class="nx">passwordField</span><span class="o">:</span> <span class="s1">&#39;password&#39;</span>
+      <span class="p">},</span>
+      <span class="kd">function</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// 인증 정보 체크 로직</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">email</span> <span class="o">===</span> <span class="s1">&#39;test@test.com&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">password</span> <span class="o">===</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 로그인 성공시 유저 아이디를 넘겨준다.</span>
+          <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;user_1&#39;</span><span class="p">};</span>
+          <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="p">{</span> <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Fail to login.&#39;</span> <span class="p">});</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+  <span class="p">));</span>
+<span class="p">};</span></code></pre></div>
+
+<p>로그인은 POST /login 라우팅에서 수행합니다. 패스포트 세팅 작업 선행 후, 라우팅 로직을 구현합니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm">* user.js</span>
+<span class="cm">*/</span>
+
+<span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">passport</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;passport&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">auth</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./auth&#39;</span><span class="p">);</span>
+
+<span class="c1">// 패스포트 세팅</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./passport&#39;</span><span class="p">).</span><span class="nx">setup</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">// 로그인 라우팅 POST /login</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1">//  패스포트 모듈로 인증 시도</span>
+  <span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">error</span> <span class="o">=</span> <span class="nx">err</span> <span class="o">||</span> <span class="nx">info</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="mi">401</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="p">{</span><span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Something went wrong, please try again.&#39;</span><span class="p">});</span>
+
+    <span class="c1">// 인증된 유저 정보로 응답</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">);</span>
+  <span class="p">})(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span><span class="p">;</span></code></pre></div>
+
+<h2>JWT</h2>
+
+<p>JWT (Json Web Token)는 인증정보를 암호화하여 url 형식으로 전달해 주는 토큰입니다. 
+OAuth 2.0에서는 JWT Bearer Token Flow를 사용할수 있기 때문에 JWT를 이용해 토큰을 관리할 것입니다. 
+JWT의 설치는 아래와 같이 실행함으로써, 할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm install jsonwebtoken --save
+</code></pre></div>
+<p>이제 JWT 모듈을 추가하고 auth.js 파일을 만들어 Oauth 2.0 인증에 관한 로직을 작성합니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm">* auth.js</span>
+<span class="cm">*/</span>
+
+<span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">jwt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsonwebtoken&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">compose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;composable-middleware&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">SECRET</span> <span class="o">=</span> <span class="s1">&#39;token_secret&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">EXPIRES</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span> <span class="c1">// 1 hour</span>
+
+<span class="c1">// JWT 토큰 생성 함수</span>
+<span class="kd">function</span> <span class="nx">signToken</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="nx">id</span><span class="o">:</span> <span class="nx">id</span><span class="p">},</span> <span class="nx">SECRET</span><span class="p">,</span> <span class="p">{</span> <span class="nx">expiresInMinutes</span><span class="o">:</span> <span class="nx">EXPIRES</span> <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 토큰을 해석하여 유저 정보를 얻는 함수</span>
+<span class="kd">function</span> <span class="nx">isAuthenticated</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">compose</span><span class="p">()</span>
+      <span class="c1">// Validate jwt</span>
+      <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">authorization</span><span class="p">,</span> <span class="nx">SECRET</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">decoded</span><span class="p">)</span> <span class="c1">// &#39;{id: &#39;user_id&#39;}&#39;</span>
+        <span class="nx">req</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">decode</span><span class="p">;</span>
+      <span class="p">})</span>
+      <span class="c1">// Attach user to request</span>
+      <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">req</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="nx">id</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+          <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name of &#39;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span>
+        <span class="p">};</span>
+        <span class="nx">next</span><span class="p">();</span>
+      <span class="p">});</span>
+<span class="p">}</span>
+
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">signToken</span> <span class="o">=</span> <span class="nx">signToken</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">isAuthenticated</span> <span class="o">=</span> <span class="nx">isAuthenticated</span><span class="p">;</span></code></pre></div>
+
+<p>로그인 로직에서는 auth.js 모듈 중 토큰을 생성하는 signToken() 함수를 사용합니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm">* login.js</span>
+<span class="cm">*/</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">error</span> <span class="o">=</span> <span class="nx">err</span> <span class="o">||</span> <span class="nx">info</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="mi">401</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="p">{</span><span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Something went wrong, please try again.&#39;</span><span class="p">});</span>
+
+    <span class="c1">// access token 생성</span>
+    <span class="kd">var</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">signToken</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="nx">access_token</span><span class="o">:</span> <span class="nx">token</span><span class="p">});</span>
+  <span class="p">})(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+<p>인증을 필요로하는 프로토콜 인 GET /users는 auth모듈의 isAuthenicated() 함수로 인증된 클라이언트임을 보장합니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm">* user.js</span>
+<span class="cm">*/</span>
+
+<span class="cm">/* GET users listing. */</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">isAuthenticated</span><span class="p">(),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+<p>노드 모듈인 express-jwt는 두 가지 역할을 수행합니다. 
+(1) 인증된 클라이언트의 엑세스 토큰을 디코딩하고 
+(2) 인증된 유저정보를 req.user에 저장합니다. 
+내부적으로는 jsonwebtoken 모듈을 사용하여 .decode() 함수를 호출하고 있습니다. 아래는 express-jwt 모듈을 적용한 코드이니, 실습을 해보시면 좋을 것 같습니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm"> * auth.js</span>
+<span class="cm"> */</span>
+
+<span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">jwt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsonwebtoken&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">compose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;composable-middleware&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">SECRET</span> <span class="o">=</span> <span class="s1">&#39;token_secret&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">EXPIRES</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span> <span class="c1">// 1 hour</span>
+
+<span class="c1">// jwt에서 사용한 시크릿 문자열과 동일한 문자열로 객체 생성</span>
+<span class="kd">var</span> <span class="nx">validateJwt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-jwt&#39;</span><span class="p">)({</span><span class="nx">secret</span><span class="o">:</span> <span class="nx">SECRET</span><span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">isAuthenticated</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">compose</span><span class="p">()</span>
+      <span class="c1">// Validate jwt</span>
+      <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 만약 access_token 파라메터에 토큰을 설정한 경우 리퀘슽 헤더에 토큰을 설정한다.</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">))</span> <span class="p">{</span>
+          <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">authorization</span> <span class="o">=</span> <span class="s1">&#39;Bearer &#39;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">access_token</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 토큰 인증 로직</span>
+        <span class="nx">validateJwt</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+      <span class="p">})</span>
+      <span class="c1">// Attach user to request</span>
+      <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">req</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="nx">id</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+          <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;name of &#39;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span>
+        <span class="p">};</span>
+        <span class="nx">next</span><span class="p">();</span>
+      <span class="p">});</span>
+
+<span class="p">}</span></code></pre></div>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/session">session</a>&nbsp;<a href="/tags/expressjs">expressjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
