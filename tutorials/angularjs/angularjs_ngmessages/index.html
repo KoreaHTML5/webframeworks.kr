@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - ngMessage를 이용한 메시지처리</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">ngMessage를 이용한 메시지처리</h1>
+<p class="title_header_summary">우리는 일반적으로 메시지를 이용하여 사용자에게 어플리케이션 상태나 사용자 입력에 대한 결과를 알려준다. 본 글을 통하여 AngularJS 웹 어플리케이션에선 어떻게 이런 메시지를 처리하는지 살펴보겠다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.079787)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,2.952128)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.079787)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.079787)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.079787)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.239362)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.079787)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.079787)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.159574)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.159574)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.074468)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.117021)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.196809)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.319149)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.239362)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.079787)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.398936)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.718085)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.718085)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.638298)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.079787)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.239362)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.079787)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.079787)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.159574)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.079787)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.079787)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.079787)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.159574)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.159574)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.079787)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.079787)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.159574)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.159574)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.079787)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.079787)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.079787)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.079787)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.159574)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.159574)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.079787)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.079787)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.079787)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.239362)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.239362)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.079787)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.159574)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.079787)'>SEO</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.079787)'>ngMessages</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.079787)'>meteor.js</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>AngularJS에서 ngMessages 지시자 사용하기</h1>
+
+<p>AngularJS 1.3이후로 ngMessages 지시자가 추가됐다. ngMessages 지시자는 이름에서 유추할 수 있듯이 메시지 처리를 위한 지시자이다. 주로 사용자가 입력하는 폼 컨트롤러의 상태 메시지를 보여주데 활용할 수 있는데 예를 들면 필수로 입력해야하는 값을 입력하지 않았다든지 전화번호에 맞지 않는 포멧으로 입력하였다든지 등의 메시지들을 보여줄 수 있다. ngMessages 지시자가 없던 AngularJS 1.3 이전에는 <a href="../angularjs_form_validation">폼 유효성 처리</a>에서 설명한 것과 같이 ng-show나 ng-if를 이용해서 메시지 처리 할 수 있었다. 다음은 ngMessages가 없던 1.2 버젼에서 처리한 템플릿 코드이다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;signUpForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form&quot;</span> <span class="na">role=</span><span class="s">&quot;form&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;legend&gt;</span>회원가입<span class="nt">&lt;/legend&gt;</span>
+  <span class="nt">&lt;h4&gt;</span>AngularJS 폼 데모<span class="nt">&lt;/h4&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-md-6&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;firstname&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control input-lg&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.firstName&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;성&quot;</span> <span class="na">ng-required=</span><span class="s">&quot;true&quot;</span> <span class="na">ng-maxlength=</span><span class="s">&quot;4&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">ng-show=</span><span class="s">&quot;signUpForm.firstname.$error.maxlength&quot;</span> <span class="na">class=</span><span class="s">&quot;col-xs-12 col-md-12 alert alert-warning&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>성은 최대 4글자만 입력가능합니다.
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">ng-show=</span><span class="s">&quot;signUpForm.firstname.$error.required&quot;</span>  <span class="na">class=</span><span class="s">&quot;col-xs-12 col-md-12 alert alert-warning&quot;</span> <span class="na">role=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>성은 필수로 입력 해야 합니다.
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-md-6&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;lastname&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control input-lg&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;이름&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.lastName&quot;</span> <span class="na">ng-required=</span><span class="s">&quot;true&quot;</span> <span class="na">ng-minlength=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+<p>그럼 이제 위 코드를 ngMessages 지시자를 이용하여 변경해 보자. 우선 ngMessages 지시자를 사용하려면 ngMessage 모듈을 의존관계를 설정해야한다. angular-messages.js 스크립트를 로드하도록 스크립트 태그를 아래와 같이 추가하자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_components/angular-messages/angular-messages.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+<p>다음으로 angular 모듈 선언문장에서 다음과 같이 ngMessage모듈의존관계를 설정한다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;messageApp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngMessages&#39;</span><span class="p">])</span></code></pre></div>
+
+<p>그럼 이제 실제 form태그 내부의 코드를 다음과 같이 수정해 보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;signUpForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form&quot;</span> <span class="na">role=</span><span class="s">&quot;form&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;legend&gt;</span>회원가입<span class="nt">&lt;/legend&gt;</span>
+  <span class="nt">&lt;h4&gt;</span>AngularJS 폼 데모<span class="nt">&lt;/h4&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-md-6&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;firstname&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control input-lg&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.firstName&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;성&quot;</span> <span class="na">ng-required=</span><span class="s">&quot;true&quot;</span> <span class="na">ng-maxlength=</span><span class="s">&quot;4&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6 col-md-6&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;lastname&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control input-lg&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;이름&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.lastName&quot;</span> <span class="na">ng-required=</span><span class="s">&quot;true&quot;</span> <span class="na">ng-minlength=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">ng-messages=</span><span class="s">&quot;signUpForm.firstname.$error&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">ng-message=</span><span class="s">&quot;maxlength, required&quot;</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="nt">&gt;</span>성은 필수이고 최대 4글자만 입력가능합니다.<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+<p>위 코드를 살펴보면 ngMessages 지시자 하위에 태그에 ngMessage 지시자를 사용하는 태그들이 보일 것이다. ngSwitch 지시자와 흡사한 사용법을 볼 수 있는데 ng-messages 속성값으로는 키-벨류 객체로 계산되는 표현식을 입력하면 된다. 일반적으로 ngModel 인스턴스의 $error 객체를 전달하는데 위 코드에서는 firstname 모델의 $error 속성을 값으로 주고 있다.</p>
+
+<p>ngMessages 지시자의 하위 지시자로 ngMessage 지시자를 사용할 수 있는데 부모 태그의 ngMessages에 주어진 키-벨류 객체의 키값들을 속성 값으로 줄 수 있다. 위 예제에서 maxlength와 required 두 키를 속성값으로 주었고 두 속성의 값이 true가 될 때 지시자 태그의 안의 컨텐츠가 화면에 보이게 된다.</p>
+
+<p>ngMessages 지사자를 태그로써 사용할수도 있는데 그렇게 되면 앞에서 속성값으로 주었던 키-벨류 객체로 계산되는 표현식을 어떻게 전달할 수 있을가? 다음 코드를 보면 알 수 있다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ng-messages</span> <span class="na">for=</span><span class="s">&quot;signUpForm.firstname.$error&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ng-message</span> <span class="na">when=</span><span class="s">&quot;maxlength, required&quot;</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="nt">&gt;</span>성은 필수이고 최대 4글자만 입력가능합니다.<span class="nt">&lt;/ng-message&gt;</span>
+<span class="nt">&lt;/ng-messages&gt;</span></code></pre></div>
+
+<p>이렇게 ng-messages는 for를 속성명을 이용하고 ng-message는 when 속성명을 이용하여 이전에 해당 지시자들을 속성명으로 이용하여 넘겼던 값들을 전달할 수 있다.</p>
+
+<p>지금까지는 간단한 사용법에 대하여 살펴보았는데 좀 더 다양한 형태의 사용법을 살펴보자.</p>
+
+<h2>기존 메시지 템플릿 추가</h2>
+
+<p>우리는 단순한 반복을 싫어한다. 같은 코드가 한 소스상에 반복적으로 나타나면 함수로 묶고싶어진다. 그러면 계속적으로 씌이는 메시지는 어떠할까? 이 또한 외부 메시지 템플릿파일로 추출한 후 사용될 곳에 선언만 할 것이다. 함수처럼.</p>
+
+<p>ngMessage 모듈에는 이렇게 외부 메시지 템플릿을 동적으로 추가하는 지시자를 제공한다. 다음 코드를 보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- requireMessage.html --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">ng-message=</span><span class="s">&quot;maxlength, required&quot;</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="nt">&gt;</span>성은 필수이고 최대 4글자만 입력가능합니다.<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">ng-messages=</span><span class="s">&quot;signUpForm.firstname.$error&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">ng-messages-include=</span><span class="s">&quot;requireMessage.html&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>ngMessageInclude 지시자에 위와 같이 외부 템플릿에 연결되는 문자열을 입력한다. AngularJS 1.4 버전 이후부터는 ngMessage지시자가 사용되는 부모 태그 하위에 쓸수 있고 1.3이하 버전에서는 ngMessage지시가작 사용되는 부모 태그와 같은 위치에 속성으로 사용한다.</p>
+
+<p>다음 코드는 1.3이하 버전일때 ng-messages-include 사용 코드이다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">ng-messages=</span><span class="s">&quot;signUpForm.firstname.$error&quot;</span> <span class="na">ng-messages-include=</span><span class="s">&quot;requireMessage.html&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<h2>동적 메시지 처리</h2>
+
+<p>AngularJS 1.4 이전에는 AngularJS의 메시지처리는 ngMessage와 ngMessagesInclude를 이용하여 외부 메시지 템플릿을 불러오거나 하나의 템플릿에 정적으로 메시지 내용을 적어서 사용할 수 밖에 없었다. 물론 1.2때보다 더 깔끔하고 직관적으로 템플릿을 작성할 수 있어서 좋았지만 ngMessage 지시자에 표현식을 전달할 수 없었던 문제점은 있었다. 하지만 AngularJS 1.4버전부터 ngMessageExp 지시자가 나왔는데 해당 지시자는 에러 타입으로 계산되는 표현식을 전달할 수 있다. 이제 우리는 동적으로 어떤 메시지를 보여줄지 정할 수 있게 된것이다.</p>
+
+<p>ngMessageExp를 사용하면 모가 좋을까? ngMessage만 사용했을 경우에는 템플릿에 모든 메시지 내용을 작성하여 배포하면 후에 새로운 에러 타입에 따른 메시지를 추가하려면 템플릿 코드를 수정해야 한다. ngMessagesInclude를 사용하면 메시지 내용을 주는 템플릿 만을 수정해서 전체 템플릿을 배포할 필요는 없지만 여전이 불편하거나 할 일이 많다. (서버에서 단순히 데이터만 주는게 아니라 HTML 메시지 템플릿을 만들도록 처리해야하거나 등등)</p>
+
+<p>ngMessageExp를 사용하면 에러 메시지를 JSON으로 제공하는 서비스 API가 있다고 가정하면 새로운 애러타입에 따른 JSON데이터만 추가되면 템플릿 수정없이 바로 메시지 처리가 동적으로 적용시킬수 있다. 이 부분을 한번 앞에서 작성한 회원가입 코드에 적용해보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 메인 템플릿 부분 --&gt;</span>
+<span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span> <span class="na">ng-controller=</span><span class="s">&quot;mainController&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;signUpForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form&quot;</span> <span class="na">role=</span><span class="s">&quot;form&quot;</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!-- 생략 --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">ng-messages</span> <span class="na">for=</span><span class="s">&quot;signUpForm.firstname.$error&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">ng-repeat=</span><span class="s">&quot;message in messages&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">ng-message-exp=</span><span class="s">&quot;message.exp&quot;</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="nt">&gt;</span>{{ message.msg }}<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+<p>위와 같이 ngMessages안에 ngRepeat 지시자를 사용할 수 있다. 아시다시피 ngRepeat 지시자는 messages 배열의 요소만큰 복제를 하면서 현재 배열의 요소를 message로 접근하게 해준다. 이 message는 위 코드를 보면 유추할 수 있듯이 exp와 msg 속성을 가지는데 ngMessageExp에 message의 exp속성을 전달하면 exp속성의 값이 에러코드를 나타냄을 알수 있다. 그리고 그리고 msg는 에러코드에 해당하는 메시지이다. 그럼 $scope에 messages 속성에 값을 셋팅하는 컨트롤러 코드를 보자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//자바스크립트 부분</span>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;messageApp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngMessages&#39;</span><span class="p">]).</span>
+  <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;mainController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span><span class="s1">&#39;$http&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$http</span><span class="p">){</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">messages</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;messages.json&#39;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">messages</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+      <span class="p">});</span>
+  <span class="p">}])</span></code></pre></div>
+
+<p>messages는 $http서비스를 이용하여 서버로부터 messages.json로 요청하여 받은 응답데이터로 대입된다. 그러면 실제 messages.json 데이터는 어떠한 모습인지 보도록 하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//messages.json</span>
+<span class="p">[{</span>
+  <span class="s2">&quot;exp&quot;</span><span class="o">:</span> <span class="s2">&quot;required&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;필수값 입력을 하지 않았습니다.&quot;</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="s2">&quot;exp&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;minlength&quot;</span><span class="p">,</span> <span class="s2">&quot;maxlength&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;최소 2글자 최대 4글자 입니다.&quot;</span>
+<span class="p">}]</span></code></pre></div>
+
+<p>편의상 messages.json 정적파일을 서버로부터 요청하여 받아오지만 DB로부터 데이터를 받아와서 반환하도록 구현할 수 도 있겠다. exp를 보면 알수 있듯이 ng-message-exp에 주어지는 값은 에러코드 문자열 혹은 코드들을 담은 배열로 계산되는 표현식이라는 것을 알 수 있다. </p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/angularjs">angularjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;<a href="/tags/ngMessages">ngMessages</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
