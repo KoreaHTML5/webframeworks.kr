@@ -108,6 +108,7 @@ SubwayTelNo = new Mongo.Collection('subwayTelNo');
 ```
 
 서버쪽에 publish를 만들고
+
 ```javascript
 Meteor.publish("publishSubwayTelNo", function() {
   var instance = this;
@@ -121,9 +122,9 @@ Meteor.publish("publishSubwayTelNo", function() {
 });
 ```
 콘솔에서 테스트해보자.
+
 ```javascript
 handler=Meteor.subscribe('publishSubwayTelNo');
 SubwayTelNo.find().fetch();
 ```
-
-조금 복잡하지만 이 방법을 더 추천하는데 그 이유는 Collection에 넣으면 miniMongo를 사용할 수 있으므로 find()명령을 이용한 정렬과 필터가 가능하여 매우 유용하다.
+조금 복잡하지만 이 방법을 더 추천하는데 그 이유는 Collection에 넣으면 miniMongo를 사용할 수 있으므로 find()명령을 이용한 정렬과 필터가 가능하여 매우 유용하고 편리하기 떄문이다.
