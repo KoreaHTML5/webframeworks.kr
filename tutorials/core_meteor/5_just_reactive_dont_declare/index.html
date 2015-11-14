@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Reactive. 처리하지 마세요. 선언에게 양보하세요.</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #1C1C1F;color: #E4E4E4;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Reactive. 처리하지 마세요. 선언에게 양보하세요.</h1>
+<p class="title_header_summary">Meteor의 Reactive 특성에 대해 알아보고 Reactive Data Source들을 이용하는 방법을 배워보자.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/623157?v=3&s=460" alt="이재호">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            이재호
+
+                        </h4>
+                        acidsound<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.084255)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.044255)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.084255)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.084255)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.084255)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.337021)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.084255)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.084255)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.168511)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.168511)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.274894)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.263830)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.348085)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.337021)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.252766)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.084255)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.421277)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.758298)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.758298)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.674043)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.084255)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.252766)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.084255)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.084255)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.252766)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.084255)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.084255)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.084255)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.168511)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.168511)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.084255)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.084255)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.168511)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.252766)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.084255)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.084255)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.084255)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.084255)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.168511)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.168511)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.084255)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.084255)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.084255)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.252766)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.505532)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.168511)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.674043)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.084255)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.084255)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.084255)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.168511)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.168511)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.168511)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.084255)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.168511)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.084255)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.084255)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.084255)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.084255)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.084255)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.084255)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.084255)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.084255)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.084255)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.084255)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.084255)'>redux</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>[Core Meteor] Reactive. 처리하지 마세요. 선언에게 양보하세요.</h1>
+
+<p>이번엔 Meteor의 주요 특징 중 하나인 <a href="http://docs.meteor.com/#/full/reactivity">Reactivity</a> 를 사용하여
+웹 어플리케이션에 실시간으로 반응하는 구현을 다뤄보고자 한다.</p>
+
+<p>facebook 같은 SNS를 보면 게시글과 댓글의 시간이 실시간으로 갱신되는데</p>
+
+<p>Meteor를 사용하면 불필요한 DOM을 갱신하지 않고 필요한 부분만 적은 코드로 구현할 수 있다.</p>
+
+<p>시간을 다루기 위해 <a href="https://atmospherejs.com/momentjs/moment">moment</a> package를 사용한다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">meteor add momentjs:moment
+</code></pre></div>
+<p>로 패키지를 추가하고 브라우저 콘솔이나 <code>meteor shell</code>에서
+현재 시간 기준으로 얼마나 시간이 흘렀는지 (ex. 5 minute ago) 보여주려면</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">moment</span><span class="p">(</span><span class="err">기준시간</span><span class="p">).</span><span class="nx">fromNow</span><span class="p">()</span>
+</code></pre></div>
+<p>를 사용하면 된다.</p>
+
+<p>helper를 만들어보면 html 템플릿에선 <strong>{{timeAgo createdAt}}</strong> 를 사용하고 <code>createdAt</code>을 기준 시간으로부터 얼마나 경과했는지로 바꾸는 <code>timeAgo</code> 라는 헬퍼는</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">....</span>
+<span class="nx">Template</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">helpers</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="s2">&quot;timeAgo&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">moment</span><span class="p">(</span><span class="nx">time</span><span class="p">).</span><span class="nx">fromNow</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>이와 같이 구현할 수 있습니다.</p>
+
+<p>여기에서 우리는 Template의 <code>helper</code>가 <strong>Reactive Computation</strong> 대상이며
+<code>Session</code>이 <strong>Reactive Data Source</strong>라는 점을 사용합니다. <a href="http://docs.meteor.com/#/full/reactivity">(http://docs.meteor.com/#/full/reactivity)</a></p>
+
+<p><strong>Reactive Computation</strong> 대상인 <code>helper</code> 안에서 <code>Session</code>의 값이 갱신되면 <code>helper</code>를 다시 호출하지 않아도 다시 갱신이 되는 것입니다.</p>
+
+<p>이번에는 1초마다 특정 Session의 값을 갱신하도록 해봅시다.</p>
+
+<p><code>onCreated</code>에서 interval을 생성하고 <code>onDestroy</code>에서 제거하도록 하여 불필요한 <code>setInterval</code>이 계속 실행되지 않도록 합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Template</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">onCreated</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">Session</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;localtime&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">interval</span> <span class="o">=</span> <span class="nx">Meteor</span><span class="p">.</span><span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Session</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;localtime&quot;</span><span class="p">,</span> <span class="nx">Random</span><span class="p">.</span><span class="nx">id</span><span class="p">());</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="p">....</span>
+
+<span class="nx">Template</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">onDestroyed</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">Meteor</span><span class="p">.</span><span class="nx">clearInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">interval</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>단지 localtime 이라는 <code>Session</code>에 1초마다 다른 값이 들어오도록 set하는 것으로 모든 준비가 끝났습니다.</p>
+
+<p><code>Session</code>은 현재 가지고 있는 것과 같은 값이 들어올 경우 불필요한 갱신을 하지 않으므로 항상 다른 값이 들어오도록
+<code>Random.id()</code> <a href="https://github.com/meteor/meteor/tree/devel/packages/random">(https://github.com/meteor/meteor/tree/devel/packages/random)</a> 를 사용해 중복 값을 피합니다.</p>
+
+<p>이를 사용하기 위해 기본 package 인 <code>random</code>을 추가합니다</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">meteor add random
+</code></pre></div>
+<p>이는 <strong>uuid</strong> 값을 생성하여 매번 다른 값을 받습니다. 예전 버전의 <code>Meteor.uuid()</code> 와 동일합니다.</p>
+
+<p>이제 helper를 수정할 차례입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Template</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">helpers</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="s2">&quot;timeAgo&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Session</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;localtime&quot;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">moment</span><span class="p">(</span><span class="nx">time</span><span class="p">).</span><span class="nx">fromNow</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>이렇게 <code>Session.get</code> 을 추가해줍니다. 그 결과값은 항상 참이므로 &amp;&amp;(and)연산을 통해 항상 이후의 값을 반환합니다.</p>
+
+<p>실제로 Chrome 브라우저에서 변경되는 순간을 보면</p>
+
+<p><img src="imgs/Reactive_moment.png" alt="실시간으로 변경된 DOM만 갱신한다."></p>
+
+<p>이와 같이 두 번째 <code>li</code> 부분이 점멸하면서 해당 DOM이 갱신되는 것처럼 최소한의 변경만 이루어지는 것을 확인할 수 있습니다.</p>
+
+<p><a href="http://meteorpad.com/pad/tSGYZD6KbzNCgh7Ak/timeAgo">http://meteorpad.com/pad/tSGYZD6KbzNCgh7Ak/timeAgo</a></p>
+
+<p>실제로 구현한 소스는 이곳에서 확인할 수 있습니다.</p>
+
+<p>만일 Reactivity 특성을 사용하지 않는다면 매 시간마다 변경이 있는 DOM을 찾아서 갱신하도록 하는 Event 처리를 해야하지만
+Meteor 에선 이와 같이 적은 노력으로 효과적으로 구현할 수 있습니다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/meteor">meteor</a>&nbsp;<a href="/tags/reactive">reactive</a>&nbsp;<a href="/tags/session">session</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
