@@ -1,7 +1,7 @@
 [WebFramewokrs.kr](http://webframeworks.kr)
 =================
 
-Web Front-end 개발을 위해 필요한 지식과 정보를 공유하는 사이트 코드입니다. 모든 코드는 공개되어 있으며 자신의 지식과 정보를 공유하고자하시는 분들은 Guideline에 맞추어 글을 작성하셔서 pull request를 남겨주시면 됩니다. 아래 설명에 나오는 모든 실행 구문은 Linux/Mac등의 UNIX 환경에만 해당됩니다.
+Web Application 개발을 위해 필요한 지식과 정보를 공유하는 사이트 코드입니다. 모든 코드는 공개되어 있으며 자신의 지식과 정보를 공유하고자하시는 분들은 Guideline에 맞추어 글을 작성하셔서 pull request를 남겨주시면 됩니다. 아래 설명에 나오는 모든 실행 구문은 Linux/Mac등의 UNIX 환경에만 해당됩니다.
 
 [웹프레임웍스 사이트 바로가기](http://webframeworks.kr)
 
