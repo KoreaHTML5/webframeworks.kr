@@ -238,19 +238,18 @@ $ cd redux-example-todo
 </code></pre></div>
 <p>이 애플리케이션은 <a href="https://webpack.github.io/">webpack</a>이라는 모듈 번들러를 사용해 필요한 자바스크립트를 모두 <code>bundle.js</code>로 합쳐두고 있는데 여기에는 DOM에 의존성이 있는 클라이언트에서만 사용되는 코드도 포함되어 있다. React 0.14 버전 이전까지는 DOM 의존성을 해결하기 위해 <a href="https://github.com/tmpvar/jsdom">jsdom</a>과 같은 라이브러리를 사용해 서버에서 DOM 환경을 흉내내곤 했지만, 0.14부터는 DOM 관련 기능은 <code>react-dom</code>이라는 라이브러리로 분리하고 서버 렌더링 관련 기능은 <code>react-dom/server</code>로 분리되었다.</p>
 
-<p>이 코드에 있는 <code>src/index.js</code> 파일은 클라이언트 렌더링을 위한 코드이므로 서버 렌더링을 위한 <code>src/page.js</code>를 새롭게 만들고 다음과 같이 작성한다.
-```js
-import React from &#39;react&#39;;
-import ReactDOMServer from &#39;react-dom/server&#39;;
-import TodoApp from &#39;./components/TodoApp&#39;;</p>
+<p>이 코드에 있는 <code>src/index.js</code> 파일은 클라이언트 렌더링을 위한 코드이므로 서버 렌더링을 위한 <code>src/page.js</code>를 새롭게 만들고 다음과 같이 작성한다.</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ReactDOMServer</span> <span class="nx">from</span> <span class="s1">&#39;react-dom/server&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">TodoApp</span> <span class="nx">from</span> <span class="s1">&#39;./components/TodoApp&#39;</span><span class="p">;</span>
 
-<p>export default function() {
-  return ReactDOMServer.renderToString(
-    <TodoApp />
-  );
-}
-``<code>
-Webpack의 설정 파일인</code>webpack.config.js<code>도 수정해야 한다. 브라우저 환경의 번들 파일만 생성하던 설정을 조금 수정하여 서버 환경의 파일도 생성하도록 만든다. 당연히 시작 파일(</code>entry<code>)은 방금 위에서 작성한</code>src/page.js<code>로 설정한다. 이 글은 Webpack에 대해 다루고 있지 않으므로 설정에 대해 자세히 설명하지 않는다. 설정 파일은 [GitHub의 예제 저장소](https://github.com/taggon/redux-example-todo)에서 볼 수 있다. 설정을 완료했으면 콘솔 환경에서</code>webpack`을 실행하여 번들 파일을 생성한다.</p>
+<span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">ReactDOMServer</span><span class="p">.</span><span class="nx">renderToString</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">TodoApp</span> <span class="o">/&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Webpack의 설정 파일인 <code>webpack.config.js</code>도 수정해야 한다. 브라우저 환경의 번들 파일만 생성하던 설정을 조금 수정하여 서버 환경의 파일도 생성하도록 만든다. 당연히 시작 파일(<code>entry</code>)은 방금 위에서 작성한 <code>src/page.js</code>로 설정한다. 이 글은 Webpack에 대해 다루고 있지 않으므로 설정에 대해 자세히 설명하지 않는다. 설정 파일은 <a href="https://github.com/taggon/redux-example-todo">GitHub의 예제 저장소</a>에서 볼 수 있다. 설정을 완료했으면 콘솔 환경에서 <code>webpack</code>을 실행하여 번들 파일을 생성한다.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ webpack
 </code></pre></div>
 <p>이제 서버에서 렌더링을 하고 이를 HTML 문서에 출력하도록 <code>server.js</code> 파일을 수정한다.</p>
