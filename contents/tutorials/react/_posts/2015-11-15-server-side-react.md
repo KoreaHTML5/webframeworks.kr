@@ -85,6 +85,7 @@ $ cd redux-example-todo
 이 애플리케이션은 [webpack](https://webpack.github.io/)이라는 모듈 번들러를 사용해 필요한 자바스크립트를 모두 `bundle.js`로 합쳐두고 있는데 여기에는 DOM에 의존성이 있는 클라이언트에서만 사용되는 코드도 포함되어 있다. React 0.14 버전 이전까지는 DOM 의존성을 해결하기 위해 [jsdom](https://github.com/tmpvar/jsdom)과 같은 라이브러리를 사용해 서버에서 DOM 환경을 흉내내곤 했지만, 0.14부터는 DOM 관련 기능은 `react-dom`이라는 라이브러리로 분리하고 서버 렌더링 관련 기능은 `react-dom/server`로 분리되었다.
 
 이 코드에 있는 `src/index.js` 파일은 클라이언트 렌더링을 위한 코드이므로 서버 렌더링을 위한 `src/page.js`를 새롭게 만들고 다음과 같이 작성한다.
+
 ```js
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -96,6 +97,7 @@ export default function() {
   );
 }
 ```
+
 Webpack의 설정 파일인 `webpack.config.js`도 수정해야 한다. 브라우저 환경의 번들 파일만 생성하던 설정을 조금 수정하여 서버 환경의 파일도 생성하도록 만든다. 당연히 시작 파일(`entry`)은 방금 위에서 작성한 `src/page.js`로 설정한다. 이 글은 Webpack에 대해 다루고 있지 않으므로 설정에 대해 자세히 설명하지 않는다. 설정 파일은 [GitHub의 예제 저장소](https://github.com/taggon/redux-example-todo)에서 볼 수 있다. 설정을 완료했으면 콘솔 환경에서 `webpack`을 실행하여 번들 파일을 생성한다.
 
 ```
