@@ -2,7 +2,7 @@
 layout : tutorials
 title : React와 애니메이션
 category : tutorials
-subcategory : intro
+subcategory : screeneffect
 summary : React에서 웹 애니메이션을 하는 방법들을 알아봅시다.
 permalink : /tutorials/react/react-animation
 tags : javascript react es2015 es6 es7 jsx animation

@@ -2,7 +2,7 @@
 layout : tutorials
 title : React 애플리케이션의 서버 렌더링
 category : tutorials
-subcategory : intro
+subcategory : data-display 
 summary : 서버에서 React를 렌더링하는 이유와 방법을 알아본다.
 permalink : /tutorials/react/server-side-rendering
 tags : javascript react flux redux server

@@ -2,7 +2,7 @@
 layout : tutorials
 title : React 컴포넌트와 컴포넌트 라이프사이클
 category : tutorials
-subcategory : intro
+subcategory : setlayout
 summary : React에 사용자에게 노출되어 있는 API 중 가장 중요한 것이 컴포넌트 API와 컴포넌트 라이프사이클 메서드입니다. 사용자는 이를 통해 앱의 뷰 로직 플로우를 컨트롤할 수 있습니다. 이 글에서는 React 컴포넌트에 대해 알아보고, 컴포넌트 라이프사이클이 어떻게 작동하는지, 컴포넌트 API를 어떻게 사용해야 하는지에 대해 알아봅니다.
 permalink : /tutorials/react/components-and-lifecycle
 tags : javascript react

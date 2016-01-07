@@ -2,7 +2,7 @@
 layout : tutorials
 title : React 앱의 최적화 전략
 category : tutorials
-subcategory : intro
+subcategory : tips
 summary : 프로덕션을 위한 React 앱을 만들었으면, 이제 최적화에 대해 알아볼 때가 되었습니다. React 앱의 일반적인 최적화 전략을 알아봅시다.
 permalink : /tutorials/react/react-optimization
 tags : javascript react optimization immutable

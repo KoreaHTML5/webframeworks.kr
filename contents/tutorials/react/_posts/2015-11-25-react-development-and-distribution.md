@@ -2,7 +2,7 @@
 layout : tutorials
 title : React 앱의 개발과 배포
 category : tutorials
-subcategory : intro
+subcategory : test
 summary : React 앱은 어떻게 개발하고 배포해야 하는지 알아봅니다.
 permalink : /tutorials/react/react-development-and-distribution
 tags : javascript react distribution webpack development

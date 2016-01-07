@@ -2,7 +2,7 @@
 layout : tutorials
 title : React 앱의 데이터 흐름
 category : tutorials
-subcategory : intro
+subcategory : setlayout
 summary : React 앱의 단방향 데이터 흐름이 props와 state로 어떻게 표현되는지, props와 state 속성을 어떻게 사용하는지  심도깊게 알아봅니다.
 permalink : /tutorials/react/react-dataflow
 tags : javascript react

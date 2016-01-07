@@ -4,7 +4,7 @@ destination : publish
 markdown_ext : "markdown,mkdown,mkdn,mkd,md"
 
 markdown :    redcarpet
-highlighter : pygments
+highlighter : rouge
 lsi :         false
 excerpt_separator : "\n\n"
 

@@ -2,7 +2,7 @@
 layout : tutorials
 title : React 컴포넌트를 테스트하는 세 가지 방법
 category : tutorials
-subcategory : intro
+subcategory : tips
 summary : React 애플리케이션을 테스트하는 방법을 다룹니다.
 permalink : /tutorials/react/testing
 tags : javascript react flux redux test

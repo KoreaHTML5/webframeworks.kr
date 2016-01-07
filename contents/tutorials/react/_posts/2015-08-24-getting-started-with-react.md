@@ -2,7 +2,7 @@
 layout : tutorials
 title : React 시작하기
 category : tutorials
-subcategory : intro
+subcategory : setlayout
 summary : React가 어떤 동기에 의하여 만들어졌고, 어떤 것을 해 주는 라이브러리인지, 그리고 어떤 것은 아닌지 알아봅니다.
 permalink : /tutorials/react/getting-started
 tags : javascript react

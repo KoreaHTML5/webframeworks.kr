@@ -2,7 +2,7 @@
 layout : tutorials
 title : ExpressJS 에서 로그인/로그아웃 구현하기
 category : tutorials
-subcategory : tip
+subcategory : tips
 summary : ExpressJS에서 보다 효율적으로 로그인과 로그아웃, 즉 인증을 구현하는 방법에 대해서 알아보겠습니다.
 permalink : /tutorials/expressjs/auth_log_in_out
 tags : javascript framework session expressjs tutorials
