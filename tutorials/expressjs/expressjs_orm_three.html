@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - ExpressJS에서 Sequelize 사용하기3</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">ExpressJS에서 Sequelize 사용하기3</h1>
+<p class="title_header_summary">ExpressJS에서 ORM인 Sequelize 사용하기3</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars3.githubusercontent.com/u/10105396?v=3&s=460" alt="김범준">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            김범준
+
+                        </h4>
+                        zzamjun<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>ExpressJS에서 Sequelize 사용하기3</h1>
+
+<h2>Associations</h2>
+
+<p>예제의 다음 기능은 출판사 별로 등록된 책을 보여주고 새로운 서적을 books테이블에 등록하는 일이다. publisher테이블에 이어  books테이블도 만들어 보자. SQL문으로는 다음과 같다.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">CREATE TABLE IF NOT EXISTS books (
+    book_id SERIAL PRIMARY KEY,
+    pub_id INTEGER REFERENCES publisher NOT NULL,
+    title VARCHAR(64) NOT NULL,
+    author VARCHAR(16) NOT NULL,
+    stock SMALLINT NOT NULL DEFAULT 1,
+    register_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);
+</code></pre></div>
+<p>books테이블의 pub<em>id는 책의 출판사ID이고 publisher테이블의 pub</em>id를 foreign key로 갖는다.
+Sequelize의 model define으로 표현하면 이렇게 될 것이다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'Books'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">book_id</span><span class="p">:</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span> <span class="na">primaryKey</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">autoIncrement</span><span class="p">:</span> <span class="kc">true</span><span class="p">},</span>
+    <span class="na">pub_id</span><span class="p">:</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span> <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="na">references</span><span class="p">:</span> <span class="p">{</span><span class="na">model</span><span class="p">:</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Publisher</span><span class="p">,</span> <span class="na">key</span><span class="p">:</span> <span class="s1">'pub_id'</span><span class="p">}},</span>
+    <span class="na">title</span><span class="p">:</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">},</span>
+    <span class="na">author</span><span class="p">:</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">},</span>
+    <span class="na">stock</span><span class="p">:</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span> <span class="na">defaultValue</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="na">register_date</span><span class="p">:</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">DATE</span><span class="p">,</span> <span class="na">defaultValue</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">NOW</span><span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+    <span class="na">classMethods</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">tableName</span><span class="p">:</span> <span class="s1">'books'</span><span class="p">,</span>
+    <span class="na">freezeTableName</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">underscored</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">timestamps</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>여기서 publisher 테이블과 다른 점은 books테이블의 column하나가 reference라는 것이다. 출판사는 여러개의 책을 출판하므로 1:N의 관계가 성립된다. Sequelize에서는 model간의 관계를 정의하는 4가지의 association 메소드가 있다. (hasMany, hasOne, belongsTo, belongsToMany) 이 중에서 이번 예제에서 필요한 hasMany 메소드부터 하나씩 살펴보도록하자. association 설정은 다음과 같이 한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">Publisher</span><span class="p">.</span><span class="nx">hasMany</span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nx">Books</span><span class="p">,</span> <span class="p">{</span><span class="na">foreignKey</span><span class="p">:</span> <span class="s1">'pub_id'</span><span class="p">});</span></code></pre></figure>
+
+<p>Publisher model과 Books model이 1:N으로 관계되어있다는 뜻이다. hasMany는 1:N관계를 맺을 때 사용하는 메소드이다. association관련 메소드의 option항목은 대표적으로 foreignKey, as가 있다.
+foreignKey에는 foreignKey로 사용되는 column의 name이 들어간다. as는 alias를 주는 옵션인데 곧 예제와 함께 확인해보자.</p>
+
+<p>예제 화면의 books탭으로 들어가면 다음과 같은 화면을 볼 수 있다.</p>
+
+<p><img src="../expressjs_orm/imgs/ex3_1.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>webframeworks 출판사에 미리 등록해놓은 책 3권을 확인 할 수 있다. 각 출판사별로 발행한 책을 보려면 다음과 같은 Sequelize문을 사용한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">models</span><span class="p">.</span><span class="nx">Publisher</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+    <span class="na">where</span><span class="p">:</span> <span class="p">{</span><span class="na">pub_id</span><span class="p">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">pub_id</span><span class="p">},</span>
+    <span class="na">include</span><span class="p">:</span> <span class="p">{</span><span class="na">model</span><span class="p">:</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Books</span><span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+     <span class="c1">//TODO: error handling</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>이전 챕터의 find문과 다른 점이 있다면 include옵션이 들어가 있다는 점이다.
+include옵션은 association과 궁합이 맞는 옵션이다. model의 association의 설정에 따라 left join을 수행하며 종속된 row의 결과를 object의 attribute로 만들어준다. 위 결과에 대한 반환 JSON을 브라우저에서 살펴보면 훨신 더 이해가 잘 될 것이다.</p>
+
+<p><img src="../expressjs_orm/imgs/ex3_2.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>그림을 보면 webframeworks출판사 ID 7번에 종속된 books의 내역을 Books라는 Array로 내려주는것을 확인 할 수 있다. (이것을 eager loading이라 한다.)  Books라는 이름은 model name을 그대로 따라간다. Association을 설정하면 이와같이 include 옵션을 통해서 left join을 할 수 있다. 그렇다면 books테이블과 같이 N쪽에 속하는 child모델에서의 상세 설정은 할 수 없는걸까? 결론은 할 수 있다. include옵션은 그 내부에 또다른 옵션을 갖는다.</p>
+
+<p>예제와 함께 include의 옵션들에 대해서 알아보자.</p>
+
+<p>1) model: eager loading을 하고자 하는 model <code>ex)include: {model: models.Books}</code></p>
+
+<p>2) as: alias의 기능을 한다.
+    <code>ex) 만약 publisher와 books의 association설정을 다음과 같이 하고 db.Publisher.hasMany(db.Books, {foreignKey: &#39;pub_id&#39;, as: &#39;RelatedBooks&#39;});
+    Sequelize find를 다음과 같이 실행하면 그 아래와 같이 된다.</code></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">models</span><span class="p">.</span><span class="nx">Publisher</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+    <span class="na">where</span><span class="p">:</span> <span class="p">{</span><span class="na">pub_id</span><span class="p">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">pub_id</span><span class="p">},</span>
+    <span class="na">include</span><span class="p">:</span> <span class="p">[{</span><span class="na">model</span><span class="p">:</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Books</span><span class="p">,</span> <span class="na">as</span><span class="p">:</span> <span class="s1">'RelatedBooks'</span><span class="p">}]</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{});</span></code></pre></figure>
+
+<p><img src="../expressjs_orm/imgs/ex3_3.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p><code>이전에는 model name과 똑같이 Books로 리턴되었는데 as로 지정하고 실행하니
+RelatedBooks로 리턴되었다. as는 이처럼 alias기능을 한다. 보통 이름을 짧게 만들때 사용한다.</code></p>
+
+<p>3) where: child테이블의 where조건에 대한 옵션이다.
+<code>include된 child모델의 book_id가 2인 조건을 넣으면 다음과 같다.</code></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">models</span><span class="p">.</span><span class="nx">Publisher</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+  <span class="na">where</span><span class="p">:</span> <span class="p">{</span><span class="na">pub_id</span><span class="p">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">pub_id</span><span class="p">},</span>
+  <span class="na">include</span><span class="p">:</span> <span class="p">[{</span><span class="na">model</span><span class="p">:</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Books</span><span class="p">,</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span><span class="na">book_id</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}]</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{});</span></code></pre></figure>
+
+<p><code>리턴 결과는 이렇다. where조건이 없을때에는 3개의 books정보를 가져왔지만 지금은 books_id가
+2인 row의 결과만 리턴한다.</code></p>
+
+<p><img src="../expressjs_orm/imgs/ex3_4.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>4) attributes: child모델의 column을 select할때 사용한다. <code>ex) child모델에 다음과 같이 attributes를 추가하면</code></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">models</span><span class="p">.</span><span class="nx">Publisher</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+  <span class="na">where</span><span class="p">:</span> <span class="p">{</span><span class="na">pub_id</span><span class="p">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">pub_id</span><span class="p">},</span>
+  <span class="na">include</span><span class="p">:</span> <span class="p">[{</span><span class="na">model</span><span class="p">:</span> <span class="nx">models</span><span class="p">.</span><span class="nx">Books</span><span class="p">,</span> <span class="na">attributes</span><span class="p">:</span> <span class="p">[</span><span class="s1">'title'</span><span class="p">,</span> <span class="s1">'author'</span><span class="p">]}]</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{});</span></code></pre></figure>
+
+<p><code>리턴결과는 다음과 같다. Books에 title과 author정보만담겨서 내려온다.</code></p>
+
+<p><img src="../expressjs_orm/imgs/ex3_5.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>5) required: 이 옵션이 만약  true라면 inner join으로 동작하게 된다.</p>
+
+<p>6) limit : child 모델에 대한 limit가 적용된다</p>
+
+<p>hasMany가 1:N관계와 관련이 있다면 hasOne, belongsTo는 1:1관계 belongsToMany는 N:M관계와 관련이 있다. 기본적인 사용방법은 hasMany와 다르지 않다. hasOne과 belongsTo는 똑같이 1:1 relation을 대표하지만 belongsTo의 경우에는 child모델의 입장에서 parent 모델의 정보가 필요할때 사용한다. belongsTo와 belongsToMany의 경우에는 association을 설정할 때 targetKey옵션을 사용할 수 있다. 예를 들면 다음과 같이 말이다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">Books</span><span class="p">.</span><span class="nx">belongsTo</span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nx">Publisher</span><span class="p">,</span> <span class="p">{</span><span class="na">foreignKey</span><span class="p">:</span> <span class="s1">'pub_id'</span><span class="p">,</span> <span class="na">targetKey</span><span class="p">:</span> <span class="s1">'pub_id'</span><span class="p">});</span></code></pre></figure>
+
+<p>위의 예시는 둘다 pub<em>id라는 동일한 column을 가졌기 때문에 foreignKey와  targetKey 옵션이 같지만 만약에 books테이블이 pub</em>id가 아니라 publisher_id라면 이렇게 사용할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">Books</span><span class="p">.</span><span class="nx">belongsTo</span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nx">Publisher</span><span class="p">,</span> <span class="p">{</span><span class="na">foreignKey</span><span class="p">:</span> <span class="s1">'publisher_id'</span><span class="p">,</span> <span class="na">targetKey</span><span class="p">:</span> <span class="s1">'pub_id'</span><span class="p">});</span></code></pre></figure>
+
+<p>즉 reference column과 referenced column의 이름이 같지 않을때 사용하는 옵션이다.</p>
+
+<h2>Raw Query</h2>
+
+<p>Sequelize는 지금까지 우리가 사용한 model로부터 작업하는 방법외에도 Raw Query SQL문을 통해 쿼리를 실행할 수 있는 기능도 있다. 복잡한 쿼리나 ORM형식으로 변환이 힘들다고 판단되는 경우에 사용할 수 있는 옵션이다. Raw Query실행은 다음과 같이 할 수 있다.</p>
+
+<p><img src="../expressjs_orm/imgs/ex3_6.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>query 메소드는 Raw Query를 실행하는 메소드인데 첫 번째 파라미터는 Query string, 두번째 파라미터는 옵션이 들어간다. 위와 같이 books 테이블의 row 1개만 가져오는 쿼리를 실행하면 다음과 같은 결과를 리턴한다.</p>
+
+<p><img src="../expressjs_orm/imgs/ex3_7.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>결과로 array를 리턴하는데 첫번째 인덱스의 값은 query결과 array고 두번째 인덱스의 값은 메타데이터 정보이다. 순수하게 query결과만 받아보고 싶다면 옵션 type에 QueryType을 지정하면된다.</p>
+
+<p><img src="../expressjs_orm/imgs/ex3_8.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>type을 SELECT로 지정하고 query를 실행하면 이전과는 달리 query결과에 대한 값만 받을 수 있다.</p>
+
+<p><img src="../expressjs_orm/imgs/ex3_9.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>또 다른 옵션으로는 replacements 옵션이 있다. SQL문에 파라미터를 넣어서 유동적인 query를 만들 수 있게 하는 옵션이다. 예시는 다음과 같다.</p>
+
+<p><img src="../expressjs_orm/imgs/ex3_10.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>Query문에 ‘?’를 넣으면 그곳에 값을 치환해서 넣을 수 있다. 위의 쿼리문은 ‘SELECT * FROM books pub_id=7 limit 2’ 로 치환된다. 물음표의 순서대로 replacements옵션 array의 인덱스0부터 차례대로 치환된다. replacements는 array형태일 수도 있지만 object형태로도 쓰일 수 있다. object형태로 사용될 때는 쿼리문의 변화가 필요하다 다음과 같이 말이다.</p>
+
+<p><img src="../expressjs_orm/imgs/ex3_11.png" style="" alt=" 예 " title=" 예 "></p>
+
+<p>?(물음표) 대신 :(콜론) 다음에 파라미터 이름을 적는 것이다. :name 에 해당하는 부분은 replacements옵션 object의 값과 대응된다. 결과는 똑같이 리턴된다.
+sequelize에서 Raw Query사용법에 대해 더 궁금한게 있다면 이곳을 참조하기 바란다.
+<a href="http://sequelize.readthedocs.org/en/latest/docs/raw-queries/">sequelize-raw-query</a></p>
+
+<p>이번 챕터에서는 model간에 association을 맺어주는 방법과 그 association을 통해서 join작업을 하는 방법 그리고 마지막으로는 raw query사용법에 대해서 알아보았다. 간단한 예시 위주로 알아보았지만 기본적인 옵션들을 조합한다면 더 많은 작업을 해낼 수 있을것이다. 다음 챕터에서는 Sequelize의 hooks와 Promise chaining을 이용한 트랜잭션 + 복수쿼리 실행방법에 대하여 알아보자.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/expressjs">expressjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;<a href="/tags/orm">orm</a>&nbsp;<a href="/tags/database">database</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

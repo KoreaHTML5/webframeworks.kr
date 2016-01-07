@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Sencha Chart따라하기.</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #RGB(8, 78, 119);color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Sencha Chart따라하기.</h1>
+<p class="title_header_summary">차트는 Ext JS5에 들어와 향상된 센차터치의  차트를 사용하기 시작했다. 기존 레거시 차트를 ext-chart라 부르고 sencha-charts를 새로운 차트라 부르며 사용한다. 이는 모바일 디바이스에 대응하기 위함이기도 하다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/8764297?v=3&s=400" alt="곽옥석">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            곽옥석
+
+                        </h4>
+                        benneykwag<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>Sencha 차트</h1>
+
+<p>차트는 Ext JS5에 들어와 향상된 센차터치의  차트를 사용하기 시작했다. 기존 레거시 차트를 ext-chart라 부르고 sencha-charts를 새로운 차트라 부르며 사용한다. 이는 모바일 디바이스에 대응하기 위함이기도 하다. 이제 우리는 변화된 새로운 sencha-chart에 대해 알아보고 샘플을 통해 작성방법을 배울 수 있을 것이다.</p>
+
+<h2>차트의 종류</h2>
+
+<p>차트의 종류는 총 3가지가 존재한다.</p>
+
+<ol>
+<li>Cartesian : X-Y 평면에 수치를 표현한다. Bar, Area, Scatter, Line Chart 포함된다.</li>
+<li>Polar : 원표면에 수치를 표현한다. Pie, Radar Chart가 포함된다.</li>
+<li>Spacefilling : 차트의 영역을 채우며 수치를 표현한다. Gauge Chart가 포함된다.</li>
+</ol>
+
+<p><img src="imgs/img01.png" alt=""><br>
+<strong>그림 1 3가지 종류의 Chart가 존재한다.</strong></p>
+
+<h2>차트 아키텍쳐</h2>
+
+<p>Sencha Charts패키지는 아래 주요클래스의 설정으로 이루어진다.</p>
+
+<ul>
+<li>Chart(Ext.chart.AbstractChart)
+모든 종류 chart를 구현하는 공용클래스다. Chart클래스는 아래 기능을 차트 종류에 맞게 관리한다.
+
+<ul>
+<li>Axis</li>
+<li>Legend</li>
+<li>Theme</li>
+<li>Grid</li>
+<li>Interaction</li>
+<li>Events</li>
+</ul></li>
+<li>Series(Ext.chart.series.Series)</li>
+</ul>
+
+<p>이 클래스의 의해 bar, column, line, area등의 차트로 정의된다.
+  Series클래스는 차트 내부에 데이터를 표현하는 로직이 포함되어 있다.</p>
+
+<ul>
+<li><p>Sprite(Ext.draw.sprite.Sprite)</p>
+
+<p>Sprite는 다양한 도형을 그리기 위한 클래스다.(직사각형(rectangle), 타원(ellipse)). ....</p></li>
+<li><p>Draw(Ext.draw.Container)</p></li>
+</ul>
+
+<p>Draw는 차트가 그려지는 메인 컨테이너다. 이 클래스는 Ext.panel.Panel클래스를 확장하여 이 위에 surface클래스가 겹쳐져 그려질 것이다. 또한 이 클래스는 차트를 다운로드 받는 API를 제공한다.</p>
+
+<ul>
+<li>Surface(Ext.draw.Surface)</li>
+</ul>
+
+<p>차트는 다양한 계층의 surface로 나뉘어진다. 각 계층의 surface는 특정한 정보에 대해 렌더링을 담당한다. 각 surface는 내부 engine이용 HTML Canvas나 SVG로 렌더링하게 된다.</p>
+
+<ul>
+<li>Engine(Ext.draw.engine.Canvas , Ext.draw.engine.Svg)</li>
+</ul>
+
+<p>Sencha Chart Stack에서 가장 낮은 stack의 클래스다. Canvas클래스와 Svg클래스로 구분되고, surface클래스에 관한 API를 제공한다.</p>
+
+<p><img src="imgs/img02.png" alt=""><br>
+<strong>그림 2 Sencha Chart Stack Layer</strong></p>
+
+<h2>차트 내부 하위 구성요소</h2>
+
+<p>차트 내부에서 차트를 구성하는 구성요소를 알아보자.</p>
+
+<ul>
+<li>Axis(Ext.chart.axis.Axis)</li>
+</ul>
+
+<p>축(Axis)기반 차트에서 축을 제공한다. Sencha Chart에서는 3종류(Numeric, Category, Time)의 Axis클래스를 지원한다.
+* Legend(Ext.chart.Legend)</p>
+
+<p>Chart의 주석을 구현하는 클래스다. 정상적으로 데이터가 제공된다면 특별한 설정이 필요 없을 것이다.</p>
+
+<ul>
+<li>Markers(Ext.chart.Markers)</li>
+</ul>
+
+<p>Axis차트에서 축의 임계치를 정의할때 사용된다. bar, circle Chart에서 series를 렌더링 할때 각 series값을 표현하는데도 사요된다.</p>
+
+<ul>
+<li>Grid(Ext.chart.grid)</li>
+</ul>
+
+<p>Axis(축)차트에서 Grid라인을 그리는데 사용된다.</p>
+
+<ul>
+<li>Interaction(Ext.chart.interaction.Abstract)</li>
+</ul>
+
+<p>이 클래스는 차트가 사용자와 상호작업할 수 있도록 지원한다.</p>
+
+<ul>
+<li>Theme(Ext.chart.theme.Theme)</li>
+</ul>
+
+<p>Theme클래스는 theme에 대한 정의를 확장해 axis, label, series등의 항목을 재정의 한다.</p>
+
+<h2>차트 클래스 다이어그램</h2>
+
+<p>아래 다이어그램은 chart stack에서 다양한 클래스들이 어떤 연관관계를 가지는지 보여준다.</p>
+
+<p><img src="imgs/img03.png" alt=""><br>
+<strong>그림 3 Sencha Chart Class Diagram.</strong></p>
+
+<h2>다양한 계층의 Surface</h2>
+
+<p>차트는 다양한 계층의 surface가 존재한다. 각 surface클래스는 자신의 content를 차트내부에서 렌더링하게 된다. 그림4와 같이 차트의 각 계층은 HTML의 Z축으로 구조화된다.</p>
+
+<p><img src="imgs/img04.png" alt=""><br>
+<strong>그림 3 차트의 계층구조</strong></p>
+
+<h1>차트의 구현</h1>
+
+<p>이제 다양한 차트를 직접 구현하며 차트의 특성과 구현방법에 대해 배워보겠다. 우리는 이미 Getting Start에서 개발을 위한 환경을 구축하였다.</p>
+
+<h2>Bar, Column 차트</h2>
+
+<p>bar차트와 Column차트는 용어가 다를뿐 동일한 Series클래스이다. 이 두개의 차트는 axes의 Position설정에 의해 가로로 배치되면 bar차트, 세로로 배치되면 column차트로 불리운다.
+우리는 Column차트를 구현하고 약간의 설정 변경으로 Bar차트로 변경해 볼 것이다.</p>
+
+<h3>HTML파일 준비</h3>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Table Layout<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span>
+          <span class="na">href=</span><span class="s">"/ext/packages/ext-theme-gray/build/resources/ext-theme-gray-all-debug.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span>
+          <span class="na">href=</span><span class="s">"/ext/packages/sencha-charts/build/neptune/resources/sencha-charts-all-debug.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"/ext/ext-all-debug.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"/ext/packages/sencha-charts/build/sencha-charts.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="nx">Ext</span><span class="p">.</span><span class="nx">Loader</span><span class="p">.</span><span class="nx">setConfig</span><span class="p">({</span>
+        <span class="na">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">paths</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">'ext5'</span><span class="p">:</span> <span class="s1">'/app'</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="nx">Ext</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span>
+        <span class="s1">'ext5.view.chapter9.BasicColumn'</span>
+    <span class="p">]);</span>
+
+    <span class="nx">Ext</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 모델을 생성하고 필드를 채운다.</span>
+        <span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">'ext5.view.chapter9.BasicColumn'</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">renderTo</span> <span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>클래스를 작성한다. 이 클래스는 Container클래스를 확장하고 Fit레이아웃으로 설정되어 하나의 자식 컴포넌트(차트)를 가질 것이다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'ext5.view.chapter9.BasicColumn'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">extend</span><span class="p">:</span> <span class="s1">'Ext.container.Container'</span><span class="p">,</span>
+    <span class="na">requires</span><span class="p">:</span> <span class="p">[</span><span class="s1">'ext5.view.chapter9.BasicColumnModel'</span><span class="p">],</span>
+    <span class="na">width</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+    <span class="na">layout</span><span class="p">:</span> <span class="s1">'fit'</span><span class="p">,</span>
+    <span class="na">viewModel</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'chapter8-basiccolumn'</span>
+    <span class="p">},</span>
+    <span class="na">items</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="na">xtype</span><span class="p">:</span> <span class="s1">'cartesian'</span><span class="p">,</span>     <span class="c1">// 1</span>
+            <span class="na">bind</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// 2</span>
+                <span class="na">store</span><span class="p">:</span> <span class="s1">'{recordset}'</span>    <span class="c1">// 3</span>
+            <span class="p">},</span>
+            <span class="na">title</span><span class="p">:</span> <span class="s1">'서울 경기지역 가계지출내역 '</span><span class="p">,</span>   <span class="c1">// 4</span>
+            <span class="na">titleAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>   <span class="c1">// 5</span>
+            <span class="na">axes</span><span class="p">:</span> <span class="p">[</span>     <span class="c1">// 6</span>
+                <span class="p">{</span>
+                    <span class="na">type</span><span class="p">:</span> <span class="s1">'numeric'</span><span class="p">,</span>    <span class="c1">// 7</span>
+                    <span class="na">grid</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">odd</span><span class="p">:</span> <span class="p">{</span>      <span class="c1">// 8</span>
+                            <span class="na">fill</span><span class="p">:</span> <span class="s1">'#e8e8e8'</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="na">position</span><span class="p">:</span> <span class="s1">'left'</span><span class="p">,</span>   <span class="c1">// 9</span>
+                    <span class="na">title</span><span class="p">:</span> <span class="s1">'금액'</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="na">type</span><span class="p">:</span> <span class="s1">'category'</span><span class="p">,</span>   <span class="c1">// 10</span>
+                    <span class="na">position</span><span class="p">:</span> <span class="s1">'bottom'</span><span class="p">,</span> <span class="c1">// 11</span>
+                    <span class="na">fields</span><span class="p">:</span> <span class="p">[</span><span class="s1">'group'</span><span class="p">]</span>   <span class="c1">// 12</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="na">series</span><span class="p">:</span> <span class="p">[</span>   <span class="c1">// 13</span>
+                <span class="p">{</span>
+                    <span class="na">type</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">,</span>    <span class="c1">// 14</span>
+                    <span class="na">xField</span><span class="p">:</span> <span class="s1">'group'</span><span class="p">,</span>    <span class="c1">// 15</span>
+                    <span class="na">yField</span><span class="p">:</span> <span class="p">[</span><span class="s1">'price1'</span><span class="p">]</span> <span class="c1">// 16</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="na">insetPadding</span><span class="p">:</span> <span class="p">{</span>     <span class="c1">// 17</span>
+                <span class="na">top</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+                <span class="na">right</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+                <span class="na">bottom</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                <span class="na">left</span><span class="p">:</span> <span class="mi">20</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">});</span></code></pre></figure>
+
+<ol>
+<li>xtype으로 cartesian을 사용했다. cartesian차트는 평면에 수치를 표현하는 타입으로 Bar, Area, Scatter, Line차트 등이 이에 포함된다.</li>
+<li>차트에 제공되는 데이터는 뷰모델의 정의된 스토어를 바인딩한다.</li>
+<li>바인딩되는 스토어는 &quot;{}&quot;로 감싼다.</li>
+<li>cartesian클래스는 Ext.panel.Panel클래스를 확장하여 Panel클래스의 Title Config를 사용할 수 있다.</li>
+<li>(4)의 title을 중앙정렬한다.</li>
+<li>axes는 축을 설정하는 Config다.</li>
+<li>좌측에 위치할 numeric(눈금자)를 설정했다.</li>
+<li>눈금에 맞는 눈금선을 그린다. odd는 홀수를 의미하고 눈금의 홀수에 해당하는 영역을 채우도록 한다.(fill:&#39;#e8e8e8&#39;)</li>
+<li>numeric의 위치를 left로 설정한다.</li>
+<li>category(항목)을 (11)bottom위치에 설정한다.</li>
+<li>category에 표시할 필드를 설정한다.</li>
+<li>series내부에 차트의 종류를 설정하면 비로서 차트가 완성된다.</li>
+<li>bar차트를 추가하겠다.</li>
+<li>xField는 각 차트가 공통적으로 사용할 가로 필드다. category에 설정된 group과 동일하게 설정한다.</li>
+<li>bar차트 하나가 표시할 필드를 설정한다. 하나의 bar차트가 <strong>price1</strong> 필드의 값을 표시할 것이다.</li>
+<li>차트를 중심으로 상하좌우에 간격을 설정한다.</li>
+</ol>
+
+<p>뷰모델 클래스를 작성하자. 이 클래스는 BasicColumn클래스가 사용할 스토어를 정의하고 있다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'ext5.view.chapter9.BasicColumnModel'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">extend</span><span class="p">:</span> <span class="s1">'Ext.app.ViewModel'</span><span class="p">,</span>
+    <span class="na">alias</span><span class="p">:</span> <span class="s1">'viewmodel.chapter8-basiccolumn'</span><span class="p">,</span>
+    <span class="na">stores</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">recordset</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">data</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="na">group</span><span class="p">:</span> <span class="s1">'서울'</span><span class="p">,</span>  <span class="na">gubun</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span> <span class="na">price1</span><span class="p">:</span><span class="mi">102920</span><span class="p">,</span> <span class="na">price2</span><span class="p">:</span><span class="mi">120010</span><span class="p">,</span> <span class="na">price3</span><span class="p">:</span><span class="mi">302920</span> <span class="p">},</span>
+                <span class="p">{</span><span class="na">group</span><span class="p">:</span> <span class="s1">'인천'</span><span class="p">,</span>  <span class="na">gubun</span><span class="p">:</span><span class="s1">'2'</span><span class="p">,</span> <span class="na">price1</span><span class="p">:</span><span class="mi">760000</span><span class="p">,</span> <span class="na">price2</span><span class="p">:</span><span class="mi">890100</span><span class="p">,</span> <span class="na">price3</span><span class="p">:</span><span class="mi">230100</span> <span class="p">},</span>
+                <span class="p">{</span><span class="na">group</span><span class="p">:</span> <span class="s1">'수원'</span><span class="p">,</span>  <span class="na">gubun</span><span class="p">:</span><span class="s1">'3'</span><span class="p">,</span> <span class="na">price1</span><span class="p">:</span><span class="mi">120010</span><span class="p">,</span> <span class="na">price2</span><span class="p">:</span><span class="mi">301000</span><span class="p">,</span> <span class="na">price3</span><span class="p">:</span><span class="mi">129000</span> <span class="p">},</span>
+                <span class="p">{</span><span class="na">group</span><span class="p">:</span> <span class="s1">'고양'</span><span class="p">,</span>  <span class="na">gubun</span><span class="p">:</span><span class="s1">'4'</span><span class="p">,</span> <span class="na">price1</span><span class="p">:</span><span class="mi">420100</span><span class="p">,</span> <span class="na">price2</span><span class="p">:</span><span class="mi">203000</span><span class="p">,</span> <span class="na">price3</span><span class="p">:</span><span class="mi">400000</span> <span class="p">},</span>
+                <span class="p">{</span><span class="na">group</span><span class="p">:</span> <span class="s1">'성남'</span><span class="p">,</span>  <span class="na">gubun</span><span class="p">:</span><span class="s1">'5'</span><span class="p">,</span> <span class="na">price1</span><span class="p">:</span><span class="mi">190100</span><span class="p">,</span> <span class="na">price2</span><span class="p">:</span><span class="mi">902000</span><span class="p">,</span> <span class="na">price3</span><span class="p">:</span><span class="mi">250390</span> <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="na">fields</span><span class="p">:[</span><span class="s1">'group'</span><span class="p">,</span> <span class="s1">'price1'</span><span class="p">,</span> <span class="s1">'price2'</span><span class="p">,</span><span class="s1">'price3'</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>완성된 코드를 실행하면 그림 5와 같이 Column 차트가 확인 될 것이다.</p>
+
+<p><img src="imgs/img05.png" alt=""><br>
+<strong>그림 5 Column차트의 기본 구현</strong></p>
+
+<p>위의 차트는 <strong>price1</strong> 필드 하나만 표시하고 있는데 <strong>price2, price3</strong>필드도 함께 표시하도록 변경하자.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">series</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">,</span>
+        <span class="na">xField</span><span class="p">:</span> <span class="s1">'group'</span><span class="p">,</span>
+        <span class="na">yField</span><span class="p">:</span> <span class="p">[</span><span class="s1">'price1'</span><span class="p">,</span> <span class="s1">'price2'</span><span class="p">,</span> <span class="s1">'price3'</span><span class="p">]</span> <span class="c1">// 1</span>
+    <span class="p">}</span>
+<span class="p">],</span></code></pre></figure>
+
+<ol>
+<li>yField Config를 배열로 처리하고 *<em>price1, price2, price3 *</em> 필드 모두를 채워 넣었다.</li>
+</ol>
+
+<p>수정 내용을 확인하자. 그림 6은 우리가 원하는 결과가 아니다 우리는 3개의 Column차트가 함께 그룹을 이루며 보여지길 원했으나 3개의 Column차트가 층을 이뤄 쌓이고 말았다.
+<img src="imgs/img06.png" alt=""><br>
+<strong>그림 6 Series의 yField를 수정하면 Column차트를 추가할 수 있다.</strong></p>
+
+<p>이를 해결하기 위한 bar series에 stacked: false Config를 추가한다. 이 설정은 3개의 Column 층을 이뤄 쌓이지 않도록 해준다.
+이와 함께 범례(레전드)가 보이도록 같이 설정하겠다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+    <span class="nl">xtype</span><span class="p">:</span> <span class="s1">'cartesian'</span><span class="p">,</span>
+    <span class="p">...</span>
+    <span class="nl">legend</span><span class="p">:</span> <span class="p">{</span>                       <span class="c1">// 1</span>
+        <span class="nl">docked</span><span class="p">:</span> <span class="s1">'bottom'</span>       <span class="c1">// 2</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+    <span class="nl">series</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">,</span>
+            <span class="na">xField</span><span class="p">:</span> <span class="s1">'group'</span><span class="p">,</span>
+            <span class="na">title</span><span class="p">:</span> <span class="p">[</span><span class="s1">'식비'</span><span class="p">,</span> <span class="s1">'통신비'</span><span class="p">,</span> <span class="s1">'의복'</span><span class="p">],</span> <span class="c1">// 3</span>
+            <span class="na">yField</span><span class="p">:</span> <span class="p">[</span><span class="s1">'price1'</span><span class="p">,</span> <span class="s1">'price2'</span><span class="p">,</span> <span class="s1">'price3'</span><span class="p">],</span>
+            <span class="na">stacked</span><span class="p">:</span> <span class="kc">false</span>    <span class="c1">// 4</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<ol>
+<li>차트에 범례(레전드)를 추가하고 위치(2)를 bottom으로 설정했다.</li>
+<li>price1, price2, price3필드를 대신할 한글명을 설정했다. 이 설정은 범례에 표시되게 된다.</li>
+<li>stacked Config는 기본 true로 yField를 여러개 설정하면 필드들이 모두 하나로 쌓이게 되므로 이 설정을 false로 변경한다.</li>
+</ol>
+
+<p>그림 7을 통해 수정된 코드를 확인하자. 레전드가 추가되었고 Column차트가 쌓이지 않고 독립적으로 3개의 차트가 출력되었다.
+<img src="imgs/img07.png" alt=""><br>
+<strong>그림 7 stacked:false설정으로 Column차트를 분리하고 레전드를 추가했다.</strong></p>
+
+<p>지금까지 결과물은 Column차트였다. 이제는 차트의 막대를 회전시켜 가로로 표시되는 bar차트로 변경되도록 기존 코드를 수정할 것이다.</p>
+
+<p>차트를 수정하려면 먼저 축을 이루는 <strong>numeric, category</strong>의 position을 변경하고 flipXY Config를 true로 설정해야한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">axes</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'numeric'</span><span class="p">,</span>
+        <span class="na">grid</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">odd</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">fill</span><span class="p">:</span> <span class="s1">'#e8e8e8'</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">position</span><span class="p">:</span> <span class="s1">'bottom'</span><span class="p">,</span>   <span class="c1">// 1</span>
+        <span class="na">title</span><span class="p">:</span> <span class="s1">'금액'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'category'</span><span class="p">,</span>
+        <span class="na">position</span><span class="p">:</span> <span class="s1">'left'</span><span class="p">,</span>       <span class="c1">// #2</span>
+        <span class="na">fields</span><span class="p">:</span> <span class="p">[</span><span class="s1">'group'</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="na">flipXY</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">// 3</span></code></pre></figure>
+
+<ol>
+<li>numeric의 <strong>position</strong> Config를 기존 <strong>left</strong>에서 <strong>bottom</strong>으로 변경했다. 이제 눈금을 가진 Y축은 하단으로 이동할 것이다.</li>
+<li>category의 <strong>position</strong> Config를 기존 <strong>bottom</strong>에서 <strong>left</strong> 로 변경했다.</li>
+<li>flipXY:true로 설정하자. 축이 변경 될 것이다.</li>
+</ol>
+
+<p>결과를 확인하자. 그림 8처럼 세로형태의 Column차트가 가로형태의 Bar차트로 전환 된것이 확인되었다.
+<img src="imgs/img08.png" alt=""><br>
+<strong>그림 8 axes의 position과 flipXY변경하여 Column차트를 Bar차트로 변경했다..</strong></p>
+
+<p>이렇듯 Column차트와 Bar차트는 동일 클래스의 설정을 변경한다는 것을 배우게 되었다.</p>
+
+<h3>참조</h3>
+
+<ul>
+<li>http://docs.sencha.com/extjs/5.0/components/introduction<em>to</em>charting.html</li>
+<li>http://blogs.walkingtree.in/2014/08/30/sencha-ext-js-5-charts-architecture/</li>
+<li>http://docs-origin.sencha.com/extjs/5.0/whats<em>new/5.0/charts</em>upgrade_guide.html</li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/Ext">Ext</a>&nbsp;<a href="/tags/JS">JS</a>&nbsp;<a href="/tags/tutorial">tutorial</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

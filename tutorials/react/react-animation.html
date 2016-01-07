@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - React와 애니메이션</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">React와 애니메이션</h1>
+<p class="title_header_summary">React에서 웹 애니메이션을 하는 방법들을 알아봅시다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars1.githubusercontent.com/u/484290?v=3&s=460" alt="이재호">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            이재호
+
+                        </h4>
+                        sairion<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>웹 애니메이션의 문제</h2>
+
+<p>웹에서의 애니메이션을 하는 방법은 굉장히 다양합니다. 캔버스를 이용한 비트맵 기반 애니메이션부터 가장 쉽게 구현할 수 있는 CSS Transition과 CSS Animation, 그리고 새로운 (아무도 관심 없는) Web Animations 스펙도 존재합니다. React를 이용해 웹에서 애니메이션을 한다고 하면 대부분의 경우 CSS Transition의 구현이라고 봐도 될 것 같습니다. 이 글에서는 React에서 사용하는 DOM 기반의 애니메이션 솔루션에 대해 알아봅니다.</p>
+
+<h2>DOM 애니메이션은 무엇인가?</h2>
+
+<p>React 프로젝트의 메인테이너 중 하나인 <a href="https://github.com/chenglou">chenglou</a>는 React의 애니메이션 관련 문제를 담당하고 있는 사람입니다. chenglou는 React에서의 애니메이션 동작을 다음의 7가지로 <a href="https://medium.com/@chenglou/react-motion-and-animated-4b3edf671cba">정의한 바</a> 있습니다:</p>
+
+<ol>
+<li>아이템의 프로퍼티를 보간(interpolating)한다.</li>
+<li>애니메이션의 타임라인을 관리한다.</li>
+<li>많은 아이템들과 연동된 애니메이션을 한다 (예: staggering).</li>
+<li>unmount 직전 애니메이션을 한다.</li>
+<li>추상화 계층(컴포넌트)을 넘어 child를 애니메이션한다.</li>
+<li>View와 View 너머의 애니메이션을 한다.</li>
+<li>기타 등등</li>
+</ol>
+
+<p>이는 다른 웹 애니메이션 라이브러리들에게도 마찬가지로 적용되는 부분입니다. 단지, 대부분의 애니메이션 라이브러리들은 일부(주로 1~3)에만 초점이 맞춰져 있었다는 점을 chenglou는 위의 글에서 지적합니다.</p>
+
+<p><code>jQuery.fn.animate</code> 등 다른 라이브러리들을 통해 trivial한 수준 이상의 애니메이션을 해보신 분들은 4,5,6이 imperative API를 사용하면 얼마나 어렵고 귀찮은 문제인지 아실 겁니다. 특히 애니메이션은 비동기적인 로직이므로 문제는 더 복잡해기 마련입니다. React에서도 문제가 어렵기는 마찬가지입니다. 고도의 추상화가 이뤄진 뷰 레이어 때문에 직접 DOM을 다루는 상황보다 더 잘 알고 써야 할 필요도 있습니다.</p>
+
+<p>아래에서는 React에서 애니메이션을 하는 방법, 라이브러리 등을 정리해 보겠습니다.</p>
+
+<h2>기존의 DOM 애니메이션 라이브러리를 사용</h2>
+
+<p>충분히 경험이 있으신 웹 개발자 분들은 이미 알고 계시겠지만, 웹 애니메이션을 다루는 라이브러리들은 이미 많이 나와 있습니다. React에서, 비록 unsafe하고 권장되지 않는 방식이긴 하나, 기존 앱을 마이그레이션하거나 하는 경우 충분히 고려해봐야 하는 방법입니다.</p>
+
+<p>React 앱의 라이프사이클을 생각해봐야 하는데, 특정 DOM 엘리먼트가 존재한다고 가정할 수 있는 상황 (<code>componentDidMount</code>, <code>componentWillUnmount</code>, <code>componentDidUpdate</code>)에 애니메이션을 동작시켜야 존재하지 않는 노드에 대해 오퍼레이션을 하는 상황을 막을 수 있습니다. 또한 <code>shouldComponentUpdate</code> 를 컨트롤해 DOM state가 의도치 않게 변경되는 상황을 막아야 하며, 가능하면 리프(leaf) 엘리먼트를 조작하는 상황을 만드는 것이 쉬울 것입니다.</p>
+
+<h3>DOM 기반 웹 애니메이션 라이브러리</h3>
+
+<p>피쳐 측면에서 가장 완성도가 높은 것으로 알려져 있는 라이브러리로는 <a href="http://julian.com/research/velocity/">Velocity</a>와 <a href="http://greensock.com/">Greensock</a>이 있고, 최근의 강자로는 <a href="http://popmotion.io/">popmotion</a>이 있습니다. Velocity의 경우 React와 사용하려는 시도가 많이 있어, 트위터에서 개발한 <a href="https://github.com/twitter-fabric/velocity-react">velocity-react</a> 같은 라이브러리를 사용하는 것도 하나의 방법입니다.</p>
+
+<p>이러한 라이브러리들은 stagger나 decay 등의 일반적인 애니메이션 패턴들이 미리 만들어져 있어, 몇 개의 메서드만 사용해서 쉽게 애니메이션을 할 수 있다는 장점이 있습니다.</p>
+
+<h2>CSSTransitionGroup</h2>
+
+<p><a href="https://facebook.github.io/react/docs/animation-ko-KR.html">애니메이션 공식 문서</a></p>
+
+<p>(React에서는 애니메이션 addon을 제공하는데, 고수준 API인 <code>CSSTransitionGroup</code> 와 저수준 API인 <code>ReactTransitionGroup</code> 두가지가 있습니다. 보통은 <code>CSSTransitionGroup</code>을 이용하게 되므로 이쪽만 설명하도록 하겠습니다)</p>
+
+<p>클래스 기반의 CSS 트랜지션은 상당히 단순한 멘탈 모델에서 구현을 할 수 있다는 점이 장점입니다. Tweening을 어떻게 할 지 선언적으로 써 주기만 하면 되는 것이죠. 또한 렌더링 파이프라인을 브라우저에서 전적으로 관리할 수 있어 성능상의 큰 이점이 있습니다. 하지만 자바스크립트로 중간 지점에서 컨트롤을 할 수 없다는 단점, 그리고 CSSTransitionEnd 이벤트의 구현이 브라우저마다 들쭉날쭉하다는 (특히 사파리에서의 off-screen 버그는 유명합니다) 문제가 있습니다. 이런 문제들은 CSSTransitionGroup에서도 마찬가지로 존재합니다.</p>
+
+<p>CSSTransitionGroup의 API는 굉장히 단순합니다. 마운트와 언마운트시 transitionName에 <code>-enter</code> <code>-enter-active</code> 등의 현재 상태를 표현하는 클래스를 교환해주는 것에 불과합니다. jQuery로 css 애니메이션을 할 때 &#39;active&#39;, &#39;inactive&#39; 등의 상태를 붙여서 애니메이션을 하는 것처럼 말이죠. css는 SCSS로 작성하면 훨씬 편리하게 작성할 수 있고, 믹스인을 사용하여 transitionName과 패러미터를 주는 식으로 <a href="http://stackoverflow.com/questions/31553622/defining-react-csstransitiongroup-animations-with-stylus-mixin">줄여 쓸 수 있습니다</a>.</p>
+
+<p>CSSTransitionGroup은 원래 CSSTransitionEnd 이벤트에 동작을 의존하여, 애니메이션이 로직에 포함된 경우 (i.e. 버튼을 누른 다음 트랜지션 후 폼이 나온다든지) 오류가 나면 마운트가 되지 않아 앱이 중단되는 큰 문제가 발생할 수 있습니다. 이런 문제 때문에 Khan Academy에서 발표한 TimeoutTransitionGroup이라는 별도 구현이 있었는데, 이는 트랜지션 직전에 타이머를 발생시켜 시간이 지나면 마운트가 반드시 되도록 보장한 것입니다. React 0.14.0에서는 이 구현 방식을 받아들여 타이머를 이용하고 있습니다.</p>
+
+<h2>React-motion : 차세대 React 애니메이션 툴킷</h2>
+
+<p><a href="https://github.com/chenglou/react-motion">react-motion</a>은 chenglou의 라이브러리로, react-europe 2015 컨퍼런스의 <a href="https://www.youtube.com/watch?t=56&amp;v=1tavDv5hXpo">&quot;The State of Animation in React&quot;</a> 키노트 세션에서 처음 발표되었습니다. chenglou는 이 라이브러리가 차후 CSS Transition Group을 대체할 것이라고 밝힌 바 있습니다. 따라서 앞으로 공식 라이브러리로 격상될 가능성이 있습니다.</p>
+
+<p>React-motion은 Motion, StaggeredMotion, TransitionMotion 등의 트랜지션 컨테이너들을 제공하며 함수를 children으로 받아 계층적, 선언적으로 애니메이션을 표현할 수 있습니다. TransitionMotion 같은 컨테이너는 CSSTransitionGroup과 비슷하게 <code>willEnter</code> / <code>willLeave</code> 콜백을 남겨, 마운트와 언마운트시의 로직을 표현하는 것도 가능합니다. 자세한 API는 공식 저장소를 확인하시기 바랍니다.</p>
+
+<h2>찬조 출연: Animated</h2>
+
+<p>Animated는 React Native를 위한 애니메이션 라이브러리이며, React의 메인테이너인 <a href="https://github.com/vjeux">vjeux</a>에 의해 개발되었습니다. 원래는 React Native 버젼만 있었지만 최근 웹 버젼의 프로토타입이 머지되었으며, 차후 React-motion과 하나의 라이브러리로 통일될 가능성이 높습니다.</p>
+
+<p><a href="http://blog.vjeux.com/2015/javascript/react-rally-animated-react-performance-toolbox.html">참고</a></p>
+
+<h2>보너스: React를 이용한 캔버스 애니메이션</h2>
+
+<p><a href="https://github.com/Izzimach/react-three">react-three</a>는 three.js API의 바인딩으로 React를 이용한 DOM 애니메이션 라이브러리들과는 달리 캔버스를 조작하는 라이브러리라는 차이가 있습니다. 비슷한 라이브러리로 <a href="https://github.com/ProjectSeptemberInc/gl-react">gl-react</a>도 존재합니다. (gl-react의 경우는 좀 더 로우레벨의 바인딩이며, react-native 바인딩도 지원한다는 차이가 있습니다)</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/react">react</a>&nbsp;<a href="/tags/es2015">es2015</a>&nbsp;<a href="/tags/es6">es6</a>&nbsp;<a href="/tags/es7">es7</a>&nbsp;<a href="/tags/jsx">jsx</a>&nbsp;<a href="/tags/animation">animation</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

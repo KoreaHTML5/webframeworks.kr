@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 채팅창 클라이언트를 통해 Scope 이벤트 처리 이용하기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">채팅창 클라이언트를 통해 Scope 이벤트 처리 이용하기</h1>
+<p class="title_header_summary">AngularJS의 Scope의 이벤트 처리를 채팅창 클라이언트를 만들어 보면서 알아본다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>채팅창 클라이언트를 통해 Scope 이벤트 처리 이용하기</h1>
+
+<p>AngularJS는 웹 애플리케이션에 애플리케이션 이벤트를 정의하고 이런 이벤트 처리에 대 한 일련의 메커니즘을 제공한다. 이러한 사용자 정의 이벤트는 모두 $scope 객체를 통하여 처리되는데 $scope 객체에서 특정 이벤트를 발생시키면 이벤트를 발생한 $scope 객체의 자식 이나 부모 $scope에서 해당 이벤트를 처리할 수 있는 것이다. 우선 $scope 객체에 대하여 간단히 알아보자.</p>
+
+<h2>Scope 타입</h2>
+
+<p>AngularJS 세상에는 몇 개의 별도 타입이 존재한다. 여기서 타입이란 자바스크립트 생성자 함수로 정의된 것을 애기한다. 즉, 다음과 같이 별도의 Scope 생성자 함수가 AngularJS 내부에 정의돼 있다.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">function Scope(){ ... } 
+Scope.prototype.$apply = function(){}; 
+Scope.prototype.$digest = function(){ ... };
+Scope.protytpe.$watch = function(){ ... };
+Scope.prototype.$new = function(){ ... };
+//...
+</code></pre></div>
+<p>그래서 우리가 정의하는 컨트롤러에서 받는 $scope은 위 생성자 함수에 new 키워드로 호출하여 만들어진 Scope 타입의 인스턴스이다. 자바스크립트 특성상 모든 $scope 인스턴스는 Scope 타입의 프로토타입 객체를 상속받기 때문에 $scope.$apply, $scope.$watch 와 같은 프로토타입 메소드를 사용할 수 있다. 이번 튜토리얼에서는 어플리케이션 이벤트를 생성하고 이벤트의 리스너를 정의하는 프로토타입 매서드인  $broadcast, $emit, $on에 대하여 살펴보겠다.</p>
+
+<h2>사용자 정의 어플리케이션 이벤트 처리</h2>
+
+<p>이벤트를 발생시키는 API는 $scope 객체의 $broadcast와 $emit 메서드가 있다. $braodcast는 자식 $scope에게 특정 이벤트의 이름으로 주어진 데이터와 함께 이벤트를 발생시킨다. 그리고 $emit은 반대로 부모 $scope에게 특정 이벤트의 이름으로 주어진 데이터와 함께 이벤트를 발생시킨다.</p>
+
+<h3>$broadcast(이벤트 이름, 인자들......)</h3>
+
+<p>$broadcast 메소드는 첫 번째 인자인 이벤트 이름으로 하는 이벤트를 모든 하위 $scope에게 발생시킨다. 다음 코드를 보자.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$scope.$broadcast(‘popup:open’,{ title : “hello” });
+</code></pre></div>
+<p>위와 같이 $broadcast 메소드를 호출하면 하위 $scope들에게 &#39;popup:open&#39;이라는 이베트 이름으로 { title : “hello” } 객체를 전달 할 수 있다. 여기서 &#39;popup:open&#39;은 단지 문자열에 불과해서 이벤트 이름 중복을 맊기위해 : 또는 . 와 같이 네임스페이스를 주면 좋다.</p>
+
+<h3>$emit(이벤트명, 인자들......)</h3>
+
+<p>$emit 메소드는 해당 $scope를 기준으로 상위 계층 $scope에게 이벤트 명으로 인자를 전달한다. 아래 코드와 같이 사용할 수 있다.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$scope.$emit(‘popup:open’,{ title : “hello” });
+</code></pre></div>
+<h3>$on(이벤트 이름, 리스너 함수)</h3>
+
+<p>$emit과 $broadcast로 발생되는 이벤트는 모두 $on 메서드를 이용해 특정 이벤트 이름에 해 당하는 이벤트 리스너 함수를 등록할 수 있다. 이렇게 등록된 이벤트 리스너는 등록된 이벤트 이름으로 이벤트가 발생하게 되면 해당 이벤트 리스너 함수가 호출된다. 이벤트 리스너 함수의 첫 번째 인자는 이벤트 객체이고 다음 인자는 $emit과 $broadcast로 이벤트 발생 시 전달하는 데이터가 된다. 다음은 예제코드이다.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$scope.$on('popup:open', function (event, message) {
+  console.log(message.title);
+});
+</code></pre></div>
+<p>이벤트 리스너 함수의 이벤트 객체는 다음과 같은 속성을 가지고 있다.</p>
+
+<ul>
+<li>targetScope - {Scope}: 이벤트를 발생시킨 $scope 객체의 레퍼런스</li>
+<li>currentScope - {Scope}: 리스너가 등록된 현재 $scope</li>
+<li>name - {string}: 이벤트 이름</li>
+<li>stopPropagation - {function=}: 이벤트 프로파게이션을 맊는다. $emit으로 호출된 이벤트에서만 사용가능하다.</li>
+<li>preventDefault - {function}: preventDefault 함수를 호출하면 defaultPrevented 플래그를 false로 셋팅한다.</li>
+<li>defaultPrevented - {boolean}: preventDefault 함수가 호출되면 true를 반환한다.</li>
+</ul>
+
+<h2>채팅 클라이언트를 개발하기</h2>
+
+<p>그럼 아래 그림과 같은 간단한 채팅 클라이언트를 개발하여 AngularJS의 사용자 정의 이벤트를 알아보자. </p>
+
+<p><img src="imgs/scope_event_tutorial_01.png" style="width:500px;height:400px;" alt="채팅 클라이언트 데모 화면" title="채팅 클라이언트 데모 화면"></p>
+
+<p>사용자 정의 이벤트는 어느 한 컴포넌트가 다른 컴포넌트와의 존재를 알 필요가 없게한다. 또한 특정 이벤트에 대하여 여러 컴포넌트가 듣고있다 처리하는 경우에도 활용할 수 있다. 그럼 위 채팅 클라이언트를 어떻게 개발해야할까? 다음 그림을 보자. </p>
+
+<p><img src="imgs/scope_event_tutorial_02.png" style="width:600px;height:380px;" alt="채팅 클라이언트 데모 화면" title="채팅 클라이언트 데모 화면"></p>
+
+<p>위 그림에서 보는 것과 같이 채팅내용이 보이는 컴포넌트와 채팅 내용을 입력하는 컴포넌트로 분리한다. 각 컨트롤러 컴포넌트들은 별도의 $scope을 가지고있어 서로의 모델을 직접 공유하지 않는다. 그럼 위 그림과 같이 채팅 클라이언트를 구현해보자. 다음은 채팅 클라이언트의 HTML 코드이고 전체 코드는 <a href="https://github.com/jeado/web-angular-sample/tree/scope-chat-ui">GitHub web-angular-sample 프로젝트의 scope-chat-ui Branch</a>에서 scope-chat.html파일을 보면 된다.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 생략 --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-heading"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-comments fa-fw"</span><span class="nt">&gt;&lt;/i&gt;</span>
+  채팅예제
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- 이전의 그림과 같이 크게 글 목록을 보여주는 chatBodyCtrl영역과 글을 입력하는 chatInputCtrl영역이 있다.--&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-body"</span> <span class="na">ng-controller=</span><span class="s">"chatBodyCtrl"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"chat"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- ng-repeat을 이용하여 chats 배열요소의 개수만큼 채팅글을 보여준다. --&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"{{ $even &amp;&amp; 'left' || 'right' }} clearfix"</span> <span class="na">ng-repeat=</span><span class="s">"chat in chats"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- $even은 ng-repeat안에서 사용할 수 있고 짝수일경우 true이다. 짝수이면 left이고 홀수이면 right인 표현식을 나타낸다. 본인글만 왼쪽으로 나타내는 건 별도의 isMine()등으로 ng-class를 이용하여 구현할 수도 있다. --&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"chat-img pull-{{ $even &amp;&amp; 'left' || 'right' }}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://placehold.it/50/55C1E7/fff"</span> <span class="na">alt=</span><span class="s">"사용자 이미지"</span> <span class="na">class=</span><span class="s">"img-circle"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"chat-body clearfix"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"header text-{{ $even &amp;&amp; 'left' || 'right' }}"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;strong&gt;</span>{{ chat.user.name }}<span class="nt">&lt;/strong&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;p&gt;</span>{{ chat.msg }}<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-footer"</span> <span class="na">ng-controller=</span><span class="s">"chatInputCtrl"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"btn-input"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control input-sm"</span> <span class="na">ng-model=</span><span class="s">"chatTxt"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"input-group-btn"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 전송 버튼을 클릭하면 chatInputCtrl의 sendMsg를 호출한다. 이때 위 input에 데이터 바인딩이 된 chatTxt를 인자로 준다. --&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-warning btn-sm"</span> <span class="na">id=</span><span class="s">"btn-chat"</span> <span class="na">ng-click=</span><span class="s">"sendMsg(chatTxt)"</span><span class="nt">&gt;</span>전송<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- 생략 --&gt;</span></code></pre></figure>
+
+<p>다음은 자바스크립트 코드이다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'chatApp'</span><span class="p">,</span> <span class="p">[]).</span>
+  <span class="c1">//사용자 정보를 반환하는 서비스이다.</span>
+  <span class="nx">factory</span><span class="p">(</span><span class="s1">'UserService'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">getUser</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="na">name</span> <span class="p">:</span> <span class="s1">'제이'</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span> 
+  <span class="p">}).</span>
+  <span class="c1">//실제 이벤트를 전달하는 서비스이다.</span>
+  <span class="nx">factory</span><span class="p">(</span><span class="s1">'ChatService'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">CHAT_EVENT_MSG</span> <span class="o">=</span> <span class="s2">"chat_masg"</span><span class="p">,</span>
+        <span class="c1">//채팅 이벤트 이름을 변수로 선언하였다.</span>
+        <span class="nx">sendChatMsg</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$broadcast</span><span class="p">(</span><span class="nx">CHAT_EVENT_MSG</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+          <span class="c1">//메시지 객체를 CHAT_EVENT_MSG 이벤트 이름으로 전파한다.</span>
+        <span class="p">},</span>
+        <span class="nx">onChatMsg</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">handler</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="nx">CHAT_EVENT_MSG</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">handler</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+         <span class="p">});</span>
+         <span class="c1">//전달 받은 $scope에 CHAT_EVENT_MSG 이벤트의 리스너를 등록한다.</span>
+        <span class="p">};</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">sendChatMsg</span><span class="p">:</span> <span class="nx">sendChatMsg</span><span class="p">,</span>
+      <span class="na">onChatMsg</span><span class="p">:</span> <span class="nx">onChatMsg</span>
+    <span class="p">};</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'chatInputCtrl'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span><span class="s1">'ChatService'</span><span class="p">,</span><span class="s1">'UserService'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span><span class="nx">ChatService</span><span class="p">,</span><span class="nx">UserService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//전달받은 채팅 메시지 문자열과 사용자 정보를 포함하는 메시지 객체를 ChatService서비스를 이용해 매시지를 전송한다.</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">sendMsg</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">ChatService</span><span class="p">.</span><span class="nx">sendChatMsg</span><span class="p">({</span>
+          <span class="na">msg</span> <span class="p">:</span> <span class="nx">msg</span><span class="p">,</span>
+          <span class="na">user</span> <span class="p">:</span><span class="nx">UserService</span><span class="p">.</span><span class="nx">getUser</span><span class="p">()</span>
+      <span class="p">});</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">chatTxt</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+    <span class="p">};</span>      
+  <span class="p">}])</span>
+  <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'chatBodyCtrl'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span><span class="s1">'ChatService'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span><span class="nx">ChatService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">chats</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="c1">//채팅 메시지 이벤트에 대한 리스너를 ChatService를 통하여 처리한다.</span>
+    <span class="nx">ChatService</span><span class="p">.</span><span class="nx">onChatMsg</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">//새로운 채팅 메시지를 전달받으면 채팅메시지 목록에 추가한다.</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">chats</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}]);</span></code></pre></figure>
+
+<p>채팅클라이언트 데모를 보면 알 수 있듯이 AngularJS의 어플리케이션 이벤트 처리 기능을 이용하면 $scope들 사이의 참조 관계를 매우 느슨하게 만들어 재활용할 수 있는 컴포넌트 개발에 용이하다.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+<li><a href="http://wikibook.co.kr/beginning-angularjs/">시작하세요 angularjs 프로그래밍</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/angularjs">angularjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;<a href="/tags/form">form</a>&nbsp;<a href="/tags/validation">validation</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

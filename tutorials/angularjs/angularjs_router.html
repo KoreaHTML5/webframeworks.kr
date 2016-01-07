@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 싱글 페이지를 위한 AngularJS Router 알아보기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">싱글 페이지를 위한 AngularJS Router 알아보기</h1>
+<p class="title_header_summary">싱글 페이지 웹어플리케이션 개발을 위해 AngularJS에서 제공하는 ngRoute 모듈을 살펴보도록 하겠다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>싱글 페이지를 위한 AngularJS Router 알아보기</h1>
+
+<p>싱글 페이지 웹 애플리케이션을 단순히 생각하면 웹 애플리케이션을 사용하는 동안 웹 페이지를 리로드하지 않는 웹 애플리케이션을 의미한다. 매번 웹 페이지를 리로드하지 않는 웹 어플리케이션에 불과하지만 이는 윈도우 운영체제에 설치되는 네이티브 애플리케이션과 동일한 사용자 경험(UX)을 제공할 수 있다. 우리가 많이 사용하는 구글의 지메일(GMail)을 대표적인 싱글 페이지 웹 애플리케이션으로 생각할 수 있는데 지메일을 사용하다 보면 마이크로소프트의 아웃룩과 비교해도 손색이 없을 수준의 기능과 사용자 경험을 느낄 수 있다.</p>
+
+<p>하지만 싱글 페이지 웹 애플리케이션을 만들려면 고려해야 할 사항이 있다. 일반 웹 페이지는 화면 전환 시 페이지를 다시 읽어 오면서 해당 페이지를 가리키는 URL이 변경된다. 하지만 한 페이지 조각을 서버로부터 받아와서 브라우저 전체를 다시 읽지 않고 특정 영역의 DOM을 변경한다면 화면의 상태가 바뀌었음에도 URL이 변경되지 않고 브라우저의 히스토리가 관리되지 않는다. 이러한 문제를 해결하기 위해서 AngularJS는 $location 서비스를 제공한다. 그리고 이 $location 서비스를 이용하여 더욱 편리한 방법으로 특정 URL과 컨트롤러와 화면을 연결 시켜주는 $route 서비스를 제공한다. 그럼 AngularJS의 $route 서비스에 대하여 살펴보자.</p>
+
+<h2>$route를 이용한 단일페이지 웹 어플리케이션 개발</h2>
+
+<p>$route는 기본 ng 모듈로 제공되지 않고 ngRoute 모듈로 제공된다. 그래서 라우트 기능과 관련된 모든 서비스는 ngRoute 모듈로 접근할 수 있다. ngRoute 모듈을 적용하려면 다음 코드와 같이 별도의 angular-route.js 파일을 추가해야 한다.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"angular.js"</span><span class="nt">&gt;</span><span class="err">
+&lt;script src="angular-route.js"&gt;</span></code></pre></figure>
+
+<p>angular-router.js 자바스크립트 파일을 추가하였다면 ngRoute 모듈을 사용한다고 모듈 선언 시 다음 코드와 같이 작성한다.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">angular.module('userMgnt', ['ngRoute'])</code></pre></figure>
+
+<p>ngRoute모듈을 사용하게 되면 다음과 같은 서비스와 지시자를 사용할 수 있다.</p>
+
+<h4>ngView 지시자</h4>
+
+<p>&lt;ng-view&gt;&lt;/ng-view&gt;로 사용한다. 현재 라우트의 정보가 변경될 때 마다 정의된 URL에 해당하는 화면을 해당 지시자가 작성된 부분에 삽입한다.</p>
+
+<h4>서비스</h4>
+
+<h5>$route</h5>
+
+<p>현재 브라우저 URL에 해당하는 화면과 컨트롤러를 연결 하는데 사용된다. $route.current로 현재 URL 경로에 해당하는 화면과 컨트롤러 정보 얻을 수 있다.</p>
+
+<h5>$routeParam</h5>
+
+<p>현재 URL 경로의 매개변수 값을 얻는데 사용된다. </p>
+
+<p>그럼 간단히 단일 페이지 웹 어플리케이션을 만들어 보면서 각 서비스들과 지시자를 살펴보겠다. 우선 다음과 같이 router.html 파일을 만들자.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">"routerApp"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>라우터 데모 엡<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"libs/bootstrap/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"libs/angular/angular.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"libs/angular/angular-route.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="c">&lt;!-- ngRoute 모듈을 사용하기 위해 추가한다. --&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"routerApp.js"</span><span class="nt">&gt;&lt;/script&gt;</span>  
+ <span class="nt">&lt;/head&gt;</span>
+ <span class="nt">&lt;body&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-inner"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>라우터 셈플<span class="nt">&lt;/a&gt;</span>
+         <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#home"</span><span class="nt">&gt;</span>홈<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+           <span class="c">&lt;!-- #(해쉬태그)를 이용하여 URL 경로를 변경한다. HTML5에서는 History API를 이용하여 #없이 라우팅 처리가 가능하다. 라우트 설정 시 홈 화면과 연결할 #home에 해당하는 라우트 url은 home이다. --&gt;</span>
+           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#userList"</span><span class="nt">&gt;</span>사용자 관리<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+         <span class="nt">&lt;/ul&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+     <span class="nt">&lt;/div&gt;</span>
+     <span class="nt">&lt;ng-view&gt;&lt;/ng-view&gt;</span>
+     <span class="c">&lt;!--  ngView 지시자를 이용하여 URL 경로가 변경될 시 해당 URL 경로에 해당하는 HTML 조각을 삽입할 곳을 지정한다. --&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+ <span class="nt">&lt;/body&gt;</span>
+ <span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>다음으로 홈 화면과 사용자 관리 화면에 해당하는 HTML 조각 파일을 작성하자. 우선 views 폴더를 생성하고 폴더 안에 home.html 파일을 만들어 다음과 같이 작성한다.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>라우터 첫 페이지<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione fuga suscipit, ab iure, incidunt, aut molestias cupiditate adipisci ducimus provident qui? Voluptatum iusto eligendi voluptates libero, excepturi officiis labore, quos!<span class="nt">&lt;/p&gt;</span>
+<span class="c">&lt;!-- 의미 없지만 내용을 채우기 위하여 Lorem 문구를 사용하였다. --&gt;</span></code></pre></figure>
+
+<p>앞의 home.html 파일과 마찬가지로 views 폴더 안에 userList.html 파일을 다음과 같이 만든다. HTML 조각 파일은 앞에서 설명하였듯이 &lt;ng-view&gt;&lt;/ng-view&gt; 태그에 위치하게 되고 HTML 조각 파일은 템플릿으로서 ng-repeat과 같은 지시자와 {{  }}을 이용하여 작성할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-striped table-bordered table-hover"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>이름<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>E-Mail<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>가입 날짜<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+   <span class="nt">&lt;/thead&gt;</span>
+   <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr</span> <span class="na">ng-repeat=</span><span class="s">"user in userList"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- $scope의 userList 배열 요소의 개수만큼 &lt;tr&gt;요소를 생성한다. &lt;tr&gt;요소 내부에서는 user를 통하여 각 배열 요소의 값을 접근할 수 있다. --&gt;</span>
+       <span class="nt">&lt;td&gt;</span>{{ $index + 1 }}<span class="nt">&lt;/td&gt;</span>
+<span class="c">&lt;!-- ngRepeat 지시자에서 제공하는 $index를 이용하여 각 배열 요소의 인덱스 값에 접근한다. --&gt;</span>
+       <span class="nt">&lt;td&gt;</span>{{ user.name }}<span class="nt">&lt;/td&gt;</span>
+       <span class="nt">&lt;td&gt;</span>{{ user.email }}<span class="nt">&lt;/td&gt;</span>
+       <span class="nt">&lt;td&gt;</span>{{ user.regDate }}<span class="nt">&lt;/td&gt;</span>
+     <span class="nt">&lt;/tr&gt;</span>
+     <span class="nt">&lt;tr</span> <span class="na">ng-show=</span><span class="s">"!userList.length"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- userList 배열 요소 개수가 0이거나 배열 값이 없을 시 해당 &lt;tr&gt;요소가 보인다. --&gt;</span>
+       <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"6"</span> <span class="na">style=</span><span class="s">"text-align :center"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"text-warning"</span><span class="nt">&gt;</span>데이터가 없습니다.<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;/td&gt;</span>
+     <span class="nt">&lt;/tr&gt;</span>
+   <span class="nt">&lt;/tbody&gt;</span>
+ <span class="nt">&lt;/table&gt;</span></code></pre></figure>
+
+<p>이제 routerApp.js 자바스크립트 파일을 작성하자. 해당 자바스크립트 파일에서 routeApp 모듈을 정의하면서 라우트 설정을 한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'routerApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ngRoute'</span><span class="p">])</span>
+ <span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$routeProvider</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//Module의 config API를 사용하면 서비스 제공자provider에 접근할 수 있다. 여기선 $route 서비스 제공자를 인자로 받아온다. </span>
+  <span class="nx">$routeProvider</span>
+<span class="c1">//$routeProvider의 when 메소드를 이용하면 특정 URL에 해당하는 라우트를 설정한다. 이때 라우트 설정객체를 전달하는데 &lt;ng-view&gt;태그에 삽입할 탬플릿에 해당하는 url을 설정객체의 templateUrl 속성으로 정의한다.</span>
+    <span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">'/home'</span><span class="p">,</span> <span class="p">{</span><span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'views/home.html'</span><span class="p">})</span>
+    <span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">'/userList'</span><span class="p">,</span> <span class="p">{</span><span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'views/userList.html'</span><span class="p">,</span> <span class="na">controller</span><span class="p">:</span> <span class="s1">'userListCtrl'</span><span class="p">})</span>
+<span class="c1">//라우트 설정객체에 controller 속성을 통하여 해당 화면에 연결되는 컨트롤러 이름을 설정할 수 있다.</span>
+    <span class="p">.</span><span class="nx">otherwise</span><span class="p">({</span><span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'/home'</span><span class="p">});</span>
+<span class="c1">//otherwise 메소드를 통하여 브라우저의 URL이 $routeProivder에서 정의되지 않은 URL일 경우에 해당하는 설정을 할 수 있다. 여기선 ‘/home’으로 이동시키고 있다.</span>
+  <span class="p">}).</span>
+  <span class="nx">controller</span><span class="p">(</span><span class="s1">'userListCtrl'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//사용자 관리화면의 컨트롤러를 정의한다. 이 컨트롤러는 URL이 ‘/userList’일 경우에만 적용이 된다. 이전의 템플릿 코드에서 별도로 ng-controller 지시자를 사용하지 않고 $routeProvider에서 라우트를 정의할 때 해당 컨트롤러와 연결되는 화면을 정의하였다.</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">name</span> <span class="p">:</span> <span class="s1">'미나'</span><span class="p">,</span>
+      <span class="na">email</span> <span class="p">:</span> <span class="s1">'mina@gmail.com'</span><span class="p">,</span>
+      <span class="na">regDate</span> <span class="p">:</span> <span class="s1">'2012-03-12'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">name</span> <span class="p">:</span> <span class="s1">'제시카'</span><span class="p">,</span>
+      <span class="na">email</span> <span class="p">:</span> <span class="s1">'jess@gmail.com'</span><span class="p">,</span>
+      <span class="na">regDate</span> <span class="p">:</span> <span class="s1">'2012-03-12'</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>브라우저에서 해당 라우터 데모 웹 어플리케이션을 열어보면 다음 그림과 같은 화면을 볼 수 있을 것이다. 어플리케이션의 상단 네비게이션에서 홈 버튼을 클릭하거나 사용자관리 버튼을 클릭하면 브라우저 상단의 URL 입력창 끝에 #/uerMgt 부분이 해당 화면과 연결된 URL로 변경되는 것을 확인할 수 있다.</p>
+
+<p><img src="imgs/router_tutorial_01.png" style="width:500px;height:200px;" alt="라우터 데모 어플리케이션에서의 사용자 관리 화면" title="라우터 데모 어플리케이션에서의 사용자 관리 화면"></p>
+
+<h2>$http 서비스를 통한 Ajax 기능 구현</h2>
+
+<p>단일 페이지 웹 어플리케이션을 개발하는데 있어서 앞에서 본 라우트 기능은 매우 중요하다. 하지만 데이터를 서버로부터 읽어와 동적으로 화면을 구성하는 것도 매우 중요하다. 이전에 제이쿼리를 사용한 경험이 있는 독자라면 $.ajax나 $.get 또는 $.post와 같은 메소드를 기억할 것이다. 이러한 메소드를 이용하여 데이터를 비동기로 서버로부터 읽어와 동적으로 화면을 구성하였다. AngularJS에도 이런 Ajax 기능을 위해 제이쿼리처럼 XMLHttpRequest를 손쉽게 사용할 수 있게 하는 $http 서비스를 제공한다. 이전의 라우터 데모 어플리케이션에서 사용자 정보를 가져오는 부분에 $http 서비스를 사용하여 데이터를 가져오도록 변경해 보도록 하겠다. 다음 예제 코드를 확인해보려면 요청을 받아줄 별도의 웹 서버가 필요하다. 간단한 노드나 파이썬 서버를 구동하도록 하여 sample.json파일을 호스팅하도록 한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//생략</span>
+<span class="nx">controller</span><span class="p">(</span><span class="s1">'userListCtrl'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">reqPromise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">({</span>
+      <span class="na">method</span> <span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+      <span class="na">url</span> <span class="p">:</span> <span class="s1">'sample.json'</span>
+    <span class="p">});</span>
+<span class="c1">//$http서비스를 요청 설정 객체와 함께 호출한다. 요청 설정 객체에 method 속성에는 GET, POST, DELET, PUT과 같은 HTTP 메소드를 문자열값으로 정하고 url 속성으로 전송할 대상 URL을 문자열값으로 줄 수 있다. 호출한 결과로 Promise객체를 반환하는데 해당 객체에 success나 error 메소드를 통하여 성공과 실패 시 호출할 콜백함수를 전달할 수 있다.</span>
+
+    <span class="nx">reqPromise</span><span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="c1">//$http 서비스를 호출하고 반환된 Promise 객체에 success 매소드를 이용하여 요청 성공 시 호출할 콜백함수를 작성하였다. 요청으로 받은 데이터를 $scope.userList에 대입하여 사용자 목록 데이터를 화면에 출력한다. 제이쿼리와 다르게 별도로 DOM 처리를 할 필요없이 AngularJS의 데이터바인딩을 이용하여 결과 데이터에 맞게 화면이 동적으로 구성된다.</span>
+
+    <span class="nx">reqPromise</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Ajax 에러 발생"</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>$http 서비스 함수 호출 후 결과로 반환된 Promise 객체에서 success와 error에 메소드에 전달하는 콜백함수에는 다음과 간은 인자를 전달 받을 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//data: 문자열인 응답 바디를 transform 함수를 통하여 변환된 값이다. 기본적으로 JSON 문자열을 자바스크립트 객체로 변환한 값이다.</span>
+<span class="c1">//status: 응답 상태 코드</span>
+<span class="c1">//headers: 해더 값을 가지고 올 수 있는 getter 함수이다. headers(헤더이름)으로 사용한다.</span>
+<span class="c1">//config: http 설정 객체이다. $http 서비스를 호출할 때 전달한 설정객체이다.</span>
+<span class="p">})</span>
+<span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//위와 동일</span>
+<span class="p">})</span></code></pre></figure>
+
+<h2>단축 메서드 제공</h2>
+
+<p>앞의 예제 에서 보았듯이 $http 서비스를 설정 객체와 함께 함수로 호출해서 사용했다. 하지만 $http 서비스를 메서드를 제공하는 객체처럼 사용할 수도 있다. $http 서비스는 편 의상 GET, POST, PUT, DELETE와 같은 HTTP 메서드별로 단축 메서드를 제공한다. 다음 메서드는 $서비스에서 사용할 수 있는 메서드들이다. </p>
+
+<ul>
+<li>$http.get(url, 설정 객체) </li>
+<li>$http.post(url, data, 설정 객체) </li>
+<li>$http.put(url, data, 설정 객체) </li>
+<li>$http.delete(url, 설정 객체) </li>
+<li>$http.head(url, 설정 객체) </li>
+<li>$http.jsonp(url, 설정 객체) </li>
+</ul>
+
+<p>메서드 명에서 알 수 있듯이 $http.get은 HTTP GET 요청을 보내는 것이고 $http.delete는 HTTP DELETE 요청을 보내는 것이다. 다음 코드는 이전 코드를 $http 서비스를 단축 메서드로 변경한 코드이다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">controller</span><span class="p">(</span><span class="s1">'userListCtrl'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">reqPromise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'sample.json'</span><span class="p">);</span>
+<span class="c1">//$http서비스의 get 단축메소드를 사용하였다. 이전 코드보다 더욱 간결해진 것을 볼 수 있다.</span>
+
+    <span class="nx">reqPromise</span><span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">reqPromise</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Ajax 에러 발생"</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
+
+<h2>$routerParam 서비스를 이용하여 사용자 상세화면 연결</h2>
+
+<p>지금까지 라우터 데모 어플리케이션을 ngRoute 모듈을 이용하여 단일페이지 웹 어플리케이션으로 개발해 보았다. 그리고 해당 어플리케이션의 사용자 관리 페이지에서 전체 사용자 목록을 테이블로 보여주었는데 각 행을 클릭하면 해당 사용자 목록의 상세화면을 보여주는 기능을 추가해 보자.</p>
+
+<p>우선 사용자 상세화면 템플릿 파일을 views 폴더 안에 다음과 같이 작성하자.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-horizontal"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"control-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span><span class="nt">&gt;</span>사용자 이름<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"controls"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">ng-model=</span><span class="s">"user.name"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- $scope.user 객체의 name 속성과 데이터 바인딩을 한다. --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"control-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span><span class="nt">&gt;</span>E-Mail<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"controls"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">ng-model=</span><span class="s">"user.email"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- $scope.user 객체의 email 속성과 데이터 바인딩을 한다. --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"control-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span><span class="nt">&gt;</span>가입 날짜<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"controls"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">ng-model=</span><span class="s">"user.regDate"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- $scope.user 객체의 regDate 속성과 데이터 바인딩을 한다. --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"control-group"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"controls"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">ng-click=</span><span class="s">”back()”</span><span class="nt">&gt;</span>뒤로가기<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- 클릭 시 $scope 객체의 back 메소드를 호출 한다. --&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>이제 사용자 상세화면인 앞의 템플릿과 url이 연결되도록 $routeProvider에 새로운 라우트 설정을 추가하자. routeApp.js 파일을 다음과 같이 수정한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//생략</span>
+<span class="nx">$routeProvider</span>
+    <span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">'/home'</span><span class="p">,</span> <span class="p">{</span><span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'views/home.html'</span><span class="p">})</span>
+    <span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">'/userList'</span><span class="p">,</span> <span class="p">{</span><span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'views/userList.html'</span><span class="p">,</span> <span class="na">controller</span><span class="p">:</span> <span class="s1">'userListCtrl'</span><span class="p">})</span>
+    <span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">'/user/:userId'</span><span class="p">,</span> <span class="p">{</span><span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'views/userDetail.html'</span><span class="p">,</span> <span class="na">controller</span><span class="p">:</span> <span class="s1">'userDetailCtrl'</span><span class="p">})</span>
+<span class="c1">//사용자 상세화면과 연결되는 새로운 라우트 설정을 추가하였다. 여기서 URL에 매개변수를 사용한 것에 주목하자. :userId라는 매개변수를 이용하면 /user/1, /user/2 와 같은 형태의 URL 요청이 오면 userId 매개변수에 1 또는 2와 같은 값을 대입하고 해당 라우터에 의하여 템플릿 화면과 컨트롤러로 라우팅 처리를 한다. 이 매개변수는 나중에 $routeParam.userId로 사용이 가능하다.</span>
+    <span class="p">.</span><span class="nx">otherwise</span><span class="p">({</span><span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'/home'</span><span class="p">});</span>
+<span class="p">})</span>
+<span class="c1">//생략</span></code></pre></figure>
+
+<p>그럼 아래와 같이 routeApp.js에 userDetailCtrl 컨트롤러를 작성한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">controller</span><span class="p">(</span><span class="s1">'userDetailCtrl'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$http</span><span class="p">,</span> <span class="nx">$routeParams</span><span class="p">,</span> <span class="nx">$location</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//URL 매개변수 값을 가져오기 위한 $routeParams 서비스와 URL 이동을 위해 $location 서비스를 주입받는다.</span>
+    <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$routeParams</span><span class="p">.</span><span class="nx">userId</span><span class="p">;</span>
+<span class="c1">//$routeProvider에서 정의한 :userId 매개변수 값을 $routeParams 서비스를 통하여 접근한다.</span>
+    <span class="kd">var</span> <span class="nx">reqPromise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'sample-'</span><span class="o">+</span><span class="nx">id</span><span class="o">+</span><span class="s1">'.json'</span><span class="p">);</span>
+<span class="c1">//각 userId에 해당하는 데이터를 $http 서비스를 통하여 요청한다.</span>
+
+    <span class="nx">reqPromise</span><span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">reqPromise</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Ajax 에러 발생"</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">back</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$location</span><span class="p">.</span><span class="nx">url</span><span class="p">(</span><span class="s1">'/userList'</span><span class="p">)</span>
+<span class="c1">//사용자 상세 화면에서 뒤로가기 버튼을 클릭 시 해당 함수가 호출되며 이 때 $location서비스를 이용하여 브라우저 URL을 ‘userList’로 변경한다.</span>
+    <span class="p">};</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>마지막으로 사용자 목록 테이블의 각 행을 클릭할 경우 사용자 상세화면 URL로 이동하도록 기존에 만든 사용자 목록화면을 수정하자. 우선 userList.html 템플릿 파일을 다음과 같이 수정한다.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;tr</span> <span class="na">ng-repeat=</span><span class="s">"user in userList"</span> <span class="na">ng-click=</span><span class="s">"goDetail(user.userId)"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- 각 행을 클릭 시 $scope 객체의 goDetail 메소드를 호출한다. --&gt;</span>
+       <span class="nt">&lt;td&gt;</span>{{ $index + 1 }}<span class="nt">&lt;/td&gt;</span>
+       <span class="nt">&lt;td&gt;</span>{{ user.name }}<span class="nt">&lt;/td&gt;</span>
+       <span class="nt">&lt;td&gt;</span>{{ user.email }}<span class="nt">&lt;/td &gt;</span>
+       <span class="nt">&lt;td&gt;</span>{{ user.regDate }}<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span></code></pre></figure>
+
+<p>다음으로 userListCtrl 컨트롤러 함수에 다음과 같이 goDetail 메소드를 추가한다.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">controller</span><span class="p">(</span><span class="s1">'userListCtrl'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$http</span><span class="p">,</span> <span class="nx">$location</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//$location 서비스를 주입받도록 추가하였다.</span>
+    <span class="kd">var</span> <span class="nx">reqPromise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'sample.json'</span><span class="p">);</span>
+
+    <span class="nx">reqPromise</span><span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">reqPromise</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Ajax 에러 발생"</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">goDetail</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$location</span><span class="p">.</span><span class="nx">url</span><span class="p">(</span><span class="s1">'/user/'</span><span class="o">+</span><span class="nx">userId</span><span class="p">);</span>
+<span class="c1">//$location 서비스의 URL 서비스의 url 메소드를 이용하여 사용자 아이디에 해당하는 ‘user/사용자아이디’ URL로 이동한다.</span>
+    <span class="p">};</span>
+<span class="p">}).</span></code></pre></figure>
+
+<p>다시 라우터 데모 어플리케이션을 브라우저에서 열어보자. 그리고 사용자 목록 화면에서 사용자 행을 클릭하면 해당 사용자에 대한 상세 정보를 보는 페이지로 이동하게 된다.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/angularjs">angularjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;<a href="/tags/animation">animation</a>&nbsp;<a href="/tags/router">router</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
