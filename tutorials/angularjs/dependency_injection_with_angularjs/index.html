@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 서비스 개발을 위한 의존관계 주입 알아보기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">서비스 개발을 위한 의존관계 주입 알아보기</h1>
+<p class="title_header_summary">서비스 개발을 위한 의존관계 주입 알아보기</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>서비스?</h2>
+
+<p>AngularJS에서 서비스는 웹 서비스나 RESTful 서비스 등을 말하 는 것이 아니고 단순히 생각하면 $provide를 이용해 만들어지는 객체이다. AngularJS의 서비스들은 다양한 특징을 가지고 있는데 다음은 AngularJS 서비스에 대한 특징을 설명한다.</p>
+
+<ol>
+<li>의존관계 주입을 통해 런타임<sup>runtime</sup>시 다른 컴포넌트와 의존관계에 있을 때 주입된다.</li>
+<li>싱글톤으로 단일 인스턴를 가진다.</li>
+<li>하나의 로직에 대한 단일한 책임을 가지고 어플리케이션에서 공통으로 사용될 수 있다. 가령 Ajax 처리에 대한 책임만을 가지고 여러 컴포넌트에서 사용되는 $http서비스가 그러하다.</li>
+<li>여러 컴포넌트들의 다리역할을 한다. 서비스는 컨트롤러, 지시자, 필터, 그리고 다른 서비스에 주입되므로 다른 컴포넌트 간에 느슨하게 연결<sup>loosely coupled</sup>하며 서 로 커뮤니케이션을 하게 하는 매개체 역할을 하게 된다.</li>
+</ol>
+
+<p>AngularJS는 다양한 미리 만들어진 서비스를 제공한다. 가령 Ajax를 위한 $http 서비스, 로깅처리를 위한 $log 서비스들이 그러하다. 그리고 또한 우리가 원하는 기능에 대한 서비스를 만들 수 있다. 서비스를 애기하기 전에 우리는 이번 튜토리얼에서 의존관계 주입에 대하여 먼저 살펴보도록 하겠다.</p>
+
+<h2>의존관계 주입</h2>
+
+<p>하나의 객체가 다른 객체를 사용하는 순간 의존관계가 성립된다. 그러므로 어느 애플리케이 션이든 여러 객체 사이에 의존관계가 필연적으로 성립될 수밖에 없다. AngularJS 개발자 문서에서는 자바스크립트 상에서 객체들 사이의 의존관계가 크게 세 가지 경우에 생성된다고 한다</p>
+
+<ol>
+<li>new키워드를통한의존관계성립</li>
+<li>전역변수 참조를 통한 의존관계 성립</li>
+<li>인자를 통하여 참조를 전달받아 의존관계 성립</li>
+</ol>
+
+<p>처음 1번과 2번은 의존관계가 강하게 연결됐다고 하고 3번은 느슨하게 연결됐다고 한다. 왜 그 런지 코드를 통해 살펴보자. 다음은 new 키워드로 만들어진 의존관계를 보여주는 예제 코드다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">demoCtrl</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">bookmark</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserResource</span><span class="p">(</span><span class="k">new</span> <span class="nx">Ajax</span><span class="p">(),</span> <span class="k">new</span> <span class="nx">JsonParser</span><span class="p">());</span>
+<span class="p">}</span></code></pre></div>
+
+<p>위 데모 컨트롤러 함수는 UserResource 생성자 함수가 bookmark 객체를 어떻게 생성해야 하는지 <strong>너무 잘 알고</strong> 있다. 다시말하면 데모 컨트롤러가 UserResource 객체를 생성하기 위해 Ajax 객체와 JsonParser 객체가 인자로 필요하다는 것까지 알고 있는 것이다.</p>
+
+<p>데모 컨트롤러가 UserRsource 객체 생성에 대한 책임을 가지면 어떤 문제가 있을까? 가령 UserResource가 Ajax 요청을 사용하지 않고 쿠키나 로컬DB에서 데이터를 가지고와야 하거나 JSON 형식의 데이터가 아니라 XML 형식으로 바뀐다면 UserResource 생성자 함수를 사용하는 모든 컨트롤러 소스를 다 수정해야 할 것이다. </p>
+
+<p>그럼 UserResource가 어떻게 객체를 생성 하는지 알지 못하도록 팩토리 함수를 전역변수로 만들어 이러한 문제점을 없애보자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">factory</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">getBookmarkResource</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="k">new</span> <span class="nx">BookmarkResource</span><span class="p">(</span><span class="nx">factory</span><span class="p">.</span><span class="nx">getAjax</span><span class="p">(),</span> <span class="nx">factory</span><span class="p">.</span><span class="nx">getJsonParser</span><span class="p">();</span> <span class="p">},</span>
+    <span class="nx">getAjax</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="k">new</span> <span class="nx">Ajax</span><span class="p">();</span> <span class="p">},</span>
+    <span class="nx">getJsonParser</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="k">new</span> <span class="nx">JsonParser</span><span class="p">();</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">demoCtrl</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">bookmarkResource</span> <span class="o">=</span> <span class="nx">factory</span><span class="p">.</span><span class="nx">getBookmarkResource</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
+
+<p>위 코드와 같이 팩토리를 이용해 bookmarkResource 객체를 얻게 되면 데모 컨트롤러는 BookmarkResource가 어떻게 생성되는지 몰라도 된다. 이는 나중에 Ajax를 사용하지 않거나 JSON 형식이 아닌 XML 형식으로 데이터 형식이 바뀌게 되어도 모든 컨트롤러 함수를 수정 할 필요없이 팩토리 객체만 수정하면 된다. 앞의 new 키워드를 통한 예제에서 발생한 문제점인 데모 컨트롤러가 어떻게 BookmarkResource를 생성하는지 알고 있는 문제는 해결했지만 아직 다른 문제점이 있다. 바로 테스트 하기 어렵다는 문제점이다. </p>
+
+<p>데모 컨트롤러의 단위 테스트를 하기 위해 전역 객체인 팩토리 객체를 테스트용으로 변경하여 사용할 수 있지만 단위 테스트마다 팩토리 객체에 대한 상태를 초기화해야 하고 본질적인 테스트의 어려움은 없애기 어렵다. 그리고 아직 전역 객체와의 강한 결합은 존재 한다. 그럼 마지막으로 인자를 참조하여 만들어진 의존관계를 살펴보자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">demoCtrl</span><span class="p">(</span><span class="nx">BookmarkResource</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">bookmarkResource</span> <span class="o">=</span> <span class="nx">BookmarkResource</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
+
+<p>위 코드는 데모 컨트롤러가 BookmarkResource를 인자로 전달받아 의존관계가 성립 된 것을 볼 수 있다. 이렇게 인자를 통하여 BookmarkResource를 데모 컨트롤러가 주입을 받아 의존관계 주입이 되는 것이다. 의존관계 주입(DI)을 통하여 데모 컨트롤러와 BookmarkResource는 약한 결합을 갖게 됐다. 데모 컨트롤러는 bookmarkResource 객체가 어떻게 생성되는지 알 필요도 없고 demoCtrl 단위 테스트에서도 얼마든지 필요한 가짜<sup>mock</sup> BookmarkResource를 주입받을 수있다. 이는 단위 테스트를 매우 쉽게 해준다. 이 처럼 AngularJS에서는 주입되는 대상을 서비스라 하여 BookmarkResource를 서비스로서 개발하고 이를 컨트롤러나 다른 서비스 혹은 지시자 등에 주입되는 방식인 DI를 이용해 컴포넌 트별 의존관계를 정의할 수 있다.</p>
+
+<h2>서비스 만들기</h2>
+
+<p>우리는 앞에서 의존관계 주입이 주는 이점을 살펴봤다. 그럼 이제 DI의 단위가 되는  AngularJS의 서비스를 정의하는 방법을 간단한 예제를 통해 알아보자. 서비스를 만들려면 모듈 인스턴스가 필요하다. angular.module함수를 이용해 모듈을 만들면 모듈 인스턴스를 얻을 수 있다. 이 모듈 인스턴스는 서비스를 만들 수 있는 다양한 메서드를 제공한다. 그럼 간단하게 주어진 이름에 인사 하는 AngularJS Hello 서비스를 만들어 보자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;sampleApp&#39;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="c1">//factory 메소드의 첫번째 인자로 서비스 이름을 주고 다음으로 서비스를 제공하는 팩토리 함수를 정의한다.</span>
+    <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">say</span> <span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s2">&quot;hello &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">};</span> 
+    <span class="p">}])</span>
+    <span class="c1">//서비스 이름인 hello를 컨트롤러 함수 인자로 주면 위 hello 팩토리 함수가 반환하는 객체가 주입된다.</span>
+    <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;mainCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="nx">hello</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="s2">&quot;제이&quot;</span><span class="p">);</span>
+     <span class="p">});</span></code></pre></div>
+
+<p>위 코드에서 보는 것과 같이 모듈 인스턴스의 factory() 메서드를 이용하면 특정 서비스 객체를 반환하는 팩토리 함수를 정의할 수 있다. 아래 그림은 AngularJS 내부적으로 어떻게 서비스 객체가 만들어지고 다른 컴포넌트에 주입이 되는지 설명하는 그림이다.</p>
+
+<p><img src="imgs/di_tutorial_01.png" style="width:600px;height:300px;" alt="
+AngularJS 서비스 인스턴스 주입절차" title="
+AngularJS 서비스 인스턴스 주입절차"></p>
+
+<p>위 그림을 보면 $provide.factory(...)를 볼 수 있다. 사실 모듈 API의 factory 함수는 $provide.factory 함수의 레퍼런스에 불과 하다. 편의성을 위해 모듈 인스턴스의 factory 메소드를 통해 $provide.factory 메소드를 호출한다. 이렇게 등록된 서비스 팩토리 함수는 나중에 $injector가 서비스 객체를 생성할 때 호출된다. 위 그림에서 보는 바와 같이 AngularJS 내부에서 등록된 컨트롤러를 호출할때 $injector.invoke 메소드를 사용하는데 이때 컨트롤러가 주입받고자 하는 인자의 이름을 $injector.get(&quot;인자 이름&quot;)으로 가지고와 해당 인자이름에 해당하는 팩토리 함수를 실행시켜 객체를 반환받아 그 객체를 invoke하는 함수의 인자로 전달한다.</p>
+
+<h2>$provie와 $injector</h2>
+
+<p>$provide는 factory외에 서비스를 정의할 수 있는 4개의 메서드를 더 제공한다. 아래는 서비스를 정의하는 $provide 메서드 목록이다.</p>
+
+<ol>
+<li>$provide.value(&#39;이름&#39;, 값)</li>
+<li>$provide.factory(&#39;이름&#39;, 펙토리 함수)</li>
+<li>$provide.service(&#39;이름&#39;, 생성자 함수)</li>
+<li>$provide.provider(&#39;이름&#39;, 프로바이더 함수)</li>
+<li>$provide.constant(&#39;이름&#39;, 값)</li>
+</ol>
+
+<p>사실 constant 메소드를 제외한 value, factory, service 메소드는 provider 메소드의 레퍼함수이다. 즉, 내부에서 $provide.provider를 호출한다. 우선 $provide.provider 메소드를 사용하여 간단한 서비스를 등록하여 보자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;sampleApp&#39;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="p">.</span><span class="nx">provider</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">defaultGreeting</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="c1">//Module.config에서 전달받은 helloProvider를 통하여 사용할 수 있다.</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setGreeting</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newGreeting</span><span class="p">){</span>
+            <span class="nx">defaultGreeting</span> <span class="o">=</span> <span class="nx">newGreeting</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="c1">//프로바이더 함수는 $get 메소드를 구현해야한다. 추후에 $injector에 의해 호출된다.</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">$get</span> <span class="o">=</span> <span class="p">[</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="nx">say</span> <span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nx">defaultGreeting</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}];</span>
+    <span class="p">}])</span>
+    <span class="c1">//서비스 이름인 hello를 컨트롤러 함수 인자로 주면 위 $injector가 호출한 this.$get에 연결된 함수의 반환값이 인자로 주어진다.</span>
+    <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;mainCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="nx">hello</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="s2">&quot;제이&quot;</span><span class="p">);</span>
+     <span class="p">});</span></code></pre></div>
+
+<p>위의 코드에서는 hello 서비스를 정의하는 helloProvider함수를 provide 메소드를 이용하여 정의하였다. 이렇게 정의된 helloProvider는 모듈의 config 메소드를 이용하여 전달받을 수 있고 프로바이더의 메소드를 통하여 서비스에 대한 설정을 할 수 있다. 위에서는 기본 환영문구를 설정할 수 있도록 setGreeting 메소드를 만들었다. 그럼 factory와 service의 차이점을 보기위해 어떻게 provider 사용하는지 AngularJS 내부 소스를 살펴보자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">factory</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">factoryFn</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">return</span> <span class="nx">provider</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="p">{</span> <span class="nx">$get</span><span class="o">:</span> <span class="nx">factoryFn</span> <span class="p">});</span> 
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">service</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">constructor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">factory</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$injector&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$injector</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">$injector</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">(</span><span class="nx">constructor</span><span class="p">);</span>
+    <span class="p">}]);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">value</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">return</span> <span class="nx">factory</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">valueFn</span><span class="p">(</span><span class="nx">val</span><span class="p">));</span> 
+<span class="p">}</span></code></pre></div>
+
+<p>위 코드를 보면 factory는 전달받은 팩토리 함수를 $get에 바로 전달한다. 즉 팩토리 함수가 반환한 값이 서비스 객체가 된다. service를 보면 결국 factory를 호출하는데 그 내부에서 전달받은 생성자 함수를 객체화하여 그 결과를 반환한다. $injector.instantiate 메소드를 사용하면 생성자 함수의 인자를 DI로 전달할 수 있다. 즉 생성자 함수의 의존관계를 $provide로 등록된 서비스를 주입하며 생성한다.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+<li><a href="http://wikibook.co.kr/beginning-angularjs/">시작하세요 angularjs 프로그래밍</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/angularjs">angularjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

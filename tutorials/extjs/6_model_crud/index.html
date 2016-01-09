@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Model을 통한 데이터 입출력 다루기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #RGB(8, 78, 119);color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Model을 통한 데이터 입출력 다루기</h1>
+<p class="title_header_summary">모델클래스는 데이터 패키지 핵심이다. 모델은 컴포넌트가 데이터를 가지기 위한 최소 단위로 RDB(관계형데이터베이스) 테이블과 같은 개념이다. 모델은 데이터를 읽기, 입력, 수정, 삭제 등의 기능을 가지며, 모델간의 관계, 데이터 검증 등을 지원한다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/8764297?v=3&s=400" alt="곽옥석">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            곽옥석
+
+                        </h4>
+                        benneykwag<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <p>모델클래스는 데이터 패키지 핵심이다. 모델은 컴포넌트가 데이터를 가지기 위한 최소 단위로 RDB(관계형데이터베이스) 테이블과 같은 개념이다. 모델은 데이터를 읽기, 입력, 수정, 삭제 등의 기능을 가지며, 모델간의 관계, 데이터 검증 등을 지원한다.</p>
+
+<h2>모델의 정의</h2>
+
+<p>모델을 정의하기 위해 Ext.data.Model 클래스를 상속 받고, fields에 데이터를 표현할 name과 type을 명시했다.</p>
+
+<p>name은 RDBMS테이블의 컬럼명과 같으며 서버로 전달한 이름과도 같다. type은 해당 데이터 형식을 말한다. int 뿐만 아니라 string, boolean, date 등이 온다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;ext5.model.Board&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.Model&#39;</span><span class="p">,</span>
+    <span class="nx">idProperty</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+    <span class="nx">fields</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;int&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;userName&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;role&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;createDate&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span>
+            <span class="nx">dateFormat</span><span class="o">:</span> <span class="s1">&#39;Y.m.d&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;updateDate&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span>
+            <span class="nx">dateFormat</span><span class="o">:</span> <span class="s1">&#39;Y.m.d&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;readCnt&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;int&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;deleteYn&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;boolean&#39;</span><span class="p">,</span>
+            <span class="nx">defaultValue</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">});</span></code></pre></div>
+
+<h2>모델의 검증</h2>
+
+<p>모델 클래스는 데이터를 담는 그릇 역할을 하고 적절한 데이터인지 검증방법을 지원한다. 기존 코드에 데이터 검증 validator를 추가하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;ext5.model.Board&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.Model&#39;</span><span class="p">,</span>
+    <span class="nx">requires</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Ext.data.*&#39;</span>
+    <span class="p">],</span>
+    <span class="nx">fields</span><span class="o">:</span> <span class="p">[</span>
+        <span class="err">…</span>
+    <span class="p">],</span>
+    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;presence&#39;</span><span class="p">,</span> <span class="c1">// #1</span>
+            <span class="nx">content</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="nx">min</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">max</span><span class="o">:</span> <span class="mi">10</span> <span class="c1">//#2</span>
+        <span class="p">},</span>
+        <span class="nx">deleteYn</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;inclusion&#39;</span><span class="p">,</span> <span class="nx">list</span><span class="o">:</span> <span class="p">[</span><span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">]</span> <span class="c1">// #3</span>
+        <span class="p">},</span>
+        <span class="nx">role</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;exclusion&#39;</span><span class="p">,</span> <span class="nx">list</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Admin&#39;</span><span class="p">,</span> <span class="s1">&#39;Manager&#39;</span><span class="p">]}</span> <span class="c1">// #4</span>
+        <span class="p">],</span>
+            <span class="nx">userName</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;format&#39;</span><span class="p">,</span> <span class="nx">matcher</span><span class="o">:</span> <span class="sr">/^[ㄱ-힣&quot;&#39;\\{\\}\s]+$/</span> <span class="c1">// #5</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+
+<p>모델 클래스가 지원하는 검증은 위 코드에서 보듯 다섯 가지가 있다.
+1. presence : 필수 입력 필드로 공백을 허용하지 않는다. 값이 채워져 있어야 한다.
+2. length : 길이를 검증한다. min은 최소 값, max는 최대 값으로 min과 max 사이에 있어야 한다.
+3. inclusion : 포함하는지 검증한다. list에 포함해야 할 값을 여러 개 입력할 수 있다.
+4. exclusion : 포함하지 않는지 검증한다. list에 포함하면 안 되는 값을 여러 개 지정한다.
+5. format : 정규식을 사용 검증한다. (5)는 한글만 입력할 수 있게 했다.</p>
+
+<p>HTML을 생성하고 위의 모델을 실행한다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Table Layout<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span>
+          <span class="na">href=</span><span class="s">&quot;/ext/packages/ext-theme-gray/build/resources/ext-theme-gray-all-debug.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/ext/ext-all-debug.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="nx">Ext</span><span class="p">.</span><span class="nx">Loader</span><span class="p">.</span><span class="nx">setConfig</span><span class="p">({</span>
+        <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;ext5&#39;</span><span class="o">:</span> <span class="s1">&#39;/app&#39;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="nx">Ext</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span>
+        <span class="s1">&#39;ext5.model.Board&#39;</span>
+    <span class="p">]);</span>
+
+    <span class="nx">Ext</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;ext5.model.Board&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;안녕하세요^^&#39;</span><span class="p">,</span>
+            <span class="nx">userName</span><span class="o">:</span> <span class="s1">&#39;홍길동2&#39;</span><span class="p">,</span>
+            <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;게시물 내용을 입력합니다.&#39;</span><span class="p">,</span>
+            <span class="nx">role</span><span class="o">:</span> <span class="s1">&#39;Admin&#39;</span><span class="p">,</span>
+            <span class="nx">readCnt</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+            <span class="nx">deleteYn</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">});</span>
+        <span class="c1">// 생성된 모델을 검증한다.</span>
+        <span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">board</span><span class="p">.</span><span class="nx">getValidation</span><span class="p">();</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;오류발견여부 :&#39;</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">dirty</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;오류필드 content:&quot;</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">));</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;오류필드 role:&quot;</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;role&#39;</span><span class="p">));</span>
+
+    <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<p><img src="imgs/img01.png" alt=""><br>
+<strong>그림 1 validator를 이용한 모델데이터의 검증 결과.</strong></p>
+
+<h2>프록시를 이용한 입출력.</h2>
+
+<p>모델은 데이터 최전방에 있는 클래스로 스스로 데이터를 관리할 수 있게 서버와 통신</p>
+
+<p>할 수 있는 프록시(proxy)를 가지고 있다. 모델은 RDBMS 테이블과 개념을 같이하고 서버와 통신해 데이터를 입력, 수정, 삭제, 읽기를 지원한다.</p>
+
+<p>기존 Board 모델에 프록시를 추가하자. 프록시는 Ext.data.proxy.Proxy 클래스로 데이터 입출력을 담당하며 각종 통신(Ajax, Rest, JsonP, Direct)을 위한 클래스다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">proxy</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="nx">type</span> <span class="o">:</span> <span class="s1">&#39;ajax&#39;</span><span class="p">,</span>
+        <span class="nx">actionMethods</span> <span class="o">:</span> <span class="p">{</span> <span class="c1">// #1</span>
+        <span class="nx">read</span> <span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="c1">// #2</span>
+            <span class="nx">create</span> <span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="c1">// #3</span>
+            <span class="nx">update</span> <span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="c1">// #4</span>
+            <span class="nx">destroy</span> <span class="o">:</span> <span class="s1">&#39;POST&#39;</span> <span class="c1">// #5</span>
+    <span class="p">},</span>
+    <span class="nx">api</span> <span class="o">:</span> <span class="p">{</span> <span class="c1">// #6</span>
+        <span class="nx">read</span> <span class="o">:</span> <span class="s1">&#39;/resources/data/boards.json?read&#39;</span><span class="p">,</span> <span class="c1">// #7</span>
+            <span class="nx">create</span> <span class="o">:</span> <span class="s1">&#39;/resources/data/boards.json?create&#39;</span><span class="p">,</span> <span class="c1">// #8</span>
+            <span class="nx">update</span> <span class="o">:</span> <span class="s1">&#39;/resources/data/boards.json?update&#39;</span><span class="p">,</span> <span class="c1">// #9</span>
+            <span class="nx">destroy</span> <span class="o">:</span> <span class="s1">&#39;/resources/data/boards.json?destroy&#39;</span> <span class="c1">// #10</span>
+    <span class="p">},</span>
+    <span class="nx">reader</span> <span class="o">:</span> <span class="p">{</span> <span class="c1">// #11</span>
+        <span class="nx">type</span> <span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+            <span class="nx">rootProperty</span> <span class="o">:</span> <span class="s1">&#39;entitys&#39;</span>
+    <span class="p">}</span>
+<span class="p">},</span></code></pre></div>
+
+<ol>
+<li>actionMethods는 CRUD(create, read, update, destroy) 통신 방식을 설정한다. 통신방식은 GET, POST, PUT, DELETE가 있고 이러한 방식은 주로 RESTful 통신 시 각 액션에 맞게 변경한다.</li>
+<li>데이터를 로딩할 때는 GET 방식을 사용한다.
+3,4. 데이터를 입력하거나 수정할 때는 POST 방식을 사용한다.</li>
+<li>데이터를 삭제할 때는 DELETE 방식을 사용한다.</li>
+<li>api에는 CRUD 처리를 할 때 필요한 서버의 주소를 명시한다.
+7~10. 데이터를 처리하는 데 필요한 서버의 주소다. 주소와 물음표(?)뒤의 매개변수는 개발자가 임의로 지정한 것이다.</li>
+<li>reader는 api의 read 액션을 처리할 때 필요한 설정으로 읽어오는 데이터의 type과 읽어온 데이터가 여러 개일 때 root 설정을 추가할 수 있다.</li>
+</ol>
+
+<p>api가 CRUD 처리를 위한 서버주소를 작성한다. 다음 코드는 서버가 요청을 처리한 이후 클라이언트에서 응답할 메시지를 출력할 뿐이다(서버의 처리 로직은 생략한다).
+파일명 : /resources/data/boards.json</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+    <span class="nx">entitys</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">33</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;ExtJS에 대한 문의&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;ExtJS Model클래스의 Proxy설정에 대해 알아봅니다.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userName&quot;</span><span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;role&quot;</span><span class="o">:</span> <span class="s1">&#39;User&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;createDate&quot;</span><span class="o">:</span> <span class="s1">&#39;2013-12-03&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;updateDate&quot;</span><span class="o">:</span> <span class="s1">&#39;2013-12-04&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;readCnt&quot;</span><span class="o">:</span> <span class="mi">230</span><span class="p">,</span>
+            <span class="s2">&quot;deleteYn&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">}],</span>
+        <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span></code></pre></div>
+
+<p>모델의 준비가 끝났다면 이제 모델 객체를 생성하고 해당 모델을 저장해 보자. 이때 저장은 생성된 모델 객체의 데이터를 서버에 전달하는 과정을 의미한다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;ext5.model.Board&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">title</span> <span class="o">:</span> <span class="s1">&#39;안녕하세요^^&#39;</span><span class="p">,</span>
+        <span class="nx">userName</span> <span class="o">:</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span>
+        <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;게시물 내용을 입력합니다.&#39;</span><span class="p">,</span>
+        <span class="nx">role</span> <span class="o">:</span> <span class="s1">&#39;User&#39;</span><span class="p">,</span>
+        <span class="nx">deleteYn</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">});</span>
+    <span class="nx">board</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span> <span class="c1">// #1</span>
+        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">operation</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// #2</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;읽어온 데이터 레코드는 : &#39;</span><span class="p">,</span> <span class="nx">record</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="nx">failure</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">record</span><span class="p">,</span><span class="nx">options</span><span class="p">){</span> <span class="c1">// #3</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;저장 실패&#39;</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span> <span class="c1">// #4</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;콜백 처리 &#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+<ol>
+<li>모델의 save메서드를 호출하고 있다. 이 메서드로 모델데이터는 서버에 전달된다.</li>
+<li>서버와 통신에 성공했을 때 호출된다. 첫 번째 인자는 입력된 모델 객체를 반환하는데, 서버에서 응답해준 데이터가 있다면(boards.json) 응답한 데이터를 모델 객체로 반환하고 서버에서 전달해준 데이터가 없다면(boards.json 내용을 모두 삭제) ExtJS에서 생성한 모델 객체를 그대로 반환한다.</li>
+<li>서버와 통신에 실패했을 때나 저장 처리 시 의도적으로 실패 했을때 호출된다. boards.json파일 내부의 success: true를 false로 변경하면 인위적으로 실패하게 되고 이 함수가 호출된다.</li>
+<li>ajax 통신이 비동기 통신이므로 순차적인 실행이 어려우므로 콜백 함수를 구현한다. 저장 작업 이후 처리해야 하는 로직을 구현한다.
+그림 2은 개발자 도구의 Network 탭에서 서버와의 통신 내역을 확인한 것이다.
+<img src="imgs/img02.png" alt=""><br>
+<strong>그림 2 모델 데이터를 프락시를 통해 저장한다.</strong></li>
+</ol>
+
+<p>save 메서드를 실행한 다음 서버와 통신한 결과를 확인하자. api 설정의 네 가지(CRUD) 중 create를 실행했고(boards.json?create) 이후 서버에 모델 데이터를 전달했다. 그렇다면 save 메서드는 api 중 create에 해당하는 것일까? 꼭 그렇지만은 않다 save() 메서드는 update api에서도 사용한다.</p>
+
+<p>이때 필요한 속성이 idProperty다. idProperty는 데이터를 구분하는 유일한 필드를 설정하는 속성으로 데이터베이스에서 테이블의 기본 키와 같다. 모델에 idProperty를 설정하지 않으면 기본 필드는 id로 설정된다. 이 idProperty 필드의 값이 비어있으면 api의 create가 실행되고, idProperty 필드에 데이터가 포함돼 있으면 update api가 실행된다.</p>
+
+<p>idProperty 속성을 다음과 같이 지정하자. 자동으로 id 필드로 설정되므로 따로 설정할 필요는 없다. 단, id가 아닌 다른 필드로 설정하고자 한다면 모델 클래스에 idProperty를 명시해야 한다.
+모델을 생성하는 코드에서 id 필드를 채워 다시 실행하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;ext5.model.Board&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">title</span> <span class="o">:</span> <span class="s1">&#39;안녕하세요^^&#39;</span><span class="p">,</span>
+    <span class="nx">userName</span> <span class="o">:</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span>
+    <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;게시물 내용을 입력합니다.&#39;</span><span class="p">,</span>
+    <span class="nx">role</span> <span class="o">:</span> <span class="s1">&#39;User&#39;</span><span class="p">,</span>
+    <span class="nx">deleteYn</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">});</span></code></pre></div>
+
+<p>다음 그림 3과 같이 서버에 요청한 url이 boards.json?update..로 update api가 실행 된 것을 확인 할 수 있다. idProperty 설정에 따라 입력과 수정이 결정 됨을 명심하자.
+<img src="imgs/img03.png" alt=""><br>
+** 그림 3 모델 데이터를 프락시를 통해 수정한다.**</p>
+
+<h2>프록시를 이용한 데이터의 읽기 및 삭제</h2>
+
+<p>입력과 수정을 알아봤으니 이번에는 데이터를 읽고 삭제하는 기능을 구현해 보자. 다음 코드는 모델클래스의 load메서드를 통해 모델에 채워질 데이터를 얻어오는 코드다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">ext5</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Board</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="p">{</span> <span class="c1">// #1</span>
+    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">operation</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// #2</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;읽어온 데이터 레코드는 : &#39;</span><span class="p">,</span> <span class="nx">record</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span> <span class="c1">// #3</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+
+<ol>
+<li>load메서드를 호출하고 있다. 인자에 첫번째는 id값(33)으로 이 값이 서버에 전달돼 원하는 데이터를 찾고 반환해줄 것이다.</li>
+<li>서버의 요청이 성공하면 success 메서드가 실행된다.</li>
+<li>서버에서 응답한 데이터(boards.json)를 출력한다.</li>
+</ol>
+
+<p><img src="imgs/img04.png" alt=""><br>
+<strong>그림 4 모델을 통한 데이터 읽기</strong>
+읽기(load)에 성공하면 success 메서드가 실행되고 서버에서 전달받은 데이터를 인자로 전달한다. 전달되는 객체는 모델 객체로 이 객체를 이용해 다시 서버에 update 요청을 할 수 있고 erase 작업을 요청할 수도 있다. 읽기 작업 이후 서버에서 전달받은 모델객체를 이용해 삭제(erase) 작업을 진행 해 보자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">ext5</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Board</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">operation</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;읽어온 데이터 레코드는 : &#39;</span><span class="p">,</span> <span class="nx">record</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+        <span class="nx">record</span><span class="p">.</span><span class="nx">erase</span><span class="p">({</span>
+            <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">operation</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;삭제 후 서버에서 전달한 결과는 : &#39;</span><span class="p">,</span> <span class="nx">record</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+
+<p>삭제에 성공하면 success 메서드가 호출되고 서버의 응답이 있다면 모델 객체로 반환한다.
+<img src="imgs/img05.png" alt=""><br>
+<strong>그림 5 모델에 설정된 프록시를 이용해 모델레코드를 삭제한다.</strong></p>
+
+<p>이렇듯 하나의 데이터를 읽어오고 삭제하는 작업이 간단히 처리할 수 있다. 모델을 이용해 서버에 데이터를 입력하고 입력된 데이터를 읽어와 수정하거나 삭제할 수 있다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/Ext">Ext</a>&nbsp;<a href="/tags/JS">JS</a>&nbsp;<a href="/tags/tutorial">tutorial</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

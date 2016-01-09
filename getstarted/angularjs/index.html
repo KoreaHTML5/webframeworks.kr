@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - AngularJS Getting Start</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+    <style>
+        #toc_location.affix {
+            top:50px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+        <h1 class="title_header_title">AngularJS Getting Start</h1>
+        <p class="title_header_summary">구글이 만든 자바스크립트 프레임워크인 AngularJS를 시작해본다. 간단한 사용자 목록을 확인하는 프로그램을 통하여 AngularJS의 기본 기능을 이용해 보면서 AngularJS에 대하여 간단히 살펴보겠다.</p>
+    </div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+
+        <div id="toc_location" style="z-index:99999;"></div>
+
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1><a href="https://angularjs.org/">AngularJS</a></h1>
+
+<p><strong>AngularJS는 웹 애플리케이션 개발에 필요한 여러 기능을 제공하는 오픈 소스 자바스크립트 프레임워크다.</strong></p>
+
+<p>제이쿼리와 같은 자바스크립트 라이브러리와 다른 점은 우리의 코드가 AngularJS를 직접 호출 하기보다는 우리가 작성한 코드를 AngularJS가 호출하는 것이다. 즉, 우리의 코드가 AngularJS라는 뼈대에 살을 채워 웹 어플리케이션이 만들어 진다.다음은 AngularJS 공식 사이트의 소개 페이지에서 발췌한 라이브러리와 프레임워크를 설명하는 글이다.</p>
+
+<ul>
+<li>라이브러리: 제이쿼리와 같은 웹 애플리케이션을 개발할 때 유용한 함수의 집합이다. 여러분이 작성한 코드가 필요 시점에 이 함수를 직접 호출하고 애플리케이션 전체 흐름을 제어한다.</li>
+<li>프레임워크: 웹 애플리케이션의 특정 구현체다. 여러분이 작성한 코드가 상세 구현으로 프레임워크의 빈 부분을 채운다. 프레임워크가 여러분이 작성한 코드를 필요 시점에 호출하고 애플리케이션 전체 흐름을 제어한다. AngularJS와 더불어 knockout.js와 ember.js도 프레임워크라 하겠다.</li>
+</ul>
+
+<p>지금까지 HTML, 자바스크립트, CSS만으로는 화려하고 편리한 사용자 인터페이스를 제공하는 웹 애플리케이션을 개발하기 매우 어려웠다. 그래서 ActiveX와 플래시와 같은 기술에 의존하여 리치<sup>rich</sup>한 웹 애플리케이션을 개발했다. AngularJS는 이러한 리치 웹 애플리케이션을 위해 만들어지지 않은 HTML의 부족한 부분을 채우고자 만들어졌다. 다음은 AngularJS가 제공하는 주요 기능이다.</p>
+
+<ul>
+<li>템플릿</li>
+<li>양방향 데이터 바인딩</li>
+<li>MVC 구조</li>
+<li>지시자directive를 이용한 HTML 확장</li>
+<li>의존관계 주입Dependency Injection</li>
+<li>단일 페이지 웹 애플리케이션을 위한 라우터Router</li>
+<li>$q를 이용한 자바스크립트 비동기 프로그래밍 지원</li>
+<li>자바스크립트 테스팅 지원</li>
+<li>CSS3 Animation 처리 지원</li>
+<li>모바일 터치 이벤트 지원</li>
+</ul>
+
+<h2>AngularJS 설치하기</h2>
+
+<p>AngularJS를 다운로드하기 위해선 AngularJS 공식 사이트인 www.angularjs.org에 접속한다. 브라우저를 통해 접속하면 다음 그림 같은 화면을 볼 수 있을 것이다.</p>
+
+<p><img src="imgs/img01.png" alt="AngularJS 공식 사이트, angularjs.org"></p>
+
+<p>위 그림에서 보는 것과 같이 파란색 큰 다운로드 버튼을 이용해서 AngularJS를 다운로드 할 수 있다. 다운로드 버튼을 클릭하면 브렌치<sup>branch</sup>, 빌드<sup>build</sup>를 선택하여 다운로드 하거나 CDN정보나 Bower 인스톨 정보를 확인할 수 있는 모달<sup>modal</sup>창이 나타난다. 별도의 다운로드 없이 CDN 정보로 HTML 스크립트 태그에 경로로 입력하여 AngularJS를 적용할 수 도 있으나 본 글에서는 AngularJS를 다운로드하여 적용하는 것을 설명하겠다. 글을 작성하는 시점에는 AngularJS는 1.2.x와 1.3.x 두 개의 브렌치로 나누어 진다. 최신 버전은 1.3.x이나 IE8을 지원하기 위해서는 1.2.x 버전의 AngularJS를 사용해야 한다. 그럼 1.2.x 브렌치와 zip 빌드로 선택하고 다운로드 버튼을 클릭하자. 그리고 압축을 풀면 아래 그림과 같을 것이다.</p>
+
+<p><img src="imgs/img02.png" alt="AngularJS 파일목록"></p>
+
+<p>위 그림에서 보는 것과 같이 많은 자바스크립트 파일과 개발자문서 폴더, i18n 다국어 파일폴더 등을 볼 수 있다. AngularJS를 적용하기 위해서 모든 자바스크립트 파일이 필요로 하지는 않는다. 기본 프레임워크만 적용하기 위해서는 angular.js 또는 압축된<sup>minified</sup> 버전인 angular.min.js 둘 중 하나만 HTML 스크립트 태그로 작성하면 된다.</p>
+
+<h2>사용자관리 어플리케이션</h2>
+
+<p>사용자관리 어플리케이션은 CRUD 웹 어플리케이션을 좋은 예이다. 사용자 정보를 조회하고 입력하고 수정하고 삭제하는 CRUD 웹 어플리케이션에 AngularJS를 적용해보면서 AngularJS 기본 기능을 파악해보자. 다음 그림은 완성된 사용자관리 어플리케이션의 모습이다.</p>
+
+<p><img src="imgs/img03.png" alt="완성된 사용자관리 어플리케이션"></p>
+
+<p>사용자관리 어플리케이션의 기능은 아래와 같다.</p>
+
+<ul>
+<li>화면 상단에서 검색 버튼을 클릭하면 사용자 정보를 조회한다.</li>
+<li>화면 상단에서 추가 버튼을 클릭하면 아래 테이블에 새로운 행이 추가되고 사용자 정보를 입력하면 사용자 정보가 추가된다.</li>
+<li>테이블의 각 행의 마지막 열에 있는 2개의 버튼 중 왼쪽 수정버튼을 클릭하면 사용자 정보를 수정할 수 있다.</li>
+<li>테이블의 각 행의 마지막 열에 있는 2개의 버튼 중 오른쪽 삭제버튼을 클릭하면 사용자 정보를 삭제할 수 있다.</li>
+</ul>
+
+<p>다음 코드는 사용자관리 어플리케이션의 정적인 HTML 코드이다. 개발 편의상 트위터 부트스트랩을 사용하였다. 트위터 부트스트랩에 대한 자세한 내용은 <a href="http://www.getbootstrap.com">부트스트랩 공식 홈페이지</a>을 참고하기 바란다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>사용자 관리 DEMO APP<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;libs/bootstrap/css/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;resources/app.css&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;libs/angular/angular.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;searchBox&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row-fluid borBox&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;span12&#39;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;form-horizontal centerOnPage&#39;</span> <span class="na">style=</span><span class="s">&quot;margin-left: -203px;&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;input-append&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;이름&quot;</span> <span class="na">size=</span><span class="s">&quot;16&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-info box&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-search&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+            <span class="nt">&lt;/button&gt;</span>
+          <span class="nt">&lt;/ul&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-info box&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-plus&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+          <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container-fluid&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row-fluid&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span12&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table table-striped table-hover&quot;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;thead&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>이름<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>E-Mail<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>가입 날짜<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>수정<span class="nt">&lt;/th&gt;</span>
+              <span class="nt">&lt;th&gt;</span>삭제<span class="nt">&lt;/th&gt;</span>
+           <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;/thead&gt;</span>
+          <span class="nt">&lt;tbody&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;td&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;가인&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;email&quot;</span> <span class="na">value=</span><span class="s">&quot;gain@naver.com&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;date&quot;</span> <span class="na">value=</span><span class="s">&quot;2014-06-30&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+              <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-pencil&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+                <span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-info&quot;</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-ok&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+                <span class="nt">&lt;/button&gt;</span>
+              <span class="nt">&lt;/td&gt;</span>
+              <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-trash&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+                <span class="nt">&lt;/button&gt;</span>
+              <span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">&quot;6&quot;</span> <span class="na">style=</span><span class="s">&quot;text-align :center&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;text-warning&quot;</span><span class="nt">&gt;</span>데이터가 없습니다.<span class="nt">&lt;/span&gt;</span>
+              <span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;/tbody&gt;</span>
+       <span class="nt">&lt;/table&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<p>사용자관리 어플리케이션 프로젝트를 다운로드 하기 위해서는 https://github.com/jeado/web-angular-sample 에서 다운로드 한다. 그럼 이제 정적인 페이지에 불과한 index.html에 AngularJS를 적용하여 동적인 웹 어플리케이션으로 변경하여 보자.</p>
+
+<h3>AngularJS 적용</h3>
+
+<p>정적인 페이지인 index.html에 AngularJS를 적용하기 위해서는 AngularJS에서 제공하는 특별한 속성을 사용해야 한다. 바로 ng-app 이다. AngularJS를 적용하고자 하는 최상위 DOM 노드에 속성으로 ng-app을 작성한다.</p>
+
+<p>이렇게 ng-app을 작성하였으면 해당 HTML문서를 템플릿으로서 작성을 할 수 있다. 그럼 템플릿에 대하여 보도록 하자.</p>
+
+<h3>템플릿 작성</h3>
+
+<p>AngularJS는 템플릿을 통하여 데이터를 어떻게 표현할지 기술한다. 템플릿은 표현식과 AngularJS가 제공하는 별도의 속성 혹은 태그들로 이루어 지는데 HTML문서를 작성하는 것은 곧 템플릿을 작성하는 것과 같다. </p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html">템플릿 = 표현식 + 별도 속석/태그</code></pre></div>
+
+<p>다시말하면 index.html에 표현식과 ng-app과 같은 별도의 속성 혹은 태그를 작성하면 index.hmlt 템플릿을 작성하는 것이다. 그럼 표현식에 대하여 살펴보자.</p>
+
+<p>AngularJS는 자바스크립트 표현식과 비슷한 AngularJS 표현식을 제공한다. 표현식은 일반적으로 이중 중괄호 {{  }} 안에서 작성을 한다. 하지만 ng-init과 같은 특별한 속성들은 값으로 표현식을 요구한다.</p>
+
+<p>그럼 {{  }}을 이용하여 표현식을 기술해 보자. 가령 다음과 같은 코드가 있다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>Hello {{ person.name }}<span class="nt">&lt;/h1&gt;</span></code></pre></div>
+
+<p>위 코드를 읽으면 “Hello라는 문자열 옆에 person 객체의 name 속성값을 구해서 h1의 크기로 화면에 출력한다.”라고 읽을 수 있다. 이렇게 이중 중괄호 안에 객체 및 객체 속성에 접근하는 표현식을 기술할 수 있는데 이렇게 작성된 템플릿을 AngularJS가 실제 person 객체의 name 속성의 값을 읽어 DOM을 만든다. AngularJS 표현식은 자바스크립트 표현식과 비슷한데 자바스크립트 표현식은 자바스크립트 값이 될 올 바른 한 단위로서의 코드이다. 다음은 종류별로 나열한 자바스크립트 표현식이다.</p>
+
+<ul>
+<li>x = 1: 변수에 값을 대입하는 표현식 </li>
+<li>3+4 혹은 2.45: 숫자 연산 및 숫자 표현 </li>
+<li>&quot;hello&quot; 혹은 &quot;hello&quot;+&quot;angular&quot;: 문자 표현 및 문자 연산 </li>
+<li>true 혹은 !true 혹은 true || true: 논리 연산 및 논리 표현 </li>
+<li>objectA.propertyA: 객체 및 객체 속성 접근 </li>
+</ul>
+
+<p>AngularJS의 표현식은 자바스크립트의 표현식과 대부분 비슷하여 위의 표현식이 모두 사용가능 하다. 하지만 일부 차이점이 있는데 다음 목록이 그 차이점이다.</p>
+
+<ul>
+<li>객체의 접근: 기본적으로 자바스크립트는 모든 객체를 최상위 객체인 window 객체 안에서 찾는다. 이와 반 대로 AngularJS는 표현식에 사용된 객체를 $scope 안에서 찾는다.</li>
+<li>undefined와 null 무시: 자바스크립트 표현식으로 obejectA.propertyA라고 작성했다고 하자. 만약 objectA가 선언되어 있지 않으면 objectA는 undefined일 것이다. Undefined에서 propertyA에 접근하려 했으니 자바스크립트에서는 오류가 발생한다. 이와 다르게 AngularJS는 오류를 발생시키지 않고 무시해 버린다.</li>
+<li>제어문을 작성할 수 없다.</li>
+<li>필터 사용이 가능하다. 필터는 파이프(|)를 이용해서 표현식에서 사용할 수있다. 가령 money가 있고 2000이라는 값이 할당돼 있다고 하자. 이때 2000을 2,000원 혹은 $2,000로 표현하고 싶을 때 우리는 currency 필터를 사용할 수 있다. 템플릿에서 {{money | currency }}와 같은 방식으로 작성하면 된다.</li>
+</ul>
+
+<p>이제 본격적으로 템플릿을 작성해 보자. 우선 화면에 표출할 사용자 정보를 정의하자</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span> <span class="na">ng-init=</span><span class="s">&#39;userList=[{ name : &quot;고재도&quot;, email : &quot;haibane84@gmail.com&quot;, regDate : &quot;2013-01-20&quot; }]&#39;</span> <span class="nt">&gt;</span>
+<span class="c">&lt;!-- AngularJS에서 제공하는 ng-init 속성에 userList 배열을 표현하는 표현식을 기술하여 userList 배열을 정의한다. --&gt;</span></code></pre></div>
+
+<p>ng-init 속성은 일종의 Main 메소드와 같다. 해당 템플릿을 해석할 때 호출되는대 이때 주어진 표현식을 해석한다.</p>
+
+<p>다음으로 사용자목록 정보인 userList 배열을 테이블의 각 행으로 표현하는 표현식을 작성해 보자. AngularJS에서는 반복적인 데이터를 표현하기 위해 ng-repeat 속성을 제공한다. 다음 리스트를 index.html의 table 태그의 tbody 태그 안의 tr 태그 다음에 추가하여 정적인 데이터를 위해 작성된 HTML과 userList 배열을 동적으로 표현하기 위해 작성된 템플릿을 비교해보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;tr</span> <span class="na">ng-repeat=</span><span class="s">&quot;user in userList&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- AngularJS의 ng-repeat은 속성값으로 for in 루프처럼 작성하는 특별한 표현식을 값으로 주어야 한다. 해당 표현식은 userList 배열의 배열요소만큼 &lt;tr&gt; 요소와 요소내부를 반복하여 표현한다. &lt;tr&gt; 요소와 &lt;tr&gt;요소 내부에서 각 배열요소는 user로 참조할 수 있다. --&gt;</span>
+  <span class="nt">&lt;td&gt;</span>{{ $index+1 }}<span class="nt">&lt;/td&gt;</span>
+<span class="c">&lt;!-- $index는 ng-repeat이 적용된 요소에서 사용할 수 있는 특별한 이름이다. 배열요소의 인덱스 값을 가지고 올 수 있다. 0부터 시작하기 때문에 +1을 하여 1부터 시작하도록 작성한다. --&gt;</span>
+  <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.name&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+<span class="c">&lt;!-- ng-model을 통하여 해당 &lt;input&gt; 요소와 사용자 객체의 name속성과 데이터 바인딩을 하였다. 자세한 내용은 이어지는 “양방향 데이터바인딩”에서 자세히 다루도록 하겠다. --&gt;</span>
+  <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;email&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.email&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;date&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.regDate&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-pencil&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-info&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-ok&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-trash&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span></code></pre></div>
+
+<p>변경사항을 저장하고 브라우저에서 index.html 파일을 읽으면 다음 그림과 같은 결과를 확인할 수 있다.</p>
+
+<p><img src="imgs/img04.png" alt="ng-repeat을 적용한 결과화면"></p>
+
+<p>사용자 목록을 보여주는 테이블을 보면 첫 번째 행은 정적으로 표현된 행이고 두 번째 행은 uesrList 배열에 의하여 추가된 행임을 알 수 있다. 다음으로 userList의 값이 없으면 “데이터가 없습니다.”가 표현되고 있으면 표현이 안되도록 템플릿을 수정하여 보자. 그리고 정적으로 테이블 행을 표현한 코드는 삭제하도록 하자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;tr</span> <span class="na">ng-show=</span><span class="s">&quot;!userList.length&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- AngularJS는 ng-show를 제공하여 ng-show 속성값의 표현식의 계산된 결과가 true이면 해당 요소의 CSS의 display 속성을 none으로 한다. --&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">&quot;6&quot;</span> <span class="na">style=</span><span class="s">&quot;text-align :center&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;text-warning&quot;</span><span class="nt">&gt;</span>데이터가 없습니다.<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span></code></pre></div>
+
+<p>사용자 관리 웹 어플리케이션의 기능을 더 구현하기 앞서 AngularJS의 양방향 데이터 바인딩에 대하여 보겠다.</p>
+
+<h3>양방향 데이터 바인딩</h3>
+
+<p>데이터 바인딩이란 두 데이터 혹은 정보의 소스를 모두 일치시키는 기법이다. 즉 화면에 보이는 데이터와 브라우저 메모리에 있는 데이터를 일치시키는 기법인데 앞의 예제에서 userList 브라우저 메모리에 있는 데이터가 화면에 테이블의 행으로서 보이는 데이터가 일치된 것이 데이터 바인딩이라고 볼 수 있다. 대부분 자바스크립트 프레임워크에서는 브라우저 메모리에 있는 데이터가 화면에 표출되도록 하는 단방향 데이터 바인딩을 제공한다. 하지만 AngularJS에서는 양방향 데이터 바인딩을 제공한다. 즉 화면에 표출된 데이터를 변경하면 자동으로 메모리에 있는 데이터까지 변경되는 것이다. 간단히 아래의 코드를 추가하여 확인해 보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;/table&gt;</span>
+{{userList}}
+<span class="c">&lt;!-- 메모리상에 존재하는 userList 배열을 표현하는 표현식이다. --&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>다시 브라우저로 index.html을 열고 테이블이 첫 번째 행의 이름 열의 값을 변경해 보면 아래 JSON형식으로 표현된 userList가 동시에 변경되는 것을 확인할 수 있다. 다음 그림은 단방향 데이터 바인딩과 양방향 데이터 바인딩을 설명해준다.</p>
+
+<p><img src="imgs/img05.png" alt="단방향 데이터 바인딩과 양방향 데이터 바인딩의 비교"></p>
+
+<p>위 그림에서 보는 바와 같이 데이터<sup>data</sup>가 변경되면 데이터와 템플릿<sup>template</sup>이 결합되어 화면<sup>view</sup>이 자동으로 갱신되고 화면의 데이터가 변경되면 메모리상의 데이터가 변경되어 다시 템플릿과 결합되어 화면을 변경하게 되는 것이다. 그럼 이제 사용자 관리 어플리케이션의 비즈니스 로직을 처리하는 코드를 구현하기 위해 MVC 패턴에 대하여 살펴보도록 하자.</p>
+
+<h3>MVC 패턴</h3>
+
+<p>AngularJS는 MVC 패턴을 통하여 웹 어플리케이션을 개발하도록 한다. 이때 비즈니스 로직을 구현현하는 컨트롤러를 위해 ng-controller라는 별도의 속성을 제공한다. AngularJS에서 컨트롤러는 많은 일을 하지 않는다. 단 하나의 역할 즉, 어플리케이션의 로직을 담당한다. 이를 다르게 설명하면 컨트롤러는 모델의 상태를 정의, 변경한다고 할 수 있다. 이제 우리의 사용자 관리 웹 어플리케이션에 컨트롤러를 적용해 보자. 우선 다음과 같이 새로운 자바스크립트 파일을 만들고 index.html에 스크립트 태그를 추가하자.</p>
+
+<p>-index.html-</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;libs/angular/angular.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- app.js를 만들고 index.html에 스크립트 태그로 추가한다. --&gt;</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></div>
+
+<p>-app.js-</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">mainCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">name</span> <span class="o">:</span> <span class="s1">&#39;가인&#39;</span><span class="p">,</span> <span class="nx">email</span> <span class="o">:</span> <span class="s1">&#39;gain@naver.com&#39;</span><span class="p">,</span> <span class="nx">regDate</span> <span class="o">:</span> <span class="s1">&#39;2014-06-30&#39;</span> <span class="p">}</span>
+  <span class="p">];</span>
+<span class="p">}</span></code></pre></div>
+
+<p>이제 ng-controller를 통해 특정 DOM에 컨트롤러 함수를 연결한다. 그리고 ng-init을 통하여 userList의 초기 상태를 정의한 코드는 삭제한다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">&quot;mainCtrl&quot;</span><span class="nt">&gt;</span></code></pre></div>
+
+<p>브라우저에서 어플리케이션을 다시 읽으면 이전과 같은 결과를 볼 수 있을 것이다. 하지만 mainCtrl 함수를 작성할 때 의아한 점이 있었을 것이다. 해당 함수의 인자에 $scope은 무엇이고 이 $scope의 속성으로 userList 배열을 정의하였는데 어떻게 userList가 템플릿에서 사용되고 mainCtrl 함수는 누가 호출하는 것일까? 이제 우리는 모델에 대하여 볼 것이다.</p>
+
+<p>AngularJS에서 모델은 사용자 정보, 도서 정보, 북마크 정보처럼 하나의 엔터티<sup>Entity</sup>나 여러 개의 엔터티이다. 그리고 이러한 엔터티를 AngularJS에서는 별다른 상속 없이 순수 자바스크립트 객 체로 표현한다. 하지만 중요한 점은 이러한 모델 객체는 $scope 객체로부터 접근할 수 있어야 한다는 것이다. 앞에서 mainCtrl 함수를 정의할 때 함수 안의 $scope객체에 우리는 userList 배열을 속성으로 정의하였다. 이는 userList 모델을 정의하였다고 볼 수 있다. 그리고 $scope객체는 AngularJS가 로드될 때 ng-controller에 연결된 함수를 찾아 실행하면서 프레임워크 내부에서 생성하여 함수의 인자로 주입시켜준다. 즉 우리가 만든 컨트롤러 함수가 AngularJS 프레임워크에 사용되는 것이다. 이렇게 정의된 모델은 템플릿과 연결되어 DOM을 만드는데 이 DOM이 뷰가 된다. 다음 그림은 MVC 요소 별 상호관계와 어플리케이션 구성 요소와 MVC 요소와의 관계를 보여준다.</p>
+
+<p><img src="imgs/img06.png" alt=" MVC 요소 별 상호관계 및 애플리케이션 구성 요소와 MVC 구성요소 관계"></p>
+
+<p>이제 새로운 사용자를 입력하는 로직을 추가하여 보자. 새로운 사용자를 입력하기 위해서는 상단의 추가버튼을 클릭한다. 그러면 새로운 행이 테이블에 추가되고 행의 오른쪽 바다색의 체크모양 버튼을 클릭하면 새로운 사용자 데이터가 추가된다. 새로 입력이 가능한 행과 기존 조회된 행을 구분하기 위해서 수정모드 먼저 추가하겠다. 즉, 조회된 데이터는 입력이 불가능하고 새로 추가되거나 수정하는 행만 입력이 가능케 한다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.name&quot;</span> <span class="na">ng-disabled=</span><span class="s">&quot;!user.edit&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+<span class="c">&lt;!-- </span>
+<span class="c">ng-disable를 추가하여 userList 배열요소 객체에 edit 속성의 false이면 입력을 막는다. --&gt;</span>
+<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;email&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.email&quot;</span> <span class="na">ng-disabled=</span><span class="s">&quot;!user.edit&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;date&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;user.regDate&quot;</span> <span class="na">ng-disabled=</span><span class="s">&quot;!user.edit&quot;</span><span class="nt">&gt;&lt;/td&gt;</span></code></pre></div>
+
+<p>브라우저에서 어플리케이션을 다시 읽으면 첫 행의 입력필드가 모두 비활성화 된 것을 볼 수 있을 것이다. 이제 새로운 사용자를 추가하는 로직을 app.js에 추가하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$scope</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="nx">edit</span> <span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
+<span class="p">};</span></code></pre></div>
+
+<p>앞의 app.js에서 우리는 insert 함수를 만들었다. 이 함수는 어플리케이션 사용자가 상단의 추가버튼을 클릭하면 호출되어야 한다 이때 우리는 클릭 이벤트와 컨트롤러에서 정의한 행위를 연결시켜주기 위해 ng-click을 이용할 수 있다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-info box&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;insert()&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-plus&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+<p>브라우저에서 어플리케이션을 다시 읽고 추가버튼을 클릭하면 새로운 행이 추가되는 것을 볼 수 있다. 이제 새로운 행에 사용자 정보를 입력하고 체크버튼을 클릭하는 부분을 구현해보자. 먼저 app.js에 입력완료를 처리하는 로직을 구현하자.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$scope</span><span class="p">.</span><span class="nx">complete</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">user</span><span class="p">.</span><span class="nx">edit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span></code></pre></div>
+
+<p>다음으로 바다색 체크버튼을 클릭할 때 complete함수를 호출하도록 템플릿을 수정하자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-info&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;complete(user)&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-ok&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+<p>다음으로 사용자정보 수정기능을 추가하자. 사용자 정보를 수정하는 기능은 단순히 행의 빨간색 연필모양 버튼을 클릭하면 사용자 정보의 edit 속성을 true로 바꾸기만 하면 된다. 왜냐하면 사용자 정보와 연결된 입력요소의 ng-disabled가 edit 속성을 주시하고 있다가 값이 true가 되면 해당 입력요소를 활성화 시키기 때문이다. 그러면 입력요소와 데이터 바인딩이 되어있는 사용자 정보를 변경할 수 있고 변경 시 데이터 바인딩 때문에 userList 모델의 값도 같이 변경된다. 다음은 수정 기능이 추가된 app.js와 index.html 코드이다.</p>
+
+<p>-app.js-</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$scope</span><span class="p">.</span><span class="nx">edit</span><span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">user</span><span class="p">.</span><span class="nx">edit</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span></code></pre></div>
+
+<p>-index.html-</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;edit(user)&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-pencil&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+<p>이제 사용자 추가와 사용자 수정기능을 모두 구현하였다. 하지만 지금까지 구현한 어플리케이션을 브라우저에서 보면 알 수 있겠지만 각 사용자 행에 있는 수정버튼과 입력완료 버튼이 동시에 보일 필요는 없다. 행이 수정 모드일 때는 입력완료 버튼이 보이면 되고 조회된 데이터에만 수정모드로 가도록 수정버튼이 보이면 된다. 간단히 템플릿만 수정하여 해당 기능을 추가해보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;!user.edit&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;edit(user)&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- 사용자 정보 목록인 userList 배열에서 각 배열요소의 edit 속성 값이 false이면 수정버튼을 보여준다. --&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-pencil&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-info&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;user.edit&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;edit(user)&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- 사용자 정보 목록인 userList 배열에서 각 배열요소의 edit 속성 값이 true이면 입력완료 버튼을 보여준다. --&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-ok&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/td&gt;</span></code></pre></div>
+
+<p>이제 마지막으로 사용자 데이터를 삭제하는 기능을 추가해 보자.</p>
+
+<p>-app.js-</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$scope</span><span class="p">.</span><span class="nx">del</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">userList</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="c1">//배열요소에서 해당 인덱스에 해당하는 값을 삭제한다.</span>
+<span class="p">}</span></code></pre></div>
+
+<p>-index.html-</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;del($index)&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-trash&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+<li><a href="http://wikibook.co.kr/beginning-angularjs/">시작하세요 angularjs 프로그래밍</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/angularjs">angularjs</a>&nbsp;<a href="/tags/getstarted">getstarted</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+
+    <script>
+        $('#main_content').toc();
+
+        $(document).ready(function(){
+            $('#toc_location').affix({
+                offset:{
+                    top: function(){
+                        return 550;
+                    }
+                }
+            });
+        })
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

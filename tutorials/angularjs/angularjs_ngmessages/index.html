@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - AngularJS 데이터바인딩 탐구</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">AngularJS 데이터바인딩 탐구</h1>
+<p class="title_header_summary">AngularJS 1.3이후부터 데이터바인딩에 대한 기능이 강력해졌다. 강려해진 폼과의 데이터 바인딩 처리인 ngModel에 대하여 자세히 살펴보겠다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>AngularJS에서 데이터바인딩</h1>
+
+<p>데이터바인딩이란 두 데이터 혹은 정보의 소스를 모두 일치시키는 기법이다. 웹 어플리케이션에서의 데이터바인딩이란 화면에 보이는 데이터와 브라우저 메모리에 있는 데이터를 일치시키는 거라 하겠다. AngularJS에서는 데이터바인딩 기능을 제공하기 위해 ngModel과 ngBind 지시자를 만들었다. 우리는 매번 AngularJS 기반의 웹 어플리케이션을 개발할때 두 지시자를 사용하곤 했다. 이번 튜토리얼에서는 여러분들에게 AngularJS에서 두 지시자의 사용법을 간단히 살펴보고 나아가 1.3버전 이후 더욱 강력해진 ngModel 지시자에 대하여 살펴보도록 하겠다.</p>
+
+<h2>ngBind 지시자</h2>
+
+<p>ngBind 지시자는 단방향<sup>one-way</sup> 데이터 바인딩을 지원한다. 여기서 단방향이란 자바스크립틔 데이터를 HTML 화면의 보여지는데 씌이는 데이터로 동기화를 의미하고 실제 HTML 요소의 텍스트 내용을 표현식의 결과로 바꾸고 표현식의 값이 바뀔때마다 지속적으로 업데이트를 한다. 간단한 예제를 보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span> <span class="na">ng-controller=</span><span class="s">&quot;mainController&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+  <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ngBindApp&#39;</span><span class="p">,</span> <span class="p">[]).</span>
+    <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;mainController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">){</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">changeValue</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">newVal</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="nx">newVal</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}]);</span>
+  <span class="nt">&lt;/script&gt;</span>
+  <span class="c">&lt;!-- ngBind 지시로 greeting 모델의 값(hello)에 데이터바인딩을 하였다. --&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">ng-bind=</span><span class="s">&quot;greeting&quot;</span><span class="nt">&gt;&lt;/h1&gt;</span>
+
+  <span class="c">&lt;!-- 버튼을 클릭하면 changeValue함수를 호출하고 자바스크립트 데이터를 변경한다. 해당 모델의 값이 변경되는 자동으로 바인딩된 화면의 값이 업데이트된다. --&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;changeValue(&#39;hello again&#39;)&quot;</span><span class="nt">&gt;</span>값 변경<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+<p>위 예제에서 greeting 모델의 값은 hello이다. 자바스크립트의 데이터로 정의된 이 값을 h1 태그의 텍스트 내용으로 바인딩을 하기 위해 ngBind 지시자를 h1태그의 속성으로 사용하였다. 또한 아래 &#39;값 변경&#39; 버튼을 클릭하면 greeding 모델의 값을 hello again으로 변경하도록 하였다. 모델 값이 변경이되면 AngularJS는 내부에서 자동으로 바인딩된 텍스트 내용을 변경된 값으로 업데이트 한다.</p>
+
+<h2>one-time 바인딩</h2>
+
+<p>단방향 데이터바인딩을 위해선 ngBind 지시자외에 이중 중괄호 <code>{{ }}</code>를 이용하여 자바스크립트 데이터 즉 모델 값을 화면 데이터로 연결할 수 있다. 위의 코드에서 ngBind를 사용한 부분을 아래와 같이 변경하면 된다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span> <span class="na">ng-controller=</span><span class="s">&quot;mainController&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+  <span class="c1">//생략</span>
+  <span class="nt">&lt;/script&gt;</span>
+  <span class="c">&lt;!-- 이중 중괄호를 이용하여 greeting 모델의 값(hello)에 데이터바인딩을 하였다. --&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>{{ greeting }}<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;changeValue(&#39;hello again&#39;)&quot;</span><span class="nt">&gt;</span>값 변경<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+<p>AngularJS 1.3에서는 성능적 향상을 위해 한번 데이터를 바인딩한 후 지속적으로 동기화를 할 필요가 없는 one-time 바인딩을 추가하였다. one-time 바인딩은 <code>::</code>으로 시작할 때 처리된다. 앞의 예제를 one-time 바인딩으로 변경하여 보자. </p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 바인딩하고자 하는 greeting 모델앞에 ::과 함께 작성하여 한번만 바인딩되게 하였다. --&gt;</span>
+ <span class="nt">&lt;h1&gt;</span>{{ ::greeting }}<span class="nt">&lt;/h1&gt;</span></code></pre></div>
+
+<p>위와 같이 <code>::greeting</code>으로 greeting 모델의 값과 h1태그의 텍스트 값을 한번만 바인딩하였기 때문에 버튼을 클릭해도 값이 변경되지 않음을 확인할 수 있다.</p>
+
+<p>one-time 바인딩은 처음 화면에 값을 출력하고 바뀔 필요가 없을 때 유용하게 사용될 수 있다. 이는 무분별한 watcher등록을 제한하여 성능향상을 가지고 올 수 있다.</p>
+
+<h2>ngModel 지시자</h2>
+
+<p>ngModel 지사자는 입력박스와 같은 폼컨트롤과 양방향<sup>tow-way</sup> 데이터 바인딩 처리를 지원한다. 즉 자바스크립트 데이터와 화면의 입력박스의 값을 서로 연결시켜 어느 한쪽의 값의 변경이 발생해도 서로 값이 동기화된다. 뿐만 아니라 벨리데이션 기능과 컨트롤의 상태(ng-valid, ng-invalid, ng-dirty, ng-pristine, ng-touched, ng-untouched, ng-empty, ng-not-empty)를 관리할 수 있다. 벨리데이션과 관련된 글은 <a href="../angularjs_form_validation">폼 유효성 처리</a>를 참고하자.</p>
+
+<p>그럼 간단한 ngModel 지시자를 사용한 예제를 살펴보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span> <span class="na">ng-app=</span><span class="s">&quot;ngBindApp&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>데이터바인딩 예제<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;bower_components/bootstrap/dist/css/bootstrap.css&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_components/angular/angular.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span> <span class="na">ng-controller=</span><span class="s">&quot;mainController&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+  <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;ngBindApp&#39;</span><span class="p">,</span> <span class="p">[]).</span>
+    <span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;mainController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">){</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">member</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="p">}]);</span>
+  <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;form&gt;</span>
+    <span class="nt">&lt;h4&gt;</span>회원가입<span class="nt">&lt;/h4&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label&gt;</span>아이디<span class="nt">&lt;/label&gt;</span>
+      <span class="c">&lt;!-- member 모델의 id속성과 데이터바인딩을 하였다. 화면값이 바뀌면 모델의 값도 바뀌게 된다. --&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;inputId&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;member.id&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label&gt;</span>이름<span class="nt">&lt;/label&gt;</span>
+      <span class="c">&lt;!-- member 모델의 name속성과 데이터바인딩을 하였다. --&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;inputName&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;member.name&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;radio-inline&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- member 모델의 gender속성과 데이터바인딩을 하였다. --&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;inlineradio1&quot;</span> <span class="na">value=</span><span class="s">&quot;male&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;member.gender&quot;</span><span class="nt">&gt;</span>남자
+      <span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;radio-inline&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- member 모델의 gender속성과 데이터바인딩을 하였다. --&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;inlineradio2&quot;</span> <span class="na">value=</span><span class="s">&quot;female&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;member.gender&quot;</span><span class="nt">&gt;</span>여자
+      <span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>가입<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;br&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="c">&lt;!-- member 모델의 값이 바뀌면 화면의 값이 업데이트 된다. --&gt;</span>
+      {{ member }}
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<p>위 예제를 보면 아이디 입력 컨트롤, 이름 입력 컨트롤, 성별 라디오 컨트롤이 member 모델과 바인딩이 되어 있다. 사용자가 입력 컨트롤에 값을 입력함과 동시에 모델의 값이 업데이트 되는 것을 확인할 수 있다. 우리가 제이쿼리로 이를 구현했다면 입력 컨트롤에 input 이벤트를 리스너 함수들을 등록하고 입력 컨트롤러의 값이 바뀌면 member 모델의 값을 변경했을 것이다. 이 모든 것을 AngularJS 가 내부적으로 해주고 있다.</p>
+
+<p>하지만 많은 모델에 watcher함수들이 등록되어 있거나 필요에 의해서 입력 값이 바로 모델에 바인딩이 되지 않고 일정 수준의 시간으로 딜레이를 주고 싶다면 어떻게 할까? AngularJS 1.3부터는 좀더 세세한 바인딩 처리를 위한 ngModelOption 지시자를 제공하기 시작했다.</p>
+
+<h2>ngModelOptions 지시자</h2>
+
+<p>ngModelOptions 지시자는 말 그래도 ngModel에 특정 옵션을 제공하기 위한 지시자이다. 앞에서 말한바와 같이 모델의 값을 업데이트하는 시간을 제한할 수 있는 debounce 옵션을 정의할 수 있다. debounce 옵션에는 밀리세컨드 단위로 숫자를 줄 수 있는데 아래 간단한 예제로 살펴보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;label&gt;</span>아이디<span class="nt">&lt;/label&gt;</span>
+   <span class="c">&lt;!-- ng-model-options 는 옵션객체로 계산되는 표현식이 올 수 있다. --&gt;</span>
+   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;inputId&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;member.id&quot;</span> <span class="na">ng-model-options=</span><span class="s">&quot;{debounce : 1000}&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>브라우저에서 예제를 구동해서 아이디 입력 컨트롤에 값을 입력하면 바로 member모델의 id속성 값에 반영이 되지 않아 아래 member 모델을 json형식으로 보여주는 텍스트가 업데이트 되지 않는 것을 확인할 수 있다. 입력 컨트롤러에 값을 입력한 후 1초후에 변경되는 것을 확인할 수 있다.</p>
+
+<p>ngModelOptions 지시자는 debounce 외에 몇 개의 옵션을 더 제공하는데 이번에는 updateOn 옵션에 대하여 보도록 하자. 이름에서도 유추할 수 있듯이 모델값을 업데이트 하기위한 이벤트를 정의할 수 있다. 모든 입력 컨트롤에는 default로 정의되는 모델 변경 이벤트들이 있는다. 예를 들면 키보드의 키를 누를 때마다 모델을 업데이트하라고 텍스트 입력 컨트롤은 default로 정의되어 있다. 그럼 onBlur 이벤트가 발생할 때 모델을 업데이트하라고 변경해보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;label&gt;</span>아이디<span class="nt">&lt;/label&gt;</span>
+   <span class="c">&lt;!-- 마우스 포커스가 텍스트 입력 컨트롤에서 빠져 나깔 때 blur이벤트가 발생하고 모델이 업데이트 된다. --&gt;</span>
+   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;inputId&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;member.id&quot;</span> <span class="na">ng-model-options=</span><span class="s">&quot;{updateOn : &#39;blur&#39;}&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label&gt;</span>이름<span class="nt">&lt;/label&gt;</span>
+  <span class="c">&lt;!-- AngularJS가 정의한 이벤트에 의해서도 모델을 업데이트하고 mouseenger 이벤트에서 모델이 업데이트 된다. --&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;inputName&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;member.name&quot;</span> <span class="na">ng-model-options=</span><span class="s">&quot;{updateOn : &#39;default mouseenter&#39;}&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>위 예제에서 맴버 아이디를 입력하는 아이디 텍스트 입력 컨트롤은 이전과 다르게 마우스 포커스가 입력 컨트롤에서 빠져 나가면 모델 값에 반영되는 것을 볼 수 있다. 아래는 조금 말이 안되긴 하지만 여러 이벤트들을 리스닝할 수 있다는 것을 보여준다. 또한 default라는 AngularJS가 정한 이벤트도 적용하겠다는 것을 알 수 있다.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/angularjs">angularjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;<a href="/tags/ngMessages">ngMessages</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

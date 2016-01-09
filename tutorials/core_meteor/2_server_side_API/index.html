@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Server-Side API 사용하기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #1C1C1F;color: #E4E4E4;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Server-Side API 사용하기</h1>
+<p class="title_header_summary">Meteor 방식으로 외부 서비스의 API를 사용하고 클라이언트와 데이터 동기화 하는 것을 배워보자</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/623157?v=3&s=460" alt="이재호">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            이재호
+
+                        </h4>
+                        acidsound<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>[Core Meteor] Server-Side API 사용하기</h1>
+
+<p>웹 어플리케이션을 만들다보면 필요한 기능을 직접 구현할 수도 있지만 외부에서 제공하는 API를 사용하여 적은 시간과 비용으로 서비스의 질을 높일 수 있다.</p>
+
+<p>필요한 데이터를 외부 서비스에 요청하는 방법과 그 데이터들을 Meteor에서 활용하는 방법을 배워보자.</p>
+
+<h2>API 호출</h2>
+
+<p>Meteor는 개발에 필요한 유용한 패키지들을 별도의 설치없이 기본적으로 제공한다.</p>
+
+<p>그 중 하나인 <a href="http://docs.meteor.com/#/full/http">HTTP</a> 패키지를 사용하여 REST API 요청을 구현해보자.</p>
+
+<p>HTTP 패키지에서 제공하는 함수들은 다음과 같다.</p>
+
+<ul>
+<li><a href="http://docs.meteor.com/#/full/http_call">HTTP.call</a></li>
+<li><a href="http://docs.meteor.com/#/full/http_get">HTTP.get</a></li>
+<li><a href="http://docs.meteor.com/#/full/http_post">HTTP.post</a></li>
+<li><a href="http://docs.meteor.com/#/full/http_put">HTTP.put</a></li>
+<li><a href="http://docs.meteor.com/#/full/http_del">HTTP.del</a></li>
+</ul>
+
+<p>HTTP.call 은 GET/POST/PUT/DELETE/HEAD/TRACE 등 <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">Request methods</a>를 명시적으로 지정할 때 사용하며</p>
+
+<p>일반적으로 많이 사용하는 GET/POST/PUT/DELETE 는 각각 HTTP.get, HTTP.post, HTTP.put, HTTP.del 함수를 사용한다.</p>
+
+<p>예제로 서울 열린데이터 광장의 &quot;1~4호선 지하철역 주소 및 전화번호&quot;를 가져와보자.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">http://openapi.seoul.go.kr:8088/sample/json/StationAdresTelno/1/5/
+</code></pre></div>
+<p>프로젝트를 생성한 후, HTTP 패키지를 <code>meteor add http</code>로 추가하고 <code>meteor shell</code>을 열고 아래와 같이 HTTP.get요청을 시도해본다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Welcome to the server-side interactive shell!
+
+Tab completion is enabled for global variables.
+
+Type .reload to restart the server and the shell.
+Type .exit to disconnect from the server and leave the shell.
+Type .help for additional help.
+
+&gt; HTTP.get(&#39;http://openapi.seoul.go.kr:8088/sample/json/StationAdresTelno/1/5/&#39;)
+{ statusCode: 200,
+  content: &#39;{&quot;StationAdresTelno&quot;:{&quot;list_total_count&quot;:121,&quot;RESULT&quot;:{&quot;CODE&quot;:&quot;INFO-000&quot;,&quot;MESSAGE&quot;:&quot;정상 처리되었습니다&quot;},&quot;row&quot;:[{&quot;LINE&quot;:&quot;1호선&quot;,&quot;STATN_NM&quot;:&quot;청량리&quot;,&quot;ADRES&quot;:&quot;서울 동대문구 왕산로 328-1&quot;,&quot;RDNMADR&quot;:&quot;서울특별시 동대문구 왕산로 지하 205 (전농동) (청량리역)&quot;,&quot;TELNO&quot;:&quot;6110-1241&quot;},{&quot;LINE&quot;:&quot;1호선&quot;,&quot;STATN_NM&quot;:&quot;제기동&quot;,&quot;ADRES&quot;:&quot;서울 동대문구 제기동 지하51번지&quot;,&quot;RDNMADR&quot;:&quot;서울특별시 동대문구 왕산로 지하 93 (제기동) (제기동역)&quot;,&quot;TELNO&quot;:&quot;6110-1251&quot;},{&quot;LINE&quot;:&quot;1호선&quot;,&quot;STATN_NM&quot;:&quot;신설동&quot;,&quot;ADRES&quot;:&quot;서울 동대문구 신설동 97-75&quot;,&quot;RDNMADR&quot;:&quot;서울특별시 동대문구 왕산로 지하 1 (신설동) (1호선 신설동역)&quot;,&quot;TELNO&quot;:&quot;6110-1261&quot;},{&quot;LINE&quot;:&quot;1호선&quot;,&quot;STATN_NM&quot;:&quot;동묘앞&quot;,&quot;ADRES&quot;:&quot;서울 종로구 숭인동 117번지&quot;,&quot;RDNMADR&quot;:&quot;서울특별시 종로구 종로 359 (숭인동) (1호선 동묘앞역)&quot;,&quot;TELNO&quot;:&quot;6110-1271&quot;},{&quot;LINE&quot;:&quot;1호선&quot;,&quot;STATN_NM&quot;:&quot;동대문&quot;,&quot;ADRES&quot;:&quot;서울 종로구 창신1동 552&quot;,&quot;RDNMADR&quot;:&quot;서울특별시 종로구 종로 지하 302 (창신1동) (1호선 동대문역)&quot;,&quot;TELNO&quot;:&quot;6110-1281&quot;}]}}&#39;,
+  headers:
+   { &#39;access-control-allow-origin&#39;: &#39;*&#39;,
+     date: &#39;Fri, 13 Nov 2015 18:22:13 GMT&#39;,
+     server: &#39;Restlet-Framework/2.0.3&#39;,
+     &#39;content-type&#39;: &#39;application/json; charset=UTF-8&#39;,
+     &#39;accept-ranges&#39;: &#39;bytes&#39;,
+     connection: &#39;Keep-Alive&#39;,
+     &#39;set-cookie&#39;: [ &#39;WMONID=m8u_I8CU5m1;Expires=Sat, 12-Nov-2016 18:22:13 GMT;Path=/&#39; ],
+     &#39;content-length&#39;: &#39;1118&#39; },
+  data:
+   { StationAdresTelno:
+      { list_total_count: 121,
+        RESULT: [Object],
+        row: [Object] } } }
+</code></pre></div>
+<p>content에 String형태로 JSON 결과값을 반환하는 것을 확인할 수 있다.</p>
+
+<p>준비는 다 되었다.</p>
+
+<p>이제 <code>JSON.parse(content).StationAdresTelno.row</code> 값을 받아서 전달해보자.</p>
+
+<h2>Method를 사용하는 방법</h2>
+
+<p>서버쪽에 아래와 같이 구현한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">methods</span><span class="p">({</span>
+  <span class="s2">&quot;getTelNoOfSubway&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span>
+      <span class="nx">HTTP</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span>
+        <span class="s1">&#39;http://openapi.seoul.go.kr:8088/sample/json/StationAdresTelno/1/5/&#39;</span>
+      <span class="p">).</span><span class="nx">content</span><span class="p">).</span><span class="nx">StationAdresTelno</span><span class="p">.</span><span class="nx">row</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>간펴하고 직관적인 방법이다.</p>
+
+<p>실제 호출은 브라우저 콘솔창에서</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s1">&#39;getTelNoOfSubway&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span> <span class="p">});</span>
+</code></pre></div>
+<p>이렇게 확인해보면 된다.</p>
+
+<h2>Publish/Subscribe를 사용하는 방법</h2>
+
+<p>먼저 공통(client/server)구간에 Subscribe 받을 Collection을 만든다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">SubwayTelNo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">.</span><span class="nx">Collection</span><span class="p">(</span><span class="s1">&#39;subwayTelNo&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>서버쪽에 publish를 만들고</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">&quot;publishSubwayTelNo&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">instance</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span>
+    <span class="nx">HTTP</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span>
+      <span class="s1">&#39;http://openapi.seoul.go.kr:8088/sample/json/StationAdresTelno/1/5/&#39;</span>
+    <span class="p">).</span><span class="nx">content</span><span class="p">).</span><span class="nx">StationAdresTelno</span><span class="p">.</span><span class="nx">row</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">instance</span><span class="p">.</span><span class="nx">added</span><span class="p">(</span><span class="s1">&#39;subwayTelNo&#39;</span><span class="p">,</span> <span class="nx">Random</span><span class="p">.</span><span class="nx">id</span><span class="p">(),</span> <span class="nx">obj</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">instance</span><span class="p">.</span><span class="nx">ready</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>콘솔에서 테스트해보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">handler</span><span class="o">=</span><span class="nx">Meteor</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;publishSubwayTelNo&#39;</span><span class="p">);</span>
+<span class="nx">SubwayTelNo</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">fetch</span><span class="p">();</span>
+</code></pre></div>
+<p>조금 복잡하지만 이 방법을 더 추천하는데 그 이유는 Collection에 넣으면 miniMongo를 사용할 수 있으므로 find()명령을 이용한 정렬과 필터가 가능하여 매우 유용하고 편리하기 떄문이다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/meteor">meteor</a>&nbsp;<a href="/tags/REST">REST</a>&nbsp;<a href="/tags/API">API</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

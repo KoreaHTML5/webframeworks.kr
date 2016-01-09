@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 화려한 UI를 위한 Animiation 처리 알아보기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">화려한 UI를 위한 Animiation 처리 알아보기</h1>
+<p class="title_header_summary">웹 어플리케이션을 개발하기 위한 주요 기능은 아니지만 웹 어플리케이션을 좀 더 화려하고 더욱 생명력이 넘치게 보이는 애니메이션 처리에 대하여 살펴 보도록 하겠다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/912457?v=2&u=d21f5c15ee6f71c888c43b7bf42b147a7a68ce08&s=140" alt="고재도">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            고재도
+
+                        </h4>
+                        jeado<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>화려한 UI를 위한 Animiation 처리 알아보기</h1>
+
+<h2>애니메이션 적용하기</h2>
+
+<p>AngularJS에서 애니메이션 기능을 사용하기 위해서는 ngAnimate 모듈을 사용해야 한다. ngAnimate 모듈은 angular-animate.js를 통해 제공된다. 그래서 해당 자바스크립트 파일을 angular.js 다음으로 스크립트 태그를 이용해서 로드해야한다. 그럼 <a href="/getstarted/angularjs/">AngularJS Getting Start</a>에서 만들었던 사용자관리 웹 어플리케이션에 애니메이션 기능을 적용해보자. 우선 index.html 파일에 다음과 같이 angular-animate.js 파일을 추가한다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;head&gt;</span>
+ <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;title&gt;</span>사용자 관리 DEMO APP<span class="nt">&lt;/title&gt;</span>
+ <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;libs/bootstrap/css/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;resources/app.css&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;libs/angular/angular.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+ <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;libs/angular/angular-animate.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+ <span class="c">&lt;!-- 애니메이션 기능을 위해 angular-animate.js 파일을 추가해 준다. --&gt;</span>
+ <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;libs/angular/angular-cookies.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+ <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;libs/ui-bootstrap/ui-bootstrap-0.8.0.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+ <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;libs/ui-bootstrap/ui-bootstrap-tpls-0.8.0.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+ <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></div>
+
+<p>다음으로 app.js에서 모듈을 선언한 부분에 ngAnimate 모듈 디펜던시를 추가한다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;userMgnt&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngCookies&#39;</span><span class="p">,</span><span class="s1">&#39;ui.bootstrap&#39;</span><span class="p">,</span><span class="err">’</span><span class="nx">ngAnimate</span><span class="err">’</span><span class="p">])</span></code></pre></div>
+
+<p>ngAnimate 모듈을 적용하고 브라우저에서 사용자관리 웹 어플리케이션을 다시 읽으면 아무런 변화가 없는 것을 알 수 있다. 애니메이션이 동작하는 것을 보려면 어떻게 DOM 요소를 움직이게 할 지 정의를 해야 한다. 이때 우리는 CSS 트랜지션과 키프레임 애니메이션을 이용하여 애니메이션을 CSS로 정의할 수 있다. CSS 트랜지션과 키프레임 애니메이션은 CSS3에서 포함되었고 현재 인터넷 익스프플로어 10이상과 다른 모든 브라우저에서 지원한다.</p>
+
+<p>AngularJS는 CSS3 애니메이션을 이용해서 애니메이션 처리를 하는데 대다수의 지시자들은 애니메이션 처리를 자동으로 지원하고 사용자 정의 지시자는 애니메이션을 위한 $animate 서비스를 통해 처리할 수 있다. 예를 들면 ngRepeat 지시자는 DOM 요소가 추가되면 .ng-enter CSS 클래스를 추가하고 이를 enter 이벤트라고 정의한다. 마찬가지로 DOM 요소의 순서가 변경되면 move 이벤트가 발생하였다고 하고 .ng-move CSS 클래스를 추가한다. 마지막으로 DOM 요소가 삭제되면 .ng-leave CSS 클래스가 추가된다. 이렇게 추가된  CSS 클래스를 이용해서 CSS 애니메이션을 정의할 수 있다. 다음 표는 AngularJS가 자동으로 애니메이션을 지원하는 지시자들을 나타낸다.</p>
+
+<table><thead>
+<tr>
+<th>지시자</th>
+<th>이벤트</th>
+<th>시작 CSS 클래스</th>
+<th style="text-align: center">종료 CSS 클래스</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ngRepeat</td>
+<td>enter, leave, move</td>
+<td>.ng-enter,.ng-leave,.ng-move</td>
+<td style="text-align: center">.ng-enter-active,.ng-leave-active,ng-move-active</td>
+</tr>
+<tr>
+<td>ngVIew</td>
+<td>enter, leave</td>
+<td>.ng-enter, .ng-leave</td>
+<td style="text-align: center">.ng-enter-active, .ng-leave-active</td>
+</tr>
+<tr>
+<td>ngInclude</td>
+<td>enter, leave</td>
+<td>.ng-enter, .ng-leave</td>
+<td style="text-align: center">.ng-enter-active,.ng-leave-active</td>
+</tr>
+<tr>
+<td>ngSwitch</td>
+<td>enter, leave</td>
+<td>.ng-enter, .ng-leave</td>
+<td style="text-align: center">.ng-enter-active, .ng-leave-active</td>
+</tr>
+<tr>
+<td>ngIf</td>
+<td>enter, leave</td>
+<td>.ng-enter, .ng-leave</td>
+<td style="text-align: center">.ng-enter-active, .ng-leave-active</td>
+</tr>
+<tr>
+<td>ngClass</td>
+<td>add, remove <br> (추가된 클래스가 add되거나 remove 되는 이벤트)</td>
+<td>.추가된 클래스-add, .추가된 클래스-remove</td>
+<td style="text-align: center">.추가된 클래스-add-active, .추가된 클래스-remove-active</td>
+</tr>
+<tr>
+<td>ngShow, <br>ngHide</td>
+<td>add, remove <br> (ng-hide 클래스가 addd되거나 remove 되는 이벤트)</td>
+<td>.ng-hide-add .ng-hide-remove</td>
+<td style="text-align: center">.ng-hide-add-active .ng-hide-remove-active</td>
+</tr>
+</tbody></table>
+
+<p>위 표를 보면 시작 CSS 클래스와 종료 CSS 클래스가 있다. 종료 CSS 클래스는 CSS3 트랜지션 처리시 필요하고 이는 다음 이어질 CSS3 트랜지션에서 자세히 보도록 하겠다. </p>
+
+<h2>CSS 트랜지션 적용하기</h2>
+
+<p>일반적으로 CSS 속성의 값이 변경될 때 변경된 값은 즉시 적용된다. 가령 투명도가 0이었는데 해당 CSS가 적용된 DOM 요소 위에 마우스를 올라갔을 때(hover) 투명도를 1로 변경 한다고 하자. 이를 코드로 나타내면 아래와 같다.</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.my-div</span> <span class="p">{</span>
+ <span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.my-div</span><span class="nd">:hover</span> <span class="p">{</span>
+ <span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<p>.my-div 클래스가 적용된 DOM 요소에 마우스 커서가 올리면 해당 DOM 요소의 투명도가 0이 되면서 바로 안보이게 된다. 하지만 투명도를 2초간 서서히 줄이면서 안보이게 하고 싶다고 하면 이때 우리는 CSS 트랜지션이 적용할 수 있다. 즉, CSS 트랜지션은 CSS 속성이 변경되는 것을 일정한 기간을 주어 즉시 변경이 되는 것이 아니라 기간 동안 타임 함수에 의하여 변경되도록 한다. 다음 코드는 트랜지션을 적용한 코드이다.</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.my-div</span> <span class="p">{</span>
+ <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="k">opacity</span> <span class="m">0.6s</span> <span class="n">ease</span><span class="p">;</span>
+ <span class="o">//</span><span class="err">웹킷</span> <span class="err">브라우저용</span> <span class="n">prefix</span><span class="err">를</span> <span class="err">적용하였다</span><span class="o">.</span>
+ <span class="n">transition</span><span class="o">:</span> <span class="k">opacity</span> <span class="m">0.6s</span> <span class="n">ease</span><span class="p">;</span>
+ <span class="o">//</span><span class="m">0</span><span class="o">.</span><span class="m">6</span><span class="err">초동안</span> <span class="k">opacity</span> <span class="err">속성에</span> <span class="err">트렌지션을</span> <span class="err">적용한다</span><span class="o">.</span> <span class="err">타이밍</span> <span class="err">함수는</span> <span class="n">ease</span><span class="err">를</span> <span class="err">적용하였다</span><span class="o">.</span>
+ <span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.my-div</span><span class="nd">:hover</span> <span class="p">{</span>
+ <span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<p>AngularJS의 애니메이션은 위와 같은 CSS 트랜지션을 이용하여 애니메이션 처리를 할 수 있다. 앞에서 봤듯이 CSS 트랜지션에는 속성 값이 변경 전 초기 값이 있고 변경이 완료된 값이 있다. 그래서 AngularJS가 정의한 시작 CSS 클래스에 변경 전 초기 값을 입력하면 되고 종료 CSS 클래스에 변경하고자 하는 완료된 속성값을 작성하면 CSS 트랜지션을 이용하여 애니메이션 처리가 된다.</p>
+
+<p>그럼 사용자관리 웹 어플리케이션에서 수정, 수정완료 버튼에 간단히 CSS 트랜지션을 이용해서 애니메이션을 추가해보자. 우선 index.html 파일에서 애니메이션을 적용할 대상에 CSS 클래스를 부여한다.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- 생략 --&gt;</span>
+<span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;center btn-container&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- 3D 처리를 위해 버튼 컨테이너 클래스를 추가한다. --&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger ani-button&quot;</span> <span class="na">class=</span><span class="s">&quot;&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;!user.edit&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;edit(user)&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- AngularJS 애니메이션 처리를 위해서 대상 DOM 요소에 CSS 클래스를 정의해 준다. 해당 클래스에 .ng-이벤트, .ng-이벤트-active 클래스와 함께 애니메이션 정의를 한다. --&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-pencil&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-info ani-button&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;user.edit&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;complete(user)&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- 위와 마찬가지로 AngularJS 애니메이션 처리를 위해서 대상 DOM 요소에 CSS 클래스를 정의해 준다. --&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-ok&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;del($index)&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&#39;icon-white icon-trash&#39;</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/td&gt;</span>
+<span class="c">&lt;!-- 생략 --&gt;</span></code></pre></div>
+
+<p>이제 실제 CSS 트랜지션 처리를 위해 animation.css 파일을 다음과 같이 작성한다.</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.btn-container</span><span class="p">{</span>
+  <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.ani-button</span> <span class="p">{</span>
+  <span class="k">z-index</span><span class="o">:</span> <span class="m">2</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">0</span><span class="n">deg</span><span class="p">);</span>
+  <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">0</span><span class="n">deg</span><span class="p">);</span>
+  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">0</span><span class="n">deg</span><span class="p">);</span>
+  <span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">0</span><span class="n">deg</span><span class="p">);</span>
+<span class="o">//</span><span class="n">CSS</span><span class="err">의</span> <span class="n">transform</span><span class="err">을</span> <span class="err">이용하여</span> <span class="err">초기</span> <span class="err">상태를</span> <span class="n">Y</span><span class="err">축으로</span> <span class="m">0</span><span class="err">도로</span> <span class="err">회전시킨다</span><span class="o">.</span>
+  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+  <span class="k">top</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span>
+  <span class="k">left</span><span class="o">:</span> <span class="m">12px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.ani-button.ng-hide-remove</span><span class="p">{</span>
+<span class="o">//</span><span class="n">ngShow</span><span class="o">/</span><span class="n">ngHide</span> <span class="err">지시자는</span> <span class="err">적용된</span> <span class="n">DOM</span> <span class="err">요소가</span> <span class="err">안보이게</span> <span class="err">될</span> <span class="err">때</span> <span class="o">.</span><span class="n">ng</span><span class="o">-</span><span class="k">hide</span> <span class="err">클래스를</span> <span class="err">추가한다</span><span class="o">.</span> <span class="err">그리고</span> <span class="err">다시</span> <span class="err">보이게</span> <span class="err">될</span> <span class="err">때</span> <span class="o">.</span><span class="n">ng</span><span class="o">-</span><span class="k">hide</span><span class="err">를</span> <span class="err">제거하는데</span> <span class="err">제거</span> <span class="err">되기</span> <span class="err">직전에</span> <span class="o">.</span><span class="n">ng</span><span class="o">-</span><span class="k">hide</span><span class="o">-</span><span class="n">remove</span> <span class="err">클래스가</span> <span class="err">추가되게</span> <span class="err">된다</span><span class="o">.</span> <span class="err">이때</span> <span class="err">트랜지션</span> <span class="err">초기상태를</span> <span class="err">정의할</span> <span class="err">수</span> <span class="err">있다</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="m">0.6s</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="m">0.6s</span><span class="p">;</span>
+  <span class="n">transition</span><span class="o">:</span> <span class="m">0.6s</span><span class="p">;</span>
+<span class="o">//</span><span class="n">CSS</span> <span class="n">Transition</span><span class="err">을</span> <span class="m">0</span><span class="o">.</span><span class="m">6</span><span class="err">초</span> <span class="err">동안</span> <span class="err">모든</span> <span class="err">속성의</span> <span class="err">변경값을</span> <span class="err">변경되도록</span> <span class="err">설정한다</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">preserve</span><span class="m">-3</span><span class="n">d</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">preserve</span><span class="m">-3</span><span class="n">d</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">transform</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">preserve</span><span class="m">-3</span><span class="n">d</span><span class="p">;</span>
+  <span class="n">transform</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">preserve</span><span class="m">-3</span><span class="n">d</span><span class="p">;</span> 
+  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+  <span class="k">top</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span>
+  <span class="k">left</span><span class="o">:</span> <span class="m">12px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.ani-button.ng-hide</span><span class="p">{</span>
+<span class="o">//</span><span class="n">ngShow</span><span class="o">/</span><span class="n">ngHide</span> <span class="err">지시자가</span> <span class="err">속성으로</span> <span class="err">사용되어</span> <span class="err">해당</span> <span class="err">속성값의</span> <span class="err">표현식의</span> <span class="err">결과가</span> <span class="n">false</span><span class="o">/</span><span class="n">true</span><span class="err">가</span> <span class="err">되면</span> <span class="o">.</span><span class="n">ng</span><span class="o">-</span><span class="k">hide</span> <span class="err">클래스가</span> <span class="err">추가된다</span><span class="o">.</span> <span class="err">그때</span> <span class="err">해당</span> <span class="n">CSS</span> <span class="err">규칙이</span> <span class="err">적용된다</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90</span><span class="n">deg</span><span class="p">);</span>
+  <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90</span><span class="n">deg</span><span class="p">);</span>
+  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90</span><span class="n">deg</span><span class="p">);</span>
+  <span class="n">transform</span><span class="o">:</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90</span><span class="n">deg</span><span class="p">);</span>
+<span class="o">//</span><span class="n">transform</span><span class="err">을</span> <span class="err">이용하여</span> <span class="n">Y</span><span class="err">축으로</span> <span class="m">90</span><span class="err">도</span> <span class="err">회전시킨다</span><span class="o">.</span>
+<span class="p">}</span></code></pre></div>
+
+<p>사용자관리 웹 어플리케이션을 브라우저에서 다시 확인해보자. </p>
+
+<p><img src="imgs/animation_tutorial_01.png" style="width:600px;height:320px;" alt="AngularJS Modules 사이트" title="AngularJS Modules 사이트"></p>
+
+<p>앞의 그림과 같이 테이블 각 행의 왼쪽에 있는 수정/수정완료 버튼을 클릭하면 Y축으로 회전이 되면서 수정 버튼이 안보이고 수정완료 버튼이 안보이게 되는 애니메이션을 확인할 수 있을 것이다. 다음으로 CSS 키프레임 애니메이션에 대하여 살펴보자.</p>
+
+<h2>CSS 키프레임 애니메이션 적용하기</h2>
+
+<p>CSS 키프레임 애니메이션은 정해진 시간분할을 퍼센트지(%)로 표현하여 각 분활 된 시간에 따른 애니메이션을 정의할 수 있다. 트랜지션과는 다르게 시작과 끝에 따른 CSS 클래스가 필요 없고 시작 CSS에 적용할 animation-name 속성으로 키프레임을 지정해주면 된다. </p>
+
+<p>그럼 사용자관리 웹 어플리케이션에서 데이터를 테이블로 표현하기 위해 사용한 ngRepeat 지시자에 애니메이션 처리를 추가해보자. 우선 index.html 파일에서 ngRepeat 지시자가 추가된 DOM 요소에 애니메이션 처리에 필요한 클래스 이름을 추가해보자.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table table-striped table-hover&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>이름<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>E-Mail<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>가입 날짜<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>수정<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>삭제<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/thead&gt;</span>
+<span class="nt">&lt;tbody&gt;</span>
+  <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;ani-repeat&quot;</span> <span class="na">ng-repeat=</span><span class="s">&quot;user in userList&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- AngularJS 애니메이션 처리를 위해서 대상 DOM 요소에 CSS 클래스를 정의해 준다. --&gt;</span>
+<span class="c">&lt;!-- 생략 --&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;/tbody&gt;</span></code></pre></div>
+
+<p>다음으로 animation.css에 키프레임 애니메이션을 추가하자. 사용자 태이블의 행을 추가하거나 삭제할 때 행이 바로 추가되거나 삭제되지 않고 애니메이션을 적용해 행이 추가되면 투명도가 서서히 밝아지고 삭제하면 서서히 흐려지도록 한다. 이때 우리는 @keyframes을 이용해서 키프레임을 정의하는데 투명도가 서서히 밝아지는 opacity-bright-animation과 서서히 어두워지는 opacity-dim-animaiton을 키프레임으로 작성할 수 있다.</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@keyframes</span> <span class="nt">opacity-bright-animation</span> <span class="p">{</span>
+<span class="nt">from</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">to</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@keyframes</span> <span class="nt">opacity-dim-animation</span> <span class="p">{</span>
+<span class="nt">from</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">to</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>작성된 키프레임은 AngularJS 애니메이션 이벤트에 해당하는 시작 CSS 클래스에서 animation 속성에 사용되어 특정 애니메이션 이벤트가 시작할 때 키프레임을 적용하게 된다. CSS 트랜지션과는 다르게 종료 CSS 클래스가 사용되지 않는다. 다음은 키프레임 애니메이션이 추가된 animation.css 내용이다.</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.ani-repeat.ng-enter</span> <span class="p">{</span>
+<span class="n">DOM</span> <span class="err">요소가</span> <span class="err">새로</span> <span class="err">추가되면</span> <span class="n">enter</span> <span class="err">이벤트가</span> <span class="err">발생하고</span> <span class="o">.</span><span class="n">ng</span><span class="o">-</span><span class="n">enter</span> <span class="n">CSS</span> <span class="err">클래스가</span> <span class="err">해당</span> <span class="n">DOM</span> <span class="err">요소에</span> <span class="err">추가된다</span><span class="o">.</span> <span class="err">이때</span> <span class="n">animation</span> <span class="err">속성으로</span> <span class="err">어떤</span> <span class="err">키프레임을</span> <span class="err">특정</span> <span class="err">기간</span> <span class="err">동안</span> <span class="err">적용할</span> <span class="err">지</span> <span class="err">작성한다</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span> <span class="m">0.5s</span> <span class="k">opacity</span><span class="o">-</span><span class="n">bright</span><span class="o">-</span><span class="n">animation</span><span class="p">;</span>
+  <span class="n">animation</span><span class="o">:</span> <span class="m">0.5s</span> <span class="k">opacity</span><span class="o">-</span><span class="n">bright</span><span class="o">-</span><span class="n">animation</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.ani-repeat.ng-leave</span> <span class="p">{</span>
+<span class="n">DOM</span> <span class="err">요소가</span> <span class="err">삭제되면</span> <span class="n">leave</span> <span class="err">이벤트가</span> <span class="err">발생하고</span> <span class="o">.</span><span class="n">ng</span><span class="o">-</span><span class="n">leave</span> <span class="n">CSS</span> <span class="err">클래스가</span> <span class="err">해당</span> <span class="n">DOM</span> <span class="err">요소에</span> <span class="err">추가된다</span><span class="o">.</span> <span class="err">이때</span> <span class="n">animation</span> <span class="err">속성으로</span> <span class="err">어떤</span> <span class="err">키프레임을</span> <span class="err">특정</span> <span class="err">기간</span> <span class="err">동안</span> <span class="err">적용할</span> <span class="err">지</span> <span class="err">작성한다</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span> <span class="m">0.5s</span>  <span class="k">opacity</span><span class="o">-</span><span class="n">dim</span><span class="o">-</span><span class="n">animation</span><span class="p">;</span>
+  <span class="n">animation</span><span class="o">:</span> <span class="m">0.5s</span>  <span class="k">opacity</span><span class="o">-</span><span class="n">dim</span><span class="o">-</span><span class="n">animation</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.ani-repeat.ng-move</span> <span class="p">{</span>
+<span class="n">DOM</span> <span class="err">요소가</span> <span class="err">이동하면</span> <span class="n">move</span> <span class="err">이벤트가</span> <span class="err">발생하고</span> <span class="o">.</span><span class="n">ng</span><span class="o">-</span><span class="n">enter</span> <span class="n">CSS</span> <span class="err">클래스가</span> <span class="err">해당</span> <span class="n">DOM</span> <span class="err">요소에</span> <span class="err">추가된다</span><span class="o">.</span> <span class="err">이때</span> <span class="n">animation</span> <span class="err">속성으로</span> <span class="err">어떤</span> <span class="err">키프레임을</span> <span class="err">특정</span> <span class="err">기간</span> <span class="err">동안</span> <span class="err">적용할</span> <span class="err">지</span> <span class="err">작성한다</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span> <span class="m">0.5s</span> <span class="k">opacity</span><span class="o">-</span><span class="n">bright</span><span class="o">-</span><span class="n">animation</span><span class="p">;</span>
+  <span class="n">animation</span><span class="o">:</span> <span class="m">0.5s</span> <span class="k">opacity</span><span class="o">-</span><span class="n">bright</span><span class="o">-</span><span class="n">animation</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@keyframes</span> <span class="nt">opacity-bright-animation</span> <span class="p">{</span>
+<span class="err">투명도를</span> <span class="nt">0</span><span class="err">에서</span> <span class="nt">1</span><span class="err">로</span> <span class="err">변경하는</span> <span class="err">키프레임을</span> <span class="err">정의한다</span><span class="o">.</span>
+  <span class="nt">from</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+  <span class="nt">to</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@-webkit-keyframes</span> <span class="nt">opacity-bright-animation</span> <span class="p">{</span>
+<span class="err">웹킷</span> <span class="err">브라우저용</span> <span class="err">접두어를</span> <span class="err">주어</span> <span class="err">해당</span> <span class="err">브라우저에</span> <span class="nt">CSS</span> <span class="err">규칙이</span> <span class="err">적용되게</span> <span class="err">한다</span><span class="o">.</span>
+  <span class="nt">from</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+  <span class="nt">to</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@keyframes</span> <span class="nt">opacity-dim-animation</span> <span class="p">{</span>
+<span class="err">투명도를</span> <span class="nt">1</span><span class="err">에서</span> <span class="nt">0</span><span class="err">로</span> <span class="err">변경하는</span> <span class="err">키프레임을</span> <span class="err">정의한다</span><span class="o">.</span>
+  <span class="nt">from</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="nt">to</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@-webkit-keyframes</span> <span class="nt">opacity-dim-animation</span> <span class="p">{</span>
+<span class="err">웹킷</span> <span class="err">브라우저용</span> <span class="err">접두어를</span> <span class="err">주어</span> <span class="err">해당</span> <span class="err">브라우저에</span> <span class="nt">CSS</span> <span class="err">규칙이</span> <span class="err">적용되게</span> <span class="err">한다</span><span class="o">.</span>
+  <span class="nt">from</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="nt">to</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>이제 사용자관리 웹 어플리케이션을 브라우저에서 다시 확인하고 새로운 사용자를 추가하면 다음 그림과 같이 새로운 행이 서서히 밝아지면서 추가되는 것을 확인할 수 있을 것이다.</p>
+
+<p><img src="imgs/animation_tutorial_02.png" style="width:600px;height:320px;" alt="AngularJS Modules 사이트" title="AngularJS Modules 사이트"></p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://docs.angularjs.org/">angularjs official document</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/angularjs">angularjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;<a href="/tags/animation">animation</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

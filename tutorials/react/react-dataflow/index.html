@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - React 앱의 데이터 흐름</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">React 앱의 데이터 흐름</h1>
+<p class="title_header_summary">React 앱의 단방향 데이터 흐름이 props와 state로 어떻게 표현되는지, props와 state 속성을 어떻게 사용하는지  심도깊게 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars1.githubusercontent.com/u/484290?v=3&s=460" alt="이재호">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            이재호
+
+                        </h4>
+                        sairion<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>One-way Data Flow</h2>
+
+<p>React 프로젝트의 메인 페이지를 보면, &quot;one-way reactive data flow&quot; 라고 설명이 되어 있습니다. 즉, React의 데이터 흐름은 단방향이고, Reactive하다는 특징을 가지고 있습니다. 좀 더 설명하면, 이전 글에서도 설명했듯이 데이터는 Parent로부터 Child로 흐르며, 데이터의 갱신에 반응하여 뷰 또한 갱신됩니다.</p>
+
+<h2>Components Relationship</h2>
+
+<h3>Parent/Children</h3>
+
+<p>DOM의 parent-children 관계와 거의 비슷하며, React 컴포넌트들은 상위 컴포넌트, 하위 컴포넌트가 존재합니다. 다만 DOM의 <code>node.parentNode</code>와 같은 API는 없으므로, 하위 컴포넌트는 상위 컴포넌트에 대해 거의 알 수 없습니다.</p>
+
+<h3>Owner / Ownee</h3>
+
+<p><code>ReactOwner</code>는 ownee들의 <code>ref</code>를 획득할 수 있는 상위 컴포넌트입니다. 내부를 깊게 공부하다보면 나오는 토픽이긴 하나, 일반적인 애플리케이션 개발자가 알아야 할 정도는 아닙니다.</p>
+
+<h2>Props</h2>
+
+<p><code>props</code>는 parent로부터 받는 데이터이며 (자식 컴포넌트의 입장에서는) 불변성 데이터, 즉 값을 바꿀 수 없는 데이터라고 생각해도 됩니다 (<code>this.setProps()</code>와 같은 메서드가 있긴 하나, deprecated method이며 사용이 권장되지 않습니다). 아래의 <em>패턴: Smart and Dumb Components</em>에서 간략히 설명하겠지만, 많은 mutable state(변경 가능한 값)들은 Prop으로 대체 표현되거나 한 곳으로 몰아 넣을 수 있습니다.</p>
+
+<p>props는 거의 대부분의 데이터를 표현하는 중요한 방법으로, React 라이브러리의 사용자는 <code>state</code>보다는 <code>props</code>의 사용에 더 익숙해져야 할 것입니다. <code>props</code>로 표현된 데이터는 이전 글에서 설명했듯이, 마운트와 업데이트 시 <code>React.Proptypes</code> API로 런타임 타입 체크가 가능해 잘못된 상황을 빨리 감지할 수 있는 이점도 있습니다.</p>
+
+<h3>Controlled Components / Uncontrolled Components</h3>
+
+<p>폼을 구성하는 HTML 엘리먼트들(i.e. <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code> <code>&lt;option&gt;</code>)은 React의 reactive data flow의 관점에서, 사용자의 입력을 통한 뷰 변경과 데이터의 변경이 동시에 일어나는 특수한 엘리먼트입니다. React에서는 Control이라는 개념으로 이를 제어합니다. 굉장히 단순(러프)하게 설명하자면, <code>value</code> prop이 주어진 엘리먼트들은 React에서 값의 변경을 제어하며, Controlled Component라고 칭해집니다. 자세한 정보는 역시 <a href="https://facebook.github.io/react/docs/forms-ko-KR.html">공식 문서</a>를 참고합시다.</p>
+
+<h3>Special property: <code>props.children</code></h3>
+
+<p>props 중의 특수 프로퍼티로, 이 프로퍼티를 이용하여 자식 ReactElement를 다루거나 자식 프로퍼티의 DOM 엘리먼트의 위치를 기술할 수 있습니다. Wrapper 컴포넌트 등에서 많이 사용하게 됩니다.</p>
+
+<h3>Special non-DOM attributes</h3>
+
+<p>(<a href="https://facebook.github.io/react/docs/special-non-dom-attributes.html">공식 문서</a>)
+<code>key</code>, <code>ref</code>, <code>dangerouslySetInnerHTML</code>는 다른 Props와 같이 HTML 어트리뷰트처럼 기술하지만, prop은 아닙니다. 즉, 자식 컴포넌트에서 <code>this.props.key</code> <code>this.props.ref</code> 등으로 접근할 수 없는, 휘발되어 버리는 특수 값이라는 것입니다. <code>key</code>는 튜토리얼의 초반부에서 비교조정 알고리즘을 설명하면서 다뤘으므로 생략합니다.</p>
+
+<h4><code>ref</code></h4>
+
+<p><code>ref</code>는 자식 엘리먼트를 상위 컴포넌트에서 <code>this.refs</code> 오브젝트를 통해 named property로 접근할 수 있게 해주는 키 값입니다.</p>
+
+<h4><code>dangerouslySetInnerHTML</code></h4>
+
+<p><code>dangerouslySetInnerHTML</code>는 그 이름이 암시하듯, 임의의 html 스트링을 통해 자식 html을 표현할 수 있으며 어쩔 수 없는 특수한 상황에서 사용합니다 (<code>svg</code> 스트링의 표현, html 태그가 포함된 국제화 스트링의 표현, 서버사이드 렌더링 시 인라인 <code>&lt;script&gt;</code> 엘리먼트의 텍스트 표현 등).</p>
+
+<h2>State</h2>
+
+<p>State는 컴포넌트 안에서 변경이 가능한 데이터입니다. 일반적으로 컴포넌트 안의 state는 최소한으로 유지하고, 가능한 한 상위 컴포넌트로 이동해야 할 필요가 있습니다. 이는 변경 가능한 데이터의 관리가 무척 어렵기 때문입니다. (데이터를 불변 값으로 표현하는 것의 이점은 <a href="http://gamecodingschool.org/2015/06/25/%EC%99%9C-%EB%B3%80%EC%88%98%EA%B0%80-%EB%82%98%EC%81%9C%EA%B0%80/">이 글</a>을 참고하시기 바랍니다)</p>
+
+<p><code>state</code>가 비록 변경이 가능한 값이긴 하나, 엄밀히 말하자면 <code>this.state</code> 자체가 mutable한 값은 아닙니다. 데이터의 갱신은 반드시 <code>setState(nextState)</code> 비동기 함수를 통해서 해야 합니다.</p>
+
+<h3>State 사용의 예</h3>
+
+<p>State는 render를 통한 지속적인 동기화가 필요한 경우 데이터를 표현하기 좋습니다. 가령 1초마다 뷰가 업데이트가 되는 아날로그 시계를 만들어야 한다면, <code>setInterval()</code>과 같은 Timer API로 1초마다 변경된 각도를 <code>setState()</code>에 반영함으로서 구현이 가능할 것입니다.</p>
+
+<p>하지만 우리가 시침과 분침과 초침을 만들어야 한다면, 그렇게 하면 안된다는 것을 자연히 깨닫게 됩니다 (세개의 타이머를 동시에 돌리는 것에 대해 아무런 거부감이 없는 특이한 사람이 아니라면 말이죠). <code>setState()</code> 함수는 는 상위 시계 컴포넌트 <code>&lt;Clock /&gt;</code>으로 자연히 이동하게 되고, 시침, 분침, 초침은 props로 <code>&lt;Minute now={this.state.now} /&gt;</code> 와 같이 상위 컴포넌트의 시간 <code>state</code>를 받게 설계를 하면 됩니다.</p>
+
+<h2>이게 끝입니다!</h2>
+
+<p>props와 state의 설명은 이정도면 된 것 같습니다.</p>
+
+<p>하지만 처음 React를 접하시는 분들은 앱을 만들다 보면 궁금한 점들이 많이 생길 수 있습니다. 예를 들면,</p>
+
+<ul>
+<li>데이터 값의 변화로 Parent 컴포넌트에 데이터의 갱신 여부를 전달하는 방법은 무엇이 있을까요?</li>
+<li>수많은 단계를 거쳐야 하는 컴포넌트들도 계속 props를 주입해 내려야 할까요?</li>
+</ul>
+
+<p>위와 같은 의문점들이 생기기 마련입니다. 개발 편의성과 실질적인 데이터 흐름의 요구사항을 만족시키기 위해서는 조금 더 공부해야 합니다 (공부에는 끝이 없죠). 그래서 일반적으로 React 앱을 작성하면 많이 구성하게 되는 데이터 흐름 방식을 정리해 보았습니다.</p>
+
+<h2>패턴: Smart and Dumb Components</h2>
+
+<p><a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">Smart and Dumb Components</a> 라는 에세이에서 <a href="https://twitter.com/dan_abramov">Dan Abramov</a>는 React 컴포넌트들을 크게 두가지로 나눌 수 있다고 정의했습니다. 그것은 <strong>Smart Component</strong>와 <strong>Dumb Component</strong>입니다. 개념을 처음 접하는 분들은 조금 의아할 수 있겠지만, 일정 이상 규모의 React 애플리케이션을 작성해 보신 분들은 공감하실 분류입니다.</p>
+
+<h3>Dumb Components</h3>
+
+<p>Dumb Components들은 Parent 컴포넌트에 의해 주어진 <code>props</code>만을 보여주고, 자신의 <code>state</code>를 거의 가지고 있지 않습니다. 아마 State를 줄이기 위해 충분히 노력했다면, 대부분의 컴포넌트들이 이런 형태를 가지게 될 것입니다.</p>
+
+<p>사용자 정보를 수정하는 Form을 예시로 들어봅시다. Form 안의 input들은 모두 Dumb Component들로 구성해야 할 것입니다. 어떤 사용자들은 경우에 따라 일정 <code>&lt;input /&gt;</code> 엘리먼트들을 보여주지 않거나, <code>disabled</code> 어트리뷰트를 줘야 할 수도 있습니다. 사용자의 정보에 대해 모든 input 컴포넌트가 알고 있어야 하는 것은 비효율적이므로, 자연히 상위 Form 컴포넌트가 하위 컴포넌트들으로 <code>props</code>를 주입해 컨트롤하는 형태로 구성될 것입니다. 그리고 하위 컴포넌트들을 컨트롤하는 것이 Smart Component입니다.</p>
+
+<h3>Smart Components</h3>
+
+<p>위의 Form 예시를 계속 확장시켜 봅시다. 그렇다면 사용자 정보는 어디서 올까요? 물론 최상위 DOM 엘리먼트로부터 전달해 받을 수도 있습니다. 하지만 그것은 비효율적일 뿐더러, 수많은 상관없는 <code>props</code>들의 전달 행위로 인해 코드의 가독성을 떨어뜨릴 수 있습니다. 그래서 보통 <code>Flux</code> 아키텍쳐 구현 라이브러리를 이용합니다 (Flux를 잘 모르겠다면, <a href="http://facebook.github.io/flux/docs/todo-list-ko-KR.html#content">공식 튜토리얼</a>을 참조하세요).</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">TextField</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;text-field&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/span&gt;</span>
+                    <span class="o">&lt;</span><span class="nx">input</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span> <span class="o">/&gt;</span>
+                <span class="o">&lt;</span><span class="err">/label&gt;</span>
+            <span class="o">&lt;</span><span class="err">/div&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">UserForm</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span>
+        <span class="nx">FluxStoreMixin</span><span class="p">(...)</span> <span class="c1">// Flux Store에서 `this.state.user`에 데이 연결</span>
+    <span class="p">],</span>
+    <span class="c1">// 값이 변할 때마다 state에 저장해 놓았다가 나중에 사용</span>
+    <span class="c1">// i.e. localStorage에 임시 값을 저장, GA에 값을 전송, ...</span>
+    <span class="nx">handleChange</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">nextState</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">[</span><span class="s1">&#39;sync-id&#39;</span><span class="p">];</span>
+
+        <span class="nx">nextState</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="nx">nextState</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;/some/where&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">TextField</span> <span class="nx">label</span><span class="o">=</span><span class="s2">&quot;이름&quot;</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">}</span>
+                           <span class="nx">defaultValue</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+                           <span class="nx">data</span><span class="o">-</span><span class="nx">sync</span><span class="o">-</span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="o">/&gt;</span>
+                <span class="o">&lt;</span><span class="nx">TextField</span> <span class="nx">label</span><span class="o">=</span><span class="s2">&quot;Github ID&quot;</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">}</span>
+                           <span class="nx">defaultValue</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">connections</span><span class="p">.</span><span class="nx">github</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span>
+                           <span class="nx">data</span><span class="o">-</span><span class="nx">sync</span><span class="o">-</span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;gh-id&quot;</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="err">/form&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="p">...</span>
+</code></pre></div>
+<p>굉장히 간단한 예제를 작성해 보았습니다만, 위와 같은 경우 UserForm은 Flux Store로부터 유저의 데이터를 받고, <code>&lt;TextField /&gt;</code> 컴포넌트들에 prop으로 값들을 내리는 Smart Component이며, TextField 컴포넌트는 그것이 무엇인지 모르는 상태에서 단순히 값을 받아 연결하고, 표시하기만 하는 Dumb Component 입니다.</p>
+
+<h2>패턴: 상위 컴포넌트와 대화하기</h2>
+
+<p>하위 컴포넌트의 데이터 갱신에 따라 상위 컴포넌트를 업데이트해야한다면 어떻게 해야 할까요? 위와 같이 Flux 라이브러리를 사용하는 법도 있지만, 대부분의 경우는 함수를 prop으로 내리는 것이 정답에 가깝습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Keypad</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">getInitialState</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">input</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+        <span class="p">};</span>
+    <span class="p">},</span>
+    <span class="nx">handleInput</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">input</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">input</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">value</span> <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">input</span><span class="p">}</span> <span class="nx">disabled</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="nx">KeyInput</span> <span class="nx">onInput</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleInput</span><span class="p">}</span> <span class="o">/&gt;</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">KeyInput</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">data</span><span class="o">-</span><span class="nx">value</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">handleInput</span><span class="p">}</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">data</span><span class="o">-</span><span class="nx">value</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">handleInput</span><span class="p">}</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+            <span class="p">...</span>
+        <span class="o">&lt;</span><span class="err">/div&gt;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>위의 예제는 간단한 입력을 위한 키패드를 구현한 것입니다. <code>KeyInput</code> 하위 컴포넌트에 클릭 핸들러를 전달하여, 상위 컴포넌트에서 <code>setState()</code>를 하면 상위 컴포넌트에서 값을 업데이트할 수 있습니다.</p>
+
+<h2>Tips: class 어트리뷰트의 컨트롤</h2>
+
+<p>css 클래스를 계층적으로 적용시키고 싶을 때 사용하는 모듈로 <a href="https://www.npmjs.com/package/classnames"><code>classnames</code></a>가 있습니다. 공식 패키지는 아니나, 공식문서에서 추천하는 패키지입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">classnames</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">);</span> <span class="c1">// =&gt; &#39;a b c&#39;</span>
+<span class="nx">classnames</span><span class="p">({</span> <span class="nx">a</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">c</span><span class="o">:</span> <span class="kc">null</span> <span class="p">});</span> <span class="c1">// =&gt; &#39;a&#39;</span>
+<span class="nx">classnames</span><span class="p">(</span><span class="s1">&#39;some-css-class&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">className</span><span class="p">);</span> <span class="c1">// =&gt; &#39;some-css-class&#39; 와 추후 `className` prop 값을 합친다`</span>
+</code></pre></div>
+<h2>Tips: props로 주어주는 객체의 컨트롤</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+render () {
+    // this.props =&gt; { first: 1, second: &#39;second&#39; }
+    return &lt;SomeChild {...this.props} second={2} /&gt; // =&gt; props: { first: 1, second: 2 }
+}
+...
+</code></pre></div>
+<p>주로 오브젝트를 조작하거나 합칠 때 많이 사용하는 방법은 <code>React.addons.update</code> 함수 또는 Underscore/Lodash의 <code>_.extend</code> 함수를 사용하는 것입니다. 그 외에 <code>...</code> <a href="https://facebook.github.io/react/docs/jsx-spread.html">JSX Spread Attribute</a>를 이용하는 법도 있습니다. Spread Attribute는 좀 더 마법같은 prop으로, 아직 표준은 아니지만 Babel등의 트랜스파일러를 이용하면 사용할 수 있습니다 (문서에 언급하고 있긴 하나, 표준화를 시도하고 있는 <a href="https://github.com/sebmarkbage/ecmascript-rest-spread">Object Spread Property</a>도 있습니다).</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/react">react</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - D3.js</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+    <style>
+        #toc_location.affix {
+            top:50px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #ef693d;color: #ffffff;" >
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+        <h1 class="title_header_title">D3.js</h1>
+        <p class="title_header_summary">D3.js는 데이터 시각화를 위한 자비스크립트 라이브러리 입니다. D3.js의 구조와 사용법에 대해 알아봅니다.</p>
+    </div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" alt="김정환">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            김정환
+
+                        </h4>
+                        jeonghwan-kim<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+
+        <div id="toc_location" style="z-index:99999;"></div>
+
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>D3.js 시작하기</h1>
+
+<h2>D3.js란?</h2>
+
+<p>오늘날 인터넷에는 헤아릴수 없는 양의 자료들이 있고 우리는 웹브라우져를 통해 그 공간을 들여다 볼 수
+있습니다. 문자열을 통해 이메일을 확인하고 이미지로 사진을 공유할 수 있습니다. 특히 수치로 이뤄진
+데이터를 그래프로 보여줄 때는 이미지 파일을 서버에서 제공하게 됩니다. 그러나 한번 만들어 놓은 그래프
+이미지는 데이터가 변경될 때마다 변경해야 하는데 이는 매우 수고로운 작업입니다.</p>
+
+<p><a href="http://d3js.org">D3.js</a>는 데이터와 이미지를 바인딩하는 라이브러리 입니다. 서버의 수치 데이터를
+웹브라우져로 가져온 뒤 이를 브라우져 문서 요소로 변경하고 렌더링합니다. 그렇기 때문에 서버 데이터가
+변경되면 웹브라우져는 변경된 요소를 반영하여 다시 그래프를 그리게 됩니다. 이렇게 D3.js를 이용하면
+기존의 정적인 그래프를 데이터와 바인딩된 동적 그래프로 구현 할 수 있습니다. 이번 글에서는 D3.js의
+설치 및 사용법에 대해 알아보도록 하겠습니다.</p>
+
+<h2>설치</h2>
+
+<p><a href="https://github.com/mbostock/d3">깃헙 저장소</a>에서 직접 소스파일을 다운로드 하거나 bower를
+이용해 다운로드 할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">bower install d3 --save
+</code></pre></div>
+<p>D3.js 소스파일을 다운로드 후 이를 indxe.html 문서에 로딩합니다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>D3.js GetStarted<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="c">&lt;!-- D3.js 추가 --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;../bower_components/d3/d3.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
+<p>간단하게 라이브러리 로딩여부를 확인하기 위해 app.js에 스크립트를 작성합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;새로운 문장&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>웹 브라우져에서 아래 페이지를 확인할 수 있으면 D3.js 라이브러리를 제대로 설치한 것입니다.</p>
+
+<p><img src="imgs/install.png" alt=""></p>
+
+<h2>사용법</h2>
+
+<p>D3.js는 제이쿼리 사용법과 매우 유사합니다. 설치시 사용한 스크립트를 다시 확인해 봅시다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;새로운 문장&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><code>body</code> 요소를 선택하고 <code>div</code> 요소를 추가한뒤 &quot;새로운 문장&quot;이라는 문자열을 삽입했습니다.
+제이쿼리와 유사하게 D3.js는  돔(DOM)을 제어 할 수 있고 함수 체이닝을 사용합니다.</p>
+
+<p>가장 많이 사용하는 그래프 중 하나인 막대 그래프를 그려 봅시다. 그래프를 그리기 위해서는 먼저 데이터가
+있어야 합니다. 보통은 서버에 데이터를 요청하지만 본 글에서는 편의를 위해 자바스크립트 변수에 데이터를
+할당하여 진행하겠습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span>
+</code></pre></div>
+<p>이 데이터를 돔으로 만들기 위해서 D3.js는 <code>selectAll()</code>, <code>data()</code>, <code>ennter()</code> 함수를
+제공합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">enter</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><code>d3.select(&quot;body&quot;)</code> 로 index.html에 선언한 body 문서 요소를 선택합니다.
+그리고 <code>selectAll(&quot;div&quot;)</code> 를 호출합니다. 그러나 index.html에는 body만 선언했을뿐 div는
+어디에서 선언하지 않았습니다. 미선언된 문서요소를 선택하는 것이 불편하게 여겨질 수도 있지만 D3.js
+에서는 이렇게 사용합니다. 이것을 &quot;가상의 문서요소&quot;라고 하겠습니다. 가상의 문서요소에 우리가 정의한
+데이터를 바인딩한는 것이 <code>data(data)</code> 함수 입니다. <code>enter()</code> 함수는 data 배열의 각 요소를
+순회하면서 가상의 문서요소 디비전(div) 10개를 만들 것입니다. 마지막으로 <code>append(&quot;div&quot;)</code> 함수를
+통해 가상의 문서요소를 body 문서 하위로 추가합니다.</p>
+
+<p>화면에는 아무런 변화가 없지만 개발자 도구로 살펴보면 문서 요소가 추가되었음을 확인할 수 있습니다.</p>
+
+<p><img src="imgs/new-doms.png" alt=""></p>
+
+<h2>막대 그래프</h2>
+
+<p>D3.js가 데이터를 기반으로 돔을 생성한다는 사실을 확인했습니다. 막대 그래프를 그리기 위해서 추가된
+문서요소를 조작한다면 가능할 것 같습니다. D3.js의 <code>style()</code> 함수는 문서 요소의 스타일 속성을
+변경할 수 있습니다. <code>style()</code> 함수를 이용해 각 막대의 높이(height)를 설정합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 높이 설정</span>
+  <span class="k">return</span> <span class="nx">d</span> <span class="o">+</span> <span class="s2">&quot;px&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><code>style()</code> 의 첫 번째 파라매터는 스타일 속성 이름을 설정합니다. 두번째 파라매터인 콜백함수가
+중요합니다. 이것은 <code>enter()</code>를 통해 생성된 각 문서요소를 반환하는 콜백함수 입니다. 우리는 이
+콜백함수의 파라매터인 <code>d</code> 변수를 이용해 실제 데이터에 접근할 수 있습니다. <code>d + &quot;px&quot;</code> 즉 데이터
+크기를 픽셀 단위로하여 높이값를 반환합니다. 너비를 위한 코드도 비슷하게 작성합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 너비 설정</span>
+  <span class="k">return</span> <span class="s2">&quot;20px&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>D3.js의 <code>attr()</code> 함수는 문서요소의 속성을 설정할 때 사용합니다. div로 만들어진 막대를 출력하기
+위한 스타일시트 클래스를 정의하고 각 문서 요소에 적용합니다.</p>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* style.css */</span>
+<span class="nc">.bar-chart</span> <span class="p">{</span>
+  <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
+  <span class="k">margin-right</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+  <span class="k">background-color</span><span class="o">:</span> <span class="nb">hotpink</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+  <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;bar-chart&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><img src="imgs/bar-chart-div.png" alt=""></p>
+
+<h2>SVG</h2>
+
+<p>HTML에서 그림을 그리기 위해서는 디비전보다 SVG가 더 적합합니다. SVG는 이차원 백터 이미지를 그리기
+위한 웹 표준입니다. D3.js에서 SVG를 사용하면 좀더 세밀하게 그래프를 그릴 수 있습니다.</p>
+
+<p>지금까지 디비전으로 구현한 막대그래프를 SVG로 변경해 보겠습니다. <code>body</code>에 너비 200px,
+높이 100px인 <code>svg</code> 문서 요소를 추가하고 <code>svg</code>변수에 할당합니다. 향후 <code>svg</code> 변수를 이용해
+데이터를 바인딩할 것입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="nx">h</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="nx">w</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+</code></pre></div>
+<p>개발자 도구로 살펴보면 width=&quot;200&quot; height=&quot;100&quot;인 SVG 문서 요소가 추가 된것을 확인할 수
+있습니다.</p>
+
+<p><img src="imgs/bar-chart-svg-01.png" alt=""></p>
+
+<p>막대그래프  섹션과 마찬가지로 <code>selectAll(&quot;rect&quot;)</code>로 가상의 문서요소를 선택하고 <code>data(data)</code>로
+데이터 배열과 문서 요소를 바인딩 후 <code>enter()</code>를 이용해 문서요소를 생성합니다. 그리고
+<code>append(&quot;rect&quot;)</code> 함수로 <code>svg</code> 엘레멘트 하위 요소로 가상의 문서요소를 추가합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="nx">svg</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">enter</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>개발자 도구로 살펴보면 <code>rect</code> 문서요소가 데이터 배열의 길이만큼 생성된 것을 확인할 수 있습니다.</p>
+
+<p><img src="imgs/bar-chart-svg-02.png" alt=""></p>
+
+<p>이제 막대그래프 각 막대의 높이와 너비, 위치, 색상을 설정해 보겠습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="nx">svg</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// x 좌표 설정</span>
+      <span class="k">return</span> <span class="nx">i</span> <span class="o">*</span> <span class="p">(</span><span class="nx">w</span> <span class="o">/</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// y 좌표 설정</span>
+      <span class="k">return</span> <span class="nx">h</span> <span class="o">-</span> <span class="nx">d</span><span class="p">;</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="nx">w</span> <span class="o">/</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// 너비 설정</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 높이 설정</span>
+      <span class="k">return</span> <span class="nx">d</span><span class="p">;</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;fill&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 색상 설정</span>
+      <span class="k">return</span> <span class="s2">&quot;hotpink&quot;</span><span class="p">;</span>
+    <span class="p">});</span>
+</code></pre></div>
+<p>DIV를 사용한것과는 달리 SVG 요소는  x, y 좌표값을 설정해야 합니다. 간단한 계산식으로 좌표를
+설정합니다. 브라우져 좌측 상단이 0,0 좌표이기 때문에 y 좌표는 값이 늘어남에 따라 브라우져 아래를
+가리킵니다. 그렇기 때문에 y 좌표 설정시 전체 높이에서 데이터를 뺀 값을 사용합니다. 너비는 그래프 전체
+너비를 데이터 갯수로 나누고 간격을 위해 1픽셀을 뺍니다. 그리고 색상은 SVG 속성중 <code>fill</code>을
+사용하여 설정합니다.</p>
+
+<p><img src="imgs/bar-chart-svg-03.png" alt=""></p>
+
+<h2>레이블</h2>
+
+<p><code>svg</code>를 계속 활용해서 막대 끝에 레이블을 추가해 보겠습니다. <code>svg</code> 하위에 <code>rect</code>를 추가한 것 처럼
+<code>text</code>를 추가하여 레이블을 표시할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="nx">svg</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">enter</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">d</span><span class="p">;</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">i</span> <span class="o">*</span> <span class="p">(</span><span class="nx">w</span> <span class="o">/</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">w</span> <span class="o">/</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">h</span> <span class="o">-</span> <span class="nx">d</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;font-family&quot;</span><span class="p">,</span> <span class="s2">&quot;sans-serif&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;font-size&quot;</span><span class="p">,</span> <span class="s2">&quot;11px&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;fill&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;text-anchor&quot;</span><span class="p">,</span> <span class="s2">&quot;middle&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>레이블 문자열을 그래프 안에 제대로 넣기 위해서는 x, y 좌표 설정에 조심해야 합니다. x 좌표를 각
+막대의 가운데 좌표에 지정한 뒤 <code>text-anchor=&quot;middle</code> 속성을 추가하여 정확히 가운데로 위치
+시켰습니다. y 좌표는 각 막대 맨꼭대기 위치에서 10px를 내려 정확히 막대 안으로 들어오도록
+하였습니다.</p>
+
+<p><img src="imgs/bar-chart-svg-04-label.png" alt=""></p>
+
+<h2>결론</h2>
+
+<p>본글에서는 D3.js를 설치하여 막대 그래프를 구현하면서 그 개념과 사용법에 대해 알아보았습니다. 이
+뿐만아니라 아래 D3.js 항목들도 추가로 공부해야할 것입니다.</p>
+
+<ul>
+<li>척도(Scales)와 축(Axes)</li>
+<li>선 그래프, 분산 그래프</li>
+<li>트랜지션(Transition)</li>
+<li>레이아웃(Layout)</li>
+</ul>
+
+<p><a href="https://github.com/jeonghwan-kim/d3-kisa-getstarted">예제 코드</a></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/d3.js">d3.js</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/library">library</a>&nbsp;<a href="/tags/visualization">visualization</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+
+    <script>
+        $('#main_content').toc();
+
+        $(document).ready(function(){
+            $('#toc_location').affix({
+                offset:{
+                    top: function(){
+                        return 550;
+                    }
+                }
+            });
+        })
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

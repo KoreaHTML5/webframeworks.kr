@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - ES2015와 React</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">ES2015와 React</h1>
+<p class="title_header_summary">현대적인 자바스크립트 앱을 작성하고 이해하기 위해서 새로운 ES2015 언어 명세들을 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars1.githubusercontent.com/u/484290?v=3&s=460" alt="이재호">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            이재호
+
+                        </h4>
+                        sairion<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078445)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.471378)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078445)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078445)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078445)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.313781)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078445)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078445)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156890)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156890)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.510247)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.255124)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.647350)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.313781)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.235336)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078445)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.392226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.706007)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.706007)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.627562)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078445)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.235336)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078445)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078445)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.313781)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078445)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078445)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078445)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156890)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156890)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078445)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078445)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156890)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.313781)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078445)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078445)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078445)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078445)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.156890)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.156890)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078445)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078445)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078445)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.549117)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.784452)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156890)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.627562)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078445)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078445)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078445)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156890)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156890)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156890)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078445)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156890)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078445)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078445)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078445)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078445)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078445)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078445)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078445)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078445)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078445)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235336)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.235336)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078445)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078445)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078445)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078445)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078445)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078445)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.313781)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.313781)'>database</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>ES2015와 React</h1>
+
+<p>React는 Virtual DOM을 통해 과거 브라우저와 호환성을 유지하는 반면, 트랜스파일러를 이용한 최신 ECMAScript 명세의 사용을 적극적으로 권장하고 있기도 합니다. React에 관련된 자료들을 처음 접하는 분들은 다소 답답함을 느끼는 부분일 수도 있습니다. 수많은 라이브러리들이 최신 언어 명세를 이용해서 작성되고 있는 추세이고, 이를 사용하면 프로젝트의 코드 가독성도 크게 향상되기 때문에 IE8 이하의 구 브라우저를 지원해야 하는 상황이 아니라면 최신 언어 명세의 사용을 권장합니다.</p>
+
+<p>이 글의 목적은 React 앱의 코드를 읽고 쓰는 데에 도움을 주기 위한 것입니다. ECMAScript 2015와 언어 명세 제안서들에 대해서는 이 글에서 모든 내용을 커버하기는 힘들기도 하고 인터넷에서 많은 자료들을 구할 수 있는 관계로 React에 관련된 새로운 부분만 간략하게 설명하도록 하겠습니다.</p>
+
+<h2>ES2015? ES6? ES7?</h2>
+
+<p>이전 글들에서는 ES6, ES7, ES2015 같은 수많은 용어들이 사용되었는데요, 다시 정리를 해 보겠습니다.</p>
+
+<p>일반적으로 ES2015라고 하면 2015년 6월에 Allen Wirfs-Brock를 에디터로 하여 공식적으로 발표된 ECMAScript의 표준 ECMA-262의 6번째 에디션을 의미합니다. ES6이라고 칭해졌던 것들은 기본적으로 ES2015와 같으며, 매년 에디션을 내자는 움직임이 있어 ES6에서 연도를 반영하는 형태의 ES2015로 변경되었습니다. 이에 따라 ES7이라 불려지던 것은 대부분 ES2016이 되겠지만, 모든 현재의 proposal이 표준이 된다는 법은 없으므로, 그냥 <a href="https://twitter.com/rauschma/status/643082251585064960">&quot;ES 제안서&quot;</a> 정도로 표현하면 될 것 같습니다. 물론 아직 인터넷에는 수많은 용어들이 딱히 명확한 구분 없이 사용되고 있는 상황입니다.</p>
+
+<p>그 외 ECMAScript 표준이 어떻게 만들어지는지에 대해서는 <a href="http://gamecodingschool.org/2015/06/28/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%91%9C%EC%A4%80%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%EA%B0%80/">TC39 미팅에 참석하셨던 분의 글</a>을 참고해 봅시다. 알아둬야 할 점이라면, ECMAScript 표준 제안 단계에는 stage가 있다는 것입니다. Babel에서는 언어 명세의 stage에 맞춰 기능을 사용할 수 있게 설정할 수 있는 옵션을 제공하며, stage 0 제안 단계의 언어 명세에 대해서는 semver를 고려하지 않는다고 밝혔으므로 (즉 API가 한 순간 바뀔 수 있습니다), 사용한다면 shrinkwrap 기능 등을 이용하여 업데이트를 보수적으로 해야 할 필요가 있습니다.</p>
+
+<p>구현체 별 언어 명세 지원 테이블은 <a href="http://kangax.github.io/compat-table/es6/">http://kangax.github.io/compat-table/es6/</a>를 참고하도록 합시다.</p>
+
+<p>그러면 이제 중요한 언어 명세들에 대해 알아보겠습니다.</p>
+
+<h2>Block-level assignment: <code>let</code>/<code>const</code></h2>
+
+<p><code>let</code>은 block 스코핑을 사용할 수 있는 최신의 기능이며, V8을 비롯한 대부분의 엔진에서 아직 제대로 지원하고 있지 않습니다. 현재 글을 쓰는 시점에서는 V8에서 strict mode일 시에만 작동합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// =&gt; 2</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// =&gt; 1</span>
+</code></pre></div>
+<p>위와 같이 중간에 별도의 바인딩을 설정하는 컨트롤 플로우를 만들 수도 있으며,</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">for (let i = 0; i &lt; 10; i++) {
+    setTimeout(() =&gt; { console.log(i); }); // 9, 9, ... 9
+}
+for (let i = 0; i &lt; 10; i++) {
+    setTimeout(() =&gt; { console.log(i); }); // 0, 1, ... 9
+}
+</code></pre></div>
+<p>for loop 안 에서는 let 바인딩을 매 룹마다 새로 생성해서, 반복문에서 잘못된 바인딩을 참조하는 흔한 실수를 방지할 수 있습니다.</p>
+
+<p>더 자세한 설명은 <a href="http://www.2ality.com/2015/02/es6-scoping.html">2ality blog의 글</a>을 참고합시다.</p>
+
+<h2>Destructuring Assignment</h2>
+
+<p>destructuring assignment는 오브젝트의 구조와 같이 기술해 바인딩을 만들 수 있는 방법입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span> <span class="c1">// a =&gt; 1, b =&gt; 2</span>
+<span class="kd">var</span> <span class="p">{</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="nx">a</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="mi">2</span><span class="p">};</span> <span class="c1">// a =&gt; 1, b =&gt; 2</span>
+
+<span class="c1">// 함수에서</span>
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">([</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">])</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">a</span><span class="p">}</span> <span class="nx">and</span> <span class="nx">$</span><span class="p">{</span><span class="nx">b</span><span class="p">}</span><span class="err">`</span><span class="p">);</span> <span class="p">}</span>
+<span class="nx">foo</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]);</span> <span class="c1">// =&gt; &#39;a and b&#39;</span>
+</code></pre></div>
+<p>함수에서 destructuring assignment를 이용하면, 패턴 매칭이나 키워드 인자처럼 사용할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">bar</span><span class="p">({</span> <span class="nx">first</span><span class="p">,</span> <span class="nx">second</span> <span class="p">})</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">first</span><span class="p">}</span> <span class="nx">and</span> <span class="nx">$</span><span class="p">{</span><span class="nx">second</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// nullable with default argument</span>
+<span class="kd">function</span> <span class="nx">baz</span><span class="p">({</span> <span class="nx">first</span><span class="p">,</span> <span class="nx">second</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nx">second</span><span class="o">:</span> <span class="s1">&#39;?&#39;</span><span class="p">})</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">first</span><span class="p">}</span> <span class="nx">and</span> <span class="nx">$</span><span class="p">{</span><span class="nx">second</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">bar</span><span class="p">({</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="nx">second</span><span class="o">:</span> <span class="s1">&#39;2&#39;</span> <span class="p">})</span> <span class="c1">// &#39;1 and 2&#39;;</span>
+<span class="nx">bar</span><span class="p">();</span> <span class="c1">// &#39;? and ?&#39;</span>
+<span class="nx">baz</span><span class="p">();</span> <span class="c1">// throws error</span>
+</code></pre></div>
+<p>인자가 nullable이라면, 위의 <code>baz</code>와 같이 default 인자를 지정해 둬야 합니다.</p>
+
+<p>더 자세한 설명은 (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">MDN</a>)을 참고합시다.</p>
+
+<h2>Template String and Tagged Template</h2>
+
+<p>자바스크립트에서는 원래 멀티라인 스트링을 쓸 수 없어, 멀티라인을 표현하려면 string concatenation을 해야만 했습니다.
+<code>javascript
+var lorem =  &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#39; + &#39;\n&#39;;
+    lorem += &#39;Maecenas sed velit at risus finibus lobortis semper vitae tortor.&#39; + &#39;\n&#39;;
+    lorem += &#39;Integer iaculis in sem sed venenatis. Praesent vulputate ante&#39; + &#39;\n&#39;;
+...
+</code></p>
+
+<p>ES2015 이후의 스펙에서는 멀티라인 스트링을 표현하기 위해 Template string을 사용할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">lorem</span> <span class="o">=</span> <span class="err">`</span><span class="nx">Lorem</span> <span class="nx">ipsum</span> <span class="nx">dolor</span> <span class="nx">sit</span> <span class="nx">amet</span><span class="p">,</span> <span class="nx">consectetur</span> <span class="nx">adipiscing</span> <span class="nx">elit</span><span class="p">.</span>
+<span class="nx">Maecenas</span> <span class="nx">sed</span> <span class="nx">velit</span> <span class="nx">at</span> <span class="nx">risus</span> <span class="nx">finibus</span> <span class="nx">lobortis</span> <span class="nx">semper</span> <span class="nx">vitae</span> <span class="nx">tortor</span><span class="p">.</span>
+<span class="nx">Integer</span> <span class="nx">iaculis</span> <span class="k">in</span> <span class="nx">sem</span> <span class="nx">sed</span> <span class="nx">venenatis</span><span class="p">.</span> <span class="nx">Praesent</span> <span class="nx">vulputate</span> <span class="nx">ante</span><span class="err">`</span><span class="p">;</span>
+</code></pre></div>
+<p>템플릿 스트링은 이름에서 드러나듯 string interpolation을 가능하게 해 줍니다.</p>
+
+<p>Relay에서 GraphQL DSL을 표현하기 위해 <a href="http://facebook.github.io/relay/docs/api-reference-relay-ql.html">tagged template string을 사용하는 경우</a>가 대표적인 사용례라고 볼 수 있습니다. Tagged template string은 backtick앞에 문자열을 조작하는 함수를 사용하는 경우입니다.</p>
+
+<p>더 자세한 설명은 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings">MDN</a>을 참고하도록 합시다.</p>
+
+<h2>ES2015 (Fat) Arrow Function</h2>
+
+<p>커피스크립트, C# 등을 사용해보신 분들께는 이미 익숙할 Arrow Function이 있습니다. ES2015의 Arrow Function은 기존의 함수와는 작동이 많은 부분 차이가 나는데, 가장 유용한 부분이라면 Arrow Function은 자신의 <code>this</code>를 가지지 않고, 바깥 스코프의 <code>this</code>를 참조하는 것을 들 수 있습니다. 예를 들면 이벤트 핸들러에서 <code>fn.bind(this)</code> Babel에서는 우리에게 이미 익숙한 <code>self</code> 또는 <code>that</code> 이름의 변수명으로 바깥 스코프에서 참조하는 형태로 트랜스파일됩니다.</p>
+
+<p>유의해야 할 점은, <code>arguments</code>가 없다는 점, 그리고 Arrow Function은 <code>new</code>의 타겟이 될 수 없다는 점입니다. (Babel의 트랜스파일 결과물은 <code>function</code> 을 반환하므로 스펙과 차이가 있습니다)</p>
+
+<h2>ES2015 Class</h2>
+
+<p>객체지향 언어에서 주로 사용하는 클래스와 거의 같지만, 함수를 이용한 prototype 기반 상속의 문법 입니다. 자바스크립트에는 OOP 클래스가 필요없다는 주장도 간간히 나오지만, 상속을 통해 다형성을 표현해야 하는 로직일 경우 유용하며 가독성을 상승시킵니다. 단 내부에서는 프로토타입 기반 상속이 이루어지므로, 프로토타입이 변경될 가능성이 있는 베이스 클래스에 대한 상속을 피하는 것이 좋겠습니다. &#39;composition over inheritance&#39;의 교훈은 자바스크립트에서도 다를 것이 없습니다만, 파이썬과 같이 언어 차원에서 제공하는 믹스인 같은 것은 없으므로 데코레이터나 별도의 프로토타입을 확장하는 로직을 작성해야 합니다.</p>
+
+<p>유의해야 할 점은, 멤버 변수는 <code>constructor()</code> 생성자 함수 안에서 선언해야 한다는 점입니다. 즉 멤버 변수 <code>foo</code>를 선언하고 싶으면 <code>this.foo = value</code> 와 같이 선언해줘야 합니다. 이 때문에 ES7 Class Properties와 같은 제안이 나와 있습니다.</p>
+
+<p>ECMAScript 클래스는 단계적으로 발전해 나가기로 한 바, 현재의 클래스의 기능은 다른 OOP 기반 언어에 비해서는 상당히 제한적입니다. 클래스에서 변수를 선언할 수 없다든지, private/protected 등의 접근 제한자가 없다든지, 인터페이스가 없다든지 등, 상속 외에는 거의 기능이 없지만 그래도 유용합니다.</p>
+
+<p>React에서는 <code>0.13.x</code>부터 ES2015 클래스를 적극적으로 도입하기 시작하여, 많은 라이브러리들이 클래스로 짜여져 있습니다. 단, <code>React.Component</code>를 상속하는 클래스를 또 상속하는 것은 문제가 될 수 있으며, React 팀에서 의도한 사용 방식이 아니기 때문에 삼가합시다.</p>
+
+<h2>Module</h2>
+
+<p>ES2015 Module은 CommonJS module과 기능은 거의 유사합니다만, 두 가지의 차이가 있습니다.</p>
+
+<ol>
+<li>default export기능이 있다는 점</li>
+<li>모듈 탑 레벨 스코프에서만 <code>import</code>와 <code>export</code> 선언을 해야 한다는 점</li>
+</ol>
+
+<p>Default export는 <code>default export var Foo = React.createClass({ ... });</code> 와 같이 선언하면, <code>import Foo from &#39;./components/foo&#39;</code>와 같이 기본 임포트가 가능합니다. 트랜스파일할 경우, <code>module.exports</code>의 <code>default</code>프로퍼티로 접근할 수 있습니다.</p>
+
+<p>두번째는, CommonJS의 <code>require()</code>처럼 함수 안에서 <code>import</code>를 한다거나 하는 것은 불가능하며, 모듈의 탑 레벨에 노출되어 있어야 하며 그렇지 않을 경우 사용할 수 없습니다.</p>
+
+<p>React에서는 React가 default export이기는 하나, <code>React.Components</code> 등을 named import로 가져오는 것도 가능합니다.</p>
+
+<p>더 자세한 것은 문법 명세에 대해 잘 정리되어 있는 <a href="http://www.2ality.com/2014/09/es6-modules-final.html">2ality 블로그 글</a>을 참고하시기 바랍니다.</p>
+
+<h2>Object Literal</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">baz</span> <span class="o">=</span> <span class="p">{</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">};</span> <span class="c1">// === {foo: 1, bar: 2}</span>
+</code></pre></div>
+<p>기존의 오브젝트 리터럴처럼 키/값을 모두 쓰지 않고 키만 써 줘도, 스코프에 있는 바인딩을 참조합니다.</p>
+
+<h2>Rest/Spread Statement</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">fun</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<span class="nx">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// =&gt; rest: [3, 4]</span>
+</code></pre></div>
+<p>Spread 오퍼레이터는 남은 인자들을 지정된 변수에 할당합니다.</p>
+
+<h2>(제안 단계) 데코레이터</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">@</span><span class="nx">depreactedClass</span>
+<span class="kr">class</span> <span class="nx">foo</span> <span class="p">{</span>
+    <span class="nx">hellllo</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;hellllo&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">depreactedClass</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Class &#39;</span> <span class="o">+</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; is deprecated. Do not use!&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>데코레이터는 파이썬의 데코레이터와 흡사히며, 함수를 받아 함수를 반환하는 표현식입니다. 클래스와 함수, 메서드에 대해서 데코레이터를 사용할 수 있습니다. 자세한 내용은 <a href="https://github.com/wycats/javascript-decorators">스펙</a>을 참조합시다.</p>
+
+<h2>(제안 단계) async-await</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">ms</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;sleep()&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="nx">r</span> <span class="o">=&gt;</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">ms</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
+    <span class="nx">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+<span class="p">}();</span> <span class="c1">// a / sleep / b</span>
+</code></pre></div>
+<p>async-await은 Promise를 이용한 비동기 처리에서 더 나아가, 비동기 함수를 동기적인 방식으로 작성할 수 있게 해주는 문법입니다. 위의 예를 보면 비동기 함수임에도 불구하고 동기적으로 불려지는 것을 볼 수 있습니다. Babel과 같은 트랜스파일러를 사용하면 사용할 수 있긴 하나, 제너레이터 등 여러가지의 최신 기능을 동시에 활용하므로 모든 기능을 트랜스파일하면 문제가 발생했을 시 디버깅이 어려울 수 있는 단점이 있습니다.</p>
+
+<h2>더 읽을거리</h2>
+
+<p><a href="https://github.com/tc39/ecma262">더 많은 제안 단계 언어 명세: tc39/ecma262</a>
+<a href="https://github.com/lukehoban/es6features">ECMAScript 2015 언어 명세에 대한 요약: lukehoban/es6features</a></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/react">react</a>&nbsp;<a href="/tags/es2015">es2015</a>&nbsp;<a href="/tags/es6">es6</a>&nbsp;<a href="/tags/es7">es7</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
