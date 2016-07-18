@@ -20,7 +20,7 @@ gulp.task('jekyll-gh', function(cb){
 });
 
 gulp.task('jekyll', function(cb){
-	return exec('jekyll build --config _config.yml', function(error, stdout, stderr){
+	return exec('bundle exec jekyll build --config _config.yml', function(error, stdout, stderr){
 		console.log(stdout);
 		cb();
 	});
@@ -80,4 +80,3 @@ gulp.task('clean', del.bind(null, ['publish', 'dist']));
 gulp.task('default', ['clean'], function(cb) {
 	runSequence('jekyll', cb);
 });
-
