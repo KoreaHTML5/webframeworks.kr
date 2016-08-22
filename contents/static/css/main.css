@@ -150,7 +150,12 @@ body{
     margin-bottom: 16px;
 }
 
+#main_content>p>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
 img {
     max-width : 100%;
 }
-
