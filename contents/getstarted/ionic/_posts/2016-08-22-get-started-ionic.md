@@ -3,7 +3,7 @@ layout : getstarted
 title : Ionic
 category : getstarted
 subcategory : library
-summary : Ionic
+summary : Ionic을 이용한 하이브리드 앱 개발에 대해 알아봅니다 
 permalink : /getstarted/ionic
 title_background_color : 4e8ef7
 title_color : ffffff
