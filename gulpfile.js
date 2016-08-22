@@ -13,7 +13,7 @@ var runSequence = require('run-sequence');
 
 // Jekyll task, build with jekyll
 gulp.task('jekyll-gh', function(cb){
-	return exec('jekyll build --config _config.yml,_config_gh.yml', function(error, stdout, stderr){
+	return exec('bundle exec jekyll build --config _config.yml,_config_gh.yml', function(error, stdout, stderr){
 		console.log(stdout);
 		cb();
 	});
