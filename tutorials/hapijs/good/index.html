@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Hapi 로깅 모듈, Good</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Hapi 로깅 모듈, Good</h1>
+<p class="title_header_summary">Hapi의 로깅모듈인 Good에 대해 알아본다</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" alt="김정환">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            김정환
+
+                        </h4>
+                        jeonghwan-kim<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078000)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.914000)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078000)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078000)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078000)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.312000)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078000)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078000)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156000)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156000)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.496000)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.248000)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.638000)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.312000)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.234000)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078000)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.546000)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.702000)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.702000)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.624000)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078000)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.234000)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078000)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078000)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.312000)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078000)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078000)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078000)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156000)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156000)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078000)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078000)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156000)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.312000)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078000)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078000)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078000)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078000)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.234000)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.234000)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078000)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078000)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078000)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.546000)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.780000)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156000)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.624000)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078000)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078000)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078000)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156000)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156000)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156000)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078000)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156000)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078000)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078000)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078000)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078000)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078000)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078000)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078000)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078000)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078000)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.234000)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.234000)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078000)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078000)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078000)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078000)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078000)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078000)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.312000)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.312000)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.078000)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.312000)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.078000)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.078000)'>hybrid-app</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>Hapi 로깅 모듈, Good</h1>
+
+<p>익스프레스에 winton 로깅 모듈이 있듯이 Hapi에서는 <a href="https://github.com/hapijs/good">Good</a>이라는 좋은 로깅 모듈이 있다. 
+이번 글에서는 Hapi 프레임웍에서의 로깅 방법에 대해 알아보자.</p>
+
+<p>Good 모듈로 로깅시 리포터 모듈을 함께 추가해야한다. 
+Good 모듈은 hapi 프레임웍에서 내뿜는 이벤트를 감지하는 역할을 하는 것 같다. 
+실제 출력(콘솔이나 파일 등)은 리포터 모듈을 통해 동작하는 것이다. 
+출력 방식에 따라 아래와 같은 리포터 모듈을 사용할 수 있다.</p>
+
+<ul>
+    <li><a href="https://github.com/hapijs/good-console">good-console</a>: 콘솔에 출력</li>
+    <li><a href="https://github.com/hapijs/good-file">good-file</a>: 파일에 출력</li>
+    <li><a href="https://github.com/hapijs/good-http">good-http</a>: 네트웍으로 출력 (전송)</li>
+</ul>
+
+<h2>logHelper</h2>
+
+<p><a href="https://github.com/hapijs/good">예제</a>에 나온 코드를 app/components/logHelper/index.js 모듈로 분리해 보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">opsInterval</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+  <span class="nx">reporters</span>  <span class="o">:</span> <span class="p">[{</span>
+    <span class="nx">reporter</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;good-console&#39;</span><span class="p">),</span>
+    <span class="nx">args</span>    <span class="o">:</span> <span class="p">[{</span>
+      <span class="nx">request</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+      <span class="nx">response</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+      <span class="nx">log</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+      <span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span>
+    <span class="p">}]</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="nx">reporter</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;good-file&#39;</span><span class="p">),</span>
+    <span class="nx">args</span>    <span class="o">:</span> <span class="p">[{</span>
+      <span class="nx">path</span>     <span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;../../../logs&#39;</span><span class="p">),</span>
+      <span class="nx">format</span>   <span class="o">:</span> <span class="s1">&#39;YYYYMMDD-hhmmss&#39;</span><span class="p">,</span>
+      <span class="nx">prefix</span>   <span class="o">:</span> <span class="s1">&#39;hapi&#39;</span><span class="p">,</span>
+      <span class="nx">extension</span><span class="o">:</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span>
+      <span class="nx">rotate</span>   <span class="o">:</span> <span class="s1">&#39;daily&#39;</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="nx">request</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+      <span class="nx">response</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+      <span class="nx">log</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+      <span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span>
+    <span class="p">}]</span>
+  <span class="p">}]</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">server</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">server</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
+    <span class="nx">register</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;good&#39;</span><span class="p">),</span>
+    <span class="nx">options</span> <span class="o">:</span> <span class="nx">opts</span>
+  <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>파일과 콘솔에 로그를 출력하도록 설정했다. 설정한 로그타입은 총 네 가지.</p>
+
+<ul>
+    <li>request: 프로토콜 요청시 로그 출력. 파라매터 값, 클라이언트 정보 등을 표시한다.</li>
+    <li>response: 요청에 한 응답시 로그 출력. http 상태 코드, 수행 시간 등을 표시한다.</li>
+    <li>log: 코드 사이 사이에 입력한 로그를 출력한다.</li>
+    <li>error: http 상태코드 5xx인 것만 로깅한다.</li>
+</ul>
+
+<h2>로그 함수</h2>
+
+<p>console.log()로 출력하면 로그 메세지가 제대로 출력되지 않는다. 
+Hapi에서 제공하는 server객체나 request 객체의 log() 함수로 로깅하도록 되어 있다(<a href="http://hapijs.com/tutorials/logging">참고</a>). 
+log() 함수는 총 3개의 파라매터를 받는다. <code>log(tag, message, timestamp)</code></p>
+
+<ul>
+    <li>tag: 로깅 태그</li>
+    <li>messgae: 로깅할 문자열 혹은 자바스크립트 객체</li>
+    <li>timestamp: 로깅 시간, default: Date.now()</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">reply</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">users</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+
+  <span class="c1">// 로깅 예제 </span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; is inserted.&#39;</span><span class="p">);</span>
+
+  <span class="nx">reply</span><span class="p">({</span><span class="nx">users</span><span class="o">:</span> <span class="nx">users</span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>/users (post) 라우팅 로직 안에 위와 같이 로그를 뿌리도록 설정한다. 
+아래는 콘솔에선 보는 로그 화면이다. 
+파일도 동일하게 동작한다.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">150216/011404.736, <span class="o">[</span>request,info<span class="o">]</span>, data: asdf is inserted.
+150216/011404.732, <span class="o">[</span>response<span class="o">]</span>, http://localhost:8000: post /users <span class="o">{}</span> <span class="m">200</span> <span class="o">(</span>7ms<span class="o">)</span> 
+</code></pre></div>
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/hapi">hapi</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

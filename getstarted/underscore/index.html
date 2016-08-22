@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - underscore.js</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+    <style>
+        #toc_location.affix {
+            top:50px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #AED5E6;color: #FFFFFF;" >
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+        <h1 class="title_header_title">underscore.js</h1>
+        <p class="title_header_summary">underscore는 다양한 util 함수들을 제공함으로 javascript를 보다 강력하게 사용할 수 있습니다.</p>
+    </div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/1445542?v=3&s=100" alt="이원제">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            이원제
+
+                        </h4>
+                        nurinamu<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078000)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.914000)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078000)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078000)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078000)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.312000)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078000)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078000)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156000)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156000)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.496000)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.248000)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.638000)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.312000)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.234000)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078000)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.546000)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.702000)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.702000)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.624000)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078000)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.234000)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078000)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078000)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.312000)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078000)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078000)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078000)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156000)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156000)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078000)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078000)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156000)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.312000)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078000)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078000)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078000)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078000)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.234000)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.234000)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078000)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078000)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078000)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.546000)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.780000)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156000)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.624000)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078000)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078000)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078000)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156000)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156000)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156000)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078000)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156000)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078000)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078000)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078000)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078000)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078000)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078000)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078000)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078000)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078000)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.234000)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.234000)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078000)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078000)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078000)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078000)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078000)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078000)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.312000)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.312000)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.078000)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.312000)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.078000)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.078000)'>hybrid-app</a>
+
+    </div>
+</div>
+
+        <div id="toc_location" style="z-index:99999;"></div>
+
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1><a href="http://underscorejs.org/">underscore.js</a></h1>
+
+<p>underscore는 유용한 유틸 함수들을 모아 놓은 라이브러리 입니다. 사용법도 간단하게 _ (underscrore) 뒤에 .만 붙여서 사용하면 됩니다. underscore.js는 backbone.js에서 사용되고 있습니다.</p>
+
+<h2>설정방법</h2>
+
+<p>아래의 경로에서 Download하여 script tag를 통해 직접사용할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//Development Version
+http://underscorejs.org/underscore.js
+
+//Production Version
+http://underscorejs.org/underscore-min.js
+</code></pre></div>
+<p>그외의 방법으로 설치하여 사용할 수 도 있습니다.</p>
+
+<ul>
+<li><p>Node.js
+<code>
+npm install underscore
+</code></p></li>
+<li><p>Require.js
+<code>
+require([&quot;underscore&quot;])
+</code></p></li>
+<li><p>Bower
+<code>
+bower install underscore
+</code></p></li>
+<li><p>Component
+<code>
+component install jashkenas/underscore
+</code></p></li>
+</ul>
+
+<h2>구성</h2>
+
+<p>underscore에서는 함수에서 처리하는 인자에 따라 아래와 같이 구분이 됩니다.  </p>
+
+<h3><a href="http://underscorejs.org/#collections">Collections</a></h3>
+
+<p>콜렉션(Collections)을 입력 받아 처리하는 유틸 함수들입니다.</p>
+
+<ul>
+<li>each : 콜렉션의 내용을 순차적으로 처리합니다.</li>
+<li>map : 콜렉션의 내용을 입력된 함수로 순차적으로 처리하여 새로운 콜렉션을 생성합니다.</li>
+<li>reduce : 콜렉션을 순차적으로 처리하면서 이전 처리 내용을 매번 넘겨 받습니다. 이전 처리 내용을 첫번째 인자로 넘겨 받습니다.</li>
+<li>reduceRight : 콜렉션을 순차적으로 처리하면서 이전 처리 내용을 매번 넘겨 받습니다. 이전 처리 내용을 두번째 인자로 넘겨 받습니다.</li>
+<li>find : 찾기 조건에 해당하는 콜렉션의 첫번째 값을 반환합니다.<br></li>
+<li>filter : 찾기 조건에 해당하는 콜렉션의 모든 값을 반환합니다.</li>
+<li>where : 프로퍼티 인자를 포함하는 콜랙션내 모든 오프젝트를 반환합니다.</li>
+<li>findWhere : 프로퍼티 인자를 포함하는 콜랙션내 첫번째 오프젝트를 반환합니다.</li>
+<li>reject : 찾기 조건에 해당하지 않는 콜렉션의 모든 값을 반환합니다. filter의 정반대 결과를 반환합니다. </li>
+<li>every : 콜랙션내 값들이 조건에 모두 통과되는 경우에만 true를 반환합니다.</li>
+<li>some : 콜랙션내 값 중 하나라도 조건에 통과되는 경우에 true를 반환합니다.</li>
+<li>contains : 콜랙션내 값중 동일한 값이 존재하는 경우에 true를 반환합니다. </li>
+<li>invoke : 콜랙션을 인자로 넘겨받은 함수명을 가진 함수에 넘겨 호출합니다. </li>
+<li>pluck : propertyName과 동일한 콜렉션에 포함된 오브젝트의 key에 해당하는 value를 반환합니다. </li>
+<li>max : 가장 큰 값을 가진 객체를 반환합니다.</li>
+<li>min : 가장 작은 값을 가진 객체를 반환합니다.</li>
+<li>sortBy : 입력받은 조건으로 정렬하여 반환합니다.</li>
+<li>groupBy : 입력받은 조건으로 조건 결과값을 키로 하여 콜랙션을 반환합니다.</li>
+<li>indexBy : 입력받은 조건을 index 키로 하여 콜렉션을 반환합니다. </li>
+<li>countBy : 입력받은 조건의 결과의 count 콜랙션을 반환합니다. </li>
+<li>shuffle : 콜렉션 내 값의 순서를 섞어서 반환합니다. </li>
+<li>sample : 콜랙션 내에서 원하는 갯수 만큼 랜덤하게 반환 합니다. </li>
+<li>toArray : 입력 인자를 배열로 반환합니다.</li>
+<li>size : 콜랙션의 크기를 반환합니다.</li>
+<li>partition : 하나의 콜랙션을 조건에 따라 분리하여 반환합니다.</li>
+</ul>
+
+<h3><a href="http://underscorejs.org/#arrays">Arrays</a></h3>
+
+<p>배열을 기본인자로 받아들이며 해당 배열을 변환하거나 분석합니다.</p>
+
+<ul>
+<li>first : 배열의 첫번째 값을 반환합니다. </li>
+<li>initial : 마지막 값을 제외한 나머지를 반환합니다. n을 입력받으면 뒤에서 n개의 값을 제외한 나머지를 반환합니다.</li>
+<li>last : 마지막 값을 반환합니다.</li>
+<li>rest : 첫번째 값을 제외한 나머지를 반환합니다. n을 입력받으면 앞에서 n개의 값을 제외한 나머지를 반환합니다.</li>
+<li>compact : false 값들을 제외한 값들을 반환합니다. </li>
+<li>flatten : 배열내의 차원을 제거하여 반환합니다.</li>
+<li>without : 제외할 값들을 인자로 넘겨주어 배열에서 해당 값을 제외한 값들을 반환합니다.</li>
+<li>union : 배열들을 합집합화 하여 반환합니다.</li>
+<li>intersection : 배열들을 교집합화 하여 반환합니다.</li>
+<li>difference : 배열들을 차집합화 하여 반환합니다.</li>
+<li>uniq : 중복값을 제외하여 반환합니다.</li>
+<li>zip : 인자로 넘겨받은 배열들을 인덱스가 동일한 값들 끼리 묶어서 반환합니다.</li>
+<li>object : 인자로 넘겨받은 배열들을 합쳐서 key/value를 가지는 객체로 만들어 반환합니다.</li>
+<li>indexOf : 배열내 해당 값의 첫번째 인덱스를 반환합니다.<br></li>
+<li>lastIndexOf : 배열내 해당 값의 마지막 인덱스를 반환합니다.</li>
+<li>sortedIndex : 해당 값을 배열에 삽입하여 정렬되었을 때의 인덱스 값을 반환합니다.</li>
+<li>range : 인자 범위에 해당하는 값의 배열을 생성하여 반환합니다.</li>
+</ul>
+
+<h3><a href="http://underscorejs.org/#functions">Functions</a></h3>
+
+<p>함수를 확장하거나 호출 시점을 조절합니다. </p>
+
+<ul>
+<li>bind : 함수에 object 값과 인자를 binding 합니다.</li>
+<li>bindAll : 입력받은 함수 이름들을 해당 객체에 모두 binding 합니다.</li>
+<li>partial : 기존의 함수에 인자값을 고정하여 새로운 함수를 반환한다. </li>
+<li>memoize : 함수를 caching 함으로써 함수처리 속도를 높일 수 있도록합니다. </li>
+<li>delay : setTimeout 처럼 특정 시간이후에 함수 호출을 합니다.</li>
+<li>defer : 함수가 종료되기 전에 호출되도록 함수 큐에 등록한다. </li>
+<li>throttle : 특정 delay 안에 반복적으로 호출이 되면 첫 호출만 유요하게 호출하는 함수로 반환한다.</li>
+<li>debounce : 특정 delay 이후에 호출이 되는 함수로 반환한다.<br></li>
+<li>once : 무조건 한번만 호출이되는 함수로 반환한다.</li>
+<li>after : 특정 회수의 호출이 이루어져야 유효 호출이되는 함수로 반환한다.</li>
+<li>before : 몇회 이상 호출 되지 못하게 하는 함수로 반환한다.</li>
+<li>wrap : 함수를 wrapping한 함수를 반환한다.</li>
+<li>negate : 인자의 부정형을 예측하는 함수를 반환한다. </li>
+<li>compose : 입력받은 함수를 조합한 함수를 반환한다.</li>
+</ul>
+
+<h3><a href="http://underscorejs.org/#objects">Objects</a></h3>
+
+<p>객체를 확장하거나 객체를 분석합니다.</p>
+
+<ul>
+<li>keys : 인자 객체의 모든 key들을 반환한다. </li>
+<li>values : 인자 객체의 모든 value들을 반환한다.</li>
+<li>pairs : 인자 객체를 [key,value] 쌍의 리스트로 반환한다.</li>
+<li>invert : 인자 객체의 key와 value를 역전시켜 반환한다.</li>
+<li>functions : 인자 객체가 가진 모든 함수 명을 반환한다.</li>
+<li>extend : 객체들을 통합하여 반환한다.</li>
+<li>pick : 특정 key/value 만을 반환한다.</li>
+<li>omit : 특정 key/value를 제외한 나머지를 반환한다. </li>
+<li>defaults : 객체에 default 값을 설정한다. </li>
+<li>clone : 객체를 복사하여 반환한다. </li>
+<li>tap : 객체를 인자로 받은 함수에 넘겨주고 객체를 다시 반환한다.</li>
+<li>has : 객체가 해당 key를 가지고 있는지 여부를 반환한다.</li>
+<li>matches : 해당 key/value를 포함하는지 판단하는 함수를 반환한다.</li>
+<li>property : 인자로 받은 key의 값을 반환하는 함수를 반환한다.</li>
+<li>isEqual : 객체를 비교하여 동일한지 판단한다. </li>
+<li>isEmpty : 빈객체인지 확인한다. </li>
+<li>isElement : DOM 객체인지 확인한다.</li>
+<li>isArray : 배열인지 확인한다.</li>
+<li>isObject : 객체인지 확인한다.</li>
+<li>isArguments : 입력인자인지 확인한다.</li>
+<li>isFunction : 함수인지 확인한다.</li>
+<li>isString : 문자열인지 확인한다.</li>
+<li>isNumber : 숫자인지 확인한다.</li>
+<li>isFinite : 유한 숫자인지 확인한다.</li>
+<li>isBoolean : 불리언 값인지 확인한다.</li>
+<li>isDate : 날짜인지 확인한다.</li>
+<li>isRegExp : 정규식인지 확인한다.</li>
+<li>isNaN : NaN인지 확인한다.</li>
+<li>isNull : null인지 확인한다.</li>
+<li>isUndefined : undefined인지 확인한다.</li>
+</ul>
+
+<h3><a href="http://underscorejs.org/#utility">Utility</a></h3>
+
+<p>유틸 함수들입니다.</p>
+
+<ul>
+<li>noConflict : underscore 객체를 반환합니다.</li>
+<li>identity : 입력받은 인자를 반환합니다.</li>
+<li>constant : 입력받은 인자를 반환하는 함수를 반환합니다.</li>
+<li>noop : undefined를 반환합니다. </li>
+<li>times : 입력된 n 번 만큼 함수를 반복합니다. 반복시에 index값을 인자로 받으며 결과값의 배열을 반환합니다.</li>
+<li>random : 범위내의 random값을 생성합니다.</li>
+<li>mixin : 객체에 함수를 추가하여 확장합니다.</li>
+<li>iteratee : 콜랙션에서 각 요소에 대한 값을 처리하는 콜백함수를 반환합니다. </li>
+<li>uniqueId : unique ID를 생성합니다. prefix를 받으면 prefix에 ID를 붙여서 반환합니다.</li>
+<li>escape : HTML에 삽입가능한 문자열로 변환하여 반환합니다.</li>
+<li>unescape : escape 함수의 반대로 escape 변환된 문자를 재변환하여 반환합니다.</li>
+<li>result : 인자로 받은 이름을 가진 객체 값이 함수이면 해당 함수를 실행하여 값을 반환한다.</li>
+<li>now : 현재 시간을 정수형 timestamp로 반환한다.</li>
+<li>template : 탬플릿 포맷이 적용된 함수를 반환한다. &lt;%= %&gt;는 변수나 함수호출, &lt;% %&gt; javascript 코드 호출, &lt;%- %&gt;는 HTML-escape된 문자를 처리한다.<br></li>
+</ul>
+
+<h3><a href="http://underscorejs.org/#chaining">Chaining</a></h3>
+
+<p>연속적으로 결과를 처리하도록 구조화하는 함수형 프로그래밍 방법을 지원합니다.</p>
+
+<ul>
+<li><p>chain : value가 호출되기 전까지 계속해서 wrapped 객체를 반환 받도록한다.</p></li>
+<li><p>value : wrapped객체의 값을 반환한다. </p></li>
+</ul>
+
+<h2>참고자료</h2>
+
+<p>underscore.js에 대한 <a href="http://documentcloud.github.io/underscore/docs/underscore.html">소스코드 분석</a>을 참고하면 더 자세하게 동작을 이해할 수 있다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/underscore">underscore</a>&nbsp;<a href="/tags/backbone">backbone</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/library">library</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+
+    <script>
+        $('#main_content').toc();
+
+        $(document).ready(function(){
+            $('#toc_location').affix({
+                offset:{
+                    top: function(){
+                        return 550;
+                    }
+                }
+            });
+        })
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

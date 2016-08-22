@@ -1,0 +1,161 @@
+.main_banner{
+    margin-bottom: 20px;
+    box-shadow : 0 2px 3px rgba(0,0,0,0.3);
+}
+
+.shadow_panel{
+    background-color: white;
+    box-shadow : 0 1px 1px rgba(0,0,0,0.3);
+}
+
+.profile_img_small{
+    width : 24px;
+    height: 24px;
+}
+
+.profile_img{
+    width : 40px;
+    height: 40px;
+}
+
+.profile_img_large{
+    width : 64px;
+    height: 64px;
+}
+
+.slide_item{
+    width:100%;
+    text-align:center;
+    color:white;
+    background-color: inherit;
+}
+
+.title_header{
+    background-color:inherit;
+    height:200px;
+    padding-left: 100px;
+    padding-top:10px !important;
+}
+
+.title_header_title{
+    color : #EFEFEF;
+    font-size:45px !important;
+}
+
+.list_header{
+    background-color:inherit;
+    height:100px;
+    padding-left: 100px;
+    padding-top:0px !important;
+}
+
+.list_item_title{
+    font-size : 20pt;
+    color : #428bca;
+    font-weight: bold;
+}
+
+.cate_bg{
+    background-color: #d43f3a;
+    color:white;
+    height:200px;
+    box-shadow : 0 2px 3px rgba(0,0,0,0.3);
+}
+
+.content_bg{
+    background-color: #e1edf7;
+    color:#353535;
+    height:200px;
+    box-shadow : 0 2px 3px rgba(0,0,0,0.3);
+}
+
+.list_bg{
+    background-color: #e1edf7;
+    color:#353535;
+    height:100px;
+    box-shadow : 0 2px 3px rgba(0,0,0,0.3);
+}
+
+.cate_item{
+    width:100%;
+    line-height: 30px;
+}
+
+
+.top_menu{
+    margin-bottom: 0 !important;
+    background-color : #FFFFFF;
+    border-bottom : 4px solid #1F1F1F;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+body{
+    background-color: #fefefe;
+    font-family: '나눔고딕','Nanum Gothic',NanumGothic;
+}
+
+.media_item{
+    margin:10px;
+}
+.media_content{
+    padding:10px;
+}
+
+.footer{
+    background-color: #f0f0f0;
+    margin-top:100px;
+}
+
+.footer_content{
+    color:#cecece;
+}
+
+
+#main_content>h1 {
+    margin-top: 36px;
+    margin-bottom: 16px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid #cccccc;
+    font-weight: bolder;
+    line-height: 1.2;
+}
+
+#main_content>h2 {
+    margin-top: 28px;
+    margin-bottom: 16px;
+    padding-bottom: 8.4px;
+    border-bottom: 1px solid #eeeeee;
+    font-size:28px;
+    font-weight: bolder;
+    line-height: 1.225;
+}
+
+#main_content>h3 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    line-height: 1.43;
+}
+
+#main_content>h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    line-height: 1.43;
+}
+
+#main_content>p {
+    font-size : 16px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+#main_content>p>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+img {
+    max-width : 100%;
+}

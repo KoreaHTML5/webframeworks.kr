@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - ExpressJS에서 유닛테스트하기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #DD1B16;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">ExpressJS에서 유닛테스트하기</h1>
+<p class="title_header_summary">ExpressJS의 각 컴포넌트들을 테스트하는 방법을 알아본다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" alt="김정환">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            김정환
+
+                        </h4>
+                        jeonghwan-kim<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078000)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.914000)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078000)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078000)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078000)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.312000)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078000)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078000)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156000)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156000)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.496000)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.248000)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.638000)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.312000)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.234000)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078000)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.546000)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.702000)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.702000)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.624000)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078000)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.234000)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078000)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078000)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.312000)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078000)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078000)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078000)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156000)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156000)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078000)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078000)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156000)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.312000)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078000)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078000)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078000)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078000)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.234000)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.234000)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078000)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078000)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078000)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.546000)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.780000)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156000)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.624000)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078000)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078000)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078000)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156000)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156000)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156000)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078000)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156000)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078000)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078000)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078000)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078000)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078000)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078000)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078000)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078000)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078000)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.234000)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.234000)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078000)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078000)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078000)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078000)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078000)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078000)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.312000)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.312000)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.078000)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.312000)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.078000)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.078000)'>hybrid-app</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>익스프레스 테스트 코드 작성하기</h1>
+
+<p>개발을 진행하면서, 중요하지만 소홀해질 수 있는 부분이 바 테스트입니다. 이번 튜토리얼에서는 익스프레스 프레임워크에서 유닛 테스트 코드를 작성하는 방법에 대해서 알아보도록하겠습니다.</p>
+
+<h2>테스트 환경 셋팅하기</h2>
+
+<p>테스트를 진행하기 위해서는 일부 모듈의 설치와 셋팅을 진행해야합니다.</p>
+
+<h3>설치하기</h3>
+
+<p>유닛테스트를 진행하기 위해서는 테스트프레임워크 <a href="https://mochajs.org/">Mocha.js</a> 와 검증라이브러리인 <a href="https://github.com/shouldjs/should.js">Should.js</a>를 설치하도록 합니다. 
+우선 테스트러너란 단어가 새로울 수 있을텐데, 테스트 러너란 작성되어있는 테스트 스크립트를 실행하는 존재로 보면 될 것 같다.
+설치는 npm을 통해서 아주 쉽게 진행이 가능합니다. </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install --save-dev mocha should
+</code></pre></div>
+<h3>테스트 실행 스크립트</h3>
+
+<p>노드 패키지 파일(package.json)에 아래와 같이 테스트만을 진행하기 위한 스크립트를 추가합니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;node ./bin/www&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="s2">&quot;node_modules/mocha/bin/mocha $(find ./routes -name &#39;*.spec.js&#39;) --recursive -w&quot;</span>
+<span class="p">},</span></code></pre></div>
+
+<p>test 뒤에 <em>mocha</em> 를 실행하는 부분이 있는데, routes 폴더 하위에 *.spec.js 을 인자로 받고 있는데,
+이는 우리가 이제 routes 폴더 하위에 *.spec.js 파일명으로 유닛테스트 스펙을 작성할 것이기 때문입니다.
+뒤에 인자로 w는 watch files for changes로 파일의 변화를 감지하겠다는 의미여며, recursive는 하위 디렉토리도 포함하겠다는 것이다.</p>
+
+<p>위가 같이 노드 패키지파일을 수정하였다면 아래와 같이 실행함으로써 테스트가 가능해집니다.명령어를 실행하면 Mocha가 실행되면서 자동으로 테스트 유닛을 찾아 테스트를 수행합니다.
+테스트가 종료되면 자바스크립트 파일의 변경사항을 감시하고 있다가 다시 테스트를 수행하도록 합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm test
+</code></pre></div>
+<h2>테스트 유닛 작성과 MOCK</h2>
+
+<h3>테스트 유닛 작성</h3>
+
+<p>익스프레스 명령어(express CLI) 로 생성된 라우팅 코드는 유닛테스트 하기에 적당하지 않기 때문에 우리는 routes/users.js 파일에서 라우팅 로직만 제거하여 이것을 app.js로 옮기겠습니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm"> * routes/users.js</span>
+<span class="cm">*/</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">([{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Chris&#39;</span><span class="p">,</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Sam&#39;</span>
+  <span class="p">}]);</span>
+<span class="p">};</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="nx">users</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span></code></pre></div>
+
+<p>이렇게 분리한 routes/users.js 파일을 단위 테스트할 차례입니다. 동일한 폴더에 users.spec.js 파일을 만들고 이 안에 라우팅 로직을 위한 테스트 유닛을 작성 합니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**</span>
+<span class="cm">* users.spec.js</span>
+<span class="cm">*/</span>
+<span class="kd">var</span> <span class="nx">should</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;should&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">users</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./users&#39;</span><span class="p">);</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Users&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the statusCode 200&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return user array&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+<p>응답의 상태코드 200과 바디를 확인하는 코드입니다. 하지만 users.js 모듈의 index() 함수를
+실행하려면 익스프레스의 Request객체와 Response 객체를 파라매터로 넘겨줘야 합니다.</p>
+
+<h3>node-mocks-http.js</h3>
+
+<p><a href="">node-mocks-http</a> 모듈은 익스프레스 라우팅에 대한 목 객체를 제공해 줍니다. 우리는 이 모듈을 사용해서 index() 함수에 필요한
+Request 객체와 Response 객체를 얻을 수 있습니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">httpMocks</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;node-mocks-http&#39;</span><span class="p">);</span>
+<span class="nx">req</span> <span class="o">=</span> <span class="nx">httpMocks</span><span class="p">.</span><span class="nx">createRequest</span><span class="p">();</span>
+<span class="nx">res</span> <span class="o">=</span> <span class="nx">httpMocks</span><span class="p">.</span><span class="nx">createResponse</span><span class="p">();</span></code></pre></div>
+
+<p>테스트 유닛에 이 목 객체를 사용할 수 있습니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the statusCode 200&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">users</span><span class="p">.</span><span class="nx">index</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return user array&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">users</span><span class="p">.</span><span class="nx">index</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
+  <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">_getData</span><span class="p">()).</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">an</span><span class="p">.</span><span class="nx">instanceOf</span><span class="p">(</span><span class="nb">Array</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">a</span><span class="p">.</span><span class="nx">lengthOf</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+<h3>Mock작업 (sinon.js)</h3>
+
+<p>서버에서 구현하는 API는 단순히 메모리상의 데이터를 다루는 것만 있는 것은 아닙니다.
+사용자 계정 정보 등 영구적으로 저장할 데이터는 데이터베이스에 저장하게 되는데,
+서버에 이 정보를 데이터베이스에서 조회한 뒤 API로 응답하는 경우가 빈번합니다.</p>
+
+<p>노드에서 사용하는 ORM 라이브러리중 sequelize 모듈을 사용하여 MySql을 사용하는
+API를 작성하면 아래와 같은 코드를 작성할 수 있습니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// users.js</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+
+  <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+    <span class="nx">where</span><span class="o">:</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+  <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+
+
+<span class="c1">// models.js</span>
+<span class="kd">var</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">();</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">User</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span>
+<span class="p">});</span></code></pre></div>
+
+<p>그럼 유닛 테스트를 위해 데이터베이스에 직접 자료를 넣어야 할까요?
+그렇게 할 수도 있겠지만 시간이 많이 걸립니다. 왜냐하면 테스트를 위해 데이테베이스 컨넥션을 생성한 뒤
+데이터를 입력하고 조회하는 시간이 상당하기 때문입니다. 게다가 이러한 API가 많아질수록 전체 테스트 시간은
+늘어나게 됩니다.</p>
+
+<p>그래서 목(Mock)을 사용해야 합니다. 데이터베이스 역할을 흉내낼 수 있는 가상의 것을 만들수 있습니다.</p>
+
+<p>sinon.js 설치</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install --save-dev sinon.js
+</code></pre></div>
+<p>Mock</p>
+
+<p>데이터베이스를 사용하는 show() 함수를 테스트 하기 위해 목 데이터베이스를 만들어야 합니다.
+정확이 얘기하면 데이터베이스의 특정 행동을 흉내내는 기능을 만듭니다.</p>
+
+<p>show() 함수를 호출하면 Sequelize 라이브러리의 User.findOne() 함수가 호출됩니다.
+sinon 모듈을 이용해 이 함수를 흉내낼 수 있습니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">sinon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sinon&#39;</span><span class="p">);</span>
+
+<span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span> <span class="s1">&#39;findOne&#39;</span><span class="p">).</span><span class="nx">returns</span><span class="p">({</span>
+  <span class="nx">then</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fn</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Chris&#39;</span><span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+
+<p>테스트를 진행할 때 modles.User 객체의 findOne() 함수가 호출될 때 then 함수가 포함된
+오브객체를 반환하도록 하였습니다. 이것은 findOne() 함수가 프라미스(promise)를 반환하기 때문입니다.</p>
+
+<p>Mock을 사용한 테스트 코드</p>
+
+<p>위에서 만든 Mock을 사용하여 show() 함수의 테스트 코드를 작성할 수 있습니다.
+before()에서 Mock을 구현하고 각 테스트 유닛에서는 그 결과를 검증합니다.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;.show()&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">before</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span> <span class="s1">&#39;findOne&#39;</span><span class="p">).</span><span class="nx">returns</span><span class="p">({</span>
+      <span class="nx">then</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fn</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Chris&#39;</span><span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the statusCode 200&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Chris&#39;</span><span class="p">;</span>
+    <span class="nx">users</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the statusCode 400 if no name&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">delete</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+    <span class="nx">users</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return a user&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Chris&#39;</span><span class="p">;</span>
+    <span class="nx">users</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
+    <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">_getData</span><span class="p">()).</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">instanceOf</span><span class="p">(</span><span class="nb">Object</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">a</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/expressjs">expressjs</a>&nbsp;<a href="/tags/tutorials">tutorials</a>&nbsp;<a href="/tags/test">test</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

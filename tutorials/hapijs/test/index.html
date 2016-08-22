@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Hapi 유닛테스트 방법</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Hapi 유닛테스트 방법</h1>
+<p class="title_header_summary">Hapi 유닛테스트 방법</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" alt="김정환">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            김정환
+
+                        </h4>
+                        jeonghwan-kim<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.078000)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,4.914000)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.078000)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.078000)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.078000)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.312000)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.078000)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.078000)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.156000)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.156000)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.496000)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.248000)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.638000)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.312000)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.234000)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.078000)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.546000)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.702000)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.702000)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.624000)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.078000)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.234000)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.078000)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.078000)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.312000)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.078000)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.078000)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.078000)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.156000)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.156000)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.078000)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.078000)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.156000)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.312000)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.078000)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.078000)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.078000)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.078000)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.234000)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.234000)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.078000)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.078000)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.078000)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.546000)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.780000)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.156000)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.624000)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.078000)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.078000)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.078000)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.156000)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.156000)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.156000)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.078000)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.156000)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.078000)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.078000)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.078000)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.078000)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.078000)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.078000)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.078000)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.078000)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.078000)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.234000)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.234000)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.078000)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.078000)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.078000)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.078000)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.078000)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.078000)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.312000)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.312000)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.078000)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.312000)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.078000)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.078000)'>hybrid-app</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1>Hapi 유닛테스트 방법</h1>
+
+<p>프론트도 마찬가지지만 백엔드 서버를 개발할수록 테스트가 중요성을 실감한다. 
+서비스는 서버 혼자서 동작하는 것이 아니라 모바일, 웹 브라우져 등의 클라이언트와 함께 동작해야 하기 때문에 다양한 시나리오에 대응할 수 있어야 한다. 또한 한 번 발생한 버그는 재발하지 않는다는 것을 보장해야 마음 놓고 코드를 수정할 수 있다. 
+때문에 테스트 뿐만 아니라 테스트 규모가 커짐에 따라 이에 대한 테스트 자동화에 대해서도 고민하지 않을 수 없다.</p>
+
+<p>이번 글은 Hapi를 이용한 Api 서버 개발시 테스트 자동화가 그 주제다. Hapi에서 제공하는 유닛테스트 모듈인 <a href="https://github.com/hapijs/lab">Lab</a>과 검증모듈 <a href="https://github.com/hapijs/code#array">Code</a>, 이를 활용한 REST Api 단에서의 테스트 코드 작성법, 그리고 테스트 결과의 문서화까지의 테스트 과정에 대해 보자.</p>
+
+<h2>라우팅 테스트</h2>
+
+<p>유닛 테스트라고 하면 클래스, 함수 단위 등 하나의 코드 덩어리를 테스트하는 것을 말한다. Api 서버에서도 클래스와 함수가 있기 때문에 그러한 모듈단위의 유닛테스트가 가능하다. 그러나 본 글에서는 유닛테스트가 아닌 프로토콜 단위의 테스트 코드를 다룬다. API 서버의 궁극적인 목적은 프로토콜을 호출했을 때 예상되는 결과로 응답하는 것이기 때문에 이러한 프로토콜 단위의 테스트가 중요하다고 생각한다.</p>
+
+<p>지금까지 작성한 코드의 폴더구조를 살펴보자. 라우팅 단위로 폴더를 작성하고, 각 폴더에는 index.js <em>.ctrl.js, *.valid.js가 각각 존재한다. 테스트를 위해 <code></em>.spec.js</code> 파일을 추가하자. 다시 한 번 각 파일의 역할을 설명하면 아래와 같다.</p>
+
+<ul>
+    <li>index.js: 라우팅 설정</li>
+    <li>*.ctrl.js: 로직 구현</li>
+    <li>*.valid.js: 파라매터 검증</li>
+    <li><strong>`*.spec.js`: 테스트 코드</strong></li>
+</ul>
+
+<p>이전 포스트에서 구현한 /user 프로토콜에 대한 테스트 코드를 구현해 보자.</p>
+
+<p>Hapi 유닛테스트 모듈인 Lab과 검증 모듈 Code를 사용해서 구현한다. Hapi에서는 유닛 테스트에 언급하는 Test Suite를 <code>experiment</code>, Test Case는 <code>test</code>라고 부른다. 중첩 experiemnt를 가질 수 있고 테스트 전략에 따라서 테스트 케이스를 구조화 할 수 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">Code</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">);</span> <span class="c1">// 검증 모듈</span>
+<span class="kd">var</span> <span class="nx">Lab</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;lab&#39;</span><span class="p">);</span> <span class="c1">// 유닛 테스트 모듈 </span>
+<span class="kd">var</span> <span class="nx">lab</span> <span class="o">=</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">lab</span> <span class="o">=</span> <span class="nx">Lab</span><span class="p">.</span><span class="nx">script</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;../../index.js&#39;</span><span class="p">));</span> <span class="c1">// 서버 모듈 </span>
+    <span class="c1">// 서버 객체를 할당한 부분에서 module.exports = server 코드를 추가하여</span>
+    <span class="c1">// 서버 객체를 노출시켜서 사용해야 한다.</span>
+
+<span class="c1">// 테스트 suite</span>
+<span class="nx">lab</span><span class="p">.</span><span class="nx">experiment</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">// 테스트 케이스 </span>
+  <span class="nx">lab</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/users&#39;</span>
+    <span class="p">};</span>
+
+    <span class="c1">// 서버 구동 </span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+
+      <span class="c1">// Code 검증 모듈로 결과값을 검증한다. </span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">).</span><span class="nx">contain</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">users</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">an</span><span class="p">.</span><span class="nx">array</span><span class="p">();</span>
+
+      <span class="c1">// 비동기 코드이므로 done() 콜백함수로 종료를 알린다.</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+<span class="p">});</span>
+</code></pre></div>
+<p>위 코드에서는 우리가 구현한 서버 객체를 require() 함수로 불러온다. 기존의 서버 생성 코드에 server 객체를 노출시키는 코드 추가하자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Hapi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hapi&#39;</span><span class="p">);</span>
+
+<span class="cm">/* 서버 객체 생성 및 설정 */</span>
+
+<span class="c1">// 서버 객체를 노출한다.</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">server</span><span class="p">;</span>
+</code></pre></div>
+<p>작성한 테스트 코드를 아래 명령어로 실행해보자. 콘솔 화면을 통해 테스트 결과를 확인할 수 있다.</p>
+
+<p><code>node_modules/lab/bin/lab users.spec.js</code></p>
+
+<h2>깔끔한 테스트를 위한 작업</h2>
+
+<p>Api 서버 테스트를 여러번 수행할 수록 서버에 테스트 자원이 쌓이게 된다. 예를 들어 post 프로토콜을 테스트 할 경우 데이터베이스에 데이터를 저장한다면 데이터가 계속 쌓이게 된다. 어차피 개발서버에서 테스트 한다면 상관없을 수도 있으나 테스트 후에는 그 흔적이 남지 않아야 한다고 생각한다. 이번 테스트 뿐만 아니라 다른 테스트에 영향을 미칠수 있기 때문이다.</p>
+
+<p>Lab 모듈에서는 <code>before()</code>와 <code>after()</code> 함수를 지원한다. test()로 테스트 케이스를 진행하기 전에 뭔가 작업을 하고 테스트 종료후 마무리 작업을 위한 함수다. before()에선 post 프로토콜로 테스트 데이터를 입력하고 after()에서는 delete 프로토콜로 테스트 데이터를 삭제한다.  test()에서는 get, put등의 프로토콜을 테스트한다. before()/after()는 experiment()에서 각 각 한번만 실행된다. 매 테스트마다 실행하기 위한 <code>beforeEach()</code>/<code>afterEach()</code>함수도 지원한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">Code</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Lab</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;lab&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">lab</span> <span class="o">=</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">lab</span> <span class="o">=</span> <span class="nx">Lab</span><span class="p">.</span><span class="nx">script</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;../../index.js&#39;</span><span class="p">));</span>
+
+<span class="nx">lab</span><span class="p">.</span><span class="nx">experiment</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">// 테스트 데이터 </span>
+  <span class="kd">var</span> <span class="nx">tester</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Unit Tester&#39;</span>
+  <span class="p">};</span>
+
+  <span class="c1">// 테스트 전에 post로 테스트 자원을 입력하는 프로토콜을 호출한다.</span>
+  <span class="nx">lab</span><span class="p">.</span><span class="nx">before</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/users&#39;</span><span class="p">,</span>
+      <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">tester</span><span class="p">.</span><span class="nx">name</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span>
+      <span class="nx">tester</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">tester</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="c1">// 테스트 종료 후 테스트 자원을 삭제하는 프로토콜을 호출한다.</span>
+  <span class="nx">lab</span><span class="p">.</span><span class="nx">after</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">,</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/users?id=&#39;</span> <span class="o">+</span> <span class="nx">tester</span><span class="p">.</span><span class="nx">id</span>
+    <span class="p">};</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="nx">lab</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/users&#39;</span>
+    <span class="p">};</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">).</span><span class="nx">contain</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">users</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">an</span><span class="p">.</span><span class="nx">array</span><span class="p">();</span>
+
+      <span class="c1">// before()에서 입력한 테스트 데이터를 확인한다.</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">users</span><span class="p">[</span><span class="nx">tester</span><span class="p">.</span><span class="nx">id</span><span class="p">]).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">tester</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="nx">lab</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;GET users/{id}&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+      <span class="nx">url</span>   <span class="o">:</span> <span class="s1">&#39;/users/&#39;</span> <span class="o">+</span> <span class="nx">tester</span><span class="p">.</span><span class="nx">id</span>
+    <span class="p">};</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+
+      <span class="c1">// before()에서 입력한 테스트 데이터를 확인한다.</span>
+      <span class="nx">Code</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">user</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">tester</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+<span class="p">});</span>
+</code></pre></div>
+<p>만약 테스트가 많을 경우 한 테스트 케이스만 실행할 필요가 있다. 반대로 특정 테스트는 스킵하고 싶을 때가 있는데 lab.test() 함수의 두 번째 파라메터로 <code>{only: Boolean, skip: Boolena}</code> 객체를 넘겨주면 가능하다.</p>
+
+<p>테스트 파일(*.spec.js)이 많아지면 매번 명령어로 실행하기 불가능하다. 리눅스에 많이 사용하는 Makefile를 활용하면 이를 손쉽게 관리할 수 있다.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">all: users auth
+
+users:
+  node_modules/lab/bin/lab app/routes/users/*.spec.js
+
+auth:
+  node_modules/lab/bin/lab app/routes/auth/*.spec.js
+</code></pre></div>
+<p>/users 프로토콜을 테스트할 때는 <code>make user</code>로 간단히 실행한다. <code>make</code> 명령어는 전체 테스트를 실행한다. Makefile은 프로젝트 루트폴더에 관리하는 것이 좋고, 스페이스가 아니라 반드시 &#39;탭&#39;을 사용해야 한다는 점을 주의하자.</p>
+
+<h2>테스트 결과</h2>
+
+<p>Lab 모듈은 훌륭한 테스트 결과 문서를 제공한다. Lab 명령어 실행시 -r은 리포트 형식을 정하는 옵션이다. <code>-r html</code> 옵션을 줘서 html 형식으로 테스트 결과를 출력하고 <code>-o report.html</code> 옵션을 추가하여 파일로 저장할 수 있다. Makefile을 아래처럼 수정해 보자.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">users:
+  node_modules/lab/bin/lab &lt;strong&gt;-o report.html -r html&lt;/strong&gt; app/routes/users/*.spec.js
+</code></pre></div>
+<h2>Grunt로 자동화</h2>
+
+<p>지금까지의 작업을 Grunt로 자동화 해보자. 우리는 <code>grunt test</code> 단 한줄의 명령어로 테스트 실행, 리포트 생성 및 생성된 리포트 열람의 작업을 수행할 수 있다. 아래 명령어로 grunt 관련 모듈을 설치한다.</p>
+
+<p><code>npm install --save-dev grunt grunt-lab grunt-open</code></p>
+
+<p>프로젝트 루트 폴더에 Gruntfile.js를 생성하고 아래 코드를 작성한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+
+    <span class="c1">// lab 명령어 관련 설정 </span>
+    <span class="nx">lab</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;app/**/*.spec.js&#39;</span><span class="p">],</span> <span class="c1">// 모든 테스트 파일을 수행한다.</span>
+      <span class="nx">nodeEnv</span><span class="o">:</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span>
+      <span class="nx">DEBUG</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+      <span class="nx">color</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">verbose</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">timeout</span><span class="o">:</span> <span class="mi">7000</span><span class="p">,</span>
+      <span class="nx">parallel</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">reportFile</span><span class="o">:</span> <span class="s1">&#39;report.html&#39;</span><span class="p">,</span> <span class="c1">// 리포트 파일을 생성한다.</span>
+      <span class="nx">reporter</span><span class="o">:</span> <span class="s1">&#39;html&#39;</span><span class="p">,</span>
+      <span class="nx">coverage</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+
+    <span class="c1">// 생성한 리프포트 파일을 크롬 브라우저로 열람한다.</span>
+    <span class="nx">open</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">report</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;report.html&#39;</span><span class="p">,</span> 
+        <span class="nx">app</span><span class="o">:</span> <span class="s1">&#39;Google Chrome&#39;</span> 
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+  <span class="p">});</span>
+
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-lab&#39;</span><span class="p">);</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-open&#39;</span><span class="p">);</span>
+
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;lab&#39;</span><span class="p">,</span> <span class="s1">&#39;open:report&#39;</span><span class="p">]);</span>
+
+<span class="p">};</span>
+</code></pre></div>
+<p>이제 grunt test 명령어를 수행해보자. 작성한 모든 테스트가 실행되고, report.html에 결과를 저장한 뒤, 크롬 브라우져가 열릴 것이다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/hapi">hapi</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
