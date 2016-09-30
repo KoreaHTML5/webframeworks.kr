@@ -160,8 +160,6 @@ Hello World
 * Connection #0 to host 127.0.0.1 left intact
 ```
 
-## Hello World 코드 설명
-
 프론트엔드에서 자바스크립트를 사용해보신 분들이라면 몇가지 특이한 신텍스가 보일겁니다. `const` 와 `() => ` 코드인데요. 이것은 자바스크립트의 새로운 표준인 ECMAScript 2015 (ES6) 문법입니다.
 
 
@@ -221,12 +219,12 @@ const b; // SyntaxError: Missing initializer in const declaration
 ```
 
 
-### Arrow function
+## Arrow function
 
 ES6에는 익명 함수를 선언할 때 `() => {}` 와 같은 표현법을 사용할 수 있는데 이것은 애로우 함수(Arrow function)라고 합니다. `function` 키워드를 간단히 줄여놓은 문법인데요 콜백이 많은 비동기 코드에서 사용하면 가독성이 뛰어납니다.
 
 
-### require()
+## require()
 
 노드는 V8, 이벤트I/O프레임웍 그리고 CommonJS로 이뤄진 환경이라고 했는데요. 마지막의 CommonJS를 구현해 놓은 것 중 하나가 `require()` 함수입니다. `require()` 함수는 자바스크립트로 만든 모듈을 가져올 수 있습니다. 모듈에 대해 알아보기 위해 아래 코드를 읽어 보세요.
 
@@ -250,6 +248,9 @@ console.log(sum(1, 2)); // 3
 ```
 
 `require()` 함수를 이용해 우리가 만들었던 모듈인 `sum.js` 파일을 가져옵니다. 그리고 `sum`이라는 상수에 할당합니다. `let`이나 `var`로 하지않고 `const`를 이용한 것은 우리가 사용할 외부 모듈을 변경하지 않고 사용만 할 것이기 때문입니다. ES6애서 제공하는 이런류의 문법을 사용하면 코드의 버그를 잡는데 도움이 됩니다. `sum` 상수에는 `sum.js` 모듈에서 노출한 `sum()` 함수가 할당될 것입니다. 그래서 `sum(1, 2)`라는 형태로 활용할 수 있습니다.
+
+
+## Hello World 코드 설명
 
 헬로 월드 코드의 첫번째 코드를 다시 봅시다.
 
