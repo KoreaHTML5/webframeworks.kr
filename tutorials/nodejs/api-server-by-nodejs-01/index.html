@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - NodeJS를 이용한 API 서버만들기 1</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #026E00;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">NodeJS를 이용한 API 서버만들기 1</h1>
+<p class="title_header_summary">NodeJS를 이용한 REST API 서버 개발을 시작할 수 있다. ExpressJS, Sequelize로 기본 골격을 잡는 것부터 Mocha, Supertest로 유닛테스트하는 방법까지 설명한다. 이 글은 지난 코드랩 진행했던 내용과 유사하다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" alt="김정환">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            김정환
+
+                        </h4>
+                        jeonghwan-kim<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.081562)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.383125)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.081562)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.081562)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.081562)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.326250)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.081562)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.081562)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.163125)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.163125)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.773125)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.386562)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.794375)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.326250)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.244688)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.081562)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.570937)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.734063)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.815625)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.734063)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.081562)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.244688)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.081562)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.081562)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.326250)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.081562)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.081562)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.081562)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.163125)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.163125)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.081562)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.081562)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.163125)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.326250)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.081562)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.081562)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.081562)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.081562)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.244688)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.244688)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.081562)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.081562)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.081562)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.570937)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.897188)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.163125)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.652500)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.081562)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.081562)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.081562)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.163125)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.163125)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.163125)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.081562)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.163125)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.081562)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.081562)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.081562)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.081562)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.081562)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.081562)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.081562)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.081562)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.081562)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.244688)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.326250)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.081562)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.081562)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.081562)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.081562)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.081562)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.081562)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.326250)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.326250)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.081562)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.326250)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.081562)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.081562)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.081562)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.081562)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.081562)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.081562)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.081562)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.081562)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.081562)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.081562)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.081562)'>UnitTest</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>NodeJS에 대해</h2>
+
+<p>자바스크립트는 주로 웹 브라우져에서 실행되는 언어입니다. 웹 브라우져에는 자바스크립트 엔진이라는 것이 있는데 이 엔진이 자바스크립트 코드를 실행시키는 역할을 하는 것이죠. 이러한 자바스크립트 엔진에는 크롬에서 사용하는 V8, 사파리에서 사용하는 웹킷(Webkit), 파이어폭스에서 사용하는 스파이커몽키(SpikerMonky), 오페라에서 사용하는 카라칸 등이 있습니다. 이러한 엔진 중에 구글에서 만든 V8 엔진이 오늘 우리가 배울 노드에서 사용하는 자바스크립트 엔진입니다.</p>
+
+<p>Ryan Dahl 이라는 사람은 이 V8 엔진에 이벤트 I/O 프레임웍과 CommonJS 명세를 이용한 모듈을 결합하여 Node.js를 만들었습니다.</p>
+
+<p><img src="imgs/node-composition.png" alt=""></p>
+
+<p>노드는 주로 웹서버와 같은 네트웍 프로그램을 위해 고안된 환경이지만 최근에는 웹 개발 환경의 빌드 툴로도 많이 사용되고 있습니다. 리엑트에서 사용하는 웹팩(Webpack), 스트림 형식의 빌드툴 굴프(Gulp), 그리고 설정 방식의 빌트 툴인 그런트(Grunt)가 모두 노드 환경에서 개발된 도구입니다.</p>
+
+<p>노드 환경으로 인해 그 동안 웹 브라우져에서만 사용하는 자바스크립트를 어디서나 사용할 수 있게 되었습니다.</p>
+
+<p>가장 크게는 웹서버 같은 백엔드 사이드를 자바스크립트로 구현할 수 있습니다. 우리가 학습할 부분이구요.</p>
+
+<p>데스크탑 어플리케이션도 자바스크립트로 구현할 수 있게되었습니다. 슬랙 등과 같은 어플리케이션은 일렉트론(Electron)이라는 프레임웍으로 개발되었는데 역시 노드 기반입니다.</p>
+
+<p>모바일 어플리케이션도 자바스크립트로 개발할수 있는데 그 중 아이오닉(Ionic)이라는 하이브리드 앱이 그렇습니다.</p>
+
+<p>이 모든것이 노드 기반으로 개발되고 실행되는 어플리케이션 입니다. 자바스크립트가 브라우져 밖으로 나오면서 무섭게 영역을 장악해가고 있는 것입니다.</p>
+
+<h2>설치</h2>
+
+<p>노드 설치는 간단합니다. <a href="https://nodejs.org/ko/">nodejs.org</a>에서 최신버전인 v6.x.x을 다운로드 하세요.</p>
+
+<p><img src="imgs/node-download.png" alt=""></p>
+
+<p>여러분이 사용하는 운영체제에 따라 노드 설치파일이 다운로드 됩니다. 저는 OSX을 기준으로 진행하겠습니다.</p>
+
+<p>다운로드한 설치파일을 실행하고 몇번 클릭하게되면 노드 설치가 완료됩니다.</p>
+
+<p>노드가 설치 되었는지 확인해 볼까요? 유닉스 <code>which</code> 명령어로 노드 명령어의 위치를 확인해 봅시다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">which node
+/usr/local/bin/node
+</code></pre></div>
+<p>운영체제에서 명령어를 모아두는 폴더인 /usr/local/bin 하위 폴더에 노드 명령어가 생성되었습니다. 그럼 처음으로 노드 명령어를 사용해 볼까요? 아래는 설치한 노드 버전을 출력하는 방법입니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">node --version
+v6.5.0
+</code></pre></div>
+<p>우리가 설치한 노드 버전이 v6.5.0이네요. 최신버전입니다.</p>
+
+<h2>NPM</h2>
+
+<p>노드를 설치하면 npm 이라는 프로그램도 함께 설치됩니다. 이것은 노드로 만든 패키지를 관리하는 툴이고 &quot;Node Package Manager&quot;의 약자입니다. 우리는 npm의 몇 가지 기능을 이용해서 프로젝트를 진행할 겁니다. 우선 우리가 만들 프로젝트 폴더를 만들고 거기에 npm으로 프로젝트를 초기화 합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mkdir codlab-nodejs
+cd codlab-nodejs
+npm init
+</code></pre></div>
+<p>몇 가지를 물어 볼건데요 그냥 엔터 입력하면서 기본값을 사용하다고 답변하면 됩니다. 모두 완료되면 package.json 이란 파일이 하나 생성됩니다. 이것은 프로젝트 정보를 기록한 파일인데요 npm으로 프로젝트를 관리하기 위해 사용됩니다. Npm으로 사용할 패키지를 추가할때 그 정보를 여기에 기록하거나 스크립트를 정의하여 실행할 수도 있습니다. 자세한 사용방법은 나중에 설명하고 지금은 헬로 월드를 찍어보는 것에 집중합시다.</p>
+
+<h2>Hello world</h2>
+
+<p>이제 우리는 <a href="https://nodejs.org/dist/latest-v6.x/docs/api/synopsis.html">nodejs.org</a> 사이트로 이동합니다. 웹서버를 만들수 있는 간단한 코드를 제공하는데 이것을 복사하여 우리 프로젝트 폴더의 <code>app.js</code>라 파일로 만듭니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">Server</span> <span class="nx">running</span> <span class="nx">at</span> <span class="nx">http</span><span class="o">:</span><span class="c1">//${hostname}:${port}/`);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>코드에 대한 설명은 차후로 미룰께요. &quot;Hello world&quot; 문자열을 확인하는 것이 목적이니까요. 노드에서 자바스크립트로 만든 서버 어플리케이션을 실행하려면 <code>node</code> 명령어를 이용하면 됩니다. 아래처럼요.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">node app.js
+</code></pre></div>
+<p>Npm을 이용해서 프로젝트를 관리할거라면 <code>package.json</code> 파일에 스크립트를 등록해 두는 것이 좋습니다. <code>start</code> 라는 스크립트를 만들어 보겠습니다.</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;node js&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이제 <code>npm</code> 명령어로 서버 프로그램을 실행봅시다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm start
+Server running at http://127.0.0.1:3000/
+</code></pre></div>
+<p>서버 프로그램이 실행되었고 우리는 http://127.0.0.1:3000 주소로 확인할 수 있습니다.</p>
+
+<h2>브라우져로 확인</h2>
+
+<p>크롬 브라우져을 열어 http://127.0.0.1:3000  주소로 접속해 보세요.</p>
+
+<p><img src="imgs/result.png" alt=""></p>
+
+<p>&quot;Hello world&quot; 문자열이 브라우져에 출력되었습니다!</p>
+
+<h2>Curl로 리퀘스트 보내기</h2>
+
+<p>브라우져는 내부적으로 <code>GET http://127.0.0.1:3000</code> 요청을 보내서 그 결과를 화면에 뿌려주는 역할을 합니다. HTTP 요청은 이 외에도 헤더에 다양한 정보를 담아서 보낼수 있는데 브라우져는 모든 정보를 설정하기에는 기능이 제한적입니다.</p>
+
+<p>구체적인 요청을 위해 앞으로는 <code>curl</code> 이란 프로그램을 사용할 겁니다. 아래 명령어로 다시 서버에 요청을 보내 보세요.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">curl -X GET &#39;127.0.0.1:3000&#39;
+Hello World
+</code></pre></div>
+<p>동일하게 &quot;Hello world&quot; 문자열이 출력되었습니다. 이번에는 -v 옵션을 추가해서 실행해 보세요.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">curl -X GET &#39;localhost:3000&#39; -v
+* Rebuilt URL to: 127.0.0.1:3000/
+*   Trying 127.0.0.1...
+* Connected to 127.0.0.1 (127.0.0.1) port 3000 (#0)
+&gt; GET / HTTP/1.1
+&gt; Host: 127.0.0.1:3000
+&gt; User-Agent: curl/7.43.0
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Content-Type: text/plain
+&lt; Date: Mon, 12 Sep 2016 03:02:44 GMT
+&lt; Connection: keep-alive
+&lt; Content-Length: 12
+&lt;
+Hello World
+* Connection #0 to host 127.0.0.1 left intact
+</code></pre></div>
+<h2>Hello World 코드 설명</h2>
+
+<p>프론트엔드에서 자바스크립트를 사용해보신 분들이라면 몇가지 특이한 신텍스가 보일겁니다. <code>const</code> 와 <code>() =&gt;</code> 코드인데요. 이것은 자바스크립트의 새로운 표준인 ECMAScript 2015 (ES6) 문법입니다.</p>
+
+<h2>const</h2>
+
+<p>지금까지의 자바스크립트(ES5)에서는 변수를 선언하기 위해 <code>var</code> 키워드를 사용했습니다. 이것은 함수 스코프 적용을 받는 변수입니다. 아... 함수 스코프가 뭔지 모르겠다면 아래 코드부터 보세요.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">foo</span><span class="p">();</span> <span class="c1">// undefined</span>
+</code></pre></div>
+<p><code>foo()</code>를 실행하면 어떤 값이 나올까요? 함수 안에  <code>if (false)</code> 구문은 실행되지 않아야 마땅합니다. 조건문이 <code>false</code> 이니깐요. 그래서 <code>a</code> 라는 변수 자체가 없어야 하고 <code>console.log(a)</code>를 실행할때 <code>a</code> 라는 변수가 선언되지 않았으므로 ReferenceError가 발생해야 합니다. 하지만 실제는 <code>undefined</code> 값이 출력됩니다. 자바스크립트 엔진은 위 코드를 이렇게 변경하기 때문입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">a</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>자바스크립트 엔진은 코드 안에 <code>var a = 1;</code> 이라는 코드를 만나면 먼저 코드 상단에 <code>a</code> 라는 변수를 미리 선언합니다. 이것을 호이스팅(hoisting)이라고 합니다.</p>
+
+<p>자바스크립트 엔진은 <code>a</code> 변수를 어디에 선언해야하는지 기준이 있어야 합니다. <code>foo()</code> 함수의 첫 번째 줄일수도 있고 <code>foo()</code> 함수 바깥일 수 도 있습니다. 자바스크립트 엔진은 전자의 방식 즉 <strong>해당 변수가 선언된 함수의 맨 첫번째 줄에 변수를 선언합니다.</strong> 이것을 두고 &quot;자바스크립트는 함수 스코프를 사용한다&quot;라고 얘기합니다. 그동안 자바스크립트에서 스코프라고 하면 모두 함수 스코프를 얘기했습니다.</p>
+
+<p>하지만 ES6 부터는 이를 구분해서 얘기해야합니다. <code>let</code>은 함수 스코프를 사용하지 않기 때문이죠. <strong>블록스코프</strong> 를 사용합니다. 여기서 블록은 중괄호(<code>{ }</code>)를 의미합니다. 아래 코드를 살펴보세요.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">foo</span><span class="p">();</span> <span class="c1">// ReferenceError: a is not defined</span>
+</code></pre></div>
+<p><code>if</code> 블록 안에 <code>a</code> 변수가 <code>let</code>으로 선언되었고 <code>if</code> 블록을 빠져나오면 <code>console.log(a)</code> 코드를 만나게 됩니다. 여기서 <code>a</code>는 <code>foo()</code> 함수 스코프 내에서는 찾을 수 없습니다. 왜냐하면 <code>let</code>으로 선언된 <code>a</code> 변수는 <code>if</code> 블록에 감싸져서 <code>foo()</code> 함수 스코프에서는 보이지 않기 때문이다. 이것을 블록 스코프라고 합니다.</p>
+
+<p><code>const</code>도 마찬가지죠. <code>let</code>처럼 블록 스코프를 사용하는 상수 키워드 입니다. 상수란 선언과 동시에 값이 할당 되어야 하고 이후에는 값을 변경하지 못하는 특징이 있습니다. 아래 코드를 보면 알수 있겠죠?</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// TypeError: Assignment to constant variable.</span>
+<span class="kr">const</span> <span class="nx">b</span><span class="p">;</span> <span class="c1">// SyntaxError: Missing initializer in const declaration</span>
+</code></pre></div>
+<h3>Arrow function</h3>
+
+<p>ES6에는 익명 함수를 선언할 때 <code>() =&gt; {}</code> 와 같은 표현법을 사용할 수 있는데 이것은 애로우 함수(Arrow function)라고 합니다. <code>function</code> 키워드를 간단히 줄여놓은 문법인데요 콜백이 많은 비동기 코드에서 사용하면 가독성이 뛰어납니다.</p>
+
+<h3>require()</h3>
+
+<p>노드는 V8, 이벤트I/O프레임웍 그리고 CommonJS로 이뤄진 환경이라고 했는데요. 마지막의 CommonJS를 구현해 놓은 것 중 하나가 <code>require()</code> 함수입니다. <code>require()</code> 함수는 자바스크립트로 만든 모듈을 가져올 수 있습니다. 모듈에 대해 알아보기 위해 아래 코드를 읽어 보세요.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// sum.js</span>
+<span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// sum() 함수를 외부로 노출함 -&gt; 모듈로 만듬</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">;</span>
+</code></pre></div>
+<p>노드에서는 파일단위로 하나의 모듈을 만들 수 있습니다. <code>sum.js</code> 파일을 만들고 그안에 <code>sum()</code> 함수를 정의했습니다. 그리고 코드의 마지막 줄에 <code>module.exports</code> 신텍스를 이용해서 외부로 노출시켰습니다. 이러면 <code>sum.js</code> 파일은 일종의 모듈이 되는 것입니다.</p>
+
+<p>그럼 이 모듈을 어떻게 가져다 사용할 수 있을까요? 아래 코드에서 그 방법을 알려줍니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./sum.js&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+</code></pre></div>
+<p><code>require()</code> 함수를 이용해 우리가 만들었던 모듈인 <code>sum.js</code> 파일을 가져옵니다. 그리고 <code>sum</code>이라는 상수에 할당합니다. <code>let</code>이나 <code>var</code>로 하지않고 <code>const</code>를 이용한 것은 우리가 사용할 외부 모듈을 변경하지 않고 사용만 할 것이기 때문입니다. ES6애서 제공하는 이런류의 문법을 사용하면 코드의 버그를 잡는데 도움이 됩니다. <code>sum</code> 상수에는 <code>sum.js</code> 모듈에서 노출한 <code>sum()</code> 함수가 할당될 것입니다. 그래서 <code>sum(1, 2)</code>라는 형태로 활용할 수 있습니다.</p>
+
+<p>헬로 월드 코드의 첫번째 코드를 다시 봅시다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);;</span>
+</code></pre></div>
+<p>Http 라는 모듈을 가져와서 <code>http</code>라는 상수에 할당하였습니다. Http 모듈은 <code>createServer()</code> 함수를 노출하기 때문에 아래 코드로 서버 객체를 만들 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="cm">/*... */</span> <span class="p">});</span>
+</code></pre></div>
+<p><code>createServer()</code> 함수로 생성된 <code>server</code> 객체는 다시 <code>listen()</code> 이라는 함수를 제공하는데이 이를 통해 서버가 클라이언트로부터 요청을 받기 위한 대기상태로 만들수 있는 것입니다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/ExpressJS">ExpressJS</a>&nbsp;<a href="/tags/JS">JS</a>&nbsp;<a href="/tags/tutorial">tutorial</a>&nbsp;<a href="/tags/NodeJS">NodeJS</a>&nbsp;<a href="/tags/Sequelize">Sequelize</a>&nbsp;<a href="/tags/Mocha">Mocha</a>&nbsp;<a href="/tags/Supertest">Supertest</a>&nbsp;<a href="/tags/UnitTest">UnitTest</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
