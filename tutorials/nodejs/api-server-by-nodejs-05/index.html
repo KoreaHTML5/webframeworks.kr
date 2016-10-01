@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - NodeJS를 이용한 API 서버만들기 5</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #026E00;color: #FFFFFF;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">NodeJS를 이용한 API 서버만들기 5</h1>
+<p class="title_header_summary">NodeJS를 이용한 REST API 서버 개발을 시작할 수 있다. ExpressJS, Sequelize로 기본 골격을 잡는 것부터 Mocha, Supertest로 유닛테스트하는 방법까지 설명한다. 이 글은 지난 코드랩 진행했던 내용과 유사하다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" alt="김정환">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            김정환
+
+                        </h4>
+                        jeonghwan-kim<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.072500)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.075000)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.072500)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.072500)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.072500)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.290000)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.072500)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.072500)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.145000)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.145000)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.755000)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.232500)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.595000)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.290000)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.217500)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.072500)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.507500)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.652500)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,1.015000)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.942500)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.072500)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.217500)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.072500)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.072500)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.290000)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.072500)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.072500)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.072500)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.145000)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.145000)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.072500)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.072500)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.145000)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.290000)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.072500)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.072500)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.072500)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.072500)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.217500)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.217500)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.072500)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.072500)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.072500)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.507500)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,0.797500)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.145000)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.580000)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.072500)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.072500)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.072500)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.145000)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.145000)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.145000)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.072500)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.145000)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.072500)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.072500)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.072500)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.072500)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.072500)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.072500)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.072500)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.072500)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.072500)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.217500)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.290000)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.072500)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.072500)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.072500)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.072500)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.072500)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.072500)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.290000)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.290000)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.072500)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.290000)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.072500)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.072500)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.072500)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.072500)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.072500)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.362500)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.362500)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.362500)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.362500)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.362500)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.362500)'>UnitTest</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>데이터베이스 연동</h2>
+
+<p>자 드디어 데이터베이스를 붙일 차례가 왔습니다. 벡엔드 구조에 대해 설명한 부분을 기억할수 있겠어요? 바로 이 모습.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">┌───────┐               ┌───────┐                ┌────────┐
+│Client │ -- (HTTP) --&gt; │Server │ -- (Query) --&gt; │Database│
+└───────┘               └───────┘                └────────┘
+</code></pre></div>
+<p>지금까지 했던 작업을 Client, Server, Database 중에 Sever 부분을 만들었습니다. Client에서 요청하는 것은 CURL을 사용하거나 모카 테스트로 진행했구요.</p>
+
+<p>남은 것은 가장 오른쪽에 있는 Database 부분입니다. 벡엔드에서 데이터베이스를 직접 만드는 것은 아닙니다. 다양한 데이터베이스 프로그램이 있는데 그중 MySQL을 사용할 것입니다. MySQL을 우리 컴퓨터에 개발용으로 설치하고 Server에서는 단지 데이터베이스에 연결하는 것입니다.</p>
+
+<h2>MySQL</h2>
+
+<p>그럼 우선 MySQL을 내 컴퓨터에 설치해야합니다. OSX에서 MySQL을 설치하는 방벙은 간단합니다. Homebrew를 이용하는 것입니다. Homebrew는 OSX용 패키지 관리 툴입니다. 리눅스의 APM, YUM 같은 툴이죠.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">brew install mysql
+</code></pre></div>
+<p>Homebrew가 없다면 아래 명령어로 Homebrew 부터 설치하세요. (<a href="http://brew.sh/">참고</a>))</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre></div>
+<p>MySql을 설치한 뒤 서버를 구동해야합니다. MySQL 서버를 데몬이라고도 하는데 리눅스에서 말하는 &quot;데몬&quot;, 혹은 &quot;서비스&quot;와 같은 것입니다. 서버에서 백그라운드에서 실행중인 프로세스를 데몬이라고 합니다. 로컬에서도 개발용으로 MySQL 데몬을 실행해야 합니다. 방법은 간단합니다. 설치한 mysql 명령어를 이용합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql.server start
+</code></pre></div>
+<p>반대로 서버를 종료할때는 stop 명령어를 사용합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql.server stop
+</code></pre></div>
+<p>MySQL 서버를 로컬 컴퓨터에 구동했다면 이제 구동중인 MySQL 서버에 접속해 봐야합니다. 역시 mysql 명령어로 접속합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql -u root -h localhost -p
+</code></pre></div>
+<p>mysql 명령어의 -u 옵션은 서버 접속 계정을 넣을때 사용하는데 기본 값인 root를 사용했습니다. -h 옵션은 서버 접속 주소를 설정하는 옵션인데 우리는 로컬 컴퓨터에 구동중인 mysql 서버에 접속하므로 localhost를 사용했습니다. 마지막 -p 옵션을 비밀번호를 입력하기 위한 기능입니다. 위 명령어를 실행하면 비밀번호를 입력하도록 하는데 root를 입력하고 접속합니다. 그럼 다음과 같이 mysql 프롬프트로 진입합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql&gt;
+</code></pre></div>
+<p>간단한 명령어를 보겠습니다. msyql 서버에 있는 데이터베이스 목록을 조회하려면 다음 명령어를 실행해 보세요.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql&gt; SHOW DATABASES;
+</code></pre></div>
+<p>우리는 node<em>api</em>codelab 이란 데이터베이스를 만들건데요 먼저 이 이름으로 데이터베이스를 하나 생성하겠습니다. mysql 프로프트에서 명령어를 입력할때 마지막에 반드시 세미콜론(;)를 추가해야합니다. 그래야만 mysql은 하나의 명령문인 것을 인지하고 실행할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql&gt; CREATE DATABASE node_api_codelab;
+</code></pre></div>
+<p>하나 만들었으면 이제 다시 <code>SHOW DATABASES;</code> 로 방금 만든 데이터베이스를 확인합니다. 그리고 이 데이베이스를 선택합니다. 생성한 데이터베이스를 선택할 때는 <code>USE</code> 명령어를 사용합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql&gt; USE node_api_codelab;
+</code></pre></div>
+<p>MySQL 데이터베이스 안에는 테이블이 있습니다. 이 테이블 안에 실제 데이터가 저장되는 것이죠. 우리는 API를 만들때 User에 대한 API들을 만들었습니다. User를 생성하는 API를 만들 때를 떠올려 보세요. 우리는 id와 name이라는 것을 만들었었죠. 이제 user 테이블을 만들어 보겠습니다.</p>
+
+<p>아니요. 여기서부터는 mysql 명령어를 사용하지 않아도 됩니다. 노드 코드 작성하는것도 버거운데 mysql 코드를 작성한다는 것은 쉬운 일이 아니죠.</p>
+
+<h2>Sequelize</h2>
+
+<p>노드 코드에서 MySql에 접속해서 이런 저런 쿼리문을 실행할 때는 노드 코드로 만든 mysql 패키지가 필요합니다. 그것이 node-mysql입니다. 이것을 우리 프로젝트에 추가해서 쿼리문을 직접 실행시킬수 있죠. 방금 했던것 처럼 <code>CREATE TABLE Users;</code> 같은 명령문을 말이죠. 하지만 여전히 쿼리문을 작성한다는 것은 지금은 버거운 일이에요. 그렇죠?</p>
+
+<p>그래서 나온것이 <strong>ORM(Object Relational Mapping)</strong> 이라는 것입니다. ORM을 사용하게 되면 쿼리문을 모르더라도 자신이 사용하는 프로그래밍 언어로 데이터베이스에 명령을 내릴수 있습니다. 노드에는 Sequelize 라는 ORM 라이브러리가 있습니다.</p>
+
+<p>npm으로 Sequelize 를 먼저 설치해 보죠.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm i Sequelize --save
+</code></pre></div>
+<h2>Model</h2>
+
+<p>모델이라는 용어를 들어 보셨나요? 서버에서 하나의 자원을 정의할 때 그것을 모델이라고 합니다. 우리는 지금까지 User 라는 자원을 사용했습니다. 이것이 User 모델입니다. 모델은 데이터베이스의 테이블과 1:1 매칭된다고 보시면 됩니다. 그러면 데이터베이스에 User 테이블이 있어야 합니다. User 테이블을 만들기 위해, 다시 말하면 User 모델을 만들기위해 Sequelize의 도움을 받아야합니다.</p>
+
+<p>모델을 만드는 역할을 하는 <code>models.js</code> 파일을 만들어 봅니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="s1">&#39;node_api_codelab&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>sequelize 모듈을 가져와 <code>Sequelize</code> 상수에 할당했습니다. 그다음엔 Sequelize 객체를 하나 만들어 <code>sequelize</code> 상수에 할당했습니다. Sequelize 객체를 만들 때는 세 개의 파라매터가 필요한데 데이터베이스 이름, 접속 계정명, 비밀번호 순입니다. 순서대로 문자열로 파라매터를 넘겨주면 sequelize 객체를 얻을수 있습니다. 이 객체가 제공하는 메소드 중 <code>define()</code> 함수를 이용해 모델을 만들수 있습니다. 그럼 User 모델을 만들어 봅시다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><code>define()</code> 함수의 첫번째 파라메터가 데이터베이이스에 만들어질 테이블 이름입니다.</p>
+
+<p>그 다음에는 테이블의 세부사항을 객체 형식으로 정의 합니다. 이전에 유저 객체에는 id와 name이 있었는데요 그 둘을 여기서 정의하면 됩니다. <code>name: Sequelize.STRING</code> 은 name 컬럼을 정의하는 코드입니다.<code>Sequelize.STRING</code> 상수를 이용해 name 값이 문자열임을 정의했습니다. 그럼 id는 어디에 있을까요? 고맙게도 Sequelize는 기본적으로 id를 만들어 줍니다.</p>
+
+<p>게다가 createdAt, updatedAt 이라는 컬럼도 자동으로 만들어 줍니다. 이 컬럼들의 역할은.... 알것같죠? 테이블안에 데이터를 로우(row)라고 하는데 로우가 생성될때 마다 createAt에 타임 정보가 기록됩니다. 그리고 로우가 변경될 때마다 updatedAt 컬럼값이 변경되구요. Sequelize를 사용하면 많이 사용되는 컬럼들에 대해서도 자동으로 만들어주는 편리함이 있습니다.</p>
+
+<p>마지막으로 <code>models.js</code> 도 어디선가 불러져서 사용해야합니다. 그러면 당연히 모듈로 만들어야 하겠죠. <code>moduele.exports</code> 키워드를 이용해 모듈로 만들어 보겠습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">moduele</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">sequelize</span><span class="o">:</span> <span class="nx">sequelize</span><span class="p">,</span>
+  <span class="nx">User</span><span class="o">:</span> <span class="nx">User</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>두 개 객체를 외부로 노출했습니다. 방금 정의한 User 모델과 디비가 연결된 sequelize 객체입니다.</p>
+
+<h2>DB Sync</h2>
+
+<p>sequelize 객체가 제공하는 메소드 중에는 모델을 정의하는 <code>define()</code> 외에도 <code>sync()</code> 라는 메소드가 있습니다. 이 함수를 실행하면 sequelize 객체에 연결된 데이터베스에 우리가 정의한 모델들을 테이블로 생성하는 기능입니다. 이러한 작업은 서버가 구동될때 딱 한번만 호출되면 됩니다. 그래서 서버의 시작점인 <code>app.js</code>에 만들겠습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Example app listening on port 3000!&#39;</span><span class="p">);</span>
+
+  <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./models&#39;</span><span class="p">).</span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span><span class="nx">force</span><span class="o">:</span> <span class="kc">true</span><span class="p">})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Databases sync&#39;</span><span class="p">);</span>
+      <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><code>app.listen()</code>으로 서버가 구동된 다음에 콜백함수가 동작하면 &#39;Example app listening on port 3000!&#39; 라는 메세지를 콘솔에 출력하게 됩니다.</p>
+
+<p>그리고 나서 방금 만들었던 models 모듈의  sequelize객체를 가져와서 <code>sync()</code> 함수를 실행합니다. 데이터베이스에 테이블을 만들기 위해서죠.</p>
+
+<p>그런데 <code>sync()</code> 함수에 <code>{force: true}</code> 옵션을 넘겨주었습니다. force라는 속성에는 불리언 데이터를 설정할 수 있는데 true일 경우 <code>sync()</code> 함수가 실행되면 무조건 테이블을 새로 만드는 옵션입니다. 반대로 force 값이 false 일 경우에는 데이터베이스에 테이블이 있을 경우 다시 만들지 않는 기능입니다. 지금은 개발용이기 때문에 <code>{force: true}</code>를 설정했지만 실제 운영중인 서버라면은 반드시 <code>{force: false}</code> 옵션으로 실행해야하겠죠.</p>
+
+<p>npm start로 서버를 구동하면 데이터베이스에 테이블이 생성됩니다. 이제 mysql 프롬프트에서 확인해 보겠습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql&gt; SHOW TABLES;
++----------------------------+
+| Tables_in_node_api_codelab |
++----------------------------+
+| users                      |
++----------------------------+
+1 row in set (0.00 sec)
+</code></pre></div>
+<p>방금 만들었던 users 테이블이 생겼습니다. 그런데 이상합니다. <code>define()</code> 함수로 테이블명을 user로 했는데 여기는 복수형인 users가 되었습니다. 이것도 sequelzie 에서 자동으로 변환해서 만들어준 것입니다. 왜냐하면 테이블 안에는 여러 user 정보가 있기때문에 그런 것 같습니다.</p>
+
+<p>테이블 정보도 확인해 보지요.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mysql&gt; describe users;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name      | varchar(255) | YES  |     | NULL    |                |
+| createdAt | datetime     | NO   |     | NULL    |                |
+| updatedAt | datetime     | NO   |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+</code></pre></div>
+<p>id 값은 sequelize가 자동으로 생성한 컬럼입니다. 프라이머리 키로 설정되어 로우가 생성될때마다 자동으로 id값이 증가됩니다.</p>
+
+<p>name은 우리가 정의한 컬럼입니다. sequelize.STRING 값으로 정의했는데 varchar(255)로 설정된것을 확인하세요.</p>
+
+<p>그리고 createdAt과 updateAt도 sequelize가 자동으로 만들어준 컬럼입니다. datetime 형식으로 되어 있네요.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout sequelizeModel
+</code></pre></div>
+<h2>컨트롤러에 데이터베이스 연동</h2>
+
+<p>Sequelize로 로컬에 구동중인 데이터베이스와 API 서버를 연결했습니다. 그리고 우리가 모델링한 테이블까지 데이터베이스 안에 만들었구요.</p>
+
+<p>이제는 이 테이블에 데이터를 넣거나 조회하거나 삭제 그리고 업데이트하는 작업을 할 차례입니다. 이것은 CRUD 기능이라고 합니다. Create, Read, Update, Delete 기능을 얘기하는 것이지요. API의 기능이 이 데이터베이스의 데이터를 CRUD하는 것이라 보면 됩니다. 지금까지는 데이터를 users 배열에 넣어놓고 개발했는데 이제는 이것을 던져버리고 진짜 데이터베이스에 데이터를 사용합니다.</p>
+
+<h2>Create</h2>
+
+<p>먼저 user 컨트롤러에서 models를 가져옵니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">models</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../../models&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>테이블이 아직은 비어있기 때문에 먼저 테이블에 데이터를 넣는 <code>create()</code> 함수부터 건드려 보겠습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;Incorrenct name&#39;</span><span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="nx">name</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">201</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">user</span><span class="p">))</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>name 파라매터를 검증하는 부분까지는 이전 코드와 같습니다. name 값이 확보되었다면 models 모듈을 이용해 테이블에 데이터를 추가하는 것이 남았습니다. <code>models.User</code> 객체는 CRUD에 해당하는 메소드 들을 제공하는데요 그중 <code>create()</code> 메소드는 테이블에 데이터를 추가하는 기능을 합니다. 파라매터로 넣은 데이터를 객체 형식으로 넘겨줍니다. name 컬럼에 name 상수값을 넣어줬습니다. 그리고 then함수가 동작하면 콜백함수의 user 파라매터로 테이블에 생성된 로우가 나옵니다. 이것을 요청한 클라이언트에 그대로 전달해 주면됩니다.</p>
+
+<h2>Read</h2>
+
+<p>데이터를 조회하는 API 컨트롤러는 <code>index()</code>, <code>show()</code> 메소드가 있습니다.</p>
+
+<p><code>index()</code>는 모든 사용자 목록을 조회하는 것이기 때문에 테이블 전체데이터를 불러와야합니다.  <code>models.User</code> 객체의 <code>findAll()</code> 메소드를 사용하면 테이블의 전체 데이터를 불러올 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">users</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">users</span><span class="p">));</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><code>show()</code>는 특정 사용자를 id로 조회하는 역할을 합니다. <code>models.User</code> 모델은 <code>findOne()</code> 함수로 조건을 줘서 데이터를 조회합니다. where라는 부분에 id 컬럼의 조건값을 설정하여 넘겨줍니다. 함수가 실행되면 콜백함수의 파라매터로 조회한 user 객체가 응답됩니다. 만약 user 값이 비어있다면 테이블에서 id에 해당하는 데이터를 찾지 못한 것입니다. 이 경우 404 상태코드로 응답합니다. 성공한경우에는 <code>json()</code> 함수로 응답해 줍니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;Incorrect id&#39;</span><span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+    <span class="nx">where</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span>
+    <span class="p">}</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;No User&#39;</span><span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<h2>Delete</h2>
+
+<p>삭제할때는 <code>destroy()</code> 메소드를 사용합니다. id 기준으로 삭제하는 것이므로 where를 이용해 파라매터를 넘겨 줍니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">destroy</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;Incorrect id&#39;</span><span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">destroy</span><span class="p">({</span>
+    <span class="nx">where</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span>
+    <span class="p">}</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">204</span><span class="p">).</span><span class="nx">send</span><span class="p">());</span>
+<span class="p">};</span>
+</code></pre></div>
+<hr>
+
+<p>아래부터는 스킵</p>
+
+<h2>Update</h2>
+
+<p>마지막 남은 것인 update 기능인데요 이것은 좀 특별하게 하려고 뒤로 미루었습니다. 테스트 코드를 먼저 작성하고 컨트롤러 함수를 만들것입니다. 잘 보세요. 이렇게 코딩하는 방법을 tdd 개발방법론이라고 한답니다. 테스트 코드를 api/user/user.spec.js에 추가해 볼께요</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;PUT /users/:id&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">.</span><span class="nx">only</span><span class="p">(</span><span class="s1">&#39;should return 200 status code&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">&#39;/users/1&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+          <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;foo&#39;</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">end</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+          <span class="nx">done</span><span class="p">();</span>
+        <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>업데이트 api를 호출하면 200 상태 코드가 응답되는지 체크하는 코드입니다. 테스트를 돌려보면 당연히 실패가 나오겠죠?</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm test
+.. 실패화면 ...
+</code></pre></div>
+<p>404 에러 메세지가 나오네요. 라우팅 설정을 하지 않았기 때문이죠. 그럼 이 테스트를 통과할수 있도록 코드를 추가해 보겠습니다. 먼저 api/user/index.js 파일에 해당 api에 대한 라우팅 설정을 추가합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">router</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">&#39;/:id&#39;</span><span class="p">,</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">update</span><span class="p">);</span>
+</code></pre></div>
+<p>PUT /users/:id 로 요청이 들어올 경우 update 컨트롤러 함수가 동작하도록 설정했습니다. api/user/user.controller.js 파일로 이동하고 update 함수를 정의합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>update() 함수에서는 요청이 들어오면 send() 함수를 이용해 200 상태코드만 응답하도록 변경하였습니다. 그리고나서 다시 테스트를 돌려보면 테스트에 통과합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm test
+... 성공 ...
+</code></pre></div>
+<p>put api 에 200 성공코드가 응답괴었습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout sequelizeInCtrl
+</code></pre></div>
+<h2>환경의 분리</h2>
+
+<p>서버가 실행되는 모드를 몇 개 정의해야할 것 같습니다. 무슨 말이냐고요? 이건 테스트 때문입니다. 아직 테스트에 디비를 붙이지는 않았지만 곧 테스트에 디비를 붙일 것입니다. 하지만 테스트할때 디비를 붙이게 되면 데이터베이스에 테스트에서 사용한 데이터들이 쌓이게 됩니다. 따라서 테스트용 데이터베이스가 따로 있어야하는데 이것을 위해 서버 환경을 분리 하겠습니다.</p>
+
+<p>우리는 세가지 모드를 사용할 것입니다.</p>
+
+<ul>
+<li>development</li>
+<li>test</li>
+<li>production</li>
+</ul>
+
+<p>&quot;development&quot;는 개발 모드입니다. 우리가 지금까지 사용했던 환경이죠. &quot;test&quot;는 테스트 환경을 의합니다. 마지막 &quot;production&quot;은 운영 모드입니다. 실제로 코드가 서버로 배포되어 동작는 환경을 의미하죠.</p>
+
+<p>이러한 환경 정보는 <code>NODE_ENV</code>라는 환경 변수에 설정하여 사용할 수 있습니다. 노드 코드에서는 <code>process.env.NODE_ENV</code> 라는 변수를 통해 접근할 수 있습니다.</p>
+
+<p>테스트 환경과 개발환경을 분리하기 위해서 <code>config/environment.js</code> 파일을 만들겠습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">environments</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">development</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">mysql</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+      <span class="nx">password</span><span class="o">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+      <span class="nx">database</span><span class="o">:</span> <span class="s1">&#39;node_api_codelab_dev&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="nx">test</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">mysql</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+      <span class="nx">password</span><span class="o">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+      <span class="nx">database</span><span class="o">:</span> <span class="s1">&#39;node_api_codelab_test&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="nx">production</span><span class="o">:</span> <span class="p">{</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">nodeEnv</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="s1">&#39;development&#39;</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">environments</span><span class="p">[</span><span class="nx">nodeEnv</span><span class="p">];</span>
+</code></pre></div>
+<p><code>environments</code> 라는 변수를 두어 각 환경 이름에 해당하는 키를 만들었습니다. 그리고 <code>nodeEnv</code>라는 상수에 노드 환경변수 값을 할당했습니다. 노드를 실행하기 전에 &quot;NODE_ENV=test&quot; 라고 실행하면 이값에 &quot;test&quot;라는 문자열이 들어갑니다. 만약 아무것도 설정하지 않으면 &quot;development&quot; 문자열이 들어가게될 것입니다. 마지막으로 <code>environments</code> 객체에서 노드 환경변수에 해당하는 부분의 객체를 반환하는 모듈로 만들었습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout env
+</code></pre></div>
+<h2>테스트에 데이터베이스 연동하기</h2>
+
+<p>Environment 모듈을 사용하여 기존코드를 변경해야합니다. Envrionemnt에는 데이터베이스 접속정보가 있는데이 부분은 models.js 파일을 수정하면됩니다. 아래 코드처럼 말이죠.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./config/environments&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sequelize</span><span class="p">(</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">database</span><span class="p">,</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">password</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>environments 모듈은 NODE_ENV 환경변수 값에 따라 각각 다른 데이터베이스로 연결합니다.</p>
+
+<p>그럼 api/user/user.spec.js 테스트 코드로 돌아가 봅시다. 모카에는 <code>before()</code>/<code>after()</code> 함수가 있습니다. 이것은 테스트가 실행되기 전/후에 각각 한 번씩 실행되는 함수입니다. <code>before()</code> 함수를 이용해 테스트 데이터베이스를 초기화하는 등의 테스트 환경을 만들어 줄수 있습니다. 아래 코드를 한 번 보세요.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;GET /users&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">before</span><span class="p">(</span><span class="s1">&#39;sync database&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// sync data base ...</span>
+  <span class="p">});</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return 200 status code&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><code>it()</code> 함수가 실행되기 직전 <code>before()</code> 함수가 먼저 실행됩니다. <code>before()</code> 함수에서는 데이터베이스를 초기화할 수 있는 <code>sync({force: true})</code> 함수를 실행하면 되겠지요.</p>
+
+<h2>sync-database 모듈</h2>
+
+<p>한편 app.js에서 <code>sync()</code> 함수를 사용하고 있는데 이것을 테스트에서도 따로 떼어 내기 위해서는 데이터를 싱크할수 있는 별도의 모듈로 떼어네는 것이 편리합니다.</p>
+
+<p>bin/sync-databse.js 파일로 만들어 보겠습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">models</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../models&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">models</span><span class="p">.</span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span><span class="nx">force</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>이 모듈은 데이터베이스를 싱크하는 매우 간단한 코드입니다.</p>
+
+<h2>www.js</h2>
+
+<p>이참에 서버 구동하는 모듈도 별도로 만들어보지요. bin/www.js 파일을 만들어 보세요.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../app&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">syncDatabase</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./sync-database&#39;</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Example app listening on port 3000&#39;</span><span class="p">);</span>
+
+  <span class="nx">syncDatabase</span><span class="p">.().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Database sync&#39;</span><span class="p">);</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>서버 구동로직을 옮겨왔으니 app.js 파일에서도 이부분을 제거해야겠죠. app.js의 남은 부분은 아래와 같습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;body-parser&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="nx">extended</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}));</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./api/user&#39;</span><span class="p">));</span>
+
+<span class="nx">moduele</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+</code></pre></div>
+<p>이제는 app.js가 아니라 bin/www.js 파일로 서버를 구동할수 있습니다. package.json의 start 스크립트도 변경해야겠죠.</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">&quot;start&quot;</span><span class="err">:</span> <span class="s2">&quot;node bin/www&quot;</span>
+</code></pre></div>
+<h2>테스트 데이터 구성</h2>
+
+<p>이제 테스트 코드의  <code>before()</code> 함수에서 데이터베이스 싱크 모듈을 불러와 실행해 봅시다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">syncDatabase</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../../bin/sync-database&#39;</span><span class="p">);</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;GET /users&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">before</span><span class="p">(</span><span class="s1">&#39;sync database&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">syncDatabase</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">})</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return 200 status code&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+  <span class="p">});</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>그럼 실제 데이터베이스에 샘플데이터를 넣고 &quot;GET /users&quot; 를 테스트 해볼까요? 먼저 <code>before()</code> 함수에서 데이터베이스에 데이터 3개를 넣은는 코드를 작성합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">models</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../../models&#39;</span><span class="p">);</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;GET /users&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">before</span><span class="p">(</span><span class="s1">&#39;sync database&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">syncDatabase</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">done</span><span class="p">());</span>
+  <span class="p">});</span>
+
+  <span class="kr">const</span> <span class="nx">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;alice&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;bek&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;chris&#39;</span><span class="p">}</span>
+  <span class="p">];</span>
+  <span class="nx">before</span><span class="p">(</span><span class="s1">&#39;insert 3 users into database&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">bulkCreate</span><span class="p">(</span><span class="nx">users</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">done</span><span class="p">());</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return array&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// 기존 코드와 동일</span>
+  <span class="p">});</span>
+<span class="p">})</span>
+</code></pre></div>
+<p><code>before()</code> 함수는 여러개 실행할수 있는데요 전부 다 <code>it()</code> 함수가 호출되기 전에 실행이 완료됩니다.</p>
+
+<p>두번째 <code>before()</code> 함수에서는 데이터베이스에 users 테이블에 있는 유저를 추가하는 역할을 합니다. sequelize 모델에는 <code>create()</code> 말고도 <code>bulkCrate()</code> 함수가 있습니다. <code>create()</code> 함수가 하나의 로우만 생성한다면 <code>bulkCreate()</code> 함수는 여러개 데이터를 배열로 받아 여러개 로우를 생성하는 함수입니다. 이렇게 샘플데이터를 테이블에 넣은 후 <code>it()</code>으로 API 테스트를 진행 할수 있습니다.</p>
+
+<h2>테스트 데이터 삭제</h2>
+
+<p>마지막으로 <code>after()</code> 함수를 이용해 데이터베이스를 초기화 합니다. 유저 데이터를 넣었기 때문에 다시 삭제하는 것이죠. 여기서는 간단히 데이터베이스 싱크를 돌리겠습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">after</span><span class="p">(</span><span class="s1">&#39;clear up database&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">syncDatabase</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">done</span><span class="p">());</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2>테스트 코드 실행</h2>
+
+<p>마지막으로 테스트를 실행해야 하는데요, 이번에는 NODE<em>ENV 환경변수를 설정해 주어야 합니다. 우리는 테스트 데이터베이스와 개발 데이터베이스를 분리했으니깐 테스트시에는 테스트 데이터베이스로 접속해야합니다. 테스트 실행시 &quot;NODE</em>ENV=test&quot;만 추가해주면 됩니다. package.json 파일을 수정하세요.</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">&quot;test&quot;</span><span class="err">:</span> <span class="s2">&quot;NODE_ENV=test ./node_modules/.bin/mocha api/**/*.spec.js&quot;</span>
+</code></pre></div>
+<p>그리고 명령문에서 <code>npm test</code>로 테스트를 진행합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm test
+... resutl ..
+</code></pre></div>
+<p>나머지 테스트 코드에서도 데이터베이스를 연결해보세요.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout unitTestWithDb
+</code></pre></div>
+<h2>폴더정리</h2>
+
+<p>다시 한번 리펙토링을 해야할 것 같습니다. 리펙토링은 다다익선 많이할수록 좋아요.</p>
+
+<p>bin이라는 폴더를 만들게 되면서 서버 어플리케이션 코드와 섞이게 되었습니다.</p>
+
+<p>bin 폴터에는 두개의 파일이 있는데 데이터베이스를 싱크하는 sync-database.js 파일과 서버를 실제 구동하는 www.js파일이 있습니다. 엄밀히 말하는 어플리케이션 로직은 아닌셈이죠.</p>
+
+<p>한편 api 폴더에는 라우팅 로직들과 models.js에 정의된 모델링 코드들은 어플리케이션으로 분리할수 있습니다.</p>
+
+<p>아래와 같이 파일을 옮겨보세요</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/app: 서버 기능
+  /api: api 로직을 담당
+  /config: 서버가 구동하기 위한 환경 변수 정의 (상수)
+  /models: 데이터베이스 모델링
+/bin: 서버 구동을 위한 코드
+  /www.js: 서버 구동
+  /sync-database: 디비 싱크
+</code></pre></div>
+<p>각 파일에서 사용하는 모듈의 상대 경로도 변경하는 것도 있지 말고요.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout refoldering
+</code></pre></div>
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/framework">framework</a>&nbsp;<a href="/tags/ExpressJS">ExpressJS</a>&nbsp;<a href="/tags/JS">JS</a>&nbsp;<a href="/tags/tutorial">tutorial</a>&nbsp;<a href="/tags/NodeJS">NodeJS</a>&nbsp;<a href="/tags/Sequelize">Sequelize</a>&nbsp;<a href="/tags/Mocha">Mocha</a>&nbsp;<a href="/tags/Supertest">Supertest</a>&nbsp;<a href="/tags/UnitTest">UnitTest</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
