@@ -16,7 +16,7 @@ author : 6pack
 
 Ryan Dahl 이라는 사람은 이 V8 엔진에 이벤트 I/O 프레임웍과 CommonJS 명세를 이용한 모듈을 결합하여 Node.js를 만들었습니다.
 
-![](imgs/node-composition.png)
+![](../api-server-by-nodejs/imgs/node-composition.png)
 
 노드는 주로 웹서버와 같은 네트웍 프로그램을 위해 고안된 환경이지만 최근에는 웹 개발 환경의 빌드 툴로도 많이 사용되고 있습니다. 리엑트에서 사용하는 웹팩(Webpack), 스트림 형식의 빌드툴 굴프(Gulp), 그리고 설정 방식의 빌트 툴인 그런트(Grunt)가 모두 노드 환경에서 개발된 도구입니다.
 
@@ -35,7 +35,7 @@ Ryan Dahl 이라는 사람은 이 V8 엔진에 이벤트 I/O 프레임웍과 Com
 
 노드 설치는 간단합니다. [nodejs.org](https://nodejs.org/ko/)에서 최신버전인 v6.x.x을 다운로드 하세요.
 
-![](imgs/node-download.png)
+![](../api-server-by-nodejs/imgs/node-download.png)
 
 여러분이 사용하는 운영체제에 따라 노드 설치파일이 다운로드 됩니다. 저는 OSX을 기준으로 진행하겠습니다.
 
@@ -122,7 +122,7 @@ Server running at http://127.0.0.1:3000/
 
 크롬 브라우져을 열어 http://127.0.0.1:3000  주소로 접속해 보세요.
 
-![](imgs/result.png)
+![](../api-server-by-nodejs/imgs/result.png)
 
 "Hello world" 문자열이 브라우져에 출력되었습니다!
 
