@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Webpack의 혼란스런 사항들</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #F1F71A;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Webpack의 혼란스런 사항들</h1>
+<p class="title_header_summary">Webpack을 처음 시작하는 사람들이 헷갈릴 수 있는 부분들에 대해 알아서 좀더 쉽게 시작할 수 있게 도와줍니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/8802261?v=3&s=400" alt="박관웅">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            박관웅
+
+                        </h4>
+                        pouu69<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.069975)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.947891)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.069975)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.069975)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.069975)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.349876)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.069975)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.069975)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.139950)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.139950)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.659057)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.189578)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.539454)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.279901)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.209926)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.069975)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.489826)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.629777)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.979653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.909677)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.069975)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.209926)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.069975)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.069975)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.279901)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.069975)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.279901)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.069975)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.139950)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.139950)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.069975)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.069975)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.139950)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.279901)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.069975)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.069975)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.069975)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.069975)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.209926)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.209926)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.069975)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.069975)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.069975)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.489826)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.049628)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.139950)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.559801)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.069975)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.069975)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.069975)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.139950)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.629777)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.139950)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.069975)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.139950)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.069975)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.069975)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.069975)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.069975)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.069975)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.069975)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.069975)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.069975)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.069975)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.279901)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.349876)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.069975)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.069975)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.139950)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.069975)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.069975)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.069975)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.279901)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.279901)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.069975)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.279901)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.069975)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.069975)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.069975)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.069975)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.069975)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.349876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.349876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.349876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.349876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.349876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.349876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.139950)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.069975)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.139950)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.139950)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.069975)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.069975)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.069975)'>semicolon</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>이 문서는 <a href="https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.idkxw015s">https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.idkxw015s</a> 를 번역한 내용입니다.</p>
+</blockquote>
+
+<h1>Webpack - 헷갈리는 부분</h1>
+
+<p>Webpack은 React와 Redux 앱을 위한 주요한 module bundler 이다. Angular2와 다른 프레임워크를 사용하는 사람들 또한 많이 사용하는 것 같다.</p>
+
+<p>나는 처음 Webpack 설정 파일을 봤을 때, 매우 헷갈리고 외계인 같아 보였다. 몇시간 동안 Webpack을 둘러본 후  Webpack은 처음에 혼란을 야기 할 수 있는 고유한 문법과 새로운 철학 가지고 있습니다. 부수적으로, 이러한 철학들은 널리 퍼지게 할 책임이 있습니다. </p>
+
+<p>처음 시작하기가 혼란스럽기 때문에, 다른 사람이 쉽게 시작 하고 파워풀한 기능을 사용할 수 있도록  포스트를 작성할 것입니다.</p>
+
+<h2>Webpack 핵심 철학</h2>
+
+<p>Webpack의 두가지 핵심 철학:
+* 모든것은 module이다.
+ * JS 파일들은 모듈(modules)이 될 수 있다. 또한 다른 모든 것(CSS, Images, HTMLS..)들도 모듈(modules)이 될 수 있다. 즉 <code>require(“myJSfile.js”)</code> 또는 <code>require(“myCSS.css”)</code> 를 할 수 있다. 이는 다루기 쉬운 작은 조각으로 나누거나, 재사용할 수 있다는걸 의미 합니다.</p>
+
+<ul>
+<li>당신이 필요한것 그리고 필요한 때에 불러진다(Load).
+
+<ul>
+<li>전형적인 <strong>module bundlers</strong>는 모든 모듈을 가져 와서, 큰 <code>bundler.js</code> 파일 하나를 생성한다. 그러나 실제 웹에서 <code>bundle.js</code>는 10~15MB이고 영원히 로드 되고 있을수 있다. 그래서 Webpack은 코드 분할 과 여러 “bundle” 파일을 생성하고 비동기적으로 앱의 일부를 로드 하는 다양한 기능이 있으며, 또한 당신이 필요한 것, 필요한 때에 로드 하게 해준다.</li>
+</ul></li>
+</ul>
+
+<p>이제 헷갈려하는 부분에 대해 알아보자.</p>
+
+<h2>Development(개발모드) VS Production(배포모드)</h2>
+
+<p>첫번째 알아야할 점은 Webpack에는 많은 기능을 가지고 있다는 것이다. 일부는 “개발용”, 다른 일부는 “배포용” 그외 일부는 “배포-개발용”에 대한 것이다.</p>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*WCAdMi04IFEWdngK8bkFcw.png" alt="A sample dev v/s prod Webpack files"></p>
+
+<blockquote>
+<p>일반적으로 대부분의 프로젝트는 2가지의 Webpack 설정 파일을 가지고 사용한다.</p>
+</blockquote>
+
+<p>그리고 bundels 파일을 만들기 위하여 <code>package.json</code> 안에 스크립트를 다음과 같이 작성한다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> “scripts”: {
+  //npm run build to build production bundles
+  “build”: “webpack --config webpack.config.prod.js”,
+  //npm run dev to generate development bundles and run dev. server
+  “dev”: “webpack-dev-server”
+ }
+</code></pre></div>
+<h2>webpack CLI(Command Line Interface) VS webpack-dev-server</h2>
+
+<p><em>module bundler</em>인 <strong>Webpack</strong>은 2가지 인터페이스를 제공하는 점에 유의해야 한다.</p>
+
+<ol>
+<li>Webpack CLI tool - 기본 인터페이스(Webpack이 알아서 설치한다.)</li>
+<li>webpack-dev-server - Node.js server 사용(nodeJS 설치요망)</li>
+</ol>
+
+<h3>Webpack CLI ( 배포 빌드엔 굿! )</h3>
+
+<p>이 도구는 CLI 및 설정 파일(default : webpack.config.js)을 통해 옵션을 가져와서 <em>bundle</em>로 제공하기 위해 Webpack에 제공한다.</p>
+
+<blockquote>
+<p>CLI를 사용하여 Webpack을 배우기 시작할 수도 있지만, 대부분 CLI는 배포 빌드할때나 사용 할 것이다.</p>
+</blockquote>
+
+<h4>Usage:</h4>
+
+<h5>OPTION 1:</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//Install it globally
+$ npm install webpack —g
+
+//Use it at the terminal 
+$ webpack //&lt;--Generates bundle using webpack.config.js
+</code></pre></div>
+<h5>OPTION 1:</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//Install it locally &amp; add it to package.json
+$ npm install webpack —save
+
+//Add it to package.json&#39;s script 
+“scripts”: {
+ “build”: “webpack --config webpack.config.prod.js -p”,
+ ...
+ }
+
+//Use it by running the following:
+&quot;npm run build&quot;
+</code></pre></div>
+<h3>webpack-dev-server ( 개발모드로 굿 )</h3>
+
+<p>이것은 8080 포트로 실행되는 Express(node.js)서버입니다. 서버는 내부적으로 Webpack을 호출 합니다. 그러면 브라우저 리로딩(실시간 로딩), “Hot Module Replacement” 와 같은 추가적인 기능을 사용할 수 있는 이점이 있습니다.</p>
+
+<h4>Usage:</h4>
+
+<h5>OPTION 1:</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//Install it globally
+npm install webpack-dev-server --save
+
+//Use it at the terminal
+$ webpack-dev-server --inline --hot
+</code></pre></div>
+<h5>OPTION 2:</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// Add it to package.json&#39;s script 
+“scripts”: {
+ “start”: “webpack-dev-server --inline --hot”,
+ ...
+ }
+
+// Use it by running 
+$ npm start
+
+Open browser at:
+http://localhost:8080
+</code></pre></div>
+<h3>Webpack Vs webpack-dev-server options</h3>
+
+<p><code>inline</code>, <code>hot</code> 과 같은 옵션은 오로지 webpack-dev-server에만 있다는 것에 주목할 필요가 있다. 그리고 <code>hide-modules</code>은 CLI에만 있는 옵션이다.</p>
+
+<h3>webpack-dev-server CLI options Vs config options</h3>
+
+<p>관심 가질 또다른 점은 webpack-dev-server로 옵션을 전달 할 수 있는 2가지 방법이 있다.</p>
+
+<ul>
+<li>webpack.config.js를 통해서 devServer 객체를 사용한다.</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Via webpack.config.js</span>
+<span class="nx">devServer</span><span class="o">:</span> <span class="p">{</span>
+ <span class="nx">inline</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+ <span class="nx">hot</span><span class="o">:</span><span class="kc">true</span>
+ <span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>때론 devServer 설정이 작동하지 않는 경우가 있다. 그래서 다음과 같은 CLI 옵션을 좀더 선호한다.</li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//Via CLI
+//package.json
+{
+scripts: 
+   {“start”: “webpack-dev-server --hot --inline”}
+}
+</code></pre></div>
+<h3>“hot” Vs “inline” webpack-dev-server options</h3>
+
+<p><code>inline</code> 은 전체 페이지에 대한 실시간 리로딩(“Live Reloading”) 옵션이며, <code>hot</code> 은 컴포넌트가 수정 될 경우 그 수정된 부분만 리로드 해주는 부분 모듈 리로딩(“Hot Module Reloading”) 옵션이다. 만약 두개 옵션을 모두 지정할 경우 “Hot Module Reloading”이 처음 발생한다. 그리고 “Hot Module Reloading”이 안되면 전체 페이지 로딩을 한다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//1. 페이지를 로딩하지 않는다.
+$ webpack-dev-server
+
+//2. 전체 페이지를 로딩 한다.
+$ webpack-dev-server --inline
+
+//3. 부분 로딩  또는 전체 페이지 로딩
+$ webpack-dev-server  --inline --hot
+</code></pre></div>
+<h2>“entry” — String Vs Array Vs Object</h2>
+
+<p>“entry”는 root 모듈 또는 시작 지점이 무엇인지 Webpack에게 알려준다. “entry”는 String, Array, Object 형태로 될 수 있다. 이것이 바로 혼란스러운 점인데 다른 타입은 결국 다른 목적에 사용된다고 생각하면 된다.</p>
+
+<p>만약 당신이 시작지점이 1개라면 다음과 같은 output format을 사용할 수 있다.</p>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*OnXpfv4zjL-5zO2Ha6mXDw.png" alt="다른 형식이지만 결국 같은 output"></p>
+
+<h3>entry - Array</h3>
+
+<p>만약 당신이 서로간 의존성이 없는 여러개의 파일을 사용하고 싶다면 Array 형식으로 사용하면 된다.
+예를 들어 HTML에 “googleAnalystic.js” 가 필요 할수 있다. 그러면 “bundle.js” 끝에 다음과 같이 추가하도록 지정하면 원하는 output이 된다.</p>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*yLVdS3oN4Xo8KInoTIfi0A.png" alt="의존성 없는 여러 파일 output"></p>
+
+<h3>entry-object</h3>
+
+<p>만약 당신이 SPA(Single Page App)가 아니라 다중 페이지 어플리케이션을 개발한다면, entry-object를 사용하여 한번에 다중 bundle을 만들어서 사용 할 수 있다.<br>
+아래 설정 파일은 2개의 bundle JS파일을 생성한다.(indexEntry.js , profileEntry.js 가 나오며 index.html, profile.html에 각각에 사용할 수 있다.)</p>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*xB51RRC4ik6BBP2lJ90Iuw.png" alt="다중 bundle output"></p>
+
+<h4>Usage:</h4>
+<div class="highlight"><pre><code class="language-html" data-lang="html">//profile.html
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">”dist/profileEntry.js”</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+//index.html
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">”dist/indexEntry.js”</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Note : “entry”의 객체 key가 파일 이름으로 매핑된다.</p>
+</blockquote>
+
+<h3>entry-combination</h3>
+
+<p>당신은 entry Object안에 Array 타입을 사용 할 수 있다. 예를 들어 아래 설정을 보면 3가지 파일이 생성된다.(3개의 파일이 있는 vendor.js 와 index.js , profile.js가 생성된다.)</p>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*yz76QY1fVzBGKJ-6X6Eleg.png" alt="Object안에 Array output"></p>
+
+<h2>output — “path” Vs “publicPath”</h2>
+
+<p>“output” 은 어디, 그리고 어떻게 결과 파일이 저장되는지에 대한 것이다. “output”은 ‘path’와 ‘publicPath’ 2가지 속성이 있어서 매우 헷갈린다.  </p>
+
+<ul>
+<li>path : 어디에 결과가 저장되는지 에 관한 것</li>
+<li>publicPath : 배포 빌드 할 때 Webpack plugins(ulr-loader,file-loader 같은..), CSS나 HTML파일 안에 URL들을 업데이트 해주기 위한 것(prefix개념)</li>
+</ul>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*63Zta4mbC_3o44QdycrD7Q.png" alt="개발 vs 배포안에 publicPath"></p>
+
+<p>예를 들어, CSS에서 <em>localhost</em>에 <code>./test.png</code>를 로드 할 수 있는 URL이 있을수 있다. 하지만 <em>production</em>인 경우 <code>test.png</code>는  CDN이나 다른 지정된 경로로 실행 중 일 수있다. 그래서 수동으로 <code>./test.png</code>의 url을 수정 해주어야 배포 모드에서 올바른 위치에 파일에 접근 할 수 있다.<br>
+수동으로 수정하지 않고 Webpack ‘publicPath’를 사용하면 수많은 플러그인과 다수의 CSS, HTML파일안에 URL들을 자동으로 업데이트 해준다.</p>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*aOM5ZF8alWLr4BC0CfZe0w.png" alt="배포모드에서 publicPath"></p>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="o">//</span> <span class="err">결과</span>
+
+<span class="o">//</span> <span class="nt">Development</span><span class="o">:</span> <span class="nt">Both</span> <span class="nt">Server</span> <span class="nt">and</span> <span class="nt">the</span> <span class="nt">image</span> <span class="nt">are</span> <span class="nt">on</span> <span class="nt">localhost</span>
+<span class="nc">.image</span> <span class="p">{</span> 
+  <span class="k">background-image</span><span class="o">:</span> <span class="sx">url(‘./test.png’)</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="o">//</span> <span class="nt">Production</span><span class="o">:</span> <span class="nt">Server</span> <span class="nt">is</span> <span class="nt">on</span> <span class="nt">Heroku</span> <span class="nt">but</span> <span class="nt">the</span> <span class="nt">image</span> <span class="nt">is</span> <span class="nt">on</span> <span class="nt">a</span> <span class="nt">CDN</span>
+<span class="nc">.image</span> <span class="p">{</span> 
+  <span class="k">background-image</span><span class="o">:</span> <span class="sx">url(‘https://someCDN/test.png’)</span><span class="p">;</span>
+ <span class="p">}</span>
+</code></pre></div>
+<h2>Loaders And Chaining Loaders</h2>
+
+<p>“Loaders”는 JS,CSS와 같은 브라우저 허용 포맷과 같은 다양한 타입의 파일을 ‘load’ 또는 ‘import’ 하게 도와주는 추가 <em>node modules</em>이다. 게다가 “Loaders”는 <code>require</code> 또는 ES6의 <code>import</code> 를 JS파일을  가져올 수 있게 해준다.  </p>
+
+<p>예를 들어 당신은 ES6로 쓰여진 JS를 변환해주는 <code>babel-loader</code>를 사용 할 수 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+ <span class="nx">loaders</span><span class="o">:</span> <span class="p">[{</span>
+  <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.js$/</span><span class="p">,</span> <span class="err">←</span><span class="nx">Test</span> <span class="k">for</span> <span class="s2">&quot;.js&quot;</span> <span class="nx">file</span><span class="p">,</span> <span class="k">if</span> <span class="nx">it</span> <span class="nx">passes</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">loader</span>
+  <span class="nx">exclude</span><span class="o">:</span> <span class="sr">/node_modules/</span><span class="p">,</span> <span class="err">←</span><span class="nx">Exclude</span> <span class="nx">node_modules</span> <span class="nx">folder</span>
+  <span class="nx">loader</span><span class="o">:</span> <span class="err">‘</span><span class="nx">babel</span><span class="err">’</span> <span class="err">←</span><span class="nx">use</span> <span class="nx">babel</span> <span class="p">(</span><span class="kr">short</span> <span class="k">for</span> <span class="err">‘</span><span class="nx">babel</span><span class="o">-</span><span class="nx">loader</span><span class="err">’</span><span class="p">)</span>
+ <span class="p">}]</span>
+</code></pre></div>
+<h3>Chaining Loaders (오른쪽에서 왼쪽방향으로 실행된다.)</h3>
+
+<p>여러 <em>Loaders</em>를 연결하여 동일한 파일 형식으로 작업 할 수 있다.체이닝은 “!” 로 구분하고, 오른쪽에서 왼쪽 방향으로 작업을 수행한다.  </p>
+
+<p>예를 들어 우리는 “myCssFile.css”를 가 있고, 그 파일을 HTML안에 <code>&lt;style&gt;CSS content&lt;/style&gt;</code> 로 넣고 싶다. 우리는 <code>css-loader</code>, <code>style-loader</code> 인 2개의 loader로 진행 할 수 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+ <span class="nx">loaders</span><span class="o">:</span> <span class="p">[{</span>
+  <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span>
+  <span class="nx">loader</span><span class="o">:</span> <span class="err">‘</span><span class="nx">style</span><span class="o">!</span><span class="nx">css</span><span class="err">’</span> <span class="o">&lt;--</span><span class="p">(</span><span class="kr">short</span> <span class="k">for</span> <span class="nx">style</span><span class="o">-</span><span class="nx">loader</span><span class="o">!</span><span class="nx">css</span><span class="o">-</span><span class="nx">loader</span><span class="p">)</span>
+ <span class="p">}]</span>
+</code></pre></div>
+<h4>작동 방식</h4>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*nes9iLmskmsD8Fp4Ek3u-A.png" alt=""></p>
+
+<ol>
+<li>Webpack은 모듈안에 의존적인 CSS파일들을 검색한다. webpack은 <code>require(‘myCssFie.css’)</code>을 가지고 있는지 JS파일을 체크한다. 만약 찾았다면, 먼저 해당 파일을 <code>css-loader</code> 수행한다.</li>
+<li><code>css-loader</code>는 모든 CSS와 그안에 의존적인 다른 CSS(ex: <code>import otherCSS</code>) 를 JSON파일로 로드한다. 그후 Webpack은 결과들을 <code>style-loader</code>로 보낸다.</li>
+<li><code>style-loader</code>로 JSON을 가져와서, <code>&lt;style&gt;CSS content&lt;/style&gt;</code> tag 를 추가하고, index.html 파일안에 tag를 삽입한다.</li>
+</ol>
+
+<h2>Loaders 자체 구성 가능</h2>
+
+<blockquote>
+<p>“Loader” 자체는 매개변수에 의해 다르게 작동하도록 설정 할 수 있다.</p>
+</blockquote>
+
+<p>아래 이미지에 나온 예를 보면, 1024bytes 보다 큰 이미지는 URL을 사용하고, 1024bytes 보다 작은 이미지는 DataURLs을 사용 하기 위한 <code>url-loader</code> 설정을 할 수 있다. &quot;limit&quot;매개 변수를 전달하는 방법은 다음 두 가지가 있다.</p>
+
+<p><img src="https://d262ilb51hltx0.cloudfront.net/max/1600/1*-qVdcA3E8JSdtszxHqfIdA.png" alt="url-loader 2가지 방법"></p>
+
+<h2>.babelrc file</h2>
+
+<p><strong>babel-loader</strong> <code>presets</code>을 통해 <strong>ES6</strong> 에서 <strong>ES5</strong> 로 어떻게 변환 해야 하는지 그리고 React <strong>JSX</strong> 에서 <strong>JS</strong> 어떻게 파싱 하는지 대해 설정을 할 수 있게 해준다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">loaders</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.jsx?$/</span><span class="p">,</span>
+      <span class="nx">exclude</span><span class="o">:</span> <span class="sr">/(node_modules|bower_components)/</span><span class="p">,</span>
+      <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel&#39;</span><span class="p">,</span>
+      <span class="nx">query</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">presets</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;react&#39;</span><span class="p">,</span> <span class="s1">&#39;es2015&#39;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>하지만 대부분에 큰 프로젝트에서는 babel 설정이 굉장히 방대할 수가 있다. 그래서 당신은 <strong>.babelrc</strong> 설정파일을 통해 <strong>babel-loader</strong> 설정을 대신 할 수 있다. 만약 <strong>.babelrc</strong> 파일이 있다면 <strong>babel-loader</strong> 는 자동으로 읽어들인다.</p>
+
+<h4>Usage:</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//webpack.config.js </span>
+<span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">loaders</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.jsx?$/</span><span class="p">,</span>
+      <span class="nx">exclude</span><span class="o">:</span> <span class="sr">/(node_modules|bower_components)/</span><span class="p">,</span>
+      <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel&#39;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">//.bablerc</span>
+<span class="p">{</span>
+ <span class="err">“</span><span class="nx">presets</span><span class="err">”</span><span class="o">:</span> <span class="p">[</span><span class="err">“</span><span class="nx">react</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="nx">es2015</span><span class="err">”</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>Plugins</h2>
+
+<blockquote>
+<p><strong>Plugins</strong>는 보통 결과물(<strong>bundle</strong>)에 작동하는 추가적인 <strong>node_modules</strong> 입니다.</p>
+</blockquote>
+
+<p>예를 들어<strong>uglifyJSPlugin</strong>은 파일 사이즈를 줄이고, minimized를 한 bunlde 파일을 준다.</p>
+
+<p>유사하게 <strong>extract-text-webpack-plugin</strong> 는 내부적으로 <strong>css-loader</strong>, <strong>style-loader</strong>를 사용하여 한곳에 CSS파일을 수집하고 외부 <strong>style.css</strong> 파일로 결과를 추출 하여 <strong>index.html</strong> 안에 <strong>style.css</strong> 를 삽입 하면 된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//webpack.config.js</span>
+<span class="c1">//Take all the .css files, combine their contents and it extract them to a single &quot;styles.css&quot;</span>
+<span class="kd">var</span> <span class="nx">ETP</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;extract-text-webpack-plugin&quot;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+ <span class="nx">loaders</span><span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span><span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span> <span class="nx">loader</span><span class="o">:</span><span class="nx">ETP</span><span class="p">.</span><span class="nx">extract</span><span class="p">(</span><span class="s2">&quot;style-loader&quot;</span><span class="p">,</span><span class="s2">&quot;css-loader&quot;</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">},</span>
+<span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s2">&quot;styles.css&quot;</span><span class="p">)</span> <span class="c1">//Extract to styles.css file</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>만약 당신이 HTML 안에 style 태그로 CSS 를 인라인하고 싶다면 <strong>extract-text-webpack-plugin</strong> 사용하지 않고 아래처럼 CSS와 <em>Style loaders</em>를 사용하면 된다.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+ <span class="nx">loaders</span><span class="o">:</span> <span class="p">[{</span>
+  <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span>
+  <span class="nx">loader</span><span class="o">:</span> <span class="err">‘</span><span class="nx">style</span><span class="o">!</span><span class="nx">css</span><span class="err">’</span> <span class="o">&lt;</span><span class="err">—</span><span class="p">(</span><span class="err">줄임말</span> <span class="k">for</span> <span class="nx">style</span><span class="o">-</span><span class="nx">loader</span><span class="o">!</span><span class="nx">css</span><span class="o">-</span><span class="nx">loader</span><span class="p">)</span>
+ <span class="p">}]</span>
+</code></pre></div>
+<h2>Loaders VS Plugins</h2>
+
+<p>아시다시피 <strong>Loaders</strong>는 번들이 생성되는 동안 또는 생성되기 전에 개별 파일 수준에서 작업한다.<br>
+그리고 <strong>Plugins</strong>은 bundle 이나 chunk 레벨 그리고 bundle이 생성 된 후에 작동한다.<br>
+<strong>commonsChunksPlugins</strong>와 같은 일부 플러그인은 번들 자체가 어떻게 생성되는지 수정한다.</p>
+
+<h2>Resolving File Extensions</h2>
+
+<p>대부분의 <strong>Webpack</strong> 설정 파일은 아래와 같이 빈 string 을 포함한 <strong>resolve extensions</strong> 라는 속성을 가지고 있다. 빈 string 은 <code>require(‘./myFile’)</code> 과 같은 빈 확장자를 import하게 도와주는 역할이다. </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+ <span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
+   <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="err">‘’</span><span class="p">,</span> <span class="err">‘</span><span class="p">.</span><span class="nx">js</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="p">.</span><span class="nx">jsx</span><span class="err">’</span><span class="p">]</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/webpack">webpack</a>&nbsp;<a href="/tags/build">build</a>&nbsp;<a href="/tags/modules">modules</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

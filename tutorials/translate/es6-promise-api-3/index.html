@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - ES6 Promises(3) - the API</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #F1F71A;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">ES6 Promises(3) - the API</h1>
+<p class="title_header_summary">자바스크립트 ES6 Promise API에 대한 마지막 이야기입니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/8802261?v=3&s=400" alt="박관웅">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            박관웅
+
+                        </h4>
+                        pouu69<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.069975)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.947891)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.069975)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.069975)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.069975)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.349876)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.069975)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.069975)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.139950)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.139950)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.659057)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.189578)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.539454)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.279901)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.209926)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.069975)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.489826)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.629777)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.979653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.909677)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.069975)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.209926)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.069975)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.069975)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.279901)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.069975)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.279901)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.069975)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.139950)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.139950)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.069975)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.069975)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.139950)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.279901)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.069975)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.069975)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.069975)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.069975)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.209926)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.209926)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.069975)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.069975)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.069975)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.489826)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.049628)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.139950)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.559801)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.069975)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.069975)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.069975)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.139950)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.629777)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.139950)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.069975)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.139950)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.069975)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.069975)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.069975)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.069975)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.069975)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.069975)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.069975)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.069975)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.069975)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.279901)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.349876)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.069975)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.069975)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.139950)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.069975)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.069975)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.069975)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.279901)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.279901)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.069975)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.279901)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.069975)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.069975)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.069975)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.069975)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.069975)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.349876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.349876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.349876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.349876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.349876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.349876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.139950)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.069975)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.139950)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.139950)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.069975)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.069975)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.069975)'>semicolon</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>이 문서는 <a href="http://www.2ality.com/2014/10/es6-promises-api.html">http://www.2ality.com/2014/10/es6-promises-api.html</a> 를 번역한 내용입니다.</p>
+
+<p>또한 <a href="http://webframeworks.kr/tutorials/translate/es6-promise-api-2">ES6 Promises(2) - the API</a> 다음 편 입니다.</p>
+</blockquote>
+
+<h1>12. Debugging promises</h1>
+
+<p>비동기 코드를 디버깅하는 가장 주요 문제점은 비동기 함수와 메서드 호출이 포함 되어있다는 것입니다. 비동기 호출은 하나의 <em>task</em>에서 시작되어, 새로운 <em>task</em>에서 수행됩니다. 만약 새로운 <em>task</em>가 잘못되면, <em>stack trace</em>는 이전 <em>task</em> 정보는 포함하지 않고 해당 <em>task</em>만 처리합니다. 따라서, 비동기 프로그래밍에서 훨씬 적은 디버깅 정보로 작업을 수행 해야합니다.  </p>
+
+<p>최근에 구글 크롬에서 비동기 코드를 디버깅 할 수 있게 되었습니다. 아직 완벽하게 <em>promises</em>를 서포트 해주지는 않습니다. 그러나 일반적인 비동기 호출을 얼마나 잘 처리하는지 대해선 인상적입니다.<br>
+예를 들어 다음 코드에서는, 먼저 비동기적으로 <code>second</code>를 호출하고, <code>third</code>를 호출합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">first</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">second</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">},</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// (A)</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">second</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">third</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="p">},</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// (B)</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">third</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">debugger</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">first</span><span class="p">();</span>
+</code></pre></div>
+<p>아래 스크린샷을 보면, 디버거는 3개 함수를 포함하고 있는 <em>stack trace</em>를 보여 줍니다. 심지어 익명 함수(A),(B)까지 포함되어 있습니다.</p>
+
+<p><img src="http://3.bp.blogspot.com/-kpQjy16k4xw/VDEiTaCfsaI/AAAAAAAAA4w/fqG3nssNZ5Q/s400/debugging_callbacks.png" alt="스샷"></p>
+
+<h1>13. promises 의 내부</h1>
+
+<p>이번 섹션에서는 <em>promises</em>를 다른 각도로 다가갈 것 입니다.: <strong>API</strong>을 어떻게 사용하는지 배우는 대신에, 간단한 구현 방법을 배워보겠습니다.<br>
+이 다른 각도를 통해 <em>promises</em>의 감각을 키우는데 크게 도움이 되었습니다.<br>
+<strong>DemoPromise</strong> 라고 부르는 promise를 구현하고, <a href="https://github.com/rauschma/demo_promise">GitHub</a>을 통해 사용할수 있습니다.
+쉽게 이해하게 하려고, 완전하게 API랑 일치 시키지는 않았습니다. 하지만 실제 당신이 직면한 것에 인사이트를 줄만큼 충분히 가깝게 되어있습니다.  </p>
+
+<p><strong>DemoPromise</strong>는 생성자와 3가지 prototype 메서드가 있습니다.:
+- DemoPromise.prototype.resolve(value)
+- DemoPromise.prototype.reject(reason)
+- DemoPromise.prototype.then(onFulfilled, onRejected)</p>
+
+<p>즉 <em>resolve</em>와  <em>reject</em>는 메서드 입니다.(생성자 매개변수로 전달되는 함수)</p>
+
+<h2>13.1 A stand-alone promise</h2>
+
+<p>우리의 첫번째 구현은 최소한의 기능만 갖춘 독립형 <em>promise</em> 입니다.</p>
+
+<ul>
+<li><em>promise</em>를 생성 할수 있습니다.</li>
+<li><em>promise</em>는 <em>resolve</em>또는 <em>reject</em> 할 수 있으며, 오직 한번 만 할수 있습니다.</li>
+<li><code>then()</code>을 통해 반응(<em>reactions</em>)(콜백)을 등록 할 수 있습니다. 이 메서드는 아직 체이닝을 할 수 없습니다. - 그 어느것도 반환 하지 않습니다. 그것은 <em>promise</em>가 이미 처리 됬는지 안됬는지 상관없이 독립적으로 작동 해야 할 것입니다.</li>
+</ul>
+
+<p>다음은 첫번째 구현방법을 적용한 코드입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DemoPromise</span><span class="p">();</span>
+    <span class="nx">dp</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">);</span>
+    <span class="nx">dp</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// abc</span>
+    <span class="p">});</span>
+</code></pre></div>
+<p>다음 다이어그램은 첫번째 <strong>DemoPromise</strong> 가 어떻게 작동하는지 알려줍니다.</p>
+
+<p><img src="http://1.bp.blogspot.com/-YtdGXGH__gk/VDEiTAXcqtI/AAAAAAAAA3s/3IwMMkVJSps/s1600/promise1_simple.jpg" alt="다이어그램"></p>
+
+<p>먼저 2가지 경우를 처리하는 <code>then()</code>을 살펴보겠습니다. </p>
+
+<ul>
+<li>만약 <em>promise</em>가 아직도 <em>pending</em> 상태라면, <em>promise</em>가 확정(<em>settled</em>)될때 사용되는 <em>onFulfilled</em> 와 <em>onRejected</em> 호출을 큐에 삽입합니다.</li>
+<li>만약 이미 <em>fulfilled</em> 또는 <em>rejected</em>상태 라면, <em>onFulfilled</em> 또는 <em>onRejected</em>는 곧바로 호출 할 수 있습니다.</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">DemoPromise</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">then</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">onFulfilled</span><span class="p">,</span> <span class="nx">onRejected</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">fulfilledTask</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">onFulfilled</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">promiseResult</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="kd">var</span> <span class="nx">rejectedTask</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">onRejected</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">promiseResult</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">promiseState</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="s1">&#39;pending&#39;</span><span class="o">:</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">fulfillReactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">fulfilledTask</span><span class="p">);</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">rejectReactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">rejectedTask</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s1">&#39;fulfilled&#39;</span><span class="o">:</span>
+                <span class="nx">addToTaskQueue</span><span class="p">(</span><span class="nx">fulfilledTask</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s1">&#39;rejected&#39;</span><span class="o">:</span>
+                <span class="nx">addToTaskQueue</span><span class="p">(</span><span class="nx">rejectedTask</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="kd">function</span> <span class="nx">addToTaskQueue</span><span class="p">(</span><span class="nx">task</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">task</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p><code>resolve()</code>는 다음과 같이 작동합니다. :<br>
+만약 이미 <em>promise</em>가 확정(<em>settled</em>)되었다면, <em>promise</em>는 더이상 확정 될 수 없습니다. 그리고 <em>promise</em> 상태는 <em>fulfilled</em>로 변경되고, 결과는 <code>this.promiseResult</code>에 캐시됩니다. 지금 까지 큐에 추가 되었던 모든 <em>fulfillment</em> 반응(<em>reactions</em>)들은 바로 실행 될 것입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">Promise</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">resolve</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">promiseState</span> <span class="o">!==</span> <span class="s1">&#39;pending&#39;</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">promiseState</span> <span class="o">=</span> <span class="s1">&#39;fulfilled&#39;</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">promiseResult</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_clearAndEnqueueReactions</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">fulfillReactions</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// enable chaining</span>
+    <span class="p">};</span>
+    <span class="nx">Promise</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">_clearAndEnqueueReactions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">reactions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">fulfillReactions</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">rejectReactions</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+        <span class="nx">reactions</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">addToTaskQueue</span><span class="p">);</span>
+    <span class="p">};</span>
+</code></pre></div>
+<p><code>reject()</code>는 <code>resolve()</code>랑 비슷합니다.</p>
+
+<h2>13.2 체이닝</h2>
+
+<p>다음으로 체이닝을 구현 해봅시다.:</p>
+
+<ul>
+<li><code>then()</code>은 <em>onFulfilled</em>나 <em>onRejected</em> 으로 확정된 <em>promise</em>를 반환합니다.</li>
+<li>만약 <em>onFulfilled</em> 또는 <em>onRejected</em>가 누락되어도, 어쨋든 수신한 데이터는 <code>then()</code>에 의해 반환된 <em>promise</em>로 전달됩니다. </li>
+</ul>
+
+<p><img src="http://2.bp.blogspot.com/-pZ2agjPL54Y/VDEiTUClecI/AAAAAAAAA30/3zAmth5qnrE/s1600/promise2_chaining.jpg" alt="체이닝"></p>
+
+<p>분명하게 <code>then()</code>만 변경됩니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">DemoPromise</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">then</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">onFulfilled</span><span class="p">,</span> <span class="nx">onRejected</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">returnValue</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DemoPromise</span><span class="p">();</span> <span class="c1">// (A)</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+        <span class="kd">var</span> <span class="nx">fulfilledTask</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">onFulfilled</span> <span class="o">===</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">fulfilledTask</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">onFulfilled</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">promiseResult</span><span class="p">);</span>
+                <span class="nx">returnValue</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span> <span class="c1">// (B)</span>
+            <span class="p">};</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">fulfilledTask</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">returnValue</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">promiseResult</span><span class="p">);</span> <span class="c1">// (C)</span>
+            <span class="p">};</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">rejectedTask</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">onRejected</span> <span class="o">===</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">rejectedTask</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">onRejected</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">promiseResult</span><span class="p">);</span>
+                <span class="nx">returnValue</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span> <span class="c1">// (D)</span>
+            <span class="p">};</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">rejectedTask</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="c1">// Important: we must reject here!</span>
+                <span class="c1">// Normally, result of `onRejected` is used to resolve</span>
+                <span class="nx">returnValue</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">promiseResult</span><span class="p">);</span> <span class="c1">// (E)</span>
+            <span class="p">};</span>
+        <span class="p">}</span>
+        <span class="p">...</span>
+        <span class="k">return</span> <span class="nx">returnValue</span><span class="p">;</span> <span class="c1">// (F)</span>
+    <span class="p">};</span>
+</code></pre></div>
+<p><code>then()</code>은 <code>new promise</code>를 생성하여 반환합니다.((A),(F)라인) 게다가, <code>fulflledTask</code>와 <code>rejectedTask</code>는 다르게 설정됩니다. </p>
+
+<ul>
+<li><em>onFulfilled</em> 결과는 <code>returnValue</code>를 해결 하는데 사용됩니다.((B)라인)
+
+<ul>
+<li>만약 <em>onFulfilled</em>가 누락된 경우, <code>returnValue</code>를 해결하는데 <em>fulfullment</em>를 사용합니다.((C)라인)</li>
+</ul></li>
+<li><em>onRejected</em>의 결과는 <code>returnValue</code>를 해결하는데 사용됩니다.(거절이 아닌(<em>reject</em>))((D)라인)
+
+<ul>
+<li>만약 <em>onRejected</em>가 누락된 경우, <code>returnValue</code>를 해결하는데 거절(<em>rejection</em>) 값을 사용합니다.</li>
+</ul></li>
+</ul>
+
+<h2>13.3 Flattening(편평한)</h2>
+
+<blockquote>
+<p>역자주 : Flattening 은 해석하기 애매한 단어 임으로, 영어로 표기</p>
+</blockquote>
+
+<p><strong>Flattening</strong> 은 체이닝을 좀더 편리하게 만듭니다. : 일반적으로, 반응(<em>reaction</em>)에서 값을 반환하면 다음 <code>then()</code>으로 전달 됩니다. 만약 우리가 <em>promise</em>를 반환하면, 그것이 우리가 풀지 않을 수 있다면, 그것은 아래 예제와 같이 좋을 것입니다.  </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">asyncFunc1</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">value1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">asyncFunc2</span><span class="p">();</span> <span class="c1">// (A)</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// value2 is fulfillment value of asyncFunc2() promise</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value2</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div>
+<p>우리는 라인(A)에서 <em>promise</em>를 반환했습니다. 그리고 현재 메서드에서 중첩된 <code>then()</code>을 호출 하지 않았습니다. 우리는 메서드 결과에서  <code>then()</code>을 호출합니다. 따라서, <code>then()</code>은 더이상 중첩되지 않고, 모든것이 편평(<em>flat</em>)하게 유지됩니다.<br>
+우리는 <code>resolve()</code>가 <em>flattening</em>을 수행 할 수 있도록 구현하겠습니다.</p>
+
+<ul>
+<li><em>promise Q</em>로 <em>promise P</em>를 해결(<em>Resolving</em>)하는 것은 <em>Q&#39;s</em>의 확정(<em>settlement</em>)이 <em>P&#39;s</em>의 반응(<em>reactions</em>)으로 전달되는 것을 의미합니다.</li>
+<li><em>P</em>는 <em>Q</em>에 갇힙니다. :  더이상 해결 할수 없습니다.(<em>rejected</em>포함). 그리고 그 상태와 결과는 <em>Q&#39;s</em>와 항상 같습니다.</li>
+</ul>
+
+<p>우리가 <em>Q</em>가 <code>thenable</code>이 되도록 허락 한다면, 좀더 제네릭하게 만들 수 있습니다.(<em>promise</em>를 대신하여)</p>
+
+<p><img src="http://2.bp.blogspot.com/-yuykRwpwHFw/VDEiT1k2s9I/AAAAAAAAA34/AN8IZI5uoGw/s1600/promise3_flattening.jpg" alt="플래튼"></p>
+
+<p>위에 말한 것처럼 갇히게 하는것을(<em>locking-in</em>) 구현하기 위해 사용하는 새로운 <code>boolean flag</code>인 <code>this.alreadyResolved</code>를 소개합니다. 일단 flag가 <code>true</code>가 되면, <code>this</code>는 갇히게 되고, 더이상 해결(<em>resolve</em>) 할 수 없습니다. <code>this</code>는 여전히 <code>pending</code> 상태인것을 기억하십시오. 왜냐하면 그 상태는 지금 <em>promise</em>에 잠겨있는 것과 같기 때문입니다. </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">DemoPromise</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">resolve</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">alreadyResolved</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">alreadyResolved</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_doResolve</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// enable chaining</span>
+    <span class="p">};</span>
+</code></pre></div>
+<p>이제 실제 해결은 private 메서드인 <code>_doResolve()</code>에서 발생합니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">DemoPromise</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">_doResolve</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="c1">// Is `value` a thenable?</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span>
+            <span class="o">&amp;&amp;</span> <span class="s1">&#39;then&#39;</span> <span class="k">in</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">addToTaskQueue</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="c1">// (A)</span>
+                <span class="nx">value</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+                    <span class="kd">function</span> <span class="nx">onFulfilled</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">self</span><span class="p">.</span><span class="nx">_doResolve</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+                    <span class="p">},</span>
+                    <span class="kd">function</span> <span class="nx">onRejected</span><span class="p">(</span><span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">self</span><span class="p">.</span><span class="nx">_doReject</span><span class="p">(</span><span class="nx">reason</span><span class="p">);</span>
+                    <span class="p">});</span>
+            <span class="p">});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">promiseState</span> <span class="o">=</span> <span class="s1">&#39;fulfilled&#39;</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">promiseResult</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_clearAndEnqueueReactions</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">fulfillReactions</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+</code></pre></div>
+<p><em>flattening</em>은 (A)라인에서 수행됩니다. : 만약 <code>value</code>가 <em>fulfilled</em>면, <code>self</code>가 <em>fulfilled</em>되길 원합니다. 그리고 만약 <code>value</code>가 <em>rejected</em>라면, <code>self</code>가 <em>rejected</em> 되길 원합니다.<br>
+private메서드인 <code>_doResovle()</code>와 <code>_doReject()</code> 통해 발생하고, <code>alreadyResolved</code>를 통해 보호받습니다. </p>
+
+<h2>13.4 상세한 Promise 상태</h2>
+
+<p>체이닝 통해서 <em>promises</em> 상태는 점점 더 복잡해집니다.</p>
+
+<p><img src="http://1.bp.blogspot.com/-Nz5wt9gH8Jc/VDEiUlFWj1I/AAAAAAAAA4k/813hgpWviw0/s1600/promise_states_all.jpg" alt="머지?"></p>
+
+<p>만약 당신이 <em>promises</em>만 사용하면, 일반적으로 단순한 세계관을 채택하고 가두는 것을(<em>locking-in</em>)무시할 수 있습니다. 가장 중요한 상태-관련 개념은 확정(<strong>settledness</strong>)을 유지하는 것입니다. <em>promise</em>는 완료(<em>fulfilled</em>)되거나, 거절(<em>rejected</em>)되면 확정(<em>settled</em>) 됩니다. <em>promise</em>가 확정(<em>settled</em>)되면 더이상 변하지 않습니다. (상태 그리고 완료(<em>fulfillment</em>) 또는 거절(<em>rejection</em>) 값)  </p>
+
+<p>만약 당신이 <em>promise</em>를 수행하길 원한다면, 문제를 해결하기도 어렵고, 지금 그것을 이해하기는 어렵습니다.</p>
+
+<ul>
+<li><p>직관적으로 해결됨(<em>resolved</em>)은 더이상 (직접적으로)해결 할수 없다는 의미입니다. <em>promise</em>는 확정(<em>settled</em>)되었거나, 갇혀(<em>locked in</em>)있으면, 해결(<em>resolved</em>)된것입니다.<br>
+스펙 인용 : &quot;<em>promise</em>가 해결되지 않았으면, 항상 보류(<em>pending</em>) 상태 입니다. 해결된 <em>promise</em>는 보류(<em>pending</em>), 이행(<em>fulfilled</em>), 거절(<em>rejected</em>) 상태일 수 있습니다.&quot;  </p></li>
+<li><p>해결된 <em>promise</em>가 꼭 확정된(<em>settling</em>) 상태는 아닐수 있습니다. : 당신은 보류(<em>pending</em>)된 상태로 <em>promise</em>를 해결(<em>resolve</em>) 할 수 있습니다.</p></li>
+<li><p>해결은 거절(rejection)을 포함합니다. : 거절(<em>reject</em>)된 <em>promise</em>로 해결(<em>resolving</em>) 하면 <em>promise</em>를 거절(<em>reject</em>) 할 수 있습니다.</p></li>
+</ul>
+
+<h2>13.5 예외</h2>
+
+<p>마지막으로 우리는, 거절(<em>rejections</em>)을 사용자 코드단에서 예외로 처리하고 싶습니다. 현재 <strong>사용자 코드(user code)</strong>는 <code>then()</code>의 2개 콜백 파라미터를 의미합니다.</p>
+
+<p><img src="http://2.bp.blogspot.com/-x6hBT5B_yw4/VDEiULOJwII/AAAAAAAAA4E/aUTml-VNKRk/s1600/promise4_exceptions.jpg" alt="예외"></p>
+
+<p>다음 발췌한 부분은 <code>onFulfilled</code> 내부 예외를 (A)라인에서 호출할 때 <code>try-catch</code>로 감싸서 거절(<em>reject</em>)하는 방법을 보여줍니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">fulfilledTask</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">onFulfilled</span> <span class="o">===</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fulfilledTask</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">onFulfilled</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">promiseResult</span><span class="p">);</span> <span class="c1">// (A)</span>
+                <span class="nx">returnValue</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">returnValue</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fulfilledTask</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">returnValue</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">promiseResult</span><span class="p">);</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre></div>
+<h2>13.6 공개 생성자패턴</h2>
+
+<p>만약 <strong>DemoPromise</strong>를 실제 <strong>promise</strong> 구현체로 변경하고 싶다면, 공개 생성자 패턴을 구현 해야 합니다.<br>
+<strong>ES6</strong> <em>Promises</em>는 메서드를 통해 해결(<em>resolved</em>)되거나 거절(<em>rejected</em>)되어지지 않습니다. 그러나 생성자 콜백 파라미터 실행자에  전달되어지는 함수를 통해서..(but via functions that are handed to the executor, the callback parameter of the constructor)</p>
+
+<p><img src="http://4.bp.blogspot.com/-GTbj_y1eicI/VDEiUrwlM-I/AAAAAAAAA4I/K4EkfviNrss/s1600/promise5_everything.jpg" alt="공개생성자패턴"></p>
+
+<p>만약 실행자(<em>executor</em>)가 <code>then</code>으로 예외를 던진다면, <em>promise</em>는 거절(<em>rejected</em>)되어져야 합니다.</p>
+
+<h1>14. 추가적인 2가지 유용한 promise 메서드&#39;s</h1>
+
+<blockquote>
+<p>이번 섹션에서는 ES6 promises에 쉽게 추가 할 수 있는 2가지 유용한 메서드를 설명 합니다. <em>promise</em>는 많은 라이브러리를 가지고 있습니다.</p>
+</blockquote>
+
+<h2>14.1 done()</h2>
+
+<p>몇몇 <em>promise</em>를 여러개 체이닝 호출을 하면 에러가 쥐도새도 모르게 삭제될 위험이 있을 수 있습니다.<br>
+예를들어:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">doSomething</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">asyncFunc</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">f1</span><span class="p">)</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">r1</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">f2</span><span class="p">);</span> <span class="c1">// (A)</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>만약 (A)라인 <code>then()</code>이 거절(<em>rejection</em>)당하면, 아무데서도 처리 되지 않습니다. <em>promise</em> 라이브러리 <strong>Q</strong>는 메서드 체인 마지막 요소에 <code>done()</code>을 사용합니다.<br>
+마지막 <code>then()</code> 을 대신 합니다.(1~2개의 인자가 있슴)</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">doSomething</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">asyncFunc</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">f1</span><span class="p">)</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">r1</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="nx">f2</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>또는 마지막 <code>then()</code> 이후에 삽입됩니다. (0개 인수를 가짐)</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">doSomething</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">asyncFunc</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">f1</span><span class="p">)</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">r1</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">f2</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">done</span><span class="p">();</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p><a href="https://github.com/kriskowal/q/wiki/API-Reference#promisedoneonfulfilled-onrejected-onprogress">Q 문서에 인용문</a>:<br>
+- <code>done</code>의 황금룰 vs <code>then</code> 의 사용법 : 당신의 <em>promise</em>를 누군가에게 반환 하거나, 체이닝이 끝이라면 <code>done</code>을 호출 하여 제거하세요. 왜냐하면, <code>catch</code> 핸들러 자체적으로 에러를 발생 시킬 수 있기 때문에 <code>catch</code>로 종료하는 것만으론 충분하지 못합니다.</p>
+
+<p><strong>ECMAScript6</strong>로 <code>done()</code>을 구현하는 방법</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">Promise</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">done</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">onFulfilled</span><span class="p">,</span> <span class="nx">onRejected</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">onFulfilled</span><span class="p">,</span> <span class="nx">onRejected</span><span class="p">)</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">throw</span> <span class="nx">reason</span> <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+</code></pre></div>
+<p><code>done()</code>의 기능은 유용하지만, <strong>ECMAScript6</strong>에는 추가 되지 않습니다. 왜냐하면, 이런 일련의 과정은 미래에 디버거가 자동적으로 수행될 것 입니다.</p>
+
+<h2>14.2 finally()</h2>
+
+<p>때론 오류가 발생하던지 말던지, 독립적인 액션을 수행하길 원할 때가 있습니다. 예를들어, 작업을 마친후 리소스는 정리 해야합니다. 그것을 위한게 바로 <code>finally()</code> 메서드 입니다. 예외처리에서 <code>finally</code> 구문과 비슷하게 작동합니다.<br>
+<code>finally()</code> 는 인자가 없는 콜백을 받지만, 해결(<em>resolution</em>)인지 거절(<em>rejection</em>)인지 통보 받습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">createResource</span><span class="p">(...)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">value1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Use resource</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Use resource</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">finally</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Clean up</span>
+    <span class="p">});</span>
+</code></pre></div>
+<p><em>Domenic Denicola</em>가 <code>finally()</code>를 구현한 <a href="https://github.com/domenic/promises-unwrapping/issues/18">목적</a>입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">Promise</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="k">finally</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
+        <span class="c1">// We don’t invoke the callback in here,</span>
+        <span class="c1">// because we want then() to handle its exceptions</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+            <span class="c1">// Callback fulfills: pass on predecessor settlement</span>
+            <span class="c1">// Callback rejects: pass on rejection (=omit 2nd arg.)</span>
+            <span class="nx">value</span>  <span class="o">=&gt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">callback</span><span class="p">()).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">value</span><span class="p">),</span>
+            <span class="nx">reason</span> <span class="o">=&gt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">callback</span><span class="p">()).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">throw</span> <span class="nx">reason</span> <span class="p">})</span>
+        <span class="p">);</span>
+    <span class="p">};</span>
+</code></pre></div>
+<p>콜백은 수신자(this)의 확정(<em>settlement</em>) 방법을 결정합니다.</p>
+
+<ul>
+<li>콜백이 예외를 던지거나, <em>promise then</em>에 거절(<em>rejected</em>)을 반환하면, 거절 값(<em>rejection value</em>)이 됩니다.</li>
+<li><p>그렇지 않으면, 수신자(receiver)의 결정은 <code>finally()</code>에 반환된 <em>promise</em> 값으로 됩니다. 우리는 메서드 체인에서 <code>finally()</code>를 가져오게 됩니다.</p></li>
+<li><p>예제1 (by <a href="https://gist.github.com/jakearchibald/785f79b0dea5bfe0c448">Jake Archibald</a>): <code>finally()</code>로 스피너를 숨기는 방법. 간단버전:</p></li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">showSpinner</span><span class="p">();</span>
+    <span class="nx">fetchGalleryData</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">updateGallery</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">showNoDataError</span><span class="p">)</span>
+    <span class="p">.</span><span class="k">finally</span><span class="p">(</span><span class="nx">hideSpinner</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>예제2 (by <a href="https://github.com/domenic/promises-unwrapping/issues/18#issuecomment-27707922">Kris Kowal</a> ) 서버 다운 테스트</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">HTTP</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;q-io/http&quot;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">HTTP</span><span class="p">.</span><span class="nx">Server</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// run test</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">finally</span><span class="p">(</span><span class="nx">server</span><span class="p">.</span><span class="nx">stop</span><span class="p">);</span>
+</code></pre></div>
+<h1>15 ES6 호환되는 promise 라이브러리</h1>
+
+<p>많은 promise 라이브러리가 밖에 있습니다. 다음은 <em>ECMAScript 6 API</em>에 따르며, 지금 바로 사용 할수 있으며, 쉽게 네이티브 ES6로 나중에 마이그레이션 할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://github.com/tildeio/rsvp.js/">RSVP.js</a> : Stefan Penner에 의해 만들어진 RSVP.JS는 <em>ES6 Promise API</em> 상위 집합니다.
+
+<ul>
+<li>Jake Archibald의 <a href="https://github.com/stefanpenner/es6-promise">ES6-Promise</a>는 RSVP.js에서 ES6 API만 뽑아낸것입니다.</li>
+</ul></li>
+<li>Kyle Simpson의 <a href="https://github.com/getify/native-promise-only">Native Promise Only</a>는 엄격한 스펙 정의에 가능한한 근접한 네이티브 ES6 promises를 위한 polyfill 입니다.</li>
+<li> Calvin Metcalf의 <a href="https://github.com/calvinmetcalf/lie">Lie</a>는 Promises/A+ spec 을 구현한 작고 퍼포먼스있는 promise 라이브러리입니다.</li>
+<li>Kris Kowal 의 <a href="https://github.com/kriskowal/q#using-qpromise">Q.Promise</a>는 ES6 API입니다.</li>
+<li>마지막으로 Paul Millr의 <a href="https://github.com/paulmillr/es6-shim">ES6 Shim</a>는 <em>Promise</em>를 포함합니다.</li>
+</ul>
+
+<h1>16.레거시 비동기 코드와의 인터페이스</h1>
+
+<p>당신이 <em>promise</em> 라이브러리를 사용하면, 때론 <em>promise</em>기반이 아닌 비동기 코드가 필요할 때가 있습니다. 이번 섹션은 <em>Node-js</em>스타일 비동기함수와 <em>jQuery deferreds</em>가 어떻게 작동하는지 설명하고자 합니다.</p>
+
+<h2>16.1 Node.js 인터페이스</h2>
+
+<p><em>promise</em> 라이브러리 <strong>Q</strong>는 Node.js 스타일 콜백을 사용하는 함수를 promise를 반환하는 함수로 변환하기 위한 몇몇 <a href="https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks">툴 함수</a>를 가지고 있습니다.(반대 함수도 있다. promise를 반환하는 함수를 Node.js 스타일 콜백으로)<br>
+예를들어:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">readFile</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">denodeify</span><span class="p">(</span><span class="nx">FS</span><span class="p">.</span><span class="nx">readFile</span><span class="p">);</span>
+
+    <span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">});</span>
+</code></pre></div>
+<p><a href="https://github.com/matthew-andrews/denodeify/">deonodify</a>는 알림기능만 제공하고 ECMAScript6 promise API를 따르는 마이크로 라이브러리 입니다. </p>
+
+<h2>16.2 jQuery 인터페이스</h2>
+
+<p><em>jQuery</em>는 <em>promise</em>와 비슷한 <strong>deferreds</strong>를 가지고 있습니다. 그러나 호환성을 방해하는 몇몇 <a href="https://github.com/kriskowal/q/wiki/Coming-from-jQuery">다른점</a>이 있습니다. <strong>deferreds</strong>의 <code>then()</code>은 거의 <em>ES6 promises</em>와 비슷합니다.(에러를 캐치 할 수 없는 주요한 다른점이 있습니다.) 따라서 <code>Promise.resolve()</code>로 <em>jQuery deferred</em>를 <em>ES6 promise</em>로 변환 시킬수 있습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span>
+        <span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;somefile.html&#39;</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span>
+        <span class="p">}))</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div>
+<h1>17. Further reading</h1>
+
+<ul>
+<li>[1]: “<a href="https://promisesaplus.com/">Promises/A+</a>”, edited by Brian Cavalier and Domenic Denicola (the de-facto standard for JavaScript promises)</li>
+<li>[2]: “<a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">JavaScript Promises: There and back again</a>” by Jake Archibald  (good general intro to promises)</li>
+<li>[3]: “<a href="http://taoofcode.net/promise-anti-patterns/">Promise Anti-Patterns</a>” by Tao of Code (tips and techniques)</li>
+<li>[4]: “<a href="https://www.promisejs.org/patterns/">Promise Patterns</a>” by Forbes Lindesay</li>
+<li>[5]: “<a href="https://blog.domenic.me/the-revealing-constructor-pattern/">The Revealing Constructor Pattern</a>” by Domenic Denicola (this pattern is used by the Promise constructor)</li>
+<li>[6]: “<a href="https://www.html5rocks.com/en/tutorials/developertools/async-call-stack/">Debugging Asynchronous JavaScript with Chrome DevTools</a>” by Pearl Chen</li>
+<li>[7]: <a href="http://www.2ality.com/2013/06/iterators-generators.html">Iterators and generators in ECMAScript 6</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/es6">es6</a>&nbsp;<a href="/tags/promise">promise</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

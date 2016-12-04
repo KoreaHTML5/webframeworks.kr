@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Javascript 세미콜론(;) 가이드</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #F1F71A;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Javascript 세미콜론(;) 가이드</h1>
+<p class="title_header_summary">Javascript을 사용할 때 아무생각 없이 붙이는 세미콜론에(;) 관한 팁에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/8802261?v=3&s=400" alt="박관웅">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            박관웅
+
+                        </h4>
+                        pouu69<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.069975)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.947891)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.069975)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.069975)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.069975)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.349876)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.069975)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.069975)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.139950)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.139950)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.659057)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.189578)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.539454)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.279901)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.209926)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.069975)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.489826)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.629777)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.979653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.909677)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.069975)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.209926)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.069975)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.069975)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.279901)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.069975)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.279901)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.069975)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.139950)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.139950)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.069975)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.069975)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.139950)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.279901)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.069975)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.069975)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.069975)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.069975)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.209926)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.209926)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.069975)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.069975)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.069975)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.489826)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.049628)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.139950)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.559801)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.069975)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.069975)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.069975)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.139950)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.629777)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.139950)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.069975)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.139950)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.069975)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.069975)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.069975)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.069975)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.069975)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.069975)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.069975)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.069975)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.069975)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.279901)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.349876)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.069975)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.069975)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.139950)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.069975)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.069975)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.069975)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.279901)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.279901)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.069975)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.279901)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.069975)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.069975)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.069975)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.069975)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.069975)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.349876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.349876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.349876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.349876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.349876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.349876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.139950)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.069975)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.139950)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.139950)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.069975)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.069975)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.069975)'>semicolon</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p><a href="https://www.codecademy.com/blog/78">https://www.codecademy.com/blog/78</a> 에 글을 번역한 것 입니다.</p>
+</blockquote>
+
+<p>이것은 moderator Alex J.가 게스트로 올린 게시물입니다. 포럼에서 그를 보게되면 인사하십시오!<br>
+언제 세미콜론이 필요합니까? 여기에 편리한 치트시트가 있습니다..</p>
+
+<hr>
+
+<h1>필수사항: 두개 명령문이 같은 줄에 있을때</h1>
+
+<p>세미콜론은 같은 줄에 둘 이상의 명령문(<em>statements</em>)이있을 때만 필수입니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span>        <span class="c1">// &lt;-- semicolon obligatory</span>
+                      <span class="c1">//     (but optional before newline)</span>
+<span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span>             <span class="c1">// &lt;-- semicolon optional</span>
+    <span class="nx">i</span><span class="o">++</span>               <span class="c1">// &lt;-- semicolon optional</span>
+</code></pre></div>
+<h1>옵션사항: 명령문 이후에</h1>
+
+<p>자바스크립트의 세미콜론은 명령문을 분리하는데 사용되지만, 명령문 다음에 줄바꿈이 있으면(또는 <code>{}</code>에 단하나의 명령문만 있는경우) 생략할 수 있습니다.<br>
+명령문은 어떤 일을 지시하기 위해 컴퓨터에게 알려주는 코드 조각입니다. 다음은 가장 일반적인 명령문 유형들이 있습니다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>                        <span class="c1">// variable declaration</span>
+<span class="nx">i</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>                        <span class="c1">// value assignment</span>
+<span class="nx">i</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>                    <span class="c1">// value assignment</span>
+<span class="nx">i</span><span class="o">++</span><span class="p">;</span>                          <span class="c1">// same as above</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>                    <span class="c1">// declaration &amp; assignment</span>
+<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{...};</span>   <span class="c1">// var decl., assignmt, and func. defin.</span>
+<span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">);</span>                  <span class="c1">// function call</span>
+</code></pre></div>
+<p>위 모든 명령문은 세미콜론으로 종료될 수 있습니다. 하지만 위의 코드 모두 꼭 세미콜론을 붙일 필요는 없습니다. <br>
+어떤이들은 세미콜론으로 각 명령문을 종료하는 것이 좋은 습관이라고 생각합니다. 그러한 습관은 당신 코드를 해석하기 쉽게 만들어주고, 쉽게 압축할 수 있게 해줍니다.(세미콜론을 사용해서 코드의 종료를 명확하게 하면) 코드에서 줄바꿈(br이나 \n)을 제거하면, 같은 줄에서 분리되지 않은 명령문에 대해 걱정할 필요가 없습니다.</p>
+
+<h1>Avoid!</h1>
+
+<h2>1. {}가 닫힌 후에</h2>
+
+<p>당신은 <code>}</code> 이 닫힌 이후에 세미콜론을 사용하면 안됩니다. <code>var obj={};</code>와 같은 할당문은 예외입니다.(위 참조)</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// NO semicolons after }:</span>
+<span class="k">if</span>  <span class="p">(...)</span> <span class="p">{...}</span> <span class="k">else</span> <span class="p">{...}</span>
+<span class="k">for</span> <span class="p">(...)</span> <span class="p">{...}</span>
+<span class="k">while</span> <span class="p">(...)</span> <span class="p">{...}</span>
+
+<span class="c1">// BUT:</span>
+<span class="k">do</span> <span class="p">{...}</span> <span class="k">while</span> <span class="p">(...);</span>
+
+<span class="c1">// function statement: </span>
+<span class="kd">function</span> <span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*do this*/</span> <span class="p">}</span> <span class="c1">// NO semicolon after }</span>
+</code></pre></div>
+<h2>2. <code>if, for, while, switch</code>의 괄호(<code>)</code>) 후에 명령문</h2>
+
+<p><code>if</code> 문의 <code>{}</code> 후에 세미콜론을 사용해도 상관없습니다. (무시되어지고, 불필요하다고 warning을 보게됩니다.) 그러나 세미콜론이 속하지 않는 (<code>if, for, while, switch</code> 문의 <code>()</code>의 후와 같은)경우에는 좋은 생각이 아닙니다. </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">===</span> <span class="mi">1</span><span class="p">);</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1">// equivalent to:</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="cm">/*do nothing*/</span> <span class="p">;</span>
+<span class="nx">alert</span> <span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>위 코드는 <code>alert &quot;hi&quot;</code> 가 실행 되지만, <code>0 === 1</code> 은 다르므로 세미콜론 때문에 발생하지 않습니다.<br>
+자바스크립트는 당신이 비어있는 명령문을 사용한 것이라고 생각하며, 오른쪽에 있는 모든 것은 더이상 <code>if</code> 조건에 속하지 않고 독립적으로 처리됩니다.</p>
+
+<h1>물론 예외는 있습니다..</h1>
+
+<p><code>for</code> 루프의 <code>()</code> 안에 세미콜론은 오로지 첫번째 이후와 두번째 명령문에만 사용하며 세번째는 사용하지 않습니다.
+<code>javascript
+for (var i=0; i &lt; 10; i++)  {/*actions*/}       // correct
+for (var i=0; i &lt; 10; i++;) {/*actions*/}       // SyntaxError
+</code></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/semicolon">semicolon</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

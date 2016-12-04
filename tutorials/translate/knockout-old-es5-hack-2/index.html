@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 오래된 ES5 꼼수를 버려라 2</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">오래된 ES5 꼼수를 버려라 2</h1>
+<p class="title_header_summary">이 문서는 https://rainsoft.io/make-your-javascript-code-shide-knockout-old-es5-hack/ 를 번역한 내용입니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/11900262?v=3&s=460" alt="송헌용">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            송헌용
+
+                        </h4>
+                        apple77y<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.069975)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.947891)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.069975)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.069975)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.069975)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.349876)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.069975)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.069975)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.139950)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.139950)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.659057)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.189578)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.539454)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.279901)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.209926)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.069975)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.489826)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.629777)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.979653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.909677)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.069975)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.209926)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.069975)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.069975)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.279901)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.069975)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.279901)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.069975)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.139950)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.139950)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.069975)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.069975)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.139950)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.279901)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.069975)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.069975)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.069975)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.069975)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.209926)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.209926)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.069975)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.069975)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.069975)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.489826)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.049628)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.139950)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.559801)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.069975)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.069975)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.069975)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.139950)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.629777)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.139950)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.069975)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.139950)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.069975)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.069975)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.069975)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.069975)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.069975)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.069975)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.069975)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.069975)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.069975)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.279901)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.349876)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.069975)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.069975)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.139950)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.069975)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.069975)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.069975)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.279901)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.279901)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.069975)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.279901)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.069975)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.069975)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.069975)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.069975)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.069975)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.349876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.349876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.349876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.349876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.349876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.349876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.139950)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.069975)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.139950)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.139950)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.069975)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.069975)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.069975)'>semicolon</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>4. 기본 매개변수</h2>
+
+<p>PHP, Ruby 그리고 Python과 같은 다양한 동적 프로그래밍 언어에는 기본 매개변수 기능이 있다.</p>
+
+<p>하지만 자바스크립트에서는 없었다. 만약 인자가 전달되지 않았다면 기본값은 undefined였다.
+지금까지는 그 정도의 기능만 있었다.</p>
+
+<p>기본 매개변수를 흉내 내기 위해서는 다음과 같은 추가적인 연산이 필요했다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">myFun</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">opt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">opt</span> <span class="o">=</span> <span class="nx">opt</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">?</span> <span class="nx">opt</span> <span class="o">:</span> <span class="s1">&#39;optional&#39;</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">req</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nx">opt</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">myFun</span><span class="p">(</span><span class="s1">&#39;required&#39;</span><span class="p">);</span> <span class="c1">// =&gt; &#39;required optional&#39;</span>
+</code></pre></div>
+<p>opt 값이 없는 채로 함수가 실행된다면, 기본값으로 undefined가 될 것이다.
+3항 연산자를 통해 opt !== undefined ? opt : &#39;optional&#39; 기본값을 적용할 수 있다.</p>
+
+<p>잘 동작하긴 하지만, 더 나은 방법이 필요하다.</p>
+
+<p><img src="https://rainsoft.io/content/images/2016/08/4-1.jpg" alt="default parameter"></p>
+
+<ul>
+<li>ES2015에서는 기본 매개변수를 정의하는 방법이 있어서 이 문제를 해결할 수 있게 되었다.</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">myFun</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">opt</span> <span class="o">=</span> <span class="s1">&#39;optional&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">req</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nx">opt</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">myFun</span><span class="p">(</span><span class="s1">&#39;required&#39;</span><span class="p">);</span> <span class="c1">// =&gt; &#39;required optional&#39;</span>
+</code></pre></div>
+<p>이 함수의 정의를 보면, function myFun(req, opt = &#39;optional&#39;)에서 opt의 기본값으로 &#39;optional&#39;이라는 값을 볼 수 있다.
+깔끔하고 간결하다.</p>
+
+<p>기본 매개변수는 함수가 정의되는 시점이 아닌, 실행되는 시점에서 계산된다는 점을 알아둬야 한다.
+만약 하나의 객체가 기본 매개변수로 사용된다면, 함수가 실행될 때마다 새로운 객체 인스턴스가 만들어진다.</p>
+
+<h2>5. 속성 값을 복사하는 법</h2>
+
+<p>ES5에서는 lodash나 jQuery와 같은 라이브러리를 적용해서 확장 유틸 함수를 사용했었다.
+아니면 별도 메소드를 자체로 개발했다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">extend</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">index</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">target</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">index</span><span class="p">][</span><span class="nx">key</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">height</span><span class="o">:</span> <span class="mi">800</span><span class="p">,</span>
+  <span class="nx">width</span><span class="o">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">extend</span><span class="p">({},</span> <span class="nx">defaults</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">height</span><span class="o">:</span> <span class="mi">500</span>
+<span class="p">});</span>
+<span class="nx">settings</span><span class="p">;</span> <span class="c1">// =&gt; { height: 500, width: 200 }</span>
+</code></pre></div>
+<p>extend(target, source1, source2, ...) 함수는 source1과 source2, 그리고 나머지로부터 속성 값을 대상 객체로 복사하는 역할을 한다.
+settings 객체는 defaults과 { height: 500 } 객체로부터 속성 값을 받는다.</p>
+
+<ul>
+<li>ES2015에 있는 Object.assign() 함수는 이러한 요구사항을 위해 개발되었다. 안정적인 네이티브 방법의 해결책이다.</li>
+</ul>
+
+<p><img src="https://rainsoft.io/content/images/2016/08/5.jpg" alt="assign"></p>
+
+<p>Object.assign()가 적용된 코드를 확인해보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">height</span><span class="o">:</span> <span class="mi">800</span><span class="p">,</span>
+  <span class="nx">width</span><span class="o">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">defaults</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">height</span><span class="o">:</span> <span class="mi">500</span>
+<span class="p">});</span>
+<span class="nx">settings</span><span class="p">;</span> <span class="c1">// =&gt; { height: 500, width: 200 }</span>
+</code></pre></div>
+<p>실행되는 코드는 크게 바꾸지 않았고, 객체 속성값을 복사하기 위해 Object.assign() 네이티브 함수를 사용했다.
+덕분에 모듈 의존성이 하나 줄어들게 되었다.</p>
+
+<h2>6. 이제 겨우 걸음마 단계일 뿐</h2>
+
+<p>이것들은 이전 자바스크립트로 개발된 여러 꼼수 중 겨우 일부분일 뿐이다.</p>
+
+<p>ECMA Script 2015에 있는 새로운 개념은 자바스크립트 코드를 더욱 가독성 있게 만들어주고, 확장성도 제공해준다.
+만약 코드에 꼼수가 있다면 의심할 여지 없이 ES2015 문법으로 바꿔주고, 향상된 문법과 기능에 익숙해질 필요가 있다.</p>
+
+<p>한 가지 명심해야 할 부분은 꼼수들은 보통 들어내기 어렵게 개발되어있기 때문에, 그 과정에서 새로운 버그가 발생할 수 있다.
+아무튼, 함수와 유닛 단위의 테스트가 이 과정에 도움 될 것이다.</p>
+
+<p>개인적으로는 이제부터라도 array.indexOf(element) !== -1 가 당신의 코드에서 사라지길 바란다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/es5">es5</a>&nbsp;<a href="/tags/es6">es6</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

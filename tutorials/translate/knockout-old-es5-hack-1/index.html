@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 오래된 ES5 꼼수를 버려라 1</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">오래된 ES5 꼼수를 버려라 1</h1>
+<p class="title_header_summary">이 문서는 https://rainsoft.io/make-your-javascript-code-shide-knockout-old-es5-hack/ 를 번역한 내용입니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/11900262?v=3&s=460" alt="송헌용">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            송헌용
+
+                        </h4>
+                        apple77y<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.069975)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.947891)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.069975)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.069975)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.069975)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.349876)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.069975)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.069975)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.139950)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.139950)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.659057)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.189578)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.539454)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.279901)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.209926)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.069975)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.489826)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.629777)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.979653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.909677)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.069975)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.209926)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.069975)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.069975)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.279901)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.069975)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.279901)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.069975)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.139950)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.139950)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.069975)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.069975)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.139950)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.279901)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.069975)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.069975)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.069975)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.069975)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.209926)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.209926)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.069975)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.069975)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.069975)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.489826)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.049628)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.139950)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.559801)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.069975)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.069975)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.069975)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.139950)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.629777)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.139950)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.069975)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.139950)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.069975)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.069975)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.069975)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.069975)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.069975)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.069975)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.069975)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.069975)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.069975)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.279901)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.349876)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.069975)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.069975)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.139950)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.069975)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.069975)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.069975)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.279901)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.279901)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.069975)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.279901)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.069975)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.069975)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.069975)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.069975)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.069975)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.349876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.349876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.349876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.349876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.349876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.349876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.139950)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.069975)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.139950)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.139950)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.069975)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.069975)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.069975)'>semicolon</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <p>ECMA Script 2015 이전의 자바스크립트 언어는 다루기 까다로웠다.
+간단한 ES5 스크립트 정도는 괜찮았다.
+하지만 어플리케이션의 복잡도가 커지게 되면서, 언어 구조의 부족함으로 인해 코드가 불편해지기 시작했다.</p>
+
+<p>개발자는 어플리케이션 요구사항에 맞게 개발을 해야 하기 때문에, ES5 문법으로 개발하게 될 때 발생하는 골칫거리를 피해갈 수 없다.
+그에 대한 해결책으로 합리적이진 않지만, 꼼수를 사용하게 된다.</p>
+
+<p>꼼수와 차선책으로 개발된 여러 줄의 코드는 문제를 발생하게 된다.
+쉽게 읽을 수 없게 되고, 결국에는 유지보수를 어렵게 만든다.</p>
+
+<p>그리고 일반적인 말로</p>
+
+<blockquote>
+<p>자바스크립트 꼼수를 적용하는 것은 얇은 카드로 집을 짓는 것과 같다.</p>
+</blockquote>
+
+<p><img src="https://rainsoft.io/content/images/2016/08/House-of-cards-014-1.jpg" alt="카드집"></p>
+
+<p>차선책으로는 Underscore 혹은 lodash와 같은 유틸리티 라이브러리를 사용하는 것이다.
+라이브러리는 어려운 것을 쉽게 해결할 수 있는 다양한 함수를 제공한다.
+훨씬 나은 방법이지만, 이것 역시 여전히 차선책이다.
+모듈 의존성 추가되고, 직접 해결하는 방법을 찾지 않게 될지도 모른다.</p>
+
+<p>ECMA Script 2015, 2016, 그리고 곧 나올 2017은 이런 현상을 개선하기 위해 효과적인 것들을 만들고 있다.
+이미 꼼수로 개발된 대부분을 안정적인 것들로 쉽게 대체될 수 있다.
+또한, 당신의 프로젝트 프로세스를 개선할 수 있다.</p>
+
+<p>어떻게 하면 자바스크립트 코드를 바위처럼 단단히, 빛나게 개발할 수 있을까?
+당신의 코드에서 꼼수를 제거하고, 해결책을 적용하고 있는 이 가이드를 따라라.</p>
+
+<h2>1. 배열 내 요소가 존재하는지 증명하는 법</h2>
+
+<p>모든 어플리케이션이 배열을 다루기 때문에, 집합 내에 특정 요소가 존재하는지 찾아내는 작업은 평범한 일이다.</p>
+
+<ul>
+<li>ES5에서는 보통 Array.prototype.indexOf(element, [fromIndex]) 메소드를 사용했고, 반환되는 값과 -1을 비교해서 요소의 존재를 증명했다.</li>
+</ul>
+
+<p>이 .indexOf() 메소드를 사용하는 증명법에는 부작용이 있는데, 배열 내 요소가 존재하면 요소의 인덱스를 반환하고, 존재하지 않다면 그냥 -1을 반환한다.</p>
+
+<p>예제를 살펴보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;January&#39;</span><span class="p">,</span> <span class="s1">&#39;March&#39;</span><span class="p">,</span> <span class="s1">&#39;July&#39;</span><span class="p">];</span>
+<span class="nx">months</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;March&#39;</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>  <span class="c1">// =&gt; true</span>
+<span class="nx">months</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;August&#39;</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// =&gt; false</span>
+</code></pre></div>
+<p>months라는 배열에서 한 요소의 존재를 증명하기 위해서 months.indexOf()를 사용했고, 반환되는 값과 -1을 비교한다.
+존재하는 요소인 months.indexOf(&#39;March&#39;)를 사용하게 되면 인덱스 1을 반환하게 되고, 1 !== -1 비교 값은 참이 된다.
+&#39;March&#39;는 존재한다는 의미다.
+months.indexOf(&#39;August&#39;)은 -1을 반환하는데, 이 의미는 요소가 없다는 것: -1 !== -1은 거짓이다.
+&#39;August&#39; 요소는 존재하지 않는다는 의미다.</p>
+
+<p>더욱 나쁜 방법은 비교를 하는 방법이 다양하다는 점이다.</p>
+
+<ul>
+<li>months.indexOf(&#39;March&#39;) != -1</li>
+<li>months.indexOf(&#39;Match&#39;) &lt; 0</li>
+<li>~months.indexOf(&#39;March&#39;)</li>
+<li>and so on...</li>
+</ul>
+
+<p>이 방법으로 요소를 탐색하는 것은 간편하지 않을 뿐더러 꼼수를 사용하는 것 같은 느낌이다.</p>
+
+<ul>
+<li>이 문제를 해결하기 위해, ECMAScript 2015는 새로운 메소드인 Array.prototype.includes(element, [fromIndex])를 소개한다. 이 메소드는 배열 내 요소가 존재하는지 참 / 거짓 값으로 반환해준다.</li>
+</ul>
+
+<p><img src="https://rainsoft.io/content/images/2016/08/1-4.jpg" alt="includes"></p>
+
+<p>예제를 향상 시켜보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;January&#39;</span><span class="p">,</span> <span class="s1">&#39;March&#39;</span><span class="p">,</span> <span class="s1">&#39;July&#39;</span><span class="p">];</span>
+<span class="nx">months</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;March&#39;</span><span class="p">);</span>  <span class="c1">// =&gt; true</span>
+<span class="nx">months</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;August&#39;</span><span class="p">);</span> <span class="c1">// =&gt; false</span>
+</code></pre></div>
+<p>존재하는 요소의 경우 months.includes(&#39;March&#39;) 결과 값으로 참, 존재 하지 않는 요소의 경우 months.includes(&#39;August&#39;) 결과 값으로 거짓을 반환한다.</p>
+
+<p>간단하고 편리하다!
+당연히 .indexOf(element) !== -1은 .includes(element)로 바뀌어야 한다.</p>
+
+<h2>2. 함수 인자 값에 접근하는 법</h2>
+
+<p>arguments는 함수 호출 부분에 전달되는 인자들을 포함하는 하나의 객체다.</p>
+
+<p>내 생각에, arguments 객체는 하드코드 되어있는 제한적인 구조물이다.</p>
+
+<ul>
+<li>arguments는 유사 배열이다. 그래서 배열 메소드인 .forEach(), .reduce(), etc 등을 사용하는 것은 불가능하다.</li>
+<li>arguments 이름은 바꿀 수 없다. 예를 들어 args로 바꾸는 것도 안 된다.</li>
+<li>모든 함수의 스코프는 자신의 arguments를 정의한다. 내부 함수에서 외부 함수의 arguments에 접근하기 위해서는 var outerArgs = arguments; 와 같은 임시 변수가 필요하다.</li>
+<li>함수의 기본 형태인 function myFun() {}와 arguments의 실제 사용에는 모순이 있다. 함수 형태에서는 파라미터를 넘겨주지 않지만, 함수 내 코드에서는 갑자기 arguments 객체를 사용하게 되면 코드상에서 이질감이 생긴다.</li>
+</ul>
+
+<p>예제를 살펴보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">sum</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reduce</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">el</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// =&gt; 17</span>
+</code></pre></div>
+<p>sum() 함수는 arguments의 합계를 반환한다.
+위에서 말한 것처럼, arguments는 유사 배열이다.
+그래서 우회적인 방법으로 .reduce()를 사용해야 한다.
+function sum() {} 이 함수 선언의 형태는 아무런 인자를 받지 않고 있다.
+하지만 함수 내의 arguments는 넘어오지 않는 것처럼 보이는 함수의 인자에 접근하고 있다.
+ 이 부분은 혼란을 일으킨다.
+그래서 함수의 선언 부분에서는 실행 부분을 보지 않고서라도, 어떤 인자가 넘어오는지 명확히 인지할 수 있어야 한다.</p>
+
+<ul>
+<li>이 문제를 해결하기 위해서 es2015에서 제공하는 function funName(...restParam) 라는 나머지 매개변수를 적용한다.</li>
+</ul>
+
+<p><img src="https://rainsoft.io/content/images/2016/08/2-2.jpg" alt="rest parameter"></p>
+
+<p>함수 선언식에 사용되는 3개의 마침표가 붙은 나머지 매개변수는 파라미터 인자들을 의미한다.
+나머지 매개변수는 함수 실행문에 넘겨지는 인자들을 하나의 변수에 담는다.
+그리고 다른 변수들과 마찬가지로 의미에 맞게 이름을 지을 수 있다.</p>
+
+<p>위 예제에서 사용했던 arguments 유사배열을 제거하고, 나머지 매개변수라는 개념을 적용해보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">sum</span><span class="p">(...</span><span class="nx">numbers</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">el</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// =&gt; 17</span>
+</code></pre></div>
+<p>numbers라는 나머지 매개변수에는 arguments가 포함 되어있다.
+그래서 function sum(10, 5, 2)로 실행하니 나머지 매개변수에 [10, 5, 2]가 전달 되었다.
+이로써 arguments 유사배열을 사용했을 때의 문제점이 해결되었다.</p>
+
+<ul>
+<li>numbers는 배열이기 때문에 .reduce() 배열 메소드를 바로 사용할 수 있다.</li>
+<li>변수의 의미에 따라 이름을 지을 수 있다. 이 경우 여러 개의 숫자가 담긴 배열이므로 numbers라는 이름으로 되어있다.</li>
+<li>함수 선언식 function sum(...numbers)는 인자들이 numbers 라는 파라미터 변수에 담긴다는 것을 명백하게 나타내준다.</li>
+</ul>
+
+<p>리팩토링하게 될 양이 많을지도 모르지만, 코드 가독성을 위해 arguments 유사배열은 나머지 매개변수로 대체되어야 한다.</p>
+
+<h2>3. this 바인드</h2>
+
+<p>this 혹은 함수 실행 문맥에 대한 개념은 자바스크립트에서 어려운 부분이다.
+이 개념에 대해 이해를 하려면 <a href="https://rainsoft.io/gentle-explanation-of-this-in-javascript/">이 글</a>을 읽는 것을 추천한다.</p>
+
+<p>보통 자바스크립트 함수는 실행 시점에 따른 this를 가진다.
+전역에 정의된 함수 myFunction()의 경우, this는 window 객체를 나타낸다.
+혹은 strict mode에서 실행이 될 경우 undefined를 반환한다.</p>
+
+<p>보통 함수라면 별도의 this를 정의하지 않아도 인접한 문맥으로 this를 참조하게 된다.
+자바스크립트에서는 실행 문맥에 대해 수정하기 위해 특별한 메소드와 꼼수를 제공한다.</p>
+
+<ul>
+<li>call Function.prototype.call(context, arg1, ...) 혹은 Function.prototype.apply(context, [arg1, ...]) 메소드로 문맥을 간접적으로 호출하는 방법</li>
+<li>Function.prototype.bind(context, arg1, ...) 메소드로 문맥을 묶는 방법</li>
+<li>인접 문맥을 var context = this와 같이 별도의 변수에 저장하고, 내부 함수에서 그 변수에 접근하는 방법</li>
+</ul>
+
+<p>내부 함수에서도 같은 문맥을 유지하기 위해서 위와 같은 메소드를 사용하는 건 까다롭고 장황해 보인다.
+나는 모든 함수마다 꼬리에 .bind(this)를 달거나 var self = this처럼 별도의 변수에 this를 저장하는 스파게티식 문맥 관리를 좋아하지 않는다.</p>
+
+<p>보편적인 상황을 살펴보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Numbers</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">array</span> <span class="o">=</span> <span class="nx">array</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">operation</span> <span class="o">=</span> <span class="nx">operation</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">calculate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">array</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">accumulator</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">operation</span> <span class="o">===</span> <span class="s1">&#39;sum&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">element</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">operation</span> <span class="o">===</span> <span class="s1">&#39;multiply&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">*</span> <span class="nx">element</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Unknown operator&#39;</span><span class="p">);</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span> <span class="c1">// &lt;--- bind the function context</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">myNumbers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Numbers</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;sum&#39;</span><span class="p">);</span>
+<span class="nx">myNumbers</span><span class="p">.</span><span class="nx">calculate</span><span class="p">();</span> <span class="c1">// =&gt; 16</span>
+</code></pre></div>
+<p>Numbers라는 생성자는 배열에 담긴 요소들의 합계 혹은 곱셈을 계산한다.
+이 생성자에는 .calculate()라는 메소드가 있는데, 여기에서는 필요한 operation 변수로 받은 연산자를 적용하기 위해 this.array.reduce()라는 것을 사용하고 있다.
+이 콜백 함수에서는 this.operation에 접근하기 위해 .bind(this)를 이용해 인접 문맥에 접근하고 있다.</p>
+
+<p>화살표 함수에서는 this 문맥을 효율적으로 바인드 시켜준다.
+이 함수는 인접 문맥을 사용하고, this를 새로 정의하지 않는다.</p>
+
+<p><img src="https://rainsoft.io/content/images/2016/08/3-1.jpg" alt="binding this"></p>
+
+<p>화살표 함수를 적용시켜서 코드를 더 향상시켜보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Numbers</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">operation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">array</span> <span class="o">=</span> <span class="nx">array</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">operation</span> <span class="o">=</span> <span class="nx">operation</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">calculate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">array</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">accumulator</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">operation</span> <span class="o">===</span> <span class="s1">&#39;sum&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">element</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">operation</span> <span class="o">===</span> <span class="s1">&#39;multiply&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">*</span> <span class="nx">element</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Unknown operator&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">myNumbers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Numbers</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;sum&#39;</span><span class="p">);</span>
+<span class="nx">myNumbers</span><span class="p">.</span><span class="nx">calculate</span><span class="p">();</span> <span class="c1">// =&gt; 16</span>
+</code></pre></div>
+<p>this.array.reduce() 콜백 함수로 화살표 함수가 적용된 것을 볼 수 있다.
+화살표 함수는 this.calculate() 메소드와 같은 문맥(Numbers 생성자의 인스턴스)을 가지기 때문에, this.operation에 접근할 수 있다.</p>
+
+<p>보다시피, 화살표 함수는 간결한 문법과 문맥의 직관성을 제공한다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/es5">es5</a>&nbsp;<a href="/tags/es6">es6</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

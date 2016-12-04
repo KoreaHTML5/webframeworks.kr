@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 리덕스에 대한 이해</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">리덕스에 대한 이해</h1>
+<p class="title_header_summary">이 문서는 https://medium.freecodecamp.com/why-redux-makes-sense-to-me-and-how-i-conceptualize-it-c8a3a9db15ca?ref=mybridge.co#.mw6el25e7를 번역한 내용입니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/11900262?v=3&s=460" alt="송헌용">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            송헌용
+
+                        </h4>
+                        apple77y<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.069975)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.947891)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.069975)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.069975)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.069975)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.349876)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.069975)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.069975)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.139950)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.139950)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.659057)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.189578)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.539454)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.279901)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.209926)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.069975)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.489826)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.629777)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.979653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.909677)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.069975)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.209926)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.069975)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.069975)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.279901)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.069975)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.279901)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.069975)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.139950)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.139950)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.069975)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.069975)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.139950)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.279901)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.069975)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.069975)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.069975)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.069975)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.209926)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.209926)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.069975)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.069975)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.069975)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.489826)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.049628)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.139950)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.559801)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.069975)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.069975)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.069975)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.139950)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.629777)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.139950)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.069975)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.139950)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.069975)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.069975)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.069975)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.069975)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.069975)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.069975)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.069975)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.069975)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.069975)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.279901)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.349876)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.069975)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.069975)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.139950)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.069975)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.069975)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.069975)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.279901)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.279901)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.069975)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.279901)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.069975)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.069975)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.069975)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.069975)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.069975)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.349876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.349876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.349876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.349876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.349876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.349876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.139950)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.069975)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.139950)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.139950)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.069975)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.069975)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.069975)'>semicolon</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <p><img src="https://cdn-images-1.medium.com/max/1600/1*BpaqVMW2RjQAg9cFHcX1pw.png" alt="redux"></p>
+
+<p>리액트를 처음 배우기 시작할 때, 리액트와 관련된 기술에 대한 수많은 글을 읽었다.</p>
+
+<p>특히, <a href="https://github.com/petehunt/react-howto/blob/master/README-ko.md">이 글</a>이 눈에 띈다.
+이 글에서는 리액트 생태계가 얼마나 복잡한지, 그리고 리액트를 사용하기 이전에 전체 생태계에 대해 알아야 하는 것에 대해 개발자들이 어떻게 느끼는지 알려주고 있다.</p>
+
+<p>나는 리액트를 8개월 동안 매일 봐 왔던 사람으로서 정확히 말할 수 있는데, 지금도 나는 리액트의 전체 생태계를 거의 겉핥기식으로 이해하고 있다.</p>
+
+<p>하지만 그 동안 리액트를 사용한 결과, 어느 시점에서 어떤 기술을 적절히 써먹을 수 있을지에 대한 통찰력이 생겼다. 이를테면 플럭스 아키텍처의 한 종류인 리덕스다.</p>
+
+<blockquote>
+<p>당신은 플럭스를 언제 적용해야 할지 알 것이다. 만약 필요한지에 대해 확실치 않다면, 플럭스가 필요 없는 단계다.</p>
+</blockquote>
+
+<p>이 인용문은 위에서 언급한 <a href="https://github.com/petehunt/react-howto#learning-flux">이 글</a>에 있으며, 내가 리덕스에 대해 어떻게 느끼는지 아주 잘 요약한 말이다.</p>
+
+<p>나는 처음부터 플럭스의 필요성에 대해 보지 않았을뿐더러, 다른 라이브러리 없이 순수 리액트만으로도 충분히 어플리케이션을 개발할 수 있다고 생각한다. 하지만 이 글에서는 리덕스의 장점에 대해 살펴볼 예정이다.</p>
+
+<p>이 글에서는 왜 리덕스가 타당한지, 그리고 리덕스의 서로 다른 부분에 대해 시각적인 비유로 설명할 것이다.</p>
+
+<h2>리덕스가 타당한 이유</h2>
+
+<p>지난 8개월 동안 리액트를 사용하면서 어떤 형식으로 개발하려고 했었는지에 대한 설명이다.</p>
+
+<ol>
+<li><p>가능한 상태 값이 없는 컴포넌트로 개발하려고 했다. 왜냐하면, 이 컴포넌트는 <strong>순수 함수 컴포넌트</strong> 형태이기 때문이다. (순수 함수 컴포넌트: 같은 데이터를 입력할 때마다 항상 같은 UI가 반환되는 형식) 순수 함수 컴포넌트는 구조를 파악하기 쉽고, 테스트하기에도 간편하기 때문이다.</p></li>
+<li><p>컴포넌트에 상태 값을 포함할 때마다 어떤 컴포넌트에서 이 상태 값을 변경하는 지에 대해 스스로 되묻곤 했다. 바로 위에 있는 컴포넌트일지 아니면 더 높은 단계에 있는 컴포넌트일지 말이다. 왜냐하면, 상태 값이 없는 다른 컴포넌트에서도 필요로 할 수 있기 때문이다.</p></li>
+<li><p>위의 질문에 대한 대답은 리액트 어플리케이션을 개발할 때 매우 중요한 단계다. 사실 리덕스(혹은 플럭스의 다른 종류)를 사용할 때와 마찬가지로 이 질문에 대한 대답은 계속 필요하다. 왜냐하면, 이 대답으로 인해 어떤 컴포넌트가 리덕스 컨테이너 역할을 하게 될지 결정되기 때문이다.</p></li>
+<li><p>어플리케이션이 점점 커지면서 많은 컴포넌트의 상태 값이 어플리케이션 내 여기저기 분산되어 있다는 걸 느끼게 되었다. 그래서 다수의 컴포넌트에 사용될 수 있는 하나의 구조로 리팩토링할 필요성을 느끼게 되었다. 내가 여태 봐왔던 리액트의 전형적인 구조는 상태 값을 상위 컴포넌트에 전달해서, 그 값을 관리하는 부모 컴포넌트에서 상태 값을 변경하는 것이었다.</p></li>
+<li><p>이런 구조에 직면하게 될 때마다, 모든 컴포넌트의 상태 값을 최상위에 위치하는 컴포넌트로 전달하고, 자식 컴포넌트에서는 필요한 상태 값만 전달해주는 게 적절한 구조인지 되묻기 시작했다. 이러한 구조가 유용하다고 느낀 이유는 최상위 컴포넌트를 제외하고 나머지 자식 컴포넌트는 상태 값을 가지고 있지 않아도 되기 때문이다. (주의해야 할 점: 대개 당신은 아마도 어떠한 컴포넌트에 위치하든 같은 UI 상태를 가지길 원한다는 것이다.)</p></li>
+</ol>
+
+<h2>리덕스 소개</h2>
+
+<p>결국, 위의 고민을 통해 얻으려고 하는 것은 관심사의 분리였다.</p>
+
+<p>리액트는 UI 라이브러리다. 이것은 오직 입력된 데이터를 화면에 그리는 것만 담당한다. 만약 데이터가 바뀐다면 새로운 UI만 다시 그린다.</p>
+
+<p>하지만, 어플리케이션이 커지면서 상태 값과 비지니스 로직들이 여기저기 흩어지기 시작했다. 이것은 컴포넌트를 재활용하기 어렵게 만들었고, 유연성을 낮추기 시작했다.</p>
+
+<p>리덕스는 어플리케이션의 컨테이너에서 데이터와 비지니스 로직을 분리하여 리액트가 순전히 뷰에만 관여할 수 있게 해준다. 리덕스는 잠재적으로 리액트 대신 다른 뷰 라이브러리로 바꿀 수 있게 해주기 때문에 어플리케이션을 더욱 유연하게 만들어준다.</p>
+
+<h2>나는 리덕스 전문가가 아니지만, 구성요소들을 시각화 해봤다.</h2>
+
+<p>리덕스를 처음 배울 때, 알아둬야 할 여러가지 중요 요소들이 있다. 스토어, 액션 / 액션 생성자, 그리고 리듀서 함수다. <a href="http://dobbit.github.io/redux/index.html">공식 문서</a>가 아주 잘 되어있다. 그래서 이 문서를 자세히 보고 예제 코드를 직접 돌려보는 것을 강추한다. 아래에 있는 내 예제들은 이 문서를 먼저 읽는다면 이해하기 더욱 쉽다.</p>
+
+<p>나는 시각적 학습자이기 때문에 나 자신에게 리덕스 개념들을 이렇게 설명했다.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*ELf2a1L1gSkDbX6wlW3CyA.jpeg" alt="redux"></p>
+
+<h2>스토어 - 농구 골대</h2>
+
+<p>리덕스에서 전체 어플리케이션은 단 하나의 스토어만 가진다. 스토어는 자바스크립트의 기본적인 객체라고 생각하면 된다. 스토어 객체의 키는 파악하려는 어플리케이션의 상태의 이름이고, 스토어 객체의 값은 해당 상태에 일치하는 값이다.</p>
+
+<p>농구 골대와 스토어에 대체 어떤 연관이 있을지 궁금해할 것 같다. 농구 경기에서 득점을 하기 위해 골대를 향해 슛을 쏘듯, 리덕스에서도 어플리케이션을 수정하기 위해서는 액션을 스토어에 보내는 방법밖에 없다. (아래 예제 참고)</p>
+
+<p>만약 좀 더 자세한 기술 용어를 사용한다면, 리덕스에서 상태 값을 수정할 수 있는 유일한 방법은 스토어에 액션을 보내는 것뿐이다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 아래는 슈도 코드다.</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;redux&quot;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">team1Hoop</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span> <span class="cm">/* 여기는 예제이므로 인자 생략 */</span> <span class="p">);</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 위에서 만든 스토어는 당신의 전체 어플리케이션 상태를 관리한다.</span>
+<span class="cm"> * 스토어는 거대한 자바스크립트 객체 덩어리로 봐도 된다.</span>
+<span class="cm"> * 그 객체의 키는 어플리케이션의 각 상태이고, 값은 상태에 연관된 값이다.</span>
+<span class="cm"> *</span>
+<span class="cm"> * 스토어에서 상태 값이 어떻게 관리되는지에 대한 실제 메커니즘은 모르지만, 내가 상상하기로는 이럴 것 같다.</span>
+<span class="cm"> *</span>
+<span class="cm"> * team1Hoop.__applicationState__ = {</span>
+<span class="cm"> *   totalPoints: 0,</span>
+<span class="cm"> *   playerList: [ list of players on team ]</span>
+<span class="cm"> * };</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+</code></pre></div>
+<h2>액션 — 농구공</h2>
+
+<p>아직 위에서 액션이 무엇인지 깊게 설명하지 않았지만, 액션은 그냥 단순한 POJO일 뿐이다. (POJO: Plain Old JavaScript Objects, 평범한 자바스크립트 객체) 어떻게 생겼는지 코드를 통해 살펴보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*</span>
+<span class="cm"> * 액션은 단순 객체다.</span>
+<span class="cm"> * 액션은 &quot;type&quot;이라는 속성을 반드시 가지고 있어야 되는 특정 인터페이스다.</span>
+<span class="cm"> * 하지만 &quot;type&quot;을 제외하면, 필요에 따라 원하는 다른 속성을 덧붙일 수 있다.</span>
+<span class="cm"> */</span>
+
+<span class="kr">const</span> <span class="nx">FREE_THROW</span> <span class="o">=</span> <span class="s2">&quot;FREE_THROW&quot;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">TWO_POINT_SHOT</span> <span class="o">=</span> <span class="s2">&quot;TWO_POINT_SHOT&quot;</span><span class="p">;</span>
+
+<span class="c1">// 액션의 예</span>
+<span class="kr">const</span> <span class="nx">twoPointer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="nx">TWO_POINT_SHOT</span><span class="p">,</span>
+  <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">points</span><span class="o">:</span> <span class="mi">2</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 액션의 또다른 예</span>
+<span class="kr">const</span> <span class="nx">freeThrow</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="nx">FREE_THROW</span><span class="p">,</span>
+  <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">points</span><span class="o">:</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>어플리케이션을 전체로 놓고 봤을 때, 당신의 어플리케이션이 취할 수 있는 서로 다른 액션을 마련하고자 한다.</p>
+
+<p>액션은 서술문으로 작성해야 하는 점을 알아야 한다. - 액션은 당신의 앱에서 어떠한 것들을 할 수 있는지 나타내기 때문이다. 액션은 순수 데이터다!</p>
+
+<p>반복하건대, 어플리케이션 내 상태 값을 변경하기 위해서는 액션을 스토어로 쏴야 한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">team1Hoop</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span> <span class="cm">/* 여기는 예제이므로 인자 생략 */</span> <span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">twoPointer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="nx">TWO_POINT_SHOT</span><span class="p">,</span>
+  <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">points</span><span class="o">:</span> <span class="mi">2</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 어플리케이션 내 상태 값을 수정하는 유일한 방법은 액션을 스토어에 액션을 보내는 것이다.</span>
+<span class="cm"> */</span>
+<span class="nx">team1Hoop</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">twoPointer</span><span class="p">);</span>
+
+<span class="err">/*</span>
+ <span class="o">*</span> <span class="err">스토어</span> <span class="err">내</span> <span class="err">상태</span> <span class="err">값들은</span> <span class="err">대략</span> <span class="err">이렇게</span> <span class="err">생겼을</span> <span class="err">것이다</span><span class="p">.</span>
+ <span class="o">*</span>
+ <span class="o">*</span> <span class="nx">team1Hoop</span><span class="p">.</span><span class="nx">__applicationState__</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="o">*</span>   <span class="nx">totalPoints</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+ <span class="o">*</span>   <span class="nx">playerList</span><span class="o">:</span> <span class="p">[</span> <span class="nx">list</span> <span class="nx">of</span> <span class="nx">players</span> <span class="nx">on</span> <span class="nx">team</span> <span class="p">]</span>
+ <span class="o">*</span> <span class="p">};</span>
+ <span class="o">*</span>
+</code></pre></div>
+<h2>리듀서 — 코치와 선수</h2>
+
+<p>위에서 액션은 어플리케이션이 어떤 것을 할 수 있는지 나타낸다고 설명했었다. 하지만 액션은 상태 값을 &quot;어떻게&quot; 수정하는지에 대해서는 설명하지 않는다. 이제 리듀서에 대해 설명할 차례다.</p>
+
+<p>리듀서는 두 개의 인자를 받는 순수 함수다. 첫 번째 인자로는 현재 상태 값, 두 번째로는 액션을 받는다. 반환 값으로는 다음 상태 값이다.</p>
+
+<p>리듀서가 부작용이 없는 순수 함수라는 점은 아주 중요하다. 매번 같은 값을 입력할 때마다 항상 같은 반환 값을 갖는다. 순수한 함수 형태로 구성이 되어 있으면 매번 액션이 일어날 때(초기 상태 값과 액션이 구성 된 상태)마다 어떤 결과 값이 반환되는지 정확히 예측할 수 있으므로 굉장히 좋다.</p>
+
+<p>매 액션마다 하나의 리듀서가 모든 상태 값을 관리하는 것은 불가능하므로 리덕스에서는 리듀서를 분리하도록 강조한다. 하나의 큰 리듀서를 작은 리듀서로 잘게 쪼개는 것은 어플리케이션 상태 값 관리하는 하나의 부분을 쪼개어서 관리한다는 것이기 때문에 좋은 의미다.</p>
+
+<p>위에서 설명한 비유에 따라, 합쳐진 총괄 리듀서를 코치, 그리고 작은 리듀서를 선수로서 생각할 수 있다. 액션은 스토어를 향해 슛 하자마자, 총괄 리듀서는 그 액션을 캐치한 뒤, 쪼개진 하위 리듀서들에게 그 액션을 전달한다. 각각의 하위 리듀서는 전달받은 액션을 조사하고, 자신이 담당하고 있는 상태 값을 수정하고자 하는 것인지에 대해 판단한다. 만약 자신의 담당이라면, 새로운 상태 값을 생산한다.</p>
+
+<p>여기 예제 코드를 보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 아래는 슈도 코드다.</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">combineReducers</span><span class="p">,</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;redux&quot;</span><span class="p">;</span>
+
+<span class="c1">// 어플리케이션의 전체 상태 값 중 단순히 points를 관리하는 하위 리듀서</span>
+<span class="kd">function</span> <span class="nx">pointsReducer</span><span class="p">(</span><span class="nx">pointsState</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">TWO_POINT_SHOT</span><span class="o">:</span>
+    <span class="k">case</span> <span class="nx">FREE_THROW</span><span class="o">:</span>
+      <span class="k">return</span> <span class="nx">pointsState</span> <span class="o">+</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">points</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+      <span class="k">return</span> <span class="nx">pointsState</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 어플리케이션의 전체 상태 값 중 단순히 playList를 관리하는 하위 리듀서</span>
+<span class="kd">function</span> <span class="nx">playerListReducer</span><span class="p">(</span><span class="nx">playerListState</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">ADD_PLAYER</span><span class="o">:</span>
+      <span class="k">return</span> <span class="nx">playerListState</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">player</span><span class="p">);</span> <span class="c1">// 리액트에서의 state는 immutable이기 때문에 직접적인 수정은 불가</span>
+    <span class="k">default</span><span class="o">:</span>
+      <span class="k">return</span> <span class="nx">playerListState</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 총괄 리듀서는 액션을 하위 리듀서로 전달한다.</span>
+<span class="kr">const</span> <span class="nx">coach</span> <span class="o">=</span> <span class="nx">combineReducer</span><span class="p">({</span>
+  <span class="nx">points</span><span class="o">:</span> <span class="nx">pointsReducer</span><span class="p">,</span>
+  <span class="nx">playerList</span><span class="o">:</span> <span class="nx">playerListReducer</span>
+<span class="p">});</span>
+
+<span class="kr">const</span> <span class="nx">twoPointer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="nx">TWO_POINT_SHOT</span><span class="p">,</span>
+  <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">points</span><span class="o">:</span> <span class="mi">2</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">team1Hoop</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">coach</span><span class="p">);</span> <span class="c1">// 스토어를 만들 때 일부분으로 리듀서를 전달한다.</span>
+<span class="nx">team1Hoop</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">twoPointer</span><span class="p">);</span>
+</code></pre></div>
+<h2>끝맺음</h2>
+
+<p>이 부분에서 아마도 이런 의문을 가질 수 있다. 하위 리듀서에서 새로운 상태 값이 생성된 이후에는 어떤 일이 일어날까?</p>
+
+<p>하위 리듀서에서 새로운 상태 값이 생성된 이후, 수정된 상태 값 객체가 스토어에 저장되게 된다. 어플리케이션 상태는 단일 스토어로 존재하기 때문에, 각각의 액션이 리듀서에 퍼진 후, 새로운 상태 값이 생성되고 스토어에 저장된다.</p>
+
+<p>또한 이 절차가 어떻게 실행되는지 궁금해할 수 있다. 정확히 어떻게 액션이 처음 생성될까?</p>
+
+<p>리덕스는 또 다른 개념인 액션 생성자를 소개한다. 액션 생성자는 액션을 생성하고 반환하는 함수다. 액션 생성자는 리액트 컴포넌트에 종속되어 있으므로 사용자가 UI와 교류할 때마다, 액션 생성자가 실행되어 새로운 액션을 생성하고, 스토어에 액션을 보낸다.</p>
+
+<h2>결론</h2>
+
+<p>이 글의 목적은 리덕스의 사용법을 알려주는 것이 아니라, 시각적 학습자들을 위해 리덕스의 서로 다른 구성 요소들이 어떻게 작용하는지 시각적으료 돕기 위해서였다. 부디 이 글이 그들에게 도움이 되길 바란다.</p>
+
+<p>비고: 최근에 <a href="https://egghead.io/lessons/javascript-redux-extracting-container-components-filterlink">Dan Abramov의 비디오</a>를 봤는데, 그 역시 내가 말했던 순수 리액트의 한계를 언급했다. 순수 리액트로 개발을 하다보면 자식 컴포넌트에서 실제로 사용되지 않음에도 불구하고, 필히 많은 데이터를 전달할 수 밖에 없다. 그런 의미에서 이 비디오는 리덕스의 동기, 리액트의 HOC에 대해 잘 설명해주고 있다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/react">react</a>&nbsp;<a href="/tags/redux">redux</a>&nbsp;<a href="/tags/flux">flux</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

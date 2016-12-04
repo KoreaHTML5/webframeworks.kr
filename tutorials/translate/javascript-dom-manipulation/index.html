@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 돔 조작</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">돔 조작</h1>
+<p class="title_header_summary">이 문서는 http://callmenick.com/post/basics-javascript-dom-manipulation 를 번역한 내용입니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/11900262?v=3&s=460" alt="송헌용">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            송헌용
+
+                        </h4>
+                        apple77y<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.069975)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.947891)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.069975)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.069975)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.069975)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.349876)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.069975)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.069975)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.139950)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.139950)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.659057)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.189578)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.539454)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.279901)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.209926)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.069975)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.489826)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.629777)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.979653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.909677)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.069975)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.209926)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.069975)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.069975)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.279901)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.069975)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.279901)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.069975)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.139950)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.139950)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.069975)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.069975)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.139950)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.279901)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.069975)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.069975)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.069975)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.069975)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.209926)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.209926)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.069975)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.069975)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.069975)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.489826)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.049628)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.139950)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.559801)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.069975)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.069975)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.069975)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.139950)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.629777)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.139950)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.069975)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.139950)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.069975)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.069975)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.069975)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.069975)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.069975)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.069975)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.069975)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.069975)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.069975)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.279901)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.349876)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.069975)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.069975)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.139950)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.069975)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.069975)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.069975)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.279901)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.279901)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.069975)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.279901)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.069975)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.069975)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.069975)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.069975)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.069975)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.349876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.349876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.349876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.349876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.349876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.349876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.139950)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.069975)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.139950)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.139950)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.069975)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.069975)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.069975)'>semicolon</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <p>몇 가지 간단한 자바스크립트 돔 조작 설명을 할 것이다. 주로 돔 요소의 생성, 삽입, 삭제, 수정, 스타일, 접근 관계와 같은 유용한 내용을 다룬다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span>
+<span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;container&#39;</span><span class="p">;</span>
+<span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="s1">&#39;30px&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>여기 나열된 자바스크립트 돔 조작 메소드는 모질라 개발 사이트에 잘 정리되어있다. 이건 한 페이지에서 그냥 간단하게 살펴볼 수 있는 설명서 정도로 보면 된다. 각각의 항목들은 공식 레퍼런스 페이지로 이동하면 더 자세히 볼 수 있다.</p>
+
+<h2>1) 돔 요소를 생성 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement">MDN Reference</a>)</h2>
+
+<p>HTML 문서 안에서 HTML 요소나 HTMLUnknownElement를 생성한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">tagName</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li><code>element</code>는 element의 객체로 생성 되었다.</li>
+<li><code>tagName</code>은 element가 어떤 타입으로 생성될 지 정해주는 문자 값이다. 만들어진 element의 nodeName은 <code>tagName</code>의 값으로 초기화 될 것이다. 이 값으로 예약어(html:a와 같은)를 사용해서는 안 된다.</li>
+</ul>
+
+<h2>2) 돔에 새로운 요소를 추가 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">MDN Reference</a>)</h2>
+
+<p>상위 노드의 하위 리스트 제일 마지막에 하나의 노드를 추가한다. 만약 노드가 이미 존재한다면, 그것은 현재 상위 노드에서 제거되고 새운 상위 노드에 추가 된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">child</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li><code>element</code>는 상위 요소다.</li>
+<li><code>child</code>은 <code>element</code>의 아래에 추가될 노드다.</li>
+</ul>
+
+<h2>3) HTML 요소의 스타일을 변경 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style">MDN Reference</a>)</h2>
+
+<p><code>HTMLElement.style</code> 속성은 element의 style 속성을 나타내는 객체다. 하나의 요소에 적용된 모든 CSS 속성 값을 알아보기 위해서는 <code>window.getComputedStyle()</code>을 사용하면 된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">element</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s2">&quot;#ff3300&quot;</span><span class="p">;</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="s2">&quot;30px&quot;</span><span class="p">;</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">paddingBottom</span> <span class="o">=</span> <span class="s2">&quot;30px&quot;</span><span class="p">;</span>
+</code></pre></div>
+<h2>4) HTML 요소를 접근하는 방법 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML">MDN Reference</a>)</h2>
+
+<p><code>innerHTML</code>은 element 자손의 HTML 구문을 가져오거나 설정할 때 사용한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// get the HTML of &quot;element&quot;</span>
+<span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+
+<span class="c1">// set the HTML of &quot;otherElement&quot;</span>
+<span class="nx">otherElement</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">content</span><span class="p">;</span>
+</code></pre></div>
+<h2>5) Class 이름에 접근하는 방법 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML">MDN Reference</a>)</h2>
+
+<p><code>className</code>은 element의 class 속성에 접근할 수 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// get the class name of &quot;element&quot;</span>
+<span class="kd">var</span> <span class="nx">cName</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">className</span><span class="p">;</span>
+
+<span class="c1">// set the class name of &quot;otherElement&quot;</span>
+<span class="nx">otherElement</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="nx">cName</span><span class="p">;</span>
+</code></pre></div>
+<h2>6) ID에 접근하는 방법 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/id">MDN Reference</a>)</h2>
+
+<p>Gets or sets the element’s identifier (attribute id).
+요소의 식별자(id 속성)에 접근하는 방법</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// get the id of &quot;element&quot;</span>
+<span class="kd">var</span> <span class="nx">idStr</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+
+<span class="c1">// set the id of &quot;otherElement&quot;</span>
+<span class="nx">otherElement</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">idStr</span><span class="p">;</span>
+</code></pre></div>
+<h2>7) 돔 요소에 접근하는 방법</h2>
+
+<p>돔 요소에 접근하는 방법은 다양하다.</p>
+
+<h3>7a) ID를 통해 접근하는 방법 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">MDN Reference</a>)</h3>
+
+<p>요소의 ID로 참조 값이 반환된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+</code></pre></div>
+<h3>7b) Class 이름으로 접근 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/document.getElementsByClassName">MDN Reference</a>)</h3>
+
+<p>클래스 네임이 동일한 하위 요소들이 담긴 배열이 반환된다. IE8 이하 버전에서는 지원되지 않으므로 사용에 주의해야 한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">names</span><span class="p">);</span> <span class="c1">// or:</span>
+<span class="nx">elements</span> <span class="o">=</span> <span class="nx">rootElement</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">names</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li><code>elements</code>는 <code>HTMLCollection</code>의 기초 요소다.</li>
+<li><code>names</code>은 클래스 이름이 모인 리스트 중에 맞는 값이 있는지 찾기 위한 텍스트다. 클래스 이름은 공백으로 구분된다.</li>
+<li><code>getElementsByClassName</code>은 document 뿐만 아니라 다른 요소들도 부를 수 있다. 불린 요소는 탐색의 최상단 값으로 활용될 수 있다.</li>
+</ul>
+
+<h3>7c) Tag 이름으로 접근하는 방법 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/document/getElementsByTagName">MDN Reference</a>)</h3>
+
+<p>입력한 태그 이름을 갖는 HTMLCollection 요소들이 반환된다. 최상단 노드를 포함한 모든 document가 탐색된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>요소들은 트리 구조에서 순서대로 탐색 된 live HTMLCollection이다. (아래 노트 참고)</li>
+<li><code>name</code>은 요소들의 이름을 의미하는 텍스트다. <code>&quot;*&quot;</code> 문자를 넣게 되면 모든 요소를 탐색할 수 있다.</li>
+</ul>
+
+<h3>7d) 첫 번째 요소에 접근하는 방법 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector">MDN Reference</a>)</h3>
+
+<p>셀렉터 그룹과 매칭이 되는 첫 번째 요소를 반환한다. (깊이 우선 전위 순회 사용) IE8 이상 지원된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="nx">selectors</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li><code>element</code> 는 요소의 객체 값이다.</li>
+<li><code>selectors</code>는 콤마로 구분된 한 개 이상의 CSS 선택자들이 포함된 텍스트 값이다.</li>
+</ul>
+
+<p>이 예제에서는 &quot;myclass&quot;라는 클래스를 가진 첫 번째 요소가 반환될 것이다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;.myclass&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h3>7e) 다수의 선택자로 접근하는 방법 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">MDN Reference</a>)</h3>
+
+<p>document 내의 요소 중에서 다수의 선택자와 매칭이 되는 요소들이 포함된 리스트가 반환된다. (깊이 우선 전위 순회 사용) 그 반환되는 객체는 <code>NodeList</code>이다. IE8 이상 지원된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">elementList</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">selectors</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li><code>elementList</code>은 요소 객체 중 non-live NodeList이다.</li>
+<li><code>selectors</code>는 콤마로 구분된 하나 혹 하나 이상의 CSS 선택자들이 포함된 텍스트 값이다.</li>
+</ul>
+
+<p>이 예제는 document 중 class에 &quot;note&quot; 혹은 &quot;alert&quot;를 가지고 있는 모든 div 요소를 리스트로 반환한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">matches</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;div.note, div.alert&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h2>8) 관계</h2>
+
+<p>돔 요소의 관계, 다른 요소와의 관계를 활용해 요소에 접근하는 방법</p>
+
+<h3>8a) 주어진 요소의 하위 요소 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes">MDN Reference</a>)</h3>
+
+<p><code>childNodes</code>은 주어진 요소의 하위 요소들을 하나의 콜랙션으로 반환한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">ndList</span> <span class="o">=</span> <span class="nx">elementNodeReference</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">;</span>
+</code></pre></div>
+<h3>8b) 주어진 요소의 다음 형제 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling">MDN Reference</a>)</h3>
+
+<p>상위 요소의 하위 요소 중에 바로 다음 노드를 반환한다. 만약 주어진 요소가 리스트의 마지막 순번이었다면 null을 반환한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">nextNode</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">nextSibling</span>
+</code></pre></div>
+<h3>8c) 주어진 요소의 하위 요소들 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children">MDN Reference</a>)</h3>
+
+<p><code>ParentNode.children</code>은 주어진 객체의 하위 요소 중에서 live HTMLCollection을 반환하는 읽기 전용 속성이다. 반환되는 값은 텍스트가 아닌 객체가 모인 집합이다. 이 노드 객체에서 데이터 값을 알아내려면, 그것들의 속성을 사용해야 한다. (예를 들어, 이름 값을 알기 위한 elementNodeReference.children[1].nodeName)</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">elList</span> <span class="o">=</span> <span class="nx">elementNodeReference</span><span class="p">.</span><span class="nx">children</span><span class="p">;</span>
+</code></pre></div>
+<h3>8d) 바로 다음 특정 요소 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/NonDocumentTypeChildNode/nextElementSibling">MDN Reference</a>)</h3>
+
+<p><code>ChildNode.nextElementSibling</code>은 상위 요소의 하위 요소 중에서 특정 하나의 요소를 반환하는 읽기 전용 속성이다. 만약 요소가 마지막 순번이었다면 null을 반환한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">nextNode</span> <span class="o">=</span> <span class="nx">elementNodeReference</span><span class="p">.</span><span class="nx">nextElementSibling</span><span class="p">;</span>
+</code></pre></div>
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/dom">dom</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

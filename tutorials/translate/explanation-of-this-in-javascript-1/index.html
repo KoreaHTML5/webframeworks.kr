@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 자바스크립트에서 사용되는 this에 대한 설명 1</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">자바스크립트에서 사용되는 this에 대한 설명 1</h1>
+<p class="title_header_summary">이 문서는 https://rainsoft.io/make-your-javascript-code-shide-knockout-old-es5-hack/ 를 번역한 내용입니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/11900262?v=3&s=460" alt="송헌용">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            송헌용
+
+                        </h4>
+                        apple77y<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.069975)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,5.947891)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.069975)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.069975)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.069975)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.349876)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.069975)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.069975)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.139950)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.139950)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.659057)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.189578)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.539454)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.279901)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.209926)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.069975)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.489826)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.629777)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.979653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.909677)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.069975)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.209926)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.069975)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.069975)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.279901)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.069975)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.279901)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.069975)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.139950)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.139950)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.069975)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.069975)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.139950)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.279901)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.069975)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.069975)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.069975)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.069975)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.209926)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.209926)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.069975)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.069975)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.069975)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.489826)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.049628)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.139950)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.559801)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.069975)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.069975)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.069975)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.139950)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.629777)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.139950)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.069975)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.139950)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.069975)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.069975)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.069975)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.069975)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.069975)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.069975)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.069975)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.069975)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.069975)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.279901)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.349876)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.069975)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.069975)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.139950)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.069975)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.069975)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.069975)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.279901)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.279901)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.069975)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.279901)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.069975)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.069975)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.069975)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.069975)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.069975)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.349876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.349876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.349876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.349876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.349876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.349876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.139950)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.069975)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.139950)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.139950)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.069975)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.069975)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.069975)'>semicolon</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>1. this에 대한 미스터리</h2>
+
+<p>많은 시간 동안 this 키워드는 자바스크립트 개발자들에게 미스터리의 대상이었다. this는 강력한 기능임에도 불구하고 쉽게 이해하기 힘든 부분이다.</p>
+
+<p>Java, PHP와 같은 언어에서 this는 클래스로부터 생성되는 인스턴스 중 현재 객체를 의미한다. 그 이상 그 이하도 아니다. 대부분 클래스 밖에서는 사용될 수 없으며 이러한 접근 방법으로는 혼란이 생기지 않는다.</p>
+
+<p>자바스크립트에서 this는 함수의 현재 실행 문맥이다. 자바스크립트에는 4가지의 함수 실행 타입이 있기 때문이다.</p>
+
+<ul>
+<li>함수 실행: alert(&#39;Hello World!&#39;)</li>
+<li>메소드 실행: console.log(&#39;Hello World!&#39;)</li>
+<li>생성자 실행: new RegExp(&#39;\d&#39;)</li>
+<li>간접 실행: alert.call(undefined, &#39;Hello World!&#39;)</li>
+</ul>
+
+<p>각각의 타입은 서로 다른 각각의 문맥을 가진다. 이 부분에서 개발자들의 예상과 다른 부분이 생긴다.</p>
+
+<p>더욱이 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode">엄격 모드</a> 역시 실행 문맥에 영향을 미친다.</p>
+
+<p>this 키워드를 이해할 수 있는 방법은 함수 실행, 함수 실행이 문맥에 어떤 영향을 미치는지에 대해 확실히 이해하는 것이다.</p>
+
+<p>이 글은 실행에 대한 설명에 초점을 맞췄다. 그리고 함수 호출이 this에 어떤 영향을 미치는지, 그리고 문맥을 식별하는 과정에서 저지르는 일반적인 실수들을 보여줄 것이다.</p>
+
+<p>시작하기 전에 아래의 용어들과 친숙해지자.</p>
+
+<ul>
+<li>실행이란, 함수 내부에 있는 코드를 수행하는 것이다. (쉽게 말해 함수 호출이라고 보면 됨) 예를 들어 parseInt라는 함수는 parseInt(&#39;15&#39;, 10)로 실행된다.</li>
+<li>실행 시점에서의 문맥은 함수 내부에서의 값이다.</li>
+<li>함수의 스코프는 변수, 객체, 내부 함수들의 집합이다.</li>
+</ul>
+
+<h2>2. 함수 실행</h2>
+
+<p>함수 실행은 함수 객체로 계산 될 표현식이 열림 괄호, 콤마로 구분되는 인자들, 그리고 닫힘 괄호와 함께 수행된다. parseInt(&#39;18&#39;)가 함수 실행의 예제다.</p>
+
+<p>이 표현식은 myObject.myFunction와 같이 메소드를 실행하기 위해 사용하는 속성 접근자가 될 수 없다. 예를 들어 [1,5].join(&#39;,&#39;)는 함수 실행이 아니라 메소드 호출이다.</p>
+
+<p>함수 실행에 대한 간단한 예제</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 함수 실행</span>
+<span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">hello</span><span class="p">(</span><span class="s1">&#39;World&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span> <span class="c1">// =&gt; &#39;Hello World!&#39;</span>
+</code></pre></div>
+<p><code>hello(&#39;World&#39;)</code>은 함수 실행이다. <code>hello</code>표현식은 뒤따라 오는 &#39;World&#39; 인자와 함께 함수 객체로 계산 될 것이다.</p>
+
+<p>A more advanced example is the IIFE (immediately-invoked function expression):
+심화 예제로 <a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a>(즉시실행함수)가 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span><span class="p">;</span>
+<span class="p">})(</span><span class="s1">&#39;World&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="c1">// =&gt; &#39;Hello World!&#39;</span>
+</code></pre></div>
+<p>즉시실행함수 역시 함수 실행의 종류 중 하나다. 앞 부분에 위치한 괄호 한 쌍은 함수 객체로 바뀔 표현식이고, 뒤에 위치한 괄호 한 쌍은 함수에 전달될 인자들이다. 여기에서는 &#39;World&#39;가 인자다.</p>
+
+<h2>2.1 함수 실행에서의 this</h2>
+
+<blockquote>
+<p>함수 실행에서의 this는 전역 객체다.</p>
+</blockquote>
+
+<p>전역 객체는 실행 환경에 따라 결정된다. 웹 브라우저에서는 window 객체가 전역 객체다.</p>
+
+<p>함수 실행에서의 실행 문맥은 전역 객체다.</p>
+
+<p>아래의 함수 예제를 통해 문맥을 체크해보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">myNumber</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 전역 객체에 &#39;myNumber&#39;라는 속성을 추가</span>
+   <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// sum()은 함수 호출이다.</span>
+<span class="c1">// sum()에서의 this는 전역 객체다. (window)</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>     <span class="c1">// =&gt; 31</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">myNumber</span><span class="p">;</span> <span class="c1">// =&gt; 20</span>
+</code></pre></div>
+<p>sum(15, 16)이 실행되자마자, 자바스크립트는 자동으로 this를 전역 객체로 가진다. 웹 브라우저 환경에서의 this는 window다.</p>
+
+<p>this가 함수 스코프 밖(최상단: 전역 실행 문맥)에서 사용되었을 경우, 여기서의 this 역시 전역 객체를 참조하게 된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">myString</span> <span class="o">=</span> <span class="s1">&#39;Hello World!&#39;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">myString</span><span class="p">);</span> <span class="c1">// =&gt; &#39;Hello World!&#39;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- In an html file --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
+<h2>2.2 엄격 모드에서 함수 실행에서의 this</h2>
+
+<blockquote>
+<p>엄격 모드에서 함수 실행에서의 this는 undefined다.</p>
+</blockquote>
+
+<p>엄격 모드는 코드 안정성과 더 나은 오류 검증을 제공하기 위해 ECMA Script 5.1 버전에서 처음 소개 되었다.
+엄격 모드로 작성하기 위해 함수 내부의 최상단에 &#39;use strict&#39;라는 예약어를 적는다. 이 모드는 실행 문맥인 this를 undefined로 만든다. 실행 문맥은 더이상 전역 객체로 되지 않고, 위의 2.1 케이스와 반대의 상황이 된다.</p>
+
+<p>엄격 모드로 실행되는 예제 코드</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span> <span class="c1">// 엄격 모드</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// multiply() 함수는 엄격 모드로 실행됨</span>
+<span class="c1">// multiply()에서의 this는 undefined</span>
+<span class="nx">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// =&gt; 10</span>
+</code></pre></div>
+<p>multiply(2, 5) 함수가 실행될 때 this는 undefined다.</p>
+
+<p>엄격 모드는 현재 스코프 뿐만 아니라 내부 스코프에서도 적용된다. (내부에 정의된 모든 함수에 적용됨)</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">execute</span><span class="p">()</span> <span class="p">{</span>
+   <span class="s1">&#39;use strict&#39;</span><span class="p">;</span> <span class="c1">// 엄격 모드</span>
+   <span class="kd">function</span> <span class="nx">concat</span><span class="p">(</span><span class="nx">str1</span><span class="p">,</span> <span class="nx">str2</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// 이곳에서도 마찬가지로 엄격 모드</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+     <span class="k">return</span> <span class="nx">str1</span> <span class="o">+</span> <span class="nx">str2</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="c1">// concat() 함수는 엄격 모드</span>
+   <span class="c1">// concat() 함수 안에서의 this는 undefined</span>
+   <span class="nx">concat</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="s1">&#39; World!&#39;</span><span class="p">);</span> <span class="c1">// =&gt; &quot;Hello World!&quot;</span>
+<span class="p">}</span>
+<span class="nx">execute</span><span class="p">();</span>
+</code></pre></div>
+<p>&#39;use strict&#39;은 최상단에 위치하고, 해당 스코프에 엄격 모드를 실행해준다. concat은 실행 스코프 내에 정의되어있기 때문에 엄격 모드를 상속 받는다. 그리고 concat(&#39;Hello&#39;, &#39; World!&#39;) 실행은 this를 undefined로 만든다.</p>
+
+<p>자바스크립트 파일에는 엄격 모드, 비 엄격 모드 두 가지 모두 포함되어있다. 그래서 같은 실행 타입에서 서로 다른 모드를 적용할 수 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">nonStrictSum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 비 엄격 모드</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">strictSum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="c1">// 엄격 모드</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// nonStrictSum() 함수는 비 엄격 모드로 실행</span>
+<span class="c1">// nonStrictSum()에서의 this는 window 객체</span>
+<span class="nx">nonStrictSum</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span> <span class="c1">// =&gt; 11</span>
+<span class="c1">// strictSum() 함수는 엄격 모드로 실행</span>
+<span class="c1">// strictSum()에서의 this는 undefined</span>
+<span class="nx">strictSum</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span> <span class="c1">// =&gt; 20</span>
+</code></pre></div>
+<h2>2.3. 실수: 내부 함수에서의 this를 사용할 때</h2>
+
+<p>함수를 실행할 때 흔히 하는 실수가 외부 함수에서의 this와 내부 함수에서의 this를 동일하게 생각하는 것이다.</p>
+
+<p>사실 내부 함수의 문맥은 외부 함수의 문맥에 의존되는 게 아니라 오직 실행 환경에 좌우된다.
+기대하는 되로 this가 동작되려면 수정이 필요하다. (call이라 apply 메소드를 사용하는 간접 실행, 또는 바인딩 함수를 적용)</p>
+
+<p>아래의 예제는 두 수의 합계를 계산해준다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="nx">numberA</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+   <span class="nx">numberB</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+   <span class="nx">sum</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">numbers</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+     <span class="kd">function</span> <span class="nx">calculate</span><span class="p">()</span> <span class="p">{</span>
+       <span class="c1">// this는 window, 엄격 모드였으면 undefined</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">numbers</span><span class="p">);</span> <span class="c1">// =&gt; false</span>
+       <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">numberA</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">numberB</span><span class="p">;</span>
+     <span class="p">}</span>
+     <span class="k">return</span> <span class="nx">calculate</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">numbers</span><span class="p">.</span><span class="nx">sum</span><span class="p">();</span> <span class="c1">// NaN, 엄격 모드였으면 TypeError</span>
+</code></pre></div>
+<p>numbers.sum()은 객체 내에 있는 메소드를 실행하는 것이다. 그래서 sum 메소드 내의 문맥은 numbers 객체다. calculate 함수는 sum 내부에 정의되어있다. 그래서 아마도 calculate() 역시 this를 numbers 객체로 바라보고 있을 거라고 예상한다.
+하지만 calculate()은 메소드 실행이 아닌 함수 실행이다. 그리고 이 함수에서의 this는 전역 객체인 window다. (만약, 엄격 모드였다면 undefined) 비록 외부 함수의 문맥이 numbers 객체지만, calculate 함수에는 영향을 미치지 않는다.</p>
+
+<p>numbers.sum()의 실행 결과는 NaN, 혹은 엄격 모드에서 numberA 속성이 undefined이므로 접근할 수 없어서 TypeError다. calculate 함수는 제대로 실행되지 않았기 때문에 실행 결과는 기대한대로 5 + 10 = 15가 되지 않는다.</p>
+
+<p>이 문제를 해결하기 위해, calculate 함수 역시 sum method와 동일한 문맥으로 되어야 한다. 그래야 numberA와 numberB 속성에 접근할 수 있기 때문이다. 해결책 중 하나로 .call 메소드를 사용하는 것이다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="nx">numberA</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+   <span class="nx">numberB</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+   <span class="nx">sum</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">numbers</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+     <span class="kd">function</span> <span class="nx">calculate</span><span class="p">()</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">numbers</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+       <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">numberA</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">numberB</span><span class="p">;</span>
+     <span class="p">}</span>
+     <span class="c1">// 문맥을 수정하기 위해 .call() 메소드를 적용</span>
+     <span class="k">return</span> <span class="nx">calculate</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">numbers</span><span class="p">.</span><span class="nx">sum</span><span class="p">();</span> <span class="c1">// =&gt; 15</span>
+</code></pre></div>
+<p>calculate.call(this)는 이전과 동일하게 계산된다. 하지만 추가로, 첫 번째 파라미터로 들어온 인자로 실행 문맥을 수정해준다. 이제 this.numberA + this.numberB의 결과는 numbers.numberA + numbers.numberB와 동일하게 된다. 그래서 결과값도 예상했던대로 5 + 10 = 15가 된다.</p>
+
+<h2>3. 메소드 실행</h2>
+
+<p>메소드는 객체의 속성으로 있는 함수다. 예를 들어</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// helloFunction is a method</span>
+  <span class="nx">helloFunction</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">myObject</span><span class="p">.</span><span class="nx">helloFunction</span><span class="p">();</span>
+</code></pre></div>
+<p>helloFunction is a method in myObject. To get the method, use a property accessor: myObject.helloFunction.
+여기서 <code>helloFunction</code>는 myOjbect의 메소드다. 메소드에 접근하기 위해서는 <code>myObject.helloFunction</code>와 같은 속성 접근자를 이용하면 된다.</p>
+
+<p>메소드 실행은 속성 접근자 형태의 표현식이 함수 객체로 계산되면서 실행된다. 이 표현식은 함수와 마찬가지로 열림 괄호, 함수에 전달할 인자, 닫힘 괄호의 구조다.
+이전 예제를 활용하면 myObject.helloFunction()은 myObject라는 객체의 helloFunction라는 메소드 실행이다. [1, 2].join(&#39;,&#39;) 혹은 /\s/.test(&#39;beautiful world&#39;) 역시 메소드 실행의 종류다.</p>
+
+<p>앞서 설명한 함수 실행과 메소드 실행이 다르다는 점은 중요하다. 왜냐하면 둘은 서로 다른 타입이기 때문이다. 둘의 가장 큰 차이점은 메소드 실행은 속성 접근자를 통해 function (<expression>.functionProperty() or <expression><a href="">&#39;functionProperty&#39;</a>)를 호출한다. 반면에 함수 실행은 속성 접근자를 사용하지 않고, (<expression>())와 같이 바로 호출한다</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">[</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="s1">&#39;World&#39;</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">);</span> <span class="c1">// 메소드 실행</span>
+<span class="p">({</span> <span class="nx">ten</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span><span class="p">;</span> <span class="p">}</span> <span class="p">}).</span><span class="nx">ten</span><span class="p">();</span> <span class="c1">// 메소드 실행</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">myFunction</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toString</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">myFunction</span><span class="p">();</span> <span class="c1">// 메소드 실행</span>
+
+<span class="kd">var</span> <span class="nx">otherFunction</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">myFunction</span><span class="p">;</span>
+<span class="nx">otherFunction</span><span class="p">();</span>     <span class="c1">// 함수 실행</span>
+<span class="nb">parseFloat</span><span class="p">(</span><span class="s1">&#39;16.60&#39;</span><span class="p">);</span> <span class="c1">// 함수 실행</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>            <span class="c1">// 함수 실행</span>
+</code></pre></div>
+<h2>3.1 메소드 실행에서의 this</h2>
+
+<p>this는 메소드 실행에서 메소드를 소유하고 있는 객체다</p>
+
+<p>객체 내에 있는 메소드를 실행할 때, 여기서의 this는 객체 자신이다.</p>
+
+<p>숫자를 증가하는 메소드를 가진 객체를 하나 만들어보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">calc</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">num</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">increment</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">calc</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">num</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">num</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// 메소드 실행. 여기서의 this는 calc.</span>
+<span class="nx">calc</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span> <span class="c1">// =&gt; 1</span>
+<span class="nx">calc</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span> <span class="c1">// =&gt; 2</span>
+</code></pre></div>
+<p>calc.increment() 호출은 increment 함수의 문맥을 calc 객체로 만들어준다. 그래서 this.num 참조로 number 속성을 증가시하는 게 가능하도록 해준다.
+자바스크립트 객체는 프로토타입에 있는 메소드를 상속 받는다. 상속 받은 메소드를 객체 내에서 실행한다면 메소드에서의 문맥은 객체 자신을 가리키게 된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myDog</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">sayName</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">myDog</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">myDog</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Milo&#39;</span><span class="p">;</span>
+<span class="c1">// 메소드 실행. 여기서의 this는 myDog.</span>
+<span class="nx">myDog</span><span class="p">.</span><span class="nx">sayName</span><span class="p">();</span> <span class="c1">// =&gt; &#39;Milo&#39;</span>
+</code></pre></div>
+<p>Object.create()는 myDog라는 새로운 객체를 만들고, 프로토타입을 설정한다. myDog 객체는 sayName이라는 메소드를 상속받는다. myDog.sayName()이 실행될 때, myDog가 실행 문맥이다.</p>
+
+<p>ECMAScript 6의 class 예약어에서 메소드 실행 문맥은 위와 마찬가지로 인스턴스 자신을 가리킨다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Planet</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">earth</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">earth</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Planet</span><span class="p">(</span><span class="s1">&#39;Earth&#39;</span><span class="p">);</span>
+<span class="c1">// 메소드 실행. 여기서의 this는 earth.</span>
+<span class="nx">earth</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">// =&gt; &#39;Earth&#39;</span>
+</code></pre></div>
+<h2>3.2 실수: 객체로부터 메소드를 분리할 때</h2>
+
+<p>객체 내에 있는 메소드는 별도의 변수로 분리할 수 있다. 이 변수를 통해 메소드를 호출할 때, 당신은 아마도 여기서의 this가 메소드가 정의되어있는 객체라고 생각할 것이다.</p>
+
+<p>사실 객체 밖에 있는 메소드를 호출할 경우, 함수 실행을 한 결과와 같다. 함수 실행을 할 경우 this는 전역 객체인 window를 가리킨다. (엄격 모드에서는 undefined)
+.bind() 바인딩 함수를 사용해서 문맥을 수정할 경우, 메소드를 객체에 포함시킬 수 있다.</p>
+
+<p>아래는 Animal 생성자로 myCat이라는 인스턴스를 생성하는 예제다. 그리고 setTimeout() 함수로 1초 뒤 myCat 객체의 정보를 출력한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Animal</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">legs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">legs</span> <span class="o">=</span> <span class="nx">legs</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">logInfo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">myCat</span><span class="p">);</span> <span class="c1">// =&gt; false</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">+</span> <span class="s1">&#39; has &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">legs</span> <span class="o">+</span> <span class="s1">&#39; legs&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">myCat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">&#39;Cat&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="c1">// &quot;The undefined has undefined legs&quot; 출력</span>
+<span class="c1">// 혹은 엄격모드라면 TypeError 출력</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">myCat</span><span class="p">.</span><span class="nx">logInfo</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+</code></pre></div>
+<p>아마도 setTimeout으로 myCat.logInfo()를 호출할 때, myCat 객체가 출력될 거라고 예상할 것이다. 하지만 setTimeout의 매개변수로 전달되었기 때문에 메소드는 객체로부터 분리 되어있고, 1초 뒤 함수 실행이 된다. logInfo가 함수로써 실행되기 때문에 여기서의 this는 전역 객체이거나 엄격 모드에서라면 undefined다. 그렇기 때문에 객체의 정보를 기대한 것대로 출력하지 못한다.</p>
+
+<p>함수는 .bind 메소드를 사용해 문맥을 강제로 지정시킬 수 있다. 만약 분리된 메소드가 myCat 객체로 바인딩 된다면 이 문제는 해결된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Animal</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">legs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">legs</span> <span class="o">=</span> <span class="nx">legs</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">logInfo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">myCat</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">+</span> <span class="s1">&#39; has &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">legs</span> <span class="o">+</span> <span class="s1">&#39; legs&#39;</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">myCat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">&#39;Cat&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="c1">// &quot;The Cat has 4 legs&quot; 출력</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">myCat</span><span class="p">.</span><span class="nx">logInfo</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">myCat</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
+</code></pre></div>
+<p>myCat.logInfo.bind(myCat)는 객체의 메소드가 logInfo라는 새로운 함수로 실행된다. 하지만 바인딩 메소드 덕분에 함수 실행임에도 불구하고, 여기서의 this는 myCat을 가리키게 된다.</p>
+
+<h2>4. 생성자 실행</h2>
+
+<p>생성자 실행은 표현식 앞에 new라는 키워드가 붙었을 때, 함수 객체로 계산되어 수행된다. 이 표현식은 함수와 마찬가지로 열림 괄호, 함수에 전달할 인자, 닫힘 괄호의 구조다. 예를 들어 new RegExp(&#39;\d&#39;)와 같다.</p>
+
+<p>아래의 예제는 Country라는 함수가 생성자로 실행되는 내용이다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Country</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">traveled</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">?</span> <span class="nx">name</span> <span class="o">:</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">;</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">traveled</span> <span class="o">=</span> <span class="nb">Boolean</span><span class="p">(</span><span class="nx">traveled</span><span class="p">);</span> <span class="c1">// boolean으로 타입 변환</span>
+<span class="p">}</span>
+<span class="nx">Country</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">travel</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">traveled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">// Constructor invocation</span>
+<span class="kd">var</span> <span class="nx">france</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Country</span><span class="p">(</span><span class="s1">&#39;France&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="c1">// Constructor invocation</span>
+<span class="kd">var</span> <span class="nx">unitedKingdom</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Country</span><span class="p">;</span>
+
+<span class="nx">france</span><span class="p">.</span><span class="nx">travel</span><span class="p">();</span> <span class="c1">// Travel to France</span>
+</code></pre></div>
+<p><code>new Country(&#39;France&#39;, false)</code>은 Country 함수의 생성자 실행이다. 이것의 실행 결과는 France라는 이름을 가진 새로운 객체다.
+만약 생성자에 아무런 매개 변수 없이 실행 된다면, <code>new Country</code>처럼 괄호가 생략되어도 된다.</p>
+
+<p>ECMAScript 6에서는 생성자를 class라는 키워드로 정의할 수 있게 해준다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">City</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">traveled</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">traveled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">travel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">traveled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 생성자 실행</span>
+<span class="kd">var</span> <span class="nx">paris</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">City</span><span class="p">(</span><span class="s1">&#39;Paris&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">paris</span><span class="p">.</span><span class="nx">travel</span><span class="p">();</span>
+</code></pre></div>
+<p>new City(&#39;Paris&#39;)은 생성자 실행이다. 이 객체에서 초기 값은 constructor라는 특수 메소드로 설정할 수 있다. 이 메소드 내에서의 this는 새로 만들어지는 객체를 바라보게 된다.</p>
+
+<p>생성자 호출은 생성자의 프로토타입으로부터 속성을 상속받는 새로운 빈 객체를 만든다. 생성자 함수의 역할은 객체를 초기화하는 것이다.
+이미 알고 있을지도 모르지만, 이 타입에서 this는 인스턴스를 가리킨다.</p>
+
+<p>myObject.myFunction과 같은 속성 접근자가 new 키워드 뒤에 오게되면, 자바스크립트는 메소드 실행이 아닌 생성자 실행으로 계산한다.
+예를 들어 new myObject.myFunction()의 경우, 첫 번째로 extractedFunction = myObject.myFunction과 같이 함수가 추출되고, 그 다음으로 new extractedFunction()와 같이 생성자 실행으로 새로운 객체가 만들어진다.</p>
+
+<h2>4.1 생성자 실행에서의 this</h2>
+
+<blockquote>
+<p>생성자 실행에서의 this는 새롭게 만들어진 객체이다.</p>
+</blockquote>
+
+<p>생성자 실행에서의 문맥은 새롭게 만들어진 객체다. 생성자 실행은 객체에 초기값을 셋팅하기 위해 사용된다. 초기값 셋팅의 예로는 생성자 함수의 매개 변수로 받은 데이터, 속성을 위한 환경 변수, 이벤드 핸들러 등이 있다.</p>
+
+<p>아래 예제를 통해 문맥을 체크해보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Foo</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">Foo</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">property</span> <span class="o">=</span> <span class="s1">&#39;Default Value&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 생성자 실행</span>
+<span class="kd">var</span> <span class="nx">fooInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nx">fooInstance</span><span class="p">.</span><span class="nx">property</span><span class="p">;</span> <span class="c1">// =&gt; &#39;Default Value&#39;</span>
+</code></pre></div>
+<p>new Foo()은 생성자 실행이다. 여기서의 문맥은 Foo의 인스턴스가 된다. Foo의 내부에서는 초기값이 셋팅되었다. this.property는 default value라는 값을 가진다.</p>
+
+<p>ES6에서 사용 가능한 class 문법 역시 같은 형식이다. 초기값 셋팅은 오직 생성자 메소드에서 할 수 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Bar</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">Bar</span><span class="p">);</span> <span class="c1">// =&gt; true</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">property</span> <span class="o">=</span> <span class="s1">&#39;Default Value&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Constructor invocation</span>
+<span class="kd">var</span> <span class="nx">barInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">();</span>
+<span class="nx">barInstance</span><span class="p">.</span><span class="nx">property</span><span class="p">;</span> <span class="c1">// =&gt; &#39;Default Value&#39;</span>
+</code></pre></div>
+<p>new Bar()가 실행되면서, 자바스크립트는 생성자 메소드를 통해 문맥을 설정한 빈 객체를 만든다. this.property = &#39;Default Value&#39;와 같이 <code>this</code> 키워드를 통해 객체에 속성 값을 추가할 수 있다.</p>
+
+<h2>4.2 실수: new 깜빡할 때</h2>
+
+<p>몇몇 자바스크립트 함수는 생성자 실행 형태로 실행됐을 때 뿐만 아니라 함수 실행으로도 인스턴스를 생성한다. 예를 들어 RegExp가 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">reg1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;\\w+&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">reg2</span> <span class="o">=</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;\\w+&#39;</span><span class="p">);</span>
+
+<span class="nx">reg1</span> <span class="k">instanceof</span> <span class="nb">RegExp</span><span class="p">;</span>      <span class="c1">// =&gt; true</span>
+<span class="nx">reg2</span> <span class="k">instanceof</span> <span class="nb">RegExp</span><span class="p">;</span>      <span class="c1">// =&gt; true</span>
+<span class="nx">reg1</span><span class="p">.</span><span class="nx">source</span> <span class="o">===</span> <span class="nx">reg2</span><span class="p">.</span><span class="nx">source</span><span class="p">;</span> <span class="c1">// =&gt; true</span>
+</code></pre></div>
+<p>new RegExp(&#39;\w+&#39;)와 RegExp(&#39;\w+&#39;)가 실행될 때, 자바스크립트는 동일한 정규식 객체를 생성한다.</p>
+
+<p>객체 생성을 위해 함수 실행을 사용하는 것(팩토리 패턴을 제외)은 잠재적 문제를 만들게 된다. 왜냐하면 new 키워드가 생략되었을 때 생성자 함수는 객체를 초기화하는 로직을 생략할지도 모른다.</p>
+
+<p>아래는 해당 문제점이 나타나는 예제다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">wheelsCount</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">wheelsCount</span> <span class="o">=</span> <span class="nx">wheelsCount</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Function invocation</span>
+<span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="s1">&#39;Car&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="nx">car</span><span class="p">.</span><span class="nx">type</span><span class="p">;</span>       <span class="c1">// =&gt; &#39;Car&#39;</span>
+<span class="nx">car</span><span class="p">.</span><span class="nx">wheelsCount</span> <span class="c1">// =&gt; 4</span>
+<span class="nx">car</span> <span class="o">===</span> <span class="nb">window</span>  <span class="c1">// =&gt; true</span>
+</code></pre></div>
+<p>Vehicle은 타입과 바퀴개수 속성을 가지는 객체를 만들어주는 함수다.</p>
+
+<p>Vehicle(&#39;Car&#39;, 4)를 실행하게 되면 객체가 반환된다. 이 객체는 올바른 속성을 가지고 있다. car.type으로 &#39;Car&#39;를, car.wheelCount로 4를 나타낸다. 아마도 초기값을 가진 새로운 객체가 잘 생성되었으리라 예상할 것이다.</p>
+
+<p>하지만 여기서의 this는 함수 실행이 되므로 window 객체를 가리키게 된다. 그리고 Vehicle(&#39;Car&#39;, 4)은 속성을 window 객체에 추가한다. 잘못된 사용이다. 새로운 객체가 만들어지지 않았다.</p>
+
+<p>생성자를 호출할 때에는 꼭 new 연산자를 사용해야 한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">wheelsCount</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">Vehicle</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Error: Incorrect invocation&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">wheelsCount</span> <span class="o">=</span> <span class="nx">wheelsCount</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 생성자 실행</span>
+<span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="s1">&#39;Car&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="nx">car</span><span class="p">.</span><span class="nx">type</span>               <span class="c1">// =&gt; &#39;Car&#39;</span>
+<span class="nx">car</span><span class="p">.</span><span class="nx">wheelsCount</span>        <span class="c1">// =&gt; 4</span>
+<span class="nx">car</span> <span class="k">instanceof</span> <span class="nx">Vehicle</span> <span class="c1">// =&gt; true</span>
+
+<span class="c1">// 함수 실행. 잘못된 방식.</span>
+<span class="kd">var</span> <span class="nx">brokenCar</span> <span class="o">=</span> <span class="nx">Vehicle</span><span class="p">(</span><span class="s1">&#39;Broken Car&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
+<p>new Vehicle(&#39;Car&#39;, 4)은 정상 동작한다. 초기 값을 가진 새로운 객체가 생성되었다. 왜냐하면 생성자 실행 앞에 new 키워드를 썼기 때문이다.</p>
+
+<p>검증하는 방법은 생성자 함수에 추가되어 있다. <code>this instanceof Vehicle</code>로 실행 문맥으로 올바른 객체 타입이 맞는지 체크한다. 만약 여기서의 this가 Vehicle이 아니라면 에러가 발생한다. 이와 같은 경우 만약 Vehicle(&#39;Broken Car&#39;, 3)가 new 키워드 없이 실행된다면, 올바른 실행이 아니라는 에러 메세지를 반환하게 된다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/this">this</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
