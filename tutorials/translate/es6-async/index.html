@@ -257,7 +257,7 @@
 <strong>task</strong>의 예는 다음과 같습니다.</p>
 
 <ul>
-<li>taks의 예
+<li>task의 예
 
 <ol>
 <li>HTML 파싱</li>
@@ -280,7 +280,7 @@
 </blockquote>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">ms</span><span class="p">);</span>
 </code></pre></div>
-<p><code>setTimeout()</code>은 <strong>ms</strong>(milliseconds) 경과 후 <code>callback</code>이 <strong>taks queue</strong> 에 추가됩니다. 타이머에 <code>callback</code>은 <strong>ms</strong>(milliseconds) 이후 실제 실행되는 게 아니라 <strong>task queue</strong>에 추가되는것이 중요하다는 걸 기억해야 합니다. 왜냐하면
+<p><code>setTimeout()</code>은 <strong>ms</strong>(milliseconds) 경과 후 <code>callback</code>이 <strong>task queue</strong> 에 추가됩니다. 타이머에 <code>callback</code>은 <strong>ms</strong>(milliseconds) 이후 실제 실행되는 게 아니라 <strong>task queue</strong>에 추가되는것이 중요하다는 걸 기억해야 합니다. 왜냐하면
 만약 <strong>event loop</strong>가 차단 당하면 지정된 시간 이후보다 나중에 setTimeout() <code>callback</code>이 실행된다는 걸 확인할 수 있기 때문입니다.  </p>
 
 <p>보통 <code>setTimeout()</code> <strong>ms</strong>를 ‘0’ 으로 세팅하는건 <strong>task queue</strong> 에 바로 추가하기 위한 일반적인 방법입니다. 그러나 몇몇 브라우저는 실제로 ‘0’ ms 이후 추가되지 않고 브라우저마다 ‘0’이 아닌 최소 ms가 세팅 되어져 있습니다.(ex : firefox는 4ms임)</p>
