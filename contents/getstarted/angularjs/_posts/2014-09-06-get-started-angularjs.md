@@ -137,7 +137,7 @@ AngularJS를 다운로드하기 위해선 AngularJS 공식 사이트인 www.angu
 </html>
 {% endhighlight %}
 
-사용자관리 어플리케이션 프로젝트를 다운로드 하기 위해서는 https://github.com/jeado/web-angular-sample 에서 다운로드 한다. 그럼 이제 정적인 페이지에 불과한 index.html에 AngularJS를 적용하여 동적인 웹 어플리케이션으로 변경하여 보자.
+사용자관리 어플리케이션 프로젝트를 다운로드 하기 위해서는 [https://github.com/jeado/web-angular-sample](https://github.com/jeado/web-angular-sample) 에서 다운로드 한다. 그럼 이제 정적인 페이지에 불과한 index.html에 AngularJS를 적용하여 동적인 웹 어플리케이션으로 변경하여 보자.
 
 ### AngularJS 적용
 정적인 페이지인 index.html에 AngularJS를 적용하기 위해서는 AngularJS에서 제공하는 특별한 속성을 사용해야 한다. 바로 ng-app 이다. AngularJS를 적용하고자 하는 최상위 DOM 노드에 속성으로 ng-app을 작성한다.
@@ -145,10 +145,10 @@ AngularJS를 다운로드하기 위해선 AngularJS 공식 사이트인 www.angu
 이렇게 ng-app을 작성하였으면 해당 HTML문서를 템플릿으로서 작성을 할 수 있다. 그럼 템플릿에 대하여 보도록 하자.
 
 ### 템플릿 작성
-AngularJS는 템플릿을 통하여 데이터를 어떻게 표현할지 기술한다. 템플릿은 표현식과 AngularJS가 제공하는 별도의 속성 혹은 태그들로 이루어 지는데 HTML문서를 작성하는 것은 곧 템플릿을 작성하는 것과 같다. 
+AngularJS는 템플릿을 통하여 데이터를 어떻게 표현할지 기술한다. 템플릿은 표현식과 AngularJS가 제공하는 별도의 속성 혹은 태그들로 이루어 지는데 HTML문서를 작성하는 것은 곧 템플릿을 작성하는 것과 같다.
 
 {% highlight html %}
-템플릿 = 표현식 + 별도 속석/태그
+템플릿 = 표현식 + 별도 속성/태그
 {% endhighlight %}
 
 다시말하면 index.html에 표현식과 ng-app과 같은 별도의 속성 혹은 태그를 작성하면 index.hmlt 템플릿을 작성하는 것이다. 그럼 표현식에 대하여 살펴보자.
@@ -163,11 +163,11 @@ AngularJS는 자바스크립트 표현식과 비슷한 AngularJS 표현식을 �
 
 위 코드를 읽으면 “Hello라는 문자열 옆에 person 객체의 name 속성값을 구해서 h1의 크기로 화면에 출력한다.”라고 읽을 수 있다. 이렇게 이중 중괄호 안에 객체 및 객체 속성에 접근하는 표현식을 기술할 수 있는데 이렇게 작성된 템플릿을 AngularJS가 실제 person 객체의 name 속성의 값을 읽어 DOM을 만든다. AngularJS 표현식은 자바스크립트 표현식과 비슷한데 자바스크립트 표현식은 자바스크립트 값이 될 올 바른 한 단위로서의 코드이다. 다음은 종류별로 나열한 자바스크립트 표현식이다.
 
-- x = 1: 변수에 값을 대입하는 표현식 
-- 3+4 혹은 2.45: 숫자 연산 및 숫자 표현 
-- "hello" 혹은 "hello"+"angular": 문자 표현 및 문자 연산 
-- true 혹은 !true 혹은 true || true: 논리 연산 및 논리 표현 
-- objectA.propertyA: 객체 및 객체 속성 접근 
+- x = 1: 변수에 값을 대입하는 표현식
+- 3+4 혹은 2.45: 숫자 연산 및 숫자 표현
+- "hello" 혹은 "hello"+"angular": 문자 표현 및 문자 연산
+- true 혹은 !true 혹은 true || true: 논리 연산 및 논리 표현
+- objectA.propertyA: 객체 및 객체 속성 접근
 
 AngularJS의 표현식은 자바스크립트의 표현식과 대부분 비슷하여 위의 표현식이 모두 사용가능 하다. 하지만 일부 차이점이 있는데 다음 목록이 그 차이점이다.
 
@@ -183,7 +183,7 @@ AngularJS의 표현식은 자바스크립트의 표현식과 대부분 비슷하
 <!-- AngularJS에서 제공하는 ng-init 속성에 userList 배열을 표현하는 표현식을 기술하여 userList 배열을 정의한다. -->
 {% endhighlight %}
 
-ng-init 속성은 일종의 Main 메소드와 같다. 해당 템플릿을 해석할 때 호출되는대 이때 주어진 표현식을 해석한다.
+ng-init 속성은 일종의 Main 메소드와 같다. 해당 템플릿을 해석할 때 호출되는데 이 때 주어진 표현식을 해석한다.
 
 다음으로 사용자목록 정보인 userList 배열을 테이블의 각 행으로 표현하는 표현식을 작성해 보자. AngularJS에서는 반복적인 데이터를 표현하기 위해 ng-repeat 속성을 제공한다. 다음 리스트를 index.html의 table 태그의 tbody 태그 안의 tr 태그 다음에 추가하여 정적인 데이터를 위해 작성된 HTML과 userList 배열을 동적으로 표현하기 위해 작성된 템플릿을 비교해보자.
 
@@ -283,7 +283,7 @@ AngularJS에서 모델은 사용자 정보, 도서 정보, 북마크 정보처�
 
 {% highlight html %}
 <td><input type="text" ng-model="user.name" ng-disabled="!user.edit"></td>
-<!-- 
+<!--
 ng-disable를 추가하여 userList 배열요소 객체에 edit 속성의 false이면 입력을 막는다. -->
 <td><input type="email" ng-model="user.email" ng-disabled="!user.edit"></td>
 <td><input type="date" ng-model="user.regDate" ng-disabled="!user.edit"></td>
