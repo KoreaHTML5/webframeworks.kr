@@ -2,6 +2,7 @@
 layout : tutorials
 title : 돔 조작
 category : tutorials
+subcategory : tips
 summary : 이 문서는 http://callmenick.com/post/basics-javascript-dom-manipulation 를 번역한 내용입니다.
 permalink : /tutorials/translate/javascript-dom-manipulation
 tags : javascript dom

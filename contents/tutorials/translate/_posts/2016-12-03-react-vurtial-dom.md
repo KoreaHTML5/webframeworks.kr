@@ -2,6 +2,7 @@
 layout : tutorials
 title : 리액트 - 가상 돔
 category : tutorials
+subcategory : tips
 summary : 이 문서는 http://reactkungfu.com/2015/10/the-difference-between-virtual-dom-and-dom/ 를 번역한 내용입니다.
 permalink : /tutorials/translate/react-virtual-dom
 tags : javascript react virtualdom

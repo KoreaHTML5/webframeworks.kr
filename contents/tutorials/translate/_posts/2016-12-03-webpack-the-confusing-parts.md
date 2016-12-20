@@ -2,6 +2,7 @@
 layout : tutorials
 category : tutorials
 title : Webpack의 혼란스런 사항들
+subcategory : tips
 summary : Webpack을 처음 시작하는 사람들이 헷갈릴 수 있는 부분들에 대해 알아서 좀더 쉽게 시작할 수 있게 도와줍니다.
 permalink : /tutorials/translate/webpack-the-confusing-parts
 author : pouu69

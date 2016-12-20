@@ -2,7 +2,7 @@
 layout : tutorials
 title :  Babel로 ECMAScript 2015 사용하기
 category : tutorials
-subcategory : setlayout
+subcategory : tips
 summary : 바벨을 이용해 최신 자바스크립트 스펙 ECMAScript 2015를 사용해 봅시다
 permalink : /tutorials/babel/babel-basic
 tags : javascript babel ECMAScript2015 es6

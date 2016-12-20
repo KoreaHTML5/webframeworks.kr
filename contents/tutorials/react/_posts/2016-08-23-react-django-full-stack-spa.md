@@ -2,6 +2,7 @@
 layout : tutorials
 title : React with Redux 와 Django를 이용한 SPA 개발
 category : tutorials
+subcategory : tips
 summary : React와 Redux를 이용한 Front 웹어플리케이션과 Django 서버를 통해 풀스택 SPA(Single Page Application) 개발을 위해 필요한 요소 기술셋 및 구조를 알아봅니다.
 permalink : /tutorials/react/react-django-full-stack-spa
 tags : javascript react redux django fullstack spa

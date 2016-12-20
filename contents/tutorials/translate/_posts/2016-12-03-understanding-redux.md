@@ -2,6 +2,7 @@
 layout : tutorials
 title : 리덕스에 대한 이해
 category : tutorials
+subcategory : tips
 summary : 이 문서는 https://medium.freecodecamp.com/why-redux-makes-sense-to-me-and-how-i-conceptualize-it-c8a3a9db15ca?ref=mybridge.co#.mw6el25e7를 번역한 내용입니다.
 permalink : /tutorials/translate/understanding-redux
 tags : javascript react redux flux

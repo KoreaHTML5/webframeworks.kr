@@ -2,6 +2,7 @@
 layout : tutorials
 title : ECMAScript 6 - 화살표 함수와 메소드 정의
 category : tutorials
+subcategory : tips
 summary :  이 문서는 http://www.2ality.com/2012/04/arrow-functions.html 를 번역한 내용입니다.
 permalink : /tutorials/translate/arrow-function
 tags : javascript es6

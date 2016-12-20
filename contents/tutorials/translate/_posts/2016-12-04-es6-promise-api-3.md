@@ -2,6 +2,7 @@
 layout : tutorials
 category : tutorials
 title : ES6 Promises(3) - the API
+subcategory : tips
 summary : 자바스크립트 ES6 Promise API에 대한 마지막 이야기입니다.
 permalink : /tutorials/translate/es6-promise-api-3
 author : pouu69

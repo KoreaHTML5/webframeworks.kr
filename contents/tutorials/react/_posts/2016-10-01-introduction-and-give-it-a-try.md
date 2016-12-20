@@ -2,6 +2,7 @@
 layout : tutorials
 title : React 소개 및 맛보기
 category : tutorials
+subcategory : setlayout
 summary : React의 특징을 알아보고 webpackbin 도구를 사용하여 간단한 맛보기를 진행해봅니다.
 permalink : /tutorials/react/react-intro-and-give-it-a-try
 tags : javascript react

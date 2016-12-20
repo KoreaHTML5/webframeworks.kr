@@ -2,6 +2,7 @@
 layout : tutorials
 category : tutorials
 title : Javascript 세미콜론(;) 가이드
+subcategory : tips
 summary : Javascript을 사용할 때 아무생각 없이 붙이는 세미콜론에(;) 관한 팁에 대해 알아봅니다.
 permalink : /tutorials/translate/javascript-semicolon
 author : pouu69

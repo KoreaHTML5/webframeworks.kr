@@ -2,6 +2,7 @@
 layout : tutorials
 title : NodeJS를 이용한 API 서버만들기 3
 category : tutorials
+subcategory : data-query
 summary : NodeJS를 이용한 REST API 서버 개발을 시작할 수 있다. ExpressJS, Sequelize로 기본 골격을 잡는 것부터 Mocha, Supertest로 유닛테스트하는 방법까지 설명한다. 이 글은 지난 코드랩 진행했던 내용과 유사하다.
 permalink : /tutorials/nodejs/api-server-by-nodejs-03
 title_background_color : 026E00

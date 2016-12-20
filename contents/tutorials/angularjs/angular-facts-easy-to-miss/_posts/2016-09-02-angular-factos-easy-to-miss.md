@@ -2,6 +2,7 @@
 layout : tutorials
 title : 앵귤러 개발자가 놓치기 쉬운 10가지 사실들
 category : tutorials
+subcategory : tips
 summary : AngularJS를 사용하면서 쉽게 지나칠 수 있는 것에 대해 정리해 봅니다.
 permalink : /tutorials/angularjs/angular-facts-easy-to-miss
 title_background_color : DD1B16

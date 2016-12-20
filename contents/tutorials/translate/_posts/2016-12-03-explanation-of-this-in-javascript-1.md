@@ -2,6 +2,7 @@
 layout : tutorials
 title : 자바스크립트에서 사용되는 this에 대한 설명 1
 category : tutorials
+subcategory : tips
 summary : 이 문서는 https://rainsoft.io/make-your-javascript-code-shide-knockout-old-es5-hack/ 를 번역한 내용입니다.
 permalink : /tutorials/translate/explanation-of-this-in-javascript-1
 tags : javascript this

@@ -2,6 +2,7 @@
 layout : tutorials
 title : 오래된 ES5 꼼수를 버려라 2
 category : tutorials
+subcategory : tips
 summary : 이 문서는 https://rainsoft.io/make-your-javascript-code-shide-knockout-old-es5-hack/ 를 번역한 내용입니다.
 permalink : /tutorials/translate/knockout-old-es5-hack-2
 tags : javascript es5 es6
