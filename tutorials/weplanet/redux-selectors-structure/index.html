@@ -5,7 +5,7 @@
 <style>
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
 </style>
-<title>WebFrameworks.kr - Hapi 로깅 모듈, Good</title>
+<title>WebFrameworks.kr - Redux Selectors 구조화하기</title>
 <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="/static/css/main.css">
 <link rel="stylesheet" href="/static/css/syntax.css">
@@ -58,8 +58,8 @@
 
 <div class="content_bg"  style="background-color: #;color: #;" >
 <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
-<h1 class="title_header_title">Hapi 로깅 모듈, Good</h1>
-<p class="title_header_summary">Hapi의 로깅모듈인 Good에 대해 알아본다</p>
+<h1 class="title_header_title">Redux Selectors 구조화하기</h1>
+<p class="title_header_summary">Redux Selectors 구조화하는 방법에 대해 알아봅니다.</p>
 </div>
 </div>
 
@@ -73,14 +73,14 @@
             <div class="panel-body">
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object profile_img" src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" alt="김정환">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            김정환
+                            조덕기
 
                         </h4>
-                        jeonghwan-kim<br>
+                        DanielCho<br>
                     </div>
                 </div>
             </div>
@@ -200,106 +200,86 @@
 
     <div class="col-sm-9 col-md-6">
         <div class="media_content media_item shadow_panel" id="main_content">
-            <h1>Hapi 로깅 모듈, Good</h1>
+            <blockquote>
+<p>본 포스팅은 <a href="http://cmichel.io/">Christoph Michel</a> 의 <a href="http://cmichel.io/redux-selectors-structure/">Structuring Redux Selectors</a>
+를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
 
-<p>익스프레스에 winton 로깅 모듈이 있듯이 Hapi에서는 <a href="https://github.com/hapijs/good">Good</a>이라는 좋은 로깅 모듈이 있다. 
-이번 글에서는 Hapi 프레임웍에서의 로깅 방법에 대해 알아보자.</p>
+<p>최근에 redux 부분을 구조화하는 방법에 대하여, 특히 selector를 처리하는 방법에 관하여 <a href="http://www.datchley.name/scoped-selectors-for-redux-modules/">몇몇 포스팅들</a>이 있었다. 이는 필자의 방법과 꽤나 비슷하지만, 필자는 selector를 globalizing하는 데 있어, 최대한 자동화하려 노력한다. 꽤 괜찮은 방법이라고 생각하고 있으며, 아직까지 큰 문제는 발견되지 않았다. </p>
 
-<p>Good 모듈로 로깅시 리포터 모듈을 함께 추가해야한다. 
-Good 모듈은 hapi 프레임웍에서 내뿜는 이벤트를 감지하는 역할을 하는 것 같다. 
-실제 출력(콘솔이나 파일 등)은 리포터 모듈을 통해 동작하는 것이다. 
-출력 방식에 따라 아래와 같은 리포터 모듈을 사용할 수 있다.</p>
+<h2>우리는 Redux Selectors로부터 무엇을 원하는가?</h2>
 
-<ul>
-    <li><a href="https://github.com/hapijs/good-console">good-console</a>: 콘솔에 출력</li>
-    <li><a href="https://github.com/hapijs/good-file">good-file</a>: 파일에 출력</li>
-    <li><a href="https://github.com/hapijs/good-http">good-http</a>: 네트웍으로 출력 (전송)</li>
-</ul>
+<p>우선, 다루어야하는 몇몇 흔한 문제 / 패턴에 대해 간략히 정리하면 다음과 같다.
+1. 컴포넌트는 selector를 통해서만 상태(state)에 접근하고 모든 selector는 root 상태를 인수로 가져야 한다. 이는 또한 <em>combineReducers</em>로 구성된 하위 리듀서에도 유효하다. 이렇게 하면 컴포넌트들은 <em>internal state representation</em>과 완전히 분리된다.
+2. 첫 번째 사항은 root 상태를 인수로 사용하는 <em>global selector</em>를 작성하는 것이지만, 쉬운 개발을 위해서 <em>child of the root</em> 상태를 인수로 사용하는 <em>local selector</em>를 작성할 것이다. 이렇게 하면, 우리는 상태를 <em>unpack</em>할 필요가 없으며, root 상태의 다른 부분들로의 접근을 막음으로써 <em>sub-reducers</em>가 올바르게 분리되었는지를 확신할 수 있다. 
+3. <em>local selector</em>를 <em>global selector</em>로 매핑할 수 있는 메커니즘이 필요하다. 이를 통해서는 우리는 한 번만 selector를 실행하도록 할 수 있다. 이렇게 하면 코드가 중복되지 않고, 효율적이다.</p>
 
-<h2>logHelper</h2>
+<h2>Redux 파일 구조</h2>
 
-<p><a href="https://github.com/hapijs/good">예제</a>에 나온 코드를 app/components/logHelper/index.js 모듈로 분리해 보자.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<p>다음을 확인해보자.</p>
 
-<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
+<p><img src="http://cmichel.io/redux-selectors-structure/stateTree.svg" alt=""></p>
 
-<span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">opsInterval</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
-  <span class="nx">reporters</span>  <span class="o">:</span> <span class="p">[{</span>
-    <span class="nx">reporter</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;good-console&#39;</span><span class="p">),</span>
-    <span class="nx">args</span>    <span class="o">:</span> <span class="p">[{</span>
-      <span class="nx">request</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-      <span class="nx">response</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-      <span class="nx">log</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-      <span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span>
-    <span class="p">}]</span>
-  <span class="p">},</span> <span class="p">{</span>
-    <span class="nx">reporter</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;good-file&#39;</span><span class="p">),</span>
-    <span class="nx">args</span>    <span class="o">:</span> <span class="p">[{</span>
-      <span class="nx">path</span>     <span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;../../../logs&#39;</span><span class="p">),</span>
-      <span class="nx">format</span>   <span class="o">:</span> <span class="s1">&#39;YYYYMMDD-hhmmss&#39;</span><span class="p">,</span>
-      <span class="nx">prefix</span>   <span class="o">:</span> <span class="s1">&#39;hapi&#39;</span><span class="p">,</span>
-      <span class="nx">extension</span><span class="o">:</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span>
-      <span class="nx">rotate</span>   <span class="o">:</span> <span class="s1">&#39;daily&#39;</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nx">request</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-      <span class="nx">response</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-      <span class="nx">log</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-      <span class="nx">error</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span>
-    <span class="p">}]</span>
-  <span class="p">}]</span>
-<span class="p">};</span>
+<p>상태에는 세가지의 하위 상태가 있다: <em>navigation</em>, <em>notifications</em>, <em>settings</em>. 이 하위 상태들은 (일반적으로) 서로 독립적이어야 하며, 우리는 3개의 <em>reducers</em>를 만들어서 <em>combineReducers</em> 로 리듀서들을 결합할 수 있다. 필자는 각 리듀서 당 파일 하나로, <em>store</em> 를 3개의 하위 폴더로 나눔으로써 필자의 <em>redux</em> 파일을 다음과 같이 정리한다. </p>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">server</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">server</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
-    <span class="nx">register</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;good&#39;</span><span class="p">),</span>
-    <span class="nx">options</span> <span class="o">:</span> <span class="nx">opts</span>
-  <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>파일과 콘솔에 로그를 출력하도록 설정했다. 설정한 로그타입은 총 네 가지.</p>
+<p><img src="http://cmichel.io/redux-selectors-structure/reduxFileStructure.svg" alt=""></p>
 
-<ul>
-    <li>request: 프로토콜 요청시 로그 출력. 파라매터 값, 클라이언트 정보 등을 표시한다.</li>
-    <li>response: 요청에 한 응답시 로그 출력. http 상태 코드, 수행 시간 등을 표시한다.</li>
-    <li>log: 코드 사이 사이에 입력한 로그를 출력한다.</li>
-    <li>error: http 상태코드 5xx인 것만 로깅한다.</li>
-</ul>
+<p>각 하위 폴더는 <em>reducer</em>, <em>local selectors</em>, 그리고 <em>actions</em>들이 포함되어 있다. <em>Store</em> 폴터는 모든 <em>local selectors</em>를 모으고, 글로벌라이즈하는 <em>selectors.js</em> 파일을 포함한다. <em>Store</em>의 <em>index.js</em>는 <em>middleWares</em>, <em>combineReducers</em>를 포함하고 있으며, <em>createStore</em>를 통해 <em>Store</em>를 생성한다. </p>
 
-<h2>로그 함수</h2>
+<h2>Reducer와 Selector가 같은 파일에?</h2>
 
-<p>console.log()로 출력하면 로그 메세지가 제대로 출력되지 않는다. 
-Hapi에서 제공하는 server객체나 request 객체의 log() 함수로 로깅하도록 되어 있다(<a href="http://hapijs.com/tutorials/logging">참고</a>). 
-log() 함수는 총 3개의 파라매터를 받는다. <code>log(tag, message, timestamp)</code></p>
+<p>일부 사람들은 <em>selectors</em>를 <em>reducer</em> 파일에 넣는 것을 좋아하지만, 필자는 따로 두는 것을 선호한다. 이는 <em>circular import dependencies</em>를 피하기 위해서  따로 두었지만, 만약 <em>circular import dependencies</em> 상황에 처한다면 그것은 잘못된 설계일 수 있다. </p>
 
-<ul>
-    <li>tag: 로깅 태그</li>
-    <li>messgae: 로깅할 문자열 혹은 자바스크립트 객체</li>
-    <li>timestamp: 로깅 시간, default: Date.now()</li>
-</ul>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">reply</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">users</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<p>예를 들어, 당신이 <em>notification reducer</em>에 있는 알림을 사용하기 위해서 설정에 접근해야 한다고 가정해보자. 만약 당신이 <em>reducer</em> 내에서 일부 (<em>global</em>) <em>settings selectors</em>를 불러오게 된다면, <em>cyclic dependency</em> 상태를 경험할 것이고, 이는 해결하기 어렵다. (참고 : Webpack은 <em>settings selectors</em>가 <em>notification selectors</em>를 정의하는 블록이 아닌 다른 JS 실행 블록에서 사용되었다는 것을 인식하지 못한다. 편법을 사용하고 싶다면, 당신의 <em>reducer</em> 함수 내에 있는 <em>require(./selectors).someSelector</em> 을 사용할 수 있다.)</p>
 
-  <span class="c1">// 로깅 예제 </span>
-  <span class="nx">req</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; is inserted.&#39;</span><span class="p">);</span>
+<p><img src="http://cmichel.io/redux-selectors-structure/reduxCircularDependency.svg" alt=""></p>
 
-  <span class="nx">reply</span><span class="p">({</span><span class="nx">users</span><span class="o">:</span> <span class="nx">users</span><span class="p">});</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>/users (post) 라우팅 로직 안에 위와 같이 로그를 뿌리도록 설정한다. 
-아래는 콘솔에선 보는 로그 화면이다. 
-파일도 동일하게 동작한다.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">150216/011404.736, <span class="o">[</span>request,info<span class="o">]</span>, data: asdf is inserted.
-150216/011404.732, <span class="o">[</span>response<span class="o">]</span>, http://localhost:8000: post /users <span class="o">{}</span> <span class="m">200</span> <span class="o">(</span>7ms<span class="o">)</span> 
+<p><em>actions.js</em>에서 <a href="https://github.com/gaearon/redux-thunk">thunks</a>를 정의함으로써 이런 이슈를 피할 수 있다. 참고로 <em>actions.js</em>는 <em>global selector</em>를 통해서 설정의 중요한 부분을 가져오고, 그 다음 동작들과 함께 <em>payload</em>의 일부를 전달하게 된다. 필자가 생각하기에 <em>Selector</em>와 <em>Reducer</em>를 한 파일에 넣느냐 마느냐의 선택은 개인적 선호에 관한 것 같다.</p>
+
+<h2>Globalizing Selectors</h2>
+
+<p>마지막으로 남은 것은 코드를 복사하지 않고 <em>local selector</em> 파일만을 가지고 <em>global selectors</em>를 만드는 방법이다. 동일한 이름을 가진 새로운 함수 세트를 내보내는 것으로 <em>global selectors</em>를 만들 수 있는데, 그 유일한 목적은 <em>state selection</em>을 한 다음, <em>local selector</em>를 작동시키는 것이다. </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// store/navigation/selectors.js</span>
+<span class="kr">export</span> <span class="kd">function</span> <span class="nx">getActiveScene</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">state</span><span class="p">.</span><span class="nx">activeScene</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// store/selectors.js</span>
+
+<span class="cm">/**</span>
+<span class="cm">Accumulates all the different selectors</span>
+<span class="cm"> */</span>
+<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">navigationSelectors</span> <span class="nx">from</span> <span class="s1">&#39;./navigation/selectors&#39;</span>
+<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">notificationSelectors</span> <span class="nx">from</span> <span class="s1">&#39;./notifications/selectors&#39;</span>
+<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">settingsSelectors</span> <span class="nx">from</span> <span class="s1">&#39;./settings/selectors&#39;</span>
+
+<span class="kr">const</span> <span class="nx">selectors</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">navigationSelectors</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span>
+<span class="nx">funcName</span> <span class="o">=&gt;</span> <span class="nx">selectors</span><span class="p">[</span><span class="nx">funcName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">navigationSelectors</span><span class="p">[</span><span class="nx">funcName</span><span class="p">](</span><span class="nx">state</span><span class="p">.</span><span class="nx">navigation</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">notificationSelectors</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span>
+<span class="nx">funcName</span> <span class="o">=&gt;</span> <span class="nx">selectors</span><span class="p">[</span><span class="nx">funcName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">notificationSelectors</span><span class="p">[</span><span class="nx">funcName</span><span class="p">](</span><span class="nx">state</span><span class="p">.</span><span class="nx">notifications</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">settingsSelectors</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span>
+<span class="nx">funcName</span> <span class="o">=&gt;</span> <span class="nx">selectors</span><span class="p">[</span><span class="nx">funcName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">settingsSelectors</span><span class="p">[</span><span class="nx">funcName</span><span class="p">](</span><span class="nx">state</span><span class="p">.</span><span class="nx">settings</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1">// We want to be able to import like this: &quot;import { name1, name2 } from &#39;selectors&#39;&quot;</span>
+<span class="c1">// Below code behaves like &quot;export {...selectors}&quot; because of this relationship:</span>
+<span class="c1">// var module = {}</span>
+<span class="c1">// var exports = module.exports = {}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">selectors</span>
+<span class="c1">// someComponent.js</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">getActiveScene</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../store/selectors&#39;</span>
+<span class="kr">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="p">({</span>
+<span class="nx">activeScene</span><span class="o">:</span> <span class="nx">getActiveScene</span><span class="p">(</span><span class="nx">state</span><span class="p">),</span>
+<span class="p">})</span>
 </code></pre></div>
         </div>
 
         <div class="media_content media_item shadow_panel">
-            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/hapi">hapi</a>&nbsp;</p>
+            <p>Tags : <a href="/tags/react">react</a>&nbsp;<a href="/tags/redux">redux</a>&nbsp;</p>
         </div>
 
 
