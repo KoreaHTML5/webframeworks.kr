@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Vue.js로 이미지 슬라이더 만들기 2</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Vue.js로 이미지 슬라이더 만들기 2</h1>
+<p class="title_header_summary">Vue.js로 이미지 슬라이더 만드는 방법을 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.072437)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,6.519362)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.072437)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.072437)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.072437)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.434624)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.072437)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.072437)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.144875)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.144875)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.752620)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.231435)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.593622)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.289749)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.217312)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.072437)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.507062)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.651936)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,1.014123)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.941686)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.072437)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.217312)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.072437)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.072437)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.289749)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.072437)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.362187)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.072437)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.144875)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.144875)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.072437)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.072437)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.144875)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.289749)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.072437)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.072437)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.144875)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.072437)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.217312)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.217312)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.072437)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.072437)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.144875)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.507062)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.448747)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.144875)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.579499)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.072437)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.072437)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.072437)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.144875)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.796811)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.144875)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.072437)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.144875)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.072437)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.072437)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.072437)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.072437)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.072437)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.072437)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.072437)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.072437)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.072437)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.289749)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.434624)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.072437)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.072437)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.217312)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.072437)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.072437)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.072437)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.289749)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.289749)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.072437)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.289749)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.144875)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.072437)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.072437)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.072437)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.072437)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.362187)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.362187)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.362187)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.362187)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.362187)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.362187)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.144875)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.072437)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.144875)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.144875)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.072437)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.072437)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.072437)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.072437)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.144875)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.072437)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.072437)'>angular,</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.072437)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.144875)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.072437)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.072437)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.072437)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.144875)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.072437)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,0.217312)'>vue</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com/">Matthias Hager</a> 의 <a href="https://matthiashager.com/blog/image-slider-vuejs-tutorial">Building an Image Slider with Vue.js</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>이제 몇 줄의 자바 스크립트와 매우 간단한 HTML만으로 완벽하게 작동하는 이미지 슬라이더를 만들었다. 물론 <code>vue.js</code> 라이브러리도 같이 썼지만. 이는 매우 간단하지만 더 많은 기능을 구축하기 위한 훌륭한 기반이 될 것이다. 당장 필자는 추가적인 슬라이딩 효과도 필요하다고 생각한다. 마우스를 대면 일시 중지해야 한다. 일부 사용자는 이미지를 클릭하여 보길 원할 수도 있다. 먼저 사용자 인터렉션에 착수한 다음 효과를 추가하자.</p>
+
+<p>이미 회전을 시작 및 중지하고 다음 슬라이드로 진행하는 방법들이 있다. 이전 슬라이드로 회전하는 데 필요한 것은 <code>next</code> 메소드를 복제하는 것인데, 현재 슬라이드의 번호만 줄여주면 된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="p">...</span>
+        <span class="nx">next</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">currentNumber</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="nx">prev</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">currentNumber</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+</code></pre></div>
+<p>위 코드에 이슈가 발견되는지 확인해본다. 이미지를 순환시키기 위해 모듈로 오퍼레이터를 사용하기 때문에, 음수에 문제가 발생할 것이다. 현재 숫자의 절대 값을 사용하는 식으로 이를 수정할 것이다. 또한 슬라이드를 클릭하기 위한 컨트롤을 추가하고 마우스를 올려놓으면 일시 중지하는 기능도 추가할 것이다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">image</span><span class="o">-</span><span class="nx">slider</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">a</span> <span class="err">@</span><span class="nx">click</span><span class="o">=</span><span class="s2">&quot;prev&quot;</span><span class="o">&gt;</span><span class="nx">Previous</span><span class="o">&lt;</span><span class="err">/a&gt; || &lt;a @click=&quot;next&quot;&gt;Next&lt;/a&gt;</span>
+    <span class="o">&lt;</span><span class="err">/p&gt;</span>
+    <span class="o">&lt;</span><span class="nx">img</span>
+        <span class="o">:</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images[Math.abs(currentNumber) % images.length]&quot;</span>
+        <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="o">:</span><span class="nx">mouseover</span><span class="o">=</span><span class="s2">&quot;stopRotation&quot;</span>
+        <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="o">:</span><span class="nx">mouseout</span><span class="o">=</span><span class="s2">&quot;startRotation&quot;</span>
+    <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="err">/image-slider&gt;</span>
+
+<span class="o">&lt;</span><span class="err">/body&gt;</span>
+</code></pre></div>
+<p>링크에서는 <code>@click</code>을 사용하고 이미지에는 <code>v-on:mouseout</code>을 사용하는 것에 주의하자. 이 둘은 똑같은 것이다. <code>@</code> 표기법은 <code>v-on</code>의 약식이며, <code>;</code>이 <code>v-bind</code>의 약어인 것과 비슷한 것이다.</p>
+
+<p>이미지 <code>src</code>가 조금씩 다루기 어려워지기 시작한다. 가능하면 로직을 템플릿 밖에 두고 싶다면 이를 컴포넌트 메소드로 쉽게 이동시킬 수 있다.</p>
+
+<p>다음 / 이전을 클릭 할 때 슬라이더 타이밍에도 문제가 있다. 타이머를 재설정하지 않기 때문에 때로는 컨트롤 중 하나를 클릭 했을 때 바로 점프를 한다. 이것에 대한 가장 간단한 해결 방법은 다음 / 이전이 호출 될 때마다 회전을 중지키시고 시작하는 것이다. 그 시점에서는 <code>setInterval</code> 을 사용하지 않는데 <code>next</code>와 <code>prev</code> 메소드에서 간격을 멈출 필요가 없기 때문에 <code>setTimeout</code>을 사용하는 것이 더 간단 할 것이다. 이 결정은 독자들에게 맡기겠다.</p>
+
+<p>마지막으로 로테이터에 작은 슬라이드 효과를 추가하려고 한다. Vue는 이미 복잡한 작업의 대부분을 수행하는 <a href="https://vuejs.org/v2/guide/transitions.html">transition system</a>을 제공한다. 단지 거기에 연결하고 약간의 CSS만 추가하면 된다. Transition system 및 CSS 트랜시션이 어떻게 동작하는지에 대해서는 이미 문서화되어 있으므로, 여기서는 자세히 설명하지 않겠다.</p>
+
+<p>이 변화에는 약간의 속임수, 아니 영리한 코딩이 필요하다. 다른 해결 방법은 보다 명확할 수 있지만 간결하지 않다.</p>
+
+<p>먼저 CSS를 설정한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">fade</span><span class="o">-</span><span class="nx">transition</span> <span class="p">{</span>
+    <span class="nx">transition</span><span class="o">:</span> <span class="nx">all</span> <span class="mf">0.8</span><span class="nx">s</span> <span class="nx">ease</span><span class="p">;</span>
+    <span class="nx">overflow</span><span class="o">:</span> <span class="nx">hidden</span><span class="p">;</span>
+    <span class="nx">visibility</span><span class="o">:</span> <span class="nx">visible</span><span class="p">;</span>
+    <span class="nx">opacity</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">position</span><span class="o">:</span> <span class="nx">absolute</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nx">fade</span><span class="o">-</span><span class="nx">enter</span><span class="p">,</span> <span class="p">.</span><span class="nx">fade</span><span class="o">-</span><span class="nx">leave</span> <span class="p">{</span>
+    <span class="nx">opacity</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">visibility</span><span class="o">:</span> <span class="nx">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>컴포넌트 내에서 트랜시션을 <code>fade</code>라고 부를 것인데 Vue는 트랜지션의 상태에 따라 적용 / 제거 할 3 개의 클래스를 정하게 한다.</p>
+
+<p>이게 새로 필요한 HTML이다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">image</span><span class="o">-</span><span class="nx">slider</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">a</span> <span class="err">@</span><span class="nx">click</span><span class="o">=</span><span class="s2">&quot;prev&quot;</span><span class="o">&gt;</span><span class="nx">Previous</span><span class="o">&lt;</span><span class="err">/a&gt; || &lt;a @click=&quot;next&quot;&gt;Next&lt;/a&gt;</span>
+    <span class="o">&lt;</span><span class="err">/p&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span>
+         <span class="nx">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;number in [currentNumber]&quot;</span>
+         <span class="nx">transition</span><span class="o">=</span><span class="s2">&quot;fade&quot;</span>
+    <span class="o">&gt;</span> 
+      <span class="o">&lt;</span><span class="nx">img</span>
+          <span class="o">:</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;images[Math.abs(currentNumber) % images.length]&quot;</span>
+          <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="o">:</span><span class="nx">mouseover</span><span class="o">=</span><span class="s2">&quot;stopRotation&quot;</span>
+          <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="o">:</span><span class="nx">mouseout</span><span class="o">=</span><span class="s2">&quot;startRotation&quot;</span>
+    <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="o">&lt;</span><span class="err">/image-slider&gt;</span>
+<span class="o">&lt;</span><span class="err">/body&gt;</span>
+</code></pre></div>
+<p>여기에는 두 가지 큰 변화가 있다. 트랜지션을 위해 중요한 것은 <code>transition=&quot;fade&quot;</code> 이다. 이것이 정의한 CSS 클래스를 사용하도록 Vue에 알려주는 것이다.</p>
+
+<p>Vue는 요소가 삽입 / 제거되거나 표시 / 숨김할 때만 트랜지션을 실행한다. 여기에는 목록에서 <code>v-for</code>를 사용할 때 각 요소를 순환하는 것이 포함된다. 앞의 코드에서 우리는 DOM에 새로운 그림을 삽입하는 것이 아니라 동일한 <code>img</code> 요소에 대한 <code>src</code> 속성을 변경했다. 이제 Vue가 어레이를 순환하도록 지시하는 것이다. <code>currentNumber</code>value로 설정된 항상 하나의 값을 포함한 것이다. <code>currentNumber</code>가 변경되면 Vue는 해당 변경 사항을 감지하고 <code>v-for</code> loop을 다시 그린다. 근본적으로 Vue를 속여 기존 <code>img</code> 요소를 제거하고 새로운 <code>img</code> 요소로 대체하게 하는 것이다. 페이드 전환이 적용되었고 <code>div</code>가 절대적으로 배치되었으므로 한 이미지가 페이드아웃되면서 다음 이미지가 페이드인 하는 것이다.</p>
+
+<p><a href="https://matthiashager.com/blog/image-slider-vuejs-tutorial/vue-slider.html">여기에</a> 최종 슬라이더가 있다. 또는<a href="https://jsfiddle.net/0f7w6f4j/4/">JSFiddle</a>에서 갖고 놀 수도 있다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

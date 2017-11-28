@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Vue.js와 Vue-Resource로 HTTP Request 만들기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Vue.js와 Vue-Resource로 HTTP Request 만들기</h1>
+<p class="title_header_summary">Vue.js와 Vue-Resource로 HTTP Request 만드는 방법을 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.072437)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,6.519362)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.072437)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.072437)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.072437)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.434624)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.072437)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.072437)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.144875)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.144875)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.752620)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.231435)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.593622)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.289749)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.217312)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.072437)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.507062)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.651936)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,1.014123)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.941686)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.072437)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.217312)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.072437)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.072437)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.289749)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.072437)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.362187)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.072437)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.144875)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.144875)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.072437)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.072437)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.144875)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.289749)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.072437)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.072437)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.144875)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.072437)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.217312)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.217312)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.072437)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.072437)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.144875)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.507062)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.448747)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.144875)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.579499)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.072437)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.072437)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.072437)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.144875)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.796811)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.144875)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.072437)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.144875)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.072437)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.072437)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.072437)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.072437)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.072437)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.072437)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.072437)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.072437)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.072437)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.289749)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.434624)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.072437)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.072437)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.217312)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.072437)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.072437)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.072437)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.289749)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.289749)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.072437)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.289749)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.144875)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.072437)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.072437)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.072437)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.072437)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.362187)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.362187)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.362187)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.362187)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.362187)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.362187)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.144875)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.072437)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.144875)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.144875)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.072437)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.072437)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.072437)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.072437)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.144875)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.072437)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.072437)'>angular,</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.072437)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.144875)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.072437)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.072437)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.072437)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.144875)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.072437)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,0.217312)'>vue</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com/">Matthias Hager</a> 의 <a href="https://matthiashager.com/blog/mocking-http-requests-with-vuejs">Mocking HTTP Requests with Vue.js and Vue-Resource</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>운영하고 있는 Vue.js 애플리케이션에 대한 단위 테스트를 진행하는 동안 실제로 서버에 쿼리요청을 하지 않고도, <code>vue-resource</code>가 실행한 다양한 HTTP 요청에 대한 테스트 데이터를 반환하는 간단한 방법이 필요했다. 널린 게 <code>mocks</code>와 <code>stubs</code>, 그리고 <code>spies</code> 등 수많은 상황에 대응할 수 있는 라이브러리들이지만, 나의 요구 사항은 간단했다. 간단한 요구에는 종종 간단한 해결책이 필요하다.</p>
+
+<p><code>Vue-resource</code>은 리퀘스트 프로세스의 모든 단계를 변경할 수 있는 <a href="https://github.com/pagekit/vue-resource/blob/master/docs/http.md#interceptors">request interceptors</a>를 제공한다. 리퀘스트 사이클을 중단하고, 더미 데이터를 반환하는 것은 간단한 작업이다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">VueResource</span> <span class="nx">from</span> <span class="s1">&#39;vue-resource&#39;</span><span class="p">;</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">VueResource</span><span class="p">);</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">interceptors</span><span class="p">.</span><span class="nx">unshift</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">next</span><span class="p">(</span>
+<span class="nx">request</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+  <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">17</span><span class="p">,</span> <span class="nx">body</span><span class="o">:</span> <span class="s1">&#39;Well, my time of not taking you seriously is coming to a middle.&#39;</span><span class="p">},</span>
+  <span class="p">{</span><span class="nx">status</span><span class="o">:</span> <span class="mi">200</span><span class="p">}</span>
+<span class="p">)</span>
+  <span class="p">);</span>
+</code></pre></div>
+<p>이렇게 하면 간단한 인터셉터가 목록에 추가된다. <code>request.respondWith()</code>를 호출하여 요청 처리를 중단한다. 이렇게 하면 네트워크 호출이 수행되지 않고 추가적인 인터셉터가 실행되지 않는다.</p>
+
+<p>그러나 이것으로는 충분하지 않다! 단 하나의 HTTP 요청을 하는 건 드문 일이다. 종종 다른 API 엔드 포인트에 대해 여러 요청이 이루어진다. 지금 코드는 단 하나의 응답만 반환한다. 필자는 반환할 <code>Mock</code> 데이터와 함께 API 경로 트리를 기본적으로 매핑하려고 했다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+<span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+<span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;quotes/&#39;</span><span class="p">,</span>
+<span class="nx">response</span><span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">14</span><span class="p">,</span> <span class="nx">body</span><span class="o">:</span> <span class="s2">&quot;You know what the chain of command is? It&#39;s the chain I go get and beat you with until you understand who&#39;s in ruttin charge here.&quot;</span><span class="p">},</span>
+  <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">22</span><span class="p">,</span> <span class="nx">body</span><span class="o">:</span> <span class="s1">&#39;Also? I can kill you with my brain.&#39;</span><span class="p">}</span>
+<span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+<span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;quotes/&#39;</span><span class="p">,</span>
+<span class="nx">response</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span> <span class="nx">body</span><span class="o">:</span> <span class="s1">&#39;Terse? I can be terse. Once, in flight school, I was laconic.&#39;</span><span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+<span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+<span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;quotes/18/&#39;</span><span class="p">,</span>
+<span class="nx">response</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span> <span class="nx">body</span><span class="o">:</span> <span class="s1">&#39;Curse your sudden but inevitable betrayal!&#39;</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+</code></pre></div>
+<p>이제 우리는 어떤 경로가 HTTP 요청과 일치하는지 확인해야하고 적절한 응답을 반환하는 간단한 방법이 필요하다. 이제 인터셉터를 수정해보자.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">VueResource</span> <span class="nx">from</span> <span class="s1">&#39;vue-resource&#39;</span><span class="p">;</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">VueResource</span><span class="p">);</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">interceptors</span><span class="p">.</span><span class="nx">unshift</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">route</span> <span class="o">=</span> <span class="nx">routes</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="k">return</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span> <span class="o">===</span> <span class="nx">item</span><span class="p">.</span><span class="nx">method</span> <span class="o">&amp;&amp;</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="nx">item</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">route</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// we&#39;re just going to return a 404 here, since we don&#39;t want our test suite making a real HTTP request</span>
+<span class="nx">next</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">({</span><span class="nx">status</span><span class="o">:</span> <span class="mi">404</span><span class="p">,</span> <span class="nx">statusText</span><span class="o">:</span> <span class="s1">&#39;Oh no! Not found!&#39;</span><span class="p">}));</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="nx">next</span><span class="p">(</span>
+  <span class="nx">request</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+<span class="nx">route</span><span class="p">.</span><span class="nx">response</span><span class="p">,</span>
+<span class="p">{</span><span class="nx">status</span><span class="o">:</span> <span class="mi">200</span><span class="p">}</span>
+  <span class="p">)</span>
+<span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>간단하다!</p>
+
+<p>CodePen에 이 인터셉터를 보여주는 <a href="https://codepen.io/anon/pen/wovjPE">little cornball application</a>이 있다. 아직 존재하지 않는 API의 프론트 엔드를 구축하는 경우 개발 중에도 이 동일한 코드를 사용할 수 있다. 테스트 데이터를 애플리케이션에 하드 코딩하는 대신 처음부터 요청/응답 처리를 구현할 수 있다.</p>
+
+<p>물론 모든 시나리오를 처리하지는 않는다. 보다 복잡한 POST 데이터를 처리하거나 리퀘스트 시 전달하는 추가적인 정보에 따라 동일한 API 엔드 포인트에 대해 다른 응답들을 반환해야 할 수도 있다. 간단한 목적으로 쓸 경우에는 아예 다른 라이브러리를 가져와서 복잡함을 더하는 것보다 이해하기 쉬운 적은 양의 코드를 쓰는 게 낫다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
