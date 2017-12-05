@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJS 가이드 2 - 데이터 구조</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJS 가이드 2 - 데이터 구조</h1>
+<p class="title_header_summary">React Native에서의 가벼운 Progress Circle 구현하는 방법을 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.071175)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,6.761641)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.071175)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.071175)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.071175)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.427051)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.071175)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.071175)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.142350)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.142350)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.704656)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.209978)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.565854)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.284701)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.213525)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.071175)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.498226)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.640576)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.996452)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.925277)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.071175)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.213525)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.071175)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.071175)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.284701)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.071175)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.355876)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.071175)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.142350)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.142350)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.071175)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.071175)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.142350)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.284701)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.071175)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.071175)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.142350)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.071175)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.213525)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.213525)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.071175)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.071175)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.142350)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.498226)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.565854)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.142350)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.569401)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.071175)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.071175)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.071175)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.142350)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.782927)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.142350)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.071175)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.142350)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.071175)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.071175)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.071175)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.071175)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.071175)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.071175)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.071175)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.071175)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.071175)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.284701)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.498226)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.071175)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.071175)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.213525)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.071175)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.071175)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.071175)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.284701)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.284701)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.071175)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.284701)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.142350)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.071175)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.071175)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.071175)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.071175)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.355876)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.355876)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.355876)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.355876)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.355876)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.355876)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.142350)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.071175)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.142350)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.142350)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.071175)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.071175)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.071175)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.071175)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.142350)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.071175)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.071175)'>angular,</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.071175)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.142350)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.071175)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.071175)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.071175)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.142350)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.071175)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,0.427051)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.071175)'>middleware</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 [Matthias Hager][1] 의 <a href="https://matthiashager.com/complete-vuejs-application-tutorial/data-architecture">Vue.js Application Tutorial - Step 2: Data Architecture</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>데이터 구조를 만드는 것에 대한 가장 큰 결정은 서로 다른 객체들이 서로 어떻게 관련되어 있는지를 정의하는 것이다. Vue.js는 반응적인(reactive) 데이터에 초점을 맞추지만, 대부분 프로그래머에 따라 많은 부분이 달라질 수 있다. </p>
+
+<p>우리의 목적을 위해서는 데이터를 로컬 스토리지에 보관할 것이다. 한 대의 컴퓨터에서만 앱을 사용할건데 인터넷에 데이터를 보내지 않으면 많은 보안 문제를 피할 수 있다. 또한 애플리케이션을 보다 쉽게 개발할 수 있다. 가지고 있는 데이터 사본이 유일한 사본이므로 동기화를 유지하는 데 너무 많은 걱정을 하지 않아도 되는 것이다. 그래도 로컬 스토리지로 작업할 때 적용되는 많은 원리는 인터넷 백엔드에서 작업하는 것과 동일하다.</p>
+
+<p>관계형 데이터베이스를 사용하는 백엔드가 없으므로 일부 관계형 기능을 빌리거나 연결 관계를 명확하게 유지하는 건 우리에게 달려 있다. 우리의 데이터는 비교적 단순하고 간단하다. 우리는 단일 사용자 애플리케이션을 구축 하는 중이다. 그리고 엄청나게 커지지는 않을 것이다. 그래서 간단한 object / JSON 구조에 의존할 수 있다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">transactions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">desc</span><span class="o">:</span> <span class="s1">&#39;bought new ear plugs&#39;</span><span class="p">,</span>
+        <span class="nx">date</span><span class="o">:</span> <span class="s1">&#39;2017-02-08&#39;</span><span class="p">,</span>
+        <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;Spending Money&#39;</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">];</span>
+<span class="nx">budget</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;Spending Money&#39;</span><span class="p">,</span>
+        <span class="nx">month</span><span class="o">:</span> <span class="s1">&#39;2017-02&#39;</span><span class="p">,</span>
+        <span class="nx">amount</span><span class="o">:</span> <span class="s1">&#39;200&#39;</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">];</span>
+</code></pre></div>
+<p>사용자가 카테고리 목록을 보려는 경우 모든 트랜잭션을 반복하고 유니크한 카테고리 이름들을 만들어야 한다. 카테고리 이름을 변경하면 해당 카테고리 및 각 예산 객체와 각 트랜잭션을 변경해야 한다. 추가 데이터를 저장하기 위해 별도의 범주 카테고리 목록을 만들 수 있지만 그렇게 하면 두 번째 문제는 해결되지 않는다. </p>
+
+<p>카테고리, 예산, 계정 및 트랜잭션 간의 관계가 애플리케이션의 핵심이기 때문에 단순화된 관계형 접근 방식을 취할 것이다. 다른 객체에서 ID로 객체를 표시 할 것이다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">transactions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ijd4ijdoi3&#39;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">desc</span><span class="o">:</span> <span class="s1">&#39;bought new ear plugs&#39;</span><span class="p">,</span>
+        <span class="nx">date</span><span class="o">:</span> <span class="s1">&#39;2017-02-08&#39;</span><span class="p">,</span>
+        <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;4ijoidjie&#39;</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+<span class="nx">categories</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;4ijoidjie&#39;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Spending Money&#39;</span><span class="p">,</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;Checking&#39;</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+<span class="nx">budget</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ijd3ij4id&#39;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;4ijoidjie&#39;</span><span class="p">,</span>
+        <span class="nx">month</span><span class="o">:</span> <span class="s1">&#39;2017-02&#39;</span><span class="p">,</span>
+        <span class="nx">amount</span><span class="o">:</span> <span class="s1">&#39;200&#39;</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>저장하는 각 기록에 대해 유니크한 ID를 생성하고, 그 ID를 외래 키로 사용할 것이다. 카테고리를 트랜잭션 및 예산 객체에 직접 저장하는 대신 해당 ID를 사용하여 카테고리를 표시할 것이다. 이제 필요할 때 쓸 수 있는 정의된 카테고리 목록을 가진 것이다. 카테고리 이름을 변경하는 것은 단일 카테고리 객체를 변경하는 것만큼 간단하다. 그러나 카테고리별로 트랜잭션 목록을 표시 할 때 카테고리를 찾아서 각 ID에 첨부된 이름을 알아 내야한다.</p>
+
+<p>이것은 단순한 오브젝트 저장을 위한 관계형 데이터베이스의 매우 단순한 분석이다. 나중에는 완전한 규모의 관계형 데이터베이스를 이 애플리케이션에 사용하는 것이 바람직할 것이라고 생각하지만, 이 튜토리얼의 범위를 한참 벗어나는 문제와 각종 라이브러리들이 등장할 수 있다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
