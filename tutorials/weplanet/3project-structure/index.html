@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJS 가이드 3 - 설정 및 프로젝트 구조</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJS 가이드 3 - 설정 및 프로젝트 구조</h1>
+<p class="title_header_summary">VueJS를 통한 애플리케이션 개발에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.070241)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,6.883589)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.070241)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.070241)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.070241)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.421444)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.070241)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.070241)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.140481)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.140481)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.669147)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.194092)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.545295)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.280963)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.210722)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.070241)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.491685)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.632166)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.983370)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.913129)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.070241)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.210722)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.070241)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.070241)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.280963)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.070241)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.351204)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.070241)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.140481)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.140481)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.070241)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.070241)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.140481)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.280963)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.070241)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.070241)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.140481)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.070241)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.210722)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.210722)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.070241)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.070241)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.140481)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.491685)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.545295)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.140481)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.561926)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.070241)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.070241)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.070241)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.140481)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.772648)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.140481)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.070241)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.140481)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.070241)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.070241)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.070241)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.070241)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.070241)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.070241)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.070241)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.070241)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.070241)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.280963)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.491685)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.070241)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.070241)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.210722)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.070241)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.070241)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.070241)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.280963)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.280963)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.070241)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.280963)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.140481)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.070241)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.070241)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.070241)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.070241)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.351204)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.351204)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.351204)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.351204)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.351204)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.351204)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.140481)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.070241)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.140481)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.140481)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.070241)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.070241)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.070241)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.070241)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.140481)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.070241)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.070241)'>angular,</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.070241)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.140481)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.070241)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.070241)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.070241)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.140481)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.070241)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,0.632166)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.070241)'>middleware</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com">Matthias Hager</a> 의 <a href="https://matthiashager.com/complete-vuejs-application-tutorial/project-structure">Vue.js Application Tutorial - Step 3: Setup &amp; Project Structure</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>이 튜토리얼을 위해, 나는 당신이 적어도 모던 프론트엔드 웹 개발과 Vue.js에 조금은 익숙하다고 가정 할 것이다. 그렇지 않은 경우 Vue.js 소개 튜터리얼을 보는 것을 추천한다. 훌륭한 튜토리얼이고 Vue가 무엇인지에 대한 좋은 개요를 제공한다. 물론 좀 어렵겠지만,   <code>NPM</code>, <code>Webpack</code> 및 <code>ES6</code>이 완전히 익숙하지 않은 경우에도 튜토리얼을 다 볼 수 있을 것이다.</p>
+
+<p>vue-cli를 설치하고 기본 Webpack 프로젝트 템플릿을 설정하여 시작한다. 템플릿은 몇 가지 설정 프롬프트를 보여줄 것이다. 독립 실행형 빌드를 사용하고, vue-router를 설치한다. <code>ESLint</code>를 사용하고 테스트 컴포넌트를 설치할 수 있다. 이 튜토리얼의 범위를 벗어나므로 이 부분에 대해서는 자세하게 설명하지 않겠지만, 모든 애플리케이션 개발 시 테스트 코드를 만드는 것이 좋다.</p>
+
+<p>(필자는 프로젝트의 이름을 Budgeterbium이라고 이름을 지었는데, 이는 대부분의 프로젝트를 요소, 공간 또는 충분히 괴상한 것들로 이름 짓기 때문이다. 이름은 자기 원하는 대로 지으면 된다.)</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install --global vue-cli
+$ vue init webpack budgeterbium
+$ cd budgeterbium
+$ npm install
+</code></pre></div>
+<p><img src="https://matthiashager.com/user/pages/complete-vuejs-application-tutorial/project-structure/budgeterbium-vue-cli.PNG" alt=""></p>
+
+<p>GIT : <a href="https://github.com/matthiaswh/budgeterbium/commit/331fe8bf88dba3cbb314eee364f88079aeaee039">331fe8b</a></p>
+
+<p>이 애플리케이션은 데이터를 관리하고 컴포넌트에 정보를 공유해야 한다. 이를 위해 우리는 훌륭한 <code>vuex</code>를 사용할 것이다. 로컬 스토리지를 사용할 것이므로 일관되고 깨끗한 API를 제공하기 위해 <code>localforage</code> 에 의존할 것이다. <code>Bulma</code>를 사용하여 약간의 스타일을 추가하고 SCSS에 의존할 것이다. 이 명령이 필요한 디펜던시를 설치하고 이것을 <code>package.json</code>에 저장할 것이다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install --save vuex bulma localforage
+$ npm install --save-dev sass-loader node-sass
+</code></pre></div>
+<p>이제 <code>npm run dev</code>을 실행하여 테스트 서버를 시작하고 브라우저를 <code>localhost:8080</code>에 열 수 있다. 또한 작동중인 서버를 얻으려면 <code>npm install --save-dev babel-runtime</code>을 실행해야 할 수도 있다. </p>
+
+<p>(<code>npm run dev</code>로 정확히 어떤 일이 일어나는지 확실하지 않으면 필자의 <a href="https://matthiashager.com/blog/testing-vuejs-overview">overview of Vue.js testing</a>의 개요에서 처음 몇 문단을 확인하자.) </p>
+
+<p>다음은 이 템플릿의 기본 프로젝트 구조를 보여준다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">build/
+config/
+src/
+    assets/
+        logo.png
+    components/
+        Hello.vue
+    App.vue
+    main.js
+static/
+test/
+.babelrc
+.editorconfig
+.eslingignore
+.eslintrc.js
+.gitignore
+README.md
+index.html
+package.json
+</code></pre></div>
+<p>이 애플리케이션의 진입점은 <code>main.js</code>이다. Vue를 로드한 다음 <code>App.vue</code>를 로드하고 애플리케이션을 초기화한다. 지금 <code>App.vue</code>가 하는 것은 레이아웃을 정의하고 <code>Hello.vue</code> 컴포넌트를 포함하는 게 다이다. 그 결과로 Vue 로고와 몇 개의 링크를 보여준다.</p>
+
+<p><code>.vue</code> 파일은 HTML 템플릿, 일반적으로 단일 Vue 컴포넌트를 정의하는 JavaScript, 그리고 특정 컴포넌트에 적용되는 스타일의 조합이다. 파일은 애플리케이션 템플릿과 함께 설치된 <code>vue-loader</code>로 사전 처리된다. 대부분의 프로그래밍 편집기와 IDE에는 이 파일을 처리하기 위해 설치할 수 있는 Vue.js highlighting 플러그인이 있다. </p>
+
+<p>첫 번째 단계는 아키텍처를 모듈식 시스템으로 바꾸는 것이다. 튜토리얼 목적으로 이것은 과하다고 생각할 수도 있지만, 진지하고 확장가능한 애플리케이션을 구축하는 것이 무엇인지 생각해보면 답은 명확하다. 템플릿이 제공하는 플랫 파일 형식은 몇 개의 컴포넌트가 있으면 다루기 힘들어진다. 우리는 이보다 모듈 방식으로 접근할 것이다. 우리의 <code>src</code> 폴더는 다음과 같이 보일 것이다:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">app/
+    accounts/
+        components/
+            AccountsListView.vue
+        vuex/
+            accounts.js
+            index.js
+            mutations.js
+        index.js
+        routes.js
+    App.vue
+    index.js
+    routes.js
+    vuex.js
+assets/
+router/index.js
+store/index.js
+main.js
+</code></pre></div>
+<p>이 레이아웃은 대형 애플리케이션을 구성하는 <a href="https://forum.vuejs.org/t/structuring-very-large-applications/840/3">Vue.js 포럼의 이 대답</a> 에서 영감을 얻었다.</p>
+
+<p>Budgeterbium은 <code>vue-router</code>와 <code>vuex</code>를 사용할 것이기 때문에 이를 준비한다. <code>main.js</code>에서 그것들을 가져와서 Vue가 사용하도록 한다. 라우터 객체를 정의하고 우리가 구축중인 다양한 모듈을 관리하는 데 도움이 되는 export / import 체인을 설정할 수 있다. 앱에 루트 컴포넌트를 넣는다. 이 시점부터 사용자가 어떤 루트로 갈 때마다 템플릿의 해당 위치로 로드된다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="c1">// The Vue build version to load with the `import` command</span>
+<span class="c1">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span>
+<span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">App</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./app&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">router</span> <span class="nx">from</span> <span class="s1">&#39;./router&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">store</span> <span class="nx">from</span> <span class="s1">&#39;./store&#39;</span><span class="p">;</span>
+
+<span class="cm">/* eslint-disable no-new */</span>
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#app&#39;</span><span class="p">,</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="nx">router</span><span class="p">,</span>
+  <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;App/&gt;&#39;</span><span class="p">,</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span> <span class="nx">App</span> <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>우리의 애플리케이션에서 일부 ES6 규칙을 사용하고 있음에 주목하자. 모든 신택스에 익숙하지 않은 경우에는 <a href="http://es6-features.org/">이 구문</a>을 읽어보는 것도 좋을 것이다.</p>
+
+<p>우리의 임포트 체인은 상당히 복잡해 보인다. 모든 것이 index.js 파일을 통해 위쪽으로 공급된다는 것으로 생각하자.</p>
+
+<p>실제 코드를 작성하기도 전에 <code>boiler plate</code>를 많이 썼다! 현재까지 읽기만 하고 디스크에 아무것도 쓰지 않았다면 지금 시작하기 좋은 때이다. 이전 단계에서 한 모든 것을 이해하는 것이 중요하긴 하지만 repo에서 이 시점부터 복제하여 바로 시작할 수도 있다.</p>
+
+<p>GIT : <a href="https://github.com/matthiaswh/budgeterbium/commit/9dec94f428cf234f6492fcc2ecd9781b4f6c213f">9dec94f</a></p>
+
+<p>이제 기존 계정 / 디렉토리를 복제하고 트랜잭션 및 예산을 위한 place holder를 설정할 것이다. 이것은 새로운 모듈을 추가하는 가장 간단한 방법을 보여줄 것이다. 모듈을 복제하고 이름을 변경한 후에 <code>app/routes.js</code> 및 <code>app/vuex.js</code>를 새 모듈로 업데이트하고 각 모듈의 목록보기 루트를 변경하는 것을 잊지 말자.</p>
+
+<p>모든 것이 준비되었다면, <code>http://localhost:8080/budget</code> 및 <code>http://localhost:8080/transactions</code>를 들어가볼 수 있다. Vue.js Chrome 확장 프로그램을 사용하는 경우 스토어에서도 Chrome 확장 프로그램이 있는 것을 확인해볼 수 있다.</p>
+
+<p><img src="https://matthiashager.com/user/pages/complete-vuejs-application-tutorial/project-structure/vuejs-empty-budgets.PNG" alt=""></p>
+
+<p><img src="https://matthiashager.com/user/pages/complete-vuejs-application-tutorial/project-structure/vuejs-empty-store.PNG" alt=""></p>
+
+<p>GIT : <a href="https://github.com/matthiaswh/budgeterbium/commit/bb85b373de334c3014070ad5e17cf893199ae636">bb85b37</a></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

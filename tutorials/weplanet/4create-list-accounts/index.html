@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJS 가이드 4 - 계정 만들기 및 보기 (1/2)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJS 가이드 4 - 계정 만들기 및 보기 (1/2)</h1>
+<p class="title_header_summary">VueJS를 통한 애플리케이션 개발에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.070241)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,6.883589)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.070241)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.070241)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.070241)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.421444)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.070241)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.070241)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.140481)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.140481)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.669147)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.194092)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.545295)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.280963)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.210722)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.070241)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.491685)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.632166)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.983370)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.913129)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.070241)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.210722)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.070241)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.070241)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.280963)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.070241)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.351204)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.070241)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.140481)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.140481)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.070241)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.070241)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.140481)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.280963)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.070241)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.070241)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.140481)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.070241)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.210722)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.210722)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.070241)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.070241)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.140481)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.491685)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.545295)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.140481)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.561926)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.070241)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.070241)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.070241)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.140481)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.772648)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.140481)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.070241)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.140481)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.070241)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.070241)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.070241)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.070241)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.070241)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.070241)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.070241)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.070241)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.070241)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.280963)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.491685)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.070241)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.070241)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.210722)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.070241)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.070241)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.070241)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.280963)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.280963)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.070241)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.280963)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.140481)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.070241)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.070241)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.070241)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.070241)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.351204)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.351204)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.351204)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.351204)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.351204)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.351204)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.140481)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.070241)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.140481)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.140481)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.070241)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.070241)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.070241)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.070241)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.140481)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.070241)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.070241)'>angular,</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.070241)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.140481)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.070241)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.070241)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.070241)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.140481)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.070241)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,0.632166)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.070241)'>middleware</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com">Matthias Hager</a> 의 <a href="https://matthiashager.com/complete-vuejs-application-tutorial/create-list-accounts">Vue.js Application Tutorial - Step 4: Create &amp; View Accounts</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>거의 모든 프로젝트 구조가 완료되었으므로 앱의 첫 번째 부분인 계정을 만들 차례이다. (드디어!) 이 모듈의 핵심은 사용자가 보유한 은행 또는 신용 계정을 나타내는 간단한 데이터 구조이다. 각 계정은 여러 트랜잭션에 연결되며 전체적인 잔액 및 기타 메타 데이터를 기록한다.</p>
+
+<p>계정 객체는 결국 다음과 같이 나와야 한다.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">&#39;jcijeojde88&#39;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;jcijeojde88&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;Credit Card&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Chase Card&quot;</span>
+    <span class="s2">&quot;balance&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">237.94</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>ID를 객체의 키와 값으로 저장하는 것은 불필요한 것처럼 보일 수도 있다. 나중에 우리는 키가 없는 객체를 왔다갔다 쓸 것이며 객체 자체에 ID가 포함되어 있는 게 중요하다. ID를 객체 키로 사용하면 ID를 기반으로 객체를 쉽게 찾을 수 있게 해준다.</p>
+
+<p>사용자가 할수 있어야 하는 것:</p>
+
+<p>• 잔액이 나와 있는 모든 계정 목록 보기</p>
+
+<p>• 계정 추가하기</p>
+
+<p>• 계정 수정하기</p>
+
+<p>• 계정 삭제하기</p>
+
+<p>• 각 계정별로 필터링하고 그것에 연결된 모든 트랜잭션을 보기</p>
+
+<p>그리고 지금은 이게 전부이다. 잠시 시간을 내서 애플리케이션의 이 섹션을 만드는데 필요한 첫 단계가 무엇인지 생각해보자.</p>
+
+<p>생각해봤는가? 이것은 내가 생각해 낸 것들이다.</p>
+
+<ol>
+<li>저장소에 계정 객체를 추가하기 (인사이드-아웃으로 작업하고 있음을 기억하자)</li>
+<li>새 계정의 ID를 자동으로 생성하기</li>
+<li>필요한 컴포넌트가 사용자가 추가한 계정에 안전하게 액세스 할 수 있도록 인터페이스 만들기</li>
+<li>사용자가 취할 위의 각 작업에 대한 컴포넌트 만들기 (계정 추가, 계정 보기)</li>
+<li>각 컴포넌트에 대한 route 추가하기</li>
+<li>계정을 사용하여 애플리케이션의 탐색바 만들기 시작하기</li>
+</ol>
+
+<p>이제 해야할 일에 대한 명확한 방향이 잡혔다. 시간을 갖고 앉아서 이 단계들에대해 생각해보는 건 실수를 피하고 효율적으로 작업하는데 중요하다!</p>
+
+<p>Vuex는 언뜻 보기에는 매우 복잡해 보인다. 이 단순한 애플리케이션에 필요한 것보다 훨씬 구조적일수도있다. 그 생각에는 약간의 타당성이 있지만, 사후에 다 넣는 것보다좋은 인프라로 시작하는 것이 낫다. 또한 데이터베이스에 정보를 저장하고 데이터베이스에서 로드하는 방법을 구조화하는데도도움이 된다. 실제로 본다면 그것의 기능 및 장점이 더 명확해질 것이다.</p>
+
+<p>이제 계정 객체를 추가하자.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// src/app/accounts/vuex/index.js
+
+const state = {
+  accounts: {}
+};
+</code></pre></div>
+<p>스토어를 로드하는 방법 때문에 <code>state.accounts</code> 대신 <code>state.accounts.accounts</code>를 통해 이 계정 객체에 액세스 할 수 있다. 모든 계정을 <code>state.accounts</code>에 직접 로드할 수도 있겠지만 계정 레코드를 침해하지 않고서는 계정 모듈의 추가 정보를 저장할 수 없게 된다.</p>
+
+<p>간단한 <code>mutation</code>을 만들어 계정을 추가할 것인데 먼저 해야 할게 있다. 추가할 계정마다 임의의 ID를 생성해야 한다. 여러 모듈에 사용을 할 것이기 때문에 소스 루트의 <code>utils.js</code> 파일에 간단한 <a href="http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript">utility script</a> 를 넣어 사용할 것이다.</p>
+
+<p>src/app/accounts/vuex/mutations.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">import { guid } from &#39;../../../utils&#39;;
+
+export default {
+  ADD_ACCOUNT (state, payload) {
+    let id = guid();
+    state.accounts[id] = Object.assign({ id: id }, payload.account);
+  }
+};
+</code></pre></div>
+<p>src/utils.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// thanks to http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+export const guid = function () {
+  function s4 () {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + &#39;-&#39; + s4() + &#39;-&#39; + s4() + &#39;-&#39; +
+    s4() + &#39;-&#39; + s4() + s4() + s4();
+};
+</code></pre></div>
+<p>우리의 <code>ADD_ACCOUNT</code> 기능에서 ID를 키로 새로운 계정을 추가하자. 또한 ID를 속성으로 추가한다. <code>Object.assign({id: id }, payload.account)</code>은 ID만으로 새 객체를 만든 다음 <code>Vuex</code> 액션이 mutation에 제출할 계정으로 확장한다. 그 다음에 action을 만든다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// src/app/accounts/vuex/actions.js
+
+export const addAccount = ({ commit }, data) =&gt; {
+  commit(&#39;ADD_ACCOUNT&#39;, { account: data });
+};
+</code></pre></div>
+<p>현재  <code>addAccount</code>가 하는 것은 데이터를 올바른 mutator로 전달하는 것뿐이다. 나중에 <code>localStorage</code>에 저장하는 것과 같은 비동기 작업을 수행해야 한다. 그때 되면 액션들이 왜 <code>Vuex</code>의 필수적인 부분인지 분명해질 것이다.</p>
+
+<p>이제 스토어는 계정을 추가할 준비가 되었다. 이를 위해 사용자 인터페이스를 만들어야 한다. <code>CreateEditAccount.vue</code>라고 부르자. 우리의 <code>Account</code>와 같은 객체를 생성하거나 편집하는 것은 매우 비슷한 일이다. 같은 양식 필드를 사용하는 것이기 때문에 필자는 거의 항상 이 둘을 결합시킨다. 계정을 만들 수 있게 되면 편집 할 수 있는 기능도 추가하자. 새로운 view는 보기도 라우팅되어야 한다.</p>
+
+<p>src/app/accounts/components/CreateEditAccount.vue</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;template&gt;
+  &lt;div id=&quot;accounts-create-edit-view&quot;&gt;
+    You can create and edit accounts with me, yippee!
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { mapActions } from &#39;vuex&#39;;
+
+export default {
+  name: &#39;accounts-create-edit-view&#39;,
+
+  methods: {
+    ...mapActions([
+      &#39;addAccount&#39;
+    ])
+  }
+};
+&lt;/script&gt;
+
+&lt;style scoped lang=&#39;scss&#39;&gt;
+#accounts-create-edit-view {
+}
+&lt;/style&gt;
+</code></pre></div>
+<p>src/app/accounts/components/index.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">export { default as AccountsListView } from &#39;./AccountsListView&#39;;
+export { default as CreateEditAccount } from &#39;./CreateEditAccount&#39;;
+</code></pre></div>
+<p>src/app/accounts/routes.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+export default [
+  {
+    path: &#39;/&#39;,
+    component: components.AccountsListView
+  },
+  {
+    path: &#39;/accounts/create&#39;,
+    component: components.CreateEditAccount
+  }
+];
+</code></pre></div>
+<p>이제 <code>/accounts/create</code>를 들어가면 계정 생성에 대한 멋진 메시지를 볼 수 있을 것이다. 지금은 사실상 계정 목록 페이지를 홈페이지로 사용하고 있는거지만 URL 생성 시작 부분에 <code>/accounts</code>를 추가 한다. </p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
