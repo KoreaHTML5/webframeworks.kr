@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJS 가이드 9 - 예산 끝내기 (4/7)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJS 가이드 9 - 예산 끝내기 (4/7)</h1>
+<p class="title_header_summary">VueJS를 통한 애플리케이션 개발에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.066186)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,7.412784)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.066186)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.066186)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.066186)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.397113)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.066186)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.066186)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.132371)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.132371)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.515052)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.125155)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.456082)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.264742)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.198557)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.066186)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.463299)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.595670)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.926598)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.860412)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.066186)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.198557)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.066186)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.066186)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.264742)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.066186)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.330928)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.066186)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.132371)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.132371)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.066186)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.066186)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.132371)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.264742)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.066186)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.066186)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.132371)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.066186)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.198557)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.198557)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.066186)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.066186)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.132371)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.463299)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.456082)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.132371)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.529485)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.066186)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.066186)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.066186)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.132371)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.728041)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.132371)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.066186)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.132371)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.066186)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.066186)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.066186)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.066186)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.066186)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.066186)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.066186)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.066186)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.066186)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.264742)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.463299)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.066186)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.066186)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.198557)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.066186)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.066186)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.066186)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.264742)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.264742)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.066186)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.264742)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.132371)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.066186)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.066186)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.066186)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.066186)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.330928)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.330928)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.330928)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.330928)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.330928)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.330928)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.132371)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.066186)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.132371)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.132371)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.066186)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.066186)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.066186)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.066186)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.132371)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.066186)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.066186)'>angular,</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.066186)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.132371)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.066186)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.066186)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.066186)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.132371)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.066186)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,1.522268)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.066186)'>middleware</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com">Matthias Hager</a> 의 <a href="https://matthiashager.com/complete-vuejs-application-tutorial/budget-app-vuejs">Vue.js Application Tutorial - Step 9: Racing Through Budgets</a>)를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>개발 노트를 계속 사용하고 있는가? 필자의 공책에는 이미 많은 것들이 쓰여있다. 제일 중요한 아이템은 예산 월을 날짜로 처리해야 한다는 것이다.</p>
+
+<ul>
+<li>사용자가 날짜 선택 도구로 선택하도록 한다. </li>
+<li>&quot;월 / 년&quot; 포맷으로 해놓는다. </li>
+<li>날짜 객체 (또는 이와 유사한 객체)에 저장한다. </li>
+<li>데이터베이스에 저장할 때 JSON에서 또는 JSON으로 처리한다.</li>
+<li>예산 목록을 월별로 정렬한다.</li>
+<li>사용자가 매월 1개의 예산만 추가할 수 있는지 확인한다.</li>
+</ul>
+
+<p>우리는 2개의 라이브러리를 사용할 것이다. <a href="https://github.com/charliekassel/vuejs-datepicker">Vuejs-datepicker</a>는 사용자에게 날짜를 선택할 수 있는 위젯을 제공한다. 안타깝게도 달을 직접 고를 수 있는 옵션을 주진 않지만 이거면 충분하다. <a href="https://momentjs.com/">Moment.js</a>는 날짜와 시간을 <code>parse</code>, <code>format</code>, <code>manipulate</code> 하게 해준다. 딱히 이게 필요한건 아니지만 많은 날짜 작업을 쉽게 해줄 것이다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm install vuejs-datepicker;moment --save
+</code></pre></div>
+<p>예산에 있는 달 필드에 추가하는 건 쉽다. 우리는 1) datepicker 컴포넌트를 우리의 컴포넌트에 등록하고, 2) 템플릿에 datepicker를 임포트해서 설치하고, 3) v-model을 사용하여 예산 달에 값을 연결시켜야 한다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// /src/app/budgets/components/CreateUpdateBudget.vue
+
+...
+&lt;form class=&quot;form&quot; @submit.prevent=&quot;processSave&quot;&gt;
+      &lt;label for=&quot;month&quot; class=&quot;label&quot;&gt;Month&lt;/label&gt;
+      &lt;p class=&quot;control&quot;&gt;
+        &lt;datepicker name=&quot;month&quot; input-class=&quot;input&quot; format=&quot;MMMM yyyy&quot; v-model=&quot;selectedBudget.month&quot;&gt;&lt;/datepicker&gt;
+      &lt;/p&gt;
+      &lt;label for=&quot;budgeted&quot; class=&quot;label&quot;&gt;Budgeted amount&lt;/label&gt;
+
+...
+
+&lt;script&gt;
+import { mapActions, mapGetters } from &#39;vuex&#39;;
+import Datepicker from &#39;vuejs-datepicker&#39;;
+
+export default {
+  name: &#39;budget-create-edit-view&#39;,
+
+  components: {
+    Datepicker
+  },
+
+  data: () =&gt; {
+
+...
+</code></pre></div>
+<p>예산은 아무데나 저장하면 안되고 데이터베이스에 저장하기 전에 이 새로운 날짜 객체를 처리하고 불러올 때 날짜 객체로 다시 변환 시켜야 한다. 저장할 때는 날짜 객체를 JSON으로 변환해야 한다. 불러올 때는 JSON 스트링에서 새로운 날짜 객체를 만든다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// /src/app/budgets/vuex/api.js
+import localforage from &#39;localforage&#39;;
+import { processAPIData } from &#39;../../utils&#39;;
+
+const BUDGET_NAMESPACE = &#39;BUDGET-&#39;;
+
+export const saveBudget = (budget) =&gt; {
+  budget = Object.assign({}, budget); // clone our object so we can manipulate it before saving
+  budget.month = budget.month.toJSON();
+
+  return localforage.setItem(
+    BUDGET_NAMESPACE + budget.id,
+    budget
+  ).then((value) =&gt; {
+    return value;
+  }).catch((err) =&gt; {
+    console.log(&#39;had a little trouble saving that budget&#39;, err);
+  });
+};
+
+export const fetchBudgets = () =&gt; {
+  return localforage.startsWith(BUDGET_NAMESPACE).then((res) =&gt; {
+    let budgets = processAPIData(res);
+    Object.keys(budgets).forEach((o) =&gt; {
+      budgets[o].month = new Date(budgets[o].month);
+    });
+
+    return budgets;
+  });
+};
+</code></pre></div>
+<p>이제 이게 다 끝났으니 예산 목록 페이지로 돌아가서 달이 (보기 흉한) datetime 값으로 나타나있는 것을 확인하자.</p>
+
+<p><img src="https://matthiashager.com/user/pages/complete-vuejs-application-tutorial/budget-app-vuejs/budgeterbium-ugly-datetime.PNG" alt=""></p>
+
+<p>간단한 필터를 만들어서 이 정보를 사용자 친화적인 형식으로 만들자. 필터라는 용어에 당황할 수도 있겠지만 Vue.js에서 필터는 텍스트 포맷팅에 주로 쓰인다. 우리의 프로젝트 구조에서는 필터를 계획한 적이 없지만 핵심 디렉터리에 <code>filter.js</code> 파일을 넣을 것이다. 이 날짜 형식의 필터는 여러 곳에서 사용될 것이다. 예산 모듈에만 해당되면 거기에 넣었을 것이다.</p>
+
+<p>필터는 그저 템플릿에 값을 여러 인수와 같이 받아서, 값을 변경하고, 결과를 반환하는 것이다. 우리의 필터는 기본 날짜 객체를 전달하며 <code>moment.js</code>를 사용하여 형식을 지정하고, 포맷팅된 날짜를 반환하는 것이다. 항상 <code>MMMM yyyy</code> 형식을 쓰도록 하드코딩을 할 수도 있지만 다른 곳에서는 다른 형식을 쓰고 싶을 수도 있으니 유연하게 만들자. <code>MMMM yyyy</code>를 디폴트로 만들 것이지만 포맷 인수가 전달될 수 있게 허용할 것이다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// /src/filters.js
+import momentjs from &#39;moment&#39;;
+
+export const moment = (date, format) =&gt; {
+  format = format || &#39;MMMM YYYY&#39;;
+  return momentjs(date).format(format);
+};
+</code></pre></div>
+<p><code>vuejs-datepicker</code>와 <code>moment.js</code>는 살짝 다른 포맷팅 인수를 쓰는 걸 염두하자.</p>
+
+<p>그 후, <code>BudgetsList.vue</code>에 필터를 임포트해서 설치하고 목록에 사용하자.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> // /src/app/budgets/components/BudgetsList.vue
+...
+
+&lt;li v-for=&quot;budget, key in budgets&quot;&gt;
+
+        $
+
+...
+
+import { moment } from &#39;../../../filters&#39;;
+
+export default {
+  name: &#39;budgets-list&#39;,
+
+  filters: {
+    moment
+  },
+
+  mounted () {
+
+...
+</code></pre></div>
+<p>이제 우리의 목록은 이렇게 생겼다:</p>
+
+<p><img src="https://matthiashager.com/user/pages/complete-vuejs-application-tutorial/budget-app-vuejs/budgeterbium-budget-list-dates.PNG" alt=""></p>
+
+<p>만약 날짜를 다른 형식으로 보여주고 싶으면 인수를 필터에 전달시키면 된다. 아직은 표준 <code>JavaScript</code> 날짜 형식으로 날짜를 처리하고 있다는 것을 알고 있자. 날짜 표시 및 계산에만 <code>moment.js</code>를 쓰고 있는 것이다. </p>
+
+<p>``</p>
+
+<p>GIT : <a href="https://github.com/matthiaswh/budgeterbium/commit/e2c8ae5833e1be61bca726ecd0dc7653018387f0">e2c8ae5</a></p>
+
+<p>이제 우리의 목록에 있던 아이템들 중 첫 3개를 해결했다. 다음 단계에서는 예산 목록을 월별로 정렬하고, 한 달에 예산이 2개를 초과하지 않도록 해야 한다.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJS 가이드 9 - 예산 끝내기 (5/7)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJS 가이드 9 - 예산 끝내기 (5/7)</h1>
+<p class="title_header_summary">VueJS를 통한 애플리케이션 개발에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.066186)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,7.412784)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.066186)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.066186)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.066186)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.397113)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.066186)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.066186)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.132371)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.132371)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.515052)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.125155)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.456082)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.264742)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.198557)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.066186)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.463299)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.595670)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.926598)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.860412)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.066186)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.198557)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.066186)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.066186)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.264742)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.066186)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.330928)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.066186)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.132371)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.132371)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.066186)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.066186)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.132371)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.264742)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.066186)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.066186)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.132371)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.066186)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.198557)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.198557)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.066186)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.066186)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.132371)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.463299)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.456082)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.132371)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.529485)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.066186)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.066186)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.066186)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.132371)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.728041)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.132371)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.066186)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.132371)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.066186)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.066186)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.066186)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.066186)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.066186)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.066186)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.066186)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.066186)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.066186)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.264742)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.463299)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.066186)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.066186)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.198557)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.066186)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.066186)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.066186)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.264742)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.264742)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.066186)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.264742)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.132371)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.066186)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.066186)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.066186)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.066186)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.330928)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.330928)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.330928)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.330928)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.330928)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.330928)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.132371)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.066186)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.132371)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.132371)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.066186)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.066186)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.066186)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.066186)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.132371)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.066186)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.066186)'>angular,</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.066186)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.132371)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.066186)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.066186)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.066186)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.132371)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.066186)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,1.522268)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.066186)'>middleware</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com">Matthias Hager</a> 의 <a href="https://matthiashager.com/complete-vuejs-application-tutorial/budget-app-vuejs">Vue.js Application Tutorial - Step 9: Racing Through Budgets</a>)를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<h2>Vue.js로 목록 정렬하기</h2>
+
+<p>Vue.js는 계산된 속성들을 사용하여 아이템 목록을 필터링하거나 정렬하는 것을 매우 간단하게 만들어준다. 계산된 속성들은 안에 있는 데이터가 바뀔 때 자동으로 업데이트되므로 다시 정렬할 필요가 없다. 그냥 바로 된다. 우리에게 남겨진 일은 그저 각 예산의 날짜 객체를 비교해야 하는 것뿐이다. 데이터 스토리지에 대한 우리의 접근 방식이 부정적인 영향을 미치는 것은 이번이 처음이다. 만약에 모든 예산이 목록에 있었다면 우리는 다음과 같이 할 수 있다.</p>
+
+<p><code>budgets.sort((a,b)=&gt; { return a.month - b.month; });</code></p>
+
+<p>만약 우리가 진정한 관계형 데이터베이스를 사용하고 있었다면 쿼리를 사용하여 데이터베이스가 데이터 구조를 정렬할 수 있도록 했을 것이다.</p>
+
+<p>그렇다고 해결 방법이 그렇게 어려운건 아니다. 객체의 키는 <code>Object.keys(obj)</code>를 불러와서 어레이로 가져올 수 있다. 이미 이렇게 몇 번 했다. 이 어레이는 반복하여 결과를 정렬 할 수 있다. 마지막으로, 사실 결과가 키 - 값 형식으로 있어야하는 건 아니다. 이 템플릿은 값만 필요하기 때문에 값만 줄 것이다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// /src/app/budgets/components/BudgetsList.vue
+...
+  computed: {
+    ...mapState({
+      &#39;budgets&#39;: state =&gt; state.budgets.budgets
+    }),
+
+    sortedBudgets () {
+      let sortedKeys = Object.keys(this.budgets).sort((a, b) =&gt; {
+        return this.budgets[b].month - this.budgets[a].month;
+      });
+
+      return sortKeys.map((key) =&gt; {
+        return this.budgets[key];
+      });
+    }
+  }
+...
+</code></pre></div>
+<p>아주 멋지거나 효율적인 코드는 아닐 수도 있지만 작동은 한다. 또한 예산의 순서를 <code>b - a</code>로 바꿔서 제일 최근에 것일 먼저 보이게 했다. 그런 다음 결과 값들을 어레이로 반환한다. 새로운 객체를 반환할 수도 있었지만 이렇게 하면 템플릿이 조금 더 간단하게 만들어진다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;li v-for=&quot;budger in sortedBudgets&quot;&gt;
+</code></pre></div>
+<h2>유니크 값인지 체크하기</h2>
+
+<p>이제 우리는 사용자가 같은 달에 여러 예산을 만들지 못하도록 예산 월이 유니크한지 체크해야 한다. 이걸 할 수 있는 (해야 하는) 곳이 두 군데가 있다. 첫 번째는 양식 유효성 검사를 통한 방식이다. 양식 유효성 검사는 나중에 더 자세하게 다룰 것이다. 유효한지 체크해야 할 더 중요한 곳은 데이터 레이어다. 서버 벡엔드를 사용하는 게 아니기 때문에 데이터 품질 및 완전성 확인은<code>Budgeterbium</code>한테 달렸다. 객체를 스토어에 저장할 때 충돌이 없는지 확인해야한다는 것이다. 이걸 확인하기 위해 <code>createBudget</code>과 <code>updateBudget</code> 액션을 쓸 것이다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// /src/app/budgets/vuex/actions.js
+import moment from &#39;moment&#39;;
+import { guid } from &#39;../../../utils&#39;;
+import { saveBudget, fetchBudgets } from &#39;../api&#39;;
+
+const verifyUniqueMonth = (budgets, budget) =&gt; {
+  // accepts a list of budgets, and the budget being updated
+  // returns true if there is no date collision
+  // returns false if a budget already exists in budgets with the same month as budget
+  let month = moment(budget.month);
+  return !Object.values(budgets).find((o) =&gt; {
+    return month.isSame(o.month, &#39;month&#39;);
+  });
+};
+
+export const createBudget = ({ commit, state }, data) =&gt; {
+  let unique = verifyUniqueMonth(state.budgets, data);
+
+  if (!unique) {
+    return Promise.reject(new Error(&#39;A budget already exists for this month.&#39;));
+  }
+
+  let id = guid();
+...
+</code></pre></div>
+<p><code>verifyUniqueMonth</code> 기능은 단순히 모든 예산을 루프하고 저장된 예산과 일치하는 것을 찾으면 true를 반환한다. 그 후에는 <code>Promise.reject</code>를 새로운 에러와 함께 반환한다. 코드가 단순히 에러, <code>throw new Error()</code>를 하면 Vue.js 컴포넌트는 <code>try...catch</code> 블록에 저장 코드를 래핑해야 한다. 이미 <code>saveBudget().then()</code> 같은 Promises를 사용하고 있으니 그 메서드를 계속 사용하자. 그런 다음 컴포넌트에서 리젝션을 보다 잘 처리한다. 이번 달 예산이 이미 존재하는 경우 지금은 <code>redirection</code> 하지 말고 간단하게 사용자에게 경고를 주자. 나중에 제대로 된 에러 처리를 추가할 것이다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// /src/app/budgets/components/CreateUpdateBudget.vue
+...
+
+saveNewBudget () {
+      this.createBudget(this.selectedBudget).then(() =&gt; {
+        this.resetAndGo();
+      }).catch((err) =&gt; {
+        alert(err);
+      });
+    },
+
+    saveBudget () {
+      this.updateBudget(this.selectedBudget).then(() =&gt; {
+        this.resetAndGo();
+      }).catch((err) =&gt; {
+        alert(err);
+      });
+    },
+...
+</code></pre></div>
+<p>rejection을 처리하는데 한 줄 이상 필요하면 따로 메서드를 만드는 게 낫다. 이 부분을 다 했으면, 사용자가 예산 아이템을 만들거나 업데이트하려고 할 때 예산 항목에서 이미 해당 월을 사용 중인 경우 못하게 만들자.</p>
+
+<p>우리의 체크리스트를 다시 확인해보자. 전부 완료했다. </p>
+
+<ul>
+<li>사용자가 날짜 선택 도구로 선택하도록 한다. - X</li>
+<li>&quot;월 / 년&quot; 포맷으로 해놓는다. - X</li>
+<li>날짜 객체 (또는 이와 유사한 객체)에 저장한다. - X</li>
+<li>데이터베이스에 저장할 때 JSON에서 또는 JSON으로 처리한다. - X</li>
+<li>예산 목록을 월별로 정렬한다. - X</li>
+<li>사용자가 매월 1개의 예산만 추가할 수 있는지 확인한다. - X</li>
+</ul>
+
+<p>GIT :  <a href="https://github.com/matthiaswh/budgeterbium/commit/da598446092745358da0e25887028a0b5db272ad">da59844</a></p>
+
+<h2>예산 카테고리</h2>
+
+<p>8번째 세션을 다시 보자. 이제 사용자가 이번 달의 예산 카테고리를 추가할 수 있게 해줄 시간이다. 이것은 우리가 이미 계획하기 시작했던 것이다. 카테고리는 중간 <code>budgets</code> 객체와 같이 ID로 월 예산에 링크된 개별 데이터 객체이다. 링크된 데이터로 작업 하는 것은 이번이 처음이기 때문에, 이 부분에서는 조금 천천히 가자. </p>
+
+<p>관계형 데이터베이스가 익숙하다면 이게 기본적으로 다-대-다 관계라는 것을 알고 있을 것이다. <code>budget</code>은 <code>budgetCategories</code>를 통해 많은 <code>categories</code>를 가지고 있다. 각 <code>budgetCategories</code> 객체에는 모 예산에서 합해야하는 예산 금액과 지출액이 있다. 사용자가 이번 달의 예산을 만들 때 일관성을 유지할 수 있도록 기존 카테고리를 제공해야 한다. 그러나 새로운 카테고리를 즉석에서 생성할 수 있도록 만들어야 한다.</p>
+
+<p>사용자는 별도의 페이지에 예산 카테고리를 추가하지 않고, 한 달 예산 전체를 예산 수정 페이지에서 만들 것이다. 이를 위해서는 이 페이지에서 임포트하고 사용할 컴포넌트 몇 개를 만들어야 한다. 먼저 데이터 레이어로 시작해야 한다. 스토어, 뮤테이터, 액션 및 API를 업데이트하자. <code>budgetCategories</code>는 결국 모 <code>budget</code> 객체의 일부로 저장될 것이지만 개별 <code>categories</code> 객체를 추가하긴 해야 한다.</p>
+
+<p>src/app/budgets/vuex/index.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">import * as actions from &#39;./actions&#39;;
+import mutations from &#39;./mutations&#39;;
+import getters from &#39;./getters&#39;;
+
+const state = {
+  budgets: {},
+  categories: {}
+};
+
+export default {
+  state,
+  actions,
+  mutations,
+  getters
+};
+</code></pre></div>
+<p>src/app/budgets/vuex/mutations.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">export default {
+  CREATE_BUDGET (state, payload) {
+    state.budgets[payload.budget.id] = payload.budget;
+  },
+
+  UPDATE_BUDGET (state, payload) {
+    state.budgets[payload.budget.id] = payload.budget;
+  },
+
+  LOAD_BUDGETS (state, payload) {
+    state.budgets = payload;
+  },
+
+  CREATE_CATEGORY (state, payload) {
+    state.categories[payload.category.id] = payload.category;
+  },
+
+  UPDATE_CATEGORY (state, payload) {
+    state.categories[payload.category.id] = payload.category;
+  },
+
+  LOAD_CATEGORIES (state, payload) {
+    state.categories = payload;
+  }
+};
+</code></pre></div>
+<p>src/app/budgets/vuex/actions.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">import moment from &#39;moment&#39;;
+import { guid } from &#39;../../../utils&#39;;
+import { saveBudget, fetchBudgets, saveCategory, fetchCategories } from &#39;../api&#39;;
+
+const verifyUniqueMonth = (budgets, budget) =&gt; {
+  // accepts a list of budgets, and the budget being updated
+  // returns true if there is no date collision
+  // returns false if a budget already exists in budgets with the same month as budget
+  let month = moment(budget.month);
+  return !Object.values(budgets).find((o) =&gt; {
+    if (o.id === budget.id) return false; // it&#39;s the budget we&#39;re examining, let&#39;s not check if the months are the same
+    return month.isSame(o.month, &#39;month&#39;);
+  });
+};
+
+export const createBudget = ({ commit, state }, data) =&gt; {
+  if (!verifyUniqueMonth(state.budgets, data)) {
+    return Promise.reject(new Error(&#39;A budget already exists for this month.&#39;));
+  }
+
+  let id = guid();
+  let budget = Object.assign({ id: id }, data);
+
+  commit(&#39;CREATE_BUDGET&#39;, { budget: budget });
+  saveBudget(budget).then((value) =&gt; {
+    // we saved the budget, what&#39;s next?
+  });
+};
+
+export const updateBudget = ({ commit, state }, data) =&gt; {
+  if (!verifyUniqueMonth(state.budgets, data)) {
+    return Promise.reject(new Error(&#39;A budget already exists for this month.&#39;));
+  }
+
+  commit(&#39;UPDATE_BUDGET&#39;, { budget: data });
+  saveBudget(data);
+};
+
+export const loadBudgets = ({ state, commit }) =&gt; {
+  if (!state.budgets || Object.keys(state.budgets).length === 0) {
+    return fetchBudgets().then((res) =&gt; {
+      commit(&#39;LOAD_BUDGETS&#39;, res);
+    });
+  }
+};
+
+export const createCategory = ({ commit, state }, data) =&gt; {
+  let id = guid();
+  let category = Object.assign({ id: id }, data);
+  commit(&#39;CREATE_CATEGORY&#39;, { category: category });
+  saveCategory(category);
+};
+
+export const loadCategories = ({ state, commit }) =&gt; {
+  if (!state.categories || Object.keys(state.categories).length === 0) {
+    return fetchCategories().then((res) =&gt; {
+      commit(&#39;LOAD_CATEGORIES&#39;, res);
+    });
+  }
+};
+</code></pre></div>
+<p>src/app/budgets/api.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">import localforage from &#39;localforage&#39;;
+import { processAPIData } from &#39;../../utils&#39;;
+
+const BUDGET_NAMESPACE = &#39;BUDGET-&#39;;
+const CATEGORY_NAMESPACE = &#39;CATEGORY-&#39;;
+
+export const saveBudget = (budget) =&gt; {
+  budget = Object.assign({}, budget); // clone our object so we can manipulate it before saving
+  budget.month = budget.month.toJSON();
+
+  return localforage.setItem(
+    BUDGET_NAMESPACE + budget.id,
+    budget
+  ).then((value) =&gt; {
+    return value;
+  }).catch((err) =&gt; {
+    console.log(&#39;had a little trouble saving that budget&#39;, err);
+  });
+};
+
+export const fetchBudgets = () =&gt; {
+  return localforage.startsWith(BUDGET_NAMESPACE).then((res) =&gt; {
+    let budgets = processAPIData(res);
+    Object.keys(budgets).forEach((o) =&gt; {
+      budgets[o].month = new Date(budgets[o].month);
+    });
+
+    return budgets;
+  });
+};
+
+export const saveCategory = (category) =&gt; {
+  return localforage.setItem(
+    CATEGORY_NAMESPACE + category.id,
+    category
+  ).then((value) =&gt; {
+    return value;
+  }).catch((err) =&gt; {
+    console.log(&#39;category problems abound! &#39;, err);
+  });
+};
+
+export const fetchCategories = () =&gt; {
+  return localforage.startsWith(CATEGORY_NAMESPACE).then((res) =&gt; {
+    return processAPIData(res);
+  });
+};
+</code></pre></div>
+<p>GIT :  <a href="https://github.com/matthiaswh/budgeterbium/commit/9ed4b9982c6f81da4a56c1b8ad9332e9ee87e4d7">9ed4b99</a></p>
+
+<p>우린 분명 어떤 작은 조각 하나가 필요할 것이다. 바로 ID를 기반으로 카테고리를 잡는 게터이다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// /src/app/budgets/vuex/getters.js
+export default {
+  getBudgetById: (state, getters) =&gt; (budgetId) =&gt; {
+    return state.budgets &amp;&amp; budgetId in state.budgets ? state.budgets[budgetId] : false;
+  },
+
+  getCategoryById: (state, getters) =&gt; (categoryId) =&gt; {
+    return state.categories &amp;&amp; categoryId in state.categories ? state.categories[categoryId] : false;
+  }
+};
+</code></pre></div>
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

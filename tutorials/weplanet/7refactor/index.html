@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJS 가이드 7 - 인터루드 & 리펙터</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJS 가이드 7 - 인터루드 & 리펙터</h1>
+<p class="title_header_summary">VueJS를 통한 애플리케이션 개발에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.066186)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,7.412784)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.066186)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.066186)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.066186)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.397113)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.066186)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.066186)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.132371)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.132371)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.515052)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.125155)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.456082)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.264742)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.198557)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.066186)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.463299)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.595670)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.926598)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.860412)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.066186)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.198557)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.066186)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.066186)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.264742)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.066186)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.330928)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.066186)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.132371)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.132371)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.066186)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.066186)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.132371)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.264742)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.066186)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.066186)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.132371)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.066186)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.198557)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.198557)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.066186)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.066186)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.132371)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.463299)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.456082)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.132371)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.529485)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.066186)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.066186)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.066186)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.132371)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.728041)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.132371)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.066186)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.132371)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.066186)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.066186)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.066186)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.066186)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.066186)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.066186)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.066186)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.066186)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.066186)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.264742)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.463299)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.066186)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.066186)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.198557)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.066186)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.066186)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.066186)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.264742)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.264742)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.066186)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.264742)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.132371)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.066186)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.066186)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.066186)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.066186)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.330928)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.330928)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.330928)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.330928)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.330928)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.330928)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.132371)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.066186)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.132371)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.132371)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.066186)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.066186)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.066186)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.066186)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.132371)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.066186)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.066186)'>angular,</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.066186)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.132371)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.066186)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.066186)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.066186)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.132371)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.066186)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,1.522268)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.066186)'>middleware</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com">Matthias Hager</a> 의 <a href="https://matthiashager.com/complete-vuejs-application-tutorial/refactor">Vue.js Application Tutorial - Step 7: Interlude &amp; Refactor</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>우리는 첫 번째 목표를 달성했다. 많은 피, 땀, 그리고 상상의 눈물을 쏟아내면서 대부분 안정적인 계정 모듈을 (대부분) 완성했다. 우리가 나중에 추가하거나 변경할 것이라는 점에는 의심의 여지가 없지만 지금 완전히 동작하고 있다.  바깥으로 나가서 신선한 공기를 마실 시간이다.</p>
+
+<p>이 모듈을 코딩하는 동안 몇 가지 거슬리는 점들이 있었다. 사실 필자는 코딩할 때 공책을 책상 위에 올려놓고 메모를 하고 해야할 작업을 써놓는 경향이 있다. 필자는 이 연습을 강력히 권장한다. 이건 <code>TODO</code> 코멘트로 코드를 빽빽이 채우는 것의 아날로그 버전인데 (나는 아직도 이걸 가끔씩 한다!), 차이점은 모든 것이 한 곳에 있고 더 유연하다는 것이다. 필자는 공책을 나눠서 메모 또는 스케치를 하고 복잡한 문제를 해결한다. 스프링노트를 사용하여 항상 평평하게 펼쳐놓는게 좋다.</p>
+
+<p><img src="https://matthiashager.com/user/pages/complete-vuejs-application-tutorial/refactor/IMG_20170217_142617.jpg" alt=""></p>
+
+<p>필자를 괴롭히고 있던 모든 것들은 노트에 기록되어 있다. 보통 이 시점에서 노트의 기록들을 프로젝트 관리 시스템에 수행해야할  작업이나 버그 리포트로 올려놓는다. 필자는 개인적으로 <a href="https://kanboard.net/">Kanboard</a>를 사용하는데, 매우 강력하고 유연하기 때문이다. 이 툴은 작업들을 잊지않게 해준다. 특히 하나의 항목이 필자를 아쉽게 만들었는데, 이는 바로 create / add, edit / update 및remove / delete를 일관성 없이 썼다는 점이다.</p>
+
+<p>필자는 <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> 용어를 굳게 지키려고 노력하는데, 여기서는 아쉽게도 실패했다. 이제 당신의 methods를 가장 편한 방식으로 불러도 된다. create 대신에 add를 쓰고 싶다면 그렇게 해도 된다. 문제는 필자는 계속 왔다갔다 한다는 것이다. 액션은 <code>addAccount</code>와  <code>updateAccount</code> 이면서 컴포넌트는 <code>CreateEditAccount</code>인 것이다. <code>deleteAccount</code> 액션에서는 <code>removeAccount</code> API 메서드를 쓴다.</p>
+
+<p>(<code>read</code> 역시 동일하다. <code>retrieve</code>는 허용할 수 있지만 데이터를 채울 때는 <code>load</code>를 선호하고 실제로 서버나 데이터베이스에서 가져올 때는 <code>fetch</code>를 선호한다.)</p>
+
+<p>이 시점에서는 사소한 문제로 느껴질 수도 있지만, 3주 후에 이 코딩을 다시 할 때 메서드를 edit으로 했는지 update로 했는지 기억이 나지 않으면 정말 난감해질 수 있다. 더 심각한건 우리는 이제 다음 모듈로 뛰어들기 시작할텐데 이 불일치는 여기서부터 점점 커질 것이라는 점이다. 따라서 리팩터를 만들 좋은 시간이다. 근본적으로 변하는 것이 없으므로 여기에서는 코드를 살펴볼 필요가 없다.</p>
+
+<p>동시에 모든 목록 컴포넌트에서 <code>view</code>를 제거 할 것이다. 이건 필자가 Django에서 가져온 습관인데, 모든 컴포넌트가 어떤 의미에서는 이미 뷰 파일이기 때문에 <code>AccountsListView.vue</code>라고 부를 필요는 없다고 생각한다. 어떻게든 계정 목록과 같은 page 컴포넌트, 탐색바와 같은 partial 컴포넌트 그리고 날짜 선택기 같은 helper 컴포넌트간 구별하는 것이 좋겠지만 이 애플리케이션에서는 큰 문제라고 생각하지 않는다. 어차피 네이밍 스키마가 아닌 프로젝트 구조를 통해 이를 해결할 수 있을 것이다.</p>
+
+<p>저건 해결됐으니 이제 코드에서 리팩토링이 필요하다고 생각되는 다른 부분을 찾아보자. 어떤 코드가 만족스럽지 않다면 결국 나중에 해결해야할 &#39;할 일&#39;들을 쌓아놓거나, 아니면 돌아가서 즉시 수정하자. 지금 보고 바로 이해할 수 없는 내용에는 코멘트를 달거나 리팩토링해야 할 수도 있다. <code>actions.js</code> 파일에서 한 줄이 눈에 띄었다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Object.keys(res).forEach((key)=&gt; {accounts[res[key].id] = res [key]; });
+</code></pre></div>
+<p>API에서 반환된 데이터를 저장소에 필요한 포맷으로 변환하는 무해한 한 줄 코드이다. 좀 엉망이긴 하지만, 내가 본 (또는 쓴) 최악의 코드는 아니다. 몇 주 후에 이 줄을 보면 즉시 무엇을 하는지 알 수 있을까? 아마 추론을 할 수 있겠지만 목적은 즉시 명백하지 않을 것이다. 여기에 코멘트를 약간 달 수 있다. 그러나 데이터베이스에서 불러오는 모든 유형의 데이터에 대해 비슷한 작업을 수행해야 할 것이다. 그냥 이걸 어딘가에 유틸리티 기능으로 바꾸는 게 좋겠다.</p>
+
+<p>이제 문제는 이게 API에 속할까 아니면 액션에 속할까이다. 작업이 데이터를 저장하기 전에 예상치 못한 방식으로 데이터를 조작해야 할까? API가 항상 필요한 포맷으로 데이터를 제공해야 할까?</p>
+
+<p>이러한 질문은 실제 기능보다는 프로그래밍 원리의 문제이다. 실제로 이 상황에서 이 코드가 어디에 속해 있는지는 중요하지 않다.하지만 애플리케이션이 복잡해지고 한 줄의 코드가 길어지고, 포맷 문제로 인해 간헐적으로 데이터가 손실되는 치명적인 버그를 찾아내고, API 코드에 대해 수 백 번의 테스트를 실행 했는데도 알아내지 못하고 있는데 끝내 문제는 애플리케이션이 <code>Vuex</code> 작업의 데이터를 변경하고, 버그가 실제로는 거기에 있었음을 알기 전에 시간을 엄청나게 낭비할 것이다! 이 사소해 보이던 문제가 꽤나 심각한 결과를 초래한 것이다.</p>
+
+<p>많이 왔다 갔다 했지만, 많은 모듈을 사용하기 때문에 결국 프로세싱 코드를 <code>src/utils.js</code> 파일로 옮기기로 결정했다. 더 많은 글로벌 API 펑션을 작성하게 되면 <code>src/api.js</code> 파일을 만들겠지만 지금은 필요하지 않다. 그런 다음 실제 변환을 API 코드로 옮겼다. 우리가 만드는 API 레이어는 사용 가능한 데이터를 반환해야하므로 그곳이 가장 좋은 장소라고 느꼈다.</p>
+
+<p>src/app/accounts/api.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">import localforage from &#39;localforage&#39;;
+import { processAPIData } from &#39;../../utils&#39;;
+
+const ACCOUNT_NAMESPACE = &#39;ACCOUNT-&#39;;
+
+export const fetchAccounts = () =&gt; {
+  return localforage.startsWith(ACCOUNT_NAMESPACE).then((res) =&gt; {
+    return processAPIData(res);
+  });
+};
+
+...
+</code></pre></div>
+<p>src/utils.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+
+export const processAPIData = function (data) {
+  /*
+  Converts the data formatted for IndexedDB / API into the format
+  our application uses.
+   */
+  let res = {};
+  Object.keys(data).forEach((key) =&gt; { res[data[key].id] = data[key]; });
+  return res;
+};
+</code></pre></div>
+<p>src/app/accounts/vuex/actions.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+
+export const loadAccounts = (state) =&gt; {
+  // loads accounts only if they are not already loaded
+  if (!state.accounts || Object.keys(state.accounts).length === 0) {
+    return fetchAccounts().then((res) =&gt; {
+      state.commit(&#39;LOAD_ACCOUNTS&#39;, res);
+    });
+  }
+};
+</code></pre></div>
+<p>마지막으로, 작지만 위험한 버그를 발견했다. 계정을 편집하면 잔액이 사라진다! 이래서 코드에 맞는 테스트 세트를 만들어야한다. 문제를 바로 발견했을 것이다. 코드를 보면 <code>CreateUpdateAccount.vue</code>에서 업데이트할 때 계정 개체의 일부만 로드하기로 결정했기 때문에 저장 코드가 변경되는 필드만 업데이트하지 않고, 전체 개체를 덮어씌우는 것이다. 이것은 필자가 그 당시에 더 생각해 봤어야했던 것이었다. 이 경우 컴포넌트에 있는 모든 객체 데이터를 로드하는 것으로 전환하고 사용자에게는 그들이 업데이트해야 할 필드만 보여줘야 한다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// src/app/accounts/components/CreateUpdateAccount.vue
+
+...
+
+if (selectedAccount) {
+  this.editing = true;
+  this.selectedAccount = Object.assign({}, selectedAccount); // we copy to a new object so we aren&#39;t editing the real object in the Vuex store
+}
+...
+</code></pre></div>
+<p>GIT : <a href="https://github.com/matthiaswh/budgeterbium/commit/324fbe9d19c02f2ccd2ef1d8bcf4c2211b7a8941">324fbe9</a></p>
+
+<p>GIT : <a href="https://github.com/matthiaswh/budgeterbium/commit/23182d133116f7266508a7362a0739c0f81d8589">23182d1</a></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
