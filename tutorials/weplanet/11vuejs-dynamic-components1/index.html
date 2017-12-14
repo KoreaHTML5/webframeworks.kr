@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJS 가이드 11 - Vue.js 다이나믹 컴포넌트로 예산 마무리하기 (1/2)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJS 가이드 11 - Vue.js 다이나믹 컴포넌트로 예산 마무리하기 (1/2)</h1>
+<p class="title_header_summary">VueJS를 통한 애플리케이션 개발에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.062830)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,8.356415)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.062830)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.062830)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.062830)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.376981)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.062830)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.062830)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.125660)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.125660)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.387547)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.068113)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.382264)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.251321)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.188491)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.062830)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.439811)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.565472)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.879623)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.816792)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.062830)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.188491)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.062830)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.062830)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.251321)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.062830)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.314151)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.062830)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.125660)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.125660)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.062830)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.062830)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.125660)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.251321)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.062830)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.062830)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.125660)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.062830)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.188491)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.188491)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.062830)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.062830)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.125660)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.439811)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.382264)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.125660)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.879623)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.062830)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.062830)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.062830)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.125660)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.691132)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.125660)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.062830)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.125660)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.062830)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.062830)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.062830)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.062830)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.062830)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.062830)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.062830)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.062830)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.062830)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.251321)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.439811)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.062830)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.062830)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.188491)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.062830)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.062830)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.062830)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.251321)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.251321)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.062830)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.251321)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.125660)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.062830)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.062830)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.062830)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.062830)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.314151)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.314151)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.314151)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.314151)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.314151)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.314151)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.125660)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.062830)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.125660)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.125660)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.062830)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.062830)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.062830)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.062830)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.125660)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.062830)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.062830)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.062830)'>electron</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.062830)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.125660)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.125660)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.062830)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.062830)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.125660)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.062830)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.261887)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.062830)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.062830)'>IoT</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.062830)'>docker</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.062830)'>serverless</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com">Matthias Hager</a> 의 <a href="https://matthiashager.com/complete-vuejs-application-tutorial/vuejs-dynamic-components">Vue.js Application Tutorial - Step 11: Finishing Budgets with Vue.js Dynamic Components</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>당신은 손에 힘을 주며 우리의 최종 모듈인 트랜잭션으로 빨리 넘어가고 싶을 수도 있을 것이다. 우리는 아직 예산이 끝나지 않았지만 거의 다 왔다.</p>
+
+<p>전 몇 단계에서 우리가 끝내야 할 아이템들을 목록으로 만들었었다.</p>
+
+<ul>
+<li>예산 &quot;월&quot; 추가하기</li>
+<li>생성된 달에 개별 예산 카테고리 추가하기</li>
+<li>예산이 추가될 때마다 월 기록 업데이트하기</li>
+<li>월 및 예산에 대한 ID를 자동으로 생성하기</li>
+<li>사용자가 해당 월의 예산을 볼 수있도록 &quot;월&quot; 보기 컴포넌트 만들기</li>
+<li><code>IndexedDB</code>에서 데이터 저장 및 로딩하기</li>
+<li>각 컴포넌트에 대한 루트 추가하기</li>
+<li>계정 및 예산 책정 탐색하기</li>
+</ul>
+
+<p>위에 아이템들은 완전히 다 끝났다. 하지만 우린 사용자가 할 수 있어야 할 액션들도 목록으로 만들었다. 개발은 사용자의 관점에서 바라보는 게 항상 도움이 된다. 우린 이미 이렇게 하기 시작했지만 공식화시키진 않았다. 사실상 사용자 스토리는 <a href="https://www.mountaingoatsoftware.com/agile/user-stories">agile development</a>의 큰 부분이다. 기본 전제는 개발 필요 조건을 다음 형식으로 쓴다는 것이다:</p>
+
+<p>as a I want so that ___ </p>
+
+<p>이 형식을 무조건적으로 따르면 당신이 하는 모든 작업은 사용자를 위한 작업이 된다. 즉, 불필요한 작업을 하는 것도 피할 수 있을 것이다. 또한 사용자의 필요에 맞춰 작업의 우선순위를 정하는데도 도움이 된다. 필자가 마케터로서 사용자 피드백을 수집하는 데 중점을 두었음에도 불구하고, 개발 프로젝트를 진행할때에는 사용자 스토리에 전적으로 충실하진 않는다. 하지만 자주 꺼내 쓰는 도구이긴 하다. 한 걸음 뒤로 물러나게 하고, 자신이 하고 있는 일의 목적을 평가하게 만들며, 종종 오래된 문제에 새로운 관점을 가져 오거나, 새로운 관점을 제시해준다. 다음은 우리가 만든 사용자 목록이다.</p>
+
+<p>사용자는 다음 작업들을 할 수 있어야 한다.</p>
+
+<ol>
+<li><p>이번 달 예산 보기</p></li>
+<li><p>예산 금액으로 지출 카테고리 추가하기</p></li>
+<li><p>카테고리에서 쓸 수 있는 금액이 얼마나 남았는지 확인하기</p></li>
+<li><p>카테고리에 책정된 예산 금액 업데이트하기</p></li>
+<li><p>지난 달 전체 예산을 복사하기</p></li>
+<li><p>지난 달 동안 각 카테고리에서 얼마나 많은 예산을 책정 했는지 지출은 얼마인지 보기</p></li>
+<li><p>이번 달 총 수입, 예산 및 얼마나 썼는지 확인하기</p></li>
+</ol>
+
+<p>이것들이 어떻게 사용자 스토리 형식에 맞을지 쉽게 이해할 수 있다.</p>
+
+<p>아이템 4와 5를 제외하고는 모든 걸 이미 끝냈다. 예전에 계정 및 예산에 대해 편집 보기를 만들었지만 예산 항목은 인라인으로 편집하기 때문에 약간 다르다. 사용자는 예산을 볼 수 있어야 하고, 변경하려는 예산 아이템에 대한 편집 링크를 클릭하여 새로운 값을 입력할 수 있어야 한다. (어라, 이건 사용자 스토리처럼 들리지 않는가!) 우리는 &#39;보기&#39; 모드와 &#39;편집&#39; 모드 간 빠르게 전환할 수 있어야 한다. 계정에서는 <code>props</code> 값을 보고 필드를 변경하여 생성 모드와 편집 모드를 전환했었다. 여기서도 그렇게 할 수 있겠지만 보기 모드는 편집 모드랑은 완전히 다르므로, 이 둘은 실제로 전환가능한 별도의 컴포넌트여야 한다.</p>
+
+<p>다시 한 번 말하지만 Vue.js는 이미 우리보다 2 단계 앞서 있으므로 다이나믹 컴포넌트라는것을 제공한다. 다이나믹 컴포넌트를 사용하면 개발자는 다른 컴포넌트의 템플릿에 컴포넌트 플레이스홀더를 삽입 할 수 있게 해준다. 그럼 이 <code>parent</code> 컴포넌트는 플레이스홀더에 어떤 <code>child</code> 컴포넌트가 로드되는지를 변경할 수 있다. 이렇게 하면 <code>parent</code>가 이미 마운트된 후에도 언제든지 컴포넌트를 전환 할 수 있게 해준다. 우리의 경우 사용자가 버튼을 클릭하면 보기에서 편집으로 전환되는 것이다.</p>
+
+<p>먼저 예산 아이템 테이블 행을 컴포넌트로 바꿔야 한다. 단지 몇 가지 td 요소일뿐이므로 자체 컴포넌트일 필요가 없을 것 같았지만 이제는 컴포넌트로 교체돼야 한다.</p>
+
+<p>src/app/budgets/components/BudgetItem.vue</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;template&gt;
+  &lt;tr class=&quot;budget-item&quot;&gt;
+    &lt;td&gt;&lt;span class=&quot;subtitle is-5&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span class=&quot;subtitle is-5&quot;&gt;$&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span class=&quot;subtitle is-5&quot;&gt;$&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span class=&quot;subtitle is-5&quot;&gt;$&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a class=&#39;button&#39; @click=&quot;$emit(&#39;edit-budget-category&#39;)&quot;&gt;Edit&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { mapGetters } from &#39;vuex&#39;;
+
+export default {
+  name: &#39;budget-item&#39;,
+
+  props: [&#39;value&#39;],
+
+  computed: {
+    ...mapGetters([&#39;getCategoryById&#39;])
+  }
+};
+&lt;/script&gt;
+</code></pre></div>
+<p>src/app/budgets/components/CreateUpdateBudget.vue</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+
+        &lt;tbody&gt;
+          &lt;template
+            v-for=&quot;value, key in selectedBudget.budgetCategories&quot;
+          &gt;
+            &lt;budget-item v-model=&quot;value&quot;&gt;&lt;/budget-item&gt;
+          &lt;/template&gt;
+          &lt;CreateUpdateBudgetCategory v-on:add-budget-category=&quot;addBudgetCategory&quot;&gt;&lt;/CreateUpdateBudgetCategory&gt;
+        &lt;/tbody&gt;
+
+...
+
+import CreateUpdateBudgetCategory from &#39;./CreateUpdateBudgetCategory&#39;;
+import BudgetItem from &#39;./BudgetItem&#39;;
+
+export default {
+  name: &#39;budget-create-edit-view&#39;,
+
+  components: {
+    Datepicker,
+    CreateUpdateBudgetCategory,
+    BudgetItem
+  },
+
+...
+</code></pre></div>
+<p>동시에 우리는 이 예산 카테고리를 편집하고 싶다는 이벤트를 보내는 편집 버튼을 추가했다. 나중에 이것을 위한 리스너를 만들 것이다. 우리는 이미 <code>CreateUpdateBudgetCategory.vue</code>가 있지만 생성만 할 수 있으므로 업데이트 능력을 추가할 시간이다.업데이트를 위해 뮤테이션 / 액션 쌍으로 시작한다. 또한 예산 카테고리를 ID로 가져올 게터가 필요하다.</p>
+
+<p>src/app/budgets/vuex/mutations.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+
+  CREATE_BUDGET_CATEGORY (state, payload) {
+    Vue.set(state.budgets[payload.budget.id].budgetCategories, payload.budgetCategory.id, payload.budgetCategory);
+  },
+
+  UPDATE_BUDGET_CATEGORY (state, payload) {
+    state.budgets[payload.budget.id].budgetCategories[payload.budgetCategory.id] = payload.budgetCategory;
+  }
+};
+</code></pre></div>
+<p>src/app/budgets/vuex/actions.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+
+  });
+};
+
+export const updateBudgetCategory = ({ commit, dispatch, getters }, data) =&gt; {
+  let newBudget = data.budgetCategory.budgeted;
+  let oldBudget = getters.getBudgetCategoryById(data.budget.id, data.budgetCategory.id).budgeted;
+
+  if (newBudget !== oldBudget) {
+    dispatch(&#39;updateBudgetBalance&#39;, {
+      budget: data.budget,
+      param: &#39;budgeted&#39;,
+      value: newBudget - oldBudget
+    });
+  }
+
+  commit(&#39;UPDATE_BUDGET_CATEGORY&#39;, data);
+
+  // save using the budget in our store
+  saveBudget(getters.getBudgetById(data.budget.id));
+};
+</code></pre></div>
+<p>src/app/budgets/vuex/getters.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+
+  },
+
+  getBudgetCategoryById: (state, getters) =&gt; (budgetId, budgetCategoryId) =&gt; {
+    return state.budgets &amp;&amp; budgetId in state.budgets
+      ? state.budgets[budgetId].budgetCategories &amp;&amp; budgetCategoryId in state.budgets[budgetId].budgetCategories
+        ? state.budgets[budgetId].budgetCategories[budgetCategoryId]
+        : false
+      : false;
+  }
+};
+</code></pre></div>
+<p>여기서 새로운 개념은 없다. 예산 카테고리를 업데이트할 때 사용자가 예산 금액을 변경했는지 체크하고 이 변화를 총 예산으로 전달한다. 게터 코드는... 글쎄, 체인화된 3진수에 대해 의문을 가질 수도 있다. if-else 문으로 쓸 수도 있지만 실제로 가독성을 높이는데 도움이 될 것 같진 않다. 이 코드는 단순히 데이터가 존재하는지 체크하고 데이터가 있으면 반환하고 없으면 false를 반환한다.</p>
+
+<p>예산 카테고리를 편집하는 백엔드 로직이 이제 자리를 잡았다. 인터페이스를 추가한 다음 다이나믹 컴포넌트를 사용하여 인터페이스를 사용자에게 보여줄 방법을 찾아야한다.</p>
+
+<p>src/app/budgets/components/CreateUpdateBudgetCategory.vue</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+
+&lt;a class=&quot;button is-primary&quot; @click.prevent=&quot;processSave&quot;&gt;
+
+&lt;/a&gt;
+
+...
+
+components: {
+    Multiselect
+  },
+
+  props: [
+    &#39;value&#39;
+  ],
+
+  data: () =&gt; {
+    return {
+      budgetCategory: {},
+      editing: false
+    };
+  },
+
+  mounted () {
+    this.loadCategories();
+    if (this.value) {
+      this.budgetCategory = Object.assign({}, this.value);
+
+      // we need the selected category name and ID, but the budgetCategory object only holds the ID by default
+      this.budgetCategory.category = this.getCategoryById(this.budgetCategory.category);
+
+      this.editing = true;
+    }
+  },
+
+  methods: {
+    ...mapActions([
+      &#39;createCategory&#39;,
+      &#39;loadCategories&#39;
+    ]),
+
+    processSave () {
+      // we are passing the saves up to the budget because this budget
+      // category view isn&#39;t aware of its parent budget object
+      if (this.editing) {
+        this.$emit(&#39;update-budget-category&#39;, this.budgetCategory);
+      } else {
+        this.$emit(&#39;add-budget-category&#39;, this.budgetCategory);
+        this.budgetCategory = {};
+      }
+    },
+
+    ...
+
+  computed: {
+    ...mapGetters([
+      &#39;getCategorySelectList&#39;,
+      &#39;getCategoryById&#39;
+    ])
+  }
+};
+&lt;/script&gt;
+</code></pre></div>
+<p>src/app/budgets/components/CreateUpdateBudget.vue</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">...
+
+        &lt;tbody&gt;
+          &lt;template
+            v-for=&quot;value, key in selectedBudget.budgetCategories&quot;
+          &gt;
+            &lt;component
+              :is=&quot;budgetCategoryComponent(value)&quot;
+              v-model=&quot;value&quot;
+              v-on:update-budget-category=&quot;saveBudgetCategory&quot;
+              v-on:edit-budget-category=&quot;activeBudgetCategory = value&quot;
+            &gt;&lt;/component&gt;
+          &lt;/template&gt;
+          &lt;CreateUpdateBudgetCategory v-on:add-budget-category=&quot;addBudgetCategory&quot;&gt;&lt;/CreateUpdateBudgetCategory&gt;
+        &lt;/tbody&gt;
+
+...
+
+  components: {
+    Datepicker,
+    CreateUpdateBudgetCategory,
+    BudgetCategory
+  },
+
+  data: () =&gt; {
+    return {
+      selectedBudget: {},
+      editing: false,
+      activeBudgetCategory: null
+    };
+  },
+
+  mounted () {
+    if (&#39;budgetId&#39; in this.$route.params) {
+      this.loadBudgets().then(() =&gt; {
+        let selectedBudget = this.getBudgetById(this.$route.params.budgetId);
+        if (selectedBudget) {
+          this.editing = true;
+          this.selectedBudget = Object.assign({}, selectedBudget);
+        }
+      });
+    }
+  },
+
+  methods: {
+    ...mapActions([
+      &#39;createBudget&#39;,
+      &#39;updateBudget&#39;,
+      &#39;loadBudgets&#39;,
+      &#39;createBudgetCategory&#39;,
+      &#39;updateBudgetCategory&#39;
+    ]),
+
+    ...
+
+    },
+
+    saveBudgetCategory (budgetCategory) {
+      // format it how our action expects
+      budgetCategory.category = budgetCategory.category.id;
+      this.updateBudgetCategory({
+        budget: this.selectedBudget,
+        budgetCategory: budgetCategory
+      }).then(() =&gt; {
+        this.selectedBudget = Object.assign({}, this.getBudgetById(this.$route.params.budgetId));
+      });
+    },
+
+    budgetCategoryComponent (budgetCategory) {
+      return this.activeBudgetCategory &amp;&amp; this.activeBudgetCategory === budgetCategory ? &#39;create-update-budget-category&#39; : &#39;budget-category&#39;;
+    }
+
+...
+</code></pre></div>
+<p>생성 / 업데이트 컴포넌트는 이제 업데이트 이벤트를 체인 위로 전달한다. 예산 카테고리는 <code>parent</code> 예산의 일부이지만 <code>parent</code>를 인식하지 못하기 때문에 예산 자체가 업데이트를 처리해야한다.</p>
+
+<p>드디어 다이나믹 컴포넌트 부분으로 왔다. <code>&lt;component&gt;&lt;/component&gt;</code> 태그를 플레이스홀더로 사용한다. <code>:is</code> 속성은 어떤 컴포넌트를 쓸지 결정하기 위해 <code>budgetCategoryComponent(value)</code> 메서드를 실행한 결과에 의존하라고 지시한다. 이 메서드는 <code>activeBudgetCategory</code>가 현재 루프되는 예산 카테고리인지 체크한다. 그렇다면 <code>CreateUpdateBudgetCategory</code> 컴포넌트를 쓰고, 그렇지 않으면 <code>BudgetCategory</code>로 돌아간다.</p>
+
+<p>이제 모든 것을 하나로 묶는데 필요한 이벤트 리스너로 방향을 바꾸자.</p>
+
+<p><img src="https://matthiashager.com/user/pages/complete-vuejs-application-tutorial/vuejs-dynamic-components/budgeterbium-budget-edit.PNG" alt=""></p>
+
+<p>이 코드는 잘 작동하고 우리의 소규모 애플리케이션에 적합하다. 여기서 다이나믹 컴포넌트를 사용하는데 단점이 보이는가? 이 작업에 대한 다른 접근 방식을 생각해낼 수 있는가?</p>
+
+<p>커밋 할 시간이다.</p>
+
+<p>GIT :  <a href="https://github.com/matthiaswh/budgeterbium/commit/0e8972c5e95146c7c320e37f2c1684b1e9ee1244">0e8972c</a></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

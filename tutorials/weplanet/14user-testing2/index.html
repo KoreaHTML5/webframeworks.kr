@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJS 가이드 14 - 유저 테스트 (2/3)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJS 가이드 14 - 유저 테스트 (2/3)</h1>
+<p class="title_header_summary">VueJS를 통한 애플리케이션 개발에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.062830)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,8.356415)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.062830)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.062830)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.062830)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.376981)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.062830)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.062830)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.125660)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.125660)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.387547)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.068113)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.382264)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.251321)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.188491)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.062830)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.439811)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.565472)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.879623)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.816792)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.062830)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.188491)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.062830)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.062830)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.251321)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.062830)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.314151)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.062830)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.125660)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.125660)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.062830)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.062830)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.125660)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.251321)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.062830)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.062830)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.125660)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.062830)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.188491)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.188491)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.062830)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.062830)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.125660)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.439811)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.382264)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.125660)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.879623)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.062830)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.062830)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.062830)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.125660)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.691132)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.125660)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.062830)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.125660)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.062830)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.062830)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.062830)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.062830)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.062830)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.062830)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.062830)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.062830)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.062830)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.251321)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.439811)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.062830)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.062830)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.188491)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.062830)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.062830)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.062830)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.251321)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.251321)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.062830)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.251321)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.125660)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.062830)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.062830)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.062830)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.062830)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.314151)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.314151)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.314151)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.314151)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.314151)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.314151)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.125660)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.062830)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.125660)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.125660)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.062830)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.062830)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.062830)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.062830)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.125660)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.062830)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.062830)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.062830)'>electron</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.062830)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.125660)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.125660)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.062830)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.062830)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.125660)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.062830)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.261887)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.062830)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.062830)'>IoT</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.062830)'>docker</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.062830)'>serverless</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://matthiashager.com">Matthias Hager</a> 의 <a href="https://matthiashager.com/complete-vuejs-application-tutorial/user-testing">Vue.js Application Tutorial - Step 14 - User Testing</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<h2>사용자는 해당 예산에 속하지 않는 카테고리를 선택하려고 한다.</h2>
+
+<p>우리는 가장 큰 시스템 관점의 문제를 먼저 해결하려고 한다. 한 달 예산을 설정할 때 사용자는 예산을 카테고리에 넣는다. 그러고 트랜잭션을 추가할 때 사용자는 예산 (날짜를 통해서) 그리고 카테고리, 둘 다 트랜잭션에 연결한다. 지금 애플리케이션의 상태에서는 선택한 예산에 연결되지 않은 카테고리를 선택할 수 있다. 이러면 콘솔 오류가 생기지만 사용자에게는 어떤 오류도 표시되지 않는다. 사실상 아무것도 뜨지 않는 것이다.</p>
+
+<p>이걸 어떻게 해결해야 할까? 필자는 4가지의 가능한 해결책을 생각해냈다.</p>
+
+<ol>
+<li>사용자가 선택한 예산 날짜를 기준으로 카테고리 목록을 필터한다.</li>
+<li>트랜잭션이 추가되면 카테고리를 예산에 동적으로 추가한다.</li>
+<li>모든 카테고리를 모든 예산에 자동으로 추가하여 사용자가 매달 직접하지 않아도 되게 한다.</li>
+<li>사용자가 잘못된 카테고리를 선택했다고 간단히 오류로 표시한다.</li>
+</ol>
+
+<p>처음 두 옵션은 비교적으로 사소한 버그 수정이다. 세 번째 옵션은 애플리케이션 실행 방식을 크게 바꿀 것이며 기능 변경이나 리팩터링으로 분류해야 할 것이다. 이 사용자 워크플로가 현재 워크플로보다 더 좋을지, 그리고 우리의 애플리케이션이 쓰고 있는 방식에 맞는지 진지하게 고려해보고 계획을 짜는 게 좋을 것이다. 마지막 옵션은 그런 대로 괜찮은 임시방편일수도 있지만 사용자 경험을 개선시키는 건 아니기 때문에 영구적인 해결책은 아니다.</p>
+
+<p>일단은 2번째 옵션으로 가겠다. 우리의 목표인 간단하고 이해하기 쉬운 사용자 경험과 잘 맞다. 또한 때로는 예상치 못하고 계획하지 못한 지출이 발생하는 실제 세계 모델하고도 잘 맞는다. 3번째 옵션은 나중에 더 알아보기 위해 백로그에 추가하자.</p>
+
+<p>사용자 스토리:</p>
+
+<p>사용자가 예산에 존재하지 않는 예산 카테고리에 트랜잭션을 추가하면 $0의 예산으로 예산 카테고리가 추가되어야 한다. </p>
+
+<p><strong>높은 우선순위</strong></p>
+
+<h2>사용자는 존재하지 않는 예산에 트랜잭션을 저장하려고할 수도 있다</h2>
+
+<p>이건 근본적으로 이전 버그와 똑같은 문제이다. 자세하게는 얘기 안하겠지만 우리는 비슷한 해결책을 쓸 것이다.</p>
+
+<p>사용자 스토리:</p>
+
+<p>사용자가 존재하지 않는 예산에 트랜잭션을 날짜에 추가하려고하면 예산과 예산 카테고리가 자동으로 추가되어야 한다.</p>
+
+<p><strong>높은 우선순위</strong></p>
+
+<h2>예산을 추가하면 사용자가 다시 예산 목록으로 리디렉션된다</h2>
+
+<p>예산을 추가 할 때 거의 항상 바로 편집하고 싶을 것이다. 현재 워크플로는 다시 클릭하게 만들며 이 과정에 대해 불만을 가지게 한다. </p>
+
+<p>사용자 스토리:</p>
+
+<p>새 예산을 추가하면 사용자가 새로 생성된 예산으로 리디렉션 되어야 한다. </p>
+
+<p><strong>낮은 우선순위</strong></p>
+
+<h2>한 달의 예산을 나타내는데, 월에 속한 하루를 선택하는 것은 혼란스럽다</h2>
+
+<p>여기서는 그다지 할 말이 없다. 당시에도 이 문제에 대해 알고 있었지만 그대로 두었었다. 차후 튜토리얼에서 우리만의 월 선택기를 만들 것이다.</p>
+
+<p>사용자 스토리:</p>
+
+<p>새로운 월 선택기 컴포넌트 만들기. 중간 우선순위</p>
+
+<p><strong>중간 우선순위</strong></p>
+
+<h2>추가 된 계정이 사이드 바에 즉시 표시되지 않는다</h2>
+
+<p>새 계정이 사이드 바에 추가되려면 사용자가 애플케이션을 새로 고침 해야 한다. 이것은 초반에 Vue.js를 제대로 쓰지 못해서 생긴 쉬운 (그러나 위험한) 실수며 쉽게 고칠 수 있다.</p>
+
+<p>사용자 스토리: </p>
+
+<p>새 계정이 추가되면 자동으로 사이드 바에 나와야 한다. </p>
+
+<p><strong>중간 우선순위</strong></p>
+
+<p>때로는&quot;사용자 스토리&quot; 모델이 제한적인 경우가 있는데 지금이 그 중 하나이다. 필자는 이 버그를 고친 후 코드에 다른 곳에 아직 찾지 못한 비슷한 버그가 없는지 확인하고 싶다. 이것은 사용자 스토리로 잘 해석되지 않지만 중요한 작업으로 목록에 올라가 있어야 한다. </p>
+
+<h2>라인 아이템을 추가할 때 &#39;추가&#39; 또는 &#39;저장&#39;을 클릭하려면 마우스를 써야 한다.</h2>
+
+<p>사소한 골칫거리처럼 보일 수 있는 것도 애플리케이션을 장기간 사용하게 되면 심각한 문제가 된다. 기대한 사용자 기능을 손상시키지않는 것은 중요하다. </p>
+
+<p>사용자 스토리:</p>
+
+<p>양식에서 엔터를 누르면 양식이 제출되어야 한다.</p>
+
+<p><strong>중간 우선순위</strong></p>
+
+<h2>트랜잭션을 업데이트해도 해당 값이 모두 업데이트 되지않는다</h2>
+
+<p>이것은 트랜잭션 모듈을 만들 때 나중에 하려고 남겨두었던 일이다. 이제 완료해야 할 시간이다.</p>
+
+<p>사용자 스토리:</p>
+
+<p>사용자가 트랜잭션을 업데이트 하면 해당 값도 모두 업데이트되어야 한다. 예:트랜잭션 날짜를 다른 달로 이동하면 두 예산이 모두 변경되어야 한다. 트랜잭션 금액을편집하면 예산과 계정 잔액, 둘 다 업데이트 되어야 한다. </p>
+
+<p><strong>높은 우선순위</strong></p>
+
+<h2>사용자가 트랜잭션을 삭제할 수 있어야 한다</h2>
+
+<p>사용자 스토리:</p>
+
+<p>사용자가 트랜잭션을 삭제할 수 있으며 해당 값은 모두 업데이트된다. </p>
+
+<p><strong>중간 우선순위</strong></p>
+
+<h2>예산 카테고리에 소득을 추가하면 지출 항목에 양수 값을 보여줄 수 있다.</h2>
+
+<p>여기서 기술적으로 잘못된 것은 전혀 없지만 우리의 시스템은 완전히 망가질 수 있다. 시행하고자 하는 해결책은 소득을 오프-예산으로 로그 하는 것이다.</p>
+
+<p>사용자 스토리:</p>
+
+<p>사용자는 매월 소득을 보고 할 수 있다. 이것은 그 달의 예산 금액에 영향을 주지않는다. &#39;이번 달의 소득으로 기록하기&#39;가 예산 카테고리 드롭다운에 나타난다. </p>
+
+<p><strong>낮은 우선순위</strong></p>
+
+<h2>애플리케이션에서 리포팅 하는 게 없다</h2>
+
+<p>이것은 당연히 이거 자체로 매우 큰 프로젝트가 된다. 테스팅하면서 필자가 간단한 리포트들을 원했으므로 완전성을 위해 여기 추가한다.</p>
+
+<p>사용자 스토리:</p>
+
+<p>사용자는 자신의 지출 습관 및 예산에 대한 보고서를 볼 수 있다. </p>
+
+<p><strong>낮은 우선순위</strong></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/vue">vue</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
