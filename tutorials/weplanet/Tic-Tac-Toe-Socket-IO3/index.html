@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Tic Tac Toe using Socket.IO (3/3)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Tic Tac Toe using Socket.IO (3/3)</h1>
+<p class="title_header_summary">Tic Tac Toe using Socket.IO에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.062316)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,8.661949)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.062316)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.062316)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.062316)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.373897)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.062316)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.062316)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.124632)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.124632)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.368015)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.059375)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.370956)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.249265)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.186949)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.062316)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.436213)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.560846)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.872426)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.810110)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.062316)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.186949)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.062316)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.062316)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.249265)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.062316)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.311581)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.062316)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.124632)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.124632)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.062316)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.062316)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.124632)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.249265)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.062316)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.062316)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.124632)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.062316)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.249265)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.186949)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.062316)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.062316)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.124632)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.436213)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.370956)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.124632)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.872426)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.062316)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.062316)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.062316)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.124632)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.685478)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.124632)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.062316)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.124632)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.062316)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.062316)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.062316)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.062316)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.062316)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.062316)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.062316)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.062316)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.062316)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.249265)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.436213)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.062316)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.062316)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.186949)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.062316)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.062316)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.062316)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.249265)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.249265)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.062316)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.249265)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.124632)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.062316)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.062316)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.062316)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.062316)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.311581)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.311581)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.311581)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.311581)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.311581)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.311581)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.124632)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.062316)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.124632)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.124632)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.062316)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.062316)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.062316)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.062316)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.124632)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.062316)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.062316)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.062316)'>electron</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.062316)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.124632)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.186949)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.062316)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.062316)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.124632)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.062316)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.243382)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.062316)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.062316)'>IoT</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.062316)'>docker</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.062316)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.186949)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.186949)'>socket.io</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://ayushgp.github.io/">Ayush Gupta</a>의 <a href="https://ayushgp.github.io/Tic-Tac-Toe-Socket-IO/">Tic Tac Toe using Socket.IO</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<h3>게임 클래스</h3>
+
+<p>이제 <code>Game</code> 클래스를 만들어 봅시다. 우리는 위의 방법들 (<code>Player</code> 클래스)를 순서, 플레이한 타일 등을 기록하기 위해 사용할 것입니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/**
+ * Game class
+ */
+var Game = function(roomId){
+  this.roomId = roomId;
+  this.board = [];
+  this.moves = 0;
+}
+
+/**
+ * Create the Game board by attaching event listeners to the buttons. 
+ */
+Game.prototype.createGameBoard = function(){
+  for(var i=0; i&lt;3; i++) {
+    this.board.push([&#39;&#39;,&#39;&#39;,&#39;&#39;]);
+    for(var j=0; j&lt;3; j++) {
+      $(&#39;#button_&#39; + i + &#39;&#39; + j).on(&#39;click&#39;, function(){
+        if(!player.getCurrentTurn()){
+          alert(&#39;Its not your turn!&#39;);
+          return;
+        }
+
+        if($(this).prop(&#39;disabled&#39;))
+          alert(&#39;This tile has already been played on!&#39;);
+
+        var row = parseInt(this.id.split(&#39;_&#39;)[1][0]);
+        var col = parseInt(this.id.split(&#39;_&#39;)[1][1]);
+
+        //Update board after your turn.
+        game.playTurn(this);
+        game.updateBoard(player.getPlayerType(), row, col, this.id);
+
+        player.setCurrentTurn(false);
+        player.updateMovesPlayed(1 &lt;&lt; (row * 3 + col));
+
+        game.checkWinner();
+        return false;
+      });
+    }
+  }
+}
+
+/**
+ * Remove the menu from DOM, display the gameboard and greet the player.
+ */
+Game.prototype.displayBoard = function(message){
+  $(&#39;.menu&#39;).css(&#39;display&#39;, &#39;none&#39;);
+  $(&#39;.gameBoard&#39;).css(&#39;display&#39;, &#39;block&#39;);
+  $(&#39;#userHello&#39;).html(message);
+  this.createGameBoard();
+}
+
+/**
+ * Update game board UI
+ */
+Game.prototype.updateBoard = function(type, row, col, tile){
+  $(&#39;#&#39;+tile).text(type);
+  $(&#39;#&#39;+tile).prop(&#39;disabled&#39;, true);
+  this.board[row][col] = type;
+  this.moves ++;
+}
+
+Game.prototype.getRoomId = function(){
+  return this.roomId;
+}
+
+/**
+ * Send an update to the opponent to update their UI.
+ */
+Game.prototype.playTurn = function(tile){
+  var clickedTile = $(tile).attr(&#39;id&#39;);
+  var turnObj = {
+    tile: clickedTile,
+    room: this.getRoomId()
+  };
+  // Emit an event to update other player that you&#39;ve played your turn.
+  socket.emit(&#39;playTurn&#39;, turnObj);
+}
+
+/**
+ *
+ * To determine a win condition, each square is &quot;tagged&quot; from left
+ * to right, top to bottom, with successive powers of 2.  Each cell
+ * thus represents an individual bit in a 9-bit string, and a
+ * player&#39;s squares at any given time can be represented as a
+ * unique 9-bit value. A winner can thus be easily determined by
+ * checking whether the player&#39;s current 9 bits have covered any
+ * of the eight &quot;three-in-a-row&quot; combinations.
+ *
+ *     273                 84
+ *        \               /
+ *          1 |   2 |   4  = 7
+ *       -----+-----+-----
+ *          8 |  16 |  32  = 56
+ *       -----+-----+-----
+ *         64 | 128 | 256  = 448
+ *       =================
+ *         73   146   292
+ *
+ *  We have these numbers in the Player.wins array and for the current 
+ *  player, we&#39;ve stored this information in player.movesPlayed.
+ */
+Game.prototype.checkWinner = function(){        
+  var currentPlayerPositions = player.getMovesPlayed();
+  Player.wins.forEach(function(winningPosition){
+    // We&#39;re checking for every winning position if the player has achieved it.
+    // Keep in mind that we are using a bitwise AND here not a logical one.PlaysArr
+    if(winningPosition &amp; currentPlayerPositions == winningPosition){
+      game.announceWinner();
+    }
+  });
+
+  var tied = this.checkTie();
+  if(tied){
+    socket.emit(&#39;gameEnded&#39;, {room: this.getRoomId(), message: &#39;Game Tied :(&#39;});
+    alert(&#39;Game Tied :(&#39;);
+    location.reload();  
+  }
+}
+
+/**
+ * Check if game is tied
+ */
+Game.prototype.checkTie = function(){
+  return this.moves &gt;= 9;
+}
+
+/**
+ * Announce the winner if the current client has won. 
+ * Broadcast this on the room to let the opponent know.
+ */
+Game.prototype.announceWinner = function(){
+  var message = player.getPlayerName() + &#39; wins!&#39;;
+  socket.emit(&#39;gameEnded&#39;, {room: this.getRoomId(), message: message});
+  alert(message);
+  location.reload();
+}
+
+/**
+ * End the game if the other player won.  
+ */
+Game.prototype.endGame = function(message){
+  alert(message);
+  location.reload();
+}
+</code></pre></div>
+<ul>
+<li>새로운 게임을 시작할 때, 우리는 먼저 DOM에서 현재 메뉴를 삭제하고 `displayBoard&#39; 기능을 사용하여 우리의 게임 보드를 추가합니다. </li>
+<li>그 후 우리는 <code>createGameBoard</code> 기능을 사용하여 보드에 있는 모든 타일에 이벤트 리스너를 추가할 것입니다.</li>
+<li>플레이어가 움직일 때마다, 우리는 보드(<code>updateBoard</code> function)을 업데이트 하고 <code>turnPlayed</code>이벤트를 전달하여 상대편에게 알려 줍니다. </li>
+<li>매 순서가 끝날 때마다, 우리는 플레이어가 이겼는지, 혹은 비겼는지 확인합니다. 우리는 이에 따라 <code>announceWinner</code> 기능을 이용하여 각 플레이어에게 알려줍니다. 그 <code>endgame</code>은 <code>announceWinner</code>에 의해 전달된 이벤트를 처리합니다. </li>
+</ul>
+
+<h3>프론트엔드 이벤트 헨들러</h3>
+
+<p>이제 서버에서 브로드케스팅/전달하고 있는 이벤트를 위한 이벤트 핸들러를 추가해야 합니다. 해당 이벤트들은 다음과 같습니다.</p>
+
+<ul>
+<li><code>newGame</code>: 새로운 게임 방을 만들고 게임 제작자에게 알려줍니다.</li>
+<li><code>player1</code>: 게임 제작자에게 다른 플레이어가 합류했다는 것을 알려줍니다.</li>
+<li><code>player2</code>: 플레이어 2에게 게임이 시작됐음을 알려줍니다. </li>
+<li><code>err</code>: 플레이어에게 합류하려는 방이 꽉 찼음을 알려줍니다.</li>
+<li><code>turnPlayed</code>: 플레이어 중 한명에게 그들의 순서가 플레이 됐음을 알려줍니다. </li>
+<li><code>gameEnd</code>: 플레이어들에게 게임이 종료됐음과 어떤 플레이어가 이겼는지 알려줍니다. </li>
+</ul>
+
+<p>우리의 IIFE 안의 <code>main.js</code>파일에 다음의 이벤트를 위한 이벤트 핸들러를 만들어 봅시다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/** 
+ * New Game created by current client. 
+ * Update the UI and create new Game var.
+ */
+socket.on(&#39;newGame&#39;, function(data){
+  var message = &#39;Hello, &#39; + data.name + 
+    &#39;. Please ask your friend to enter Game ID: &#39; +
+    data.room + &#39;. Waiting for player 2...&#39;;
+
+  // Create game for player 1
+  game = new Game(data.room);
+  game.displayBoard(message);       
+});
+
+/**
+ * If player creates the game, he&#39;ll be P1(X) and has the first turn.
+ * This event is received when opponent connects to the room.
+ */
+socket.on(&#39;player1&#39;, function(data){        
+  var message = &#39;Hello, &#39; + player.getPlayerName();
+  $(&#39;#userHello&#39;).html(message);
+  player.setCurrentTurn(true);
+});
+
+/**
+ * Joined the game, so player is P2(O). 
+ * This event is received when P2 successfully joins the game room. 
+ */
+socket.on(&#39;player2&#39;, function(data){
+  var message = &#39;Hello, &#39; + data.name;
+
+  //Create game for player 2
+  game = new Game(data.room);
+  game.displayBoard(message);
+  player.setCurrentTurn(false); 
+}); 
+
+/**
+ * Opponent played his turn. Update UI.
+ * Allow the current player to play now. 
+ */
+socket.on(&#39;turnPlayed&#39;, function(data){
+  var row = data.tile.split(&#39;_&#39;)[1][0];
+  var col = data.tile.split(&#39;_&#39;)[1][1];
+  var opponentType = player.getPlayerType() == P1 ? P2 : P1;
+  game.updateBoard(opponentType, row, col, data.tile);
+  player.setCurrentTurn(true);
+});
+
+/**
+ * If the other player wins or game is tied, this event is received. 
+ * Notify the user about either scenario and end the game. 
+ */
+socket.on(&#39;gameEnd&#39;, function(data){
+  game.endGame(data.message);
+  socket.leave(data.room);
+})
+
+/**
+ * End the game on any err event. 
+ */
+socket.on(&#39;err&#39;, function(data){
+  game.endGame(data.message);
+});
+</code></pre></div>
+<h2>게임 플레이하기</h2>
+
+<p>휴, 많은 코드였어요! 이제 게임을 구동하고 플레이해봅시다. 그러기 위해서, 당신의 터미널에서 다음의 명령을 구동하십시오.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm start
+</code></pre></div>
+<p>서버는 <a href="http://localhost:5000">http://localhost:5000</a> 에서 구동이 시작될 것입니다. 게임을 하기 위해서는 두 개의 창을 열고 이 주소로 가십시오. </p>
+
+<h2>결론</h2>
+
+<p>우리는 400줄 미만의 코드로 우리만의 서버의 멀티플레이어 게임을 만들었습니다. 꽤 쉽죠? 이것이 Socket.IO를 사용하는 법을 보여주기 위한 최소한의 실행이고, 이것이 실제 제작에서 발생하는 모든 일을 커버하지는 않는다는 것을 참고해 주십시오. </p>
+
+<p>게임을 <a href="http://tic-tac-toe-realtime.herokuapp.com/">여기</a> 에서 플레이해볼 수 있습니다. 코드에서 어떤 문제가 발견되면, <a href="https://github.com/ayushgp/tic-tac-toe-socket-io">repository</a>에 이슈를 등록해주세요. 원할 경우 PR을 제출할 수도 있습니다. </p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/socket.io">socket.io</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
