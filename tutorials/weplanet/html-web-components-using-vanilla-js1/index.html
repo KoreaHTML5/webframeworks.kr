@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 바닐라 자바스크립트로 HTML 웹 컴포넌트 사용하기 (1/7)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">바닐라 자바스크립트로 HTML 웹 컴포넌트 사용하기 (1/7)</h1>
+<p class="title_header_summary">바닐라 자바스크립트로 HTML 웹 컴포넌트 사용하기에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.061302)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,9.072694)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.061302)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.061302)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.061302)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.367812)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.061302)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.061302)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.122604)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.122604)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.329476)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.042134)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.348644)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.245208)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.183906)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.061302)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.429114)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.551718)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.858228)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.796926)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.061302)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.183906)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.061302)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.061302)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.245208)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.061302)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.306510)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.061302)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.122604)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.122604)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.061302)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.061302)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.122604)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.245208)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.061302)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.061302)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.122604)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.061302)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.245208)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.183906)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.061302)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.061302)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.122604)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.429114)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.348644)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.122604)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.858228)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.061302)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.061302)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.061302)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.122604)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.674322)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.122604)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.061302)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.122604)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.061302)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.061302)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.061302)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.061302)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.061302)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.061302)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.061302)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.061302)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.061302)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.245208)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.429114)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.061302)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.061302)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.183906)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.061302)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.061302)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.061302)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.245208)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.245208)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.061302)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.245208)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.122604)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.061302)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.061302)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.061302)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.061302)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.306510)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.306510)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.306510)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.306510)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.306510)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.306510)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.122604)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.061302)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.122604)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.122604)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.061302)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.061302)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.061302)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.061302)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.122604)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.061302)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.061302)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.061302)'>electron</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.061302)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.122604)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.183906)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.061302)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.061302)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.122604)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.061302)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.206872)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.061302)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.061302)'>IoT</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.061302)'>docker</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.061302)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.183906)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.183906)'>socket.io</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://ayushgp.github.io/">Ayush Gupta</a>의 <a href="https://ayushgp.github.io/html-web-components-using-vanilla-js/">HTML Web Component using Vanilla JavaScript</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<p>웹 컴포넌트는 나온지 꽤 되었습니다. Google은 그것의 광범위한 채택을 위해 정말 노력하고 있지만, Opera와 Chrome을 제외한 거의 대부분의 브라우저는 웹 컴포넌트를 지원하고 있지 않습니다.</p>
+
+<p>하지만 <a href="https://www.webcomponents.org/polyfills">https://www.webcomponents.org/polyfills</a> 에서 확인할 수 있는 polyfills를 사용하면, 나만의 웹 컴포넌트를 구축할 수 있습니다. 이 글에서는 스타일리쉬하고, 기능적이고, 마크업을 가지고 있는 자신만의 HTML 태그를 만드는 법을 알려드리려고 합니다.</p>
+
+<h2>서론</h2>
+
+<p>웹 컴포넌트는 웹 페이지와 웹 어플리케이션에서 사용가능한 새로운 정의(custom), 재사용 가능하고(reusable), 캡슐화된(encapsulated) HTML 태그를 만들 수 있게 해주는 웹 플랫폼 API의 세트입니다. </p>
+
+<p>웹 컴포넌트 기준에 만들어진 custom 컴포넌트와 위젯은 최신 브라우저에서 작동하고, JavaScript 라이브러리 또는 HTML로 작동하는 모든 구조와 함께 사용될 수 있습니다. </p>
+
+<p>현재 웹 컴포넌트를 지원하는 기능은 최근 HTML과 DOM 스펙에 추가되어 웹 개발자가 캡슐화된 스타일 및 사용자 지정 동작과 HTML을 쉽게 확장할 수 있게 해줍니다.</p>
+
+<p>Vanilla JS / HTML / CSS 만을 사용해서 재사용 가능한 구성 요소를 만들게 해줍니다. 만약 HTML이 문제에 대한 해법을 제공하지 않으면, 이를 가능하게 하는 웹 컴포넌트를 만들면 됩니다. </p>
+
+<p>예를 들어, <code>id</code>와 연관되어 있는 사용자 데이터를 가지고 있고, 주어진 사용자 <code>id</code>를 가지고 와서 채우는 구성 요소를 원합니다. HTML은 다음과 같을 것입니다:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;user-card user-id=&quot;1&quot;&gt;&lt;/user-card&gt;
+</code></pre></div>
+<p>이것은 웹 컴포넌트의 꽤 쉬운 기본입니다. 이 튜토리얼은 유저 카드 구성 요소를 구축하는 데 집중할 것입니다. </p>
+
+<h2>Web Components 의 네가지 요소(pillars)</h2>
+
+<p>HTML과 DOM 기준은 웹 컴포넌트를 정의하는 데 도움이 되는 네 개의 새로운 기준 / API를 정의합니다. </p>
+
+<ol>
+<li><a href="https://www.w3.org/TR/custom-elements/">Custom Elements</a>: 사용자 정의 요소와 웹 개발자는 새로운 HTML 태그를 만들거나, 존재하는 HTML 태그를 강화하거나, 다른 개발자들이 만든 컴포넌트를 확장할 수 있습니다. 이 API는 웹 컴포넌트의 기초입니다. </li>
+<li><a href="https://www.html5rocks.com/en/tutorials/webcomponents/template/#toc-pillars">HTML Templates</a>: 클라이언트-사이드 템플릿을 위한 기본 DOM 기반의 접근법에 대한 새로운 <code>&lt;template&gt;</code> 요소를 정의합니다. 템플릿은 HTML로 <code>parse</code>되는 마크업 <code>fragments</code>을 선언하고, 페이지를 불러올 때는 사용되지 않지만, 추후 런타임 시점에 <code>instantiated</code>될 수 있습니다.</li>
+<li><a href="https://dom.spec.whatwg.org/#shadow-trees">Shadow DOM</a>: Shadow DOM은 컴포넌트 기반 어플리케이션을 만들기를 위한 도구로 디자인되었습니다. 이것은 웹 개발의 공통적인 문제점을 위한 해결책을 제시합니다. 이것은 컴포넌트를 위해 DOM과 범위를 구분시키고, CSS를 단순화시키는 등의 일을 합니다.</li>
+<li><a href="https://www.html5rocks.com/en/tutorials/webcomponents/imports/">HTML Imports</a>: HTML 템플릿이 새로운 템플릿을 만들게 해준다면, HTML imports는 다른 HTML 파일에서 템플릿을 가져오게 해줍니다. imports는 가지고 있는 구성 요소들을 HTML파일과 별개의 것으로 깔끔하게 정리해주어 코드를 더욱 깔끔하게 만듭니다. 참고 : HTML imports는 지금 많이 사용되지 않고 있으며, 추후 없어질 수 있습니다. 더 많은 정보를 위해 <a href="https://github.com/w3c/webcomponents/issues/645">this discussion</a>을 읽어보십시오.</li>
+</ol>
+
+<h2>커스텀 Element 정의하기</h2>
+
+<p>커스텀 element를 만들기 위해, 먼저 우리는 element가 작동하는 방법을 정의하는 커스텀 element 클래스를 정해야 합니다. 이 클래스는 <code>HTMLElement</code> 클래스를 확장합니다. 좀 돌아간다면, 커스텀 element의 lifecycle 방법을 먼저 얘기해야 합니다. 커스텀 element와 다음의 lifecycle callback을 사용할 수 있습니다: </p>
+
+<ul>
+<li><code>connectedCallback</code> — element가 DOM에 삽입될 때마다 불립니다. </li>
+<li><code>disconnectedCallback</code> —  element가 DOM에서 없어질 때마다 불립니다.</li>
+<li><code>attributeChangedCallback</code> —  element의 속성이 더해지거나, 없어지거나, 업데이트되거나, 교체될 일어나는 행동</li>
+</ul>
+
+<p><code>UserCard</code>라고 불리는 폴더 안에 <code>UserCard.js</code> 라는 새로운 파일을 만드십시오. </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">class UserCard extends HTMLElement {
+  constructor() {
+    // If you define a constructor, always call super() first as it is required by the CE spec.
+    super();
+
+    // Setup a click listener on &lt;user-card&gt;
+    this.addEventListener(&#39;click&#39;, e =&gt; {
+      this.toggleCard();
+    });
+  }
+
+  toggleCard() {
+    console.log(&quot;Element was clicked!&quot;);
+  }
+}
+
+customElements.define(&#39;user-card&#39;, UserCard);
+</code></pre></div>
+<p>이 예시에서, 우리는 커스텀 element인 <code>user-card</code> 의 몇가지 행동을 정의하는 클래스를 설정했습니다.  <code>customElements.define(&#39;user-card&#39;, UserCard);call</code> 는 DOM에게 우리가 <code>user-card</code>  라고 불리는, <code>UserCard</code>에 의해 행동이 결정되는 새로운 커스텀 element를 만들었다는 것을 알려줍니다. 우리는 이제 HTML에서  <code>user-card</code>  를 사용할 수 있습니다. </p>
+
+<p>우리는 <a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a> 의 다음 API를 사용해 우리의 사용자 카드를 만들 것입니다. 다음은 데이터가 어떻게 생겼는지 보여주는 예시입니다:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">{
+  id: 1,
+  name: &quot;Leanne Graham&quot;,
+  username: &quot;Bret&quot;,
+  email: &quot;Sincere@april.biz&quot;,
+  address: {
+    street: &quot;Kulas Light&quot;,
+    suite: &quot;Apt. 556&quot;,
+    city: &quot;Gwenborough&quot;,
+    zipcode: &quot;92998-3874&quot;,
+    geo: {
+      lat: &quot;-37.3159&quot;,
+      lng: &quot;81.1496&quot;
+    }
+  },
+  phone: &quot;1-770-736-8031 x56442&quot;,
+  website: &quot;hildegard.org&quot;
+}
+</code></pre></div>
+<h3>템플릿 만들기</h3>
+
+<p>이제, 이 데이터를 화면에 렌더링할 템플릿을 만들어 봅시다. 다음의 코드로 <code>UserCard.html</code> 라는 파일을 만듭니다. ­­­­­­</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;template id=&quot;user-card-template&quot;&gt;
+  &lt;div class=&quot;card__user-card-container&quot;&gt;
+    &lt;h2 class=&quot;card__name&quot;&gt;
+      &lt;span class=&quot;card__full-name&quot;&gt;&lt;/span&gt; (
+      &lt;span class=&quot;card__user-name&quot;&gt;&lt;/span&gt;)
+    &lt;/h2&gt;
+    &lt;p&gt;Website: &lt;a class=&quot;card__website&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;div class=&quot;card__hidden-content&quot;&gt;
+      &lt;p class=&quot;card__address&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;card__details-btn&quot;&gt;More Details&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script src=&quot;/UserCard/UserCard.js&quot;&gt;&lt;/script&gt;
+</code></pre></div>
+<p>참고: <code>card__</code>의 접두어를 가진 클래스를 사용하였습니다.이것은 이전 버전의 브라우저에서는 DOM을 shadow Dom과 분리할 수 없었기 때문입니다.</p>
+
+<h3>스타일링</h3>
+
+<p>우리는 이제 카드를 위한 템플릿을 만들었습니다. 이제, CSS를 이용해서 스타일링해 봅시다. UserCard 폴더 안에 다음과 같은 내용과 함께 UserCard.css라는 새로운 파일을 만들어 봅시다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.card__user-card-container {
+  text-align: center;
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-family: Helvetica;
+  margin: 3px;
+  width: 30%;
+}
+
+.card__user-card-container:hover {
+  box-shadow: 3px 3px 3px;
+}
+
+.card__hidden-content {
+  display: none;
+}
+
+.card__details-btn {
+  background-color: #dedede;
+  padding: 6px;
+  margin-bottom: 8px;
+}
+</code></pre></div>
+<p>이제, <code>UserCard.html</code>  안 <code>&lt;template&gt;</code>태그 앞에 다음의 태그를 사용하여 템플릿에 CSS파일을 포함시킵니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;link rel=&quot;stylesheet&quot; href=&quot;/UserCard/UserCard.css&quot;&gt;
+</code></pre></div>
+<p>우리의 스타일과 템플릿이 자리를 잡으면, 이제 컴포넌트를 만들 수 있습니다. </p>
+
+<h3>connectedCallback</h3>
+
+<p>이제 element를 만들고 그것을 DOM에 attach할 때 어떤 일이 발생해야하는지 정의해야 합니다. <code>constructor</code> 방법과 <code>connectedCallback</code> 방법에 차이점이 있음을 참고하십시오.</p>
+
+<p><code>constructor</code> 는 element가 만들어질 때 call되며, <code>connectedCallback</code> 는 구성 요소가 DOM에 삽입될 때 call됩니다. 이것은 리소스를 가져오거나, 렌더링 같은 setup 코드를 실행할 때 유용합니다. </p>
+
+<p>주의 : <code>UserCard.js</code> 파일 위에, <code>currentDocument</code> 를 정의합니다. 이것은 가져온 HTML의 스크립트를 가져온 HTML의 DOM에 접근할 때 필요합니다. 다음과 같이 정의하십시오.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">const currentDocument = document.currentScript.ownerDocument;
+</code></pre></div>
+<p>우리의 <code>connectedCallback</code> 를 정의해 봅시다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// Called when element is inserted in DOM
+connectedCallback() {
+  const shadowRoot = this.attachShadow({mode: &#39;open&#39;});
+
+  // Select the template and clone it. Finally attach the cloned node to the shadowDOM&#39;s root.
+  // Current document needs to be defined to get DOM access to imported HTML
+  const template = currentDocument.querySelector(&#39;#user-card-template&#39;);
+  const instance = template.content.cloneNode(true);
+  shadowRoot.appendChild(instance);
+
+  // Extract the attribute user-id from our element. 
+  // Note that we are going to specify our cards like: 
+  // &lt;user-card user-id=&quot;1&quot;&gt;&lt;/user-card&gt;
+  const userId = this.getAttribute(&#39;user-id&#39;);
+
+  // Fetch the data for that user Id from the API and call the render method with this data
+  fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+      .then((response) =&gt; response.text())
+      .then((responseText) =&gt; {
+          this.render(JSON.parse(responseText));
+      })
+      .catch((error) =&gt; {
+          console.error(error);
+      });
+}
+</code></pre></div>
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

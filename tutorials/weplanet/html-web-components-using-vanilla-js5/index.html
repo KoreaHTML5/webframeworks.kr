@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - 바닐라 자바스크립트로 HTML 웹 컴포넌트 사용하기 (5/7)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">바닐라 자바스크립트로 HTML 웹 컴포넌트 사용하기 (5/7)</h1>
+<p class="title_header_summary">바닐라 자바스크립트로 HTML 웹 컴포넌트 사용하기에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.061302)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,9.072694)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.061302)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.061302)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.061302)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.367812)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.061302)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.061302)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.122604)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.122604)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.329476)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.042134)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.348644)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.245208)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.183906)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.061302)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.429114)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.551718)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.858228)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.796926)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.061302)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.183906)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.061302)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.061302)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.245208)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.061302)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.306510)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.061302)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.122604)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.122604)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.061302)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.061302)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.122604)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.245208)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.061302)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.061302)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.122604)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.061302)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.245208)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.183906)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.061302)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.061302)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.122604)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.429114)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.348644)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.122604)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.858228)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.061302)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.061302)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.061302)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.122604)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.674322)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.122604)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.061302)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.122604)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.061302)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.061302)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.061302)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.061302)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.061302)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.061302)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.061302)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.061302)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.061302)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.245208)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.429114)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.061302)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.061302)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.183906)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.061302)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.061302)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.061302)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.245208)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.245208)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.061302)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.245208)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.122604)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.061302)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.061302)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.061302)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.061302)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.306510)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.306510)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.306510)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.306510)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.306510)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.306510)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.122604)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.061302)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.122604)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.122604)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.061302)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.061302)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.061302)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.061302)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.122604)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.061302)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.061302)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.061302)'>electron</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.061302)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.122604)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,0.183906)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.061302)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.061302)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.122604)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.061302)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.206872)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.061302)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.061302)'>IoT</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.061302)'>docker</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.061302)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.183906)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.183906)'>socket.io</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 <a href="https://ayushgp.github.io/">Ayush Gupta</a>의 <a href="https://ayushgp.github.io/html-web-components-using-vanilla-js-part-2/">HTML Web Component using Vanilla JavaScript Part2</a>를 저자의 허락하에 번역한 글입니다. 오탈자, 오역 등이 있다면 연락부탁드립니다.</p>
+</blockquote>
+
+<h3>PersonDetail 컴포넌트</h3>
+
+<p>우리는 사람들의 이름을 정렬할<code>PeopleList</code> 컴포넌트를 만들었습니다. 그리고 우리는 구성 요소에서 사람들 이름이 클릭될 때 그 사람의 디테일을 보일 수 있는 컴포넌트 또한 만들고 싶습니다. 따라서, 지난 <code>UserCard</code> 튜토리얼에서 사용했던 구성 요소를 재사용합시다. 어떻게 이 구성 요소를 만드는지에 대한 디테일까지는 들어가지 않겠지만, 그냥 그 코드를 여기에 추가하십시오. 지난 포스트에서 이것에 대해서 더 읽어 보실 수 있습니다. </p>
+
+<h4>템플릿</h4>
+
+<p><code>PersonDetail.html</code> 파일을 열고 다음의 코드를 입력하십시오:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;template id=&quot;person-detail-template&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/components/PeopleController/PersonDetail/PersonDetail.css&quot;&gt;
+  &lt;div class=&quot;card__user-card-container&quot;&gt;
+    &lt;h2 class=&quot;card__name&quot;&gt;
+      &lt;span class=&quot;card__full-name&quot;&gt;&lt;/span&gt; (
+      &lt;span class=&quot;card__user-name&quot;&gt;&lt;/span&gt;)
+    &lt;/h2&gt;
+    &lt;p&gt;Website: &lt;a class=&quot;card__website&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;div class=&quot;card__hidden-content&quot;&gt;
+      &lt;p class=&quot;card__address&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;card__details-btn&quot;&gt;More Details&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script src=&quot;/components/PeopleController/PersonDetail/PersonDetail.js&quot;&gt;&lt;/script&gt;
+</code></pre></div>
+<h4>스타일링</h4>
+
+<p>우리의 카드의 템플릿을 만들었습니다. 이제 CSS를 이용해서 스타일링해 봅시다. UsedCard 폴더에서 다음의 내용을 입력하여 새로운 <code>PersonDetail.css</code> 파일을 만들어 봅시다: </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.card__user-card-container {
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-family: Helvetica;
+  margin: 3px;
+}
+
+.card__user-card-container:hover {
+  box-shadow: 3px 3px 3px;
+}
+
+.card__hidden-content {
+  display: none;
+}
+
+.card__details-btn {
+  background-color: #dedede;
+  padding: 6px;
+  margin-bottom: 8px;
+}
+</code></pre></div>
+<h4>컴포넌트 작성</h4>
+
+<p><code>/components/PeopleController/PersonDetail/PersonDetail.js</code> 파일을 만들고 다음 코드를 입력하여 <code>PeopleDetail</code> 컴포넌트에 아래의 코드를 넣어 기능을 추가하십시오.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">(function () {
+  const currentDocument = document.currentScript.ownerDocument;
+
+  class PersonDetail extends HTMLElement {
+    constructor() {
+      // If you define a constructor, always call super() first as it is required by the CE spec.
+      super();
+
+      // Setup a click listener on &lt;user-card&gt;
+      this.addEventListener(&#39;click&#39;, e =&gt; {
+        this.toggleCard();
+      });
+    }
+
+    // Called when element is inserted in DOM
+    connectedCallback() {
+      const shadowRoot = this.attachShadow({ mode: &#39;open&#39; });
+      const template = currentDocument.querySelector(&#39;#person-detail-template&#39;);
+      const instance = template.content.cloneNode(true);
+      shadowRoot.appendChild(instance);
+    }
+
+    // Creating an API function so that other components can use this to populate this component
+    updatePersonDetails(userData) {
+      this.render(userData);
+    }
+
+    // Function to populate the card(Can be made private)
+    render(userData) {
+      this.shadowRoot.querySelector(&#39;.card__full-name&#39;).innerHTML = userData.name;
+      this.shadowRoot.querySelector(&#39;.card__user-name&#39;).innerHTML = userData.username;
+      this.shadowRoot.querySelector(&#39;.card__website&#39;).innerHTML = userData.website;
+      this.shadowRoot.querySelector(&#39;.card__address&#39;).innerHTML = `&lt;h4&gt;Address&lt;/h4&gt;
+      ${userData.address.suite}, &lt;br /&gt;
+      ${userData.address.street},&lt;br /&gt;
+      ${userData.address.city},&lt;br /&gt;
+      Zipcode: ${userData.address.zipcode}`
+    }
+
+    toggleCard() {
+      let elem = this.shadowRoot.querySelector(&#39;.card__hidden-content&#39;);
+      let btn = this.shadowRoot.querySelector(&#39;.card__details-btn&#39;);
+      btn.innerHTML = elem.style.display == &#39;none&#39; ? &#39;Less Details&#39; : &#39;More Details&#39;;
+      elem.style.display = elem.style.display == &#39;none&#39; ? &#39;block&#39; : &#39;none&#39;;
+    }
+  }
+
+  customElements.define(&#39;person-detail&#39;, PersonDetail);
+})()
+</code></pre></div>
+<p><code>peopleList</code> 컴포넌트에서 사람이 클릭되었을 때 이 함수를 이용하여 컴포넌트를 업데이트할 수 있도록 <code>updatePersonDetails(userData)</code> 함수를 만들었습니다. 속성들을 사용하여 함수를 만들 수도 있었습니다. </p>
+
+<h3>부모 컴포넌트</h3>
+
+<p>이제 <code>PeopleList</code> 구성 요소와 <code>PersonDetail</code> 구성 요소를 갖추었으니, 부모 구성 요소인 <code>PeopleController</code> 를 만들어 봅시다. <code>PeopleController.html</code> 파일을 열고 템플릿을 만드십시오. HTML 가져오기를 이용하여 안에 있는 구성 요소를 모두 가져옵니다.</p>
+
+<p>참고: HTML 가져오기는 기준에서 벗어나며 모듈 가져오기로 대체되어야 합니다. 이 튜토리얼의 목적을 위해 우리는 HTML 가져오기만을 쓸 것입니다. <a href="https://hacks.mozilla.org/2015/06/the-state-of-web-components/">MDN 블로그</a>에서 더 많은 정보를 찾을 수 있으며, 그것들을 사용할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;template id=&quot;people-controller-template&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/components/PeopleController/PeopleController.css&quot;&gt;
+  &lt;people-list id=&quot;people-list&quot;&gt;&lt;/people-list&gt;
+  &lt;person-detail id=&quot;person-detail&quot;&gt;&lt;/person-detail&gt;
+&lt;/template&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/components/PeopleController/PeopleList/PeopleList.html&quot;&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/components/PeopleController/PersonDetail/PersonDetail.html&quot;&gt;
+&lt;script src=&quot;/components/PeopleController/PeopleController.js&quot;&gt;&lt;/script&gt;
+</code></pre></div>
+<p><code>PeopleController.css</code> 파일을 열고 다음의 코드를 추가하십시오.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#people-list {
+  width: 45%;
+  display: inline-block;
+}
+#person-detail {
+  width: 45%;
+  display: inline-block;
+}
+</code></pre></div>
+<p><code>PeopleController.js</code> 파일을 열고 <code>PeopleController</code> 클래스를 만드십시오. 우리는 사용자들의 데이터를 얻기 위해 API를 호출할 것입니다. 이것은 이전에 정의한 두 가지 구성 요소를 이용할 것이고, PeopleList 구성 요소를 많이 만듦과 동시에 이 데이터의 첫 번째 사용자를 <code>PeopleDetail</code> 구성 요소의 시작 데이터로 제공할 것입니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">(function () {
+  const currentDocument = document.currentScript.ownerDocument;
+
+  class PeopleController extends HTMLElement {
+    constructor() {
+      super();
+      this.peopleList = [];
+    }
+
+    connectedCallback() {
+      const shadowRoot = this.attachShadow({ mode: &#39;open&#39; });
+      const template = currentDocument.querySelector(&#39;#people-controller-template&#39;);
+      const instance = template.content.cloneNode(true);
+      shadowRoot.appendChild(instance);
+
+      _fetchAndPopulateData(this);
+    }
+  }
+
+  // Private functions here
+
+  customElements.define(&#39;people-controller&#39;, PeopleController);
+})()
+</code></pre></div>
+<p>이제 우리는 이 데이터를 API에서 가져 오고 자녀 컴포넌트를 많이 만들어야 합니다. 또 추가로, 우리는 <code>PersonDetail</code> 객체를 업데이트할 수 있도록 컴포넌트의 <code>PersonClicked</code> 이벤트를 기다려야 합니다. 즉, 우리는 아래 2개의 프라이빗 함수를 만들 수 있습니다. </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  function _fetchAndPopulateData(self) {
+  let peopleList = self.shadowRoot.querySelector(&#39;#people-list&#39;);
+  fetch(`https://jsonplaceholder.typicode.com/users`)
+    .then((response) =&gt; response.text())
+    .then((responseText) =&gt; {
+      const list = JSON.parse(responseText);
+      self.peopleList = list;
+      peopleList.list = list;
+
+      _attachEventListener(self);
+    })
+    .catch((error) =&gt; {
+      console.error(error);
+    });
+}
+
+function _attachEventListener(self) {
+  let personDetail = self.shadowRoot.querySelector(&#39;#person-detail&#39;);
+
+  //Initialize with person with id 1:
+  personDetail.updatePersonDetails(self.peopleList[0]);
+
+  // Watch for the event on the shadow DOM
+  self.shadowRoot.addEventListener(&#39;PersonClicked&#39;, (e) =&gt; {
+    // e contains the id of person that was clicked.
+    // We&#39;ll find him using this id in the self.people list:
+    self.peopleList.forEach(person =&gt; {
+      if (person.id == e.detail.personId) {
+        // Update the personDetail component to reflect the click
+        personDetail.updatePersonDetails(person);
+      }
+    })
+  })
+}
+</code></pre></div>
+<h2>컴포넌트 사용</h2>
+
+<p>이제 우리는 컴포넌트를 모두 갖추었으니, 프로젝트를 위해 사용해볼 수 있습니다. 이 튜토리얼을 위해서, index.html라는 새로운 HTML 파일을 만들고 다음의 코드를 입력하십시오.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;html&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Web Component Part 2&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;people-controller&gt;&lt;/people-controller&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.14/webcomponents-hi.js&quot;&gt;&lt;/script&gt;
+  &lt;link rel=&quot;import&quot; href=&quot;./components/PeopleController/PeopleController.html&quot;&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre></div>
+<p>모든 브라우저가 웹 컴포넌트를 지원하지 않으므로, 우리는 <code>mponents.js</code> 파일을 추가해야 합니다. 우리의 컴포넌트를 디렉토리에서 가져오기 위해 HTML 가져오기 구문을 쓰는 것을 참고하십시오. </p>
+
+<p>이 코드를 실행하기 위해, 우리는 정적인 파일 서버를 만들어야 합니다. 어떻게 하는지 모른다면, <a href="https://www.npmjs.com/package/static-server"><code>static-server</code></a>나 <a href="https://github.com/typicode/json-server"><code>json-server</code></a>같은 단순한 정적인 서버를 사용할 수 있습니다. 다음을 이용하여 <code>static-server</code>를 설치하십시오:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install -g static-server
+</code></pre></div>
+<p>이제, <code>cd</code> 를 이용해 index.html 파일을 가지고 있는 폴더로 가서 다음을 이용해 서버를 구동하십시오:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ static-server
+</code></pre></div>
+<p>브라우저를 열고 <a href="http://localhost:9080/">localhost:9080</a>로 가면, 우리가 방금 만든 구성 요소를 볼 수 있습니다. </p>
+
+<p>제가 이 튜토리얼들과 함께 사용하기 위해 만든 <a href="https://github.com/ayushgp/web-components-tutorial">github repository</a> 를 확인해보실 수 있습니다. 웹 컴포넌트를 사용하는 이 접근 방법에 대해 어떻게 생각 하시는지 알려주시고, 이 게시물 또는 여기에서 설명된 방법 등을 향상시킬 수 있는 방법에 대해서도 말해주십시오.</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
