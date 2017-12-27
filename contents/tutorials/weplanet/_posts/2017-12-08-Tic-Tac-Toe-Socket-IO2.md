@@ -1,9 +1,9 @@
 ---
 layout : tutorials
 category : tutorials
-title : Tic Tac Toe using Socket.IO (2/3)
+title : Socket.IO를 이용하여 Tic Tac Toe 만들기 (2/3)
 subcategory : setlayout
-summary : Tic Tac Toe using Socket.IO에 대해 알아봅니다.
+summary : Socket.IO를 이용하여 Tic Tac Toe 만들기에 대해 알아봅니다.
 permalink : /tutorials/weplanet/Tic-Tac-Toe-Socket-IO2
 author : danielcho
 tags : socket.io javascript

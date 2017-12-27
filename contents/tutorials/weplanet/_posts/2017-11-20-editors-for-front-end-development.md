@@ -1,9 +1,9 @@
 ---
 layout : tutorials
 category : tutorials
-title : Moving away from Vim for front-end development
+title : 프론트엔드 개발에서 Vim 사용안하기
 subcategory : setlayout
-summary : Moving away from Vim for front-end development에 대해 알아봅니다.
+summary : 프론트엔드 개발에서 Vim 사용안하기에 대해 알아봅니다.
 permalink : /tutorials/weplanet/editors-for-front-end-development
 author : danielcho
 tags : javascript 
