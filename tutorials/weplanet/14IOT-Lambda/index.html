@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - AWS Severless IoT 14 – Iot-Lambda</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">AWS Severless IoT 14 – Iot-Lambda</h1>
+<p class="title_header_summary">AWS Severless IoT에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars1.githubusercontent.com/u/2949778?s=400&v=4" alt="홍세민">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            홍세민
+
+                        </h4>
+                        MarcusHong<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.058549)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,8.840933)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.058549)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.058549)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.058549)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.351295)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.058549)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.058549)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.117098)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.117098)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.224870)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,0.995337)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.288083)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.234197)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.175648)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.058549)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.409845)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.526943)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.819689)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.761140)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.058549)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.175648)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.058549)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.058549)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.234197)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.058549)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.292746)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.058549)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.117098)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.117098)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.058549)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.058549)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.117098)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.234197)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.058549)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.058549)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.117098)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.058549)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.234197)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.175648)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.058549)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.058549)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.117098)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.409845)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.288083)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.117098)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.819689)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.058549)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.058549)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.058549)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.117098)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.644041)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.117098)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.058549)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.117098)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.058549)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.058549)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.058549)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.058549)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.058549)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.058549)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.058549)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.058549)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.058549)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.234197)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.409845)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.058549)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.058549)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.175648)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.058549)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.058549)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.058549)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.234197)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.234197)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.058549)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.234197)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.117098)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.058549)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.058549)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.058549)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.058549)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.292746)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.292746)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.292746)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.292746)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.292746)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.292746)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.117098)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.058549)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.117098)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.117098)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.058549)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.058549)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.058549)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.058549)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.117098)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.058549)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.058549)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.058549)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.234197)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.058549)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.117098)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.346632)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.058549)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.058549)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.117098)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.058549)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.107772)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.058549)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.058549)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.058549)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.175648)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.175648)'>socket.io</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h3>AWS IOT</h3>
+
+<p>AWS IOT는 사물 인터넷을 위한 서비스이다. 사물 인터넷이라고 하면 서버와 통신하는 버튼, 기기 등을 생각할 수 있다.
+하지만 모바일 디바이스 또한 IOT의 일종이다. AWS에서는 IOT SDK를 사용하면, IOS, Android, Web에서 Web socket을 사용할 수 있으므로,
+이를 통해서 백엔드와 프론트엔드가 소켓 통신을 할 수 있다.</p>
+
+<h3>IOT Rule</h3>
+
+<p>Lambda 함수에서는 Web socket 채널에 publish 되는 이벤트를 트리거할 수 있는 옵션이 있다.
+SQL 구문과 상당히 유사하다. <a href="https://docs.aws.amazon.com/ko_kr/iot/latest/developerguide/iot-sql-reference.html">(자세히 보기)</a>
+아래는 AWS SAM으로 Iot Rule을 만들고 Lambda 함수에서 채널에 publish 된 메세지를 데이터 베이스에 저장하는 기능을 구현한 예제이다.</p>
+
+<h3>Cloudformation</h3>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">Resources</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">ChatHandler</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">Type</span><span class="p-Indicator">:</span> <span class="s">&#39;AWS::Serverless::Function&#39;</span>
+    <span class="l-Scalar-Plain">Properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">CodeUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">src</span>
+      <span class="l-Scalar-Plain">Handler</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">lambda/iot.chatHandler</span>
+      <span class="l-Scalar-Plain">Runtime</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">nodejs6.10</span>
+      <span class="l-Scalar-Plain">Role</span><span class="p-Indicator">:</span>
+        <span class="s">&#39;Fn::GetAtt&#39;</span><span class="p-Indicator">:</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">BasicExecutionRole</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Arn</span>
+      <span class="l-Scalar-Plain">Timeout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">30</span>
+      <span class="l-Scalar-Plain">VpcConfig</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">SecurityGroupIds</span><span class="p-Indicator">:</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Ref</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">VPCLambdaSecurityGroup</span>
+        <span class="l-Scalar-Plain">SubnetIds</span><span class="p-Indicator">:</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Ref</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">PublicSubnetA</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Ref</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">PublicSubnetB</span>
+      <span class="l-Scalar-Plain">Events</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">Iot</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">Type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">IoTRule</span>
+          <span class="l-Scalar-Plain">Properties</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">AwsIotSqlVersion</span><span class="p-Indicator">:</span> <span class="s">&#39;2016-03-23&#39;</span>
+            <span class="l-Scalar-Plain">Sql</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;-</span>
+              <span class="no">SELECT *, topic(4) as chatId, clientid() as userId FROM</span>
+              <span class="no">&#39;sample/dev/chat/+&#39;</span>
+
+  <span class="l-Scalar-Plain">ChatHandlerLogGroup</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">Type</span><span class="p-Indicator">:</span> <span class="s">&#39;AWS::Logs::LogGroup&#39;</span>
+    <span class="l-Scalar-Plain">DependsOn</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ChatHandler</span>
+    <span class="l-Scalar-Plain">Properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">RetentionInDays</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">14</span>
+      <span class="l-Scalar-Plain">LogGroupName</span><span class="p-Indicator">:</span>
+        <span class="s">&#39;Fn::Join&#39;</span><span class="p-Indicator">:</span>
+          <span class="p-Indicator">-</span> <span class="s">&#39;&#39;</span>
+          <span class="p-Indicator">-</span> <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">/aws/lambda/</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Ref</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ChatHandler</span>
+</code></pre></div>
+<h3>Lambda Function</h3>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">chatHandler</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">chatId</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">event</span><span class="p">.</span><span class="nx">chatId</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">chatId</span><span class="p">)</span>
+      <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">addMessage</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="c1">// pseudo code</span>
+      <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">callback</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>주의점</h4>
+
+<ul>
+<li>여기서는 express.js를 쓰지 않으므로, callback으로 처리를 해야한다는 것을 명심하자.</li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/aws">aws</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
