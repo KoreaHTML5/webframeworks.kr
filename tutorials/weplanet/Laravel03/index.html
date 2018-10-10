@@ -5,7 +5,7 @@
 <style>
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
 </style>
-<title>WebFrameworks.kr - Posts tagged ECMAScript2015</title>
+<title>WebFrameworks.kr - PHP 라라벨 5 On Mac - 3.Valet</title>
 <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="/static/css/main.css">
 <link rel="stylesheet" href="/static/css/syntax.css">
@@ -13,6 +13,8 @@
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default top_menu" role="navigation">
@@ -54,15 +56,38 @@
 </nav>
 
 
-<div class="list_bg">
-    <div class="col-md-10 col-md-offset-1 jumbotron list_header">
-        <h1>Tag List</h1>
-    </div>
+<div class="content_bg"  style="background-color: #F1F71A;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">PHP 라라벨 5 On Mac - 3.Valet</h1>
+<p class="title_header_summary">PHP 라라벨 5에 대해 알아봅니다.</p>
+</div>
 </div>
 
 <div>
 
     <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
         <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Tags</h3>
@@ -189,50 +214,150 @@
     </div>
 
     <div class="col-sm-9 col-md-6">
-        
-<div class="shadow_panel media_content media_item">
-<span class="list_item_title"><a href="/tutorials/babel/babel-basic">Babel로 ECMAScript 2015 사용하기</a></span>
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>들어가며</h2>
 
-<p>바벨을 이용해 최신 자바스크립트 스펙 ECMAScript 2015를 사용해 봅시다</p>
+<p>발렛은 Mac 만을 지원하며, Vagrant / Apache / Nginx / &quot;/etc/hosts&quot; 파일도 필요하지 않습니다. 심지어 로컬 터널을 사용하여 사이트를 공유할 필요도 없습니다. Mac외의 운영 체제에서는 홈스테드를 선택하면 됩니다.</p>
 
-<p>
+<h3>프레임워크 지원</h3>
 
-<img src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" class="img-circle profile_img_small">
-김정환
-가 16.12.08에 작성.
+<ul>
+<li>Laravel</li>
+<li>Lumen</li>
+<li>Symfony</li>
+<li>Zend</li>
+<li>CakePHP 3</li>
+<li>WordPress</li>
+<li>Bedrock</li>
+<li>Craft</li>
+<li>Statamic</li>
+<li>Jigsaw</li>
+<li>Static HTML</li>
+</ul>
+
+<h3>설치하기</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ composer global require laravel/valet~/.composer/vendor/bin/valet install
+
+# 추가로 설치
+
+$ brew install xdebug-osx
+$ brew install drush
+$ brew install infection
+$ brew install dnsmasq
+
+$ valet start
+</code></pre></div>
+<p>발렛이 설치되고나면, 터미널에서 ping [프로젝트 명].dev 와 같은 명령어를 사용하여 도메인으로 연결되었는지 확인하면, 127.0.0.1 로부터의 응답을 확인할 수 있습니다.</p>
+
+<h3>Valet Park &amp; Valet Link</h3>
+
+<p>발렛이 설치되면 라라벨 사이트를 구동하는데에 두가지 명령어를 제공합니다.</p>
+
+<p>1) Park</p>
+
+<ul>
+<li>Mac 에 mkdir ~/Sites와 같은 명령어를 실행하여 새로운 디렉토리를 생성합니다.</li>
+<li>cd ~/Sites 와 valet park을 실행합니다. 이 명령어는 현재 작업 디렉토리를 사이트로 접속했을 때 발렛이 찾게 되는 디렉토리로 등록합니다.</li>
+<li>이 디렉토리에서 새로운 라라벨 사이트를 생성합니다: laravel new blog.
+브라우저에서 http://blog.dev 사이트를 열어서 확인합니다</li>
+</ul>
+
+<p>2) Link: 사이트를 동작시킬 때 사용 (하나의 디렉토리 안에 한 개의 사이트를 제공할 때)
+* 프로젝트 중 하나의 디렉토리에 대해서 터미널에서 valet link app-name 을 실행합니다.
+* 발렛은 현재 작업 디렉토리를 ~/.valet/Sites가 지정하도록 심볼릭 링크를 생성할 것입니다.
+  link 명령어를 실행한 다음에, 브라우저에서 http://app-name.dev 로 접속할 수 있습니다.
+* 링크로 연결된 모든 목록은 valet links 로 확인 하면 됩니다.</p>
+
+<h3>TLS를 사용한 안전한 사이트</h3>
+
+<p>기본적으로 발렛은 일반적인 HTTP를 통해서 제공합니다, 하지만 HTTP/2를 사용하여 TLS 암호화되어 제공하려면 secure 명령어를 사용합니다. 예를 들어 laravel.dev 도메인을 발렛을 통해 제공하고자 한다면 다음과 같이 실행하면 됩니다.</p>
+
+<p><code>$ valet secure laravel</code></p>
+
+<p>일반적인 접속을 원할 경우,</p>
+
+<p><code>$ valet unsecure laravel</code></p>
+
+<h3>Valet Share (사이트 공유)</h3>
+
+<p>발렛은 로컬 사이트 및 외부와도 공유하는 기능을 기본적으로 제공하기 합니다. 이를 실행하기 위해서는 터미널 상에서 해당 사이트가 있는 디렉토리로 이동한 후,</p>
+
+<p><code>$ valet share</code></p>
+
+<p>명령어를 입력하면, 공개된 URL이 클립보드에 복사되고 브라우저에서 직접 붙여넣을 수 있습니다. </p>
+
+<p>(종료는 control + C )</p>
+
+<h3>Valet Logs</h3>
+
+<p>전체 사이트에 대한 모든 로그를 터미널에서 스트림을 통해 제공합니다. </p>
+
+<h3>기타 Valet 명령어</h3>
+
+<p>전체 사이트에 대한 모든 로그를 터미널에서 스트림을 통해 제공합니다. </p>
+
+<table><thead>
+<tr>
+<th>명령어</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>valet forget</td>
+<td>parked 디렉토리 목록에서 디렉토리를 제거하기 위해서는 &quot;parked&quot; 된 디렉토리에서 이 명령어를 실행</td>
+</tr>
+<tr>
+<td>valet paths</td>
+<td>&quot;parked&quot; 된 모든 경로를 확인합니다.</td>
+</tr>
+<tr>
+<td>valet restart</td>
+<td>발렛 데몬을 재시작 합니다.</td>
+</tr>
+<tr>
+<td>valet start</td>
+<td>발렛 데몬을 시작합니다.</td>
+</tr>
+<tr>
+<td>valet stop</td>
+<td>발렛 데몬을 중지합니다.</td>
+</tr>
+<tr>
+<td>valet uninstall</td>
+<td>발렛 데몬을 완전히 삭제합니다.</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/laravel">laravel</a>&nbsp;</p>
+        </div>
 
 
-In <a href="/tutorials and babel">tutorials and babel</a>.
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
 
-
-Tagged javascript, babel, ECMAScript2015, and es6.
-</p>
-
-</div>
-
-<div class="shadow_panel media_content media_item">
-<span class="list_item_title"><a href="/tutorials/ecmascript2015/nodejs-es6">ECMAScript2015(ES6)로 Node.JS 코딩하기</a></span>
-
-<p>최근 개발중인 프로젝트에 ES6 스펙을 사용한 경험을 바탕으로 ES5에서 ES6로의 변화에 대한 개인적인 느낌을 공유합니다.</p>
-
-<p>
-
-<img src="https://avatars0.githubusercontent.com/u/1788964?v=3&s=460" class="img-circle profile_img_small">
-김정환
-가 16.12.07에 작성.
-
-
-In <a href="/tutorials and ecmascript2015">tutorials and ecmascript2015</a>.
-
-
-Tagged javascript, nodejs, ECMAScript2015, and es6.
-</p>
-
-</div>
-
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
 
     </div>
 
+    <script>
+        $('#main_content').toc();
+    </script>
 </div>
 <footer>
 <table width="100%" height="80" class="footer">
