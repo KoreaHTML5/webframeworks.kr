@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - PHP 라라벨 5 On Mac - 10.블레이드 템플릿 III(View)</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #F1F71A;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">PHP 라라벨 5 On Mac - 10.블레이드 템플릿 III(View)</h1>
+<p class="title_header_summary">PHP 라라벨 5에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.056281)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,8.667210)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.056281)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.056281)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.056281)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.337684)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.056281)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.056281)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.112561)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.112561)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.194943)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,0.956770)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.238173)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.225122)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.168842)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.056281)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.393964)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.506525)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.787928)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.731648)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.056281)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.168842)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.056281)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.056281)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.225122)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.056281)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.281403)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.056281)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.112561)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.112561)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.056281)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.056281)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.112561)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.225122)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.056281)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.056281)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.112561)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.056281)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.225122)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.168842)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.056281)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.056281)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.112561)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.393964)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.238173)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.112561)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.787928)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.056281)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.056281)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.056281)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.112561)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.619086)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.112561)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.056281)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.112561)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.056281)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.056281)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.056281)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.056281)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.056281)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.056281)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.056281)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.056281)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.056281)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.225122)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.393964)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.056281)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.056281)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.168842)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.056281)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.056281)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.056281)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.225122)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.225122)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.056281)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.225122)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.112561)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.056281)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.056281)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.056281)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.056281)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.281403)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.281403)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.281403)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.281403)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.281403)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.281403)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.112561)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.056281)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.112561)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.112561)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.056281)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.056281)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.056281)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.056281)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.112561)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.056281)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.056281)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.112561)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.281403)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.056281)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.112561)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.350734)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.056281)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.056281)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.112561)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.056281)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.082382)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.056281)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.056281)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.056281)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.168842)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.168842)'>socket.io</a>
+<a href='/tags/typescript/' style='color: rgba(0,0,0,0.056281)'>typescript</a>
+<a href='/tags/laravel/' style='color: rgba(0,0,0,1.407015)'>laravel</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>블레이드 템플릿 기능 확장 및 하위 뷰 포함하기를 통해 보다 편리한 개발을 지원합니다.</p>
+</blockquote>
+
+<p><strong>@php, @endphp</strong></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">@php
+    //
+@endphp
+</code></pre></div>
+<blockquote>
+<p>블레이드가 이 기능을 제공하지만, 이 기능을 너무 빈번하게 사용하는 것은 너무 많은 로직이 템플린 안에 포함을 의미하기 때문에 빈번한 사용을 지양합니다.</p>
+</blockquote>
+
+<h4>하위 뷰 포함</h4>
+
+<p><strong>@include</strong></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>
+    @include(&#39;shared.errors&#39;)
+
+    <span class="nt">&lt;form&gt;</span>
+        <span class="c">&lt;!-- Form Contents --&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+<p>하위에 포함하게 될 뷰는 부모 뷰의 모든 데이터를 상속하게 되지만, 하위 뷰에 데이터 배열을 직접 전달할 수도 있습니다:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">@include(&#39;view.name&#39;, [&#39;some&#39; =&gt; &#39;data&#39;])
+</code></pre></div>
+<p><strong>@includeIf</strong>
+뷰가 존재하지 않으면 라라벨은 에러를 발생합니다. 이 때 사용하는 지시어 입니다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">@includeIf(&#39;view.name&#39;, [&#39;some&#39; =&gt; &#39;data&#39;])
+</code></pre></div>
+<p><strong>@includeWhen</strong>
+조건 값에 따라 뷰 파일을 @include 할 때 사용하는 지시어 입니다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">@includeWhen($boolean, &#39;view.name&#39;, [&#39;some&#39; =&gt; &#39;data&#39;])
+</code></pre></div>
+<p><strong>@includeFirst</strong>
+주어진 배열에서 존재하는 첫번째 뷰를 포함하도록 하려면</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">@includeFirst([&#39;custom.admin&#39;, &#39;admin&#39;], [&#39;some&#39; =&gt; &#39;data&#39;])
+</code></pre></div>
+<blockquote>
+<p>블레이드 뷰에서 <code>__DIR__</code>와 <code>__FILE__</code> 를 사용하지 마십시오. 이를 사용하면 컴파일된 캐시 뷰의 경로가 반환됩니다.</p>
+</blockquote>
+
+<h4>컬렉션을 뷰에서 렌더링 하기</h4>
+
+<p><strong>@each</strong>
+반복문을 하나의 줄로 구성 할 때 사용하는 지시어 입니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#첫번째 인자 : 배열이나 컬렉션의 각 요소를 렌더링하기 위한 뷰의 이름
+#두번째 인자 : 반복 처리하는 배열이나 컬렉션
+#세번째 인자 : 뷰에서 반복값이 대입되는 변수
+#네번째 인자 : 특정 배열이 비었을 경우 렌더링될 뷰를 결정
+@each(&#39;view.name&#39;, $jobs, &#39;job&#39;,&#39;view.empty&#39;)
+</code></pre></div>
+<blockquote>
+<p>@each를 통해서 렌더링 되는 뷰는 부모 뷰에서 변수를 상속받지 않습니다. 만약 자식뷰에서 이 변수들을 사용해야 한다면, 대신 @foreach 그리고 @include 를 사용해야합니다.</p>
+</blockquote>
+
+<h4>스텍</h4>
+
+<p>블레이드는 또한 다른 뷰 또는 레이아웃에서 렌더링 할 수 있도록 이름이 지정된 스택에 푸시 할 수 있습니다. 이는 특히 하위 뷰에 필요한 JavaScript 라이브러리를 지정하는 데 유용합니다</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">@push(&#39;scripts&#39;)
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/example.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+@endpush
+</code></pre></div>
+<p>필요한 경우 여러번 스택에 푸쉬할 수 있습니다. 전체 스택 컨텐츠를 렌더링 하려면, 스택 이름을 @stack 지시어에 전달하면 됩니다</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;head&gt;</span>
+    <span class="c">&lt;!-- Head Contents --&gt;</span>
+
+    @stack(&#39;scripts&#39;)
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div>
+<h4>서비스 인젝션-주입</h4>
+
+<p><strong>@inject</strong>
+라라벨의 서비스 컨테이너에서 서비스를 반환 할 때 사용하는 지시어 입니다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">#첫번째 인자: 서비스를 할당할 변수
+#두번째 인자: 의존성을 해결하려는 서비스 클래스 또는 인터페이스의 이름
+@inject(&#39;metrics&#39;, &#39;App\Services\MetricsService&#39;)
+
+<span class="nt">&lt;div&gt;</span>
+    Monthly Revenue: .
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+<h4>블레이드 기능 확장</h4>
+
+<p>블레이드에서는 <code>directive 메소드</code>를 사용하여 사용자가 고유한 지시어을 정의할 수 있습니다.
+블레이드 컴파일러가 사용자가 정의한 지시어을 발견하면 지시어에 정의된 콜백 함수를 호출합니다.</p>
+
+<p>다음의 예제는 전달된 DateTime 인스턴스인 $var의 포맷을 변경하는 @datetime($var) 지시어을 생성합니다</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Blade</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\ServiceProvider</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AppServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Perform post-registration booting of services.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Blade</span><span class="o">::</span><span class="na">directive</span><span class="p">(</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$expression</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;?php echo (</span><span class="si">$expression</span><span class="s2">)-&gt;format(&#39;m/d/Y H:i&#39;); ?&gt;&quot;</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Register bindings in the container.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이 지시어에 어떤 것이든 전달된 표현식에서 format 메소드를 체이닝합니다. 따라서 이 예제의 지시어의 경우에는 최종적으로 생성되는 PHP 코드</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="p">(</span><span class="nv">$var</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;m/d/Y H:i&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<blockquote>
+<p>블레이드 지시어 로직을 수정한 뒤에는, 블레이드 뷰 캐시를 삭제할 필요가 있습니다. 블레이드 뷰의 캐시는 view:clear 아티즌 명령어를 사용하여 제거할 수 있습니다.</p>
+</blockquote>
+
+<h4>커스텀 If구문</h4>
+
+<p>커스텀한 지시어를 프로그래밍하면 간단한 조건문을 정의할 때 필요 이상으로 복잡한 경우가 많습니다. 이때문에 블레이드는 클로저를 사용하여 커스텀 If 시지어를 보다 빠르게 정의할 수 있는 Blade::if 메소드를 제공합니다. 예를 들어 현재 어플리케이션의 구동 환경을 확인하는 커스텀 지시어를 정의하면 다음처럼 AppServiceProvider 의 boot 메소드에서 사용할 수 있습니다</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">use Illuminate\Support\Facades\Blade;</span>
+
+<span class="x">/**</span>
+<span class="x"> * Perform post-registration booting of services.</span>
+<span class="x"> *</span>
+<span class="x"> * @return void</span>
+<span class="x"> */</span>
+<span class="x">public function boot()</span>
+<span class="x">{</span>
+<span class="x">    Blade::if(&#39;env&#39;, function ($environment) {</span>
+<span class="x">        return app()-&gt;environment($environment);</span>
+<span class="x">    });</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>위와 같이 정의한 수 다음과 같이 사용할 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">@env(&#39;local&#39;)
+    // The application is in the local environment...
+@elseenv(&#39;testing&#39;)
+    // The application is in the testing environment...
+@else
+    // The application is not in the local or testing environment...
+@endenv
+</code></pre></div>
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/laravel">laravel</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

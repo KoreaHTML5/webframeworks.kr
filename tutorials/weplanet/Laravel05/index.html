@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - PHP 라라벨 5 On Mac - 5.프레임웍 구조 살펴보기</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #F1F71A;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">PHP 라라벨 5 On Mac - 5.프레임웍 구조 살펴보기</h1>
+<p class="title_header_summary">PHP 라라벨 5에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.056281)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,8.667210)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.056281)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.056281)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.056281)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.337684)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.056281)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.056281)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.112561)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.112561)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.194943)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,0.956770)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.238173)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.225122)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.168842)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.056281)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.393964)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.506525)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.787928)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.731648)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.056281)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.168842)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.056281)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.056281)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.225122)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.056281)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.281403)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.056281)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.112561)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.112561)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.056281)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.056281)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.112561)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.225122)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.056281)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.056281)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.112561)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.056281)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.225122)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.168842)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.056281)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.056281)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.112561)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.393964)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.238173)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.112561)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.787928)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.056281)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.056281)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.056281)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.112561)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.619086)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.112561)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.056281)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.112561)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.056281)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.056281)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.056281)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.056281)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.056281)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.056281)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.056281)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.056281)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.056281)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.225122)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.393964)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.056281)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.056281)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.168842)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.056281)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.056281)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.056281)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.225122)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.225122)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.056281)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.225122)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.112561)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.056281)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.056281)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.056281)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.056281)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.281403)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.281403)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.281403)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.281403)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.281403)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.281403)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.112561)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.056281)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.112561)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.112561)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.056281)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.056281)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.056281)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.056281)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.112561)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.056281)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.056281)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.112561)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.281403)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.056281)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.112561)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.350734)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.056281)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.056281)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.112561)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.056281)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.082382)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.056281)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.056281)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.056281)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.168842)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.168842)'>socket.io</a>
+<a href='/tags/typescript/' style='color: rgba(0,0,0,0.056281)'>typescript</a>
+<a href='/tags/laravel/' style='color: rgba(0,0,0,1.407015)'>laravel</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>기본 설치가 되었으면 생성된 프로젝트 구조 및 동작 시퀀스 그리고 각 파일 및 디렉터리의 역할을 살펴보자</p>
+</blockquote>
+
+<p>1. 프로젝트 구조</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.
+├── .env                              # 글로벌 설정 중 민감한 값, dev/production 등 앱 실행환경에 따라 변경되어야 하는 값을 써 놓는 곳
+├── app
+│   ├── Console
+│   │   ├── Commands                  # 콘솔 코맨드 하우징
+│   │   └── Kernel.php                # 콘솔 코맨드, 크론 스케쥴 등록
+│   ├── Events                        # 이벤트 클래스 하우징
+│   ├── Exceptions                    # Exception 하우징
+│   │   └── Handler.php               # 글로벌 Exception 처리 코드
+│   ├── Listeners                     # 이벤트 핸들러
+│   ├── Jobs
+│   ├── Policies
+│   ├── Http                          # Http 요청 처리 클래스들의 하우징
+│   │   ├── Controllers               # Http Controller
+│   │   ├── Kernel.php                # Http 및 Route 미들웨어 등록
+│   │   ├── Middleware                # Http 미들웨어 하우징
+│   │   ├── Requests                  # Http 폼 요청 미들웨어 하우징
+│   │   └── routes.php                # Http 요청 Url을 Controller에 맵핑시키는 규칙을 써 놓은 테이블
+│   └── Providers                     # 서비스 공급자 하우징 (config/app.php에서 바인딩 됨)
+│       ├── AppServiceProvider.php
+│       ├── AuthServiceProvider.php
+│       ├── EventServiceProvider.php  # 이벤트 리스너, 구독 바인딩
+│       └── RouteServiceProvider.php  # 라우팅 바인딩 (글로벌 라우팅 파라미터 패턴 등이 등록되어 있음)
+├── composer.json                     # 이 프로젝트의 Composer 레지스트리, Autoload 규칙 등이 담겨 있다. (c.f. Node의 package.json)
+├── config                            # database, queue, mail 등 글로벌 설정 하우징
+├── database
+│   ├── migrations                    # 데이터베이스 스키마
+│   └── seeds                         # 생성된 테이블에 Dummy 데이터를 삽입하는 클래스들 (개발 목적)
+├── gulpfile.js                       # Elixir (프론트엔드 빌드 자동화) 스크립트
+├── public                            # 웹 서버에 의해 지정된 Document Root
+├── resources
+│   ├── assets                        # JavaScript, CSS 하우징
+│   ├── lang                          # 다국어 지원을 위한 언어 레지스트리 하우징
+│   └── views                         # 뷰 파일 하우징
+├── storage                           # Laravel5 파일 저장소
+└── vendor                            # composer.json의 저장소
+</code></pre></div>
+<p><img src="../imgs/hello-laravel-img-02.png" alt="Alt text"></p>
+
+<blockquote>
+<p>위 그림과 같이 설치된 상태이다 그림 2.에서 왼쪽에 빨간색으로 표시된 Laravel (laravel/laravel) 과 Framework (laravel/framework) 가 설치된 상태이다. 별도로 분리해 놓은 이유는 Framework 요소가 Laravel 이 아닌, 가령 Lumen 처럼 다른 프로젝트에서도 사용할 수 있도록 하기 위해서이다.
+라라벨이 제공하는 문법과 API 들을 이용해서 User Code (appkr/l5essential) 라고 표시된, 커스텀 서비스를 만들게 된다. 이 과정에서 라라벨에서 제공하는 기본 기능외에 외부의 패키지들, User-pulled 3rd Party Packages 라 표시된 부분들도 가져와서 사용할 수도 있다.</p>
+</blockquote>
+
+<p>2. 라라벨 기본 시퀀스</p>
+
+<p><img src="../imgs/hello-laravel-img-03.png" alt="Alt text"></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/laravel">laravel</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

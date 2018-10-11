@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - PHP 라라벨 5 On Mac - 24.(실전 1) GitHub 계정 생성, Maria DB 세팅</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #F1F71A;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">PHP 라라벨 5 On Mac - 24.(실전 1) GitHub 계정 생성, Maria DB 세팅</h1>
+<p class="title_header_summary">PHP 라라벨 5에 대해 알아봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.056281)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,8.667210)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.056281)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.056281)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.056281)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.337684)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.056281)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.056281)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.112561)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.112561)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.194943)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,0.956770)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.238173)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.225122)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.168842)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.056281)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.393964)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.506525)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.787928)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.731648)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.056281)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.168842)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.056281)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.056281)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.225122)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.056281)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.281403)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.056281)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.112561)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.112561)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.056281)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.056281)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.112561)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.225122)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.056281)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.056281)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.112561)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.056281)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.225122)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.168842)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.056281)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.056281)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.112561)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.393964)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.238173)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.112561)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.787928)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.056281)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.056281)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.056281)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.112561)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.619086)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.112561)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.056281)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.112561)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.056281)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.056281)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.056281)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.056281)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.056281)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.056281)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.056281)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.056281)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.056281)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.225122)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.393964)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.056281)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.056281)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.168842)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.056281)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.056281)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.056281)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.225122)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.225122)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.056281)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.225122)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.112561)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.056281)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.056281)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.056281)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.056281)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.281403)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.281403)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.281403)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.281403)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.281403)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.281403)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.112561)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.056281)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.112561)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.112561)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.056281)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.056281)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.056281)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.056281)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.112561)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.056281)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.056281)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.112561)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.281403)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.056281)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.112561)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.350734)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.056281)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.056281)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.112561)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.056281)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.082382)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.056281)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.056281)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.056281)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.168842)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.168842)'>socket.io</a>
+<a href='/tags/typescript/' style='color: rgba(0,0,0,0.056281)'>typescript</a>
+<a href='/tags/laravel/' style='color: rgba(0,0,0,1.407015)'>laravel</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>프로젝트 생성하여 유지 관리하기 위해 GitHub 계정 생성 및 프로젝트 진행에 사용할 데이타 베이스를 로컬에 설치 하도록 하겠습니다.</p>
+</blockquote>
+
+<h3>Github 계정 가입</h3>
+
+<p>1. <a href="https://github.com">Gitgub 공식사이트</a> 우측 상단이 <code>Sign Up</code>클릭</p>
+
+<p><img src="../imgs/github-img-001.png" alt="Alt text"></p>
+
+<p>2. 개인 / 회사 가입을 구분하여 가입(지금은 연동 테스트를 위해 개인 Free로 가입)</p>
+
+<p><img src="../imgs/github-img-002.png" alt="Alt text"></p>
+
+<p>3. 입력한 이메일 주소로 온 메일 확인</p>
+
+<p>4. 오른쪽 중간에 있는 <code>New repository</code> 클릭</p>
+
+<p><img src="../imgs/github-img-003.png" alt="Alt text"></p>
+
+<p>5. 원하는 repository 명 입력 후 <code>Create repository</code> 클릭 완료!(저는 <code>laraveBoard</code>로 하겠습니다)</p>
+
+<p>6. 생성한 저장소에 Larabel 프로젝트 저장할 수 있도록 설정! Gitgub 관련한 다른 사항 들은 별도로 여러 매체를 통해 찾아 보시면 됩니다.</p>
+
+<p><img src="../imgs/github-img-004.png" alt="Alt text"></p>
+
+<h3>MariaDB 세팅 On Mac</h3>
+
+<p>마리아 DB(Maria db)는 기존 Mysql에서 파생된 제품입니다.</p>
+
+<p><img src="../imgs/maria-img-001.png" alt="Alt text"></p>
+
+<h4>설치</h4>
+
+<p>1. 애플의 통합개발환경인 엑스코드(Xcode) 설치합니다. 앱스토어에서 다운로드 또는 (https://itunes.apple.com/kr/app/xcode/id497799835?mt=12)에서 다운로드 하여 설치합니다.</p>
+
+<p><img src="../imgs/xcode-img-001.png" alt="Alt text"></p>
+
+<p>2. 오픈소스 패키지를 손쉽게 관리할 수 있도록 도와 주는 Homebrew를 설치 합니다. 이를 이용하면 마리아 DB 는 물론 각종 패키지를 다운로드하거나 업데이트 할 수 있습니다.</p>
+
+<p><img src="../imgs/homebrew-img-001.png" alt="Alt text"></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+$ brew update
+$ brew install mariadb
+</code></pre></div>
+<p><code>brew install mariadb</code> 명령어를 사용하여 다음과 같이 설치하면 의존성 패키지인 openssl등을 포함하여 자동으로 설치됩니다.</p>
+
+<p>3. 설치 완료 후 MariaDB를 다음과 같이 컨트롤 할 수  있습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ mysql.server status # 상태확인
+$ mysql.server stop # 정지
+$ mysql.server start # 시작
+</code></pre></div>
+<p>4. 시스템 새 시작 후에는 위의 명령을 통해 다시 실해을 해야 하기 때문에 MariaDB가 자동으로 실행될 수 있도록
+MariaDB 스타트업 plist를 LaunchAgents 디렉토리에 링크시킵니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ ln -sfv /usr/local/opt/mariadb/*.plist ~/Library/LaunchAgents
+/Users/laravel/Library/LaunchAgents/homebrew.mxcl.mariadb.plist -&gt; /usr/local/opt/mariadb/homebrew.mxcl.mariadb.plist
+</code></pre></div>
+<p>위의 방법으로 설정 완료 후에는 MariaDB 종료 시 자동으로 재 실행이 되기 때문에 관리상 다음의 내용도 확인할 필요가 있습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist # 실행하기
+$ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist #종료하기
+</code></pre></div>
+<p>5. 설치가 완료되었습니다. MariaDB에 접속 하도록 하겠습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ mysql -uroot
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 254
+Server version: 10.2.14-MariaDB Homebrew
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+
+MariaDB [(none)]&gt;
+</code></pre></div>
+<p>위 내용이 나오지 않는다면 에러 내용을 찾기 보다는 다시 처음부터 진행하는 것을 추천드립니다.</p>
+
+<p>6. MariaDB에 데이타 베이스를 생성합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">MariaDB [(none)]&gt; create database laravel;  -- laravel 라는 명을 가지는 데이터베이스를 생성합니다.
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]&gt; show databases;  -- 데이터베이스 목록을 확인합니다.
++--------------------+
+| Database           |
++--------------------+
+| laravel            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [(none)]&gt;
+</code></pre></div>
+<p>7. 비밀번호가 <code>levaral</code>인 <code>laraveler</code> 계정을 생성합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">MariaDB [(none)]&gt; create user &#39;laraveler&#39;@&#39;localhost&#39; identified by &#39;levaral&#39;;
+Query OK, 0 rows affected (0.02 sec)
+</code></pre></div>
+<p><code>laraveler</code> 계정에게 <code>laravel</code> 데이터베이스의 모든 사용권한을 부여한다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> -- &#39;%&#39; 대신 localhost를 사용할 경우 외부에서 접속 불가
+MariaDB [(none)]&gt; grant all privileges on laravel.* to laraveler@&#39;%&#39;;
+Query OK, 0 rows affected (0.38 sec)
+
+-- 권한설정을 새로 반영합니다.
+MariaDB [(none)]&gt; flush privileges;
+Query OK, 0 rows affected (0.01 sec)
+</code></pre></div>
+<p>8. 생성한 계정을 확인 합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ mysql -u laraveler -p
+Enter password: *******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.2.14-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+
+MariaDB [(none)]&gt;
+</code></pre></div>
+<p>9. 세팅된 DB에 인코딩 설정을 확인 해 보면 <code>latin1</code>과 <code>utf8</code>이 썩여 있음을 확인 할 수 있습니다. 우리는 인코딩 관련된 세팅을 <code>utf8</code>로 통일 하여 이후 진행에서
+글자가 깨지는 것을 방지 하도록 하겠습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">MariaDB [(none)]&gt; show variables like &#39;c%&#39;;
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | utf8                       |
+| character_set_connection | utf8                       |
+| character_set_database   | latin1                     |
+| character_set_filesystem | binary                     |
+| character_set_results    | utf8                       |
+| character_set_server     | latin1                     |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
+| collation_connection     | utf8_general_ci            |
+| collation_database       | latin1_swedish_ci          |
+| collation_server         | latin1_swedish_ci          |
+| completion_type          | NO_CHAIN                   |
+| concurrent_insert        | AUTO                       |
+| connect_timeout          | 10                         |
++--------------------------+----------------------------+
+14 rows in set (0.01 sec)
+</code></pre></div>
+<p>위 상태 확인 후 다음과 같이 설정 변경을 합니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">MariaDB [(none)]&gt; SET character_set_client = utf8;
+MariaDB [(none)]&gt; SET character_set_results = utf8;
+MariaDB [(none)]&gt; SET character_set_connection = utf8;
+MariaDB [(none)]&gt; ALTER DATABASE laravel DEFAULT CHARACTER SET utf8;
+MariaDB [(none)]&gt; show variables like &#39;c%&#39;;
++--------------------------+---------------------------------------------------------+
+| Variable_name            | Value                                                   |
++--------------------------+---------------------------------------------------------+
+| character_set_client     | utf8                                                    |
+| character_set_connection | utf8                                                    |
+| character_set_database   | utf8                                                    |
+| character_set_filesystem | binary                                                  |
+| character_set_results    | utf8                                                    |
+| character_set_server     | utf8                                                    |
+| character_set_system     | utf8                                                    |
+| character_sets_dir       | /usr/local/Cellar/mariadb/10.2.14/share/mysql/charsets/ |
+| check_constraint_checks  | ON                                                      |
+| collation_connection     | utf8_general_ci                                         |
+| collation_database       | utf8_general_ci                                         |
+| collation_server         | utf8_general_ci                                         |
+| completion_type          | NO_CHAIN                                                |
+| concurrent_insert        | AUTO                                                    |
+| connect_timeout          | 10                                                      |
++--------------------------+---------------------------------------------------------+
+15 rows in set (0.05 sec)
+</code></pre></div>
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/laravel">laravel</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
