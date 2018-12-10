@@ -119,9 +119,9 @@ export default {
 이렇게 파일의 내용 중 일부를 수정하면 vue Loader기능이 실행되어 새로고침 필요없이 자동으로 페이지를 수정해줍니다.  
 현재 App.vue 파일은 총 세가지로 나뉘어져 있죠?  
 
-첫번째는 template으로 html소스들이 들어가며 vue문법을 통해서 data를 삽입할 수 있습니다.  
+첫번째는 template으로 html소스들이 들어가며 vue문법을 통해서 data를 바인딩하거나 필요한 method를 실행할 수 있습니다.  
 
-두번째는 script 부분인데 각종 라이브러리나 관련된 component, 또는 util파일을 참조할 수 있으며, javascript로 페이지에 필요한 기능들을 명시할 수 있습니다.  
+두번째는 script 부분인데 각종 라이브러리나 관련된 component, 또는 util 파일 등을 참조할 수 있으며, javascript로 페이지에 필요한 기능들을 명시할 수 있습니다.  
 대부분의 기능을 추가하기 위한 작업들은 이 부분에서 진행되니 프로젝트를 진행하면서 자세히 설명드리겠습니다.  
 
 세번째는 style로 현재 페이지에서 필요한 css를 추가할 수 있습니다.  
@@ -131,13 +131,14 @@ export default {
 main.js에 참조하였으니 모든 .vue 파일에서 bootstrap 클래스를 사용할 수 있습니다.
 
 ## Data binding
-Data binding이란 VueJs의 binding expressions을 사용하여 script와 DOM간의 데이터를 주고받는 과정을 의미합니다.
+Data binding이란 VueJs의 binding expressions을 사용하여 script와 DOM간의 데이터를 주고받는 과정을 의미합니다.  
 table 태그 내 데이터를 template내에 직접 작성하지 않고 script내에 데이터를 정의하여 template에 바인딩 해보도록 하겠습니다.
 
 #### 단방향 바인딩
 바인딩에는 단방향과 양방향 바인딩이 있는데, 우선 단방향 바인딩에 대해 알아보겠습니다.  
 단방향 바인딩이란 말 그대로 바인딩을 한쪽 방향으로만 하는 것입니다.  
 우선 App.js 파일을 다음과 같이 수정해보겠습니다.
+
 ```vue
 <template>
   <div id="app">
@@ -187,21 +188,11 @@ export default {
 }
 </script>
 
-<style>
-  .mainTitle {
-    padding: 15px;
-  }
-  .mainTable {
-    width: 50%;
-    margin: auto;
-  }
-</style>
-
 ```
 
 위와 같이 소스코드를 수정하여 결과를 확인해보셨나요?  
 이전에 보이던 화면과 똑같음을 알 수 있습니다.   
-즉 data 내에 데이터를 정의해주고 template에서 Mustache(이중 괄호문)으로 데이터를 바인딩해주면 됩니다.
+즉 data 내에 데이터를 정의해주고 template에서 Mustache(이중 괄호문)으로 데이터를 바인딩해주면 됩니다.  
 하지만, 보통 테이블을 쓸 때는 위와 같이 쓰기보다는 tbody의 내용을 반복문으로 돌려서 보여주는데요.
 이번엔 아래와 같이 수정해보겠습니다.
  
@@ -250,22 +241,32 @@ export default {
 }
 </script>
 
-<style>
-  .mainTitle {
-    padding: 15px;
-  }
-  .mainTable {
-    width: 50%;
-    margin: auto;
-  }
-</style>
-
 ```
 
 여기서는 todoList라는 데이터를 array로 정의하고 v-for문을 이용해 array에 포함된 데이터를 출력하였습니다.  
-딱 보시면 감이 오셨겠지만 v-for는 array내 데이터를 반복으로 출력해주는 역할을 하며 그 옆에 key는 array 내 데이터들을 엘리먼트의 재사용 및 재정렬에 필요한 힌트를 제공해주는 역할을 합니다.  
+딱 보시면 감이 오셨겠지만 v-for는 array내 데이터를 반복으로 출력해주는 역할을 하며 item과 index로 데이터를 표현하고 있습니다.    
+그 옆에 key는 엘리먼트의 재사용 및 재정렬에 필요한 힌트를 제공해주는 역할을 합니다. array 내 데이터 중 유니크한 값을 넣어주면 됩니다.  
 key옆에는 : 표시가 있죠?  
 이것은 v-bind: 의 약어인데 HTML 속성에는 Mustache(이중 괄호문)을 사용할 수 없어서 이와 같은 표현으로 사용합니다.
+
+이 부분에서 조건문을 걸어서 테이블 내용을 다르게 출력해볼까요?
+```vue
+ <tbody>
+    <tr v-for="(item, index) in todoList" :key="item.id">
+        <td v-if="index === 0">인덱스가 0이면 출력</td>
+        <td v-else-if="index ===1">인덱스가 1이면 출력</td>
+        <td v-else>인덱스가 0도 1도 아니면 출력</td>
+        <td>{{item.id}}</td>
+        <td>{{item.todo}}</td>
+    </tr>
+ </tbody>
+```
+이렇게 수정하면 인덱스의 조건에 따라 내용이 다르게 출력됨을 알 수 있습니다.  
+v-if는 조건문으로 필요한 조건을 javascript로 작성하면 원하는 조건에 대해 원하는 내용을 보여줄 수 있습니다.  
+비슷한 문법으로는 v-show가 있는데 마찬가지로 조건을 작성하면 원하는 내용만 출력할 수 있습니다.  
+그렇다면 둘의 차이는 뭘까요?  
+그것은 v-if 같은 경우는 조건이 일치하지 않을 때 DOM에 렌더링이 되지 않지만, v-show같은 경우는 조건이 참이든 거짓이든 일단 DOM에 렌더링 되며 그 이후 조건에 따라 CSS기반 토글형식으로 보여줍니다.  
+이러한 차이점을 생각해봤을 때 v-if는 DOM에 사라졌다가 나타났다 하기 위한 토글비용이 높은 편이며, v-show는 초기 렌더링 비용이 높은 편이니 매우 자주 바뀐다면 v-show를 사용하는게 좋고 특정 조건에 따라 단순히 데이터를 보여주는 형식이면 v-if가 더 낫겠죠?  
 
 
 
