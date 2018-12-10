@@ -32,18 +32,18 @@ VueJs는 다른 프레임워크 중에서도 쉽고 재밌게 배울 수 있는 
 #### node 설치
 그럼 첫번째로 node를 설치하기 위해서 http://www.nodejs.org에 접속하셔서 10.14.1 LTS 버전을 클릭하여 설치해줍니다.
 
-![download-node](imgs/img1.png)
+![download-node](../imgs/img1.png)
 
 사실 node를 설치한 이유는 npm이라는 패키지 모듈을 사용하기 위해서 입니다.
 터미널을 이용해 npm -v 명령어를 입력하여 해당 버전을 확인하면 설치여부를 알 수 있습니다.
 
-![show-version](imgs/img2.png)
+![show-version](../imgs/img2.png)
 
 #### yarn 설치
 두번째로 yarn을 설치해봅시다.
 터미널에서 방금 설치한 npm 명령어로 npm install --global yarn을 입력하시면 npm과 마찬가지로 yarn을 명령어로 사용할 수 있습니다.
 
-![yarn-install](imgs/img3.png)
+![yarn-install](../imgs/img3.png)
 
 #### @vue/cli로 프로젝트 기본 셋팅하기 
 그럼 앞서 설치한 node와 yarn을 이용하여 기본적인 VueJs 프로젝트 셋팅을 해봅시다.
@@ -51,17 +51,17 @@ VueJs는 다른 프레임워크 중에서도 쉽고 재밌게 배울 수 있는 
 그럼 yarn과 마찬가지로 vue 명령어를 실행할 수 있는데요.
 vue create todo-list-with-vue를 입력하면 프로젝트 기본 설정에 대해 몇가지 요청사항들이 있는데 먼저 기본값으로 프로젝트를 만드는 방법과 사용자가 직접 정의하여 만드는 방법이 있습니다.
 
-![project-install](imgs/img4.png)
+![project-install](../imgs/img4.png)
 
-![project-install](imgs/img5.png)
+![project-install](../imgs/img5.png)
 
 저희는 기본값으로 프로젝트를 시작하겠습니다.
 그리고 기본 npm 저장소에 대한 연결이 느린 경우 https://registry.npm.taobao.org로 대체하여 설치하겠냐는 질문에 Y를 입력하면 됩니다.
 설치가 완료되면 다음 사진과 같이 해당 프로젝트 경로로 들어가 npm run serve를 입력하면 8080포트로 VueJs 프로젝트의 첫 페이지에 접근하실 수 있습니다!
 
-![install-complete](imgs/img6.png)
+![install-complete](../imgs/img6.png)
 
-![show-page](imgs/img7.png)
+![show-page](../imgs/img7.png)
 
 #### 디렉토리 구조 살펴보기
 
@@ -85,7 +85,7 @@ vue create todo-list-with-vue를 입력하면 프로젝트 기본 설정에 대�
 저는 프로젝트를 시작할때 @vue/cli 2.0 버전을 사용하였는데 현재 설명드린 버전은 3.0 버전이라 바뀐 부분들이 조금 있네요.
 예를 들어 현재 디렉토리에서 각종 설정파일(config.js)들을 숨겨버렸는데 이런 부분들은 터미널에서 vue ui 명령어를 입력하시면 localhost:8000이 자동으로 실행되어 확인하실 수 있습니다.
                                      
-![show-config](imgs/img8.png) 
+![show-config](../imgs/img8.png) 
 
 위 사진의 좌측 카테고리 별로 설명을 드리자면  
                                      
