@@ -58,7 +58,7 @@ new Vue({
 일단 별다른 기능없는 제목과 테이블로 구성된 간단한 하나의 페이지를 만들어 봅시다.  
 우선 App.vue파일을 열어서,  
 
-```vue
+```html
 // src/App.vue
 
 <template>
@@ -139,7 +139,7 @@ table 태그 내 데이터를 template내에 직접 작성하지 않고 script�
 단방향 바인딩이란 말 그대로 바인딩을 한쪽 방향으로만 하는 것입니다.  
 우선 App.js 파일을 다음과 같이 수정해보겠습니다.
 
-```vue
+```html
 <template>
   <div id="app">
     <div class="mainTitle">
@@ -196,7 +196,7 @@ export default {
 하지만, 보통 테이블을 쓸 때는 위와 같이 쓰기보다는 tbody의 내용을 반복문으로 돌려서 보여주는데요.  
 이번엔 아래와 같이 수정해보겠습니다.
  
-```vue
+```html
 <template>
   <div id="app">
     <div class="mainTitle">
@@ -250,7 +250,7 @@ key옆에는 : 표시가 있죠?
 이것은 v-bind: 의 약어인데 HTML 속성에는 Mustache(이중 괄호문)을 사용할 수 없어서 이와 같은 표현으로 사용합니다.
 
 이 부분에서 조건문을 걸어서 테이블 내용을 다르게 출력해볼까요?
-```vue
+```html
  <tbody>
     <tr v-for="(item, index) in todoList" :key="item.id">
         <td v-if="index === 0">인덱스가 0이면 출력</td>
