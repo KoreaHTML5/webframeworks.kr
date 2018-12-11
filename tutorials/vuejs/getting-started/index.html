@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJs로 만드는 todoList</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJs로 만드는 todoList</h1>
+<p class="title_header_summary">메인 페이지 레이아웃 및 Data binding을 통해 DOM에 원하는 데이터를 출력해봅니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://i0.wp.com/s3-ap-northeast-2.amazonaws.com/weplanet-homepage-uploads/uploads/2018/02/Ryan.jpeg?zoom=2&fit=600%2C600" alt="장현일">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            장현일
+
+                        </h4>
+                        RyanJang<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.055708)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,9.247489)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.055708)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.055708)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.055708)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.334247)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.055708)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.055708)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.111416)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.111416)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.172603)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,0.947032)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.225571)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.222831)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.167123)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.055708)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.389954)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.501370)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.779909)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.724201)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.055708)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.167123)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.055708)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.055708)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.222831)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.055708)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.278539)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.055708)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.111416)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.111416)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.055708)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.055708)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.111416)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.222831)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.055708)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.055708)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.111416)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.055708)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.222831)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.167123)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.055708)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.334247)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.111416)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.389954)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.336986)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.111416)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.779909)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.055708)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.055708)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.055708)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.111416)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.612785)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.111416)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.055708)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.111416)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.055708)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.055708)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.055708)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.055708)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.055708)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.055708)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.055708)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.055708)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.055708)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.222831)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.389954)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.055708)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.055708)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.167123)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.055708)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.055708)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.055708)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.222831)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.222831)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.055708)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.222831)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.111416)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.055708)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.055708)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.055708)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.055708)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.278539)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.278539)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.278539)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.278539)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.278539)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.278539)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.111416)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.055708)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.111416)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.111416)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.055708)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.055708)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.055708)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.111416)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.111416)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.055708)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.055708)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.111416)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.278539)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.055708)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.111416)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.392694)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.055708)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.055708)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.111416)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.055708)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.061187)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.055708)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.055708)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.501370)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.167123)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.167123)'>socket.io</a>
+<a href='/tags/typescript/' style='color: rgba(0,0,0,0.055708)'>typescript</a>
+<a href='/tags/laravel/' style='color: rgba(0,0,0,1.392694)'>laravel</a>
+<a href='/tags/github/' style='color: rgba(0,0,0,0.111416)'>github</a>
+<a href='/tags/slack/' style='color: rgba(0,0,0,0.111416)'>slack</a>
+<a href='/tags/data/' style='color: rgba(0,0,0,0.278539)'>data</a>
+<a href='/tags/opensource/' style='color: rgba(0,0,0,0.055708)'>opensource</a>
+<a href='/tags/pwa/' style='color: rgba(0,0,0,0.055708)'>pwa</a>
+<a href='/tags/vuejs/' style='color: rgba(0,0,0,0.111416)'>vuejs</a>
+<a href='/tags/nextjs/' style='color: rgba(0,0,0,0.111416)'>nextjs</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>bootstrap 사용하기</h2>
+
+<p>bootstrap은 익숙하신 분들이 많으실텐데요.<br>
+반응형 웹사이트를 개발하기 위해 필요한 UI 프레임워크이죠.<br>
+그럼 사용하기 위한 설정을 해보겠습니다.<br>
+우선 터미널에서 npm i bootstrap jquery popper.js --save를 입력해줍니다.<br>
+그럼 package.json에 boostrap과 jquery, popper.js 모듈이 추가된 걸 확인하실 수 있습니다.</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;bootstrap&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.1.3&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;jquery&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.3.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;popper.js&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.14.6&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vue&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.5.17&quot;</span>
+  <span class="p">}</span><span class="err">,</span>
+</code></pre></div>
+<p>그런 다음 src 디렉토리의 main.js 파일을 열어서</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+<span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App.vue&#39;</span>
+<span class="kr">import</span> <span class="s1">&#39;bootstrap&#39;</span>
+<span class="kr">import</span> <span class="s1">&#39;bootstrap/dist/css/bootstrap.min.css&#39;</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">productionTip</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="nx">h</span> <span class="o">=&gt;</span> <span class="nx">h</span><span class="p">(</span><span class="nx">App</span><span class="p">),</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="s1">&#39;#app&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>위와 같이 import해주면 bootstrap을 사용하기 위한 설정이 끝납니다.<br>
+간단하죠?</p>
+
+<p>여기서 알아둬야 할 부분들은<br>
+- npm i [npm 모듈 이름] --save로 필요한 라이브러리 모듈을 설치할 수 있으며, 설치한 모듈은 package.json에서 확인할 수 있다.<br>
+- 그리고 main.js 파일에서 모듈을 import하면 라이브러리를 사용할 수 있다 정도입니다.<br>
+참고로 main.js에서는 전역으로 사용할 라이브러리에 대해 참조하는게 좋습니다.
+특정 페이지에서 필요한 경우 해당 컴포넌트에서 import하여 사용할 수 있습니다.
+자세한 사용법은 npm [라이브러리 명]으로 검색하셔서 설정하는 방법을 참조하시면 좋을 듯 합니다.  </p>
+
+<h2>페이지 만들기</h2>
+
+<p>이제 todoList를 만들어 볼텐데요.<br>
+일단 별다른 기능없는 제목과 테이블로 구성된 간단한 하나의 페이지를 만들어 봅시다.<br>
+우선 App.vue파일을 열어서,  </p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">// src/App.vue
+
+<span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mainTitle&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>VueJs로 만드는 todoList<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mainTable&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;thead&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th&gt;</span>순번<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>오늘의 할일<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/thead&gt;</span>
+        <span class="nt">&lt;tbody&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>아침 먹기<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>2<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>점심 먹기<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>3<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>저녁 먹기<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/tbody&gt;</span>
+      <span class="nt">&lt;/table&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+  <span class="nc">.mainTitle</span> <span class="p">{</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.mainTable</span> <span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="k">margin</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div>
+<p>위와 같이 입력하면 화면에 간단한 제목과 함께 테이블이 생성된 걸 확인할 수 있는데요.<br>
+이렇게 파일의 내용 중 일부를 수정하면 vue Loader기능이 실행되어 새로고침 필요없이 자동으로 페이지를 수정해줍니다.<br>
+현재 App.vue 파일은 총 세가지로 나뉘어져 있죠?  </p>
+
+<p>첫번째는 template으로 html소스들이 들어가며 vue문법을 통해서 data를 바인딩하거나 필요한 method를 실행할 수 있습니다.  </p>
+
+<p>두번째는 script 부분인데 각종 라이브러리나 관련된 component, 또는 util 파일 등을 참조할 수 있으며, javascript로 페이지에 필요한 기능들을 명시할 수 있습니다.<br>
+대부분의 기능을 추가하기 위한 작업들은 이 부분에서 진행되니 프로젝트를 진행하면서 자세히 설명드리겠습니다.  </p>
+
+<p>세번째는 style로 현재 페이지에서 필요한 css를 추가할 수 있습니다.<br>
+위에 보시면 class를 정의하고 template의 필요한 부분에 사용하고 있는 걸 알 수 있습니다.  </p>
+
+<p>그리고 table 태그를 보시면 class=&quot;table&quot;로 bootstrap 클래스를 참조하여 style한 것을 알 수 있습니다.<br>
+main.js에 참조하였으니 모든 .vue 파일에서 bootstrap 클래스를 사용할 수 있습니다.</p>
+
+<h2>Data binding</h2>
+
+<p>Data binding이란 VueJs의 binding expressions을 사용하여 script와 DOM간의 데이터를 주고받는 과정을 의미합니다.<br>
+table 태그 내 데이터를 template내에 직접 작성하지 않고 script내에 데이터를 정의하여 template에 바인딩 해보도록 하겠습니다.</p>
+
+<h4>단방향 바인딩</h4>
+
+<p>바인딩에는 단방향과 양방향 바인딩이 있는데, 우선 단방향 바인딩에 대해 알아보겠습니다.<br>
+단방향 바인딩이란 말 그대로 바인딩을 한쪽 방향으로만 하는 것입니다.<br>
+우선 App.js 파일을 다음과 같이 수정해보겠습니다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mainTitle&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>VueJs로 만드는 todoList<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mainTable&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;thead&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th&gt;</span>순번<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>오늘의 할일<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/thead&gt;</span>
+        <span class="nt">&lt;tbody&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>2<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>3<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/tbody&gt;</span>
+      <span class="nt">&lt;/table&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">todo1</span><span class="o">:</span> <span class="s1">&#39;아침 먹기&#39;</span><span class="p">,</span>
+      <span class="nx">todo2</span><span class="o">:</span> <span class="s1">&#39;점심 먹기&#39;</span><span class="p">,</span>
+      <span class="nx">todo3</span><span class="o">:</span> <span class="s1">&#39;저녁 먹기&#39;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
+<p>위와 같이 소스코드를 수정하여 결과를 확인해보셨나요?<br>
+이전에 보이던 화면과 똑같음을 알 수 있습니다.<br>
+즉 data 내에 데이터를 정의해주고 template에서 Mustache(이중 괄호문)으로 데이터를 바인딩해주면 됩니다.<br>
+하지만, 보통 테이블을 쓸 때는 위와 같이 쓰기보다는 tbody의 내용을 반복문으로 돌려서 보여주는데요.<br>
+이번엔 아래와 같이 수정해보겠습니다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mainTitle&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>VueJs로 만드는 todoList<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mainTable&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;thead&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th&gt;</span>인덱스<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>순번<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>오늘의 할일<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/thead&gt;</span>
+        <span class="nt">&lt;tbody&gt;</span>
+          <span class="nt">&lt;tr</span> <span class="na">v-for=</span><span class="s">&quot;(item, index) in todoList&quot;</span> <span class="na">:key=</span><span class="s">&quot;item.id&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/tbody&gt;</span>
+      <span class="nt">&lt;/table&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">todoList</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">todo</span><span class="o">:</span> <span class="s1">&#39;아침 먹기&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">todo</span><span class="o">:</span> <span class="s1">&#39;점심 먹기&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">todo</span><span class="o">:</span> <span class="s1">&#39;저녁 먹기&#39;</span><span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
+<p>여기서는 todoList라는 데이터를 array로 정의하고 v-for문을 이용해 array에 포함된 데이터를 출력하였습니다.<br>
+딱 보시면 감이 오셨겠지만 v-for는 array내 데이터를 반복으로 출력해주는 역할을 하며 item과 index로 데이터를 표현하고 있습니다.<br>
+그 옆에 key는 엘리먼트의 재사용 및 재정렬에 필요한 힌트를 제공해주는 역할을 합니다. array 내 데이터 중 유니크한 값을 넣어주면 됩니다.<br>
+key옆에는 : 표시가 있죠?<br>
+이것은 v-bind: 의 약어인데 HTML 속성에는 Mustache(이중 괄호문)을 사용할 수 없어서 이와 같은 표현으로 사용합니다.</p>
+
+<p>이 부분에서 조건문을 걸어서 테이블 내용을 다르게 출력해볼까요?
+<code>html
+ &lt;tbody&gt;
+    &lt;tr v-for=&quot;(item, index) in todoList&quot; :key=&quot;item.id&quot;&gt;
+        &lt;td v-if=&quot;index === 0&quot;&gt;인덱스가 0이면 출력&lt;/td&gt;
+        &lt;td v-else-if=&quot;index ===1&quot;&gt;인덱스가 1이면 출력&lt;/td&gt;
+        &lt;td v-else&gt;인덱스가 0도 1도 아니면 출력&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+ &lt;/tbody&gt;
+</code>
+이렇게 수정하면 인덱스의 조건에 따라 내용이 다르게 출력됨을 알 수 있습니다.<br>
+v-if는 조건문으로 필요한 조건을 javascript로 작성하면 원하는 조건에 대해 원하는 내용을 보여줄 수 있습니다.<br>
+비슷한 문법으로는 v-show가 있는데 마찬가지로 조건을 작성하면 원하는 내용만 출력할 수 있습니다.<br>
+그렇다면 둘의 차이는 뭘까요?<br>
+그것은 v-if 같은 경우는 조건이 일치하지 않을 때 DOM에 렌더링이 되지 않지만, v-show같은 경우는 조건이 참이든 거짓이든 일단 DOM에 렌더링 되며 그 이후 조건에 따라 CSS기반 토글형식으로 보여줍니다.<br>
+이러한 차이점을 생각해봤을 때 v-if는 DOM에 사라졌다가 나타났다 하기 위한 토글비용이 높은 편이며, v-show는 초기 렌더링 비용이 높은 편이니 매우 자주 바뀐다면 v-show를 사용하는게 좋고 특정 조건에 따라 단순히 데이터를 보여주는 형식이면 v-if가 더 낫겠죠?  </p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/vuejs">vuejs</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

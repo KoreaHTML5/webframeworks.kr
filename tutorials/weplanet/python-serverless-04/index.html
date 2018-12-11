@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Python + AWS Serverless 04</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">Python + AWS Serverless 04</h1>
+<p class="title_header_summary">김승호님의 "Python Serverless" 코드랩에서 사용되었던 자료입니다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://avatars2.githubusercontent.com/u/2951094?s=400&u=444fd9e324854bf6615b6f14239a67d878289998&v=4" alt="조덕기">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            조덕기
+
+                        </h4>
+                        DanielCho<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.055708)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,9.247489)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.055708)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.055708)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.055708)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.334247)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.055708)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.055708)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.111416)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.111416)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.172603)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,0.947032)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.225571)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.222831)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.167123)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.055708)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.389954)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.501370)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.779909)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.724201)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.055708)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.167123)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.055708)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.055708)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.222831)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.055708)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.278539)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.055708)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.111416)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.111416)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.055708)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.055708)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.111416)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.222831)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.055708)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.055708)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.111416)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.055708)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.222831)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.167123)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.055708)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.334247)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.111416)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.389954)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.336986)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.111416)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.779909)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.055708)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.055708)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.055708)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.111416)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.612785)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.111416)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.055708)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.111416)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.055708)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.055708)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.055708)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.055708)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.055708)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.055708)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.055708)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.055708)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.055708)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.222831)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.389954)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.055708)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.055708)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.167123)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.055708)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.055708)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.055708)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.222831)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.222831)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.055708)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.222831)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.111416)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.055708)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.055708)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.055708)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.055708)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.278539)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.278539)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.278539)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.278539)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.278539)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.278539)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.111416)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.055708)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.111416)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.111416)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.055708)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.055708)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.055708)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.111416)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.111416)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.055708)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.055708)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.111416)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.278539)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.055708)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.111416)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.392694)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.055708)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.055708)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.111416)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.055708)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.061187)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.055708)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.055708)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.501370)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.167123)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.167123)'>socket.io</a>
+<a href='/tags/typescript/' style='color: rgba(0,0,0,0.055708)'>typescript</a>
+<a href='/tags/laravel/' style='color: rgba(0,0,0,1.392694)'>laravel</a>
+<a href='/tags/github/' style='color: rgba(0,0,0,0.111416)'>github</a>
+<a href='/tags/slack/' style='color: rgba(0,0,0,0.111416)'>slack</a>
+<a href='/tags/data/' style='color: rgba(0,0,0,0.278539)'>data</a>
+<a href='/tags/opensource/' style='color: rgba(0,0,0,0.055708)'>opensource</a>
+<a href='/tags/pwa/' style='color: rgba(0,0,0,0.055708)'>pwa</a>
+<a href='/tags/vuejs/' style='color: rgba(0,0,0,0.111416)'>vuejs</a>
+<a href='/tags/nextjs/' style='color: rgba(0,0,0,0.111416)'>nextjs</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <blockquote>
+<p>본 포스팅은 2018년 9월 29일과 12월 1일에 진행된 김승호님의 &quot;Python Serverless&quot; 코드랩에서 사용되었던 자료입니다. </p>
+</blockquote>
+
+<h2>DynamoDB 테이블 생성하기</h2>
+
+<p>DynamoDB를 설계할 시 주의해야할 점은 <a href="https://aws.amazon.com/ko/dynamodb/faqs/">FAQ</a>를 참고하시길 바랍니다.</p>
+
+<p>이제 DynamoDB에 Todo table을 생성할 것입니다. 파티션 키와 정렬 키는 다음과 같이 설정합니다.</p>
+
+<ul>
+<li>파티션키(Partition Key): portal</li>
+<li>정렬키(Sort Key): createdAt</li>
+</ul>
+
+<p>그럼 <a href="https://ap-northeast-2.console.aws.amazon.com/dynamodb/home?region=ap-northeast-2#">DynamoDB Console</a>로 이동합니다.
+테이블 만들기를 클릭하여 아래와 같이 테이블을 생성합니다.</p>
+
+<p><img src="../imgs/dynamodb-create.png" alt="dynamodb-create"></p>
+
+<h2>Python 크롤링 시작하기</h2>
+
+<p>파일 트리는 다음과 같습니다.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">environment
+└── serverless-crawler  : Crawler
+    ├── crawler.py  : Lambda에서 trigger하기 위한 handler가 포한됨 파일
+    ├── lambda_test.py: lambda function test
+    ├── zappa_settings.json : Zappa config file
+    └── requirements.txt : 개발을 위하 필요한 library 정보
+</code></pre></div>
+<p>먼저 터미널을 열어 serverless-crawler 디렉터리를 생성하고 각 파일들을 편집합니다.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment <span class="nv">$ </span>mkdir serverless-crawler <span class="o">&amp;&amp;</span> <span class="nb">cd </span>serverless-crawler
+</code></pre></div>
+<h3>serverless-crawler/requirements.txt</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">beautifulsoup4==4.6.3
+pynamodb==3.3.1
+zappa==0.46.2
+</code></pre></div>
+<p>python은 requirements.txt 에 개발에 필요한 라이브러리를 기술합니다.</p>
+
+<p>사용하는 라이브러리는 다음과 같습니다.</p>
+
+<ul>
+<li>beautifulsoup4: python web scrape 라이브러리</li>
+<li>pynamodb: DynamoDB를 사용하기 쉽도록 Modeling하는 도구</li>
+<li>zappa: python serverless framework</li>
+</ul>
+
+<p>requirements.txt에 있는 라이브러리들을 설치 합니다.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment/serverless-crawler <span class="nv">$ </span>pip install -r requirements.txt
+</code></pre></div>
+<h3>serverless-crawler/zappa_settings.json</h3>
+
+<p>zappa 를 init 하면 zappa_settings.json 파일이 생성됩니다.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment/serverless-crawler <span class="nv">$ </span>zappa init
+...
+What <span class="k">do</span> you want to call this environment <span class="o">(</span>default <span class="s1">&#39;dev&#39;</span><span class="o">)</span>: dev
+...
+What <span class="k">do</span> you want to call your bucket? <span class="o">(</span>default <span class="s1">&#39;zappa-gpz692isv&#39;</span><span class="o">)</span>: 아무것도 입력하지 않음
+...
+Where is your app<span class="s1">&#39;s function?: crawler</span>
+<span class="s1">...</span>
+<span class="s1">Would you like to deploy this application globally? (default &#39;</span>n<span class="s1">&#39;) [y/n/(p)rimary]: n</span>
+<span class="s1">...</span>
+<span class="s1">Does this look okay? (default &#39;</span>y<span class="err">&#39;</span><span class="o">)</span> <span class="o">[</span>y/n<span class="o">]</span>: y
+...
+</code></pre></div>
+<p><strong>zappa_settings.json</strong> 을 아래처럼 변경하여 저장합니다.</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;dev&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;aws_region&quot;</span><span class="p">:</span> <span class="s2">&quot;ap-northeast-2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;profile_name&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;project_name&quot;</span><span class="p">:</span> <span class="s2">&quot;python-serverless-crawler&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:</span> <span class="s2">&quot;python3.6&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;s3_bucket&quot;</span><span class="p">:</span> <span class="s2">&quot;ZAPPA_GENERATED_S3_BUCKET&quot;</span><span class="p">,</span>
+
+        <span class="nt">&quot;apigateway_enabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;keep_warm&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;lambda_description&quot;</span><span class="p">:</span> <span class="s2">&quot;Python Serverless Crawler&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lambda_handler&quot;</span><span class="p">:</span> <span class="s2">&quot;crawler.lambda_handler&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;memory_size&quot;</span><span class="p">:</span> <span class="mi">128</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3>serverless-crawler/crawler.py</h3>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">pynamodb.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">pynamodb.attributes</span> <span class="kn">import</span> <span class="n">UnicodeAttribute</span><span class="p">,</span> <span class="n">ListAttribute</span>
+
+
+<span class="k">class</span> <span class="nc">PortalKeyword</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A DynamoDB Keyword</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">table_name</span> <span class="o">=</span> <span class="s">&quot;PortalKeyword&quot;</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="s">&#39;ap-northeast-2&#39;</span>
+
+    <span class="n">portal</span> <span class="o">=</span> <span class="n">UnicodeAttribute</span><span class="p">(</span><span class="n">hash_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">createdAt</span> <span class="o">=</span> <span class="n">UnicodeAttribute</span><span class="p">(</span><span class="n">range_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="n">ListAttribute</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">naver_keywords_crawler</span><span class="p">():</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()[:</span><span class="mi">19</span><span class="p">]</span>
+    <span class="n">naver_keywords</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">naver_resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;https://www.naver.com/&#39;</span><span class="p">)</span>
+        <span class="n">naver_soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">naver_resp</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s">&#39;html.parser&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">naver_soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;class&#39;</span><span class="p">:</span><span class="s">&#39;ah_k&#39;</span><span class="p">})[:</span><span class="mi">20</span><span class="p">]):</span>
+            <span class="n">rank</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+            <span class="n">keyword</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+
+            <span class="n">naver_keywords</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&#39;rank&#39;</span><span class="p">:</span> <span class="n">rank</span><span class="p">,</span> <span class="s">&#39;keyword&#39;</span><span class="p">:</span> <span class="n">keyword</span><span class="p">})</span>
+
+        <span class="n">keyword_item</span> <span class="o">=</span> <span class="n">PortalKeyword</span><span class="p">(</span><span class="s">&#39;naver&#39;</span><span class="p">,</span> <span class="n">created_at</span><span class="p">)</span>
+        <span class="n">keyword_item</span><span class="o">.</span><span class="n">keywords</span> <span class="o">=</span> <span class="n">naver_keywords</span>
+        <span class="n">keyword_item</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">return</span> <span class="n">naver_keywords</span>
+
+
+<span class="k">def</span> <span class="nf">daum_keywords_crawler</span><span class="p">():</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()[:</span><span class="mi">19</span><span class="p">]</span>
+    <span class="n">daum_keywords</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c"># daum 의 실시간 검색어 크롤러를 작성해 보세요.</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">return</span> <span class="n">daum_keywords</span>
+
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+
+    <span class="n">naver_result</span> <span class="o">=</span> <span class="n">naver_keywords_crawler</span><span class="p">()</span>
+    <span class="n">daum_result</span> <span class="o">=</span> <span class="n">daum_keywords_crawler</span><span class="p">()</span>
+
+    <span class="c"># print(naver_result)</span>
+    <span class="c"># print(daum_result)</span>
+
+    <span class="k">if</span> <span class="n">naver_result</span> <span class="ow">and</span> <span class="n">daum_result</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;success&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;error&#39;</span>
+</code></pre></div>
+<h3>serverless-crawler/lambda_test.py</h3>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">crawler</span> <span class="kn">import</span> <span class="n">lambda_handler</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">lambda_handler</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
+</code></pre></div>
+<p>터미널에서 테스트 코드를 실행시켜 봅니다.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment/serverless-crawler <span class="nv">$ </span>python lambda_test.py
+success
+</code></pre></div>
+<p><a href="https://ap-northeast-2.console.aws.amazon.com/dynamodb/home?region=ap-northeast-2#tables:selected=PortalKeyword">DynamoDB Console</a>에 들어가서 성공적으로 항목들이 생성되었는지 확인합니다.</p>
+
+<h2>Cloud9에서 배포하기</h2>
+
+<h3>Zappa deploy</h3>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment/serverless-crawler <span class="nv">$ </span>zappa deploy dev
+Calling deploy <span class="k">for</span> stage dev..
+Downloading and installing dependencies..
+ - <span class="nv">sqlite</span><span class="o">==</span>python36: Using precompiled lambda package
+Packaging project as zip.
+Uploading python-serverless-crawler-dev-1538136485.zip <span class="o">(</span>5.8MiB<span class="o">)</span>..
+100%<span class="p">|</span>██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████<span class="p">|</span> 6.13M/6.13M <span class="o">[</span>00:01&lt;00:00, 3.48MB/s<span class="o">]</span>
+Deployment <span class="nb">complete</span>!
+<span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment/serverless-crawler <span class="err">$</span>
+</code></pre></div>
+<p>정상적으로 deploy 되었으면, <a href="https://ap-northeast-2.console.aws.amazon.com/lambda/home?region=ap-northeast-2#/functions">Lambda Console</a> 에서 새로 생성된 <code>python-serverless-crawler-dev</code> 함수를 확인 할 수 있습니다.</p>
+
+<h3>Zappa invoke</h3>
+
+<p>invoke 를 해봅니다.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment/serverless-crawler <span class="nv">$ </span>zappa invoke dev
+Calling invoke <span class="k">for</span> stage dev..
+<span class="o">[</span>START<span class="o">]</span> RequestId: XXXXXXX-.... Version: <span class="nv">$LATEST</span>
+<span class="o">[</span>END<span class="o">]</span> RequestId: XXXXXXX-....
+<span class="o">[</span>REPORT<span class="o">]</span> RequestId: XXXXXXX-....
+Duration: 2274.70 ms
+Billed Duration: <span class="m">2300</span> ms
+Memory Size: <span class="m">128</span> MB
+Max Memory Used: <span class="m">47</span> MB
+</code></pre></div>
+<h3>Zappa update</h3>
+
+<p>주기적으로 크롤링 하도록 함수를 update 를 해봅니다.</p>
+
+<p><code>zappa_settings.json</code> 에서 events 를 추가합니다.</p>
+
+<p><strong>serverless-crawler/zappa_settings.json</strong></p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;dev&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="err">...</span>
+        <span class="nt">&quot;apigateway_enabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;crawler.lambda_handler&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;expression&quot;</span><span class="p">:</span> <span class="s2">&quot;rate(10 minutes)&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="err">...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment/serverless-crawler <span class="nv">$ </span>zappa update dev
+Calling update <span class="k">for</span> stage dev..
+Downloading and installing dependencies..
+ - <span class="nv">sqlite</span><span class="o">==</span>python36: Using precompiled lambda package
+Packaging project as zip.
+Uploading python-serverless-crawler-dev-1538137619.zip <span class="o">(</span>5.8MiB<span class="o">)</span>..
+100%<span class="p">|</span>██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████<span class="p">|</span> 6.13M/6.13M <span class="o">[</span>00:01&lt;00:00, 3.51MB/s<span class="o">]</span>
+Updating Lambda <span class="k">function</span> code..
+Updating Lambda <span class="k">function</span> configuration..
+Scheduling..
+Scheduled python-serverless-crawler-dev-crawler.lambda_handler with expression rate<span class="o">(</span><span class="m">10</span> minutes<span class="o">)</span>!
+Your updated Zappa deployment is live!
+</code></pre></div>
+<p>성공적으로 update 되었습니다.
+지금부터 10분마다 주기적으로 DynamoDB에 검색어 랭킹이 쌓입니다.</p>
+
+<h2>리소스 삭제하기</h2>
+
+<p>서버리스 앱은 내리는 것이 어렵지 않습니다.
+간단한 Command 하나면 모든 스택이 내려갑니다.
+Cloud9에서 새로운 터미널을 열고 다음과 같이 입력합니다.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">(</span>venv<span class="o">)</span> ec2-user:~/environment/serverless-crawler <span class="nv">$ </span>zappa undeploy dev
+Calling undeploy <span class="k">for</span> stage dev..
+Are you sure you want to undeploy? <span class="o">[</span>y/n<span class="o">]</span> y
+Unscheduling..
+Unscheduled python-serverless-crawler-dev-crawler.lambda_handler.
+Deleting Lambda <span class="k">function</span>..
+Done!
+</code></pre></div>
+<p><a href="https://console.aws.amazon.com/iam/home#/users">IAM Console</a>로 들어가서 오늘 생성한 관리자 사용자(python-serverless)를 삭제합니다.</p>
+
+<p><a href="https://s3.console.aws.amazon.com/s3/home?region=ap-northeast-2">S3 Console</a>로 들어가서 Zappa가 생성한 버킷(zappa-XXXXXXXX)을 삭제합니다.</p>
+
+<p><a href="https://ap-northeast-2.console.aws.amazon.com/dynamodb/home?region=ap-northeast-2">DynamoDB Console</a>로 들어가서 Table을 삭제합니다. 리전은 서울입니다.</p>
+
+<p><a href="https://ap-southeast-1.console.aws.amazon.com/cloud9/home?region=ap-southeast-1">Cloud9 Console</a>로 들어가서 IDE를 삭제합니다. 리전은 싱가포르입니다.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://aws.amazon.com/ko/cloud9/">https://aws.amazon.com/ko/cloud9/</a></li>
+<li><a href="https://www.zappa.io/">https://www.zappa.io/</a></li>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></li>
+<li><a href="https://pynamodb.readthedocs.io">https://pynamodb.readthedocs.io</a></li>
+</ul>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/serverless">serverless</a>&nbsp;<a href="/tags/data">data</a>&nbsp;<a href="/tags/visualization">visualization</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
