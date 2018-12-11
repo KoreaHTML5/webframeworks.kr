@@ -38,7 +38,7 @@ DynamoDB를 설계할 시 주의해야할 점은 [FAQ](https://aws.amazon.com/ko
 
 파일 트리는 다음과 같습니다.
 
-```txt
+```
 environment
 └── serverless-crawler  : Crawler
     ├── crawler.py  : Lambda에서 trigger하기 위한 handler가 포한됨 파일
@@ -57,7 +57,7 @@ environment
 
 ### serverless-crawler/requirements.txt
 
-```txt
+```
 beautifulsoup4==4.6.3
 pynamodb==3.3.1
 zappa==0.46.2
