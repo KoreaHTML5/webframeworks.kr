@@ -2,7 +2,7 @@
   "devDependencies": {
     "browser-sync": "^1.9.2",
     "del": "^0.1.1",
-    "gulp": "^3.8.5",
+    "gulp": "^3.9.1",
     "gulp-gh-pages": "^0.5.4",
     "run-sequence": "^0.3.6"
   },
