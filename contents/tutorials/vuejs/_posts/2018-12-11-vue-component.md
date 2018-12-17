@@ -4,7 +4,7 @@ title :  [VueJs로 만드는 todoList] #2 vue component
 category : tutorials
 subcategory : setlayout
 summary : vue component에 대해 알아봅시다.
-permalink : /tutorials/vuejs/getting-started
+permalink : /tutorials/vuejs/vue-component
 tags : javascript vuejs
 author : ryanjang
 ---
