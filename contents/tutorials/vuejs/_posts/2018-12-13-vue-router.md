@@ -10,43 +10,43 @@ author : ryanjang
 ---
 
 ## vue-router란 무엇인가요?
-컴포넌트별 주소를 맵핑하여 어떤 특정 액션이 있었을 때 그 주소로 이동하면 주소에 맵핑된 컴포넌트를 보여주는 역할을 합니다.
+컴포넌트별 주소를 맵핑하여 어떤 특정 액션이 있었을 때 그 주소로 이동하면 주소에 맵핑된 컴포넌트를 보여주는 역할을 합니다.  
 어떤 역할인지 감이 오시나요?  
-이제 실습을 하면서 자세히 알아봅시다.  
-
+바로 실습을 하면서 자세히 알아봅시다.  
 
 우선 npm install vue-router --save로 라이브러리를 설치해봅시다.  
 모두 설치되셨나요?
 
-그럼 vue-router를 설정할 폴더 및 파일과 전체적인 소스 디렉토리를 변경해보겠습니다.
+그럼 vue-router를 설정할 폴더 및 파일과 전체적인 소스 디렉토리를 변경해보겠습니다.  
 디렉토리와 파일명을 아래와 같이 변경해주세요.
 
 ```sh
 ├── README.md
-├── babel.config.js #바벨 설정파일
+├── babel.config.js 
 ├── package-lock.json
-├── package.json # 프로젝트에 필요한 node_moduel, scripts, 각종 설정
-├── public #프로젝트에 필요한 각종 공용 파일 보관
+├── package.json 
+├── public 
 │   ├── favicon.ico
 │   └── index.html
-└── src #프로젝트를 구성하는 소스파일들
-    ├── App.vue
+└── src
+    ├── App.vue #변경
     ├── assets
     │   └── logo.png
-    ├── components
+    ├── components #변경
     │   └── main
-    │       └── Main.vue
-    │       └── MainDetail.vue
+    │       └── Main.vue #변경
+    │       └── MainDetail.vue #변경
     │       └── comps
-    │           └── TodoList.vue
+    │           └── TodoList.vue #변경
     ├── router
-    │   └── index.js
-    │   └── main.js    
-    └── main.js 
+    │   └── index.js #변경
+    │   └── main.js #변경  
+    └── main.js #변경
 ```
 
 디렉토리 및 파일을 추가, 변경하셨다면 차례대로 파일에 들어갈 소스를 알려드리면서 설명해보도록 하겠습니다.  
 먼저 App.js 파일을 변경해보죠.  
+
 ```html
 <template>
     <div id="app">
@@ -159,8 +159,8 @@ const router = new Router({
 export default router
 ```
 
-우선 vue-router를 사용하기 위해 npm install vue-router --save를 통해서 모듈을 설치해주세요.  
-그럼 다음 vue.use를 통해서 설치한 모듈을 참조하고 Router에 대한 옵션을 설정해줍니다.  
+처음에 설치한 vue-router를 import하여 정의합니다.     
+그런 다음 vue.use를 통해서 정의한 모듈을 참조하고 Router에 대한 옵션을 설정해줍니다.  
 옵션을 훑어보면 
 - mode라는 것이 있는데 이것은 브라우져 내부 객체의 설정값 중 원하는 설정을 선택할 수 있으며 보통 history로 설정합니다.  
 - routes는 잠시 후 소개할 component별 경로입니다.
@@ -185,6 +185,7 @@ new Vue({
 ```
 
 이제 설정은 끝났으니 사용해보기만 하면 되겠죠?  
+
 그럼 TodoList.vue 파일에서 한번 사용해보도록 하죠.  
 
 ```html
@@ -218,7 +219,7 @@ new Vue({
 ```
 
 template내의 리스트 첫번째를 보시면 router-link가 새로 생겼습니다.  
-저렇게 :to라는 속성으로 아까 router 폴더의 main.js 파일에 정의해두었던 경로중 원하는 경로를 path값에 할당해주면 됩니다.   
+저렇게 :to라는 속성으로 아까 router 폴더의 main.js 파일에 정의해두었던 경로 중 원하는 경로를 path 값에 할당해주면 됩니다.   
 한 번 테스트 해보세요!  
 잘 되나요?
 
@@ -270,11 +271,11 @@ template내의 리스트 첫번째를 보시면 router-link가 새로 생겼습�
 ```
 
 바로 느낌이 오시죠?  
-클릭 이벤트를 통해서 메소드를 호출한 다음에 this.$router.push()로 원하는 경로에 이동할 수 있습니다.      
+클릭 이벤트를 통해서 메소드를 호출한 다음 this.$router.push()로 원하는 경로에 이동할 수 있습니다.      
 
 보통 router를 사용하면서 가장 많이 사용하는 옵션이 query 입니다.  
 우리는 router로 페이지를 이동하면서 그 페이지에 필요한 정보를 전달하는 경우가 있는데요.  
-그럴때 this.$router.push({path: '/detail', query: {id: 1}})와 같이 사용해보세요.  
+그럴 때 this.$router.push({path: '/detail', query: {id: 1}})와 같이 사용해보세요.  
 
 수정 후 한번 확인해보셨나요?  
 주소 뒤에 router에서 정의한 id값이 따라갔죠?  
