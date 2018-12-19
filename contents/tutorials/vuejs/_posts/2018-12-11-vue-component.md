@@ -1,6 +1,6 @@
 ---
 layout : tutorials
-title :  [VueJs로 만드는 todoList] #2 vue component
+title : VueJs로 만드는 todoList#2 vue component
 category : tutorials
 subcategory : setlayout
 summary : vue component에 대해 알아봅시다.
