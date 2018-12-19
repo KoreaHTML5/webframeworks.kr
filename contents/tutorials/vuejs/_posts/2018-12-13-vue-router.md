@@ -1,6 +1,6 @@
 ---
 layout : tutorials
-title :  [VueJs로 만드는 todoList] #3 vue router
+title :  VueJs로 만드는 todoList#3 vue router
 category : tutorials
 subcategory : setlayout
 summary : vue router 대해 알아봅시다.

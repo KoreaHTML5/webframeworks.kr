@@ -1,6 +1,6 @@
 ---
 layout : tutorials
-title :  [VueJs로 만드는 todoList] #5 vue computed VS watch
+title : VueJs로 만드는 todoList#5 vue computed VS watch
 category : tutorials
 subcategory : setlayout
 summary : vue computed와 watch 속성에 대해 알아봅시다.

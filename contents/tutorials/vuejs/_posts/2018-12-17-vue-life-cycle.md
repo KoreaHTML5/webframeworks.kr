@@ -1,6 +1,6 @@
 ---
 layout : tutorials
-title :  [VueJs로 만드는 todoList] #4 vue life cycle
+title : VueJs로 만드는 todoList#4 vue life cycle
 category : tutorials
 subcategory : setlayout
 summary : vue life cycle에 대해 알아봅시다.

@@ -1,6 +1,6 @@
 ---
 layout : tutorials
-title :  [VueJs로 만드는 todoList] #1 메인 페이지 레이아웃 및 Data binding
+title :  VueJs로 만드는 todoList#1 메인 페이지 레이아웃 및 Data binding
 category : tutorials
 subcategory : setlayout
 summary : 메인 페이지 레이아웃 및 Data binding을 통해 DOM에 원하는 데이터를 출력해봅니다.

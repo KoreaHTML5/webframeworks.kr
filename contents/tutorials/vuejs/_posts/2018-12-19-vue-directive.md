@@ -1,6 +1,6 @@
 ---
 layout : tutorials
-title :  [VueJs로 만드는 todoList] #6 vue directive
+title : VueJs로 만드는 todoList#6 vue directive
 category : tutorials
 subcategory : setlayout
 summary : vue directive에 대해 알아봅시다.
@@ -16,7 +16,7 @@ vue 엘리먼트 속성으로 사용되는 vue directive는 엘리먼트에게 �
  - v-text, v-html, v-show, v-if, v-else, v-else-if, v-pre, v-cloak, v-once
  - vue-directive custom  
 
-이제 차례대로 하나식 알아보죠.    
+이제 차례대로 하나 알아보죠.    
   
 ### v-text
 첫번째로 v-text입니다.  
@@ -133,7 +133,7 @@ showBoolean값을 false로 전달하니 화면에서 사라졌죠?
 v-if로 3보다 작다라는 조건을 걸고 그게 아니면 v-else-if로 다음 조건을 걸고 또 그게 아니면 v-else를 통해 출력해라라는 지령이 보이시나요?  
 
 처음보시는 분들은 여기서 한가지 의문점이 생기실겁니다.  
-v-show도 보여주고 안보여줄지를 판단하고 v-if도 똑같은 기능을 하는데 어떤걸 써야할까라는 생각을 하셨나요?  
+v-show도 보여주고 안보여줄지를 판단하고 v-if도 비슷한 기능을 하는데 어떤걸 써야할까라는 생각을 하셨나요?  
 
 이 속성들도 computed와 watch 처럼 목적에 따라 사용해주셔야 합니다.  
   
@@ -166,7 +166,7 @@ v-if는 조건을 먼저 판별한 후 false일 경우는 렌더링 자체를 �
 
 ### v-cloak
 여러가지 속성들을 사용하다보단 어떠한 조건에 따라 엘리먼트들이 명령을 받고 화면에 출력을 하게 되는데 이러한 과정에서 보여지지 말아야 할 엘리먼트들이 보이는 경우가 가끔 있습니다.  
-그럴 떄 v-cloak를 사용할 수 있는데요.  
+그럴 때 v-cloak를 사용할 수 있는데요.  
 깜박이는 엘리먼트에 v-cloak 속성을 넣고 CSS로 [v-cloak] {display: none;} 값을 설정해주기만 하면 끝입니다!  
 
 
@@ -196,7 +196,7 @@ export const background = {
   }
 }
 
-// Vue.directive('my-background', background)
+// Vue.directive('background', background)
 
 ```
 
@@ -233,13 +233,14 @@ export default {
   },
 
 ```  
-customColor 변수의 값이 index.js의 background 로 넘어가서 엘리먼트의 속성을 정의해주고 있죠?
+customColor 변수의 값이 index.js의 background 로 넘어가서 엘리먼트의 속성을 정의해주고 있죠?  
 이런식으로 원하는 엘리먼트에 원하는 지령을 내릴 수 있답니다.  
+(참고로 index.js에서 주석을 제거하면 Main.vue에서 따로 import할 필요없이 글로벌하게 사용할 수 있답니다.)
 
 ## 정리
 이번엔 vue-directive에 대해서 알아보았습니다.  
 저도 각각의 속성별로 프로젝트를 진행하면서 많이 썼는데요.  
-중요한 점은 이 속성을 썻는데 원하는 결과가 나온다고 막 쓰면 안됩니다.  
+중요한 점은 이 속성을 사용하였는데 원하는 결과가 나온다고 막 쓰면 안됩니다.  
 이 결과가 나오기 위한 속성 중 이 속성이 목적과 역할에 가장 부합한지 한번 더 고민해보시고 쓰신다면 더욱 훌륭한 어플리케이션을 만들어 낼 수 있습니다!    
 
 
