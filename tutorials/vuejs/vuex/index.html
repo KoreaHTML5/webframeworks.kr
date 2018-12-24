@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - VueJs로 만드는 todoList#9 Vuex</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #;color: #;" >
+<div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+<h1 class="title_header_title">VueJs로 만드는 todoList#9 Vuex</h1>
+<p class="title_header_summary">Vuex에 대해 알아봅시다.</p>
+</div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://i0.wp.com/s3-ap-northeast-2.amazonaws.com/weplanet-homepage-uploads/uploads/2018/02/Ryan.jpeg?zoom=2&fit=600%2C600" alt="장현일">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            장현일
+
+                        </h4>
+                        RyanJang<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toc_location"></div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.052967)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,9.534009)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.052967)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.052967)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.052967)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.317800)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.052967)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.052967)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.105933)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.105933)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.065702)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,0.900434)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.165268)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.211867)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.158900)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.052967)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.370767)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.476700)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.741534)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.688567)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.052967)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.158900)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.052967)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.052967)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.211867)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.052967)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.264834)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.052967)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.105933)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.105933)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.052967)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.052967)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.105933)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.211867)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.052967)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.052967)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.105933)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.052967)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.211867)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.158900)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.052967)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.317800)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.105933)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.370767)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.589001)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.105933)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.741534)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.052967)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.052967)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.052967)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.105933)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.582634)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.105933)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.052967)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.105933)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.052967)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.052967)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.052967)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.052967)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.052967)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.052967)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.052967)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.052967)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.052967)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.211867)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.370767)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.052967)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.052967)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.158900)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.052967)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.052967)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.052967)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.211867)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.211867)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.052967)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.211867)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.105933)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.052967)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.052967)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.052967)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.052967)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.264834)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.264834)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.264834)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.264834)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.264834)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.264834)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.105933)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.052967)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.105933)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.105933)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.052967)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.052967)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.052967)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.105933)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.105933)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.052967)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.052967)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.105933)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.264834)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.052967)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.105933)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.324168)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.052967)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.052967)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.105933)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.052967)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,1.959768)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.052967)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.052967)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.476700)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.158900)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.158900)'>socket.io</a>
+<a href='/tags/typescript/' style='color: rgba(0,0,0,0.052967)'>typescript</a>
+<a href='/tags/laravel/' style='color: rgba(0,0,0,1.324168)'>laravel</a>
+<a href='/tags/github/' style='color: rgba(0,0,0,0.105933)'>github</a>
+<a href='/tags/slack/' style='color: rgba(0,0,0,0.105933)'>slack</a>
+<a href='/tags/data/' style='color: rgba(0,0,0,0.264834)'>data</a>
+<a href='/tags/opensource/' style='color: rgba(0,0,0,0.052967)'>opensource</a>
+<a href='/tags/pwa/' style='color: rgba(0,0,0,0.052967)'>pwa</a>
+<a href='/tags/vuejs/' style='color: rgba(0,0,0,0.529667)'>vuejs</a>
+<a href='/tags/nextjs/' style='color: rgba(0,0,0,0.423734)'>nextjs</a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h2>Vuex란?</h2>
+
+<p>오늘은 글로벌 데이터 저장소와 관련된 Vuex에 대해 알아보겠습니다.<br>
+한 컴포넌트에서 데이터를 정의하거나 서버로부터 받아와서 다른 컴포넌트로 전달할 때 이때까지 props를 이용했었죠?  </p>
+
+<p>하지만 이렇게 전달하는 것에는 한계가 있습니다.<br>
+전역적으로 사용할 수 있고 업데이트 할 수 있도록 중앙 저장소가 필요한 경우가 발생할텐데요.<br>
+이런 경우는 보통 어느정도 규모가 있는 어플리케이션을 개발할 때 발생하기 마련입니다.  </p>
+
+<p>이때까지 설명드렸던 내용보다는 조금 난이도가 있는 부분입니다.<br>
+하지만 개념과 간단한 사용예제를 보시면 어느정도 이해가 가실테니 한번 같이 보도록 합시다.  </p>
+
+<h3>Vuex 설정</h3>
+
+<p>Vuex도 라이브러리라서 모듈을 설치하고 사용해야합니다.<br>
+그렇다면 우선 npm install vuex 먼저 하셔야겠죠?  </p>
+
+<p>설치를 하셨다면 src 디렉토리 하단에 다음과 같이 디렉토리 및 파일을 생성해주세요.  </p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">├── src
+    └── store
+        └── modules
+        │   └── todoList.js
+        └──index.js
+</code></pre></div>
+<p>그럼 index.js 부터 살펴볼까요?  </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+<span class="kr">import</span> <span class="nx">Vuex</span> <span class="nx">from</span> <span class="s1">&#39;vuex&#39;</span>
+<span class="kr">import</span> <span class="nx">todoList</span> <span class="nx">from</span> <span class="s1">&#39;./modules/todoList&#39;</span>
+<span class="kr">import</span> <span class="nx">createLogger</span> <span class="nx">from</span> <span class="s1">&#39;vuex/dist/logger&#39;</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">Vuex</span><span class="p">)</span>
+
+<span class="c1">// const debug = process.env.NODE_ENV !== &#39;production&#39;</span>
+<span class="kr">const</span> <span class="nx">debug</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+  <span class="nx">modules</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">todoList</span>
+  <span class="p">},</span>
+  <span class="nx">strict</span><span class="o">:</span> <span class="nx">debug</span><span class="p">,</span>
+  <span class="nx">plugins</span><span class="o">:</span> <span class="nx">debug</span> <span class="o">?</span> <span class="p">[</span><span class="nx">createLogger</span><span class="p">()]</span> <span class="o">:</span> <span class="p">[]</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>우선 설치한 vuex 모듈을 참고하고 Vue.use로 전역으로 사용할 수 있게 선언해주었습니다.<br>
+그리고 modules 안에 todoList라는 파일을 참조하고 있죠?<br>
+이 곳이 저장소입니다.<br>
+한번 확인해볼까요?  </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">info</span><span class="o">:</span> <span class="s1">&#39;초기값입니다.&#39;</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">updateInfoWithActions</span> <span class="p">({</span> <span class="nx">commit</span> <span class="p">},</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="nx">commit</span><span class="p">(</span><span class="s1">&#39;updateInfo&#39;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span>
+    <span class="k">else</span> <span class="nx">commit</span><span class="p">.</span><span class="nx">reject</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">mutations</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">updateInfo</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">object</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">state</span><span class="p">.</span><span class="nx">info</span> <span class="o">=</span> <span class="nx">object</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">state</span><span class="p">,</span>
+  <span class="nx">getters</span><span class="p">,</span>
+  <span class="nx">actions</span><span class="p">,</span>
+  <span class="nx">mutations</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>간단히 저장소에 저장되어 있는 데이터를 불러오는 것과 불러온 데이터를 업데이트 하는 것까지 알아보기 위해서 필요한 부분만 작성해보았습니다.
+ - state: 전역으로 사용할 변수를 정의하고 초기값을 설정해줄 수 있습니다. 
+ - actions: mutations를 호출할 메소드를 정의합니다.
+ - mutations: state에 정의되어 있는 데이터를 업데이트 해주는 역할을 합니다.  </p>
+
+<p>우선 간단하게 설명을 드렸고 바로 이해가 안될실 수 있어요.<br>
+실습을 통해서 어떻게 데이터가 전달되고 업데이트되는지 알아보겠습니다.  </p>
+
+<p>Main.vue 파일로 이동해서 아래와 같이 수정해주세요.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;template&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mainTitle&quot;</span> <span class="na">style=</span><span class="s">&quot;padding: 15px;&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h2</span> <span class="na">v-text=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;&lt;/h2&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">v-text=</span><span class="s">&quot;subTitle&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
+            <span class="nt">&lt;h5&gt;</span>오늘의 할일 가지<span class="nt">&lt;/h5&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">v-show=</span><span class="s">&quot;showBoolean&quot;</span> <span class="na">v-html=</span><span class="s">&quot;mindControl&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">v-if=</span><span class="s">&quot;randomNum &lt; 3&quot;</span><span class="nt">&gt;</span>3보다 작군요.<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">v-else-if=</span><span class="s">&quot;randomNum &gt;= 3 &amp;&amp; randomNum &lt; 7&quot;</span><span class="nt">&gt;</span>3보다 크거나 같고 7보다 작군요.<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">v-else</span><span class="nt">&gt;</span>7이거나 7보다 크군요.<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">v-pre</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;width: 200px; height: 100px;&quot;</span> <span class="na">v-background=</span><span class="s">&quot;customColor&quot;</span><span class="nt">&gt;</span>배경색<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">v-model=</span><span class="s">&quot;title&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;제목을 입력해보세요.&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div&gt;</span>
+                <span class="nt">&lt;textarea</span>  <span class="na">v-model=</span><span class="s">&quot;subTitle&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;부제목 입력해보세요.&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">v-model=</span><span class="s">&quot;storeData&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;스토어에 저장할 내용을 입력해주세요.&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-dark&quot;</span> <span class="na">style=</span><span class="s">&quot;margin: 0 10px&quot;</span> <span class="err">@</span><span class="na">click=</span><span class="s">&quot;saveStore&quot;</span><span class="nt">&gt;</span>저장(커밋)<span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-dark&quot;</span> <span class="err">@</span><span class="na">click=</span><span class="s">&quot;saveStoreWithActions&quot;</span><span class="nt">&gt;</span>저장(액션)<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div&gt;</span>
+                <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;todo-list</span> <span class="na">:todoList=</span><span class="s">&quot;todoList&quot;</span> <span class="na">:changeList=</span><span class="s">&quot;changeList&quot;</span> <span class="na">:addList=</span><span class="s">&quot;addList&quot;</span> <span class="na">:deleteList=</span><span class="s">&quot;deleteList&quot;</span><span class="nt">&gt;&lt;/todo-list&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bottomTitle&quot;</span> <span class="na">style=</span><span class="s">&quot;padding: 15px;&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h2&gt;</span>VueJs로 만드는 todoList<span class="nt">&lt;/h2&gt;</span>
+            <span class="nt">&lt;h5&gt;</span>이번주 목표 가지<span class="nt">&lt;/h5&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+
+<span class="kr">import</span> <span class="nx">TodoList</span> <span class="nx">from</span> <span class="s1">&#39;./comp/TodoList&#39;</span>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">background</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../../directive&#39;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+  <span class="nx">directives</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">background</span>
+  <span class="p">},</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">TodoList</span>
+  <span class="p">},</span>
+  <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">todoList</span><span class="o">:</span> <span class="p">[],</span>
+      <span class="nx">goal</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;VueJs로 만드는 todoList&#39;</span><span class="p">,</span>
+      <span class="nx">subTitle</span><span class="o">:</span> <span class="s1">&#39;VueJs로 만드는 todoList&#39;</span><span class="p">,</span>
+      <span class="nx">mindControl</span><span class="o">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">h6</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;color: red&quot;</span><span class="o">&gt;</span><span class="err">오늘</span> <span class="err">할</span> <span class="err">일을</span> <span class="err">내일로</span> <span class="err">미루지</span> <span class="err">말자</span><span class="o">&lt;</span><span class="err">/h6&gt;`,</span>
+      <span class="nx">showBoolean</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">randomNum</span><span class="o">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span><span class="p">),</span>
+      <span class="nx">customColor</span><span class="o">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+      <span class="nx">storeData</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">watch</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">todoList</span> <span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">)</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">goal</span> <span class="o">=</span> <span class="nx">val</span><span class="p">.</span><span class="nx">length</span> <span class="o">*</span> <span class="mi">7</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">changeList</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="nx">addList</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">id</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">todo</span><span class="o">:</span> <span class="nx">v</span><span class="p">})</span>
+    <span class="p">},</span>
+    <span class="nx">deleteList</span> <span class="p">(</span><span class="nx">selectedGroup</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">selectedGroup</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">v</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="p">})</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">(</span><span class="s1">&#39;deleteConfirmModal&#39;</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="nx">saveStore</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="s1">&#39;updateInfo&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">storeData</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="nx">saveStoreWithActions</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="s1">&#39;updateInfoWithActions&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">storeData</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">todo</span><span class="o">:</span> <span class="s1">&#39;아침 먹기&#39;</span><span class="p">},</span>
+      <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">todo</span><span class="o">:</span> <span class="s1">&#39;점심 먹기&#39;</span><span class="p">},</span>
+      <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">todo</span><span class="o">:</span> <span class="s1">&#39;저녁 먹기&#39;</span><span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
+<p>기존 코드에서 스토어에 초기값을 가져와서 보여주고 저장할 내용을 입력받아 그 데이터를 저장소에 저장할 수 있는 코드를 추가해보았습니다.    </p>
+
+<p>console.log(this.$store.state)를 한번 출력해보세요.<br>
+출력해 보시면 state 안에 module별로 정의한 데이터를 볼 수 있는데요.<br>
+저희는 todoList라는 모듈 안에 state로 info를 정의했었습니다.<br>
+그럼 info를 불러오려면 어떻하면 될까요?<br>
+정답은 this.$store.state.todoList.info입니다!  </p>
+
+<p>일단 위 코드로 수정하여 화면을 출력해보면 처음에 info에 할당했던 &#39;초기값입니다.&#39;라는 데이터가 출력되는 걸 확인할 수 있을겁니다.  </p>
+
+<p>이제 이 데이터를 변경해 봐야겠죠?  </p>
+
+<p>데이터를 변경하는 방법은 두 가지가 있는데요,<br>
+  - commit을 통해 바로 데이터로 접근하여 수정한다.
+  - dispatch를 통해 actions를 실행해서 수정한다.  </p>
+
+<p>위 코드에서 두 가지 방법을 모두 사용해서 데이터를 변경해보았습니다.  </p>
+
+<p>버튼 중 커밋 버튼이 있죠?<br>
+이 버튼을 누르면 saveStore 메소드를 호출하여 this.$store.commit(&#39;updateInfo&#39;, this.storeData)가 실행됩니다.<br>
+이 방법이 단순히 commit을 이용하여 데이터를 변경하는 방법인데 updateInfo는 todoList 모듈의 mutations 이름입니다.<br>
+mutations 이름과 함께 사용자로부터 입력받은 값을 파라미터로 넘겨주면 updateInfo 메소드가 state의 info값을 변경해줍니다.<br>
+store의 state값이 변경됨에 따라 자동으로 DOM이 렌더링 되면서 출력값이 바뀌는 걸 확인할 수 있습니다.  </p>
+
+<p>이번엔 버튼 중 액션버튼에 대해 알아보죠.<br>
+액션버튼을 누르면 saveStoreWithActions 메소드를 호출하고 this.$store.dispatch(&#39;updateInfoWithActions&#39;, this.storeData)를 실행합니다.<br>
+그럼 todoList 모듈 안에 있는 updateInfoWithActions라는 메소드가 실행되는데 해당 메소드의 내용을 보면 데이터가 있을 때 commit으로 mutations의 updateInfo를 호출하죠?<br>
+이렇게 데이터가 업데이트되어 화면에 출력됩니다.  </p>
+
+<p>앞서 말씀드린 두가지의 차이점은 commit은 단순이 데이터만 변경해주는 용도가 되고, dispatch는 로직을 타서 데이터에 무엇인가 추가적으로 작업이 필요할 때 용이합니다.  </p>
+
+<p>그럼 이제 다른 페이지에서 글로벌 메소드에 접근해보겠습니다.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;template&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mainTitle&quot;</span> <span class="na">style=</span><span class="s">&quot;padding: 15px;&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h2&gt;</span>1번째 할 일<span class="nt">&lt;/h2&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;margin: auto; width: 80%&quot;</span><span class="nt">&gt;</span>
+            1. 아침 먹기
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;margin-top: 10px; margin-left: 10px;&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Store 저장된 데이터는 입니다.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+    <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">order</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">showListLength</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">length</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">length</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
+<p>기존에 만들어두었던 MainDetail.vue 파일을 위와 같이 수정했습니다.<br>
+todoList의 첫번째 리스트를 클릭하면 router를 이용해서 페이지 이동하도록 했었죠?<br>
+이동된 페이지에서 store에 저장된 info 데이터를 출력해보았습니다.<br>
+Main.vue 컴포넌트에서 출력했던 데이터가 MainDetail.vue에서도 보이죠?<br>
+이렇게 모든 컴포넌트에서 store의 데이터에 접근할 수 있습니다.<br>
+글로벌한 데이터를 사용하고 관리하기에 좋죠?  </p>
+
+<h2>Vuex 활용</h2>
+
+<p>상기 설명드린 방법은 단방향 데이터 흐름으로 아래 그림과 같이 아주 단순한 구조를 가지고 있습니다.  </p>
+
+<p><img src="../imgs/img11.png" alt="vuex-image1"></p>
+
+<p>여기까지 따라오는데는 크게 무리가 없으셨을 것 같은데요.<br>
+하지만 제가 프로젝트를 진행하며 Vuex를 활용한 방법은 아래와 같습니다.  </p>
+
+<p><img src="../imgs/img12.png" alt="vuex-image1"></p>
+
+<p>조금 더 복잡한 구조를 가지죠?<br>
+간략히 설명을 드리자면 저희 프로젝트의 todoList 모듈에서 actions에 서버에 요청가능한 api를 호출합니다.<br>
+만약 todoList 데이터를 서버로부터 받아온다면 actions에서 호출하여 commit으로 state에 데이터를 저장하겠죠.<br>
+그런 다음 Main.vue에서 state의 데이터 호출하는 방식입니다.<br>
+이런식으로 서버와의 통신을 구조화 시켜서 사용하는데 프로젝트를 진행하면서 한번 해보시는걸 적극 추천드립니다.    </p>
+
+<h2>정리</h2>
+
+<p>이번엔 글로벌한 데이터를 사용할 수 있도록 도와주는 Vuex에 대해서 알아보았습니다.<br>
+어떤가요? 생각보다 이해하는데 어렵지 않았나요?<br>
+한가지 팁을 드리자면 이전에 말씀드린 개발자도구의 vue devtool을 기억하시나요?<br>
+여기서 현재 컴포넌트에서 사용되고 있는 store에 대한 정보를 확인할 수 있으니 개발하실 때 유용하게 사용할 수 있을겁니다.<br>
+Vuex에 대해선 개념 이해와 시작하는 비용에 대해 고려하는게 좋다고 합니다.<br>
+현재 프로젝트에서 활용하는게 바람직한 방법인지 한번 고민해보는게 첫걸음인듯 합니다!</p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/vuejs">vuejs</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+    <script>
+        $('#main_content').toc();
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
