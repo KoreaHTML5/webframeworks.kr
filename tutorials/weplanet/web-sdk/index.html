@@ -5,7 +5,7 @@
 <style>
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
 </style>
-<title>WebFrameworks.kr - Web SDK</title>
+<title>WebFrameworks.kr - JWT + 패스워드 변경 + Refresh Token</title>
 <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="/static/css/main.css">
 <link rel="stylesheet" href="/static/css/syntax.css">
@@ -58,8 +58,8 @@
 
 <div class="content_bg"  style="background-color: #;color: #;" >
 <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
-<h1 class="title_header_title">Web SDK</h1>
-<p class="title_header_summary">Web SDK를 만드는 방법을 알아봅니다.</p>
+<h1 class="title_header_title">JWT + 패스워드 변경 + Refresh Token</h1>
+<p class="title_header_summary">jwt 사용 시에 패스워드를 초기화 시켰을 때 Refresh Token 처리방법에 대해서 알아봅시다.</p>
 </div>
 </div>
 
@@ -93,140 +93,148 @@
         <h3 class="panel-title">Tags</h3>
     </div>
     <div class="panel-body">
-        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.056540)'>jquery</a>
-<a href='/tags/javascript/' style='color: rgba(0,0,0,10.177215)'>javascript</a>
-<a href='/tags/html/' style='color: rgba(0,0,0,0.056540)'>html</a>
-<a href='/tags/grunt/' style='color: rgba(0,0,0,0.056540)'>grunt</a>
-<a href='/tags/gulp/' style='color: rgba(0,0,0,0.056540)'>gulp</a>
-<a href='/tags/build/' style='color: rgba(0,0,0,0.339241)'>build</a>
-<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.056540)'>yeoman</a>
-<a href='/tags/foundation/' style='color: rgba(0,0,0,0.056540)'>foundation</a>
-<a href='/tags/bower/' style='color: rgba(0,0,0,0.113080)'>bower</a>
-<a href='/tags/twitter/' style='color: rgba(0,0,0,0.113080)'>twitter</a>
-<a href='/tags/framework/' style='color: rgba(0,0,0,2.205063)'>framework</a>
-<a href='/tags/angularjs/' style='color: rgba(0,0,0,0.961181)'>angularjs</a>
-<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.243882)'>tutorials</a>
-<a href='/tags/backbone/' style='color: rgba(0,0,0,0.226160)'>backbone</a>
-<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.169620)'>getstarted</a>
-<a href='/tags/underscore/' style='color: rgba(0,0,0,0.056540)'>underscore</a>
-<a href='/tags/library/' style='color: rgba(0,0,0,0.395781)'>library</a>
-<a href='/tags/Ext/' style='color: rgba(0,0,0,0.508861)'>Ext</a>
-<a href='/tags/JS/' style='color: rgba(0,0,0,0.791561)'>JS</a>
-<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.735021)'>tutorial</a>
-<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.056540)'>modernizr</a>
-<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.169620)'>bootstrap</a>
-<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.056540)'>quickstart</a>
-<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.056540)'>angular-di</a>
-<a href='/tags/animation/' style='color: rgba(0,0,0,0.226160)'>animation</a>
-<a href='/tags/router/' style='color: rgba(0,0,0,0.056540)'>router</a>
-<a href='/tags/promise/' style='color: rgba(0,0,0,0.282700)'>promise</a>
-<a href='/tags/responsive/' style='color: rgba(0,0,0,0.056540)'>responsive</a>
-<a href='/tags/form/' style='color: rgba(0,0,0,0.113080)'>form</a>
-<a href='/tags/validation/' style='color: rgba(0,0,0,0.113080)'>validation</a>
-<a href='/tags/map/' style='color: rgba(0,0,0,0.056540)'>map</a>
-<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.056540)'>direcitve</a>
-<a href='/tags/file/' style='color: rgba(0,0,0,0.113080)'>file</a>
-<a href='/tags/test/' style='color: rgba(0,0,0,0.226160)'>test</a>
-<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.056540)'>ui-bootstrap</a>
-<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.056540)'>twitter-bootstrap</a>
-<a href='/tags/express/' style='color: rgba(0,0,0,0.113080)'>express</a>
-<a href='/tags/express.js/' style='color: rgba(0,0,0,0.056540)'>express.js</a>
-<a href='/tags/node.js/' style='color: rgba(0,0,0,0.226160)'>node.js</a>
-<a href='/tags/backend/' style='color: rgba(0,0,0,0.169620)'>backend</a>
-<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.056540)'>d3.js</a>
-<a href='/tags/visualization/' style='color: rgba(0,0,0,0.339241)'>visualization</a>
-<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.113080)'>reactjs</a>
-<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.395781)'>expressjs</a>
-<a href='/tags/react/' style='color: rgba(0,0,0,1.696203)'>react</a>
-<a href='/tags/session/' style='color: rgba(0,0,0,0.113080)'>session</a>
-<a href='/tags/meteor/' style='color: rgba(0,0,0,0.791561)'>meteor</a>
-<a href='/tags/SEO/' style='color: rgba(0,0,0,0.056540)'>SEO</a>
-<a href='/tags/REST/' style='color: rgba(0,0,0,0.056540)'>REST</a>
-<a href='/tags/API/' style='color: rgba(0,0,0,0.056540)'>API</a>
-<a href='/tags/es2015/' style='color: rgba(0,0,0,0.113080)'>es2015</a>
-<a href='/tags/es6/' style='color: rgba(0,0,0,0.621941)'>es6</a>
-<a href='/tags/es7/' style='color: rgba(0,0,0,0.113080)'>es7</a>
-<a href='/tags/DDP/' style='color: rgba(0,0,0,0.056540)'>DDP</a>
-<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.113080)'>ngMessages</a>
-<a href='/tags/jsx/' style='color: rgba(0,0,0,0.056540)'>jsx</a>
-<a href='/tags/publish/' style='color: rgba(0,0,0,0.056540)'>publish</a>
-<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.056540)'>subscribe</a>
-<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.056540)'>meteor.js</a>
-<a href='/tags/reactive/' style='color: rgba(0,0,0,0.056540)'>reactive</a>
-<a href='/tags/package/' style='color: rgba(0,0,0,0.056540)'>package</a>
-<a href='/tags/static/' style='color: rgba(0,0,0,0.056540)'>static</a>
-<a href='/tags/assets/' style='color: rgba(0,0,0,0.056540)'>assets</a>
-<a href='/tags/public/' style='color: rgba(0,0,0,0.056540)'>public</a>
-<a href='/tags/flux/' style='color: rgba(0,0,0,0.226160)'>flux</a>
-<a href='/tags/redux/' style='color: rgba(0,0,0,0.395781)'>redux</a>
-<a href='/tags/server/' style='color: rgba(0,0,0,0.056540)'>server</a>
-<a href='/tags/distribution/' style='color: rgba(0,0,0,0.056540)'>distribution</a>
-<a href='/tags/webpack/' style='color: rgba(0,0,0,0.169620)'>webpack</a>
-<a href='/tags/development/' style='color: rgba(0,0,0,0.056540)'>development</a>
-<a href='/tags/optimization/' style='color: rgba(0,0,0,0.056540)'>optimization</a>
-<a href='/tags/immutable/' style='color: rgba(0,0,0,0.056540)'>immutable</a>
-<a href='/tags/orm/' style='color: rgba(0,0,0,0.226160)'>orm</a>
-<a href='/tags/database/' style='color: rgba(0,0,0,0.226160)'>database</a>
-<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.056540)'>hapi.js</a>
-<a href='/tags/hapi/' style='color: rgba(0,0,0,0.226160)'>hapi</a>
-<a href='/tags/ionic/' style='color: rgba(0,0,0,0.113080)'>ionic</a>
-<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.056540)'>hybrid-app</a>
-<a href='/tags/django/' style='color: rgba(0,0,0,0.056540)'>django</a>
-<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.056540)'>fullstack</a>
-<a href='/tags/spa/' style='color: rgba(0,0,0,0.056540)'>spa</a>
-<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.282700)'>ExpressJS</a>
-<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.282700)'>NodeJS</a>
-<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.282700)'>Sequelize</a>
-<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.282700)'>Mocha</a>
-<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.282700)'>Supertest</a>
-<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.282700)'>UnitTest</a>
-<a href='/tags/this/' style='color: rgba(0,0,0,0.113080)'>this</a>
-<a href='/tags/dom/' style='color: rgba(0,0,0,0.056540)'>dom</a>
-<a href='/tags/es5/' style='color: rgba(0,0,0,0.113080)'>es5</a>
-<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.113080)'>virtualdom</a>
-<a href='/tags/modules/' style='color: rgba(0,0,0,0.056540)'>modules</a>
-<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.056540)'>asynchronous</a>
-<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.056540)'>semicolon</a>
-<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.113080)'>nodejs</a>
-<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.113080)'>ECMAScript2015</a>
-<a href='/tags/babel/' style='color: rgba(0,0,0,0.056540)'>babel</a>
-<a href='/tags/angular,/' style='color: rgba(0,0,0,0.056540)'>angular,</a>
-<a href='/tags/electron/' style='color: rgba(0,0,0,0.113080)'>electron</a>
-<a href='/tags/docker/' style='color: rgba(0,0,0,0.339241)'>docker</a>
-<a href='/tags/D3/' style='color: rgba(0,0,0,0.056540)'>D3</a>
-<a href='/tags/node/' style='color: rgba(0,0,0,0.113080)'>node</a>
-<a href='/tags/aws/' style='color: rgba(0,0,0,1.470042)'>aws</a>
-<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.056540)'>dynamoDB</a>
-<a href='/tags/chrome/' style='color: rgba(0,0,0,0.056540)'>chrome</a>
-<a href='/tags/native/' style='color: rgba(0,0,0,0.113080)'>native</a>
-<a href='/tags/markdown/' style='color: rgba(0,0,0,0.056540)'>markdown</a>
-<a href='/tags/vue/' style='color: rgba(0,0,0,2.091983)'>vue</a>
-<a href='/tags/middleware/' style='color: rgba(0,0,0,0.113080)'>middleware</a>
-<a href='/tags/IoT/' style='color: rgba(0,0,0,0.056540)'>IoT</a>
-<a href='/tags/serverless/' style='color: rgba(0,0,0,0.508861)'>serverless</a>
-<a href='/tags/python/' style='color: rgba(0,0,0,0.169620)'>python</a>
-<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.169620)'>socket.io</a>
-<a href='/tags/typescript/' style='color: rgba(0,0,0,0.056540)'>typescript</a>
-<a href='/tags/laravel/' style='color: rgba(0,0,0,1.413502)'>laravel</a>
-<a href='/tags/github/' style='color: rgba(0,0,0,0.113080)'>github</a>
-<a href='/tags/slack/' style='color: rgba(0,0,0,0.113080)'>slack</a>
-<a href='/tags/data/' style='color: rgba(0,0,0,0.282700)'>data</a>
-<a href='/tags/opensource/' style='color: rgba(0,0,0,0.056540)'>opensource</a>
-<a href='/tags/pwa/' style='color: rgba(0,0,0,0.056540)'>pwa</a>
-<a href='/tags/vuejs/' style='color: rgba(0,0,0,0.565401)'>vuejs</a>
-<a href='/tags/nextjs/' style='color: rgba(0,0,0,0.452321)'>nextjs</a>
-<a href='/tags/react_admin/' style='color: rgba(0,0,0,0.169620)'>react_admin</a>
-<a href='/tags/cd/' style='color: rgba(0,0,0,0.056540)'>cd</a>
-<a href='/tags/webrtc/' style='color: rgba(0,0,0,0.226160)'>webrtc</a>
-<a href='/tags/pm2/' style='color: rgba(0,0,0,0.056540)'>pm2</a>
-<a href='/tags/docker_registry/' style='color: rgba(0,0,0,0.056540)'>docker_registry</a>
-<a href='/tags/ecr/' style='color: rgba(0,0,0,0.056540)'>ecr</a>
-<a href='/tags/twilio/' style='color: rgba(0,0,0,0.056540)'>twilio</a>
-<a href='/tags/json_schema/' style='color: rgba(0,0,0,0.056540)'>json_schema</a>
-<a href='/tags/sql/' style='color: rgba(0,0,0,0.056540)'>sql</a>
-<a href='/tags/json/' style='color: rgba(0,0,0,0.056540)'>json</a>
-<a href='/tags/web/' style='color: rgba(0,0,0,0.056540)'>web</a>
-<a href='/tags/sdk/' style='color: rgba(0,0,0,0.056540)'>sdk</a>
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.058921)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,10.605809)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.058921)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.058921)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.058921)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.353527)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.058921)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.058921)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.117842)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.117842)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.297925)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.001660)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.296266)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.235685)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.176763)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.058921)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.412448)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.530290)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.824896)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.765975)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.058921)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.176763)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.058921)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.058921)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.235685)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.058921)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.294606)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.058921)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.117842)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.117842)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.058921)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.058921)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.117842)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.235685)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.058921)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.058921)'>twitter-bootstrap</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.117842)'>express</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.058921)'>express.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.235685)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.176763)'>backend</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.058921)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.353527)'>visualization</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.117842)'>reactjs</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.412448)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.767635)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.176763)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.824896)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.058921)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.058921)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.058921)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.117842)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.648133)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.117842)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.058921)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.117842)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.058921)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.058921)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.058921)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.058921)'>meteor.js</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.058921)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.058921)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.058921)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.058921)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.058921)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.235685)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.412448)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.058921)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.058921)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.176763)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.058921)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.058921)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.058921)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.235685)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.235685)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.058921)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.235685)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.117842)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.058921)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.058921)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.058921)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.058921)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.294606)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.294606)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.294606)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.294606)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.294606)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.294606)'>UnitTest</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.117842)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.058921)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.117842)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.117842)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.058921)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.058921)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.058921)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.117842)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.117842)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.058921)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.058921)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.117842)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.471369)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.058921)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.117842)'>node</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.590871)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.058921)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.058921)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.117842)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.058921)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.180083)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.117842)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.058921)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.530290)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.176763)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.176763)'>socket.io</a>
+<a href='/tags/typescript/' style='color: rgba(0,0,0,0.058921)'>typescript</a>
+<a href='/tags/laravel/' style='color: rgba(0,0,0,1.473029)'>laravel</a>
+<a href='/tags/github/' style='color: rgba(0,0,0,0.117842)'>github</a>
+<a href='/tags/slack/' style='color: rgba(0,0,0,0.117842)'>slack</a>
+<a href='/tags/data/' style='color: rgba(0,0,0,0.294606)'>data</a>
+<a href='/tags/opensource/' style='color: rgba(0,0,0,0.058921)'>opensource</a>
+<a href='/tags/pwa/' style='color: rgba(0,0,0,0.058921)'>pwa</a>
+<a href='/tags/vuejs/' style='color: rgba(0,0,0,0.589212)'>vuejs</a>
+<a href='/tags/nextjs/' style='color: rgba(0,0,0,0.471369)'>nextjs</a>
+<a href='/tags/react_admin/' style='color: rgba(0,0,0,0.176763)'>react_admin</a>
+<a href='/tags/webrtc/' style='color: rgba(0,0,0,0.235685)'>webrtc</a>
+<a href='/tags/cd/' style='color: rgba(0,0,0,0.058921)'>cd</a>
+<a href='/tags/pm2/' style='color: rgba(0,0,0,0.058921)'>pm2</a>
+<a href='/tags/docker_registry/' style='color: rgba(0,0,0,0.058921)'>docker_registry</a>
+<a href='/tags/ecr/' style='color: rgba(0,0,0,0.058921)'>ecr</a>
+<a href='/tags/twilio/' style='color: rgba(0,0,0,0.058921)'>twilio</a>
+<a href='/tags/json_schema/' style='color: rgba(0,0,0,0.058921)'>json_schema</a>
+<a href='/tags/sql/' style='color: rgba(0,0,0,0.058921)'>sql</a>
+<a href='/tags/json/' style='color: rgba(0,0,0,0.058921)'>json</a>
+<a href='/tags/web/' style='color: rgba(0,0,0,0.058921)'>web</a>
+<a href='/tags/sdk/' style='color: rgba(0,0,0,0.058921)'>sdk</a>
+<a href='/tags/ssl/' style='color: rgba(0,0,0,0.058921)'>ssl</a>
+<a href='/tags/portainer/' style='color: rgba(0,0,0,0.058921)'>portainer</a>
+<a href='/tags/jwt/' style='color: rgba(0,0,0,0.058921)'>jwt</a>
+<a href='/tags/mailu/' style='color: rgba(0,0,0,0.058921)'>mailu</a>
+<a href='/tags/sam/' style='color: rgba(0,0,0,0.058921)'>sam</a>
+<a href='/tags/lambda/' style='color: rgba(0,0,0,0.058921)'>lambda</a>
+<a href='/tags/thumbnail/' style='color: rgba(0,0,0,0.058921)'>thumbnail</a>
+<a href='/tags/redis/' style='color: rgba(0,0,0,0.058921)'>redis</a>
 
     </div>
 </div>
@@ -234,146 +242,110 @@
 
     <div class="col-sm-9 col-md-6">
         <div class="media_content media_item shadow_panel" id="main_content">
-            <h2>SDK</h2>
+            <h3>JWT(JSON Web Token)</h3>
 
 <ul>
-<li><p>개발자가 혼자인 프로젝트일 경우, 소규모인 팀에서만 코드를 공유할 경우는 SDK가 필요하지 않다.
-하지만, 규모가 있는 프로젝트에서 팀간 협업을 하면서 코드의 참조는 가능하지만 변경이 일어나서는 안되는 경우,
-오픈소스로 자신의 코드를 배포하는 경우에는 sdk가 필수적이라고 할 수 있다.</p></li>
-<li><p>react나 vue와 같은 SPA(Single page application)을 사용한다면 빌드과정에서 webpack이 호환성을 맞춰주겠지만, 
-그것이 아니라면 webpack으로 SDK 화 시키는 것이 호환성 이슈에서 자유로울 수 있다.</p></li>
+<li>회원 인증을 위해서 JWT를 사용하게 되면 유저의 세션을 유지할 필요가 없기 때문에 세션 관리가 필요없다.
+서버 자원을 많이 절약할 수 있기 때문에 많이 사용한다.</li>
 </ul>
 
-<h2>필요</h2>
+<h3>필요</h3>
 
 <ul>
-<li>호환성: web 프로젝트에서 호환성 이슈는 피해갈 수 없는 허들이다. 
-한국에서하위 버전의 브라우저(ie)를 지원하기 위해서는 es5, 최악에는 es3를 사용할 수 밖에 없다.</li>
-<li>난독화: 유저에게 모든 코드가 공개되는 것은 위험천만한 일이다. </li>
+<li><p>어떤 특정한 상황에서, 예를 들어 유저의 비밀번호가 노출된 상황에 패스워드를 초기화 했을 경우에 
+발급한 Token을 무효화(revoke) 시킬 필요가 있을 때가 있다. 
+하지만 이미 발급한 Token은 영구저장소에 저장해 보관해 비교하지 않는 이상 확인할 수 있는 방법이 없다.</p></li>
+<li><p>Token을 영구저장소에 저장 후 매번 비교하는 것은 이미 세션과 다름없어서 JWT의 장점이 사라지게 된다.</p></li>
 </ul>
 
-<h2>시작하기</h2>
-
-<ol>
-<li>구조</li>
-</ol>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">├── lib
-│   └── index.js
-├── package.json
-└── webpack.config.js
-</code></pre></div>
-<ol>
-<li>package.json</li>
-<li>필요한 webpack 관련 패키지를 devDependencies에 선언한다.</li>
-<li>main에 빌드된 파일이 저장될 경로를 지정한다.</li>
-</ol>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">{</span>
-  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;sdk-example&quot;</span>,
-  <span class="s2">&quot;version&quot;</span>: <span class="s2">&quot;0.0.1&quot;</span>,
-  <span class="s2">&quot;private&quot;</span>: <span class="nb">true</span>,
-  <span class="s2">&quot;main&quot;</span>: <span class="s2">&quot;dist/lib/sdk.js&quot;</span>,
-  <span class="s2">&quot;dependencies&quot;</span>: <span class="o">{</span>
-    <span class="s2">&quot;build&quot;</span>: <span class="s2">&quot;NODE_ENV=production ./node_modules/.bin/webpack&quot;</span>
-  <span class="o">}</span>,
-  <span class="s2">&quot;devDependencies&quot;</span>: <span class="o">{</span>
-    <span class="s2">&quot;@babel/core&quot;</span>: <span class="s2">&quot;^7.0.1&quot;</span>,
-    <span class="s2">&quot;@babel/preset-env&quot;</span>: <span class="s2">&quot;^7.0.0&quot;</span>,
-    <span class="s2">&quot;babel-loader&quot;</span>: <span class="s2">&quot;^8.0.2&quot;</span>,
-    <span class="s2">&quot;babel-plugin-add-module-exports&quot;</span>: <span class="s2">&quot;^1.0.0&quot;</span>,
-    <span class="s2">&quot;clean-webpack-plugin&quot;</span>: <span class="s2">&quot;^0.1.19&quot;</span>,
-    <span class="s2">&quot;file-loader&quot;</span>: <span class="s2">&quot;^2.0.0&quot;</span>,
-    <span class="s2">&quot;uglifyjs-webpack-plugin&quot;</span>: <span class="s2">&quot;^2.0.0&quot;</span>,
-    <span class="s2">&quot;webpack&quot;</span>: <span class="s2">&quot;^4.19.0&quot;</span>,
-    <span class="s2">&quot;webpack-cli&quot;</span>: <span class="s2">&quot;^3.1.0&quot;</span>,
-    <span class="s2">&quot;webpack-dev-middleware&quot;</span>: <span class="s2">&quot;^3.3.0&quot;</span>,
-    <span class="s2">&quot;webpack-hot-middleware&quot;</span>: <span class="s2">&quot;^2.24.0&quot;</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<ol>
-<li>webpack.json</li>
-<li>개발버전과 배포버전을 구분해서 빌드한다.</li>
-<li>일반적으로 코드상에서 NODE<em>ENV로 구분하므로 NODE</em>ENV에 따라서 난독화를 할 지 안할지 설정한다.</li>
-</ol>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="s1">&#39;use strict&#39;</span>
-
-const <span class="nv">path</span> <span class="o">=</span> require<span class="o">(</span><span class="s1">&#39;path&#39;</span><span class="o">)</span>
-const <span class="nv">CleanWebpackPlugin</span> <span class="o">=</span> require<span class="o">(</span><span class="s1">&#39;clean-webpack-plugin&#39;</span><span class="o">)</span>
-const <span class="nv">UglifyJsPlugin</span> <span class="o">=</span> require<span class="o">(</span><span class="s1">&#39;uglifyjs-webpack-plugin&#39;</span><span class="o">)</span><span class="p">;</span>
-
-module.exports <span class="o">=</span> <span class="o">{</span>
-  mode: process.env.NODE_ENV <span class="o">===</span> <span class="s1">&#39;production&#39;</span> ? <span class="s1">&#39;production&#39;</span> : <span class="s1">&#39;development&#39;</span>,
-  entry: <span class="o">[</span>
-    path.join<span class="o">(</span>__dirname, <span class="s1">&#39;lib/index.js&#39;</span><span class="o">)</span>
-  <span class="o">]</span>,
-  output: <span class="o">{</span>
-    path: path.join<span class="o">(</span>__dirname, <span class="s1">&#39;/dist/lib&#39;</span><span class="o">)</span>,
-    filename: <span class="sb">`</span>sdk.js<span class="sb">`</span>,
-    library: <span class="s1">&#39;SdkExample&#39;</span>,
-    libraryTarget: <span class="s1">&#39;umd&#39;</span>,
-    umdNamedDefine: <span class="nb">true</span>,
-  <span class="o">}</span>,
-  optimization: <span class="o">{</span>
-    minimizer: process.env.NODE_ENV <span class="o">===</span> <span class="s1">&#39;production&#39;</span> ? <span class="o">[</span>
-      new UglifyJsPlugin<span class="o">({</span>
-        uglifyOptions: <span class="o">{</span>
-          output: <span class="o">{</span>
-            comments: <span class="nb">false</span>
-          <span class="o">}</span>
-        <span class="o">}</span>
-      <span class="o">})</span>
-    <span class="o">]</span> : <span class="o">[]</span>
-  <span class="o">}</span>,
-  plugins: <span class="o">[</span>
-    new CleanWebpackPlugin<span class="o">(</span>path.join<span class="o">(</span>__dirname, <span class="s1">&#39;/dist/&#39;</span><span class="o">))</span>,
-  <span class="o">]</span>,
-  module: <span class="o">{</span>
-    rules: <span class="o">[</span>
-      <span class="o">{</span>
-        <span class="nb">test</span>: /<span class="o">(</span><span class="se">\.</span>jsx<span class="p">|</span><span class="se">\.</span>js<span class="o">)</span><span class="nv">$/</span>,
-        loader: <span class="s1">&#39;babel-loader&#39;</span>,
-        exclude: /<span class="o">(</span>node_modules<span class="p">|</span>bower_components<span class="o">)</span>/
-      <span class="o">}</span>
-    <span class="o">]</span>
-  <span class="o">}</span>,
-  node: <span class="o">{</span>
-    fs: <span class="s1">&#39;empty&#39;</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<ol>
-<li>.babelrc</li>
-<li>호환성 지원을 위한 babel 설정</li>
-</ol>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="o">{</span>
-  <span class="s2">&quot;presets&quot;</span>: <span class="o">[</span><span class="s2">&quot;@babel/preset-env&quot;</span><span class="o">]</span>,
-  <span class="s2">&quot;plugins&quot;</span>: <span class="o">[</span>
-    <span class="s2">&quot;add-module-exports&quot;</span>
-  <span class="o">]</span>
-<span class="o">}</span>
-</code></pre></div>
-<ol>
-<li>lib/index.js</li>
-<li>간단한 sdk 코드</li>
-</ol>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="s1">&#39;use strict&#39;</span>
-
-module.exports <span class="o">=</span> <span class="k">function</span> <span class="o">()</span> <span class="o">{</span>
-  console.log<span class="o">(</span><span class="s1">&#39;Hello world&#39;</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
-<h3>배포</h3>
+<h3>대안</h3>
 
 <ul>
-<li>빌드 후 web에서 사용하면 된다.</li>
-<li>간단한 webpack 설정만으로 sdk를 개발해서 사용할 수 있다. </li>
+<li><p>토큰 생성 시에 access token과 refresh token을 만든다. access token의 유효시간을 짧게 한 후 일정 시간이 지나면, 
+refresh token으로 토큰을 다시 갱신시키게 한다. </p></li>
+<li><p>id, password를 저장할 때 다음과 같이 password hash값과 salt 값을 영구저장소에 저장한다. 
+```javascript
+const crypto = require(&#39;crypto&#39;)</p></li>
 </ul>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">npm run build
+
+<p>function createPasswordHash(password) {
+  const salt = crypto.randomBytes(64).toString(&#39;base64&#39;).replace(/[^A-Za-z0-9]/g, &#39;&#39;)
+  crypto.pbkdf2(password, salt, 103312, 64, &#39;sha512&#39;, (err, key) =&gt; {
+    if (err) reject(err)
+    resolve({password: key.toString(&#39;base64&#39;), salt})
+  })
+}</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">* salt 값은 유저가 매번 패스워드를 변경할 때마다 바뀌게 된다. 이 salt 값으로 refresh token을 암호화 해서 생성한다.
+```javascript
+const jwt = require(&#39;jsonwebtoken&#39;)
+
+async function createRefreshToken(userId, salt) {
+  try {
+    const payload = {sub: userId}
+    return await jwt.sign(payload, salt,
+      {
+        algorithm: &#39;HS256&#39;,
+        expiresIn: 60 * 60 * 24 * 7
+      })
+  } catch (err) {
+    throw err
+  }
+}
 </code></pre></div>
+<ul>
+<li>refresh token 시 저장한 salt를 가져와서 검증 후 access token을 생성한다.
+``<code>javascript
+const jwt = require(&#39;jsonwebtoken&#39;)
+const fs = require(&#39;fs&#39;)
+const privateKey = fs.readFileSync(</code>${<strong>dirname}/private.pem<code>)
+const publicKey = fs.readFileSync(</code>${</strong>dirname}/public.pem`)</li>
+</ul>
+
+<p>async function refreshToken(accessToken, refreshToken, salt) {
+  try {
+    const payload = await jwt.verify(accessToken, publicKey, {algorithms: &#39;RS256&#39;, ignoreExpiration: true})
+    if (payload.type === &#39;email&#39;) {
+      await jwt.verify(refreshToken, salt, {algorithms: &#39;HS256&#39;})
+      delete payload.iat
+      delete payload.exp
+      delete payload.nbf
+      delete payload.jti
+      return await createAccessToken(payload)
+    } else {
+      throw &#39;accessToken type should be email type&#39;
+    }
+  } catch (e) {
+    throw {status: 401, message: e}
+  }
+}</p>
+
+<p>async function createAccessToken(userId) {
+  try {
+    const payload = {sub: userId}
+    return await jwt.sign(payload, privateKey,
+      {
+        algorithm: &#39;RS256&#39;,
+        expiresIn: 60 * 60
+      })
+  } catch (err) {
+    throw err
+  }
+}
+```</p>
+
+<h3>결론</h3>
+
+<ul>
+<li><p>이제 access token을 재발급 받을 경우에만 영구저장소에 저장된 salt값을 사용해 decode한 후 재발급하면 jwt의 장점을 살리면서 
+발급한 access token을 즉시적으로는 아니지만 빠른 시간안에 무효화 할 수 있다. </p></li>
+<li><p>이 같은 방법은 모바일 앱에서 하나의 기기만 사용하는 경우에도 활용할 수 있다. 
+이 경우에는 salt를 사용할 것이 아니라 로그인 시마다 refresh token hash를 별도 생성해 저장해 두고 그 hash값으로 encode, decode하면 된다.</p></li>
+</ul>
+
         </div>
 
         <div class="media_content media_item shadow_panel">
-            <p>Tags : <a href="/tags/web">web</a>&nbsp;<a href="/tags/sdk">sdk</a>&nbsp;</p>
+            <p>Tags : <a href="/tags/jwt">jwt</a>&nbsp;</p>
         </div>
 
 
