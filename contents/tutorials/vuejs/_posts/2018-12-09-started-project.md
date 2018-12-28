@@ -195,7 +195,7 @@ export default {
 즉 data 내에 데이터를 정의해주고 template에서 Mustache(이중 괄호문)으로 데이터를 바인딩해주면 됩니다.  
 하지만, 보통 테이블을 쓸 때는 위와 같이 쓰기보다는 tbody의 내용을 반복문으로 돌려서 보여주는데요.  
 이번엔 아래와 같이 수정해보겠습니다.
- 
+
 ```html
 <template>
   <div id="app">
