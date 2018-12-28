@@ -13,6 +13,8 @@ author : weplanetJT
 
 # React 시작하기
 
+
+
 ## React란?
 
 React는 사용자 인터페이스를 만들기위해 페이스북과 인스타그램에서 개발한 오픈소스 자바스크립트 라이브러리로써,
@@ -29,6 +31,7 @@ React는 사용자 인터페이스를 만들기위해 페이스북과 인스타�
 - **구성적인 컴포넌트 개발**
  React는 재사용가능한 컴포넌트들을 개발하기 위한 모든 것입니다. 사실, React로 당신이 할 수 있는 오직 한가지는 컴포넌트를 개발하는 것 입니다.
 그것들은 캡슐화 되어있기 때문에, 컴포넌트들은 재사용될 수 있고, 테스트될 수 있으며, 관심의 분리(seperation of concerns)를 지키게 해줍니다.
+
 
 
 ## 설치하기
@@ -77,7 +80,10 @@ React는 컴포넌트가 관심을 분리하는데 있어서 디스플레이 로
 (참고1) JSX는 HTML처럼 보이지만 작업하다보면 마주치게 될 몇가지 중요한 차이점이 있으니
 [링크](http://reactkr.github.io/react/docs/jsx-gotchas-ko-KR.html)에서 참고하시기 바랍니다.
 
+
+
 ## Reactive Data Flow
+
 UI를 가지고 할 수 있는 가장 기본적인 작업은 어떠한 데이터를 표시하는 것입니다.
 React는 데이터를 표시하고, 데이터가 변할 때 마다 인터페이스를 가장 최신으로 유지시키는 작업을 쉽게 만듭니다.
 
@@ -96,7 +102,7 @@ React는 데이터를 표시하고, 데이터가 변할 때 마다 인터페이�
     <script type="text/jsx">
 
       // ** Example Template **
-
+    
     </script>
   </body>
 </html>
@@ -133,7 +139,11 @@ props는 컴포넌트 안에서 조작이 불가능한 엘리먼트(immutable el
 props에 대해서는 아래에서 더 자세히 살펴보도록 하겠습니다.
 
 
+
+
+
 ## 컴포넌트
+
 ### 컴포넌트 구성
 이번엔 hello-react.html의 예제의 example template에 tutorial1.js의 코드를 삽입하여, 컴포넌트의 구성에 대해 간략히 살펴보도록하겠습니다.
 {% highlight javascript %}
@@ -159,7 +169,10 @@ React div 컴포넌트의 인스턴스로서, React가 다룰 수 있는 데이�
 React는 Raw HTML 문자열을 생성하는 것이 아니기 떄문에 XSS를 기본적으로 방지할 수 있습니다.
 참고로 HTML 엘리멘트의 이름은 소문자로 시작하고 커스텀 React클래스 이름은 대문자로 시작하고 있습니다.
 
+
+
 ### 컴포넌트 조합하기
+
 위 예제에서 나온 CommentBox를 아래의 구조처럼 변경하며, 컴포넌트를 조합해보도록 하겠습니다.
 
 - CommentList
@@ -202,7 +215,10 @@ var CommentBox = React.createClass({
 });
 {% endhighlight %}
 
+
+
 ### 컴포넌트 프로퍼티 (Component Properties)
+
 위에서 간단하게 설명되었던 props를 통해서 부모로부터 받은 데이터에 의존하는 comment 컴포넌트를 만들어보겠습니다.
 부모 컴포넌트로 부터 받은 데이터는 자식 컴포너트에서 ‘프로퍼티’로 사용이 가능합니다.
 이 ‘프로퍼티들’은 this.props를 통해 접근가능하며, props를 사용해 Comment 컴포넌트는 CommentList에서 전달받은 데이터를 읽어들이고,
@@ -224,6 +240,8 @@ var Comment = React.createClass({
 
 JSX 내부의 중괄호로 둘러싸인 JavaScript 표현식(어트리뷰트나 엘리먼트의 자식으로 사용된)을 통해 텍스트나 React 컴포넌트를 트리에 더할 수 있습니다.
 this.props를 통해 컴포넌트에 전달된 특정한 어트리뷰트들에, this.props.children을 통해 중첩된 엘리먼트들에 접근할 수 있습니다.
+
+
 
 #### 직접 입력
 
@@ -247,6 +265,8 @@ var CommentList = React.createClass({
 부모 컴포넌트인 CommentList에서 자식 컴포넌트인 Comment에 데이터들을 전달하고 있는것을 확인할 수 있습니다.
 예를 들어, 우리는 어트리뷰트로 Pete Hunt를, XML 형식의 자식 노드로 댓글입니다를 첫 번째 Comment로 넘겼습니다.
 위에서 언급했듯이 Comment 컴포넌트는 그들의 '프로퍼티'를 this.props.author, this.props.children를 통해 접근합니다.
+
+
 
 #### 데이터 모델 연결
 
@@ -305,6 +325,8 @@ var CommentList = React.createClass({
 });
 {% endhighlight %}
 
+
+
 #### 서버에서 데이터모델 가져오기
 
 이제 데이터를 소스에 직접 넣는 방식에서 서버에서 동적으로 받아서 처리하는 방식으로 바꾸기위해, 데이터 prop을 삭제하고 처리할 URL로 변경해 줍시다.
@@ -321,7 +343,10 @@ React.render(
 이 컴포넌트는 이전 것과 다르게, 스스로 다시 렌더링해야 합니다. 컴포넌트는 서버에서 요청이 들어올때까지는 아무 데이터도 가지고 있지 않다가,
 특정한 시점에서 새로운 댓글을 렌더할 필요가 있을 것입니다
 
+
+
 ### 컴포넌트 스테이트 (Component State)
+
 #### 반응적 스테이트
 위의 예제들은, 각각의 컴포넌트는 props를 기반으로 한번 렌더되었습니다. props는 불변성을 갖고있고, 부모에서 전달되어 부모에게 "소유" 되어 있습니다.
 그래서 컴포넌트에 상호작용을 구현하기 위해선 props가 아닌, 가변성을 갖는 state를 이용하는게 좋습니다.
@@ -349,7 +374,10 @@ var CommentBox = React.createClass({
 
 getInitialState() 는 컴포넌트의 생명주기동안 한 번만 실행되며 컴포넌트의 초기 state를 설정합니다.
 
+
+
 #### 스테이트 업데이트하기
+
 서버에서 GET 방식으로 JSON을 넘겨받아 최신의 데이터가 state에 반영되도록 정적 JSON 파일을 사용해서 간단하게 만들어보겠습니다.
 
 {% highlight javascript %}
@@ -440,7 +468,10 @@ React.render(
 );
 {% endhighlight %}
 
+
+
 #### 새로운 댓글 추가하기
+
 위에서 댓글목록을 만들었으니, 이제는 사용자에게 이름과 내용을 입력받고 댓글을 저장하는 CommentForm 컴포넌트를 만들어보도록 하겠습니다.
 
 {% highlight javascript %}
@@ -623,7 +654,11 @@ var CommentBox = React.createClass({
 {% endhighlight %}
 
 
+
+
+
 ## 프러덕션
+
 ### 미리 컴파일된 JSX
 npm 모듈을 가지고 있다면, 간단히 npm install -g react-tools를 실행해 커맨드 라인 jsx 툴을 설치할 수 있습니다.
 이 툴은 JSX 구문을 일반적인 JavaScript파일로 변환해 브라우져에서 바로 실행할 수 있도록 합니다.
@@ -669,3 +704,16 @@ React.render(
 
 * 본 Get Started는 [React tutorials](https://facebook.github.io/react/)과
 [ReactKR tutorials](http://reactkr.github.io/react/docs/tutorial-ko-KR.html)을 참고하여 작성되었습니다.
+
+
+
+
+
+## 튜토리얼
+
+[React-Admin - 설치](http://webframeworks.kr/tutorials/react-admin/setup/)
+
+[React-Admin - backend와 연동](http://webframeworks.kr/tutorials/react-admin/backend/)
+
+[React-Admin - 빌드 및 배포](http://webframeworks.kr/tutorials/react-admin/deploy/)
+

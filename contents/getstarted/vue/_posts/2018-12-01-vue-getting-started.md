@@ -15,13 +15,53 @@ author : danielcho
 
 
 
-## 참고 자료 
+## 개요 
+
+2017~2018년을 거치면서 웹 프론트엔드 기술에서 가장 큰 변화는 Angular, Vue, React와 같은 프론트엔드 프레임워크의 경쟁, 도입, 대중화를 꼽을 수 있습니다. 특히 가볍고 친숙하며, 앞서 나온 Angular와 React의 장점들을 받아들이며 급격하게 성장한 VueJS의 등장은 매우 의미있는 변화입니다. 
+
+만약 내가 개발하려는 웹 개발 프로젝트에 어떤 프레임워크가 적절할지 궁금하시다면, 2018년 11월에 진행된 W3C HTML5 Conference의 [Deep Dive Into Modern Frameworks](https://drive.google.com/file/d/15EZk338-3zrhiNJY4Lk8eVUzLrQWX-N6/view?usp=sharing) 발표를 참고하시기 바랍니다. 
+
+VueJS의 가장 큰 장점 중 하나는 충실한 한글화와 적극적인 커뮤니티가 아닐까 생각합니다. 그만큼 VueJS는 공식 가이드/튜토리얼만으로도 충분한 정보를 얻을 수 있습니다. 아래의 공식 가이드를 참고하시고, ToDo List 생성과 같은 SPA를 실습해보시면서 시작하실 수 있습니다. 
+
+
+
+
+
+## 참고 자료
 
 [공식 가이드](https://vuejs.org/v2/guide/)
 
 
 
-## 튜토리얼
+
+
+## 튜토리얼 (2018)
+
+
+
+[VueJS 실습 - todoList#1 메인 페이지 레이아웃 및 Data binding](http://webframeworks.kr/tutorials/vuejs/getting-started/)
+
+[VueJS 실습 - todoList#2 vue component](http://webframeworks.kr/tutorials/vuejs/vue-component/)
+
+[VueJS 실습 - todoList#3 vue router](http://webframeworks.kr/tutorials/vuejs/vue-router/)
+
+[VueJS 실습 - todoList#4 vue life cycle](http://webframeworks.kr/tutorials/vuejs/vue-life-cycle/)
+
+[VueJS 실습 - todoList#5 vue computed VS watch](http://webframeworks.kr/tutorials/vuejs/vue-computed-watch/)
+
+[VueJS 실습 - todoList#6 vue directive](http://webframeworks.kr/tutorials/vuejs/vue-directive/)
+
+[VueJS 실습 - todoList#7 양방향 바인딩, v-model](http://webframeworks.kr/tutorials/vuejs/v-model/)
+
+[VueJS 실습 - todoList#8 filter & plugin 사용법](http://webframeworks.kr/tutorials/vuejs/v-filter-plugin/)
+
+[VueJS 실습 - todoList#9 Vuex](http://webframeworks.kr/tutorials/vuejs/vuex/)
+
+
+
+
+
+## 튜토리얼 (2017)
 
 
 

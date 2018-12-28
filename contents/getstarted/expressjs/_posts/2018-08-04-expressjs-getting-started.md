@@ -11,7 +11,11 @@ tags : express express.js node.js backend javascript library
 author : 6pack
 ---
 
+
+
 # Express.js 시작하기
+
+
 
 ## Express.js란?
 
@@ -23,6 +27,8 @@ author : 6pack
 미들웨어(Middleware) 구조 때문에 가능한 것입니다. 자바스크립트 코드로 작성된 다양한 기능의 미들웨어는
 개발자가 필요한 것만 선택하여 익스프레스와 결합해 사용할 수 있습니다. 본 글에서는 익스프레스 설치와
 기본구조에 대해 알아보고 웹서버 개발에 필요한 기초 사용법에 대해 알아보겠습니다.
+
+
 
 ## 설치
 
@@ -52,6 +58,7 @@ $ express my-app
 
 위 명령어 실행결과 my-app 폴더가 생성되고 익스프레스 모듈과 함께 서버 구동에 필요한 각종 파일들이
 폴더 하위에 자동으로 생성됩니다.
+
 
 
 ## 구조
@@ -127,6 +134,8 @@ HTML 코드로 변환됩니다. 위에서 설정한 라우팅 로직 중 `redner
 **/public**: 정적 파일을 위한 폴더로서 자바스크립트 파일, 이미지 파일, 스타일시트 등을
 포함합니다. 브라우져에 로딩된 HTML파일에서 해당 파일을 호출하면 내려주는 역할을 합니다.
 
+
+
 ## 구동
 
 익스프레스를 설치했고 전체 폴더 구조를 살펴보았으니 프로그램을 구동해 보겠습니다. 위에서도 설명했듯이
@@ -149,6 +158,7 @@ $ npm start
 `http://localhost:3000`으로 접속합니다. 아래 화면을 확인하면 익스프레스를 제대로 설치한 것입니다.
 
 ![초기화면](imgs/init.png)
+
 
 
 ## 라우팅
@@ -226,6 +236,8 @@ res 파라매터는 클라이언트로 응답을 위한 객체입니다. `res.se
 - `res.json()`: 제이슨(Json) 객체로 응답
 - `res.render()`: 제이드 템플릿을 렌더링
 - `res.sendfile()`: 파일 다운로드
+
+
 
 ## 템플릿
 
@@ -347,6 +359,8 @@ block content
 이외에도 include, mixin 등 제이드만의 문법은 다양합니다.
 [공식 홈페이지](http://jade-lang.com)에서 확인할 수 있습니다.
 
+
+
 ## [추가] 미들웨어
 
 미들웨어에 대해 좀 더 알아볼까요? 익스프레스의 핵심 구조가 바로 이 미들웨어라고 할 수 있습니다.
@@ -396,11 +410,41 @@ middleware3는 좀 특별한 미들웨어입니다. 파라매터를 보면 첫�
 * 인증에 성공할 경우: middleware1 -> middleware2 -> 라우팅 로직 -> 응답
 * 인증에 실패할 경우: middleware1 -> middleware3 -> 응답
 
+
+
 ## 마치며
 
 익스프레스는 이외에도 CSS 전처기를 위한 모듈(Stylus, Less등), 사용자 입력을 위한 폼(From),
 데이터 저장을 위한 쿠키(Cookie)나 세션(Session)등 다양한 기능을 지원합니다. 또한 백엔드 서버구현 시
 영구적인 데이터 저장을 위한 데이터베이스 모듈(Mysql, Mongodb)도 거의 대부분 지원하고 있습니다.
 
-
 소스코드: [https://github.com/jeonghwan-kim/express-kisa-getstarted](https://github.com/jeonghwan-kim/express-kisa-getstarted)
+
+
+
+
+
+## 튜토리얼
+
+[퀵스타트 - Express 시작하기](https://github.com/KoreaHTML5/quickstart-expressjs)
+
+[퀵스타트 - Express로 API 서버 만들기](https://github.com/KoreaHTML5/quickstart-express-new)
+
+[퀵스타트 - Express 프레임워크의 이해](https://github.com/KoreaHTML5/codelab-node-web)
+
+[SLACK과 NODEJS EXPRESS 연동하기](http://webframeworks.kr/tutorials/weplanet/slack-nodejs-express/)
+
+[ECMAScript2015(ES6)로 Node.JS 코딩하기](http://webframeworks.kr/tutorials/ecmascript2015/nodejs-es6/)
+
+[Node.js 에서 Headless Chrome 사용하기](http://webframeworks.kr/tutorials/weplanet/headless-chrome-in-nodejs/)
+
+[NodeJS를 이용한 API 서버만들기 1](http://webframeworks.kr/tutorials/nodejs/api-server-by-nodejs-01/)
+
+[NodeJS를 이용한 API 서버만들기 2](http://webframeworks.kr/tutorials/nodejs/api-server-by-nodejs-02/)
+
+[NodeJS를 이용한 API 서버만들기 3](http://webframeworks.kr/tutorials/nodejs/api-server-by-nodejs-03/)
+
+[NodeJS를 이용한 API 서버만들기 4](http://webframeworks.kr/tutorials/nodejs/api-server-by-nodejs-04/)
+
+[NodeJS를 이용한 API 서버만들기 5](http://webframeworks.kr/tutorials/nodejs/api-server-by-nodejs-05/)
+

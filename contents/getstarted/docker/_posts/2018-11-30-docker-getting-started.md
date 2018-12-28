@@ -15,6 +15,24 @@ author : danielcho
 
 
 
+## 개요
+
+도커 컨테이너는 애플리케이션을 실행하기 위해서 필요한 코드, 런타임, 라이브러리 등을 모두 포함한 채로 배포 할 수 있습니다. 따라서 어떤 환경에서도 동일하게 작동하는 운영체제 레벨의 가상화 소프트웨어입니다. 특히 하나의 서버에 웹서버, api서버, admin서버, 결제 서버 등과 같이 여러 프로젝트를 실행하는 경우, docker로 올리는 것이 서로간에 충돌을 피할 수 있는 좋은 방법이 될 수 있습니다.
+
+
+
+## 튜토리얼 (2018)
+
+
+
+[배포 자동화 - docker registry + aws ecr](http://webframeworks.kr/tutorials/continuous-delivery/docker-ecr/)
+
+[배포 자동화 - docker](http://webframeworks.kr/tutorials/continuous-delivery/docker/)
+
+[배포 자동화 - 개요](http://webframeworks.kr/tutorials/continuous-delivery/summary/)
+
+
+
 ## 참고 자료 
 
 [공식 가이드](https://docs.docker.com/get-started/)
