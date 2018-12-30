@@ -8,7 +8,7 @@ permalink : /getstarted/next
 title_background_color : AED5E6
 title_color : FFFFFF
 tags : javascript next
-author : danielcho
+author : stevenhong
 ---
 
 # [nextJS](https://nextjs.org/)
@@ -50,8 +50,7 @@ mkdir pages
 
 **이후 npm으로 진행하도록 하겠습니다**
 
-**제약사항** NEXT JS에서는 각 route 에 해당된 파일은 반드시 pages라는 디렉토리 안에 들어가야 하기 때문에 pages 디렉터리를 반드시 생성, 다른 디렉토리는 자유롭게 생성 가능합니다.
-
+**제약사항** NEXT JS에서는 각 route 에 해당된 파일은 반드시 pages라는 디렉토리 안에 들어가야 하기 때문에 pages 디렉터리는 변경 불가합니다.
 package.json에 Script 편집
 
 ```text
@@ -125,13 +124,13 @@ package.json 에 script에 dev를 보시면 -p [포트] 옵션으로 9090이기 
 
 [NEXT JS - Router](http://webframeworks.kr/tutorials/nextjs/nextjs-004/)
 
-[NEXT JS - 커스텀 NEXT JS 실습](http://webframeworks.kr/tutorials/nextjs/nextjs-005/)
+[NEXT JS - NEXT JS 실습](http://webframeworks.kr/tutorials/nextjs/nextjs-005/)
 
 [NEXT JS - Axios (HTTP클라이언트 라이브러리)](http://webframeworks.kr/tutorials/nextjs/nextjs-006/)
 
 [NEXT JS - 커스텀 Document(Bootstrap))](http://webframeworks.kr/tutorials/nextjs/nextjs-007/)
 
-[NEXT JS - 배포)](http://webframeworks.kr/tutorials/nextjs/nextjs-008/)
+[NEXT JS - 배포](http://webframeworks.kr/tutorials/nextjs/nextjs-008/)
 
 
 
