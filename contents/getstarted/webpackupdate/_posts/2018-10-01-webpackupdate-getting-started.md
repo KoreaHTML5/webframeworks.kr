@@ -150,7 +150,7 @@ Hello Webpack!이라는 문구를 클릭하면 hello라는 alert 창이 뜹니�
 ![show-browser](../imgs/img2.png)
 
 index.html은 bundle.js를 참조하고 있는데 app.js에서 작성한 내용이 반영되었습니다.  
-그 뜻은 webpack이 app.js 파일과 참조하고 있던 options.js 파일을 번들로 묶어서 bundle.js 파일로 표현해주었다는게 이해가 되시죠?  
+그 뜻은 webpack이 app.js 파일과 참조하고 있던 options.js 파일을 번들링하여 bundle.js 파일로 표현해주었다는게 이해가 되시죠?  
 
 ## 정리 
 webpack에 대한 아주 기본적인 개념과 사용방법에 대해 알아보았습니다.  
