@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css); /* 나눔고딕 : 'Nanum Gothic' */
+</style>
+<title>WebFrameworks.kr - Webpackupdate</title>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/toc.css">
+    <script type="text/javascript" src="/static/js/jquery.toc.js"></script>
+    <style>
+        #toc_location.affix {
+            top:50px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default top_menu" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">웹Frameworks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/getstarted">Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/updates">Update</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/tutorials">Tutorials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/quickstart">Quick Start</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="https://github.com/KoreaHTML5/webframeworks.kr/blob/master/CONTRIBUTE.md" target="_blank">참여하기</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="http://goo.gl/forms/MB9ZxVvdrD" target="_blank">설문하기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="content_bg"  style="background-color: #AED5E6;color: #FFFFFF;" >
+    <div class="col-md-10 col-md-offset-1 title_header jumbotron"  style="background:url() no-repeat center"  >
+        <h1 class="title_header_title">Webpackupdate</h1>
+        <p class="title_header_summary">자바스크립트 모듈 번들러인 웹팩(Webpack)에 알아봅니다.</p>
+    </div>
+</div>
+
+<div>
+
+    <div class="col-sm-3 col-md-2 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">작성자</h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object profile_img" src="https://i0.wp.com/s3-ap-northeast-2.amazonaws.com/weplanet-homepage-uploads/uploads/2018/02/Ryan.jpeg?zoom=2&fit=600%2C600" alt="장현일">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            장현일
+
+                        </h4>
+                        RyanJang<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+    <div class="panel-body">
+        <a href='/tags/jquery/' style='color: rgba(0,0,0,0.059761)'>jquery</a>
+<a href='/tags/javascript/' style='color: rgba(0,0,0,10.996016)'>javascript</a>
+<a href='/tags/html/' style='color: rgba(0,0,0,0.059761)'>html</a>
+<a href='/tags/grunt/' style='color: rgba(0,0,0,0.059761)'>grunt</a>
+<a href='/tags/gulp/' style='color: rgba(0,0,0,0.059761)'>gulp</a>
+<a href='/tags/build/' style='color: rgba(0,0,0,0.418327)'>build</a>
+<a href='/tags/yeoman/' style='color: rgba(0,0,0,0.059761)'>yeoman</a>
+<a href='/tags/foundation/' style='color: rgba(0,0,0,0.059761)'>foundation</a>
+<a href='/tags/bower/' style='color: rgba(0,0,0,0.119522)'>bower</a>
+<a href='/tags/twitter/' style='color: rgba(0,0,0,0.119522)'>twitter</a>
+<a href='/tags/framework/' style='color: rgba(0,0,0,2.450199)'>framework</a>
+<a href='/tags/angularjs/' style='color: rgba(0,0,0,1.015936)'>angularjs</a>
+<a href='/tags/tutorials/' style='color: rgba(0,0,0,1.314741)'>tutorials</a>
+<a href='/tags/backbone/' style='color: rgba(0,0,0,0.239044)'>backbone</a>
+<a href='/tags/getstarted/' style='color: rgba(0,0,0,0.179283)'>getstarted</a>
+<a href='/tags/underscore/' style='color: rgba(0,0,0,0.059761)'>underscore</a>
+<a href='/tags/library/' style='color: rgba(0,0,0,0.418327)'>library</a>
+<a href='/tags/Ext/' style='color: rgba(0,0,0,0.537849)'>Ext</a>
+<a href='/tags/JS/' style='color: rgba(0,0,0,0.836653)'>JS</a>
+<a href='/tags/tutorial/' style='color: rgba(0,0,0,0.776892)'>tutorial</a>
+<a href='/tags/modernizr/' style='color: rgba(0,0,0,0.059761)'>modernizr</a>
+<a href='/tags/bootstrap/' style='color: rgba(0,0,0,0.179283)'>bootstrap</a>
+<a href='/tags/quickstart/' style='color: rgba(0,0,0,0.059761)'>quickstart</a>
+<a href='/tags/angular-di/' style='color: rgba(0,0,0,0.059761)'>angular-di</a>
+<a href='/tags/animation/' style='color: rgba(0,0,0,0.239044)'>animation</a>
+<a href='/tags/router/' style='color: rgba(0,0,0,0.059761)'>router</a>
+<a href='/tags/promise/' style='color: rgba(0,0,0,0.298805)'>promise</a>
+<a href='/tags/responsive/' style='color: rgba(0,0,0,0.059761)'>responsive</a>
+<a href='/tags/form/' style='color: rgba(0,0,0,0.119522)'>form</a>
+<a href='/tags/validation/' style='color: rgba(0,0,0,0.119522)'>validation</a>
+<a href='/tags/map/' style='color: rgba(0,0,0,0.059761)'>map</a>
+<a href='/tags/direcitve/' style='color: rgba(0,0,0,0.059761)'>direcitve</a>
+<a href='/tags/file/' style='color: rgba(0,0,0,0.119522)'>file</a>
+<a href='/tags/test/' style='color: rgba(0,0,0,0.239044)'>test</a>
+<a href='/tags/ui-bootstrap/' style='color: rgba(0,0,0,0.059761)'>ui-bootstrap</a>
+<a href='/tags/twitter-bootstrap/' style='color: rgba(0,0,0,0.059761)'>twitter-bootstrap</a>
+<a href='/tags/d3.js/' style='color: rgba(0,0,0,0.059761)'>d3.js</a>
+<a href='/tags/visualization/' style='color: rgba(0,0,0,0.358566)'>visualization</a>
+<a href='/tags/expressjs/' style='color: rgba(0,0,0,0.418327)'>expressjs</a>
+<a href='/tags/react/' style='color: rgba(0,0,0,1.792829)'>react</a>
+<a href='/tags/session/' style='color: rgba(0,0,0,0.179283)'>session</a>
+<a href='/tags/meteor/' style='color: rgba(0,0,0,0.836653)'>meteor</a>
+<a href='/tags/SEO/' style='color: rgba(0,0,0,0.059761)'>SEO</a>
+<a href='/tags/REST/' style='color: rgba(0,0,0,0.059761)'>REST</a>
+<a href='/tags/API/' style='color: rgba(0,0,0,0.059761)'>API</a>
+<a href='/tags/es2015/' style='color: rgba(0,0,0,0.119522)'>es2015</a>
+<a href='/tags/es6/' style='color: rgba(0,0,0,0.657371)'>es6</a>
+<a href='/tags/es7/' style='color: rgba(0,0,0,0.119522)'>es7</a>
+<a href='/tags/DDP/' style='color: rgba(0,0,0,0.059761)'>DDP</a>
+<a href='/tags/ngMessages/' style='color: rgba(0,0,0,0.119522)'>ngMessages</a>
+<a href='/tags/jsx/' style='color: rgba(0,0,0,0.059761)'>jsx</a>
+<a href='/tags/publish/' style='color: rgba(0,0,0,0.059761)'>publish</a>
+<a href='/tags/subscribe/' style='color: rgba(0,0,0,0.059761)'>subscribe</a>
+<a href='/tags/meteor.js/' style='color: rgba(0,0,0,0.059761)'>meteor.js</a>
+<a href='/tags/node.js/' style='color: rgba(0,0,0,0.239044)'>node.js</a>
+<a href='/tags/backend/' style='color: rgba(0,0,0,0.179283)'>backend</a>
+<a href='/tags/reactive/' style='color: rgba(0,0,0,0.059761)'>reactive</a>
+<a href='/tags/package/' style='color: rgba(0,0,0,0.059761)'>package</a>
+<a href='/tags/static/' style='color: rgba(0,0,0,0.059761)'>static</a>
+<a href='/tags/assets/' style='color: rgba(0,0,0,0.059761)'>assets</a>
+<a href='/tags/public/' style='color: rgba(0,0,0,0.059761)'>public</a>
+<a href='/tags/flux/' style='color: rgba(0,0,0,0.239044)'>flux</a>
+<a href='/tags/redux/' style='color: rgba(0,0,0,0.418327)'>redux</a>
+<a href='/tags/server/' style='color: rgba(0,0,0,0.059761)'>server</a>
+<a href='/tags/distribution/' style='color: rgba(0,0,0,0.059761)'>distribution</a>
+<a href='/tags/webpack/' style='color: rgba(0,0,0,0.239044)'>webpack</a>
+<a href='/tags/development/' style='color: rgba(0,0,0,0.059761)'>development</a>
+<a href='/tags/optimization/' style='color: rgba(0,0,0,0.059761)'>optimization</a>
+<a href='/tags/immutable/' style='color: rgba(0,0,0,0.059761)'>immutable</a>
+<a href='/tags/orm/' style='color: rgba(0,0,0,0.239044)'>orm</a>
+<a href='/tags/database/' style='color: rgba(0,0,0,0.239044)'>database</a>
+<a href='/tags/hapi.js/' style='color: rgba(0,0,0,0.059761)'>hapi.js</a>
+<a href='/tags/hapi/' style='color: rgba(0,0,0,0.239044)'>hapi</a>
+<a href='/tags/ionic/' style='color: rgba(0,0,0,0.119522)'>ionic</a>
+<a href='/tags/hybrid-app/' style='color: rgba(0,0,0,0.059761)'>hybrid-app</a>
+<a href='/tags/django/' style='color: rgba(0,0,0,0.059761)'>django</a>
+<a href='/tags/fullstack/' style='color: rgba(0,0,0,0.059761)'>fullstack</a>
+<a href='/tags/spa/' style='color: rgba(0,0,0,0.059761)'>spa</a>
+<a href='/tags/ExpressJS/' style='color: rgba(0,0,0,0.298805)'>ExpressJS</a>
+<a href='/tags/NodeJS/' style='color: rgba(0,0,0,0.298805)'>NodeJS</a>
+<a href='/tags/Sequelize/' style='color: rgba(0,0,0,0.298805)'>Sequelize</a>
+<a href='/tags/Mocha/' style='color: rgba(0,0,0,0.298805)'>Mocha</a>
+<a href='/tags/Supertest/' style='color: rgba(0,0,0,0.298805)'>Supertest</a>
+<a href='/tags/UnitTest/' style='color: rgba(0,0,0,0.298805)'>UnitTest</a>
+<a href='/tags/reactjs/' style='color: rgba(0,0,0,0.179283)'>reactjs</a>
+<a href='/tags/this/' style='color: rgba(0,0,0,0.119522)'>this</a>
+<a href='/tags/dom/' style='color: rgba(0,0,0,0.059761)'>dom</a>
+<a href='/tags/es5/' style='color: rgba(0,0,0,0.119522)'>es5</a>
+<a href='/tags/virtualdom/' style='color: rgba(0,0,0,0.119522)'>virtualdom</a>
+<a href='/tags/modules/' style='color: rgba(0,0,0,0.059761)'>modules</a>
+<a href='/tags/asynchronous/' style='color: rgba(0,0,0,0.059761)'>asynchronous</a>
+<a href='/tags/semicolon/' style='color: rgba(0,0,0,0.059761)'>semicolon</a>
+<a href='/tags/nodejs/' style='color: rgba(0,0,0,0.119522)'>nodejs</a>
+<a href='/tags/ECMAScript2015/' style='color: rgba(0,0,0,0.119522)'>ECMAScript2015</a>
+<a href='/tags/babel/' style='color: rgba(0,0,0,0.059761)'>babel</a>
+<a href='/tags/angular,/' style='color: rgba(0,0,0,0.059761)'>angular,</a>
+<a href='/tags/electron/' style='color: rgba(0,0,0,0.119522)'>electron</a>
+<a href='/tags/docker/' style='color: rgba(0,0,0,0.478088)'>docker</a>
+<a href='/tags/D3/' style='color: rgba(0,0,0,0.059761)'>D3</a>
+<a href='/tags/node/' style='color: rgba(0,0,0,0.119522)'>node</a>
+<a href='/tags/express/' style='color: rgba(0,0,0,0.119522)'>express</a>
+<a href='/tags/aws/' style='color: rgba(0,0,0,1.613546)'>aws</a>
+<a href='/tags/dynamoDB/' style='color: rgba(0,0,0,0.059761)'>dynamoDB</a>
+<a href='/tags/chrome/' style='color: rgba(0,0,0,0.059761)'>chrome</a>
+<a href='/tags/native/' style='color: rgba(0,0,0,0.119522)'>native</a>
+<a href='/tags/markdown/' style='color: rgba(0,0,0,0.059761)'>markdown</a>
+<a href='/tags/vue/' style='color: rgba(0,0,0,2.211155)'>vue</a>
+<a href='/tags/middleware/' style='color: rgba(0,0,0,0.119522)'>middleware</a>
+<a href='/tags/IoT/' style='color: rgba(0,0,0,0.059761)'>IoT</a>
+<a href='/tags/serverless/' style='color: rgba(0,0,0,0.537849)'>serverless</a>
+<a href='/tags/python/' style='color: rgba(0,0,0,0.179283)'>python</a>
+<a href='/tags/socket.io/' style='color: rgba(0,0,0,0.179283)'>socket.io</a>
+<a href='/tags/typescript/' style='color: rgba(0,0,0,0.059761)'>typescript</a>
+<a href='/tags/laravel/' style='color: rgba(0,0,0,1.553785)'>laravel</a>
+<a href='/tags/express.js/' style='color: rgba(0,0,0,0.059761)'>express.js</a>
+<a href='/tags/next/' style='color: rgba(0,0,0,0.059761)'>next</a>
+<a href='/tags/nuxt/' style='color: rgba(0,0,0,0.059761)'>nuxt</a>
+<a href='/tags/java/' style='color: rgba(0,0,0,0.059761)'>java</a>
+<a href='/tags/spring/' style='color: rgba(0,0,0,0.059761)'>spring</a>
+<a href='/tags/github/' style='color: rgba(0,0,0,0.119522)'>github</a>
+<a href='/tags/slack/' style='color: rgba(0,0,0,0.119522)'>slack</a>
+<a href='/tags/react-native/' style='color: rgba(0,0,0,0.059761)'>react-native</a>
+<a href='/tags/data/' style='color: rgba(0,0,0,0.298805)'>data</a>
+<a href='/tags/opensource/' style='color: rgba(0,0,0,0.059761)'>opensource</a>
+<a href='/tags/pwa/' style='color: rgba(0,0,0,0.059761)'>pwa</a>
+<a href='/tags/php/' style='color: rgba(0,0,0,0.059761)'>php</a>
+<a href='/tags/vuejs/' style='color: rgba(0,0,0,0.597610)'>vuejs</a>
+<a href='/tags/nextjs/' style='color: rgba(0,0,0,0.478088)'>nextjs</a>
+<a href='/tags/react_admin/' style='color: rgba(0,0,0,0.179283)'>react_admin</a>
+<a href='/tags/webrtc/' style='color: rgba(0,0,0,0.239044)'>webrtc</a>
+<a href='/tags/cd/' style='color: rgba(0,0,0,0.059761)'>cd</a>
+<a href='/tags/pm2/' style='color: rgba(0,0,0,0.059761)'>pm2</a>
+<a href='/tags/docker_registry/' style='color: rgba(0,0,0,0.059761)'>docker_registry</a>
+<a href='/tags/ecr/' style='color: rgba(0,0,0,0.059761)'>ecr</a>
+<a href='/tags/twilio/' style='color: rgba(0,0,0,0.059761)'>twilio</a>
+<a href='/tags/json_schema/' style='color: rgba(0,0,0,0.059761)'>json_schema</a>
+<a href='/tags/sql/' style='color: rgba(0,0,0,0.059761)'>sql</a>
+<a href='/tags/json/' style='color: rgba(0,0,0,0.059761)'>json</a>
+<a href='/tags/web/' style='color: rgba(0,0,0,0.059761)'>web</a>
+<a href='/tags/sdk/' style='color: rgba(0,0,0,0.059761)'>sdk</a>
+<a href='/tags/ssl/' style='color: rgba(0,0,0,0.059761)'>ssl</a>
+<a href='/tags/portainer/' style='color: rgba(0,0,0,0.059761)'>portainer</a>
+<a href='/tags/jwt/' style='color: rgba(0,0,0,0.059761)'>jwt</a>
+<a href='/tags/mailu/' style='color: rgba(0,0,0,0.059761)'>mailu</a>
+<a href='/tags/sam/' style='color: rgba(0,0,0,0.059761)'>sam</a>
+<a href='/tags/lambda/' style='color: rgba(0,0,0,0.059761)'>lambda</a>
+<a href='/tags/thumbnail/' style='color: rgba(0,0,0,0.059761)'>thumbnail</a>
+<a href='/tags/redis/' style='color: rgba(0,0,0,0.059761)'>redis</a>
+<a href='/tags/hyperledger/' style='color: rgba(0,0,0,0.418327)'>hyperledger</a>
+<a href='/tags/fabric/' style='color: rgba(0,0,0,0.418327)'>fabric</a>
+
+    </div>
+</div>
+
+        <div id="toc_location" style="z-index:99999;"></div>
+
+    </div>
+
+    <div class="col-sm-9 col-md-6">
+        <div class="media_content media_item shadow_panel" id="main_content">
+            <h1><a href="http://webpack.github.io">webpack</a></h1>
+
+<h2>개요</h2>
+
+<p>Gulp, Grunt와 더불어 Webpack은 자바스크립트 빌드 도구입니다. 사실 출시 된지는 몇 년 되었지만 최근 리엑트 프로젝트에서 사용되면서 관심을 갖게 되었습니다. 그래서 요즘은 대부분의 자바스크립트 프로젝트에 웹팩을 사용하는 분위기 이며 Grunt, Gulp도 대체하는 것 같습니다. ECMAScript 2015의 트랜스파일러인 바벨(Babel)을 웹팩과 함께 사용하면서 웹팩의 활용도는 점점 증가하고 있습니다.</p>
+
+<h2>기본 철학</h2>
+
+<p>Webpack의 두가지 핵심 철학: * 모든것은 module이다. * JS 파일들은 모듈(modules)이 될 수 있다. 또한 다른 모든 것(CSS, Images, HTMLS..)들도 모듈(modules)이 될 수 있다. 즉 <code>require(“myJSfile.js”)</code> 또는 <code>require(“myCSS.css”)</code> 를 할 수 있다. 이는 다루기 쉬운 작은 조각으로 나누거나, 재사용할 수 있다는걸 의미합니다.</p>
+
+<h2>webpack 사용해보기</h2>
+
+<p>node가 설치되어 있다는 전제하에 설명합니다.<br>
+먼저 프로젝트를 생성할 디렉토리를 만들어줍니다.<br>
+그리고 해당 디렉토리에서 터미널을 열어서 npm init으로 package.json 파일을 생성합니다. </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm init 
+</code></pre></div>
+<p><img src="../imgs/img1.png" alt="show-npm-init"></p>
+
+<p><code>npm init</code> 을 실행하게 되면 여러가지 질문들을 물어보는데 필요한 정보를 입력하거나 굳이 필요하지 않은 부분들은 엔터로 넘어가줍니다.  </p>
+
+<p>그리고 npm install 명령어로 webpack 모듈을 설치해봅시다.  </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install webpack --save-dev
+</code></pre></div>
+<p>이제는 webpack을 사용하기 위해 번들로 묶을 파일들과 설정파일을 생성해봅시다.    </p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">├── app
+│   └── app.js
+│   └── options.js
+├── public
+│   └── index.html
+├── package.json
+├── webpack.config.js
+</code></pre></div>
+<p>상기 디렉토리 구조와 같이 생성했다면 해당 파일의 내용을 아래와 같이 만들어봅시다.  </p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">// index.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Webpack Test<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;./bundle.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
+<p>index.html에는 기본적인 html 구조와 추후에 생성될 bundle.js 파일을 참조하였습니다.  </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// app.js</span>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">hello</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./options&#39;</span>
+
+<span class="nx">hello</span><span class="p">()</span>
+
+<span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+
+<span class="nx">div</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Hello Webpack!&quot;</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;container&#39;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+</code></pre></div>
+<p>app.js 파일에는 div 엘리먼트를 생성하여 <code>Hello Webpack!</code> 이라는 문구를 삽입하고 index.html의 container 엘리먼트 자식으로 삽입하는 코드를 넣어보았습니다.<br>
+그리고 상단에 있는 <code>hello()</code>라는 함수는 같은 디렉토리 내에 있는 <code>options.js</code> 파일을 참조하여 사용했습니다.<br>
+아래는 <code>options.js</code> 파일의 내용입니다.  </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;container&#39;</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// webpack.config.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span> <span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span><span class="s1">&#39;/app/app.js&#39;</span><span class="p">,</span>
+  <span class="nx">output</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="nx">path</span> <span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/public&#39;</span><span class="p">,</span>
+    <span class="nx">filename</span> <span class="o">:</span> <span class="s1">&#39;bundle.js&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>webpack.config.js</code> 파일에는 webpack 사용을 위한 설정값을 정의하였습니다.<br>
+    - entry: 번들로 묶을 파일들을 선언해주면됩니다.<br>
+    - output: path에 생성될 파일이 위치해야하는 경로값을 적어주고 filename은 이름을 적어주면됩니다.  </p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">//</span> <span class="err">package.json</span>
+<span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;webpack-test&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;main&quot;</span><span class="p">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;build&quot;</span><span class="p">:</span> <span class="s2">&quot;node_modules/.bin/webpack&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;webpack&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.28.2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;webpack-cli&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.1.2&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이제 webpack 모듈을 실행시키기 위해 package.json 파일에서 build 스크립트를 상기와 같이 추가해봅시다.<br>
+그리고 터미널에서 npm run build를 실행하면 output으로 지정해놓았던 경로에 bundle.js 파일이 생성됩니다.  </p>
+
+<p>index.html 파일을 브라우저로 열어서 확인해보셨나요?<br>
+Hello Webpack!이라는 문구를 클릭하면 hello라는 alert 창이 뜹니다. </p>
+
+<p><img src="../imgs/img2.png" alt="show-browser"></p>
+
+<p>index.html은 bundle.js를 참조하고 있는데 app.js에서 작성한 내용이 반영되었습니다.<br>
+그 뜻은 webpack이 app.js 파일과 참조하고 있던 options.js 파일을 번들링하여 bundle.js 파일로 표현해주었다는게 이해가 되시죠?  </p>
+
+<h2>정리</h2>
+
+<p>webpack에 대한 아주 기본적인 개념과 사용방법에 대해 알아보았습니다.<br>
+제가 처음 webpack을 접하게 된 것은 웹 프론트엔드 프레임워크인 VueJs로 프로젝트를 개발하면서 입니다.<br>
+vue-cli를 통해 프로젝트를 생성하면 자동으로 webpack이 셋팅되어 html, css, javascript 파일들을 번들링하여 파일들을 묶어주었는데 처음에는 당연히 webpack의 역할이 무엇인줄 몰랐었습니다.<br>
+상기와 같은 기본적인 개념과 하기의 참고자료 또는 튜토리얼을 참조하신다면 프로젝트를 개발하시는데 조금이라도 도움이 될 것 같습니다.    </p>
+
+<h2>참고 자료</h2>
+
+<p><a href="http://webpack.github.io">공식 가이드</a></p>
+
+<h2>튜토리얼</h2>
+
+<p><a href="http://webframeworks.kr/tutorials/translate/webpack-the-confusing-parts/">Webpack의 혼란스런 사항들</a></p>
+
+        </div>
+
+        <div class="media_content media_item shadow_panel">
+            <p>Tags : <a href="/tags/webpack">webpack</a>&nbsp;<a href="/tags/javascript">javascript</a>&nbsp;<a href="/tags/reactjs">reactjs</a>&nbsp;<a href="/tags/build">build</a>&nbsp;</p>
+        </div>
+
+
+        <div class="media_content media_item shadow_panel">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'html5krforkisa'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+        </div>
+
+    </div>
+
+
+    <script>
+        $('#main_content').toc();
+
+        $(document).ready(function(){
+            $('#toc_location').affix({
+                offset:{
+                    top: function(){
+                        return 550;
+                    }
+                }
+            });
+        })
+    </script>
+</div>
+<footer>
+<table width="100%" height="80" class="footer">
+    <tr>
+        <td align="center" class="footer_content">
+            WebFrameworks.kr @since 2015
+        </td>
+    </tr>
+</table>
+</footer>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56520981-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
