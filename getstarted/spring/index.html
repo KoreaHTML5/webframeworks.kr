@@ -367,6 +367,40 @@ public class HelloSpringApplication {
 <li>http://localhost:8080/로 접속해보면 index.html 화면이 출력되며, http://localhost:8080/hello로 접속하면 ‘Hello, Spring Boot!’ 를 확인할 수 있습니다.</li>
 </ul>
 
+<h2>Spring Boot CLI for Mac 시작하기</h2>
+
+<blockquote>
+<p>Spring Boot CLI로 간단하고 빠르게 &#39;Hello, Spring Boot CLI&#39;를 만들어 보겠습니다. 물론 Homebrew 가 설치가 먼저 되어 있어야 합니다.</p>
+</blockquote>
+
+<h4>1. Spring Boot CLI 설치</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//homebrew package update
+$ brew tap pivotal/tap
+
+//Spring boot CLI 설치
+$ brew install springboot
+
+//설치 경로 /usr/local/bin
+
+//설치 버전 체크
+$ spring version
+Spring CLI v2.1.1.RELEASE
+</code></pre></div>
+<h4>2. <code>hello.groovy</code> 파일 생성 및 편집</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">@RestController
+class HelloWorld {
+  @RequestMapping(&quot;/&quot;)
+  String hello() {
+    &quot;Hello, Spring Boot CLI&quot;
+  }
+}
+</code></pre></div>
+<h4>3. <code>$ spring run hello.groovy</code> 실행</h4>
+
+<h4>4. 브라우저 확인</h4>
+
+<p><img src="./imgs/img_001.png" alt="1"></p>
+
         </div>
 
         <div class="media_content media_item shadow_panel">
